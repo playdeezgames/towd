@@ -12,7 +12,7 @@ namespace FontEditor
     {
         const int ScreenWidth = 160;
         const int ScreenHeight = 100;
-        const int Zoom = 2;
+        const int Zoom = 6;
         const int BackBufferWidth = ScreenWidth * Zoom;
         const int BackBufferHeight = ScreenHeight * Zoom;
 
@@ -37,7 +37,7 @@ namespace FontEditor
         protected override void Initialize()
         {
             screenTexture = new Texture2D(GraphicsDevice, ScreenWidth, ScreenHeight);
-            Data.Font = CyFont.Load("Content\\Font3x5.json");
+            Data.Font = CyFont.Load("Font3x5.json");
             base.Initialize();
         }
 
@@ -46,7 +46,7 @@ namespace FontEditor
             spriteBatch = new SpriteBatch(GraphicsDevice);
             colorBuffer = new ColorBuffer<CyColor>(ScreenWidth, ScreenHeight, CyColorExtensions.ToColor);
             colorBuffer.Clear(CyColor.White);
-            font = CyFont.Load("Content\\Font5x7.json");
+            font = CyFont.Load("Font5x7.json");
             stateManager = new StateManager<EditorState, Command>();
             stateManager[EditorState.MainMenu] = new MainMenuState(stateManager, colorBuffer, font);
             stateManager[EditorState.ConfirmQuit] = new ConfirmQuitState(stateManager, colorBuffer, font);

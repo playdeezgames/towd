@@ -2,7 +2,6 @@
 
 namespace FontEditor
 {
-#if WINDOWS || LINUX
     public static class Program
     {
         [STAThread]
@@ -12,5 +11,4 @@ namespace FontEditor
                 game.Run();
         }
     }
-#endif
 }

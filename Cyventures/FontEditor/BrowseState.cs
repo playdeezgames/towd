@@ -67,6 +67,8 @@ namespace FontEditor
                     Data.Font.WriteCharacter(_screen, CyColor.Black, plotX+1, plotY+1, row * Columns + column + StartingCharacter);
                 }
             }
+            _screen.Box(0,0, _screen.Width, _font.Height, CyColor.White);
+            _font.WriteText(_screen, CyColor.Black, 0, 0, $"Char = {_row * Columns + _column + StartingCharacter}");
 
         }
     }

@@ -77,6 +77,8 @@ namespace FontEditor
                     }
                 }
             }
+            _screen.Box(0, 0, _screen.Width, _font.Height, CyColor.White);
+            _font.WriteText(_screen, CyColor.Black, 0, 0, $"X = {_column}, Y = {_row}");
 
         }
     }

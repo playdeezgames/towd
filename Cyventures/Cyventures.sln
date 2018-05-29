@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeFont", "MakeFont\MakeFont.csproj", "{B417EC14-F99E-4F0C-81B3-9DA9700F1F81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontEditor", "FontEditor\FontEditor.csproj", "{9A5903A7-7FC8-40DA-87C1-005212E266CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontEditor", "FontEditor\FontEditor.csproj", "{0051F382-B185-4CC1-A362-F486B4551DA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +23,14 @@ Global
 		{B417EC14-F99E-4F0C-81B3-9DA9700F1F81}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B417EC14-F99E-4F0C-81B3-9DA9700F1F81}.Release|x86.ActiveCfg = Release|Any CPU
 		{B417EC14-F99E-4F0C-81B3-9DA9700F1F81}.Release|x86.Build.0 = Release|Any CPU
-		{9A5903A7-7FC8-40DA-87C1-005212E266CF}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{9A5903A7-7FC8-40DA-87C1-005212E266CF}.Debug|x86.ActiveCfg = Debug|x86
-		{9A5903A7-7FC8-40DA-87C1-005212E266CF}.Debug|x86.Build.0 = Debug|x86
-		{9A5903A7-7FC8-40DA-87C1-005212E266CF}.Release|Any CPU.ActiveCfg = Release|x86
-		{9A5903A7-7FC8-40DA-87C1-005212E266CF}.Release|x86.ActiveCfg = Release|x86
-		{9A5903A7-7FC8-40DA-87C1-005212E266CF}.Release|x86.Build.0 = Release|x86
+		{0051F382-B185-4CC1-A362-F486B4551DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0051F382-B185-4CC1-A362-F486B4551DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0051F382-B185-4CC1-A362-F486B4551DA1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0051F382-B185-4CC1-A362-F486B4551DA1}.Debug|x86.Build.0 = Debug|Any CPU
+		{0051F382-B185-4CC1-A362-F486B4551DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0051F382-B185-4CC1-A362-F486B4551DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0051F382-B185-4CC1-A362-F486B4551DA1}.Release|x86.ActiveCfg = Release|Any CPU
+		{0051F382-B185-4CC1-A362-F486B4551DA1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
