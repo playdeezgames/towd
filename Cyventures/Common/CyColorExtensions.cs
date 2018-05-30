@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FontEditor
+namespace Common
 {
     public static class CyColorExtensions
     {

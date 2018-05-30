@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,6 +64,10 @@ namespace FontEditor
                     {
                         _screen.Box(plotX, plotY, Data.Font.Width + 2, Data.Font.Height + 2, CyColor.DarkGray);
                         _screen.Box(plotX+1, plotY+1, Data.Font.Width, Data.Font.Height, CyColor.White);
+                    }
+                    else
+                    {
+                        _screen.Box(plotX, plotY, Data.Font.Width + 2, Data.Font.Height + 2, CyColor.White);
                     }
                     Data.Font.WriteCharacter(_screen, CyColor.Black, plotX+1, plotY+1, row * Columns + column + StartingCharacter);
                 }

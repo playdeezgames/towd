@@ -7,7 +7,7 @@ namespace FontEditor
         [STAThread]
         static void Main()
         {
-            using (var game = new Sandbox())
+            using (var game = new FontEditor())
                 game.Run();
         }
     }

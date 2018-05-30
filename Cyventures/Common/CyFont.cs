@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FontEditor
+namespace Common
 {
     public class CyFont
     {
@@ -16,6 +17,14 @@ namespace FontEditor
         public static CyFont Load(string fileName)
         {
             using (var reader = File.OpenText(fileName))
+            {
+                return JsonConvert.DeserializeObject<CyFont>(reader.ReadToEnd());
+            }
+        }
+        public static CyFont LoadEmbedded(Assembly assembly, string resourceName)
+        {
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
             {
                 return JsonConvert.DeserializeObject<CyFont>(reader.ReadToEnd());
             }

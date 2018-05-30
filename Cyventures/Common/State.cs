@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FontEditor
+namespace Common
 {
     public abstract class State<T,C>
     {
