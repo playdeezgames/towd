@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FontEditor
+namespace EditorCommon
 {
     public abstract class CyMenuState<T> : MenuState<T, Command>
     {

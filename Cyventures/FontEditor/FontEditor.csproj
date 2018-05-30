@@ -52,10 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowseState.cs" />
-    <Compile Include="Command.cs" />
     <Compile Include="ConfirmQuitState.cs" />
     <Compile Include="CreateState.cs" />
-    <Compile Include="CyMenuState.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="EditorState.cs" />
     <Compile Include="EditState.cs" />
@@ -93,6 +91,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{c021e084-558a-412c-8836-e33041d67b6a}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EditorCommon\EditorCommon.csproj">
+      <Project>{b9220d3c-3f3c-4c4a-bb2f-d1d7ee8c0ec7}</Project>
+      <Name>EditorCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

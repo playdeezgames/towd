@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FontEditor
+namespace EditorCommon
 {
     public enum Command
     {
@@ -15,6 +15,8 @@ namespace FontEditor
         Select,
         Enter,
         Tab,
-        Esc
+        Esc,
+        Next,
+        Previous
     }
 }
