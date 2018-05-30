@@ -17,8 +17,8 @@ namespace MakeFont
         const int CharacterStart = 32;
         static void Main(string[] args)
         {
-            string inFile = args[0];
-            string outFile = args[1];
+            string inFile = args[1];
+            string outFile = args[0];
 
             Bitmap bmp = (Bitmap)Image.FromFile(inFile);
 
