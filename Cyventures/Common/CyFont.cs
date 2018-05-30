@@ -14,28 +14,6 @@ namespace Common
         public int Width { get; set; }
         public int Height { get; set; }
         public Dictionary<int, List<List<int>>> Data { get; set; }
-        public static CyFont Load(string fileName)
-        {
-            using (var reader = File.OpenText(fileName))
-            {
-                return JsonConvert.DeserializeObject<CyFont>(reader.ReadToEnd());
-            }
-        }
-        public static CyFont LoadEmbedded(Assembly assembly, string resourceName)
-        {
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                return JsonConvert.DeserializeObject<CyFont>(reader.ReadToEnd());
-            }
-        }
-        public void Save(string fileName)
-        {
-            using (var writer = File.CreateText(fileName))
-            {
-                writer.Write(JsonConvert.SerializeObject(this));
-            }
-        }
         public static CyFont Create(int width, int height)
         {
             CyFont result = new CyFont
@@ -54,7 +32,7 @@ namespace Common
             }
             return result;
         }
-        public void WriteCharacter(ColorBuffer<CyColor> buffer, CyColor color, int startX, int startY, int character)
+        public void WriteCharacter(IPixelWriter<CyColor> buffer, CyColor color, int startX, int startY, int character)
         {
             if(buffer==null)
             {
@@ -71,7 +49,7 @@ namespace Common
                 }
             }
         }
-        public void WriteText(ColorBuffer<CyColor> buffer, CyColor color, int startX, int startY, string text)
+        public void WriteText(IPixelWriter<CyColor> buffer, CyColor color, int startX, int startY, string text)
         {
             var bytes = Encoding.ASCII.GetBytes(text);
             foreach(var b in bytes)

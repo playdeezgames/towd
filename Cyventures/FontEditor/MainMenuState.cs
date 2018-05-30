@@ -46,7 +46,7 @@ namespace FontEditor
             var result = dialog.ShowDialog();
             if(result == DialogResult.OK)
             {
-                Data.Font.Save(dialog.FileName);
+                Utility.Save(Data.Font,dialog.FileName);
             }
         }
 
@@ -56,7 +56,7 @@ namespace FontEditor
             var result = dialog.ShowDialog();
             if(result == DialogResult.OK)
             {
-                Data.Font = CyFont.Load(dialog.FileName);
+                Data.Font = Utility.Load<CyFont>(dialog.FileName);
             }
         }
     }

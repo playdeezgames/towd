@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,12 +10,6 @@ using System.Threading.Tasks;
 
 namespace MakeFont
 {
-    public class Font
-    {
-        public int Width { get; set; }
-        public int Height { get; set; }
-        public Dictionary<int, List<List<int>>> Data { get; set; }
-    }
     class Program
     {
         const int CellColumns = 16;
@@ -52,16 +47,13 @@ namespace MakeFont
                     }
                 }
             }
-            Font wrapper = new Font()
+            CyFont wrapper = new CyFont()
             {
                 Width = cellWidth,
                 Height = cellHeight,
                 Data = font
             };
-            using (var writer = File.CreateText(outFile))
-            {
-                writer.Write(JsonConvert.SerializeObject(wrapper));
-            }
+            Utility.Save(wrapper,outFile);
         }
     }
 }

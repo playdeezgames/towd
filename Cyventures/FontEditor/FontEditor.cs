@@ -39,7 +39,7 @@ namespace FontEditor
         protected override void Initialize()
         {
             screenTexture = new Texture2D(GraphicsDevice, ScreenWidth, ScreenHeight);
-            Data.Font = CyFont.LoadEmbedded(Assembly.GetExecutingAssembly(), "FontEditor.Font3x5.json");
+            Data.Font = Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), "FontEditor.Font3x5.json");
             base.Initialize();
         }
 
@@ -48,7 +48,7 @@ namespace FontEditor
             spriteBatch = new SpriteBatch(GraphicsDevice);
             colorBuffer = new ColorBuffer<CyColor>(ScreenWidth, ScreenHeight, CyColorExtensions.ToColor);
             colorBuffer.Clear(CyColor.White);
-            font = CyFont.LoadEmbedded(Assembly.GetExecutingAssembly(), "FontEditor.Font5x7.json");
+            font = Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), "FontEditor.Font5x7.json");
             stateManager = new StateManager<EditorState, Command>();
             stateManager[EditorState.MainMenu] = new MainMenuState(stateManager, colorBuffer, font);
             stateManager[EditorState.ConfirmQuit] = new ConfirmQuitState(stateManager, colorBuffer, font);
