@@ -34,6 +34,9 @@ namespace TombsEditor
             _stateManager[EditorState.EditMenu] = new EditMenuState(_stateManager, _colorBuffer, _font);
             _stateManager[EditorState.GeneratorsMenu] = new GeneratorsMenuState(_stateManager, _colorBuffer, _font);
             _stateManager[EditorState.GeneratorMenu] = new GeneratorMenuState(_stateManager, _colorBuffer, _font);
+            _stateManager[EditorState.GeneratorSelect] = new GeneratorSelectState(_stateManager, _colorBuffer, _font);
+            _stateManager[EditorState.GeneratorEntrySelect] = new GeneratorEntrySelectState(_stateManager, _colorBuffer, _font);
+            _stateManager[EditorState.GeneratorEntryMenu] = new GeneratorEntryMenuState(_stateManager, _colorBuffer, _font);
         }
     }
 }

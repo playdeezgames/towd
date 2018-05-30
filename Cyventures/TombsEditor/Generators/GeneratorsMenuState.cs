@@ -33,7 +33,10 @@ namespace TombsEditor
                     DoCreate();
                     break;
                 case 2:
-                    Manager.Push(EditorState.GeneratorSelect);
+                    if (Data.World.Generators.Any())
+                    {
+                        Manager.Push(EditorState.GeneratorSelect);
+                    }
                     break;
             }
         }
@@ -43,7 +46,7 @@ namespace TombsEditor
             var name = Interaction.InputBox("Generator Name?", "Create Generator...");
             if(!string.IsNullOrEmpty(name))
             {
-                Data.World.Generators.LookUp[name] = new Dictionary<int, int>();
+                Data.World.Generators[name] = new Dictionary<int, int>();
 
                 GeneratorMenuState.Current = name;
                 Manager.Push(EditorState.GeneratorMenu);

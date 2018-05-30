@@ -53,8 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfirmQuitState.cs" />
-    <Compile Include="GeneratorMenuState.cs" />
-    <Compile Include="GeneratorsMenuState.cs" />
+    <Compile Include="Generators\GeneratorEntrySelectState.cs" />
+    <Compile Include="Generators\GeneratorEntryMenuState.cs" />
+    <Compile Include="Generators\GeneratorSelectState.cs" />
+    <Compile Include="Generators\GeneratorMenuState.cs" />
+    <Compile Include="Generators\GeneratorsMenuState.cs" />
     <Compile Include="EditorState.cs" />
     <Compile Include="EditMenuState.cs" />
     <Compile Include="MainMenuState.cs" />

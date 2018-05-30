@@ -14,6 +14,8 @@ namespace TombsEditor
         EditMenu,
         GeneratorsMenu,
         GeneratorSelect,
-        GeneratorMenu
+        GeneratorEntrySelect,
+        GeneratorMenu,
+        GeneratorEntryMenu
     }
 }
