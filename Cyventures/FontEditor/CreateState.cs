@@ -40,10 +40,10 @@ namespace FontEditor
                 case Command.Select:
                 case Command.Enter:
                     Data.Font = CyFont.Create(_width, _height);
-                    Manager.Current = EditorState.Browse;
+                    Manager.Set(EditorState.Browse);
                     break;
                 case Command.Esc:
-                    Manager.Current = EditorState.MainMenu;
+                    Manager.Set(EditorState.MainMenu);
                     break;
             }
         }

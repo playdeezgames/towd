@@ -52,7 +52,7 @@ namespace FontEditor
                     }
                     break;
                 case Command.Esc:
-                    Manager.Current = EditorState.Browse;
+                    Manager.Set(EditorState.Browse);
                     break;
             }
         }

@@ -43,10 +43,10 @@ namespace FontEditor
                 case Command.Select:
                 case Command.Enter:
                     EditState.Current = _row * Columns + _column + StartingCharacter;
-                    Manager.Current = EditorState.Edit;
+                    Manager.Set(EditorState.Edit);
                     break;
                 case Command.Esc:
-                    Manager.Current = EditorState.MainMenu;
+                    Manager.Set(EditorState.MainMenu);
                     break;
             }
         }

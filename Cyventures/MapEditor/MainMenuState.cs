@@ -24,13 +24,13 @@ namespace MapEditor
             switch(itemIndex)
             {
                 case 0:
-                    Manager.Current = EditorState.Edit;
+                    Manager.Set(EditorState.Edit);
                     break;
                 case 1:
                     DoLoadTileSet();
                     break;
                 case 2:
-                    Manager.Current = EditorState.Create;
+                    Manager.Set(EditorState.Create);
                     break;
                 case 3:
                     DoLoad();
@@ -39,7 +39,7 @@ namespace MapEditor
                     DoSave();
                     break;
                 case 5:
-                    Manager.Current = EditorState.ConfirmQuit;
+                    Manager.Set(EditorState.ConfirmQuit);
                     break;
             }
         }

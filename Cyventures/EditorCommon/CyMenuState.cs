@@ -9,8 +9,8 @@ namespace EditorCommon
 {
     public abstract class CyMenuState<T> : MenuState<T, Command>
     {
-        private ColorBuffer<CyColor> _screen;
-        private CyFont _font;
+        protected ColorBuffer<CyColor> _screen { get; private set; }
+        protected CyFont _font { get; private set; }
         private readonly List<string> _items;
         private readonly string _title;
 

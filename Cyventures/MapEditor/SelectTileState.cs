@@ -25,18 +25,18 @@ namespace MapEditor
             switch (command)
             {
                 case Command.Right:
-                    _column = (_column + 1) % Data.TileSet.Bitmaps.Count();
+                    _column = (_column + 1) % Data.TileSet.Items.Count();
                     break;
                 case Command.Left:
-                    _column = (_column + Data.TileSet.Bitmaps.Count() - 1) % Data.TileSet.Bitmaps.Count();
+                    _column = (_column + Data.TileSet.Items.Count() - 1) % Data.TileSet.Items.Count();
                     break;
                 case Command.Select:
                 case Command.Enter:
                     EditState.Current = _column;
-                    Manager.Current = EditorState.Edit;
+                    Manager.Set(EditorState.Edit);
                     break;
                 case Command.Esc:
-                    Manager.Current = EditorState.Edit;
+                    Manager.Set(EditorState.Edit);
                     break;
             }
         }
@@ -44,10 +44,10 @@ namespace MapEditor
         public override void Update(TimeSpan elapsed)
         {
             _screen.Clear(CyColor.LightGray);
-            int CellWidth = Data.TileSet.Bitmaps[0].Width;
-            int CellHeight = Data.TileSet.Bitmaps[0].Height;
+            int CellWidth = Data.TileSet.Items[0].Width;
+            int CellHeight = Data.TileSet.Items[0].Height;
 
-            for (int column=0;column< Data.TileSet.Bitmaps.Count(); ++column)
+            for (int column=0;column< Data.TileSet.Items.Count(); ++column)
             {
                 int plotX = _screen.Width / 2 + (column-_column) * (CellWidth + 2) - (CellWidth + 2)/2;
                 int plotY = _screen.Height / 2 - (CellHeight + 2)/2;
@@ -56,7 +56,7 @@ namespace MapEditor
                     _screen.Box(plotX, plotY, CellWidth + 2, CellHeight + 2, CyColor.DarkGray);
                     _screen.Box(plotX+1, plotY+1, CellWidth, CellHeight, CyColor.White);
                 }
-                Data.TileSet.Bitmaps[column].Draw(_screen, plotX+1, plotY+1,x=>true);
+                Data.TileSet.Items[column].Draw(_screen, plotX+1, plotY+1,x=>true);
             }
             _screen.Box(0,0, _screen.Width, _font.Height, CyColor.White);
             _font.WriteText(_screen, CyColor.Black, 0, 0, $"Index = {_column}");

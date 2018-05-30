@@ -40,10 +40,10 @@ namespace MapEditor
                 case Command.Select:
                 case Command.Enter:
                     Data.Map = new TileMap<int>(_width,_height,0);
-                    Manager.Current = EditorState.Edit;
+                    Manager.Set(EditorState.Edit);
                     break;
                 case Command.Esc:
-                    Manager.Current = EditorState.MainMenu;
+                    Manager.Set(EditorState.MainMenu);
                     break;
             }
         }

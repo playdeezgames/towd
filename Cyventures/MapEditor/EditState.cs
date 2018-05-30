@@ -40,7 +40,7 @@ namespace MapEditor
                     _row = (_row + Data.Map.Height - 1) % Data.Map.Height;
                     break;
                 case Command.Tab:
-                    Manager.Current = EditorState.SelectTile;
+                    Manager.Set(EditorState.SelectTile);
                     break;
                 case Command.Next:
                 case Command.Previous:
@@ -55,7 +55,7 @@ namespace MapEditor
                     Data.Map.Data[_row][_column] = Current;
                     break;
                 case Command.Esc:
-                    Manager.Current = EditorState.MainMenu;
+                    Manager.Set(EditorState.MainMenu);
                     break;
             }
         }
@@ -63,8 +63,8 @@ namespace MapEditor
         public override void Update(TimeSpan elapsed)
         {
             _screen.Clear(CyColor.LightGray);
-            int CellWidth = Data.TileSet.Bitmaps[0].Width;
-            int CellHeight = Data.TileSet.Bitmaps[0].Height;
+            int CellWidth = Data.TileSet.Items[0].Width;
+            int CellHeight = Data.TileSet.Items[0].Height;
 
             for (int row = 0; row < Data.Map.Height; ++row)
             {
@@ -73,7 +73,7 @@ namespace MapEditor
                     int plotX = _screen.Width / 2 + (column - _column) * (CellWidth) - (CellWidth) / 2;
                     int plotY = _screen.Height / 2 + (row - _row) * (CellHeight) - (CellHeight) / 2;
                     int tileIndex = Data.Map.Data[row][column];
-                    Data.TileSet.Bitmaps[tileIndex].Draw(_screen, plotX, plotY, x => true);
+                    Data.TileSet.Items[tileIndex].Draw(_screen, plotX, plotY, x => true);
                 }
             }
             _screen.HLine(_screen.Width / 2 - CellWidth / 2, _screen.Height / 2 - CellHeight / 2 - 1, CellWidth, _cursor);

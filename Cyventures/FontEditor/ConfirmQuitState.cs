@@ -21,10 +21,10 @@ namespace FontEditor
             switch(itemIndex)
             {
                 case 0:
-                    Manager.Current = EditorState.MainMenu;
+                    Manager.Set(EditorState.MainMenu);
                     break;
                 case 1:
-                    Manager.Current = EditorState.Quit;
+                    Manager.Set(EditorState.Quit);
                     break;
             }
         }

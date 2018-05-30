@@ -24,10 +24,10 @@ namespace FontEditor
             switch(itemIndex)
             {
                 case 0:
-                    Manager.Current = EditorState.Browse;
+                    Manager.Set(EditorState.Browse);
                     break;
                 case 1:
-                    Manager.Current = EditorState.Create;
+                    Manager.Set(EditorState.Create);
                     break;
                 case 2:
                     DoLoad();
@@ -36,7 +36,7 @@ namespace FontEditor
                     DoSave();
                     break;
                 case 4:
-                    Manager.Current = EditorState.ConfirmQuit;
+                    Manager.Set(EditorState.ConfirmQuit);
                     break;
             }
         }

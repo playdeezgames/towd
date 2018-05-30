@@ -11,6 +11,20 @@ namespace Common
 {
     public static class Utility
     {
+        public static T Roll<T>(Dictionary<T,int> generator, Random random)
+        {
+            var tally = generator.Values.Sum();
+            var generated = random.Next(tally);
+            foreach(var k in generator.Keys)
+            {
+                generated -= generator[k];
+                if(generated<0)
+                {
+                    return k;
+                }
+            }
+            throw new ArgumentOutOfRangeException(nameof(generator));
+        }
         public static void Save<T>(T thing, string fileName)
         {
             using (var writer = File.CreateText(fileName))
