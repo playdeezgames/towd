@@ -37,12 +37,12 @@ namespace FontEditor
                 case Command.Down:
                     _height = (_height > 1) ? (_height - 1) : (_height);
                     break;
-                case Command.Select:
-                case Command.Enter:
+                case Command.Green:
+                case Command.Blue:
                     Data.Font = CyFont.Create(_width, _height);
                     Manager.Set(EditorState.Browse);
                     break;
-                case Command.Esc:
+                case Command.Red:
                     Manager.Set(EditorState.MainMenu);
                     break;
             }

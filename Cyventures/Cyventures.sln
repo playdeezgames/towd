@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TombsCommon", "TombsCommon\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TombsEditor", "TombsEditor\TombsEditor.csproj", "{C5D74C7C-A47A-4244-9308-694FD998A4D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{8E37F257-457C-454D-AFE7-07D48A5374E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGameCommon", "MonoGameCommon\MonoGameCommon.csproj", "{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +125,22 @@ Global
 		{C5D74C7C-A47A-4244-9308-694FD998A4D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C5D74C7C-A47A-4244-9308-694FD998A4D8}.Release|x86.ActiveCfg = Release|Any CPU
 		{C5D74C7C-A47A-4244-9308-694FD998A4D8}.Release|x86.Build.0 = Release|Any CPU
+		{8E37F257-457C-454D-AFE7-07D48A5374E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E37F257-457C-454D-AFE7-07D48A5374E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E37F257-457C-454D-AFE7-07D48A5374E4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8E37F257-457C-454D-AFE7-07D48A5374E4}.Debug|x86.Build.0 = Debug|Any CPU
+		{8E37F257-457C-454D-AFE7-07D48A5374E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E37F257-457C-454D-AFE7-07D48A5374E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E37F257-457C-454D-AFE7-07D48A5374E4}.Release|x86.ActiveCfg = Release|Any CPU
+		{8E37F257-457C-454D-AFE7-07D48A5374E4}.Release|x86.Build.0 = Release|Any CPU
+		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Debug|x86.Build.0 = Debug|Any CPU
+		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Release|x86.ActiveCfg = Release|Any CPU
+		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

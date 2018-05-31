@@ -35,12 +35,12 @@ namespace TombsEditor
                 case Command.Up:
                     Current = (Current + Data.World.Generators.Count() - 1) % Data.World.Generators.Count();
                     break;
-                case Command.Enter:
-                case Command.Select:
+                case Command.Blue:
+                case Command.Green:
                     GeneratorMenuState.Current = Data.World.Generators.Keys.ToList()[Current];
                     Manager.Push(EditorState.GeneratorMenu);
                     break;
-                case Command.Esc:
+                case Command.Red:
                     Manager.Pop();
                     break;
             }

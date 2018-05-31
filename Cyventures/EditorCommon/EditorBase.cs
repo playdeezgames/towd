@@ -84,19 +84,19 @@ namespace EditorCommon
             }
             if (newKeyboardState.IsKeyDown(Keys.Escape) && !oldKeyboardState.IsKeyDown(Keys.Escape))
             {
-                _stateManager.DoCommand(Command.Esc);
+                _stateManager.DoCommand(Command.Red);
             }
             if (newKeyboardState.IsKeyDown(Keys.Enter) && !oldKeyboardState.IsKeyDown(Keys.Enter))
             {
-                _stateManager.DoCommand(Command.Enter);
+                _stateManager.DoCommand(Command.Blue);
             }
             if (newKeyboardState.IsKeyDown(Keys.Space) && !oldKeyboardState.IsKeyDown(Keys.Space))
             {
-                _stateManager.DoCommand(Command.Select);
+                _stateManager.DoCommand(Command.Green);
             }
             if (newKeyboardState.IsKeyDown(Keys.Tab) && !oldKeyboardState.IsKeyDown(Keys.Tab))
             {
-                _stateManager.DoCommand(Command.Tab);
+                _stateManager.DoCommand(Command.Yellow);
             }
             if (newKeyboardState.IsKeyDown(Keys.OemPeriod) && !oldKeyboardState.IsKeyDown(Keys.OemPeriod))
             {

@@ -15,7 +15,7 @@ namespace EditorCommon
         private readonly string _title;
 
         public CyMenuState(StateManager<T, Command> manager, ColorBuffer<CyColor> screen, CyFont font, string title, List<string> items)
-            : base(manager, items.Count(), new HashSet<Command>() { Command.Down }, new HashSet<Command>() { Command.Up }, new HashSet<Command>() { Command.Select, Command.Enter })
+            : base(manager, items.Count(), new HashSet<Command>() { Command.Down }, new HashSet<Command>() { Command.Up }, new HashSet<Command>() { Command.Green, Command.Blue })
         {
             _screen = screen;
             _font = font;

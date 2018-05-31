@@ -46,7 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AckResult.cs" />
     <Compile Include="ColorBuffer.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="CommandMessage.cs" />
+    <Compile Include="IMessage.cs" />
+    <Compile Include="IMessageHandler.cs" />
+    <Compile Include="InitializeMessage.cs" />
+    <Compile Include="IResult.cs" />
+    <Compile Include="MessageBase.cs" />
+    <Compile Include="MessageHandlerBase.cs" />
+    <Compile Include="QuitMessage.cs" />
+    <Compile Include="ResultBase.cs" />
     <Compile Include="Sequence.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="TileMap.cs" />

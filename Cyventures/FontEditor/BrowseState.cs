@@ -40,12 +40,12 @@ namespace FontEditor
                 case Command.Up:
                     _row = (_row + Rows - 1) % Rows;
                     break;
-                case Command.Select:
-                case Command.Enter:
+                case Command.Green:
+                case Command.Blue:
                     EditState.Current = _row * Columns + _column + StartingCharacter;
                     Manager.Set(EditorState.Edit);
                     break;
-                case Command.Esc:
+                case Command.Red:
                     Manager.Set(EditorState.MainMenu);
                     break;
             }

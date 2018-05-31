@@ -39,7 +39,7 @@ namespace MapEditor
                 case Command.Up:
                     _row = (_row + Data.Map.Height - 1) % Data.Map.Height;
                     break;
-                case Command.Tab:
+                case Command.Yellow:
                     Manager.Set(EditorState.SelectTile);
                     break;
                 case Command.Next:
@@ -50,11 +50,11 @@ namespace MapEditor
                         (_cursor == CyColor.LightGray) ? (CyColor.DarkGray) :
                         (CyColor.White);
                     break;
-                case Command.Enter:
-                case Command.Select:
+                case Command.Blue:
+                case Command.Green:
                     Data.Map.Data[_row][_column] = Current;
                     break;
-                case Command.Esc:
+                case Command.Red:
                     Manager.Set(EditorState.MainMenu);
                     break;
             }

@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EditorCommon
+namespace Common
 {
     public enum Command
     {
         Up,
+        Right,
         Down,
         Left,
-        Right,
-        Select,
-        Enter,
-        Tab,
-        Esc,
+        Green,
+        Blue,
+        Yellow,
+        Red,
+        Back,
+        Start,
         Next,
         Previous
     }

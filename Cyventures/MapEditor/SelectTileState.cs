@@ -30,12 +30,12 @@ namespace MapEditor
                 case Command.Left:
                     _column = (_column + Data.TileSet.Items.Count() - 1) % Data.TileSet.Items.Count();
                     break;
-                case Command.Select:
-                case Command.Enter:
+                case Command.Green:
+                case Command.Blue:
                     EditState.Current = _column;
                     Manager.Set(EditorState.Edit);
                     break;
-                case Command.Esc:
+                case Command.Red:
                     Manager.Set(EditorState.Edit);
                     break;
             }

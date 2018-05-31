@@ -37,12 +37,12 @@ namespace MapEditor
                 case Command.Down:
                     _height = (_height > 1) ? (_height - 1) : (_height);
                     break;
-                case Command.Select:
-                case Command.Enter:
+                case Command.Green:
+                case Command.Blue:
                     Data.Map = new TileMap<int>(_width,_height,0);
                     Manager.Set(EditorState.Edit);
                     break;
-                case Command.Esc:
+                case Command.Red:
                     Manager.Set(EditorState.MainMenu);
                     break;
             }

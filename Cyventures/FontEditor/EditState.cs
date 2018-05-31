@@ -40,8 +40,8 @@ namespace FontEditor
                 case Command.Up:
                     _row = (_row + Data.Font.Height - 1) % Data.Font.Height;
                     break;
-                case Command.Select:
-                case Command.Enter:
+                case Command.Green:
+                case Command.Blue:
                     if(Data.Font.Data[Current][_row].Contains(_column))
                     {
                         Data.Font.Data[Current][_row].Remove(_column);
@@ -51,7 +51,7 @@ namespace FontEditor
                         Data.Font.Data[Current][_row].Add(_column);
                     }
                     break;
-                case Command.Esc:
+                case Command.Red:
                     Manager.Set(EditorState.Browse);
                     break;
             }
