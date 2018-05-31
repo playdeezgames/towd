@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class InitializeMessage<TPayload>:MessageBase
+    public class InitializeMessage : MessageBase
     {
         public static readonly string Id = Guid.NewGuid().ToString();
+        public InitializeMessage() : base(Id)
+        {
+        }
+    }
+    public class InitializeMessage<TPayload> : InitializeMessage
+    {
         public TPayload Payload { get; private set; }
-        public InitializeMessage(TPayload payload):base(Id)
+        public InitializeMessage(TPayload payload) : base()
         {
             Payload = payload;
         }

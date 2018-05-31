@@ -8,6 +8,7 @@ using Common;
 using EditorCommon;
 using EngineCommon;
 using Microsoft.Xna.Framework;
+using MonoGameCommon;
 using TombsCommon;
 
 namespace TombsEditor

@@ -44,7 +44,38 @@ namespace Common
             _children.Remove(child);
         }
 
-        protected abstract IResult OnMessage(IMessage message);
+        protected abstract bool OnCommand(CommandMessage message);
+        protected abstract void OnDraw(DrawMessage message);
+        protected abstract void OnInitialize(InitializeMessage message);
+
+        protected virtual IResult OnMessage(IMessage message)
+        {
+            if(message.MessageId == CommandMessage.Id)
+            {
+                if(OnCommand(message as CommandMessage))
+                {
+                    return new AckResult(message, this);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if(message.MessageId== DrawMessage.Id)
+            {
+                OnDraw(message as DrawMessage);
+                return new AckResult(message, this);
+            }
+            else if(message.MessageId == InitializeMessage.Id)
+            {
+                OnInitialize(message as InitializeMessage);
+                return new AckResult(message, this);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public void Broadcast(IMessage message, bool reverseOrder = false)
         {

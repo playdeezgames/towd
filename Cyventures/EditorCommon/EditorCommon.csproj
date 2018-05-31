@@ -64,6 +64,10 @@
       <Project>{c021e084-558a-412c-8836-e33041d67b6a}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MonoGameCommon\MonoGameCommon.csproj">
+      <Project>{e8ef6db8-003e-4af5-bd51-e0e179cf9af8}</Project>
+      <Name>MonoGameCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

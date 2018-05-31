@@ -30,7 +30,7 @@ namespace Common
                 }
             }
         }
-        public override void Put(int x, int y, T color)
+        public override void DoPut(int x, int y, T color)
         {
             if(x>=0 && x<Width && y>=0 && y<Height)
             {

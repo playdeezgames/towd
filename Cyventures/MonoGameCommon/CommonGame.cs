@@ -15,17 +15,18 @@ namespace MonoGameCommon
         private int _screenWidth;
         private int _screenHeight;
         private int _zoom;
-        private int BackBufferWidth { get { return _screenWidth * _zoom; } }
-        private int BackBufferHeight { get { return _screenHeight * _zoom; } }
+        private GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
+        private Texture2D _screenTexture;
+        private KeyboardState _oldKeyboardState = new KeyboardState();
+        private GamePadState _oldGamePadState = new GamePadState();
+        private IMessageHandler _root;
+        private ColorBuffer<CyColor> _colorBuffer;
 
+        private int _backBufferWidth { get { return _screenWidth * _zoom; } }
+        private int _backBufferHeight { get { return _screenHeight * _zoom; } }
         public IMessageHandler Parent => null;
 
-        private GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
-        private Texture2D screenTexture;
-        private KeyboardState oldKeyboardState = new KeyboardState();
-        private GamePadState oldGamePadState = new GamePadState();
-        private IMessageHandler _root;
 
         private CommonGame() { }
 
@@ -34,22 +35,23 @@ namespace MonoGameCommon
             _screenWidth = screenWidth;
             _screenHeight = screenHeight;
             _zoom = zoom;
-            graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = BackBufferWidth;
-            graphics.PreferredBackBufferHeight = BackBufferHeight;
-            graphics.ApplyChanges();
+            _graphics = new GraphicsDeviceManager(this);
+            _graphics.PreferredBackBufferWidth = _backBufferWidth;
+            _graphics.PreferredBackBufferHeight = _backBufferHeight;
+            _graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             _root = factory(this);
+            _colorBuffer = new ColorBuffer<CyColor>(_screenWidth, _screenHeight, CyColorExtensions.ToColor);
         }
 
         protected override void Initialize()
         {
-            screenTexture = new Texture2D(GraphicsDevice, _screenWidth, _screenHeight);
+            _screenTexture = new Texture2D(GraphicsDevice, _screenWidth, _screenHeight);
             base.Initialize();
         }
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
         protected override void UnloadContent()
@@ -90,20 +92,21 @@ namespace MonoGameCommon
 
         protected override void Update(GameTime gameTime)
         {
+            _colorBuffer.Clear(CyColor.White);
             var newKeyboardState = Keyboard.GetState();
             HashSet<Command> commands = new HashSet<Command>();
             foreach(var entry in keyProcessor)
             {
-                if(entry.Value(newKeyboardState) && !entry.Value(oldKeyboardState))
+                if(entry.Value(newKeyboardState) && !entry.Value(_oldKeyboardState))
                 {
                     commands.Add(entry.Key);
                 }
             }
-            oldKeyboardState = newKeyboardState;
+            _oldKeyboardState = newKeyboardState;
             var newGamePadState = GamePad.GetState(PlayerIndex.One);
             foreach (var entry in gamePadProcessor)
             {
-                if (entry.Value(newGamePadState) && !entry.Value(oldGamePadState))
+                if (entry.Value(newGamePadState) && !entry.Value(_oldGamePadState))
                 {
                     commands.Add(entry.Key);
                 }
@@ -112,15 +115,19 @@ namespace MonoGameCommon
             {
                 _root.HandleBroadcast(new CommandMessage(command), true);
             }
-            oldGamePadState = newGamePadState;
+            _oldGamePadState = newGamePadState;
             base.Update(gameTime);
+            _colorBuffer.Offset = CyPoint.Create(0, 0);
+            _colorBuffer.ClipRect = null;
+            _root.Broadcast(new DrawMessage<CyColor>(_colorBuffer));
+            _colorBuffer.Apply(_screenTexture);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            spriteBatch.Draw(screenTexture, new Rectangle(0, 0, BackBufferWidth, BackBufferHeight), Color.White);
-            spriteBatch.End();
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            _spriteBatch.Draw(_screenTexture, new Rectangle(0, 0, _backBufferWidth, _backBufferHeight), Color.White);
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
 
@@ -129,7 +136,7 @@ namespace MonoGameCommon
             if(message.MessageId == QuitMessage.Id)
             {
                 Exit();
-                return new AckResult(message);
+                return new AckResult(message, this);
             }
             else
             {

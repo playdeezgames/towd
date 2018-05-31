@@ -9,10 +9,12 @@ namespace Common
     public class AckResult: ResultBase
     {
         public IMessage Message { get; private set; }
+        public IMessageHandler Handler { get; private set; }
         public static readonly string Id = Guid.NewGuid().ToString();
-        public AckResult(IMessage message):base(Id)
+        public AckResult(IMessage message, IMessageHandler handler):base(Id)
         {
             Message = message;
+            Handler = handler;
         }
     }
 }

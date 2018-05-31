@@ -96,6 +96,10 @@
       <Project>{999bb4e2-6981-429e-9428-047f7f923bf8}</Project>
       <Name>EngineCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MonoGameCommon\MonoGameCommon.csproj">
+      <Project>{e8ef6db8-003e-4af5-bd51-e0e179cf9af8}</Project>
+      <Name>MonoGameCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TombsCommon\TombsCommon.csproj">
       <Project>{24eba211-c50b-4e2c-b7e8-e3b3a7353148}</Project>
       <Name>TombsCommon</Name>

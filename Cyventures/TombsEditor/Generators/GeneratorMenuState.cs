@@ -9,6 +9,7 @@ using EditorCommon;
 using EngineCommon;
 using Microsoft.VisualBasic;
 using Microsoft.Xna.Framework;
+using MonoGameCommon;
 using TombsCommon;
 
 namespace TombsEditor

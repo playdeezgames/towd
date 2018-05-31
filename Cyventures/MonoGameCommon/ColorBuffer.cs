@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Common;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common
+namespace MonoGameCommon
 {
     public class ColorBuffer<T>: PixelWriterBase<T>
     {
@@ -26,7 +27,7 @@ namespace Common
             _convertor = convertor ?? throw new ArgumentNullException(nameof(convertor));
             _buffer = new Color[Width * Height];
         }
-        public override void Put(int x, int y, T color)
+        public override void DoPut(int x, int y, T color)
         {
             if(x>=0 && x< Width && y>=0 && y<Height)
             {

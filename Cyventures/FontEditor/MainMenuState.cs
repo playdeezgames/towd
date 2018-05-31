@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Common;
 using EditorCommon;
 using Microsoft.Xna.Framework;
+using MonoGameCommon;
 
 namespace FontEditor
 {
