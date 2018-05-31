@@ -9,7 +9,7 @@ namespace Sandbox
         [STAThread]
         static void Main()
         {
-            using (var game = new CommonGame(160,100,6,SandboxRoot.Create))
+            using (var game = new CommonGame(160,100,2,SandboxRoot.Create))
             {
                 game.Run();
             }

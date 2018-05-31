@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace MonoGameCommon
 {
-    public class CommonGame : Game, IMessageHandler
+    public class CommonGame : Game, IMessageHandler<CyColor>
     {
         private int _screenWidth;
         private int _screenHeight;
@@ -20,17 +20,29 @@ namespace MonoGameCommon
         private Texture2D _screenTexture;
         private KeyboardState _oldKeyboardState = new KeyboardState();
         private GamePadState _oldGamePadState = new GamePadState();
-        private IMessageHandler _root;
+        private IMessageHandler<CyColor> _root;
         private ColorBuffer<CyColor> _colorBuffer;
 
         private int _backBufferWidth { get { return _screenWidth * _zoom; } }
         private int _backBufferHeight { get { return _screenHeight * _zoom; } }
-        public IMessageHandler Parent => null;
+        public IMessageHandler<CyColor> Parent => null;
 
+        public int X { get => 0; set => throw new NotImplementedException(); }
+        public int Y { get => 0; set => throw new NotImplementedException(); }
+        public int Width { get => _screenWidth; set => throw new NotImplementedException(); }
+        public int Height { get => _screenHeight; set => throw new NotImplementedException(); }
+
+        public int GlobalX => X;
+
+        public int GlobalY => Y;
+
+        public bool Enabled { get => true; set => throw new NotImplementedException(); }
+
+        public bool GlobalEnabled => Enabled;
 
         private CommonGame() { }
 
-        public CommonGame(int screenWidth, int screenHeight, int zoom, Func<IMessageHandler,IMessageHandler> factory)
+        public CommonGame(int screenWidth, int screenHeight, int zoom, Func<IMessageHandler<CyColor>, IMessageHandler<CyColor>> factory)
         {
             _screenWidth = screenWidth;
             _screenHeight = screenHeight;
@@ -113,13 +125,11 @@ namespace MonoGameCommon
             }
             foreach(var command in commands)
             {
-                _root.HandleBroadcast(new CommandMessage(command), true);
+                HandleCommand(command);
             }
             _oldGamePadState = newGamePadState;
             base.Update(gameTime);
-            _colorBuffer.Offset = CyPoint.Create(0, 0);
-            _colorBuffer.ClipRect = null;
-            _root.Broadcast(new DrawMessage<CyColor>(_colorBuffer));
+            Update(_colorBuffer);
             _colorBuffer.Apply(_screenTexture);
         }
 
@@ -136,7 +146,7 @@ namespace MonoGameCommon
             if(message.MessageId == QuitMessage.Id)
             {
                 Exit();
-                return new AckResult(message, this);
+                return new AckResult<CyColor>(message, this);
             }
             else
             {
@@ -144,14 +154,14 @@ namespace MonoGameCommon
             }
         }
 
-        public void Broadcast(IMessage message, bool reverseOrder = false)
+        public void Update(IPixelWriter<CyColor> pixelWriter)
         {
-            _root.Broadcast(message, reverseOrder);
+            _root.Update(pixelWriter);
         }
 
-        public IResult HandleBroadcast(IMessage message, bool reverseOrder = false)
+        public bool HandleCommand(Command command)
         {
-            return _root.HandleBroadcast(message, reverseOrder);
+            return _root.HandleCommand(command);
         }
     }
 }

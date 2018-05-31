@@ -7,22 +7,28 @@ using System.Threading.Tasks;
 
 namespace Sandbox
 {
-    public class SandboxRoot : MessageHandlerBase
+    public class SandboxRoot : MessageHandlerBase<CyColor>
     {
-        public SandboxRoot(IMessageHandler parent)
-            :base(parent)
+        public SandboxRoot(IMessageHandler<CyColor> parent)
+            :base(parent, true, CyRect.Create(parent.Width/2-parent.Width/4,parent.Height/2-parent.Height/4,parent.Width/2,parent.Height/2))
         {
 
         }
-        public static IMessageHandler Create(IMessageHandler parent)
+        public static IMessageHandler<CyColor> Create(IMessageHandler<CyColor> parent)
         {
             return new SandboxRoot(parent);
         }
 
-        protected override bool OnCommand(CommandMessage message)
+        protected override bool OnCommand(Command command)
         {
-            switch(message.Command)
+            switch(command)
             {
+                case Command.Up:
+                    Y-=10;
+                    return true;
+                case Command.Down:
+                    Y+=10;
+                    return true;
                 case Command.Back:
                     HandleMessage(new QuitMessage());
                     return true;
@@ -31,18 +37,14 @@ namespace Sandbox
             }
         }
 
-        protected override void OnDraw(DrawMessage message)
+        protected override IResult OnMessage(IMessage message)
         {
-            IPixelWriter<CyColor> pixelWriter = (message as DrawMessage<CyColor>).PixelWriter;
-            if(pixelWriter!=null)
-            {
-                pixelWriter.Box(CyRect.Create(0, 0, 10, 10), CyColor.LightGray);
-            }
+            return null;
         }
 
-        protected override void OnInitialize(InitializeMessage message)
+        protected override void OnUpdate(IPixelWriter<CyColor> pixelWriter, CyRect? clipRect)
         {
-            
+            pixelWriter.Clear(CyColor.DarkGray, clipRect);
         }
     }
 }

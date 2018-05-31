@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public interface IMessageHandler
+    public interface IMessageHandler<T>
     {
-        IMessageHandler Parent { get; }
+        int X { get; set; }
+        int Y { get; set; }
+        int Width { get; set; }
+        int Height { get; set; }
+        int GlobalX { get; }
+        int GlobalY { get; }
+        bool Enabled { get; set; }
+        bool GlobalEnabled { get; }
+        IMessageHandler<T> Parent { get; }
         IResult HandleMessage(IMessage message);
-        void Broadcast(IMessage message, bool reverseOrder = false);
-        IResult HandleBroadcast(IMessage message, bool reverseOrder = false);
+        void Update(IPixelWriter<T> pixelWriter);
+        bool HandleCommand(Command command);
     }
 }
