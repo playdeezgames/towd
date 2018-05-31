@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace FontEditor
 {
-    public class EditState : State<EditorState, Command>
+    public class EditState : StateOld<EditorState, Command>
     {
         const int CellWidth = 8;
         const int CellHeight = 8;
         public static int Current;
         private ColorBuffer<CyColor> _screen;
-        private CyFont _font;
+        private CyFontOld _font;
         private int _column = 0;
         private int _row = 0;
-        public EditState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public EditState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             : base(manager)
         {
             _screen = screen;

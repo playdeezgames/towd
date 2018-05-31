@@ -26,7 +26,7 @@ namespace EditorCommon
         KeyboardState oldKeyboardState = new KeyboardState();
 
         protected ColorBuffer<CyColor> _colorBuffer;
-        protected StateManager<T, Command> _stateManager;
+        protected StateManagerOld<T, Command> _stateManager;
         T _finalState;
 
         private EditorBase() { }
@@ -35,7 +35,7 @@ namespace EditorCommon
         {
             _zoom = zoom;
             _finalState = finalState;
-            _stateManager = new StateManager<T, Command>();
+            _stateManager = new StateManagerOld<T, Command>();
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = BackBufferWidth;
             graphics.PreferredBackBufferHeight = BackBufferHeight;

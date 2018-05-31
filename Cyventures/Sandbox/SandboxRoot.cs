@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,10 +10,11 @@ namespace Sandbox
 {
     public class SandboxRoot : MessageHandlerBase<CyColor>
     {
+        CyFont _font;
         public SandboxRoot(IMessageHandler<CyColor> parent)
-            :base(parent, true, CyRect.Create(parent.Width/2-parent.Width/4,parent.Height/2-parent.Height/4,parent.Width/2,parent.Height/2))
+            :base(parent, true, null)
         {
-
+            _font = Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), "Sandbox.CyFont5x7.json");
         }
         public static IMessageHandler<CyColor> Create(IMessageHandler<CyColor> parent)
         {
@@ -23,12 +25,6 @@ namespace Sandbox
         {
             switch(command)
             {
-                case Command.Up:
-                    Y-=10;
-                    return true;
-                case Command.Down:
-                    Y+=10;
-                    return true;
                 case Command.Back:
                     HandleMessage(new QuitMessage());
                     return true;
@@ -44,7 +40,6 @@ namespace Sandbox
 
         protected override void OnUpdate(IPixelWriter<CyColor> pixelWriter, CyRect? clipRect)
         {
-            pixelWriter.Clear(CyColor.DarkGray, clipRect);
         }
     }
 }

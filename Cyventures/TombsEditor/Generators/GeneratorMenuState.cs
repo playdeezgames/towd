@@ -19,7 +19,7 @@ namespace TombsEditor
         public static string Current { get; set; }
         private static readonly List<string> _items = new List<string>() { "Go Back", "Delete Generator", "Add Entry...", "View/Edit/Delete Entry..." };
 
-        public GeneratorMenuState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public GeneratorMenuState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             :base(manager, screen, font, "Generator Menu", _items)
         {
         }

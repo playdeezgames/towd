@@ -13,7 +13,7 @@ namespace FontEditor
 {
     public class FontEditor : EditorBase<EditorState>
     {
-        private CyFont _font;
+        private CyFontOld _font;
 
         public FontEditor():base(2,EditorState.Quit)
         {
@@ -21,12 +21,12 @@ namespace FontEditor
 
         protected override void OnInitialize()
         {
-            Data.Font = Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), "FontEditor.Font3x5.json");
+            Data.Font = Utility.LoadEmbedded<CyFontOld>(Assembly.GetExecutingAssembly(), "FontEditor.Font3x5.json");
         }
 
         protected override void OnLoadContent()
         {
-            _font = Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), "FontEditor.Font5x7.json");
+            _font = Utility.LoadEmbedded<CyFontOld>(Assembly.GetExecutingAssembly(), "FontEditor.Font5x7.json");
             _stateManager[EditorState.MainMenu] = new MainMenuState(_stateManager, _colorBuffer, _font);
             _stateManager[EditorState.ConfirmQuit] = new ConfirmQuitState(_stateManager, _colorBuffer, _font);
             _stateManager[EditorState.Create] = new CreateState(_stateManager, _colorBuffer, _font);

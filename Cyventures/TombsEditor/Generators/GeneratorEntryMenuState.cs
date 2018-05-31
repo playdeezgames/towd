@@ -19,7 +19,7 @@ namespace TombsEditor
         public static int Current { get; set; }
         private static readonly List<string> _items = new List<string>() { "Go Back", "Delete Entry", "Change Weight..." };
 
-        public GeneratorEntryMenuState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public GeneratorEntryMenuState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             :base(manager, screen, font, "Entry Menu", _items)
         {
         }

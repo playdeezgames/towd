@@ -13,7 +13,7 @@ namespace MapEditor
 {
     public class MapEditor:EditorBase<EditorState>
     {
-        private CyFont _font;
+        private CyFontOld _font;
 
         public MapEditor() : base(2, EditorState.Quit ) { }
 
@@ -25,7 +25,7 @@ namespace MapEditor
 
         protected override void OnLoadContent()
         {
-            _font = Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), "MapEditor.Font5x7.json");
+            _font = Utility.LoadEmbedded<CyFontOld>(Assembly.GetExecutingAssembly(), "MapEditor.Font5x7.json");
             _stateManager[EditorState.MainMenu] = new MainMenuState(_stateManager, _colorBuffer, _font);
             _stateManager[EditorState.ConfirmQuit] = new ConfirmQuitState(_stateManager, _colorBuffer, _font);
             _stateManager[EditorState.Create] = new CreateState(_stateManager, _colorBuffer, _font);

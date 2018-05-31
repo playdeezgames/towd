@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace FontEditor
 {
-    public class BrowseState : State<EditorState, Command>
+    public class BrowseState : StateOld<EditorState, Command>
     {
         const int Columns = 16;
         const int Rows = 6;
         const int StartingCharacter=32;
         private ColorBuffer<CyColor> _screen;
-        private CyFont _font;
+        private CyFontOld _font;
         private int _column=0;
         private int _row=0;
-        public BrowseState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public BrowseState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             : base(manager)
         {
             _screen = screen;

@@ -17,7 +17,7 @@ namespace TombsEditor
     {
         private static readonly List<string> _items = new List<string>() { "Back", "Generators" };
 
-        public EditMenuState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public EditMenuState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             :base(manager, screen, font, "Edit Menu", _items)
         {
         }

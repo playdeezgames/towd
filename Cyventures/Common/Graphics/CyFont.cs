@@ -1,9 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,51 +8,17 @@ namespace Common
 {
     public class CyFont
     {
-        public int Width { get; set; }
         public int Height { get; set; }
-        public Dictionary<int, List<List<int>>> Data { get; set; }
-        public static CyFont Create(int width, int height)
+        public Dictionary<char, CyGlyph> Glyphs { get; set; }
+        public void Draw<T>(IPixelWriter<T> pixelWriter, T color, int x, int y, string text, CyRect? clipRect=null)
         {
-            CyFont result = new CyFont
+            foreach(var ch in text)
             {
-                Width = width,
-                Height = height,
-                Data = new Dictionary<int, List<List<int>>>()
-            };
-            for (int index=32;index<128;++index)
-            {
-                result.Data[index] = new List<List<int>>();
-                while(result.Data[index].Count()<height)
+                Glyphs.TryGetValue(ch, out CyGlyph glyph);
+                if(glyph!=null)
                 {
-                    result.Data[index].Add(new List<int>());
+                    x = glyph.Draw(pixelWriter, color, x, y, clipRect);
                 }
-            }
-            return result;
-        }
-        public void WriteCharacter(IPixelWriter<CyColor> buffer, CyColor color, int startX, int startY, int character)
-        {
-            if(buffer==null)
-            {
-                throw new ArgumentNullException(nameof(buffer));
-            }
-            if (Data.ContainsKey(character))
-            {
-                for (int y = 0; y < Height; ++y)
-                {
-                    foreach (var x in Data[character][y])
-                    {
-                        buffer.Put(startX + x, startY + y, color);
-                    }
-                }
-            }
-        }
-        public void WriteText(IPixelWriter<CyColor> buffer, CyColor color, int startX, int startY, string text)
-        {
-            var bytes = Encoding.ASCII.GetBytes(text);
-            foreach(var b in bytes)
-            {
-                WriteCharacter(buffer, color, startX, startY, b);
-                startX += Width;
             }
         }
     }

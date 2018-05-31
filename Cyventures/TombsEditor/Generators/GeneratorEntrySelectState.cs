@@ -14,12 +14,12 @@ using TombsCommon;
 
 namespace TombsEditor
 {
-    public class GeneratorEntrySelectState : State<EditorState, Command>
+    public class GeneratorEntrySelectState : StateOld<EditorState, Command>
     {
         public static int Current;
         private ColorBuffer<CyColor> _screen;
-        private CyFont _font;
-        public GeneratorEntrySelectState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        private CyFontOld _font;
+        public GeneratorEntrySelectState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             : base(manager)
         {
             _screen = screen;

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class StateManager<T,C>
+    public class StateManagerOld<T,C>
     {
-        private Dictionary<T, State<T,C>> _states = new Dictionary<T, State<T, C>>();
+        private Dictionary<T, StateOld<T,C>> _states = new Dictionary<T, StateOld<T, C>>();
         public T Current { get; private set; }
         private Stack<T> _stack = new Stack<T>();
         public void Push(T state)
@@ -24,7 +24,7 @@ namespace Common
         {
             Current = state;
         }
-        public State<T, C> this[T index]
+        public StateOld<T, C> this[T index]
         {
             get
             {

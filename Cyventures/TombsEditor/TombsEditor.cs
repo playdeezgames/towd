@@ -15,7 +15,7 @@ namespace TombsEditor
 {
     public class TombsEditor : EditorBase<EditorState>
     {
-        private CyFont _font;
+        private CyFontOld _font;
 
         public TombsEditor():base(2,EditorState.Quit)
         {
@@ -28,7 +28,7 @@ namespace TombsEditor
 
         protected override void OnLoadContent()
         {
-            _font = Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), "TombsEditor.Font4x6.json");
+            _font = Utility.LoadEmbedded<CyFontOld>(Assembly.GetExecutingAssembly(), "TombsEditor.Font4x6.json");
             _stateManager[EditorState.MainMenu] = new MainMenuState(_stateManager, _colorBuffer, _font);
             _stateManager[EditorState.ConfirmQuit] = new ConfirmQuitState(_stateManager, _colorBuffer, _font);
             _stateManager[EditorState.EditMenu] = new EditMenuState(_stateManager, _colorBuffer, _font);

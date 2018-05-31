@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class CommandMessage:MessageBase
+    public class CommandMessageOld:MessageBase
     {
         public static readonly string Id = Guid.NewGuid().ToString();
         public Command Command { get; private set; }
-        public CommandMessage(Command command):base(Id)
+        public CommandMessageOld(Command command):base(Id)
         {
             Command = command;
         }

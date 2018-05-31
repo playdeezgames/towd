@@ -13,7 +13,7 @@ namespace TombsPlayer
     {
         private static readonly List<string> _items = new List<string>() { "No", "Yes" };
 
-        public ConfirmQuitState(StateManager<GameState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public ConfirmQuitState(StateManagerOld<GameState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             : base(manager, screen, font, "Are you sure?", _items)
         {
         }

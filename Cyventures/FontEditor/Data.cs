@@ -9,6 +9,6 @@ namespace FontEditor
 {
     public static class Data
     {
-        public static CyFont Font { get; set; }
+        public static CyFontOld Font { get; set; }
     }
 }

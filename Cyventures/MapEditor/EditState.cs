@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace MapEditor
 {
-    public class EditState : State<EditorState, Command>
+    public class EditState : StateOld<EditorState, Command>
     {
         public static int Current;
         private CyColor _cursor = CyColor.White;
         private ColorBuffer<CyColor> _screen;
-        private CyFont _font;
+        private CyFontOld _font;
         private int _column = 0;
         private int _row = 0;
-        public EditState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public EditState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             : base(manager)
         {
             _screen = screen;

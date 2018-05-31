@@ -47,7 +47,7 @@ namespace MakeFont
                     }
                 }
             }
-            CyFont wrapper = new CyFont()
+            CyFontOld wrapper = new CyFontOld()
             {
                 Width = cellWidth,
                 Height = cellHeight,

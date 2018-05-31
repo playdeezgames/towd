@@ -60,6 +60,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Font4x6.json" />
+    <EmbeddedResource Include="Font3x5.json" />
+    <EmbeddedResource Include="Font5x7.json" />
+    <EmbeddedResource Include="CyFont3x5.json" />
+    <EmbeddedResource Include="CyFont4x6.json" />
+    <EmbeddedResource Include="CyFont5x7.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

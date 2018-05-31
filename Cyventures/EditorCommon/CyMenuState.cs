@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace EditorCommon
 {
-    public abstract class CyMenuState<T> : MenuState<T, Command>
+    public abstract class CyMenuState<T> : MenuStateOld<T, Command>
     {
         protected ColorBuffer<CyColor> _screen { get; private set; }
-        protected CyFont _font { get; private set; }
+        protected CyFontOld _font { get; private set; }
         private readonly List<string> _items;
         private readonly string _title;
 
-        public CyMenuState(StateManager<T, Command> manager, ColorBuffer<CyColor> screen, CyFont font, string title, List<string> items)
+        public CyMenuState(StateManagerOld<T, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font, string title, List<string> items)
             : base(manager, items.Count(), new HashSet<Command>() { Command.Down }, new HashSet<Command>() { Command.Up }, new HashSet<Command>() { Command.Green, Command.Blue })
         {
             _screen = screen;

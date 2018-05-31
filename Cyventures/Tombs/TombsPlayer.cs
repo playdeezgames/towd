@@ -15,7 +15,7 @@ namespace TombsPlayer
 {
     public class TombsPlayer : EditorBase<GameState>
     {
-        private CyFont _font;
+        private CyFontOld _font;
 
         public TombsPlayer():base(2,GameState.Quit)
         {
@@ -28,7 +28,7 @@ namespace TombsPlayer
 
         protected override void OnLoadContent()
         {
-            _font = Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), "Tombs.Font4x6.json");
+            _font = Utility.LoadEmbedded<CyFontOld>(Assembly.GetExecutingAssembly(), "Tombs.Font4x6.json");
             _stateManager[GameState.MainMenu] = new MainMenuState(_stateManager, _colorBuffer, _font);
             _stateManager[GameState.ConfirmQuit] = new ConfirmQuitState(_stateManager, _colorBuffer, _font);
         }

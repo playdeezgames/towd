@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public abstract class State<T,C>
+    public abstract class StateOld<T,C>
     {
-        protected StateManager<T,C> Manager { get; private set; }
-        private State() { }
-        public State(StateManager<T,C> manager)
+        protected StateManagerOld<T,C> Manager { get; private set; }
+        private StateOld() { }
+        public StateOld(StateManagerOld<T,C> manager)
         {
             Manager = manager;
         }

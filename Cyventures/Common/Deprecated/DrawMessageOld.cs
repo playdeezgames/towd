@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public abstract class DrawMessage : MessageBase
+    public abstract class DrawMessageOld : MessageBase
     {
         public static string Id = Guid.NewGuid().ToString();
-        public DrawMessage() : base(Id)
+        public DrawMessageOld() : base(Id)
         {
         }
     }
-    public class DrawMessage<T> : DrawMessage
+    public class DrawMessage<T> : DrawMessageOld
     {
         public IPixelWriter<T> PixelWriter { get; private set; }
         public DrawMessage(IPixelWriter<T> pixelWriter) : base()

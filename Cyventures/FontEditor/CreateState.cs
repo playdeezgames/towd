@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace FontEditor
 {
-    public class CreateState : State<EditorState, Command>
+    public class CreateState : StateOld<EditorState, Command>
     {
         private ColorBuffer<CyColor> _screen;
-        private CyFont _font;
+        private CyFontOld _font;
         private int _width=1;
         private int _height=1;
-        public CreateState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public CreateState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             :base(manager)
         {
             _screen = screen;
@@ -40,7 +40,7 @@ namespace FontEditor
                     break;
                 case Command.Green:
                 case Command.Blue:
-                    Data.Font = CyFont.Create(_width, _height);
+                    Data.Font = CyFontOld.Create(_width, _height);
                     Manager.Set(EditorState.Browse);
                     break;
                 case Command.Red:

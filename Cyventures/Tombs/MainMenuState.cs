@@ -15,7 +15,7 @@ namespace TombsPlayer
     {
         private static readonly List<string> _items = new List<string>() { "Play","Help...","New...","Load...","Save...","Options...","Quit" };
 
-        public MainMenuState(StateManager<GameState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public MainMenuState(StateManagerOld<GameState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             :base(manager, screen, font, "Tombs of Woeful Doom!", _items)
         {
         }

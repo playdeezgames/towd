@@ -15,7 +15,7 @@ namespace FontEditor
     {
         private static readonly List<string> _items = new List<string>() { "Edit","New...","Open...","Save...","Quit" };
 
-        public MainMenuState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public MainMenuState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             :base(manager, screen, font, "Font Editor", _items)
         {
         }
@@ -58,7 +58,7 @@ namespace FontEditor
             var result = dialog.ShowDialog();
             if(result == DialogResult.OK)
             {
-                Data.Font = Utility.Load<CyFont>(dialog.FileName);
+                Data.Font = Utility.Load<CyFontOld>(dialog.FileName);
             }
         }
     }

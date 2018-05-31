@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public abstract class MenuState<T,C>: State<T,C>
+    public abstract class MenuStateOld<T,C>: StateOld<T,C>
     {
         private HashSet<C> _nextItem;
         private HashSet<C> _previousItem;
         private HashSet<C> _selectItem;
         private int _itemCount;
         protected int CurrentIndex { get; private set; }
-        public MenuState(StateManager<T,C> manager, int itemCount, HashSet<C> nextItem, HashSet<C> previousItem, HashSet<C> selectItem)
+        public MenuStateOld(StateManagerOld<T,C> manager, int itemCount, HashSet<C> nextItem, HashSet<C> previousItem, HashSet<C> selectItem)
             :base (manager)
         {
             _nextItem = nextItem;

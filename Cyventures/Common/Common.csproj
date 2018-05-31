@@ -43,15 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messages\DrawMessage.cs" />
+    <Compile Include="Graphics\CyFont.cs" />
+    <Compile Include="Graphics\CyGlyph.cs" />
+    <Compile Include="Deprecated\DrawMessageOld.cs" />
     <Compile Include="Results\AckResult.cs" />
     <Compile Include="Enums\Command.cs" />
-    <Compile Include="Messages\CommandMessage.cs" />
+    <Compile Include="Deprecated\CommandMessageOld.cs" />
     <Compile Include="Graphics\CyPoint.cs" />
     <Compile Include="Graphics\CyRect.cs" />
     <Compile Include="Messages\IMessage.cs" />
     <Compile Include="MessageHandlers\IMessageHandler.cs" />
-    <Compile Include="Messages\InitializeMessage.cs" />
     <Compile Include="Results\IResult.cs" />
     <Compile Include="Messages\MessageBase.cs" />
     <Compile Include="MessageHandlers\MessageHandlerBase.cs" />
@@ -63,17 +64,20 @@
     <Compile Include="Graphics\CyBitmap.cs" />
     <Compile Include="Graphics\CyBitmapSequence.cs" />
     <Compile Include="Graphics\CyColor.cs" />
-    <Compile Include="Graphics\CyFont.cs" />
+    <Compile Include="Deprecated\CyFontOld.cs" />
     <Compile Include="Graphics\IPixelWriter.cs" />
-    <Compile Include="States\MenuState.cs" />
+    <Compile Include="Deprecated\MenuStateOld.cs" />
     <Compile Include="Graphics\PixelWriterBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="States\State.cs" />
-    <Compile Include="States\StateManager.cs" />
+    <Compile Include="Deprecated\StateOld.cs" />
+    <Compile Include="Deprecated\StateManagerOld.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="States\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

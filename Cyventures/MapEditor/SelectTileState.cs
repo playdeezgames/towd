@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace MapEditor
 {
-    public class SelectTileState : State<EditorState, Command>
+    public class SelectTileState : StateOld<EditorState, Command>
     {
         private ColorBuffer<CyColor> _screen;
-        private CyFont _font;
+        private CyFontOld _font;
         private int _column=0;
-        public SelectTileState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public SelectTileState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             : base(manager)
         {
             _screen = screen;

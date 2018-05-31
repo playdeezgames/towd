@@ -15,7 +15,7 @@ namespace MapEditor
     {
         private static readonly List<string> _items = new List<string>() { "Edit", "Tileset...", "New...", "Open...","Save...","Quit" };
 
-        public MainMenuState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public MainMenuState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             :base(manager, screen, font, "Map Editor", _items)
         {
         }

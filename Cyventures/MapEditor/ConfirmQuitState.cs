@@ -13,7 +13,7 @@ namespace MapEditor
     {
         private static readonly List<string> _items = new List<string>() { "No", "Yes" };
 
-        public ConfirmQuitState(StateManager<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFont font)
+        public ConfirmQuitState(StateManagerOld<EditorState, Command> manager, ColorBuffer<CyColor> screen, CyFontOld font)
             : base(manager, screen, font, "Are you sure?", _items)
         {
         }
