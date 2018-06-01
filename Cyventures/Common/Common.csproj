@@ -46,7 +46,9 @@
     <Compile Include="Collections\Manager.cs" />
     <Compile Include="Controls\FilledBoxControl.cs" />
     <Compile Include="Controls\BitmapControl.cs" />
+    <Compile Include="Controls\ControlBase.cs" />
     <Compile Include="Controls\LabelControl.cs" />
+    <Compile Include="Controls\ListBoxControl.cs" />
     <Compile Include="Graphics\CyFont.cs" />
     <Compile Include="Graphics\Bitmap.cs" />
     <Compile Include="Graphics\CyGlyph.cs" />

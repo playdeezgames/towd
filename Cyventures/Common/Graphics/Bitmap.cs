@@ -50,10 +50,10 @@ namespace Common
             {
                 for(int column=0;column<Width;++column)
                 {
-                    T color = Get(x, y);
+                    T color = Get(column, row);
                     if(filter(color))
                     {
-                        pixelWriter.Put(x + column, y + column, color, clipRect);
+                        pixelWriter.Put(x + column, y + row, color, clipRect);
                     }
                 }
             }

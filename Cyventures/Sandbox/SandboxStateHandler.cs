@@ -14,7 +14,10 @@ namespace Sandbox
         {
         }
 
-        protected Manager<SandboxFont,CyFont> FontManager =>
-                (HandleMessage(new FetchMessage<SandboxResource>(SandboxResource.FontManager)) as FetchResult<Manager<SandboxFont, CyFont>>)?.Payload;
+        protected Manager<SandboxFont, CyFont> FontManager =>
+                (HandleMessage(FetchMessage<SandboxResource>.Create(SandboxResource.FontManager)) as FetchResult<Manager<SandboxFont, CyFont>>)?.Payload;
+
+        protected Manager<SandboxBitmap, Bitmap<CyColor>> BitmapManager =>
+                (HandleMessage(FetchMessage<SandboxResource>.Create(SandboxResource.BitmapManager)) as FetchResult<Manager<SandboxBitmap, Bitmap<CyColor>>>)?.Payload;
     }
 }

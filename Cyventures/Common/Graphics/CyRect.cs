@@ -37,5 +37,14 @@ namespace Common
         {
             return OffsetBy(offset.X, offset.Y);
         }
+
+        internal CyRect Intersect(CyRect other)
+        {
+            int x = Math.Max(X, other.X);
+            int y = Math.Max(Y, other.Y);
+            int right = Math.Min(Right, other.Right);
+            int bottom = Math.Min(Bottom, other.Bottom);
+            return Create(x, y, right - x, bottom - y);
+        }
     }
 }

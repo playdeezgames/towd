@@ -10,29 +10,27 @@ namespace Sandbox
 {
     public class SplashStateHandler : SandboxStateHandler
     {
+        private ListBoxControl _listBox;
         public SplashStateHandler(StateMachineHandler<CyColor, SandboxState> parent, CyRect? bounds) : base(parent, bounds)
         {
-            var smallBounds = FontManager[SandboxFont.Small].GetBounds("Splash!");
-            var mediumBounds = FontManager[SandboxFont.Medium].GetBounds("Splash!").OffsetBy(0,smallBounds.Bottom);
-            var largeBounds = FontManager[SandboxFont.Large].GetBounds("Splash!").OffsetBy(0,mediumBounds.Bottom);
+            var font = FontManager[SandboxFont.Largest];
+            new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);
+            new LabelControl(this, true, CyPoint.Create(0, 0), font, "Main Menu:", CyColor.White);
+            _listBox = new ListBoxControl(this, true, CyRect.Create(0, font.Height, Width, Height-font.Height), font, new string[] { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen" }, 0, CyColor.Black, CyColor.White, OnListBoxActivate);
+        }
 
-            new FilledBoxControl(this, true, smallBounds, CyColor.LightGray);
-            new FilledBoxControl(this, true, mediumBounds, CyColor.DarkGray);
-            new FilledBoxControl(this, true, largeBounds, CyColor.Black);
-
-            new LabelControl(this, true, smallBounds, FontManager[SandboxFont.Small], "Splash!", CyColor.Black);
-            new LabelControl(this, true, mediumBounds, FontManager[SandboxFont.Medium], "Splash!", CyColor.White);
-            new LabelControl(this, true, largeBounds, FontManager[SandboxFont.Large], "Splash!", CyColor.LightGray);
-            new LabelControl(this, true, CyPoint.Create(SandboxConstants.ScreenWidth/2, SandboxConstants.ScreenHeight/2), FontManager[SandboxFont.Large], "Test", CyColor.Black);
+        private void OnListBoxActivate(int selected)
+        {
+            if(selected==12)
+            {
+                HandleMessage(QuitMessage.Create());
+            }
         }
 
         protected override bool OnCommand(Command command)
         {
             switch (command)
             {
-                case Command.Back:
-                    HandleMessage(new QuitMessage());
-                    return true;
                 default:
                     return false;
             }
@@ -45,11 +43,12 @@ namespace Sandbox
 
         protected override void OnStart()
         {
+            _listBox.Focus();
         }
 
         protected override void OnStop()
         {
-            
+            _listBox.Blur();
         }
 
         protected override void OnUpdate(IPixelWriter<CyColor> pixelWriter, CyRect? clipRect)

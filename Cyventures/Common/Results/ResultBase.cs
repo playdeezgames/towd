@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public abstract class ResultBase : IResult
+    public class ResultBase : IResult
     {
         public string ResultId { get; private set; }
         private ResultBase() { }
-        public ResultBase(string resultId)
+        protected ResultBase(string resultId)
         {
             ResultId = resultId;
         }

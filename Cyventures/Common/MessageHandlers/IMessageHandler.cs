@@ -20,6 +20,7 @@ namespace Common
         int GlobalBottom { get; }
         bool Enabled { get; set; }
         bool GlobalEnabled { get; }
+        CyRect GlobalBounds { get; }
         IMessageHandler<T> Parent { get; }
         IResult HandleMessage(IMessage message);
         void Update(IPixelWriter<T> pixelWriter);

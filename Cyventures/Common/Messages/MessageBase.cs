@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public abstract class MessageBase : IMessage
+    public class MessageBase : IMessage
     {
         public string MessageId { get; private set; }
         private MessageBase() { }
-        public MessageBase(string messageId)
+        protected MessageBase(string messageId)
         {
             MessageId = messageId;
         }

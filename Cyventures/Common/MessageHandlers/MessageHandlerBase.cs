@@ -58,6 +58,22 @@ namespace Common
 
         public int GlobalBottom => GlobalY + Height;
 
+        public CyRect GlobalBounds
+        {
+            get
+            {
+                CyRect result = CyRect.Create(GlobalX, GlobalY, Width, Height);
+                if(Parent!=null)
+                {
+                    return result.Intersect(Parent.GlobalBounds);
+                }
+                else
+                {
+                    return result;
+                }
+            }
+        }
+
         private LinkedList<IMessageHandler<T>> _children = new LinkedList<IMessageHandler<T>>();
         public void AddChild(IMessageHandler<T> child)
         {
@@ -82,7 +98,7 @@ namespace Common
         {
             if(GlobalEnabled)
             {
-                OnUpdate(pixelWriter, CyRect.Create(GlobalX, GlobalY, Width, Height));
+                OnUpdate(pixelWriter, GlobalBounds);
                 var child = _children.First;
                 while (child != null)
                 {

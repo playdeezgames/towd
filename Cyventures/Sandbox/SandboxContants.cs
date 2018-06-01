@@ -10,6 +10,6 @@ namespace Sandbox
     {
         public const int ScreenWidth = 160;
         public const int ScreenHeight = 100;
-        public const int Zoom = 6;
+        public const int Zoom = 1;
     }
 }

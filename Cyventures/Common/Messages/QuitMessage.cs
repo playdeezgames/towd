@@ -9,8 +9,12 @@ namespace Common
     public class QuitMessage:MessageBase
     {
         public static string Id = Guid.NewGuid().ToString();
-        public QuitMessage():base(Id)
+        protected QuitMessage():base(Id)
         {
+        }
+        public static QuitMessage Create()
+        {
+            return new QuitMessage();
         }
     }
 }

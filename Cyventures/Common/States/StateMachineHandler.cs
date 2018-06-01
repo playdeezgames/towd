@@ -49,7 +49,16 @@ namespace Common
         {
             if(message.MessageId== SetStateMessage.Id)
             {
-                return new AckResult<TPixel>(message, this);
+                var specific = (message as SetStateMessage<TState>);
+                if(specific!=null)
+                {
+                    Current = specific.State;
+                    return AckResult<TPixel>.Create(message, this);
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {

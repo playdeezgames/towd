@@ -48,6 +48,8 @@ namespace MonoGameCommon
 
         public int GlobalBottom => GlobalY + Height;
 
+        public CyRect GlobalBounds => CyRect.Create(X, Y, Width, Height);
+
         private CommonGame() { }
 
         public CommonGame(int screenWidth, int screenHeight, int zoom, Func<IMessageHandler<CyColor>, IMessageHandler<CyColor>> factory)
@@ -154,7 +156,7 @@ namespace MonoGameCommon
             if (message.MessageId == QuitMessage.Id)
             {
                 Exit();
-                return new AckResult<CyColor>(message, this);
+                return AckResult<CyColor>.Create(message, this);
             }
             else
             {

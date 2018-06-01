@@ -25,33 +25,30 @@ namespace MakeFont
             var cellWidth = bmp.Width / CellColumns;
             var cellHeight = bmp.Height / CellRows;
 
-            Dictionary<int, List<List<int>>> font = new Dictionary<int, List<List<int>>>();
+            Dictionary<char, CyGlyph> font = new Dictionary<char, CyGlyph>();
             for(int column=0;column<CellColumns;++column)
             {
                 for(int row = 0;row<CellRows;++row)
                 {
-                    List<List<int>> cell = new List<List<int>>();
-                    font[row * CellColumns + column+CharacterStart] = cell;
+                    CyGlyph cell = new CyGlyph(cellWidth);
+                    font[(char)(row * CellColumns + column+CharacterStart)] = cell;
                     for(int y =0;y<cellHeight;++y)
                     {
-                        List<int> line = new List<int>();
-                        cell.Add(line);
                         for(int x=0;x<cellWidth;++x)
                         {
                             var color = bmp.GetPixel(column * cellWidth + x, row * cellHeight + y);
                             if(color.R==0)
                             {
-                                line.Add(x);
+                                cell.Set(x, y);
                             }
                         }
                     }
                 }
             }
-            CyFontOld wrapper = new CyFontOld()
+            CyFont wrapper = new CyFont()
             {
-                Width = cellWidth,
                 Height = cellHeight,
-                Data = font
+                Glyphs = font
             };
             Utility.Save(wrapper,outFile);
         }

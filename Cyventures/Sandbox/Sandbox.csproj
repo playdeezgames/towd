@@ -51,6 +51,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SandboxContants.cs" />
+    <Compile Include="SandboxBitmap.cs" />
     <Compile Include="SandboxFont.cs" />
     <Compile Include="SandboxResource.cs" />
     <Compile Include="SandboxRoot.cs" />
@@ -70,6 +71,7 @@
     <EmbeddedResource Include="CyFont3x5.json" />
     <EmbeddedResource Include="CyFont4x6.json" />
     <EmbeddedResource Include="CyFont5x7.json" />
+    <EmbeddedResource Include="CyFont8x8.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -80,6 +82,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="TestBitmap.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

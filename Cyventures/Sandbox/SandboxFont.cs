@@ -10,6 +10,7 @@ namespace Sandbox
     {
         Small,
         Medium,
-        Large
+        Large,
+        Largest
     }
 }

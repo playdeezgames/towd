@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public abstract class AckResult : ResultBase
+    public class AckResult : ResultBase
     {
         public IMessage Message { get; private set; }
         public static readonly string Id = Guid.NewGuid().ToString();
-        public AckResult(IMessage message) : base(Id)
+        protected AckResult(IMessage message) : base(Id)
         {
             Message = message;
         }
@@ -18,9 +18,13 @@ namespace Common
     public class AckResult<T> : AckResult
     {
         public IMessageHandler<T> Handler { get; private set; }
-        public AckResult(IMessage message, IMessageHandler<T> handler):base(message)
+        protected AckResult(IMessage message, IMessageHandler<T> handler):base(message)
         {
             Handler = handler;
+        }
+        public static AckResult<T> Create(IMessage message, IMessageHandler<T> handler)
+        {
+            return new AckResult<T>(message, handler);
         }
     }
 }

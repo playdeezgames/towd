@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sandbox
 {
-    public enum SandboxResource
+    public enum SandboxBitmap
     {
-        None,
-        FontManager,
-        BitmapManager
+        Test,
     }
 }
