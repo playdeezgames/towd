@@ -17,7 +17,7 @@ namespace MakeBitmap
 
             Bitmap bmp = (Bitmap)Image.FromFile(inFile);
 
-            var result = new CyBitmapOld(bmp.Width, bmp.Height, CyColor.White);
+            var result = new Bitmap<CyColor>(bmp.Width, bmp.Height);
             for(int x= 0;x<bmp.Width;++x)
             {
                 for(int y = 0; y<bmp.Height;++y)
@@ -39,7 +39,7 @@ namespace MakeBitmap
                             cyColor = CyColor.White;
                             break;
                     }
-                    result.Put(x, y, cyColor);
+                    result.Set(x, y, cyColor);
                 }
             }
 

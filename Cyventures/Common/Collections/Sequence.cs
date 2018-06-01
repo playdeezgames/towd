@@ -16,6 +16,21 @@ namespace Common
         {
             Items = new List<T>();
         }
+        public int Count => Items.Count;
+        public T this[int index]
+        {
+            get
+            {
+                if(index>=0 && index<Count)
+                {
+                    return Items[index];
+                }
+                else
+                {
+                    return default(T);
+                }
+            }
+        }
         public void Append(T item)
         {
             Items.Add(item);

@@ -21,13 +21,13 @@ namespace MakeBitmapSequence
             int columns = bmp.Width / cellWidth;
             int rows = bmp.Height / cellHeight;
 
-            var result = new CyBitmapSequenceOld();
+            var result = new Sequence<Bitmap<CyColor>>();
 
             for(int row=0;row<rows;++row)
             {
                 for(int column=0;column<columns;++column)
                 {
-                    CyBitmapOld cyBitmap = new CyBitmapOld(cellWidth, cellHeight, CyColor.White);
+                    Bitmap<CyColor> cyBitmap = new Bitmap<CyColor>(cellWidth, cellHeight);
                     for(int x=0;x<cellWidth;++x)
                     {
                         for(int y=0;y<cellHeight;++y)
@@ -49,7 +49,7 @@ namespace MakeBitmapSequence
                                     cyColor = CyColor.White;
                                     break;
                             }
-                            cyBitmap.Put(x, y, cyColor);
+                            cyBitmap.Set(x, y, cyColor);
                         }
                     }
                     result.Append(cyBitmap);
