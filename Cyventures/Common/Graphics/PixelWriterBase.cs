@@ -24,9 +24,12 @@ namespace Common
 
         public void Put(int x, int y, T color, CyRect? clipRect = null)
         {
-            if (clipRect.HasValue && x < clipRect.Value.Width && y < clipRect.Value.Height && x>=0 && y>=0)
+            if (clipRect.HasValue)
             {
-                DoPut(x+clipRect.Value.X, y+clipRect.Value.Y, color);
+                if (x < clipRect.Value.Width && y < clipRect.Value.Height && x >= 0 && y >= 0)
+                {
+                    DoPut(x + clipRect.Value.X, y + clipRect.Value.Y, color);
+                }
             }
             else
             {

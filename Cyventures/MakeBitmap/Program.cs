@@ -17,7 +17,7 @@ namespace MakeBitmap
 
             Bitmap bmp = (Bitmap)Image.FromFile(inFile);
 
-            var result = new CyBitmap(bmp.Width, bmp.Height, CyColor.White);
+            var result = new CyBitmapOld(bmp.Width, bmp.Height, CyColor.White);
             for(int x= 0;x<bmp.Width;++x)
             {
                 for(int y = 0; y<bmp.Height;++y)

@@ -10,6 +10,6 @@ namespace MapEditor
     public static class Data
     {
         public static TileMap<int> Map { get; set; }
-        public static CyBitmapSequence TileSet { get; set; }
+        public static CyBitmapSequenceOld TileSet { get; set; }
     }
 }

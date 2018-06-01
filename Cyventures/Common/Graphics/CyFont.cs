@@ -10,6 +10,19 @@ namespace Common
     {
         public int Height { get; set; }
         public Dictionary<char, CyGlyph> Glyphs { get; set; }
+        public CyRect GetBounds(string text)
+        {
+            int width = 0;
+            foreach (var ch in text)
+            {
+                Glyphs.TryGetValue(ch, out CyGlyph glyph);
+                if (glyph != null)
+                {
+                    width += glyph.Width;
+                }
+            }
+            return CyRect.Create(0, 0, width, Height);
+        }
         public void Draw<T>(IPixelWriter<T> pixelWriter, T color, int x, int y, string text, CyRect? clipRect=null)
         {
             foreach(var ch in text)

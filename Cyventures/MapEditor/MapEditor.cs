@@ -20,7 +20,7 @@ namespace MapEditor
         protected override void OnInitialize()
         {
             Data.Map = new TileMap<int>(12, 12, 0);
-            Data.TileSet = Utility.LoadEmbedded<CyBitmapSequence>(Assembly.GetExecutingAssembly(), "MapEditor.DungeonTiles.json");
+            Data.TileSet = Utility.LoadEmbedded<CyBitmapSequenceOld>(Assembly.GetExecutingAssembly(), "MapEditor.DungeonTiles.json");
         }
 
         protected override void OnLoadContent()

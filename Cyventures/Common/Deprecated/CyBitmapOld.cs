@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class CyBitmapSequence:Sequence<CyBitmap>
+    public class CyBitmapOld : TileMap<CyColor>
     {
-        public CyBitmapSequence():base()
+        public CyBitmapOld(int width, int height, CyColor color)
+            :base(width,height, color)
         {
-
         }
     }
 }

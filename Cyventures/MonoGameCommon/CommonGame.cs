@@ -40,6 +40,14 @@ namespace MonoGameCommon
 
         public bool GlobalEnabled => Enabled;
 
+        public int Right => X + Width;
+
+        public int Bottom => Y + Height;
+
+        public int GlobalRight => GlobalX + Width;
+
+        public int GlobalBottom => GlobalY + Height;
+
         private CommonGame() { }
 
         public CommonGame(int screenWidth, int screenHeight, int zoom, Func<IMessageHandler<CyColor>, IMessageHandler<CyColor>> factory)
@@ -107,9 +115,9 @@ namespace MonoGameCommon
             _colorBuffer.Clear(CyColor.White);
             var newKeyboardState = Keyboard.GetState();
             HashSet<Command> commands = new HashSet<Command>();
-            foreach(var entry in keyProcessor)
+            foreach (var entry in keyProcessor)
             {
-                if(entry.Value(newKeyboardState) && !entry.Value(_oldKeyboardState))
+                if (entry.Value(newKeyboardState) && !entry.Value(_oldKeyboardState))
                 {
                     commands.Add(entry.Key);
                 }
@@ -123,7 +131,7 @@ namespace MonoGameCommon
                     commands.Add(entry.Key);
                 }
             }
-            foreach(var command in commands)
+            foreach (var command in commands)
             {
                 HandleCommand(command);
             }
@@ -143,7 +151,7 @@ namespace MonoGameCommon
 
         public IResult HandleMessage(IMessage message)
         {
-            if(message.MessageId == QuitMessage.Id)
+            if (message.MessageId == QuitMessage.Id)
             {
                 Exit();
                 return new AckResult<CyColor>(message, this);

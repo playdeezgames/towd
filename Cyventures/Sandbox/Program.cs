@@ -11,7 +11,7 @@ namespace Sandbox
         [STAThread]
         static void Main()
         {
-            using (var game = new CommonGame(160,100,2,SandboxRoot.Create))
+            using (var game = new CommonGame(SandboxConstants.ScreenWidth,SandboxConstants.ScreenHeight,SandboxConstants.Zoom,SandboxRoot.Create))
             {
                 game.Run();
             }

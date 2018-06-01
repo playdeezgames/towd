@@ -10,11 +10,16 @@ namespace Sandbox
 {
     public class SandboxRoot : MessageHandlerBase<CyColor>
     {
-        CyFont _font;
+        private Manager<SandboxFont, CyFont> _fontManager;
         public SandboxRoot(IMessageHandler<CyColor> parent)
             :base(parent, true, null)
         {
-            _font = Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), "Sandbox.CyFont5x7.json");
+            _fontManager = new Manager<SandboxFont, CyFont>
+                (k => Utility.LoadEmbedded<CyFont>(Assembly.GetExecutingAssembly(), 
+                    (k == SandboxFont.Large) ? ("Sandbox.CyFont5x7.json") : 
+                    (k == SandboxFont.Medium) ? ("Sandbox.CyFont4x6.json") : 
+                    ("Sandbox.CyFont3x5.json")));
+            new SandboxStateMachineHandler(this);
         }
         public static IMessageHandler<CyColor> Create(IMessageHandler<CyColor> parent)
         {
@@ -23,18 +28,21 @@ namespace Sandbox
 
         protected override bool OnCommand(Command command)
         {
-            switch(command)
-            {
-                case Command.Back:
-                    HandleMessage(new QuitMessage());
-                    return true;
-                default:
-                    return false;
-            }
+            return false;
         }
 
         protected override IResult OnMessage(IMessage message)
         {
+            if(message.MessageId == FetchMessage.Id)
+            {
+                switch((message as FetchMessage<SandboxResource>)?.Resource ?? SandboxResource.None)
+                {
+                    case SandboxResource.FontManager:
+                        return new FetchResult<Manager<SandboxFont, CyFont>>(_fontManager);
+                    default:
+                        return new AckResult<CyColor>(message, this);
+                }
+            }
             return null;
         }
 

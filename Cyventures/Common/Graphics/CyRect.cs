@@ -12,6 +12,8 @@ namespace Common
         public int Y { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
+        public int Right => X + Width;
+        public int Bottom => Y + Height;
         public bool Contains(int x, int y)
         {
             return (x >= X && y >= Y && x < (X + Width) && y < (Y + Height));
@@ -26,6 +28,14 @@ namespace Common
             {
                 return CyPoint.Create(X, Y);
             }
+        }
+        public CyRect OffsetBy(int x, int y)
+        {
+            return Create(X + x, Y + y, Width, Height);
+        }
+        public CyRect OffsetBy(CyPoint offset)
+        {
+            return OffsetBy(offset.X, offset.Y);
         }
     }
 }

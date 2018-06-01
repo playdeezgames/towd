@@ -71,7 +71,7 @@ namespace MapEditor
             var result = dialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                Data.TileSet = Utility.Load<CyBitmapSequence>(dialog.FileName);
+                Data.TileSet = Utility.Load<CyBitmapSequenceOld>(dialog.FileName);
             }
         }
     }

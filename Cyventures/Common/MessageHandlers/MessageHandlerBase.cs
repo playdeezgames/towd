@@ -50,6 +50,14 @@ namespace Common
         public bool Enabled { get; set; }
         public bool GlobalEnabled => (Parent?.Enabled ?? true) && Enabled;
 
+        public int Right => X + Width;
+
+        public int Bottom => Y + Height;
+
+        public int GlobalRight => GlobalX + Width;
+
+        public int GlobalBottom => GlobalY + Height;
+
         private LinkedList<IMessageHandler<T>> _children = new LinkedList<IMessageHandler<T>>();
         public void AddChild(IMessageHandler<T> child)
         {

@@ -43,9 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Manager.cs" />
+    <Compile Include="Controls\FilledBoxControl.cs" />
+    <Compile Include="Controls\BitmapControl.cs" />
+    <Compile Include="Controls\LabelControl.cs" />
     <Compile Include="Graphics\CyFont.cs" />
+    <Compile Include="Graphics\Bitmap.cs" />
     <Compile Include="Graphics\CyGlyph.cs" />
     <Compile Include="Deprecated\DrawMessageOld.cs" />
+    <Compile Include="Messages\FetchMessage.cs" />
+    <Compile Include="Results\FetchResult.cs" />
+    <Compile Include="States\SetStateMessage.cs" />
     <Compile Include="Results\AckResult.cs" />
     <Compile Include="Enums\Command.cs" />
     <Compile Include="Deprecated\CommandMessageOld.cs" />
@@ -61,8 +69,8 @@
     <Compile Include="Collections\Sequence.cs" />
     <Compile Include="Collections\Table.cs" />
     <Compile Include="Collections\TileMap.cs" />
-    <Compile Include="Graphics\CyBitmap.cs" />
-    <Compile Include="Graphics\CyBitmapSequence.cs" />
+    <Compile Include="Deprecated\CyBitmapOld.cs" />
+    <Compile Include="Deprecated\CyBitmapSequenceOld.cs" />
     <Compile Include="Graphics\CyColor.cs" />
     <Compile Include="Deprecated\CyFontOld.cs" />
     <Compile Include="Graphics\IPixelWriter.cs" />
@@ -71,13 +79,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Deprecated\StateOld.cs" />
     <Compile Include="Deprecated\StateManagerOld.cs" />
+    <Compile Include="States\StateHandler.cs" />
+    <Compile Include="States\StateMachineHandler.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="States\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

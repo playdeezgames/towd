@@ -12,8 +12,12 @@ namespace Common
         int Y { get; set; }
         int Width { get; set; }
         int Height { get; set; }
+        int Right { get; }
+        int Bottom { get; }
         int GlobalX { get; }
         int GlobalY { get; }
+        int GlobalRight { get; }
+        int GlobalBottom { get; }
         bool Enabled { get; set; }
         bool GlobalEnabled { get; }
         IMessageHandler<T> Parent { get; }

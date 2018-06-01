@@ -21,13 +21,13 @@ namespace MakeBitmapSequence
             int columns = bmp.Width / cellWidth;
             int rows = bmp.Height / cellHeight;
 
-            var result = new CyBitmapSequence();
+            var result = new CyBitmapSequenceOld();
 
             for(int row=0;row<rows;++row)
             {
                 for(int column=0;column<columns;++column)
                 {
-                    CyBitmap cyBitmap = new CyBitmap(cellWidth, cellHeight, CyColor.White);
+                    CyBitmapOld cyBitmap = new CyBitmapOld(cellWidth, cellHeight, CyColor.White);
                     for(int x=0;x<cellWidth;++x)
                     {
                         for(int y=0;y<cellHeight;++y)
