@@ -84,15 +84,15 @@ namespace MonoGameCommon
         {
             [Command.Back] = x => x.IsKeyDown(Keys.Back),
             [Command.Blue] = x => x.IsKeyDown(Keys.Enter),
-            [Command.Down] = x => x.IsKeyDown(Keys.Down),
-            [Command.Green] = x => x.IsKeyDown(Keys.Space),
-            [Command.Left] = x => x.IsKeyDown(Keys.Left),
+            [Command.Down] = x => x.IsKeyDown(Keys.Down) || x.IsKeyDown(Keys.S),
+            [Command.Green] = x => x.IsKeyDown(Keys.Space) || x.IsKeyDown(Keys.X),
+            [Command.Left] = x => x.IsKeyDown(Keys.Left) || x.IsKeyDown(Keys.A),
             [Command.Next] = x => x.IsKeyDown(Keys.OemPeriod),
             [Command.Previous] = x => x.IsKeyDown(Keys.OemComma),
-            [Command.Red] = x => x.IsKeyDown(Keys.Escape),
-            [Command.Right] = x => x.IsKeyDown(Keys.Right),
+            [Command.Red] = x => x.IsKeyDown(Keys.Escape) || x.IsKeyDown(Keys.Z),
+            [Command.Right] = x => x.IsKeyDown(Keys.Right) || x.IsKeyDown(Keys.D),
             [Command.Start] = x => x.IsKeyDown(Keys.F2),
-            [Command.Up] = x => x.IsKeyDown(Keys.Up),
+            [Command.Up] = x => x.IsKeyDown(Keys.Up) || x.IsKeyDown(Keys.W),
             [Command.Yellow] = x => x.IsKeyDown(Keys.Tab)
         };
 

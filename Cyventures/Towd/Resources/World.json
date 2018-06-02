@@ -348,6 +348,204 @@
           "Terrain": "se-corner-inside"
         }
       ]
+    },
+    "hometown": {
+      "Caption": "Town",
+      "Width": 8,
+      "Pixels": [
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        }
+      ]
     }
   }
 }
