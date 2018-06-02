@@ -33,7 +33,7 @@ namespace Common
             {
                 return _selected;
             }
-            private set
+            set
             {
                 _selected = value;
                 AdjustOffsetY();

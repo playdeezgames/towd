@@ -54,9 +54,9 @@ namespace Towd
 
         protected override IResult OnMessage(IMessage message)
         {
-            if(message.MessageId == FetchMessage.Id)
+            if (message.MessageId == FetchMessage.Id)
             {
-                switch((message as FetchMessage<TowdResource>)?.Resource ?? TowdResource.None)
+                switch ((message as FetchMessage<TowdResource>)?.Resource ?? TowdResource.None)
                 {
                     case TowdResource.World:
                         return FetchResult<World>.Create(_world);
@@ -70,6 +70,14 @@ namespace Towd
                     default:
                         return AckResult<CyColor>.Create(message, this);
                 }
+            }
+            else if (message.MessageId == NewWorldMessage.Id)
+            {
+                _world = Utility.LoadEmbedded<World>(Assembly.GetExecutingAssembly(), "Towd.Resources.World.json");
+            }
+            else if (message.MessageId == LoadWorldMessage.Id)
+            {
+                _world = Utility.Load<World>((message as LoadWorldMessage).FileName);
             }
             return null;
         }

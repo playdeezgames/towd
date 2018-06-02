@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Towd
 {
-    public class MainMenuStateHandler : TowdStateHandler
+    public class EditMenuStateHandler : TowdStateHandler
     {
         private ListBoxControl _listBox;
-        public MainMenuStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
+        public EditMenuStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
             var font = FontManager[TowdFont.Large];
             new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);
-            new LabelControl(this, true, CyPoint.Create(0, 0), font, "Tombs of Woeful Doom!", CyColor.White);
+            new LabelControl(this, true, CyPoint.Create(0, 0), font, "Edit Menu:", CyColor.White);
             _listBox = new ListBoxControl(
                 this, 
                 true, 
@@ -25,12 +25,11 @@ namespace Towd
                 font, 
                 new string[] 
                 {
-                    "New",
+                    "Play",
+                    "Edit",
+                    "Save",
                     "Load",
-                    "Help",
-                    "Options",
-                    "About",
-                    "Quit",
+                    "Main Menu"
                 }, 
                 0, 
                 CyColor.Black, 
@@ -42,47 +41,50 @@ namespace Towd
         {
             switch(selected)
             {
-                case 0://new
-                    HandleMessage(NewWorldMessage.Create());
+                case 0://play
                     SetState(TowdState.Room);
                     break;
-                case 1://load
-                    if(DoLoadGame())
-                    {
-                        SetState(TowdState.Room);
-                    }
+                case 1://edit
                     break;
-                case 2://help
-                    SetState(TowdState.Help);
+                case 2://save
+                    DoSaveGame();
                     break;
-                case 3://options
-                    SetState(TowdState.Options);
+                case 3://load
+                    DoLoadGame();
                     break;
-                case 4://about
-                    SetState(TowdState.About);
-                    break;
-                case 5://quit
-                    SetState(TowdState.ConfirmQuit);
+                case 4://main menu
+                    SetState(TowdState.MainMenu);
                     break;
             }
         }
 
-        private bool DoLoadGame()
+        private void DoLoadGame()
         {
             OpenFileDialog dialog = new OpenFileDialog();
             var result = dialog.ShowDialog();
-            if(result== DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 HandleMessage(LoadWorldMessage.Create(dialog.FileName));
-                return true;
             }
-            return false;
+        }
+
+        private void DoSaveGame()
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            var result = dialog.ShowDialog();
+            if(result== DialogResult.OK)
+            {
+                Utility.Save(World, dialog.FileName);
+            }
         }
 
         protected override bool OnCommand(Command command)
         {
             switch (command)
             {
+                case Command.Red:
+                    SetState(TowdState.Room);
+                    return true;
                 default:
                     return false;
             }
@@ -96,6 +98,7 @@ namespace Towd
         protected override void OnStart()
         {
             _listBox.Focus();
+            _listBox.Selected = 0;
         }
 
         protected override void OnStop()

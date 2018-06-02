@@ -13,6 +13,8 @@ namespace Towd
         About,
         Options,
         Help,
-        Room
+        Room,
+        ExitPlay,
+        EditMenu
     }
 }

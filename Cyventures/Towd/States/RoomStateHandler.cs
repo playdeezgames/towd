@@ -28,7 +28,14 @@ namespace Towd
                     }
                     else
                     {
-                        SetState(TowdState.MainMenu);
+                        if (World.EditMode)
+                        {
+                            SetState(TowdState.EditMenu);
+                        }
+                        else
+                        {
+                            SetState(TowdState.ExitPlay);
+                        }
                     }
                     return true;
                 case Command.Green:
@@ -94,8 +101,6 @@ namespace Towd
                     break;
                 case TileRole.Teleport:
                     _promptTile = World.GetAvatarRoom().Get(nextX, nextY);
-                    //var teleport = World.GetAvatarRoom().Get(nextX, nextY).Teleport;
-                    //MoveCreature(World.Avatar, teleport.Room, teleport.Column, teleport.Row);
                     break;
             }
         }

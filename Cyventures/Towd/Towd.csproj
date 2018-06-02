@@ -51,6 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boilerplate\NewWorldMessage.cs" />
+    <Compile Include="Boilerplate\LoadWorldMessage.cs" />
+    <Compile Include="States\EditMenuStateHandler.cs" />
+    <Compile Include="States\ExitPlayStateHandler.cs" />
     <Compile Include="States\RoomStateHandler.cs" />
     <Compile Include="States\HelpStateHandler.cs" />
     <Compile Include="States\OptionsStateHandler.cs" />
