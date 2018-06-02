@@ -112,6 +112,7 @@ namespace Towd
 
         protected override void OnStart()
         {
+            _promptTile = null;
         }
 
         protected override void OnStop()
