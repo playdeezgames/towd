@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorBuffer.cs" />
-    <Compile Include="CommonGame.cs" />
+    <Compile Include="Stage.cs" />
     <Compile Include="CyColorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

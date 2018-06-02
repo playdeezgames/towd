@@ -67,9 +67,6 @@
     <Compile Include="Messages\QuitMessage.cs" />
     <Compile Include="Results\ResultBase.cs" />
     <Compile Include="Collections\Sequence.cs" />
-    <Compile Include="Collections\TileMap.cs" />
-    <Compile Include="Deprecated\CyBitmapOld.cs" />
-    <Compile Include="Deprecated\CyBitmapSequenceOld.cs" />
     <Compile Include="Graphics\CyColor.cs" />
     <Compile Include="Graphics\IPixelWriter.cs" />
     <Compile Include="Graphics\PixelWriterBase.cs" />
@@ -82,6 +79,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Deprecated\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

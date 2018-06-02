@@ -4,14 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Sandbox
+namespace Towd
 {
     public static class Program
     {
         [STAThread]
         static void Main()
         {
-            using (var game = new Stage(SandboxConstants.ScreenWidth,SandboxConstants.ScreenHeight,SandboxConstants.Zoom,SandboxRoot.Create))
+            using (var game = new Stage(TowdConstants.ScreenWidth, TowdConstants.ScreenHeight, TowdConstants.Zoom,Root.Create))
             {
                 game.Run();
             }

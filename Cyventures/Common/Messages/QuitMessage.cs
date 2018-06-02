@@ -8,7 +8,7 @@ namespace Common
 {
     public class QuitMessage:MessageBase
     {
-        public static string Id = Guid.NewGuid().ToString();
+        public static readonly string Id = Guid.NewGuid().ToString();
         protected QuitMessage():base(Id)
         {
         }

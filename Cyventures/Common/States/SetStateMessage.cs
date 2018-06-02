@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public abstract class SetStateMessage:MessageBase
+    public class SetStateMessage:MessageBase
     {
         public static string Id = Guid.NewGuid().ToString();
-        public SetStateMessage():base(Id)
+        protected SetStateMessage():base(Id)
         {
         }
     }
@@ -17,9 +17,13 @@ namespace Common
     {
         public TState State { get; private set; }
         private SetStateMessage() { }
-        public SetStateMessage(TState state):base()
+        protected SetStateMessage(TState state):base()
         {
             State = state;
+        }
+        public static SetStateMessage<TState> Create(TState state)
+        {
+            return new SetStateMessage<TState>(state);
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace MonoGameCommon
 {
-    public class CommonGame : Game, IMessageHandler<CyColor>
+    public class Stage : Game, IMessageHandler<CyColor>
     {
         private int _screenWidth;
         private int _screenHeight;
@@ -50,9 +50,9 @@ namespace MonoGameCommon
 
         public CyRect GlobalBounds => CyRect.Create(X, Y, Width, Height);
 
-        private CommonGame() { }
+        private Stage() { }
 
-        public CommonGame(int screenWidth, int screenHeight, int zoom, Func<IMessageHandler<CyColor>, IMessageHandler<CyColor>> factory)
+        public Stage(int screenWidth, int screenHeight, int zoom, Func<IMessageHandler<CyColor>, IMessageHandler<CyColor>> factory)
         {
             _screenWidth = screenWidth;
             _screenHeight = screenHeight;

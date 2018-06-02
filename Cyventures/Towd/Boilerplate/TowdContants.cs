@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sandbox
+namespace Towd
 {
-    public static class SandboxConstants
+    public static class TowdConstants
     {
         public const int ScreenWidth = 160;
         public const int ScreenHeight = 100;

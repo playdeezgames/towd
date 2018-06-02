@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGameCommon", "MonoGameCommon\MonoGameCommon.csproj", "{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{69203067-57BC-42F7-B43E-02A7034E0ACB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Towd", "Towd\Towd.csproj", "{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +75,22 @@ Global
 		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Release|x86.ActiveCfg = Release|Any CPU
 		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8}.Release|x86.Build.0 = Release|Any CPU
+		{69203067-57BC-42F7-B43E-02A7034E0ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69203067-57BC-42F7-B43E-02A7034E0ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69203067-57BC-42F7-B43E-02A7034E0ACB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{69203067-57BC-42F7-B43E-02A7034E0ACB}.Debug|x86.Build.0 = Debug|Any CPU
+		{69203067-57BC-42F7-B43E-02A7034E0ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69203067-57BC-42F7-B43E-02A7034E0ACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69203067-57BC-42F7-B43E-02A7034E0ACB}.Release|x86.ActiveCfg = Release|Any CPU
+		{69203067-57BC-42F7-B43E-02A7034E0ACB}.Release|x86.Build.0 = Release|Any CPU
+		{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}.Debug|x86.Build.0 = Debug|Any CPU
+		{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}.Release|x86.ActiveCfg = Release|Any CPU
+		{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
