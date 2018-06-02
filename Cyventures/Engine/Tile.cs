@@ -9,7 +9,8 @@ namespace Engine
     public class Tile
     {
         public string Terrain { get; set; }
-        public TileRole Role { get; set; }
+        public TileRole? RoleOverride { get; set; }
         public Teleport Teleport { get; set; }
+        public int? CreatureInstance { get; set; }
     }
 }

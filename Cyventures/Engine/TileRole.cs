@@ -10,6 +10,7 @@ namespace Engine
     {
         Open,
         Solid,
-        Teleport
+        Teleport,
+        Search
     }
 }

@@ -1,243 +1,350 @@
 ﻿{
   "TileWidth": 8,
   "TileHeight": 8,
+  "Avatar": 0,
+  "Creatures": {
+    "Tagon": {
+      "ResourceIdentifier": "dungeon-creatures",
+      "ResourceIndex": 0
+    }
+  },
+  "CreatureInstances": {
+    "0": {
+      "Creature": "Tagon",
+      "Room": "home",
+      "Column": 2,
+      "Row": 4
+    }
+  },
   "Terrains": {
     "floor": {
-      "Identifier": "dungeon-tiles",
-      "Index": 3
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 3,
+      "Role": 0
     },
     "solid": {
-      "Identifier": "dungeon-tiles",
-      "Index": 0
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 0,
+      "Role": 1
     },
     "north-wall": {
-      "Identifier": "dungeon-tiles",
-      "Index": 4
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 4,
+      "Role": 1
     },
     "east-wall": {
-      "Identifier": "dungeon-tiles",
-      "Index": 5
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 5,
+      "Role": 1
     },
     "south-wall": {
-      "Identifier": "dungeon-tiles",
-      "Index": 6
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 6,
+      "Role": 1
     },
     "west-wall": {
-      "Identifier": "dungeon-tiles",
-      "Index": 7
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 7,
+      "Role": 1
     },
     "ne-corner-inside": {
-      "Identifier": "dungeon-tiles",
-      "Index": 8
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 8,
+      "Role": 1
     },
     "se-corner-inside": {
-      "Identifier": "dungeon-tiles",
-      "Index": 9
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 9,
+      "Role": 1
     },
     "sw-corner-inside": {
-      "Identifier": "dungeon-tiles",
-      "Index": 10
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 10,
+      "Role": 1
     },
     "nw-corner-inside": {
-      "Identifier": "dungeon-tiles",
-      "Index": 11
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 11,
+      "Role": 1
     },
     "ne-corner-outside": {
-      "Identifier": "dungeon-tiles",
-      "Index": 12
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 12,
+      "Role": 1
     },
     "se-corner-outside": {
-      "Identifier": "dungeon-tiles",
-      "Index": 13
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 13,
+      "Role": 1
     },
     "sw-corner-outside": {
-      "Identifier": "dungeon-tiles",
-      "Index": 14
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 14,
+      "Role": 1
     },
     "nw-corner-outside": {
-      "Identifier": "dungeon-tiles",
-      "Index": 15
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 15,
+      "Role": 1
     },
     "north-doorway": {
-      "Identifier": "dungeon-tiles",
-      "Index": 16
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 16,
+      "Role": 0
     },
     "east-doorway": {
-      "Identifier": "dungeon-tiles",
-      "Index": 17
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 17,
+      "Role": 0
     },
     "south-doorway": {
-      "Identifier": "dungeon-tiles",
-      "Index": 18
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 18,
+      "Role": 0
     },
     "west-doorway": {
-      "Identifier": "dungeon-tiles",
-      "Index": 19
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 19,
+      "Role": 0
     },
     "ladder-up": {
-      "Identifier": "dungeon-tiles",
-      "Index": 20
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 20,
+      "Role": 0
     },
     "ladder-down": {
-      "Identifier": "dungeon-tiles",
-      "Index": 21
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 21,
+      "Role": 0
     },
     "bed": {
-      "Identifier": "dungeon-tiles",
-      "Index": 22
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 22,
+      "Role": 1
     },
     "box": {
-      "Identifier": "dungeon-tiles",
-      "Index": 23
+      "ResourceIdentifier": "dungeon-tiles",
+      "ResourceIndex": 23,
+      "Role": 1
     }
   },
   "Rooms": {
     "home": {
+      "Caption": "Home",
       "Width": 6,
       "Pixels": [
         {
-          "Terrain": "nw-corner-inside",
-          "Role": 1
+          "Terrain": "nw-corner-inside"
         },
         {
-          "Terrain": "north-wall",
-          "Role": 1
+          "Terrain": "north-wall"
         },
         {
-          "Terrain": "north-wall",
-          "Role": 1
+          "Terrain": "north-wall"
         },
         {
-          "Terrain": "north-wall",
-          "Role": 1
+          "Terrain": "north-wall"
         },
         {
-          "Terrain": "north-wall",
-          "Role": 1
+          "Terrain": "north-wall"
         },
         {
-          "Terrain": "ne-corner-inside",
-          "Role": 1
+          "Terrain": "ne-corner-inside"
         },
         {
-          "Terrain": "west-wall",
-          "Role": 1
+          "Terrain": "west-wall"
         },
         {
           "Terrain": "ladder-up",
-          "Role": 2
+          "RoleOverride": 2,
+          "Teleport": {
+            "Room": "loft",
+            "Column": 1,
+            "Row": 1,
+            "Prompt": "Climb ladder?"
+          }
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "east-wall",
-          "Role": 1
+          "Terrain": "east-wall"
         },
         {
-          "Terrain": "west-wall",
-          "Role": 1
+          "Terrain": "west-wall"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "east-wall",
-          "Role": 1
+          "Terrain": "east-wall"
         },
         {
-          "Terrain": "west-wall",
-          "Role": 1
+          "Terrain": "west-wall"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "east-wall",
-          "Role": 1
+          "Terrain": "east-wall"
         },
         {
-          "Terrain": "west-wall",
-          "Role": 1
+          "Terrain": "west-wall"
         },
         {
           "Terrain": "bed",
-          "Role": 0
+          "RoleOverride": 3
         },
         {
           "Terrain": "floor",
-          "Role": 0
+          "CreatureInstance": 0
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "floor",
-          "Role": 0
+          "Terrain": "floor"
         },
         {
-          "Terrain": "east-wall",
-          "Role": 1
+          "Terrain": "east-wall"
         },
         {
-          "Terrain": "sw-corner-inside",
-          "Role": 1
+          "Terrain": "sw-corner-inside"
         },
         {
-          "Terrain": "south-wall",
-          "Role": 1
+          "Terrain": "south-wall"
         },
         {
-          "Terrain": "south-wall",
-          "Role": 1
+          "Terrain": "south-wall"
         },
         {
           "Terrain": "south-doorway",
-          "Role": 2
+          "RoleOverride": 2,
+          "Teleport": {
+            "Room": "hometown",
+            "Column": 0,
+            "Row": 0,
+            "Prompt": "Leave home?"
+          }
         },
         {
-          "Terrain": "south-wall",
-          "Role": 1
+          "Terrain": "south-wall"
         },
         {
-          "Terrain": "se-corner-inside",
-          "Role": 1
+          "Terrain": "se-corner-inside"
+        }
+      ]
+    },
+    "loft": {
+      "Caption": "Loft",
+      "Width": 5,
+      "Pixels": [
+        {
+          "Terrain": "nw-corner-inside"
+        },
+        {
+          "Terrain": "north-wall"
+        },
+        {
+          "Terrain": "north-wall"
+        },
+        {
+          "Terrain": "north-wall"
+        },
+        {
+          "Terrain": "ne-corner-inside"
+        },
+        {
+          "Terrain": "west-wall"
+        },
+        {
+          "Terrain": "ladder-down",
+          "RoleOverride": 2,
+          "Teleport": {
+            "Room": "home",
+            "Column": 1,
+            "Row": 1,
+            "Prompt": "Climb ladder?"
+          }
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "east-wall"
+        },
+        {
+          "Terrain": "west-wall"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "east-wall"
+        },
+        {
+          "Terrain": "west-wall"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "floor"
+        },
+        {
+          "Terrain": "box",
+          "RoleOverride": 3
+        },
+        {
+          "Terrain": "east-wall"
+        },
+        {
+          "Terrain": "sw-corner-inside"
+        },
+        {
+          "Terrain": "south-wall"
+        },
+        {
+          "Terrain": "south-wall"
+        },
+        {
+          "Terrain": "south-wall"
+        },
+        {
+          "Terrain": "se-corner-inside"
         }
       ]
     }

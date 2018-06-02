@@ -9,9 +9,22 @@ namespace Engine
 {
     public class World
     {
+        public int Avatar { get; set; }
         public int TileWidth { get; set; }
         public int TileHeight { get; set; }
         public Dictionary<string, Terrain> Terrains { get; set; }
-        public Dictionary<string, Bitmap<Tile>> Rooms { get; set; }
+        public Dictionary<string, Creature> Creatures { get; set; }
+        public Dictionary<string, Room> Rooms { get; set; }
+        public Dictionary<int, CreatureInstance> CreatureInstances { get; set; }
+
+        public Room GetAvatarRoom()
+        {
+            return Rooms[GetAvatarCreatureInstance().Room];
+        }
+
+        public CreatureInstance GetAvatarCreatureInstance()
+        {
+            return CreatureInstances[Avatar];
+        }
     }
 }

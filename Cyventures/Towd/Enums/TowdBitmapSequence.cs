@@ -9,5 +9,6 @@ namespace Towd
     public static class TowdBitmapSequence
     {
         public const string DungeonTiles = "dungeon-tiles";
+        public const string DungeonCreatures = "dungeon-creatures";
     }
 }

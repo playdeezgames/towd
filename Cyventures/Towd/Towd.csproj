@@ -92,6 +92,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Resources\World.json" />
+    <EmbeddedResource Include="Resources\BitmapSequences\DungeonCreatures.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

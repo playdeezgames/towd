@@ -11,5 +11,6 @@ namespace Engine
         public string Room { get; set; }
         public int Column { get; set; }
         public int Row { get; set; }
+        public string Prompt { get; set; }
     }
 }
