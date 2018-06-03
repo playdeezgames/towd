@@ -1,4 +1,5 @@
 ﻿using Common;
+using Microsoft.VisualBasic;
 using MonoGameCommon;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,7 @@ namespace Towd
                     SetState(TowdState.Editor);
                     break;
                 case 1://new terrain
+                    DoNewTerrain();
                     break;
                 default:
                     EditorState.Terrain = _listBox.Items.ToList()[selected];
@@ -50,23 +52,14 @@ namespace Towd
             }
         }
 
-        private void DoLoadGame()
+        private void DoNewTerrain()
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            var result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
+            var name = Interaction.InputBox("New Name?","Create Terrain...");
+            if(!string.IsNullOrEmpty(name))
             {
-                HandleMessage(LoadWorldMessage.Create(dialog.FileName));
-            }
-        }
-
-        private void DoSaveGame()
-        {
-            SaveFileDialog dialog = new SaveFileDialog();
-            var result = dialog.ShowDialog();
-            if(result== DialogResult.OK)
-            {
-                Utility.Save(World, dialog.FileName);
+                World.Terrains[name] = new Engine.Terrain() { ResourceIdentifier=EditorState.DefaultImageResourceIdentifier };
+                EditorState.Terrain = name;
+                SetState(TowdState.EditTerrain);
             }
         }
 

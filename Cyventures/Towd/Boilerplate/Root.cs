@@ -27,7 +27,7 @@ namespace Towd
         private Manager<TowdFont, CyFont> _fontManager;
         private Manager<string, Sequence<Bitmap<CyColor>>> _bitmapSequenceManager;
         private World _world;
-        private EditorState _editorState= new EditorState();
+        private EditorState _editorState= new EditorState() { DefaultImageResourceIdentifier= "dungeon-tiles" };
 
 
         public Root(IMessageHandler<CyColor> parent)

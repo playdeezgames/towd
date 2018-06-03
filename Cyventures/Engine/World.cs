@@ -27,5 +27,10 @@ namespace Engine
         {
             return CreatureInstances[Avatar];
         }
+
+        public bool IsTerrainInUse(string terrain)
+        {
+            return Rooms.Any(x => x.Value.IsTerrainInUse(terrain));
+        }
     }
 }

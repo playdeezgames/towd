@@ -26,5 +26,10 @@ namespace Engine
             var tile = Get(column, row);
             return tile.RoleOverride ?? terrains[tile.Terrain].Role;
         }
+
+        internal bool IsTerrainInUse(string terrain)
+        {
+            return Pixels.Any(x => x.Terrain == terrain);
+        }
     }
 }

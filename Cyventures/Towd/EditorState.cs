@@ -9,5 +9,6 @@ namespace Towd
     public class EditorState
     {
         public string Terrain { get; set; }
+        public string DefaultImageResourceIdentifier { get; set; }
     }
 }
