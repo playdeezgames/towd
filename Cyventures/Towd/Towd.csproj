@@ -53,24 +53,27 @@
   <ItemGroup>
     <Compile Include="Boilerplate\NewWorldMessage.cs" />
     <Compile Include="Boilerplate\LoadWorldMessage.cs" />
-    <Compile Include="States\EditMenuStateHandler.cs" />
-    <Compile Include="States\ExitPlayStateHandler.cs" />
-    <Compile Include="States\RoomStateHandler.cs" />
-    <Compile Include="States\HelpStateHandler.cs" />
-    <Compile Include="States\OptionsStateHandler.cs" />
-    <Compile Include="States\AboutStateHandler.cs" />
-    <Compile Include="States\ConfirmQuitStateHandler.cs" />
+    <Compile Include="EditorState.cs" />
+    <Compile Include="States\Editor\TerrainsListStateHandler.cs" />
+    <Compile Include="States\Editor\EditorStateHandler.cs" />
+    <Compile Include="States\Main\EditMenuStateHandler.cs" />
+    <Compile Include="States\Main\ExitPlayStateHandler.cs" />
+    <Compile Include="States\Main\RoomStateHandler.cs" />
+    <Compile Include="States\Main\HelpStateHandler.cs" />
+    <Compile Include="States\Main\OptionsStateHandler.cs" />
+    <Compile Include="States\Main\AboutStateHandler.cs" />
+    <Compile Include="States\Main\ConfirmQuitStateHandler.cs" />
     <Compile Include="Boilerplate\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Boilerplate\Root.cs" />
-    <Compile Include="States\MainMenuStateHandler.cs" />
-    <Compile Include="States\TowdStateHandler.cs" />
+    <Compile Include="States\Main\MainMenuStateHandler.cs" />
+    <Compile Include="States\Main\TowdStateHandler.cs" />
     <Compile Include="Enums\TowdBitmapSequence.cs" />
     <Compile Include="Enums\TowdResource.cs" />
     <Compile Include="Boilerplate\TowdContants.cs" />
     <Compile Include="Enums\TowdFont.cs" />
-    <Compile Include="States\TowdState.cs" />
-    <Compile Include="States\TowdStateMachineHandler.cs" />
+    <Compile Include="Enums\TowdState.cs" />
+    <Compile Include="States\Main\TowdStateMachineHandler.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

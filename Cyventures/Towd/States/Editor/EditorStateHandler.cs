@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Towd
 {
-    public class EditMenuStateHandler : TowdStateHandler
+    public class EditorStateHandler : TowdStateHandler
     {
         private ListBoxControl _listBox;
-        public EditMenuStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
+        public EditorStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
             var font = FontManager[TowdFont.Large];
             new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);
-            new LabelControl(this, true, CyPoint.Create(0, 0), font, "Edit Menu:", CyColor.White);
+            new LabelControl(this, true, CyPoint.Create(0, 0), font, "Editor:", CyColor.White);
             _listBox = new ListBoxControl(
                 this, 
                 true, 
@@ -26,10 +26,8 @@ namespace Towd
                 new string[] 
                 {
                     "Play",
-                    "Edit",
-                    "Save",
-                    "Load",
-                    "Main Menu"
+                    "Main Menu",
+                    "Terrains"
                 }, 
                 0, 
                 CyColor.Black, 
@@ -44,37 +42,12 @@ namespace Towd
                 case 0://play
                     SetState(TowdState.Room);
                     break;
-                case 1://edit
-                    break;
-                case 2://save
-                    DoSaveGame();
-                    break;
-                case 3://load
-                    DoLoadGame();
-                    break;
-                case 4://main menu
+                case 1://main menu
                     SetState(TowdState.MainMenu);
                     break;
-            }
-        }
-
-        private void DoLoadGame()
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            var result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                HandleMessage(LoadWorldMessage.Create(dialog.FileName));
-            }
-        }
-
-        private void DoSaveGame()
-        {
-            SaveFileDialog dialog = new SaveFileDialog();
-            var result = dialog.ShowDialog();
-            if(result== DialogResult.OK)
-            {
-                Utility.Save(World, dialog.FileName);
+                case 2:
+                    SetState(TowdState.TerrainsList);
+                    break;
             }
         }
 
@@ -82,9 +55,6 @@ namespace Towd
         {
             switch (command)
             {
-                case Command.Red:
-                    SetState(TowdState.Room);
-                    return true;
                 default:
                     return false;
             }
@@ -98,7 +68,6 @@ namespace Towd
         protected override void OnStart()
         {
             _listBox.Focus();
-            _listBox.Selected = 0;
         }
 
         protected override void OnStop()

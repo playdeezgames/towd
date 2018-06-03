@@ -19,6 +19,8 @@ namespace Towd
             this[TowdState.Room] = new RoomStateHandler(this, null);
             this[TowdState.ExitPlay] = new ExitPlayStateHandler(this, null);
             this[TowdState.EditMenu] = new EditMenuStateHandler(this, null);
+            this[TowdState.Editor] = new EditorStateHandler(this, null);
+            this[TowdState.TerrainsList] = new TerrainsListStateHandler(this, null);
             Current = TowdState.MainMenu;
         }
     }

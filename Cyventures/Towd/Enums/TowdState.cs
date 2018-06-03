@@ -15,6 +15,9 @@ namespace Towd
         Help,
         Room,
         ExitPlay,
-        EditMenu
+        EditMenu,
+        Editor,
+        TerrainsList,
+        EditTerrain
     }
 }

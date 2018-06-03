@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Towd
 {
-    public enum TowdResource
+    public class EditorState
     {
-        None,
-        FontManager,
-        BitmapSequenceManager,
-        World,
-        EditorState
+        public string Terrain { get; set; }
     }
 }
