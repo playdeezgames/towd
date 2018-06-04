@@ -56,7 +56,8 @@
     <Compile Include="Boilerplate\LoadWorldMessage.cs" />
     <Compile Include="EditorState.cs" />
     <Compile Include="States\Editor\TerrainEditStateHandler.cs" />
-    <Compile Include="States\Editor\TerrainsListStateHandler.cs" />
+    <Compile Include="States\Editor\TerrainsChooseRoleStateHandler.cs" />
+    <Compile Include="States\Editor\TerrainListStateHandler.cs" />
     <Compile Include="States\Editor\EditorStateHandler.cs" />
     <Compile Include="States\Main\EditMenuStateHandler.cs" />
     <Compile Include="States\Main\ExitPlayStateHandler.cs" />

@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace Towd
 {
-    public class TerrainsListStateHandler : TowdStateHandler
+    public class TerrainListStateHandler : TowdStateHandler
     {
         private ListBoxControl _listBox;
-        public TerrainsListStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
+        public TerrainListStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
             var font = FontManager[TowdFont.Large];
             new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);

@@ -1,4 +1,6 @@
 ﻿using Common;
+using Engine;
+using Microsoft.VisualBasic;
 using MonoGameCommon;
 using System;
 using System.Collections.Generic;
@@ -10,25 +12,21 @@ using System.Windows.Forms;
 
 namespace Towd
 {
-    public class EditorStateHandler : TowdStateHandler
+    public class TerrainChooseRoleStateHandler : TowdStateHandler
     {
         private ListBoxControl _listBox;
-        public EditorStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
+        public TerrainChooseRoleStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
+            var items = Enum.GetValues(typeof(TileRole)).Cast<TileRole>().Select(x => x.ToString());
             var font = FontManager[TowdFont.Large];
             new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);
-            new LabelControl(this, true, CyPoint.Create(0, 0), font, "Editor:", CyColor.White);
+            new LabelControl(this, true, CyPoint.Create(0, 0), font, "Role:", CyColor.White);
             _listBox = new ListBoxControl(
                 this, 
                 true, 
                 CyRect.Create(0, font.Height, Width, Height-font.Height), 
-                font, 
-                new string[] 
-                {
-                    "Play",
-                    "Main Menu",
-                    "Terrains"
-                }, 
+                font,
+                items,                
                 0, 
                 CyColor.Black, 
                 CyColor.White, 
@@ -39,14 +37,10 @@ namespace Towd
         {
             switch(selected)
             {
-                case 0://play
-                    SetState(TowdState.Room);
-                    break;
-                case 1://main menu
-                    SetState(TowdState.MainMenu);
-                    break;
-                case 2:
-                    SetState(TowdState.ListTerrain);
+                default:
+                    var terrain = World.Terrains[EditorState.Terrain];
+                    terrain.Role = (TileRole)_listBox.Selected;
+                    SetState(TowdState.EditTerrain);
                     break;
             }
         }
@@ -55,6 +49,9 @@ namespace Towd
         {
             switch (command)
             {
+                case Command.Red:
+                    SetState(TowdState.EditTerrain);
+                    return true;
                 default:
                     return false;
             }
@@ -67,7 +64,9 @@ namespace Towd
 
         protected override void OnStart()
         {
+            var terrain = World.Terrains[EditorState.Terrain];
             _listBox.Focus();
+            _listBox.Selected = (int)terrain.Role;
         }
 
         protected override void OnStop()

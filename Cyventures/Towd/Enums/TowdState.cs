@@ -17,7 +17,8 @@ namespace Towd
         ExitPlay,
         EditMenu,
         Editor,
-        TerrainsList,
-        EditTerrain
+        ListTerrain,
+        EditTerrain,
+        TerrainChooseRole
     }
 }

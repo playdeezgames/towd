@@ -62,9 +62,10 @@ namespace Towd
             switch(selected)
             {
                 case 0://go back
-                    SetState(TowdState.TerrainsList);
+                    SetState(TowdState.ListTerrain);
                     break;
                 case 1://role
+                    SetState(TowdState.TerrainChooseRole);
                     break;
                 case 2://image
                     break;
@@ -80,7 +81,7 @@ namespace Towd
             switch (command)
             {
                 case Command.Red:
-                    SetState(TowdState.TerrainsList);
+                    SetState(TowdState.ListTerrain);
                     return true;
                 default:
                     return false;

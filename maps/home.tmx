@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="8" tileheight="8" infinite="1" nextobjectid="1">
+ <tileset firstgid="1" name="Terrain" tilewidth="8" tileheight="8" tilecount="48" columns="8">
+  <image source="../Terrain.png" width="64" height="48"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="40" height="30">
+  <data encoding="csv">
+   <chunk x="0" y="0" width="16" height="16">
+12,5,5,5,5,9,0,0,0,0,0,0,0,0,0,0,
+8,21,4,4,4,6,0,0,0,0,0,0,0,0,0,0,
+8,4,4,4,4,6,0,0,0,0,0,0,0,0,0,0,
+8,4,4,4,4,6,0,0,0,0,0,0,0,0,0,0,
+8,23,4,4,4,6,0,0,0,0,0,0,0,0,0,0,
+11,7,7,19,7,10,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+  </data>
+ </layer>
+</map>
