@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="8" tileheight="8" infinite="1" nextobjectid="6">
+ <tileset firstgid="1" name="cybikopalette" tilewidth="8" tileheight="8" tilecount="4" columns="4">
+  <image source="cybikopalette.png" width="32" height="8"/>
+ </tileset>
+ <layer name="Pixels" width="100" height="100">
+  <data encoding="csv"/>
+ </layer>
+ <objectgroup name="TileName">
+  <object id="1" name="solid" x="0" y="0" width="64" height="64"/>
+  <object id="5" name="dark" x="64" y="0" width="64" height="64"/>
+ </objectgroup>
+</map>

@@ -17,6 +17,7 @@ namespace Engine
         public Dictionary<string, Creature> Creatures { get; set; }
         public Dictionary<string, Room> Rooms { get; set; }
         public Dictionary<int, CreatureInstance> CreatureInstances { get; set; }
+        public Dictionary<string, Event> Events { get; set; }
 
         public Room GetAvatarRoom()
         {

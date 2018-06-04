@@ -12,5 +12,6 @@ namespace Engine
         public TileRole? RoleOverride { get; set; }
         public Teleport Teleport { get; set; }
         public int? CreatureInstance { get; set; }
+        public string EnterEvent { get; set; }
     }
 }
