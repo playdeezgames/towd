@@ -23,6 +23,7 @@ namespace Towd
             this[TowdState.ListTerrain] = new TerrainListStateHandler(this, null);
             this[TowdState.EditTerrain] = new TerrainEditStateHandler(this, null);
             this[TowdState.TerrainChooseRole] = new TerrainChooseRoleStateHandler(this, null);
+            this[TowdState.TerrainChooseImage] = new TerrainChooseImageStateHandler(this, null);
             Current = TowdState.MainMenu;
         }
     }

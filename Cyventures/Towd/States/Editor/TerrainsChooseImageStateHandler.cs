@@ -1,4 +1,6 @@
 ﻿using Common;
+using Engine;
+using Microsoft.VisualBasic;
 using MonoGameCommon;
 using System;
 using System.Collections.Generic;
@@ -6,17 +8,19 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Towd
 {
-    //TODO: have some content
-    public class AboutStateHandler : TowdStateHandler
+    public class TerrainChooseImageStateHandler : TowdStateHandler
     {
-        public AboutStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
+        //TODO: actually choose image
+        public TerrainChooseImageStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
+            var items = Enum.GetValues(typeof(TileRole)).Cast<TileRole>().Select(x => x.ToString());
             var font = FontManager[TowdFont.Large];
             new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);
-            new LabelControl(this, true, CyPoint.Create(0, 0), font, "About TOWD", CyColor.White);
+            new LabelControl(this, true, CyPoint.Create(0, 0), font, "Image:", CyColor.White);
         }
 
         protected override bool OnCommand(Command command)
@@ -24,7 +28,7 @@ namespace Towd
             switch (command)
             {
                 case Command.Red:
-                    SetState(TowdState.MainMenu);
+                    SetState(TowdState.EditTerrain);
                     return true;
                 default:
                     return false;
@@ -38,6 +42,7 @@ namespace Towd
 
         protected override void OnStart()
         {
+            var terrain = World.Terrains[EditorState.Terrain];
         }
 
         protected override void OnStop()

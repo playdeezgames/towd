@@ -68,6 +68,7 @@ namespace Towd
                     SetState(TowdState.TerrainChooseRole);
                     break;
                 case 2://image
+                    SetState(TowdState.TerrainChooseImage);
                     break;
                 case 3://name
                     break;

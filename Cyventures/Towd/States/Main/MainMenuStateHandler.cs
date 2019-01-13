@@ -69,6 +69,7 @@ namespace Towd
 
         private bool DoLoadGame()
         {
+            //TODO: make loading fail gracefully when loading a bad file
             OpenFileDialog dialog = new OpenFileDialog();
             var result = dialog.ShowDialog();
             if(result== DialogResult.OK)

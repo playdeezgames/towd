@@ -19,6 +19,7 @@ namespace Towd
         Editor,
         ListTerrain,
         EditTerrain,
-        TerrainChooseRole
+        TerrainChooseRole,
+        TerrainChooseImage
     }
 }
