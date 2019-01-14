@@ -11,7 +11,6 @@ namespace Towd
         None,
         FontManager,
         BitmapSequenceManager,
-        World,
-        EditorState
+        World
     }
 }

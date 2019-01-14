@@ -10,6 +10,7 @@ namespace Common
     {
         private Dictionary<TKey, TManaged> _table = new Dictionary<TKey, TManaged>();
         private Func<TKey, TManaged> _loader;
+        public IEnumerable<TKey> Keys => _table.Keys;
         public Manager(Func<TKey, TManaged> loader)
         {
             _loader = loader;

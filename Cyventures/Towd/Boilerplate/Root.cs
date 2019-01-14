@@ -27,7 +27,6 @@ namespace Towd
         private Manager<TowdFont, CyFont> _fontManager;
         private Manager<string, Sequence<Bitmap<CyColor>>> _bitmapSequenceManager;
         private World _world;
-        private EditorState _editorState= new EditorState() { DefaultImageResourceIdentifier= "dungeon-tiles" };
 
 
         public Root(IMessageHandler<CyColor> parent)
@@ -59,9 +58,6 @@ namespace Towd
             {
                 switch ((message as FetchMessage<TowdResource>)?.Resource ?? TowdResource.None)
                 {
-                    case TowdResource.EditorState:
-                        return FetchResult< EditorState >.Create(_editorState);
-
                     case TowdResource.World:
                         return FetchResult<World>.Create(_world);
 

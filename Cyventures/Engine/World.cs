@@ -9,7 +9,6 @@ namespace Engine
 {
     public class World
     {
-        public bool EditMode { get; set; }
         public int Avatar { get; set; }
         public int TileWidth { get; set; }
         public int TileHeight { get; set; }

@@ -18,12 +18,6 @@ namespace Towd
             this[TowdState.Help] = new HelpStateHandler(this, null);
             this[TowdState.Room] = new RoomStateHandler(this, null);
             this[TowdState.ExitPlay] = new ExitPlayStateHandler(this, null);
-            this[TowdState.EditMenu] = new EditMenuStateHandler(this, null);
-            this[TowdState.Editor] = new EditorStateHandler(this, null);
-            this[TowdState.ListTerrain] = new TerrainListStateHandler(this, null);
-            this[TowdState.EditTerrain] = new TerrainEditStateHandler(this, null);
-            this[TowdState.TerrainChooseRole] = new TerrainChooseRoleStateHandler(this, null);
-            this[TowdState.TerrainChooseImage] = new TerrainChooseImageStateHandler(this, null);
             Current = TowdState.MainMenu;
         }
     }

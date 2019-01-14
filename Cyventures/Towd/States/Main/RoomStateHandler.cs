@@ -28,14 +28,7 @@ namespace Towd
                     }
                     else
                     {
-                        if (World.EditMode)
-                        {
-                            SetState(TowdState.EditMenu);
-                        }
-                        else
-                        {
-                            SetState(TowdState.ExitPlay);
-                        }
+                        SetState(TowdState.ExitPlay);
                     }
                     return true;
                 case Command.Green:
