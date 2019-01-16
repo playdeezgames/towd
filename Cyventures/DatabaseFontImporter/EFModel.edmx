@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TOWDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Fonts">
+          <Key>
+            <PropertyRef Name="FontId" />
+          </Key>
+          <Property Name="FontId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FontName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FontHeight" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GlyphPixels">
+          <Key>
+            <PropertyRef Name="GlyphPixelId" />
+          </Key>
+          <Property Name="GlyphPixelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GlyphId" Type="int" Nullable="false" />
+          <Property Name="X" Type="int" Nullable="false" />
+          <Property Name="Y" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Glyphs">
+          <Key>
+            <PropertyRef Name="GlyphId" />
+          </Key>
+          <Property Name="GlyphId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GlyphCharacter" Type="int" Nullable="false" />
+          <Property Name="FontId" Type="int" Nullable="false" />
+          <Property Name="GlyphWidth" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_GlyphPixels_Glyphs">
+          <End Role="Glyphs" Type="Self.Glyphs" Multiplicity="1" />
+          <End Role="GlyphPixels" Type="Self.GlyphPixels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Glyphs">
+              <PropertyRef Name="GlyphId" />
+            </Principal>
+            <Dependent Role="GlyphPixels">
+              <PropertyRef Name="GlyphId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Glyphs_Fonts">
+          <End Role="Fonts" Type="Self.Fonts" Multiplicity="1" />
+          <End Role="Glyphs" Type="Self.Glyphs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fonts">
+              <PropertyRef Name="FontId" />
+            </Principal>
+            <Dependent Role="Glyphs">
+              <PropertyRef Name="FontId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TOWDModelStoreContainer">
+          <EntitySet Name="Fonts" EntityType="Self.Fonts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GlyphPixels" EntityType="Self.GlyphPixels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Glyphs" EntityType="Self.Glyphs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GlyphPixels_Glyphs" Association="Self.FK_GlyphPixels_Glyphs">
+            <End Role="Glyphs" EntitySet="Glyphs" />
+            <End Role="GlyphPixels" EntitySet="GlyphPixels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Glyphs_Fonts" Association="Self.FK_Glyphs_Fonts">
+            <End Role="Fonts" EntitySet="Fonts" />
+            <End Role="Glyphs" EntitySet="Glyphs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TOWDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Font">
+          <Key>
+            <PropertyRef Name="FontId" />
+          </Key>
+          <Property Name="FontId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FontName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FontHeight" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Glyphs" Relationship="TOWDModel.FK_Glyphs_Fonts" FromRole="Font" ToRole="Glyph" />
+        </EntityType>
+        <EntityType Name="GlyphPixel">
+          <Key>
+            <PropertyRef Name="GlyphPixelId" />
+          </Key>
+          <Property Name="GlyphPixelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GlyphId" Type="Int32" Nullable="false" />
+          <Property Name="X" Type="Int32" Nullable="false" />
+          <Property Name="Y" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Glyph" Relationship="TOWDModel.FK_GlyphPixels_Glyphs" FromRole="GlyphPixel" ToRole="Glyph" />
+        </EntityType>
+        <EntityContainer Name="TOWDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Fonts" EntityType="Self.Font" />
+          <EntitySet Name="GlyphPixels" EntityType="Self.GlyphPixel" />
+          <EntitySet Name="Glyphs" EntityType="TOWDModel.Glyph" />
+          <AssociationSet Name="FK_Glyphs_Fonts" Association="TOWDModel.FK_Glyphs_Fonts">
+            <End Role="Font" EntitySet="Fonts" />
+            <End Role="Glyph" EntitySet="Glyphs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GlyphPixels_Glyphs" Association="TOWDModel.FK_GlyphPixels_Glyphs">
+            <End Role="Glyph" EntitySet="Glyphs" />
+            <End Role="GlyphPixel" EntitySet="GlyphPixels" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Glyph">
+          <Key>
+            <PropertyRef Name="GlyphId" />
+          </Key>
+          <Property Name="GlyphId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GlyphCharacter" Type="Int32" Nullable="false" />
+          <Property Name="FontId" Type="Int32" Nullable="false" />
+          <Property Name="GlyphWidth" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Font" Relationship="TOWDModel.FK_Glyphs_Fonts" FromRole="Glyph" ToRole="Font" />
+          <NavigationProperty Name="GlyphPixels" Relationship="TOWDModel.FK_GlyphPixels_Glyphs" FromRole="Glyph" ToRole="GlyphPixel" />
+        </EntityType>
+        <Association Name="FK_Glyphs_Fonts">
+          <End Type="TOWDModel.Font" Role="Font" Multiplicity="1" />
+          <End Type="TOWDModel.Glyph" Role="Glyph" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Font">
+              <PropertyRef Name="FontId" />
+            </Principal>
+            <Dependent Role="Glyph">
+              <PropertyRef Name="FontId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GlyphPixels_Glyphs">
+          <End Type="TOWDModel.Glyph" Role="Glyph" Multiplicity="1" />
+          <End Type="TOWDModel.GlyphPixel" Role="GlyphPixel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Glyph">
+              <PropertyRef Name="GlyphId" />
+            </Principal>
+            <Dependent Role="GlyphPixel">
+              <PropertyRef Name="GlyphId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TOWDModelStoreContainer" CdmEntityContainer="TOWDEntities">
+          <EntitySetMapping Name="Fonts">
+            <EntityTypeMapping TypeName="TOWDModel.Font">
+              <MappingFragment StoreEntitySet="Fonts">
+                <ScalarProperty Name="FontId" ColumnName="FontId" />
+                <ScalarProperty Name="FontName" ColumnName="FontName" />
+                <ScalarProperty Name="FontHeight" ColumnName="FontHeight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GlyphPixels">
+            <EntityTypeMapping TypeName="TOWDModel.GlyphPixel">
+              <MappingFragment StoreEntitySet="GlyphPixels">
+                <ScalarProperty Name="GlyphPixelId" ColumnName="GlyphPixelId" />
+                <ScalarProperty Name="GlyphId" ColumnName="GlyphId" />
+                <ScalarProperty Name="X" ColumnName="X" />
+                <ScalarProperty Name="Y" ColumnName="Y" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Glyphs">
+            <EntityTypeMapping TypeName="TOWDModel.Glyph">
+              <MappingFragment StoreEntitySet="Glyphs">
+                <ScalarProperty Name="GlyphWidth" ColumnName="GlyphWidth" />
+                <ScalarProperty Name="FontId" ColumnName="FontId" />
+                <ScalarProperty Name="GlyphCharacter" ColumnName="GlyphCharacter" />
+                <ScalarProperty Name="GlyphId" ColumnName="GlyphId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

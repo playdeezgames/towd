@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WebEditor.EFModel.Font>
+@{
+    ViewBag.Title = "Font List";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Font Name</th>
+            <th>Height</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FontName
+                </td>
+                <td>
+                    @item.FontHeight
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="a3500a6a-94f3-4b27-b7d1-2331b5f968a2" ChangeDateTime="01/16/2019 19:43:38">
+    <Property Name="ElementName" Value="[dbo].[Fonts].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Fonts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FontId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8984eb4f-d534-499e-8919-890bf3a0adbd" ChangeDateTime="01/16/2019 19:44:56">
+    <Property Name="ElementName" Value="[dbo].[Glyphs].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Glyphs]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GlyphId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0f2b9ac9-f68c-4934-8697-0719a9b1448d" ChangeDateTime="01/16/2019 19:45:27">
+    <Property Name="ElementName" Value="[dbo].[Glyphs].[Width]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Glyphs]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GlyphWidth" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ed3a3d21-7d46-4d30-a490-06c5a14ce436" ChangeDateTime="01/16/2019 19:47:21">
+    <Property Name="ElementName" Value="[dbo].[GlyphPixels].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GlyphPixels]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GlyphPixelId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0350fd6f-d59e-4367-bee5-fb8f4503e134" ChangeDateTime="01/16/2019 19:50:34">
+    <Property Name="ElementName" Value="[dbo].[GlyphPixels].[Row]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GlyphPixels]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="X" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="eedd5855-5bce-4e2d-a66e-95bfdee5caa3" ChangeDateTime="01/16/2019 19:50:40">
+    <Property Name="ElementName" Value="[dbo].[GlyphPixels].[Column]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GlyphPixels]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Y" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2361ca08-0165-4990-897b-44ee96aebf87" ChangeDateTime="01/16/2019 20:29:53">
+    <Property Name="ElementName" Value="[dbo].[Glyphs].[GlyphName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Glyphs]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GlyphCharacter" />
+  </Operation>
+</Operations>
