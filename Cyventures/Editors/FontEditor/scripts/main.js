@@ -14,10 +14,23 @@ function togglePixel(symbol,column,row){
     }
     editSymbol(escape(symbol));
 }
+function decrementWidth(symbol){
+    symbol=unescape(symbol);
+    var glyph = font.Glyphs[symbol];
+    glyph.Width--;
+    editSymbol(escape(symbol));
+}
+function incrementWidth(symbol){
+    symbol=unescape(symbol);
+    var glyph = font.Glyphs[symbol];
+    glyph.Width++;
+    editSymbol(escape(symbol));
+}
 function editSymbol(symbol){
     symbol=unescape(symbol);
     var content = "";
     var glyph = font.Glyphs[symbol];
+    content+="<p>Width: "+glyph.Width+"<button onclick=\"decrementWidth('"+escape(symbol)+"')\">-</button><button onclick=\"incrementWidth('"+escape(symbol)+"')\">+</button></p>";
     content+="<table>";
     for(var row=0;row<font.Height;++row){
         content+="<tr>";
@@ -38,8 +51,60 @@ function editSymbol(symbol){
     content+="<button onclick=\"listSymbols()\">List</button>";
     document.body.innerHTML=content;
 }
+function decrementHeight(){
+    font.Height--;
+    listSymbols();
+}
+function incrementHeight(){
+    font.Height++;
+    listSymbols();
+}
+function loadFont(file){
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        font = JSON.parse(event.target.result);
+        listSymbols();
+    };    
+    reader.readAsText(file);
+}
+function dropHandler(ev) {
+    ev.preventDefault();
+    if (ev.dataTransfer.items) {
+        for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+            if (ev.dataTransfer.items[i].kind === 'file') {
+                var file = ev.dataTransfer.items[i].getAsFile();
+                loadFont(file);
+                break;
+            }
+        }
+    } else {
+        for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+            var file = ev.dataTransfer.files[i];
+            loadFont(file);
+            break;
+        }
+    }
+}
+function dragOverHandler(ev) {
+    ev.preventDefault();
+}
+function exportFont(){
+    var content = JSON.stringify(font);
+    var filename = document.getElementById('exportFileName').value;
+    
+    var blob = new Blob([content], {
+     type: "application/json;charset=utf-8"
+    });
+    
+    saveAs(blob, filename);    
+}
 function listSymbols(){
     var content = "";
+    content+="<button id=\"drop_zone\" style=\"padding:20px\" ondrop=\"dropHandler(event);\" ondragover=\"dragOverHandler(event);\">";
+    content+="Drop Files Here...";
+    content+="</button>";
+    content+="<p>Height: "+font.Height+"<button onclick=\"decrementHeight()\">-</button><button onclick=\"incrementHeight()\">+</button></p>";
+    content+="<p><button onclick=\"exportFont()\">Export</button><input id=\"exportFileName\" type=\"text\" value=\"font.json\"/></p>"
     content += "<table>";
     content+="<tr>"
     content+="<th>Symbol</th>";
@@ -68,6 +133,7 @@ function listSymbols(){
             }
         }
         content+="<img src=\""+canvas.toDataURL("image/png")+"\"/>";
+        content+="<img width=\""+canvas.width * 8+"\" height=\""+canvas.height*8+"\" src=\""+canvas.toDataURL("image/png")+"\"/>";
         content+="</td>"
         content+="<td>"
         content+="<button onclick=\"editSymbol('"+escape(symbol)+"')\">Edit</button>";
