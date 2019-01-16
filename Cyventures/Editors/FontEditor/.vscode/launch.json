@@ -7,9 +7,17 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "name": "HOAM",
             "url": "file:///E:/TheGrumpyGameDev/tombofwoefuldoom/Cyventures/Editors/FontEditor/index.html",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "WRRK",
+            "url": "file:///C:/lint/tombofwoefuldoom/Cyventures/Editors/FontEditor/index.html",
+            "webRoot": "${workspaceFolder}"
         }
+
     ]
 }
