@@ -15,5 +15,13 @@ namespace WebEditor.Controllers
                 return View(db.Fonts.OrderBy(x=>x.FontName).ToList());
             }
         }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            using (var db = new EFModel.TOWDEntities())
+            {
+                return View(db.Fonts.Single(x=>x.FontId==id));
+            }
+        }
     }
 }
