@@ -49,4 +49,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="GlyphCharacter" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="9fa92d36-110d-489f-9e7b-5a9d51664534" ChangeDateTime="01/17/2019 10:57:42">
+    <Property Name="ElementName" Value="[dbo].[Bitmaps].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bitmaps]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BitmapId" />
+  </Operation>
 </Operations>

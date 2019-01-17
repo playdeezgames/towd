@@ -47,7 +47,29 @@ namespace WebEditor.Controllers
                 return View(font);
             }
         }
+        [HttpGet]
         public ActionResult EditGlyph(int id)
+        {
+            using (var db = new EFModel.TOWDEntities())
+            {
+                var glyph = db.Glyphs.Include("Font").Single(x => x.GlyphId == id);
+
+                return View(glyph);
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditGlyph(EFModel.Glyph model)
+        {
+            using (var db = new EFModel.TOWDEntities())
+            {
+                var glyph = db.Glyphs.Include("Font").Single(x => x.GlyphId == model.GlyphId);
+                glyph.GlyphWidth = model.GlyphWidth;
+                db.SaveChanges();
+                return RedirectToAction("Detail", new { id = glyph.FontId });
+            }
+        }
+        public ActionResult EditGlyphImage(int id)
         {
             using (var db = new EFModel.TOWDEntities())
             {
@@ -88,7 +110,7 @@ namespace WebEditor.Controllers
                 var glyphId = glyphPixel.GlyphId;
                 db.GlyphPixels.Remove(glyphPixel);
                 db.SaveChanges();
-                return RedirectToAction("EditGlyph", new { id = glyphId });
+                return RedirectToAction("EditGlyphImage", new { id = glyphId });
             }
         }
         public ActionResult AddGlyphPixel(int glyphid, int x, int y)
@@ -103,7 +125,7 @@ namespace WebEditor.Controllers
                 };
                 db.GlyphPixels.Add(glyphPixel);
                 db.SaveChanges();
-                return RedirectToAction("EditGlyph", new { id = glyphid });
+                return RedirectToAction("EditGlyphImage", new { id = glyphid });
             }
         }
     }

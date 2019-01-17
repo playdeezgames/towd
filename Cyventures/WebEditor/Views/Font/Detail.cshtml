@@ -18,14 +18,14 @@
             <tr>
                 <td>
                     @item.GlyphCharacter
-                    <a href="@Url.Action("EditGlyph", new { id=item.GlyphId })">(edit)</a>
                 </td>
                 <td>
                     @item.GlyphWidth
+                    <a href="@Url.Action("EditGlyph", new { id=item.GlyphId })">(edit)</a>
                 </td>
                 <td>
-                    <img src="@Url.Action("GlyphImage",new { id=item.GlyphId, scale=8 })" />
-                </td>
+                    <a href="@Url.Action("EditGlyphImage", new { id=item.GlyphId })"><img src="@Url.Action("GlyphImage",new { id=item.GlyphId, scale=8 })" /></a>
+</td>
             </tr>
         }
     </tbody>

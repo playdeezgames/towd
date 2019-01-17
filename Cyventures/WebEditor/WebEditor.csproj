@@ -257,6 +257,7 @@
     <Content Include="Views\Font\Index.cshtml" />
     <Content Include="Views\Font\Edit.cshtml" />
     <Content Include="Views\Font\Detail.cshtml" />
+    <Content Include="Views\Font\EditGlyphImage.cshtml" />
     <Content Include="Views\Font\EditGlyph.cshtml" />
   </ItemGroup>
   <ItemGroup>
