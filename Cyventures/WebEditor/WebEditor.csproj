@@ -166,6 +166,12 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\Black.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\White.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="EFModel\EFModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EFModel.Context.cs</LastGenOutput>
@@ -250,6 +256,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Font\Index.cshtml" />
     <Content Include="Views\Font\Edit.cshtml" />
+    <Content Include="Views\Font\Detail.cshtml" />
+    <Content Include="Views\Font\EditGlyph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

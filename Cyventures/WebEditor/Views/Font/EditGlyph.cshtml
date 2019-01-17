@@ -1,0 +1,23 @@
+﻿@model WebEditor.EFModel.Glyph
+@{
+    ViewBag.Title = "Edit Glyph";
+}
+<p>@Html.ActionLink("Back to Font","Detail",new { id = Model.FontId })</p>
+<p>Font: @Model.Font.FontName</p>
+<p>Glyph Character: @Model.GlyphCharacter</p>
+@for (int y = 0; y < Model.Font.FontHeight; ++y)
+{
+    for (int x = 0; x < Model.GlyphWidth; ++x)
+    {
+        var glyphPixel = Model.GlyphPixels.SingleOrDefault(gp => gp.X == x && gp.Y == y);
+        if (glyphPixel!=null)
+        {
+            <a href="@Url.Action("RemoveGlyphPixel",new { id= glyphPixel.GlyphPixelId})"><img src="~/Content/images/Black.png" /></a>
+        }
+        else
+        {
+            <a href="@Url.Action("AddGlyphPixel", new { glyphid=Model.GlyphId, x=x, y=y })"><img src="~/Content/images/White.png" /></a>
+        }
+    }
+    <br/>
+}
