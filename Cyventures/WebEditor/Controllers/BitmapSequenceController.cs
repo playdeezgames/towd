@@ -42,8 +42,8 @@ namespace WebEditor.Controllers
         {
             using (var db = new EFModel.TOWDEntities())
             {
-                var font = db.Fonts.Include("Glyphs").Single(x => x.FontId == id);
-                return View(font);
+                var bitmapSequence = db.BitmapSequences.Include("Bitmaps").Single(x => x.BitmapSequenceId == id);
+                return View(bitmapSequence);
             }
         }
         [HttpGet]
