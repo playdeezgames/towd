@@ -46,6 +46,38 @@ namespace WebEditor.Controllers
                 return View(bitmapSequence);
             }
         }
+        public FileResult BitmapImage(int id, int scale = 1)
+        {
+            using (var db = new EFModel.TOWDEntities())
+            {
+                var bitmap = db.Bitmaps.Include("BitmapSequence").Include("BitmapPixels").Single(x => x.BitmapId == id);
+
+                Image img = new Bitmap(scale * bitmap.BitmapWidth, scale * bitmap.BitmapHeight);
+                Graphics g = Graphics.FromImage(img);
+                g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 0, scale * bitmap.BitmapWidth, scale * bitmap.BitmapHeight));
+                var brushes = new Brush[] 
+                {
+                    new SolidBrush(Color.White),
+                    new SolidBrush(Color.FromArgb(170,170,170)),
+                    new SolidBrush(Color.FromArgb(85,85,85)),
+                    new SolidBrush(Color.Black)
+                };
+
+                foreach (var bitmapPixel in bitmap.BitmapPixels)
+                {
+                    g.FillRectangle(brushes[bitmapPixel.ColorId], new Rectangle(bitmapPixel.X * scale, bitmapPixel.Y * scale, scale, scale));
+                }
+
+                MemoryStream ms = new MemoryStream();
+                img.Save(ms, ImageFormat.Png);
+
+                ms.Position = 0;
+
+                return new FileStreamResult(ms, "image/png");
+            }
+        }
+
+
         [HttpGet]
         public ActionResult EditGlyph(int id)
         {
@@ -75,30 +107,6 @@ namespace WebEditor.Controllers
                 var glyph = db.Glyphs.Include("Font").Include("GlyphPixels").Single(x => x.GlyphId == id);
 
                 return View(glyph);
-            }
-        }
-        public FileResult GlyphImage(int id, int scale=1)
-        {
-            using (var db = new EFModel.TOWDEntities())
-            {
-                var glyph = db.Glyphs.Include("Font").Include("GlyphPixels").Single(x => x.GlyphId == id);
-
-                Image img = new Bitmap(scale * glyph.GlyphWidth, scale*glyph.Font.FontHeight);
-                Graphics g = Graphics.FromImage(img);
-                g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 0, scale * glyph.GlyphWidth, scale * glyph.Font.FontHeight));
-                var brush = new SolidBrush(Color.Black);
-
-                foreach(var glyphPixel in glyph.GlyphPixels)
-                {
-                    g.FillRectangle(brush, new Rectangle(glyphPixel.X * scale, glyphPixel.Y * scale, scale, scale));
-                }
-
-                MemoryStream ms = new MemoryStream();
-                img.Save(ms, ImageFormat.Png);
-
-                ms.Position = 0;
-
-                return new FileStreamResult(ms, "image/png");
             }
         }
         public ActionResult RemoveGlyphPixel(int id)
