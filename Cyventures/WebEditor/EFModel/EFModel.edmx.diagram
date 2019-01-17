@@ -10,6 +10,11 @@
         <EntityTypeShape EntityType="TOWDModel.Glyph" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="TOWDModel.FK_Glyphs_Fonts" ManuallyRouted="false" />
         <AssociationConnector Association="TOWDModel.FK_GlyphPixels_Glyphs" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TOWDModel.BitmapPixel" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="TOWDModel.Bitmap" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="TOWDModel.BitmapSequence" Width="1.5" PointX="0.75" PointY="5.375" />
+        <AssociationConnector Association="TOWDModel.FK_BitmapPixel_Bitmaps" />
+        <AssociationConnector Association="TOWDModel.FK_Bitmaps_BitmapSequences" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

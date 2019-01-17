@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebEditor.EFModel
+namespace DatabaseBitmapSequenceImporter
 {
     using System;
     using System.Data.Entity;
@@ -25,11 +25,8 @@ namespace WebEditor.EFModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Font> Fonts { get; set; }
-        public virtual DbSet<GlyphPixel> GlyphPixels { get; set; }
-        public virtual DbSet<Glyph> Glyphs { get; set; }
-        public virtual DbSet<BitmapPixel> BitmapPixels { get; set; }
         public virtual DbSet<Bitmap> Bitmaps { get; set; }
         public virtual DbSet<BitmapSequence> BitmapSequences { get; set; }
+        public virtual DbSet<BitmapPixel> BitmapPixels { get; set; }
     }
 }

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebEditor.EFModel.BitmapSequence>
+@{
+    ViewBag.Title = "Bitmap Sequence List";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Bitmap Sequence Name</th>
+            <th>Bitmap Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.BitmapSequenceName
+                    <a href="@Url.Action("Detail", new { id=item.BitmapSequenceId })">(view)</a>
+                    <a href="@Url.Action("Edit", new { id=item.BitmapSequenceId })">(edit)</a>
+                </td>
+                <td>
+                    @item.Bitmaps.Count()
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

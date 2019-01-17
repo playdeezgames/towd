@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseFontImporter", "Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebEditor", "WebEditor\WebEditor.csproj", "{5E254FC2-0BCD-41C4-B6F8-08E30AC95832}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseBitmapSequenceImporter", "DatabaseBitmapSequenceImporter\DatabaseBitmapSequenceImporter.csproj", "{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -115,6 +117,14 @@ Global
 		{5E254FC2-0BCD-41C4-B6F8-08E30AC95832}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E254FC2-0BCD-41C4-B6F8-08E30AC95832}.Release|x86.ActiveCfg = Release|Any CPU
 		{5E254FC2-0BCD-41C4-B6F8-08E30AC95832}.Release|x86.Build.0 = Release|Any CPU
+		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Debug|x86.Build.0 = Debug|Any CPU
+		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Release|x86.ActiveCfg = Release|Any CPU
+		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

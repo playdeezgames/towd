@@ -128,8 +128,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BitmapSequenceController.cs" />
     <Compile Include="Controllers\FontController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="EFModel\Bitmap.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\BitmapPixel.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\BitmapSequence.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EFModel\EFModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -259,6 +269,8 @@
     <Content Include="Views\Font\Detail.cshtml" />
     <Content Include="Views\Font\EditGlyphImage.cshtml" />
     <Content Include="Views\Font\EditGlyph.cshtml" />
+    <Content Include="Views\BitmapSequence\Index.cshtml" />
+    <Content Include="Views\BitmapSequence\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
