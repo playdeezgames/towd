@@ -58,6 +58,13 @@
           <Property Name="FontId" Type="int" Nullable="false" />
           <Property Name="GlyphWidth" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Worlds">
+          <Key>
+            <PropertyRef Name="WorldId" />
+          </Key>
+          <Property Name="WorldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorldName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_BitmapPixel_Bitmaps">
           <End Role="Bitmaps" Type="Self.Bitmaps" Multiplicity="1" />
           <End Role="BitmapPixels" Type="Self.BitmapPixels" Multiplicity="*" />
@@ -113,6 +120,7 @@
           <EntitySet Name="Fonts" EntityType="Self.Fonts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GlyphPixels" EntityType="Self.GlyphPixels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Glyphs" EntityType="Self.Glyphs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Worlds" EntityType="Self.Worlds" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BitmapPixel_Bitmaps" Association="Self.FK_BitmapPixel_Bitmaps">
             <End Role="Bitmaps" EntitySet="Bitmaps" />
             <End Role="BitmapPixels" EntitySet="BitmapPixels" />
@@ -211,6 +219,7 @@
             <End Role="BitmapSequence" EntitySet="BitmapSequences" />
             <End Role="Bitmap" EntitySet="Bitmaps" />
           </AssociationSet>
+          <EntitySet Name="Worlds" EntityType="TOWDModel.World" />
         </EntityContainer>
         <EntityType Name="BitmapPixel">
           <Key>
@@ -267,6 +276,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="World">
+          <Key>
+            <PropertyRef Name="WorldId" />
+          </Key>
+          <Property Name="WorldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorldName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -329,6 +345,14 @@
               <MappingFragment StoreEntitySet="BitmapSequences">
                 <ScalarProperty Name="BitmapSequenceName" ColumnName="BitmapSequenceName" />
                 <ScalarProperty Name="BitmapSequenceId" ColumnName="BitmapSequenceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Worlds">
+            <EntityTypeMapping TypeName="TOWDModel.World">
+              <MappingFragment StoreEntitySet="Worlds">
+                <ScalarProperty Name="WorldName" ColumnName="WorldName" />
+                <ScalarProperty Name="WorldId" ColumnName="WorldId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

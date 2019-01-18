@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BitmapSequenceController.cs" />
     <Compile Include="Controllers\FontController.cs" />
+    <Compile Include="Controllers\WorldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="EFModel\Bitmap.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
@@ -162,6 +163,9 @@
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\GlyphPixel.cs">
+      <DependentUpon>EFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\World.cs">
       <DependentUpon>EFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -282,6 +286,9 @@
     <Content Include="Views\BitmapSequence\EditBitmap.cshtml" />
     <Content Include="Views\BitmapSequence\EditBitmapImage.cshtml" />
     <Content Include="Views\BitmapSequence\AppendBitmap.cshtml" />
+    <Content Include="Views\World\Index.cshtml" />
+    <Content Include="Views\World\Add.cshtml" />
+    <Content Include="Views\World\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

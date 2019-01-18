@@ -31,5 +31,6 @@ namespace WebEditor.EFModel
         public virtual DbSet<BitmapPixel> BitmapPixels { get; set; }
         public virtual DbSet<Bitmap> Bitmaps { get; set; }
         public virtual DbSet<BitmapSequence> BitmapSequences { get; set; }
+        public virtual DbSet<World> Worlds { get; set; }
     }
 }

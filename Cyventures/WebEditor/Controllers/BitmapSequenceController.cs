@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace WebEditor.Controllers
 {
+    //TODO: create new bitmap sequence
     public class BitmapSequenceController : Controller
     {
         public ActionResult Index()

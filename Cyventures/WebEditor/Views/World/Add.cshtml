@@ -1,0 +1,13 @@
+﻿@model WebEditor.EFModel.World
+@{
+    ViewBag.Title = "Add World";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.WorldName)
+        @Html.TextBoxFor(m => m.WorldName, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+}

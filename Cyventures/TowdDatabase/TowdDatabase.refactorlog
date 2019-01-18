@@ -84,4 +84,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="BitmapSequenceId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="6eab91d7-087a-4b24-ab4a-802dfd95b4ae" ChangeDateTime="01/18/2019 11:13:09">
+    <Property Name="ElementName" Value="[dbo].[Worlds].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Worlds]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WorldId" />
+  </Operation>
 </Operations>
