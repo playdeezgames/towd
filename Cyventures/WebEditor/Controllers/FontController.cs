@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Common;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -126,6 +128,38 @@ namespace WebEditor.Controllers
                 db.GlyphPixels.Add(glyphPixel);
                 db.SaveChanges();
                 return RedirectToAction("EditGlyphImage", new { id = glyphid });
+            }
+        }
+        public ActionResult Export(int id)
+        {
+            using (var db = new EFModel.TOWDEntities())
+            {
+                var font = db.Fonts.Include("Glyphs.GlyphPixels").Single(x => x.FontId == id);
+                Dictionary<char, CyGlyph> exportGlyphs = new Dictionary<char, CyGlyph>();
+                foreach(var glyph in font.Glyphs)
+                {
+                    CyGlyph exportGlyph = new CyGlyph(glyph.GlyphWidth);
+                    foreach(var glyphPixel in glyph.GlyphPixels)
+                    {
+                        if(!exportGlyph.Lines.ContainsKey(glyphPixel.Y))
+                        {
+                            exportGlyph.Lines.Add(glyphPixel.Y, new List<int>());
+                        }
+                        exportGlyph.Lines[glyphPixel.Y].Add(glyphPixel.X);
+                    }
+                    exportGlyphs[(char)glyph.GlyphCharacter] = exportGlyph;
+                }
+                CyFont export = new CyFont()
+                {
+                    Height=font.FontHeight,
+                    Glyphs= exportGlyphs
+                };
+                MemoryStream ms = new MemoryStream();
+                var writer = new StreamWriter(ms);
+                writer.Write(JsonConvert.SerializeObject(export));
+                writer.Flush();
+                ms.Position = 0;
+                return new FileStreamResult(ms, "application/json");
             }
         }
     }

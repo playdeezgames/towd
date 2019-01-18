@@ -4,6 +4,7 @@
 }
 <p>@Html.ActionLink("Back to Bitmap Sequence List","Index")</p>
 <p>Bitmap Sequence: @Model.BitmapSequenceName</p>
+<p>@Html.ActionLink("(append bitmap)","AppendBitmap",new { id=Model.BitmapSequenceId })</p>
 <table class="table table-striped">
     <thead>
         <tr>
