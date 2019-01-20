@@ -1,0 +1,50 @@
+﻿@model Towditor.Web.EFModel.Bitmaps
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bitmaps</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BitmapWidth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BitmapWidth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BitmapHeight)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BitmapHeight)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BitmapIndex)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BitmapIndex)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BitmapSequence)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BitmapSequence.BitmapSequenceName)
+        </dd>
+        <dt>
+            Bitmap Image
+        </dt>
+        <dd>
+            <a asp-controller="BitmapImage" asp-action="Edit" asp-route-id="@Model.BitmapId">
+                <img src="@Url.Action("Render","BitmapImage",new { id=Model.BitmapId, scale=8 })" />
+            </a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BitmapId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

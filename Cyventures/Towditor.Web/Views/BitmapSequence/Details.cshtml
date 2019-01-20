@@ -1,0 +1,68 @@
+﻿@model Towditor.Web.EFModel.BitmapSequences
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div>
+    <h4>BitmapSequences</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BitmapSequenceName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BitmapSequenceName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BitmapSequenceId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<hr />
+<p>
+    <a asp-controller="Bitmap" asp-action="Create" asp-route-parentid="@Model.BitmapSequenceId">Create New Bitmap</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                BitmapIndex
+            </th>
+            <th>
+                BitmapWidth
+            </th>
+            <th>
+                BitmapHeight
+            </th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Bitmaps.OrderBy(x=>x.BitmapIndex))
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BitmapIndex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BitmapWidth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BitmapHeight)
+            </td>
+            <td>
+                <a asp-controller="BitmapImage" asp-action="Edit" asp-route-id="@item.BitmapId">
+                    <img src="@Url.Action("Render","BitmapImage",new { id=item.BitmapId, scale=8 })" />
+                </a>
+            </td>
+            <td>
+                <a asp-controller="Bitmap" asp-action="Edit" asp-route-id="@item.BitmapId">Edit</a> |
+                <a asp-controller="Bitmap" asp-action="Details" asp-route-id="@item.BitmapId">Details</a> |
+                <a asp-controller="Bitmap" asp-action="Delete" asp-route-id="@item.BitmapId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

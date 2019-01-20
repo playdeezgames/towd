@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebEditor", "WebEditor\WebE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseBitmapSequenceImporter", "DatabaseBitmapSequenceImporter\DatabaseBitmapSequenceImporter.csproj", "{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Towditor.Web", "Towditor.Web\Towditor.Web.csproj", "{6A009BFB-DF39-4422-9691-3A8BA33E521A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +127,14 @@ Global
 		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Release|x86.ActiveCfg = Release|Any CPU
 		{1E6CCD6A-E52B-4531-98AF-AF8F4789D5C4}.Release|x86.Build.0 = Release|Any CPU
+		{6A009BFB-DF39-4422-9691-3A8BA33E521A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A009BFB-DF39-4422-9691-3A8BA33E521A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A009BFB-DF39-4422-9691-3A8BA33E521A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6A009BFB-DF39-4422-9691-3A8BA33E521A}.Debug|x86.Build.0 = Debug|Any CPU
+		{6A009BFB-DF39-4422-9691-3A8BA33E521A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A009BFB-DF39-4422-9691-3A8BA33E521A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A009BFB-DF39-4422-9691-3A8BA33E521A}.Release|x86.ActiveCfg = Release|Any CPU
+		{6A009BFB-DF39-4422-9691-3A8BA33E521A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
