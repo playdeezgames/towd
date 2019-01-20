@@ -21,27 +21,30 @@ namespace Towditor.Web.Controllers
         // GET: Bitmap
         public async Task<IActionResult> Index()
         {
-            var tOWDContext = _context.Bitmaps.Include(b => b.BitmapSequence).OrderBy(x=>x.BitmapSequence.BitmapSequenceName).ThenBy(x=>x.BitmapIndex);
-            return View(await tOWDContext.ToListAsync());
+            var ctx = _context.Bitmaps.Include(b => b.BitmapSequence).OrderBy(x=>x.BitmapSequence.BitmapSequenceName).ThenBy(x=>x.BitmapIndex);
+            return View(await ctx.ToListAsync());
         }
 
         // GET: Bitmap/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int? parentid)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var bitmaps = await _context.Bitmaps
+            var bitmap = await _context.Bitmaps
                 .Include(b => b.BitmapSequence)
                 .FirstOrDefaultAsync(m => m.BitmapId == id);
-            if (bitmaps == null)
+            if (bitmap == null)
             {
                 return NotFound();
             }
-
-            return View(bitmaps);
+            if(parentid.HasValue)
+            {
+                ViewData["ParentId"] = parentid.Value;
+            }
+            return View(bitmap);
         }
 
         // GET: Bitmap/Create
@@ -50,6 +53,7 @@ namespace Towditor.Web.Controllers
             if (parentid.HasValue)
             {
                 ViewData["BitmapSequenceId"] = new SelectList(_context.BitmapSequences.Where(x=>x.BitmapSequenceId==parentid.Value), "BitmapSequenceId", "BitmapSequenceName");
+                ViewData["ParentId"] = parentid.Value;
             }
             else
             {
@@ -63,34 +67,45 @@ namespace Towditor.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BitmapId,BitmapWidth,BitmapHeight,BitmapSequenceId,BitmapIndex")] Bitmaps bitmaps)
+        public async Task<IActionResult> Create([Bind("BitmapId,BitmapWidth,BitmapHeight,BitmapSequenceId,BitmapIndex")] Bitmaps bitmap, int? parentid)
         {
-            bitmaps.BitmapIndex = _context.Bitmaps.Where(x => x.BitmapSequenceId == bitmaps.BitmapSequenceId).Count();
+            bitmap.BitmapIndex = _context.Bitmaps.Where(x => x.BitmapSequenceId == bitmap.BitmapSequenceId).Count();
             if (ModelState.IsValid)
             {
-                _context.Add(bitmaps);
+                _context.Add(bitmap);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (parentid.HasValue)
+                {
+                    return RedirectToAction("Details", "BitmapSequence", new { id = parentid.Value });
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            ViewData["BitmapSequenceId"] = new SelectList(_context.BitmapSequences.OrderBy(x => x.BitmapSequenceName), "BitmapSequenceId", "BitmapSequenceName", bitmaps.BitmapSequenceId);
-            return View(bitmaps);
+            ViewData["BitmapSequenceId"] = new SelectList(_context.BitmapSequences.OrderBy(x => x.BitmapSequenceName), "BitmapSequenceId", "BitmapSequenceName", bitmap.BitmapSequenceId);
+            return View(bitmap);
         }
 
         // GET: Bitmap/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int? parentid)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var bitmaps = await _context.Bitmaps.FindAsync(id);
-            if (bitmaps == null)
+            var bitmap = await _context.Bitmaps.FindAsync(id);
+            if (bitmap == null)
             {
                 return NotFound();
             }
-            ViewData["BitmapSequenceId"] = new SelectList(_context.BitmapSequences.OrderBy(x => x.BitmapSequenceName), "BitmapSequenceId", "BitmapSequenceName", bitmaps.BitmapSequenceId);
-            return View(bitmaps);
+            if (parentid.HasValue)
+            {
+                ViewData["ParentId"] = parentid.Value;
+            }
+            ViewData["BitmapSequenceId"] = new SelectList(_context.BitmapSequences.OrderBy(x => x.BitmapSequenceName), "BitmapSequenceId", "BitmapSequenceName", bitmap.BitmapSequenceId);
+            return View(bitmap);
         }
 
         // POST: Bitmap/Edit/5
@@ -98,9 +113,9 @@ namespace Towditor.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BitmapId,BitmapWidth,BitmapHeight,BitmapSequenceId,BitmapIndex")] Bitmaps bitmaps)
+        public async Task<IActionResult> Edit(int id, [Bind("BitmapId,BitmapWidth,BitmapHeight,BitmapSequenceId,BitmapIndex")] Bitmaps bitmap, int? parentid)
         {
-            if (id != bitmaps.BitmapId)
+            if (id != bitmap.BitmapId)
             {
                 return NotFound();
             }
@@ -109,12 +124,14 @@ namespace Towditor.Web.Controllers
             {
                 try
                 {
-                    _context.Update(bitmaps);
+                    var oldBitmap = await _context.Bitmaps.FindAsync(id);
+                    oldBitmap.BitmapHeight = bitmap.BitmapHeight;
+                    oldBitmap.BitmapWidth = bitmap.BitmapWidth;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BitmapsExists(bitmaps.BitmapId))
+                    if (!BitmapsExists(bitmap.BitmapId))
                     {
                         return NotFound();
                     }
@@ -123,40 +140,67 @@ namespace Towditor.Web.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                if (parentid.HasValue)
+                {
+                    return RedirectToAction("Details", "BitmapSequence", new { id = parentid.Value });
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            ViewData["BitmapSequenceId"] = new SelectList(_context.BitmapSequences.OrderBy(x => x.BitmapSequenceName), "BitmapSequenceId", "BitmapSequenceName", bitmaps.BitmapSequenceId);
-            return View(bitmaps);
+            ViewData["BitmapSequenceId"] = new SelectList(_context.BitmapSequences.OrderBy(x => x.BitmapSequenceName), "BitmapSequenceId", "BitmapSequenceName", bitmap.BitmapSequenceId);
+            return View(bitmap);
         }
 
         // GET: Bitmap/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int? parentid)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var bitmaps = await _context.Bitmaps
+            var bitmap = await _context.Bitmaps
                 .Include(b => b.BitmapSequence)
                 .FirstOrDefaultAsync(m => m.BitmapId == id);
-            if (bitmaps == null)
+            if (bitmap == null)
             {
                 return NotFound();
             }
-
-            return View(bitmaps);
+            if (parentid.HasValue)
+            {
+                ViewData["ParentId"] = parentid.Value;
+            }
+            return View(bitmap);
         }
 
         // POST: Bitmap/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int? parentid)
         {
-            var bitmaps = await _context.Bitmaps.FindAsync(id);
-            _context.Bitmaps.Remove(bitmaps);
+            var bitmapPixels = _context.BitmapPixels.Where(x => x.BitmapId == id);
+            _context.BitmapPixels.RemoveRange(bitmapPixels);
+            var bitmap = await _context.Bitmaps.FindAsync(id);
+            var bitmapSequenceId = bitmap.BitmapSequenceId;
+            var bitmapIndex = bitmap.BitmapIndex;
+            _context.Bitmaps.Remove(bitmap);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var bitmaps = _context.Bitmaps.Where(x => x.BitmapSequenceId == bitmapSequenceId && x.BitmapIndex > bitmapIndex);
+            foreach(var x in bitmaps)
+            {
+                x.BitmapIndex--;
+            }
+            await _context.SaveChangesAsync();
+            if (parentid.HasValue)
+            {
+                return RedirectToAction("Details", "BitmapSequence", new { id = parentid.Value });
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         private bool BitmapsExists(int id)

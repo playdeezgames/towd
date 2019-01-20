@@ -58,9 +58,9 @@
                 </a>
             </td>
             <td>
-                <a asp-controller="Bitmap" asp-action="Edit" asp-route-id="@item.BitmapId">Edit</a> |
-                <a asp-controller="Bitmap" asp-action="Details" asp-route-id="@item.BitmapId">Details</a> |
-                <a asp-controller="Bitmap" asp-action="Delete" asp-route-id="@item.BitmapId">Delete</a>
+                <a asp-controller="Bitmap" asp-action="Edit" asp-route-id="@item.BitmapId" asp-route-parentid="@item.BitmapSequenceId">Edit</a> |
+                <a asp-controller="Bitmap" asp-action="Details" asp-route-id="@item.BitmapId" asp-route-parentid="@item.BitmapSequenceId">Details</a> |
+                <a asp-controller="Bitmap" asp-action="Delete" asp-route-id="@item.BitmapId" asp-route-parentid="@item.BitmapSequenceId">Delete</a>
             </td>
         </tr>
         }

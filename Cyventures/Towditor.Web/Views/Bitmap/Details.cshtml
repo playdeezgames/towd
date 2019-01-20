@@ -46,5 +46,12 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.BitmapId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (ViewData.ContainsKey("ParentId"))
+    {
+    <a asp-action="Details" asp-controller="BitmapSequence" asp-route-id="@ViewData["ParentId"]">Back to Bitmap Sequence</a>
+    }
+    else
+    {
+        <a asp-action="Index">Back to List</a>
+    }
 </div>

@@ -31,13 +31,6 @@ namespace Towditor.Web.Controllers
             }
             scale = scale ?? 1;
 
-            //var bitmapSequences = await _context.BitmapSequences.Include("Bitmaps")
-            //    .FirstOrDefaultAsync(m => m.BitmapSequenceId == id);
-            //if (bitmapSequences == null)
-            //{
-            //    return NotFound();
-            //}
-
             var bitmap = await _context.Bitmaps.Include("BitmapSequence").Include("BitmapPixels").SingleAsync(x => x.BitmapId == id);
 
             Image img = new Bitmap(scale.Value * bitmap.BitmapWidth, scale.Value * bitmap.BitmapHeight);
@@ -64,6 +57,38 @@ namespace Towditor.Web.Controllers
 
             return new FileStreamResult(ms, "image/png");
 
+        }
+
+        public async Task<IActionResult> Edit(int id, int color = 0)
+        {
+            var bitmap = await _context.Bitmaps.Include("BitmapSequence").Include("BitmapPixels").SingleAsync(x => x.BitmapId == id);
+
+            return View(new Models.MetaModel<int, EFModel.Bitmaps>
+            {
+                Meta = color,
+                Payload = bitmap
+            });
+        }
+        public async Task<ActionResult> SetBitmapPixel(int id, int x, int y, int color)
+        {
+                var bitmapPixel = await _context.BitmapPixels.Where(bp => bp.BitmapId == id && bp.X == x && bp.Y == y).SingleOrDefaultAsync();
+                if (bitmapPixel != null)
+                {
+                    bitmapPixel.ColorId = color;
+                }
+                else
+                {
+                    bitmapPixel = new EFModel.BitmapPixels()
+                    {
+                        BitmapId = id,
+                        X = x,
+                        Y = y,
+                        ColorId = color
+                    };
+                    _context.BitmapPixels.Add(bitmapPixel);
+                }
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Edit", new { id, color });
         }
 
     }

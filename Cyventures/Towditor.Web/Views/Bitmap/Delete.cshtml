@@ -37,9 +37,16 @@
         </dd>
     </dl>
     
-    <form asp-action="Delete">
+    <form asp-action="Delete" asp-route-parentid="@ViewData["ParentId"]">
         <input type="hidden" asp-for="BitmapId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        @if (ViewData.ContainsKey("ParentId"))
+        {
+            <a asp-action="Details" asp-controller="BitmapSequence" asp-route-id="@ViewData["ParentId"]">Back to Bitmap Sequence</a>
+        }
+        else
+        {
+            <a asp-action="Index">Back to List</a>
+        }
     </form>
 </div>

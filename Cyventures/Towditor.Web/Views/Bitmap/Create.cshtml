@@ -10,31 +10,38 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="BitmapWidth" class="control-label"></label>
-                <input asp-for="BitmapWidth" class="form-control" />
-                <span asp-validation-for="BitmapWidth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BitmapHeight" class="control-label"></label>
-                <input asp-for="BitmapHeight" class="form-control" />
-                <span asp-validation-for="BitmapHeight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BitmapSequenceId" class="control-label"></label>
-                <select asp-for="BitmapSequenceId" class ="form-control" asp-items="ViewBag.BitmapSequenceId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
+        <form asp-action="Create" asp-route-parentid="@ViewData["ParentId"]">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="BitmapWidth" class="control-label"></label>
+                        <input asp-for="BitmapWidth" class="form-control" />
+                        <span asp-validation-for="BitmapWidth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BitmapHeight" class="control-label"></label>
+                        <input asp-for="BitmapHeight" class="form-control" />
+                        <span asp-validation-for="BitmapHeight" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BitmapSequenceId" class="control-label"></label>
+                        <select asp-for="BitmapSequenceId" class="form-control" asp-items="ViewBag.BitmapSequenceId"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
+        </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @if (ViewData.ContainsKey("ParentId"))
+    {
+        <a asp-action="Details" asp-controller="BitmapSequence" asp-route-id="@ViewData["ParentId"]">Back to Bitmap Sequence</a>
+    }
+    else
+    {
+        <a asp-action="Index">Back to List</a>
+    }
 </div>
 
 @section Scripts {
