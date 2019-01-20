@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Towditor.Web.EFModel.Glyphs>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GlyphCharacter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlyphWidth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Font)
+            </th>
+            <th>Glyph Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlyphCharacter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlyphWidth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Font.FontName)
+            </td>
+            <td>
+                <a asp-controller="Glyph" asp-action="Edit" asp-route-id="@item.GlyphId">
+                    <img src="@Url.Action("Render","GlyphImage",new { id=item.GlyphId, scale=8 })" />
+                </a>
+
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GlyphId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.GlyphId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.GlyphId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@model Towditor.Web.EFModel.Glyphs
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Glyphs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GlyphCharacter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GlyphCharacter)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GlyphWidth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GlyphWidth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Font)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Font.FontName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.GlyphId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

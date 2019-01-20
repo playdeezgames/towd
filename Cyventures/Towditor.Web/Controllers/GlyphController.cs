@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,23 +9,23 @@ using Towditor.Web.EFModel;
 
 namespace Towditor.Web.Controllers
 {
-    [Authorize]
-    public class FontController : Controller
+    public class GlyphController : Controller
     {
         private readonly TOWDContext _context;
 
-        public FontController(TOWDContext context)
+        public GlyphController(TOWDContext context)
         {
             _context = context;
         }
 
-        // GET: Font
+        // GET: Glyph
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Fonts.ToListAsync());
+            var ctx = _context.Glyphs.Include(g => g.Font).OrderBy(x=>x.Font.FontName).ThenBy(x=>x.GlyphCharacter);
+            return View(await ctx.ToListAsync());
         }
 
-        // GET: Font/Details/5
+        // GET: Glyph/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,39 +33,42 @@ namespace Towditor.Web.Controllers
                 return NotFound();
             }
 
-            var font = await _context.Fonts
-                .FirstOrDefaultAsync(m => m.FontId == id);
-            if (font == null)
+            var glyphs = await _context.Glyphs
+                .Include(g => g.Font)
+                .FirstOrDefaultAsync(m => m.GlyphId == id);
+            if (glyphs == null)
             {
                 return NotFound();
             }
 
-            return View(font);
+            return View(glyphs);
         }
 
-        // GET: Font/Create
+        // GET: Glyph/Create
         public IActionResult Create()
         {
+            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName");
             return View();
         }
 
-        // POST: Font/Create
+        // POST: Glyph/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FontId,FontName,FontHeight")] Fonts font)
+        public async Task<IActionResult> Create([Bind("GlyphId,GlyphCharacter,FontId,GlyphWidth")] Glyphs glyphs)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(font);
+                _context.Add(glyphs);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(font);
+            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName", glyphs.FontId);
+            return View(glyphs);
         }
 
-        // GET: Font/Edit/5
+        // GET: Glyph/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +76,23 @@ namespace Towditor.Web.Controllers
                 return NotFound();
             }
 
-            var font = await _context.Fonts.FindAsync(id);
-            if (font == null)
+            var glyphs = await _context.Glyphs.FindAsync(id);
+            if (glyphs == null)
             {
                 return NotFound();
             }
-            return View(font);
+            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName", glyphs.FontId);
+            return View(glyphs);
         }
 
-        // POST: Font/Edit/5
+        // POST: Glyph/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FontId,FontName,FontHeight")] Fonts font)
+        public async Task<IActionResult> Edit(int id, [Bind("GlyphId,GlyphCharacter,FontId,GlyphWidth")] Glyphs glyphs)
         {
-            if (id != font.FontId)
+            if (id != glyphs.GlyphId)
             {
                 return NotFound();
             }
@@ -98,12 +101,12 @@ namespace Towditor.Web.Controllers
             {
                 try
                 {
-                    _context.Update(font);
+                    _context.Update(glyphs);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FontsExists(font.FontId))
+                    if (!GlyphsExists(glyphs.GlyphId))
                     {
                         return NotFound();
                     }
@@ -114,10 +117,11 @@ namespace Towditor.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(font);
+            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName", glyphs.FontId);
+            return View(glyphs);
         }
 
-        // GET: Font/Delete/5
+        // GET: Glyph/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +129,31 @@ namespace Towditor.Web.Controllers
                 return NotFound();
             }
 
-            var font = await _context.Fonts
-                .FirstOrDefaultAsync(m => m.FontId == id);
-            if (font == null)
+            var glyphs = await _context.Glyphs
+                .Include(g => g.Font)
+                .FirstOrDefaultAsync(m => m.GlyphId == id);
+            if (glyphs == null)
             {
                 return NotFound();
             }
 
-            return View(font);
+            return View(glyphs);
         }
 
-        // POST: Font/Delete/5
+        // POST: Glyph/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var font = await _context.Fonts.FindAsync(id);
-            _context.Fonts.Remove(font);
+            var glyphs = await _context.Glyphs.FindAsync(id);
+            _context.Glyphs.Remove(glyphs);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FontsExists(int id)
+        private bool GlyphsExists(int id)
         {
-            return _context.Fonts.Any(e => e.FontId == id);
+            return _context.Glyphs.Any(e => e.GlyphId == id);
         }
     }
 }

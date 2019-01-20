@@ -66,7 +66,6 @@
     <Build Include="dbo\Tables\GlyphPixels.sql" />
     <Build Include="dbo\Tables\Bitmaps.sql" />
     <Build Include="dbo\Tables\BitmapPixels.sql" />
-    <Build Include="dbo\Colors.sql" />
     <Build Include="dbo\Tables\BitmapSequences.sql" />
     <Build Include="dbo\Tables\Worlds.sql" />
     <Build Include="dbo\Tables\AspNetUserTokens.sql" />
@@ -77,6 +76,7 @@
     <Build Include="dbo\Tables\AspNetRoles.sql" />
     <Build Include="dbo\Tables\AspNetRoleClaims.sql" />
     <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
+    <Build Include="dbo\Tables\Colors.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TowdDatabase.refactorlog" />
