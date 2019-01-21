@@ -28,3 +28,46 @@
     <a asp-action="Edit" asp-route-id="@Model.FontId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Glyph Character
+            </th>
+            <th>
+                Glyph Width
+            </th>
+            <th>Glyph Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Glyphs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GlyphCharacter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GlyphWidth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Font.FontName)
+                </td>
+                <td>
+                    <a asp-controller="Glyph" asp-action="Edit" asp-route-id="@item.GlyphId" asp-route-parentid="@Model.FontId">
+                        <img src="@Url.Action("Render","GlyphImage",new { id=item.GlyphId, scale=8 })" />
+                    </a>
+
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.GlyphId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.GlyphId">Details</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

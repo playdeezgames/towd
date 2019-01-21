@@ -60,6 +60,15 @@ namespace Towditor.Web.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(font);
+                for (int index = 32; index < 128; ++index)
+                {
+                    _context.Add(new EFModel.Glyphs()
+                    {
+                        Font=font,
+                        GlyphWidth=1,
+                        GlyphCharacter=index
+                    });
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -141,7 +150,12 @@ namespace Towditor.Web.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var font = await _context.Fonts.FindAsync(id);
+            var glyphPixels = _context.GlyphPixels.Include("Glyph").Where(x => x.Glyph.FontId == id);
+            var glyphs = _context.Glyphs.Where(x => x.FontId == id);
+            _context.GlyphPixels.RemoveRange(glyphPixels);
+            _context.Glyphs.RemoveRange(glyphs);
             _context.Fonts.Remove(font);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

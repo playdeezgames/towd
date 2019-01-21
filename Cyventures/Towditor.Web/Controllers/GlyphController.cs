@@ -26,7 +26,7 @@ namespace Towditor.Web.Controllers
         }
 
         // GET: Glyph/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int? parentid)
         {
             if (id == null)
             {
@@ -44,32 +44,8 @@ namespace Towditor.Web.Controllers
             return View(glyphs);
         }
 
-        // GET: Glyph/Create
-        public IActionResult Create()
-        {
-            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName");
-            return View();
-        }
-
-        // POST: Glyph/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GlyphId,GlyphCharacter,FontId,GlyphWidth")] Glyphs glyphs)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(glyphs);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName", glyphs.FontId);
-            return View(glyphs);
-        }
-
         // GET: Glyph/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int? parentid)
         {
             if (id == null)
             {
@@ -90,9 +66,9 @@ namespace Towditor.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GlyphId,GlyphCharacter,FontId,GlyphWidth")] Glyphs glyphs)
+        public async Task<IActionResult> Edit(int id, [Bind("GlyphId,GlyphCharacter,FontId,GlyphWidth")] Glyphs glyph, int? parentid)
         {
-            if (id != glyphs.GlyphId)
+            if (id != glyph.GlyphId)
             {
                 return NotFound();
             }
@@ -101,12 +77,12 @@ namespace Towditor.Web.Controllers
             {
                 try
                 {
-                    _context.Update(glyphs);
+                    _context.Update(glyph);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GlyphsExists(glyphs.GlyphId))
+                    if (!GlyphsExists(glyph.GlyphId))
                     {
                         return NotFound();
                     }
@@ -117,38 +93,8 @@ namespace Towditor.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName", glyphs.FontId);
-            return View(glyphs);
-        }
-
-        // GET: Glyph/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var glyphs = await _context.Glyphs
-                .Include(g => g.Font)
-                .FirstOrDefaultAsync(m => m.GlyphId == id);
-            if (glyphs == null)
-            {
-                return NotFound();
-            }
-
-            return View(glyphs);
-        }
-
-        // POST: Glyph/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var glyphs = await _context.Glyphs.FindAsync(id);
-            _context.Glyphs.Remove(glyphs);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName", glyph.FontId);
+            return View(glyph);
         }
 
         private bool GlyphsExists(int id)
