@@ -21,7 +21,7 @@ namespace Towditor.Web.Controllers
         // GET: Terrain
         public async Task<IActionResult> Index()
         {
-            var tOWDContext = _context.Terrains.Include(t => t.Bitmap);
+            var tOWDContext = _context.Terrains.Include("Bitmap.BitmapSequence");
             return View(await tOWDContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace Towditor.Web.Controllers
             }
 
             var terrains = await _context.Terrains
-                .Include(t => t.Bitmap)
+                .Include("Bitmap.BitmapSequence")
                 .FirstOrDefaultAsync(m => m.TerrainId == id);
             if (terrains == null)
             {
@@ -47,7 +47,7 @@ namespace Towditor.Web.Controllers
         // GET: Terrain/Create
         public IActionResult Create()
         {
-            ViewData["BitmapId"] = new SelectList(_context.Bitmaps, "BitmapId", "BitmapId");
+            ViewData["BitmapId"] = new SelectList(_context.Bitmaps.Include("BitmapSequence").Select(x=>new { BitmapId=x.BitmapId, BitmapName=$"{x.BitmapSequence.BitmapSequenceName}#{x.BitmapIndex}" }), "BitmapId", "BitmapName");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace Towditor.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BitmapId"] = new SelectList(_context.Bitmaps, "BitmapId", "BitmapId", terrains.BitmapId);
+            ViewData["BitmapId"] = new SelectList(_context.Bitmaps.Include("BitmapSequence").Select(x => new { BitmapId = x.BitmapId, BitmapName = $"{x.BitmapSequence.BitmapSequenceName}#{x.BitmapIndex}" }), "BitmapId", "BitmapName");
             return View(terrains);
         }
 
@@ -81,7 +81,7 @@ namespace Towditor.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["BitmapId"] = new SelectList(_context.Bitmaps, "BitmapId", "BitmapId", terrains.BitmapId);
+            ViewData["BitmapId"] = new SelectList(_context.Bitmaps.Include("BitmapSequence").Select(x => new { BitmapId = x.BitmapId, BitmapName = $"{x.BitmapSequence.BitmapSequenceName}#{x.BitmapIndex}" }), "BitmapId", "BitmapName");
             return View(terrains);
         }
 
@@ -117,7 +117,7 @@ namespace Towditor.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BitmapId"] = new SelectList(_context.Bitmaps, "BitmapId", "BitmapId", terrains.BitmapId);
+            ViewData["BitmapId"] = new SelectList(_context.Bitmaps.Include("BitmapSequence").Select(x => new { BitmapId = x.BitmapId, BitmapName = $"{x.BitmapSequence.BitmapSequenceName}#{x.BitmapIndex}" }), "BitmapId", "BitmapName");
             return View(terrains);
         }
 

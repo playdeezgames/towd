@@ -18,6 +18,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Bitmap)
             </th>
+            <th>Bitmap Image</th>
             <th></th>
         </tr>
     </thead>
@@ -28,7 +29,10 @@
                 @Html.DisplayFor(modelItem => item.TerrainName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Bitmap.BitmapId)
+                @item.Bitmap.BitmapSequence.BitmapSequenceName<span>#</span>@item.Bitmap.BitmapIndex
+            </td>
+            <td>
+                <img src="@Url.Action("Render","BitmapImage",new { id=item.Bitmap.BitmapId, scale=8 })" />
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TerrainId">Edit</a> |
