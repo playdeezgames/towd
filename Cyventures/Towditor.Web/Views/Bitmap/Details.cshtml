@@ -45,13 +45,14 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.BitmapId">Edit</a> |
     @if (ViewData.ContainsKey("ParentId"))
     {
-    <a asp-action="Details" asp-controller="BitmapSequence" asp-route-id="@ViewData["ParentId"]">Back to Bitmap Sequence</a>
+        <a asp-action="Edit" asp-route-id="@Model.BitmapId" asp-route-parentid="@ViewData["ParentId"]">(edit)</a>
+        <a asp-action="Details" asp-controller="BitmapSequence" asp-route-id="@ViewData["ParentId"]">(bitmap sequence)</a>
     }
     else
     {
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Edit" asp-route-id="@Model.BitmapId">(edit)</a>
+        <a asp-action="Index">(list)</a>
     }
 </div>

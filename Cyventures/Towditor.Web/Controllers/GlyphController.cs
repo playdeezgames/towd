@@ -33,15 +33,19 @@ namespace Towditor.Web.Controllers
                 return NotFound();
             }
 
-            var glyphs = await _context.Glyphs
+            var glyph = await _context.Glyphs
                 .Include(g => g.Font)
                 .FirstOrDefaultAsync(m => m.GlyphId == id);
-            if (glyphs == null)
+            if (glyph == null)
             {
                 return NotFound();
             }
+            if(parentid.HasValue)
+            {
+                ViewData["ParentId"] = parentid.Value;
+            }
 
-            return View(glyphs);
+            return View(glyph);
         }
 
         // GET: Glyph/Edit/5
@@ -57,7 +61,12 @@ namespace Towditor.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName", glyphs.FontId);
+            if (parentid.HasValue)
+            {
+                ViewData["ParentId"] = parentid.Value;
+            }
+
+            ViewData["FontId"] = new SelectList(_context.Fonts.Where(x => x.FontId == glyphs.FontId), "FontId", "FontName", glyphs.FontId);
             return View(glyphs);
         }
 
@@ -93,7 +102,11 @@ namespace Towditor.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FontId"] = new SelectList(_context.Fonts, "FontId", "FontName", glyph.FontId);
+            if (parentid.HasValue)
+            {
+                ViewData["ParentId"] = parentid.Value;
+            }
+            ViewData["FontId"] = new SelectList(_context.Fonts.Where(x=>x.FontId==glyph.FontId), "FontId", "FontName", glyph.FontId);
             return View(glyph);
         }
 

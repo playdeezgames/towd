@@ -8,6 +8,7 @@ namespace Towditor.Web.EFModel
         public Bitmaps()
         {
             BitmapPixels = new HashSet<BitmapPixels>();
+            Terrains = new HashSet<Terrains>();
         }
 
         public int BitmapId { get; set; }
@@ -18,5 +19,6 @@ namespace Towditor.Web.EFModel
 
         public virtual BitmapSequences BitmapSequence { get; set; }
         public virtual ICollection<BitmapPixels> BitmapPixels { get; set; }
+        public virtual ICollection<Terrains> Terrains { get; set; }
     }
 }

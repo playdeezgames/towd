@@ -40,12 +40,14 @@
             <th>
                 Glyph Width
             </th>
-            <th>Glyph Image</th>
+            <th>
+                Glyph Image
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Glyphs)
+        @foreach (var item in Model.Glyphs.OrderBy(x=>x.GlyphCharacter))
         {
             <tr>
                 <td>
@@ -55,17 +57,14 @@
                     @Html.DisplayFor(modelItem => item.GlyphWidth)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Font.FontName)
-                </td>
-                <td>
-                    <a asp-controller="Glyph" asp-action="Edit" asp-route-id="@item.GlyphId" asp-route-parentid="@Model.FontId">
+                    <a asp-controller="GlyphImage" asp-action="Edit" asp-route-id="@item.GlyphId" asp-route-parentid="@Model.FontId">
                         <img src="@Url.Action("Render","GlyphImage",new { id=item.GlyphId, scale=8 })" />
                     </a>
 
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.GlyphId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.GlyphId">Details</a> |
+                    <a asp-action="Edit" asp-controller="Glyph" asp-route-id="@item.GlyphId" asp-route-parentid="@Model.FontId">Edit</a> |
+                    <a asp-action="Details" asp-controller="Glyph" asp-route-id="@item.GlyphId" asp-route-parentid="@Model.FontId">Details</a>
                 </td>
             </tr>
         }

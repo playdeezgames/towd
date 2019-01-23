@@ -29,6 +29,8 @@ namespace Towditor.Web.EFModel
         public virtual DbSet<Fonts> Fonts { get; set; }
         public virtual DbSet<GlyphPixels> GlyphPixels { get; set; }
         public virtual DbSet<Glyphs> Glyphs { get; set; }
+        public virtual DbSet<Terrains> Terrains { get; set; }
+        public virtual DbSet<WorldTerrains> WorldTerrains { get; set; }
         public virtual DbSet<Worlds> Worlds { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -243,6 +245,46 @@ namespace Towditor.Web.EFModel
                     .HasForeignKey(d => d.FontId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Glyphs_Fonts");
+            });
+
+            modelBuilder.Entity<Terrains>(entity =>
+            {
+                entity.HasKey(e => e.TerrainId);
+
+                entity.HasIndex(e => e.TerrainName)
+                    .HasName("AK_Terrains_TerrainName")
+                    .IsUnique();
+
+                entity.Property(e => e.TerrainName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.Bitmap)
+                    .WithMany(p => p.Terrains)
+                    .HasForeignKey(d => d.BitmapId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Terrains_Bitmaps");
+            });
+
+            modelBuilder.Entity<WorldTerrains>(entity =>
+            {
+                entity.HasKey(e => e.WorldTerrainId);
+
+                entity.HasIndex(e => new { e.WorldId, e.TerrainId })
+                    .HasName("AK_WorldTerrains_WorldId_TerrainId")
+                    .IsUnique();
+
+                entity.HasOne(d => d.Terrain)
+                    .WithMany(p => p.WorldTerrains)
+                    .HasForeignKey(d => d.TerrainId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_WorldTerrains_Terrains");
+
+                entity.HasOne(d => d.World)
+                    .WithMany(p => p.WorldTerrains)
+                    .HasForeignKey(d => d.WorldId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_WorldTerrains_Worlds");
             });
 
             modelBuilder.Entity<Worlds>(entity =>

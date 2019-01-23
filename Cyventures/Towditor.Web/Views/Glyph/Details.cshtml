@@ -28,9 +28,25 @@
         <dd>
             @Html.DisplayFor(model => model.Font.FontName)
         </dd>
+        <dt>
+            Glyph Image
+        </dt>
+        <dd>
+            <a asp-controller="GlyphImage" asp-action="Edit" asp-route-id="@Model.GlyphId">
+                <img src="@Url.Action("Render","GlyphImage",new { id=Model.GlyphId, scale=16 })" />
+            </a>
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.GlyphId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (ViewData.ContainsKey("ParentId"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.GlyphId" asp-route-parentid="@ViewData["ParentId"]">(edit)</a>
+        <a asp-action="Details" asp-controller="Font" asp-route-id="@ViewData["ParentId"]">(font)</a>
+    }
+    else
+    {
+        <a asp-action="Edit" asp-route-id="@Model.GlyphId">(edit)</a>
+        <a asp-action="Index">(list)</a>
+    }
 </div>

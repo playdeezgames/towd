@@ -91,4 +91,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="WorldId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="ff40f8cc-4b55-4d20-974a-5ab987000b79" ChangeDateTime="01/22/2019 11:05:11">
+    <Property Name="ElementName" Value="[dbo].[Terrains].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Terrains]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TerrainId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="97d595d1-5932-45b7-922f-bfbb153518cc" ChangeDateTime="01/22/2019 11:08:26">
+    <Property Name="ElementName" Value="[dbo].[WorldTerrains].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WorldTerrains]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WorldTerrainId" />
+  </Operation>
 </Operations>

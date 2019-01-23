@@ -35,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.Font.FontName)
             </td>
             <td>
-                <a asp-controller="Glyph" asp-action="Edit" asp-route-id="@item.GlyphId">
+                <a asp-controller="GlyphImage" asp-action="Edit" asp-route-id="@item.GlyphId">
                     <img src="@Url.Action("Render","GlyphImage",new { id=item.GlyphId, scale=8 })" />
                 </a>
 

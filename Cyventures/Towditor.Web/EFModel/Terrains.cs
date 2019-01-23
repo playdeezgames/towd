@@ -3,16 +3,18 @@ using System.Collections.Generic;
 
 namespace Towditor.Web.EFModel
 {
-    public partial class Worlds
+    public partial class Terrains
     {
-        public Worlds()
+        public Terrains()
         {
             WorldTerrains = new HashSet<WorldTerrains>();
         }
 
-        public int WorldId { get; set; }
-        public string WorldName { get; set; }
+        public int TerrainId { get; set; }
+        public int BitmapId { get; set; }
+        public string TerrainName { get; set; }
 
+        public virtual Bitmaps Bitmap { get; set; }
         public virtual ICollection<WorldTerrains> WorldTerrains { get; set; }
     }
 }

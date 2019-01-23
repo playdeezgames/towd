@@ -15,7 +15,7 @@
             <input type="hidden" asp-for="GlyphId" />
             <div class="form-group">
                 <label asp-for="GlyphCharacter" class="control-label"></label>
-                <input asp-for="GlyphCharacter" class="form-control" />
+                <input asp-for="GlyphCharacter" class="form-control" readonly="readonly" />
                 <span asp-validation-for="GlyphCharacter" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -36,7 +36,14 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @if (ViewData.ContainsKey("ParentId"))
+    {
+        <a asp-action="Details" asp-controller="Font" asp-route-id="@ViewData["ParentId"]">(font)</a>
+    }
+    else
+    {
+        <a asp-action="Index">(list)</a>
+    }
 </div>
 
 @section Scripts {
