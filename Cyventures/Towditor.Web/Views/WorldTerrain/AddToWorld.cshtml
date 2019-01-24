@@ -1,0 +1,32 @@
+﻿@model Towditor.Web.EFModel.WorldTerrains
+
+@{
+    ViewData["Title"] = "Add To World";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddToWorld">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WorldId" class="control-label"></label>
+                <select asp-for="WorldId" class ="form-control" asp-items="ViewBag.WorldId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TerrainId" class="control-label"></label>
+                <select asp-for="TerrainId" class ="form-control" asp-items="ViewBag.TerrainId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add to World" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="WorldIndex" asp-route-worldid="@Model.WorldId">Back to World</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

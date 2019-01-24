@@ -35,6 +35,7 @@ namespace Towditor.Web.Controllers
 
             var terrains = await _context.Terrains
                 .Include("Bitmap.BitmapSequence")
+                .Include("TileRole")
                 .FirstOrDefaultAsync(m => m.TerrainId == id);
             if (terrains == null)
             {
@@ -48,6 +49,7 @@ namespace Towditor.Web.Controllers
         public IActionResult Create()
         {
             ViewData["BitmapId"] = new SelectList(_context.Bitmaps.Include("BitmapSequence").Select(x=>new { BitmapId=x.BitmapId, BitmapName=$"{x.BitmapSequence.BitmapSequenceName}#{x.BitmapIndex}" }), "BitmapId", "BitmapName");
+            ViewData["TileRoleId"] = new SelectList(_context.TileRoles, "TileRoleId", "TileRoleName");
             return View();
         }
 
@@ -65,6 +67,7 @@ namespace Towditor.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BitmapId"] = new SelectList(_context.Bitmaps.Include("BitmapSequence").Select(x => new { BitmapId = x.BitmapId, BitmapName = $"{x.BitmapSequence.BitmapSequenceName}#{x.BitmapIndex}" }), "BitmapId", "BitmapName");
+            ViewData["TileRoleId"] = new SelectList(_context.TileRoles, "TileRoleId", "TileRoleName");
             return View(terrains);
         }
 
@@ -82,6 +85,7 @@ namespace Towditor.Web.Controllers
                 return NotFound();
             }
             ViewData["BitmapId"] = new SelectList(_context.Bitmaps.Include("BitmapSequence").Select(x => new { BitmapId = x.BitmapId, BitmapName = $"{x.BitmapSequence.BitmapSequenceName}#{x.BitmapIndex}" }), "BitmapId", "BitmapName");
+            ViewData["TileRoleId"] = new SelectList(_context.TileRoles, "TileRoleId", "TileRoleName");
             return View(terrains);
         }
 
@@ -118,6 +122,7 @@ namespace Towditor.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BitmapId"] = new SelectList(_context.Bitmaps.Include("BitmapSequence").Select(x => new { BitmapId = x.BitmapId, BitmapName = $"{x.BitmapSequence.BitmapSequenceName}#{x.BitmapIndex}" }), "BitmapId", "BitmapName");
+            ViewData["TileRoleId"] = new SelectList(_context.TileRoles, "TileRoleId", "TileRoleName");
             return View(terrains);
         }
 

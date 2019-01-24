@@ -13,8 +13,10 @@ namespace Towditor.Web.EFModel
         public int TerrainId { get; set; }
         public int BitmapId { get; set; }
         public string TerrainName { get; set; }
+        public int TileRoleId { get; set; }
 
         public virtual Bitmaps Bitmap { get; set; }
+        public virtual TileRoles TileRole { get; set; }
         public virtual ICollection<WorldTerrains> WorldTerrains { get; set; }
     }
 }

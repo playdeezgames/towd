@@ -78,3 +78,4 @@ namespace Towditor.Web
         }
     }
 }
+//Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=TOWD;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir EFModel -F

@@ -32,7 +32,7 @@
                 @item.Bitmap.BitmapSequence.BitmapSequenceName<span>#</span>@item.Bitmap.BitmapIndex
             </td>
             <td>
-                <img src="@Url.Action("Render","BitmapImage",new { id=item.Bitmap.BitmapId, scale=8 })" />
+                <img style="border:1px solid black; padding: 1px;" src="@Url.Action("Render","BitmapImage",new { id=item.Bitmap.BitmapId, scale=8 })" />
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TerrainId">Edit</a> |

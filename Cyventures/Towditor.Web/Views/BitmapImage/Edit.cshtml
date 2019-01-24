@@ -4,8 +4,8 @@
     var pixelImages = new string[]
     {
 Url.Content("~/images/White.png"),
-Url.Content("~/images/DarkGray.png"),
 Url.Content("~/images/LightGray.png"),
+Url.Content("~/images/DarkGray.png"),
 Url.Content("~/images/Black.png")
     };
 }
@@ -17,7 +17,7 @@ Url.Content("~/images/Black.png")
     for (int x = 0; x < Model.Payload.BitmapWidth; ++x)
     {
         var bitmapPixel = Model.Payload.BitmapPixels.SingleOrDefault(gp => gp.X == x && gp.Y == y);
-        <a asp-action="SetBitmapPixel" asp-route-id="@Model.Payload.BitmapId" asp-route-x="@x" asp-route-y="@y" asp-route-color="@Model.Meta"><img src="@pixelImages[bitmapPixel?.ColorId??0]" /></a>
+        <a asp-action="SetBitmapPixel" asp-route-id="@Model.Payload.BitmapId" asp-route-x="@x" asp-route-y="@y" asp-route-color="@Model.Meta"><img style="border:1px solid black; padding:1px" src="@pixelImages[bitmapPixel?.ColorId??0]" /></a>
     }
     <br />
 }
@@ -28,7 +28,7 @@ Url.Content("~/images/Black.png")
     {
         <span>-></span>
     }
-    <a asp-action="Edit" asp-route-id="@Model.Payload.BitmapId" asp-route-color="@color"><img src="@pixelImages[color]" /></a>
+    <a asp-action="Edit" asp-route-id="@Model.Payload.BitmapId" asp-route-color="@color"><img style="border:1px solid black; padding:1px" src="@pixelImages[color]" /></a>
     if (color == Model.Meta)
     {
         <span>&lt;-</span>

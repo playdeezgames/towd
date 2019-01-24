@@ -30,6 +30,7 @@ namespace Towditor.Web.EFModel
         public virtual DbSet<GlyphPixels> GlyphPixels { get; set; }
         public virtual DbSet<Glyphs> Glyphs { get; set; }
         public virtual DbSet<Terrains> Terrains { get; set; }
+        public virtual DbSet<TileRoles> TileRoles { get; set; }
         public virtual DbSet<WorldTerrains> WorldTerrains { get; set; }
         public virtual DbSet<Worlds> Worlds { get; set; }
 
@@ -264,6 +265,21 @@ namespace Towditor.Web.EFModel
                     .HasForeignKey(d => d.BitmapId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Terrains_Bitmaps");
+
+                entity.HasOne(d => d.TileRole)
+                    .WithMany(p => p.Terrains)
+                    .HasForeignKey(d => d.TileRoleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Terrains_TileRoles");
+            });
+
+            modelBuilder.Entity<TileRoles>(entity =>
+            {
+                entity.HasKey(e => e.TileRoleId);
+
+                entity.Property(e => e.TileRoleId).ValueGeneratedNever();
+
+                entity.Property(e => e.TileRoleName).HasMaxLength(50);
             });
 
             modelBuilder.Entity<WorldTerrains>(entity =>

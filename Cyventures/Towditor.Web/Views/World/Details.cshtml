@@ -22,3 +22,8 @@
     <a asp-action="Edit" asp-route-id="@Model.WorldId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<ul class="list-group">
+    <li class="list-group-item">
+        <a asp-controller="WorldTerrain" asp-action="WorldIndex" asp-route-worldid="@Model.WorldId">Terrains</a>
+    </li>
+</ul>
