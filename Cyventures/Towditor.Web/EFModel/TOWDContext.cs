@@ -26,11 +26,13 @@ namespace Towditor.Web.EFModel
         public virtual DbSet<BitmapSequences> BitmapSequences { get; set; }
         public virtual DbSet<Bitmaps> Bitmaps { get; set; }
         public virtual DbSet<Colors> Colors { get; set; }
+        public virtual DbSet<Creatures> Creatures { get; set; }
         public virtual DbSet<Fonts> Fonts { get; set; }
         public virtual DbSet<GlyphPixels> GlyphPixels { get; set; }
         public virtual DbSet<Glyphs> Glyphs { get; set; }
         public virtual DbSet<Terrains> Terrains { get; set; }
         public virtual DbSet<TileRoles> TileRoles { get; set; }
+        public virtual DbSet<WorldCreatures> WorldCreatures { get; set; }
         public virtual DbSet<WorldTerrains> WorldTerrains { get; set; }
         public virtual DbSet<Worlds> Worlds { get; set; }
 
@@ -205,6 +207,25 @@ namespace Towditor.Web.EFModel
                 entity.Property(e => e.ColorId).ValueGeneratedNever();
             });
 
+            modelBuilder.Entity<Creatures>(entity =>
+            {
+                entity.HasKey(e => e.CreatureId);
+
+                entity.HasIndex(e => e.CreatureName)
+                    .HasName("AK_Creatures_CreatureName")
+                    .IsUnique();
+
+                entity.Property(e => e.CreatureName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.Bitmap)
+                    .WithMany(p => p.Creatures)
+                    .HasForeignKey(d => d.BitmapId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Creatures_Bitmaps");
+            });
+
             modelBuilder.Entity<Fonts>(entity =>
             {
                 entity.HasKey(e => e.FontId);
@@ -280,6 +301,27 @@ namespace Towditor.Web.EFModel
                 entity.Property(e => e.TileRoleId).ValueGeneratedNever();
 
                 entity.Property(e => e.TileRoleName).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<WorldCreatures>(entity =>
+            {
+                entity.HasKey(e => e.WorldCreatureId);
+
+                entity.HasIndex(e => new { e.WorldId, e.CreatureId })
+                    .HasName("AK_WorldCreatures_WorldId_CreatureId")
+                    .IsUnique();
+
+                entity.HasOne(d => d.Creature)
+                    .WithMany(p => p.WorldCreatures)
+                    .HasForeignKey(d => d.CreatureId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_WorldCreatures_Creatures");
+
+                entity.HasOne(d => d.World)
+                    .WithMany(p => p.WorldCreatures)
+                    .HasForeignKey(d => d.WorldId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_WorldCreatures_Worlds");
             });
 
             modelBuilder.Entity<WorldTerrains>(entity =>

@@ -112,4 +112,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="TileRoleId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="27cc4c54-b45a-4a9a-b560-e68a9e61921a" ChangeDateTime="01/24/2019 11:15:41">
+    <Property Name="ElementName" Value="[dbo].[Creatures].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Creatures]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreatureId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b33e7024-286f-4f17-ba7c-61fcb71291f3" ChangeDateTime="01/24/2019 11:39:38">
+    <Property Name="ElementName" Value="[dbo].[WorldCreatures].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WorldCreatures]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WorldCreatureId" />
+  </Operation>
 </Operations>

@@ -1,0 +1,30 @@
+﻿@model Towditor.Web.EFModel.Creatures
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Creatures</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatureName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatureName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bitmap)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bitmap.BitmapId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CreatureId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
