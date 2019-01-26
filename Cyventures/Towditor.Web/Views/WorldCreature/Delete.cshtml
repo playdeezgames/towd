@@ -1,4 +1,4 @@
-﻿@model Towditor.Web.EFModel.Terrains
+﻿@model Towditor.Web.EFModel.WorldCreatures
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,25 +8,25 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Terrains</h4>
+    <h4>WorldCreatures</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TerrainName)
+            @Html.DisplayNameFor(model => model.Creature)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.TerrainName)
+            @Html.DisplayFor(model => model.Creature.CreatureName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Bitmap)
+            @Html.DisplayNameFor(model => model.World)
         </dt>
         <dd>
-            @Model.Bitmap.BitmapSequence.BitmapSequenceName<span>#</span>@Model.Bitmap.BitmapIndex
+            @Html.DisplayFor(model => model.World.WorldName)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="TerrainId" />
+        <input type="hidden" asp-for="WorldCreatureId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="Index">Back to List</a>
     </form>

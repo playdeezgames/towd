@@ -21,7 +21,13 @@
             @Html.DisplayNameFor(model => model.Bitmap)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Bitmap.BitmapId)
+            @Model.Bitmap.BitmapSequence.BitmapSequenceName<span>#</span>@Model.Bitmap.BitmapIndex
+        </dd>
+        <dt>
+            Bitmap Image
+        </dt>
+        <dd>
+            <img src="@Url.Action("Render","BitmapImage",new { id=Model.Bitmap.BitmapId, scale=8 })" />
         </dd>
     </dl>
     

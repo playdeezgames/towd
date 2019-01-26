@@ -21,7 +21,7 @@ namespace Towditor.Web.Controllers
         // GET: Creature
         public async Task<IActionResult> Index()
         {
-            var tOWDContext = _context.Creatures.Include(c => c.Bitmap);
+            var tOWDContext = _context.Creatures.Include("Bitmap.BitmapSequence");
             return View(await tOWDContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace Towditor.Web.Controllers
             }
 
             var creatures = await _context.Creatures
-                .Include(c => c.Bitmap)
+                .Include("Bitmap.BitmapSequence")
                 .FirstOrDefaultAsync(m => m.CreatureId == id);
             if (creatures == null)
             {
@@ -130,7 +130,7 @@ namespace Towditor.Web.Controllers
             }
 
             var creatures = await _context.Creatures
-                .Include(c => c.Bitmap)
+                .Include("Bitmap.BitmapSequence")
                 .FirstOrDefaultAsync(m => m.CreatureId == id);
             if (creatures == null)
             {

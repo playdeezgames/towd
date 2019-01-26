@@ -135,7 +135,7 @@ namespace Towditor.Web.Controllers
             }
 
             var terrains = await _context.Terrains
-                .Include(t => t.Bitmap)
+                .Include("Bitmap.BitmapSequence")
                 .FirstOrDefaultAsync(m => m.TerrainId == id);
             if (terrains == null)
             {
