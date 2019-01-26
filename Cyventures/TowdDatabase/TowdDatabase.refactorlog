@@ -126,4 +126,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="WorldCreatureId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="7cb6ec7a-f66d-4025-8c71-85be8626cc38" ChangeDateTime="01/26/2019 11:06:28">
+    <Property Name="ElementName" Value="[dbo].[Rooms].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Rooms]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RoomId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e03ae724-59f5-44d0-9cb6-571f3f210b69" ChangeDateTime="01/26/2019 11:20:35">
+    <Property Name="ElementName" Value="[dbo].[Tiles].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tiles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TileId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="59075ad2-d23f-455c-8fe5-7c23887a9a9c" ChangeDateTime="01/26/2019 11:24:04">
+    <Property Name="ElementName" Value="[dbo].[CreatureInstances].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CreatureInstances]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreatureInstanceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f6ee9e0a-e601-4bcd-9a83-1b4f4b931eb4" ChangeDateTime="01/26/2019 11:25:36">
+    <Property Name="ElementName" Value="[dbo].[TileRoleOverrides].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TileRoleOverrides]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TileRoleOverrideId" />
+  </Operation>
 </Operations>

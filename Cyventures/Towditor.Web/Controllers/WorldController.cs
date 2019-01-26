@@ -34,7 +34,9 @@ namespace Towditor.Web.Controllers
                 return NotFound();
             }
 
-            var worlds = await _context.Worlds
+            var worlds = await _context
+                .Worlds
+                .Include(w=>w.Rooms)
                 .FirstOrDefaultAsync(m => m.WorldId == id);
             if (worlds == null)
             {

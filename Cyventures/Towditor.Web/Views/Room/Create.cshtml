@@ -1,0 +1,49 @@
+﻿@model Towditor.Web.Models.RoomCreationModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Rooms</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="WorldId" />
+            <div class="form-group">
+                <label asp-for="RoomName" class="control-label"></label>
+                <input asp-for="RoomName" class="form-control" />
+                <span asp-validation-for="RoomName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Columns" class="control-label"></label>
+                <input asp-for="Columns" class="form-control" />
+                <span asp-validation-for="Columns" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rows" class="control-label"></label>
+                <input asp-for="Rows" class="form-control" />
+                <span asp-validation-for="Rows" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TerrainId" class="control-label"></label>
+                <select asp-for="TerrainId" class="form-control" asp-items="ViewBag.TerrainId"></select>
+                <span asp-validation-for="TerrainId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Details" asp-controller="World" asp-route-id="@Model.WorldId">Back to World</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

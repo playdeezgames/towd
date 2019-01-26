@@ -10,9 +10,11 @@ namespace Engine
     public class Room : Bitmap<Tile>
     {
         public string Caption { get; set; }
+
         public Room(int width, int height) : base(width, height)
         {
         }
+
         public TileRole GetTileRole(int column, int row, Dictionary<string, Terrain> terrains)
         {
             if(column<0 || column>=Width)

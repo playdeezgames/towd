@@ -78,10 +78,12 @@
     <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
     <Build Include="dbo\Tables\Colors.sql" />
     <Build Include="dbo\Tables\Terrains.sql" />
-    <Build Include="dbo\Tables\WorldTerrains.sql" />
     <Build Include="dbo\Tables\TileRoles.sql" />
     <Build Include="dbo\Tables\Creatures.sql" />
-    <Build Include="dbo\Tables\WorldCreatures.sql" />
+    <Build Include="dbo\Tables\Rooms.sql" />
+    <Build Include="dbo\Tables\Tiles.sql" />
+    <Build Include="dbo\Tables\CreatureInstances.sql" />
+    <Build Include="dbo\Tables\TileRoleOverrides.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TowdDatabase.refactorlog" />

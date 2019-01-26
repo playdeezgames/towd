@@ -7,7 +7,7 @@ namespace Towditor.Web.EFModel
     {
         public Creatures()
         {
-            WorldCreatures = new HashSet<WorldCreatures>();
+            CreatureInstances = new HashSet<CreatureInstances>();
         }
 
         public int CreatureId { get; set; }
@@ -15,6 +15,6 @@ namespace Towditor.Web.EFModel
         public string CreatureName { get; set; }
 
         public virtual Bitmaps Bitmap { get; set; }
-        public virtual ICollection<WorldCreatures> WorldCreatures { get; set; }
+        public virtual ICollection<CreatureInstances> CreatureInstances { get; set; }
     }
 }

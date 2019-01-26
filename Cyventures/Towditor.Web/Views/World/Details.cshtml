@@ -22,8 +22,31 @@
     <a asp-action="Edit" asp-route-id="@Model.WorldId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
-<ul class="list-group">
-    <li class="list-group-item">
-        <a asp-controller="WorldTerrain" asp-action="WorldIndex" asp-route-worldid="@Model.WorldId">Terrains</a>
-    </li>
-</ul>
+<p>
+    <a asp-action="Create" asp-controller="Room" asp-route-worldid="@Model.WorldId">Create Room</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Room Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Rooms.OrderBy(x=>x.RoomName))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomName)
+                </td>
+                <td>
+                    <a asp-controller="Room" asp-action="Edit" asp-route-id="@item.RoomId">Edit</a> |
+                    <a asp-controller="Room" asp-action="Details" asp-route-id="@item.RoomId">Details</a> |
+                    <a asp-controller="Room" asp-action="Delete" asp-route-id="@item.RoomId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

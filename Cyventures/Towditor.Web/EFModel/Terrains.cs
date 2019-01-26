@@ -7,7 +7,7 @@ namespace Towditor.Web.EFModel
     {
         public Terrains()
         {
-            WorldTerrains = new HashSet<WorldTerrains>();
+            Tiles = new HashSet<Tiles>();
         }
 
         public int TerrainId { get; set; }
@@ -17,6 +17,6 @@ namespace Towditor.Web.EFModel
 
         public virtual Bitmaps Bitmap { get; set; }
         public virtual TileRoles TileRole { get; set; }
-        public virtual ICollection<WorldTerrains> WorldTerrains { get; set; }
+        public virtual ICollection<Tiles> Tiles { get; set; }
     }
 }
