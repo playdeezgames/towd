@@ -19,22 +19,25 @@ namespace Towditor.Web.Controllers
         }
 
         // GET: Room/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int? terrainid)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var rooms = await _context.Rooms
-                .Include(r => r.World)
+            var room = await _context.Rooms
+                .Include("World")
+                .Include("Tiles.Terrain")
                 .FirstOrDefaultAsync(m => m.RoomId == id);
-            if (rooms == null)
+            if (room == null)
             {
                 return NotFound();
             }
 
-            return View(rooms);
+            Terrains terrain = (terrainid.HasValue) ? (_context.Terrains.Single(x=>x.TerrainId==terrainid.Value)) : (_context.Terrains.First());
+            
+            return View(new Models.MetaModel<Terrains, Rooms>(){ Meta= terrain, Payload=room });
         }
 
         // GET: Room/Create
@@ -163,6 +166,56 @@ namespace Towditor.Web.Controllers
             _context.Rooms.Remove(room);
             await _context.SaveChangesAsync();
             return RedirectToAction("Details", "World", new { id = worldId });
+        }
+
+        public IActionResult SelectTerrain(int id)
+        {
+            return View(
+                new Models.MetaModel<int, IEnumerable<Terrains>>
+                {
+                    Meta=id,
+                    Payload=_context.Terrains.OrderBy(x => x.TerrainName).ToList()
+                });
+        }
+
+        public IActionResult PlaceTerrain(int id, int terrainid)
+        {
+            var tile = _context.Tiles.Single(x => x.TileId == id);
+            tile.TerrainId = terrainid;
+            _context.SaveChanges();
+            return RedirectToAction("Details", new { id = tile.RoomId, terrainid });
+        }
+
+        public IActionResult Duplicate(int id)
+        {
+            var room = _context.Rooms.Single(x => x.RoomId == id);
+            return View(new Models.RoomDuplicationModel
+            {
+                TemplateRoomId=room.RoomId,
+                TemplateRoomName=room.RoomName,
+                DuplicateRoomName=$"Copy of {room.RoomName}"
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Duplicate(Models.RoomDuplicationModel model)
+        {
+            var templateRoom = _context.Rooms.Include("Tiles").Single(x => x.RoomId == model.TemplateRoomId);
+            var duplicateRoom = new Rooms()
+            {
+                WorldId=templateRoom.WorldId,
+                RoomName=model.DuplicateRoomName,
+                Tiles = templateRoom.Tiles.Select(x=>new Tiles
+                {
+                    TerrainId=x.TerrainId,
+                    X=x.X,
+                    Y=x.Y
+                }).ToList()
+            };
+            _context.Rooms.Add(duplicateRoom);
+            _context.SaveChanges();
+            return RedirectToAction("Details", new { id = duplicateRoom.RoomId });
         }
 
         private bool RoomsExists(int id)

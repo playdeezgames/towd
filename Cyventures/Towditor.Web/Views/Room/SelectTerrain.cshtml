@@ -1,0 +1,31 @@
+﻿@model Towditor.Web.Models.MetaModel<int,IEnumerable<Towditor.Web.EFModel.Terrains>>
+
+@{
+    ViewData["Title"] = "Select Terrain";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Terrain Name
+            </th>
+            <th>Bitmap Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Payload) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TerrainName)
+            </td>
+            <td>
+                <img style="border:1px solid black; padding: 1px;" src="@Url.Action("Render","BitmapImage",new { id=item.BitmapId, scale=8 })" />
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@Model.Meta" asp-route-terrainid="@item.TerrainId">(select)</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
