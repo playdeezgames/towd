@@ -1,0 +1,54 @@
+﻿@model Towditor.Web.Models.MetaModel<Towditor.Web.EFModel.Terrains, Towditor.Web.EFModel.Rooms>
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div>
+    <canvas id="roomEditorCanvas"></canvas>
+</div>
+<div style="visibility:hidden">
+    @foreach (var bitmapId in (IEnumerable<int>)ViewData["BitmapIds"])
+    {
+        var bitmapIdentifier = "bitmap" + bitmapId.ToString();
+        <img id="@bitmapIdentifier" src="@Url.Action("Render","BitmapImage",new { id=bitmapId, scale=8 })" />
+    }
+</div>
+<div>
+    Current Terrain:
+    @Model.Meta.TerrainName
+    <img style="border:1px solid black; padding: 1px;" src="@Url.Action("Render","BitmapImage",new { id=Model.Meta.BitmapId, scale=4 })" />
+    <a asp-action="SelectTerrain" asp-route-id="@Model.Payload.RoomId">(change)</a>
+</div>
+<div>
+    <h4>Rooms</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Payload.RoomName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Payload.RoomName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Payload.World)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Payload.World.WorldName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Payload.RoomId">Edit</a> |
+    <a asp-action="Duplicate" asp-route-id="@Model.Payload.RoomId">Duplicate</a> |
+    <a asp-action="Details" asp-controller="World" asp-route-id="@Model.Payload.WorldId">Back to World</a>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        var terrains = {
+        };
+    </script>
+    <script type="text/javascript" src="~/js/roomeditor.js"></script>
+    <script type="text/javascript">
+    </script>
+}

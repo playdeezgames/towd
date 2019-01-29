@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="8" tileheight="8" infinite="1" nextlayerid="5" nextobjectid="4">
+ <tileset firstgid="1" name="Terrain" tilewidth="8" tileheight="8" tilecount="72" columns="8">
+  <image source="../Tilesets/Terrain.png" width="64" height="72"/>
+ </tileset>
+ <layer id="3" name="Terrain" width="6" height="6">
+  <data encoding="csv">
+   <chunk x="0" y="0" width="16" height="16">
+12,5,5,5,5,9,0,0,0,0,0,0,0,0,0,0,
+8,21,4,4,4,6,0,0,0,0,0,0,0,0,0,0,
+8,4,4,4,4,6,0,0,0,0,0,0,0,0,0,0,
+8,4,4,4,4,6,0,0,0,0,0,0,0,0,0,0,
+8,23,4,4,4,6,0,0,0,0,0,0,0,0,0,0,
+11,7,7,19,7,10,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+  </data>
+ </layer>
+ <objectgroup id="4" name="Objects">
+  <object id="1" name="home-exit" type="teleporter" x="24" y="40" width="8" height="8">
+   <properties>
+    <property name="destination-map" value="hometown"/>
+    <property name="destination-x" type="int" value="3"/>
+    <property name="destination-y" type="int" value="7"/>
+   </properties>
+  </object>
+  <object id="2" name="ladder-up" type="teleporter" x="8" y="8" width="8" height="8">
+   <properties>
+    <property name="destination-map" value="loft"/>
+    <property name="destination-x" type="int" value="2"/>
+    <property name="destination-y" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="3" name="bed" type="searchable" x="8" y="32" width="8" height="8"/>
+ </objectgroup>
+</map>
