@@ -30,6 +30,10 @@ namespace Common
                     return created;
                 }
             }
+            set
+            {
+                _table[key] = value;
+            }
         }
 
     }
