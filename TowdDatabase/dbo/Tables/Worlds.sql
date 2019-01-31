@@ -1,5 +1,0 @@
-﻿CREATE TABLE [dbo].[Worlds]
-(
-	[WorldId] INT NOT NULL IDENTITY CONSTRAINT PK_Worlds PRIMARY KEY, 
-    [WorldName] NVARCHAR(50) NOT NULL CONSTRAINT AK_Worlds_WorldName UNIQUE
-)

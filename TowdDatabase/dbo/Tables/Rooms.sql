@@ -1,7 +1,0 @@
-﻿CREATE TABLE [dbo].[Rooms]
-(
-	[RoomId] INT NOT NULL IDENTITY CONSTRAINT PK_Rooms PRIMARY KEY, 
-    [RoomName] NVARCHAR(50) NOT NULL, 
-    [WorldId] INT NOT NULL CONSTRAINT FK_Rooms_Worlds FOREIGN KEY REFERENCES Worlds(WorldId),
-	CONSTRAINT AK_Rooms_WorldId_RoomName UNIQUE (WorldId, RoomName)
-)

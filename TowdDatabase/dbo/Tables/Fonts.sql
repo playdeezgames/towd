@@ -1,6 +1,0 @@
-﻿CREATE TABLE [dbo].[Fonts]
-(
-	[FontId] INT NOT NULL IDENTITY CONSTRAINT PK_Fonts PRIMARY KEY, 
-    [FontName] NVARCHAR(50) NOT NULL CONSTRAINT AK_Fonts_FontName UNIQUE, 
-    [FontHeight] INT NOT NULL
-)
