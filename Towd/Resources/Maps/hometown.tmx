@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="12">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="21">
  <properties>
-  <property name="RoomCaption" value="hometown"/>
+  <property name="RoomCaption" value="Home Town"/>
+  <property name="RoomId" value="hometown"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
  <layer id="3" name="RoomTiles" width="30" height="20">
@@ -13,15 +14,15 @@
 28,4,2,43,1,4,4,2,41,35,42,1,4,4,4,4,4,4,4,49,63,50,4,4,52,49,50,53,4,26,
 28,4,41,33,42,4,4,41,33,33,33,42,4,48,48,48,4,4,4,37,38,37,4,4,49,37,37,50,4,26,
 28,4,33,34,33,4,4,35,35,34,36,35,4,33,33,33,4,4,4,4,57,4,4,4,37,37,37,37,4,26,
-28,4,4,57,4,4,4,4,4,57,4,4,4,33,33,33,4,4,4,4,57,4,4,4,37,40,38,37,4,26,
+28,4,4,57,4,4,4,4,4,57,4,4,4,33,65,33,4,4,4,4,57,4,4,4,37,40,38,37,4,26,
 28,4,4,57,57,57,57,57,57,57,4,4,4,33,33,33,4,4,4,4,57,4,4,4,4,4,57,4,4,26,
-28,4,4,4,4,4,4,4,4,57,4,4,4,33,33,33,4,4,57,57,57,57,57,57,57,57,57,4,4,26,
+28,4,4,4,4,4,4,4,4,57,4,4,4,33,65,33,4,4,57,57,57,57,57,57,57,57,57,4,4,26,
 28,4,4,4,44,45,4,4,4,57,4,4,4,33,33,33,4,4,57,4,4,4,4,4,4,4,4,4,4,26,
-28,4,4,44,41,42,45,4,4,57,4,4,4,33,33,33,4,4,57,4,4,4,4,4,4,4,4,4,4,26,
+28,4,4,44,41,42,45,4,4,57,4,4,4,33,65,33,4,4,57,4,4,4,4,4,4,4,4,4,4,26,
 28,4,4,41,35,35,42,4,4,57,4,4,4,33,34,36,4,4,57,4,4,4,56,56,56,56,56,4,4,26,
 28,4,4,35,35,35,35,4,4,57,4,4,4,4,57,4,4,4,57,4,4,4,37,37,37,37,37,4,4,26,
 28,4,4,35,35,35,35,4,4,57,57,57,57,57,57,57,57,57,57,4,4,4,37,37,38,40,37,4,4,26,
-28,4,4,35,36,34,35,4,4,57,57,57,57,57,57,57,57,57,57,4,4,4,4,4,57,4,4,4,4,26,
+28,4,4,35,36,34,35,4,4,57,57,57,57,57,68,57,57,57,57,4,4,4,4,4,57,4,4,4,4,26,
 28,4,4,4,4,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,4,4,4,4,26,
 28,4,4,4,4,4,4,4,4,4,4,4,4,4,57,4,4,4,4,4,4,4,4,4,4,4,4,4,4,26,
 28,4,4,4,4,4,4,4,4,4,4,4,4,4,57,4,4,4,4,4,4,4,4,4,4,4,4,4,4,26,
@@ -53,8 +54,15 @@
 </data>
  </layer>
  <objectgroup id="4" name="Events">
-  <object id="3" name="tower-entrance" type="teleporter" x="112" y="96" width="8" height="8"/>
-  <object id="4" name="HomeEntrance" type="Teleport" x="24" y="48" width="8" height="8">
+  <object id="3" name="tower-entrance" type="Teleport" x="112" y="96" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="4"/>
+    <property name="Prompt" value="Enter Tower?"/>
+    <property name="Room" value="hometown-tower-bottomfloor"/>
+    <property name="Row" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="4" name="home-entrance" type="Teleport" x="24" y="48" width="8" height="8">
    <properties>
     <property name="Column" type="int" value="3"/>
     <property name="Prompt" value="Enter Home?"/>
@@ -62,18 +70,84 @@
     <property name="Row" type="int" value="4"/>
    </properties>
   </object>
-  <object id="5" name="shoppe-entrance" type="teleporter" x="72" y="48" width="8" height="8">
+  <object id="5" name="shoppe-entrance" type="Teleport" x="72" y="48" width="8" height="8">
    <properties>
-    <property name="destination-map" value="hometown-shoppe"/>
-    <property name="destination-x" type="int" value="4"/>
-    <property name="destination-y" type="int" value="5"/>
+    <property name="Column" type="int" value="4"/>
+    <property name="Prompt" value="Enter Shoppe?"/>
+    <property name="Room" value="hometown-shoppe"/>
+    <property name="Row" type="int" value="5"/>
    </properties>
   </object>
-  <object id="6" name="hotel-entrance" type="teleporter" x="40" y="120" width="8" height="8"/>
-  <object id="7" name="church-entrance" type="teleporter" x="160" y="40" width="8" height="8"/>
-  <object id="9" name="manor-entrance" type="teleporter" x="208" y="56" width="8" height="8"/>
-  <object id="10" name="barracks-entrance" type="teleporter" x="192" y="112" width="8" height="8"/>
-  <object id="11" name="town-exit" type="teleporter" x="112" y="152" width="8" height="8"/>
+  <object id="6" name="hotel-entrance" type="Teleport" x="40" y="120" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="4"/>
+    <property name="Prompt" value="Enter Inn"/>
+    <property name="Room" value="hometown-hotel-lobby"/>
+    <property name="Row" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="7" name="church-entrance" type="Teleport" x="160" y="40" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="4"/>
+    <property name="Prompt" value="Enter Church?"/>
+    <property name="Room" value="hometown-church"/>
+    <property name="Row" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="9" name="manor-entrance" type="Teleport" x="208" y="56" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="4"/>
+    <property name="Prompt" value="Enter Mayor's House?"/>
+    <property name="Room" value="hometown-manor"/>
+    <property name="Row" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="10" name="barracks-entrance" type="Teleport" x="192" y="112" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="4"/>
+    <property name="Prompt" value="Enter Barracks?"/>
+    <property name="Room" value="hometown-barracks"/>
+    <property name="Row" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="11" name="town-exit" type="Teleport" x="112" y="152" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="2"/>
+    <property name="Prompt" value="Leave Town?"/>
+    <property name="Room" value="overworld"/>
+    <property name="Row" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="12" name="shoppe-sign" type="Sign" x="80" y="48" width="8" height="8">
+   <properties>
+    <property name="Message" value="Dagger Dale's Discount Daggers (and Cheese)"/>
+   </properties>
+  </object>
+  <object id="13" name="hotel-sign" type="Sign" x="32" y="120" width="8" height="8">
+   <properties>
+    <property name="Message" value="Bromidic Inn"/>
+   </properties>
+  </object>
+  <object id="14" name="tower-sign" type="Sign" x="120" y="96" width="8" height="8">
+   <properties>
+    <property name="Message" value="KEEP OUT!"/>
+   </properties>
+  </object>
+  <object id="15" name="manor-sign" type="Sign" x="200" y="56" width="8" height="8">
+   <properties>
+    <property name="Message" value="Mayor's Manor"/>
+   </properties>
+  </object>
+  <object id="16" name="barrack-sign" type="Sign" x="200" y="112" width="8" height="8">
+   <properties>
+    <property name="Message" value="Town Garrison"/>
+   </properties>
+  </object>
+  <object id="20" name="town-sign" type="Sign" x="112" y="120" width="8" height="8">
+   <properties>
+    <property name="Message" value="Town of Quotidian"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="6" name="CreatureInstances"/>
 </map>

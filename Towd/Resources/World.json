@@ -19,6 +19,30 @@
   "Terrains": {
   },
   "Rooms": {
+    "overworld": {
+      "FileName": "./Resources/Maps/overworld.tmx",
+      "Loaded": false
+    },
+    "hometown-barracks": {
+      "FileName": "./Resources/Maps/hometown-barracks.tmx",
+      "Loaded": false
+    },
+    "hometown-church": {
+      "FileName": "./Resources/Maps/hometown-church.tmx",
+      "Loaded": false
+    },
+    "hometown-hotel-lobby": {
+      "FileName": "./Resources/Maps/hometown-hotel-lobby.tmx",
+      "Loaded": false
+    },
+    "hometown-manor": {
+      "FileName": "./Resources/Maps/hometown-manor.tmx",
+      "Loaded": false
+    },
+    "hometown-tower-bottomfloor": {
+      "FileName": "./Resources/Maps/hometown-tower-bottomfloor.tmx",
+      "Loaded": false
+    },
     "home": {
       "FileName": "./Resources/Maps/home.tmx",
       "Loaded": false

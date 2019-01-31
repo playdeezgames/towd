@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.1" name="Terrain" tilewidth="8" tileheight="8" tilecount="72" columns="8">
- <image source="../Tilesets/Terrain.png" width="64" height="72"/>
+<tileset version="1.2" tiledversion="1.2.1" name="Terrain" tilewidth="8" tileheight="8" tilecount="88" columns="8">
+ <image source="../Tilesets/Terrain.png" width="64" height="88"/>
  <tile id="0" type="Terrain">
   <properties>
    <property name="Name" value="solid"/>
@@ -531,7 +531,7 @@
  </tile>
  <tile id="66" type="Terrain">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="merchant"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="66"/>
    <property name="Role" value="1"/>
@@ -539,13 +539,13 @@
  </tile>
  <tile id="67" type="Terrain">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="sign-post"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="67"/>
    <property name="Role" value="1"/>
   </properties>
  </tile>
- <tile id="68" type="Terrain">
+ <tile id="68" type="None">
   <properties>
    <property name="Name" value=""/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
@@ -553,7 +553,7 @@
    <property name="Role" value="1"/>
   </properties>
  </tile>
- <tile id="69" type="Terrain">
+ <tile id="69" type="None">
   <properties>
    <property name="Name" value=""/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
@@ -561,7 +561,7 @@
    <property name="Role" value="1"/>
   </properties>
  </tile>
- <tile id="70" type="Terrain">
+ <tile id="70" type="None">
   <properties>
    <property name="Name" value=""/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
@@ -569,11 +569,139 @@
    <property name="Role" value="1"/>
   </properties>
  </tile>
- <tile id="71" type="Terrain">
+ <tile id="71" type="None">
   <properties>
    <property name="Name" value=""/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="71"/>
+   <property name="Role" value="1"/>
+  </properties>
+ </tile>
+ <tile id="72" type="Terrain">
+  <properties>
+   <property name="Name" value="north-paneling"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="72"/>
+   <property name="Role" value="1"/>
+  </properties>
+ </tile>
+ <tile id="73" type="Terrain">
+  <properties>
+   <property name="Name" value="east-paneling"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="73"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="74" type="Terrain">
+  <properties>
+   <property name="Name" value="south-paneling"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="74"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="75" type="Terrain">
+  <properties>
+   <property name="Name" value="west-paneling"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="75"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="76" type="Terrain">
+  <properties>
+   <property name="Name" value="ne-panelcorner-inside"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="76"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="77" type="Terrain">
+  <properties>
+   <property name="Name" value="se-panelcorner-inside"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="77"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="78" type="Terrain">
+  <properties>
+   <property name="Name" value="sw-panelcorner-inside"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="78"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="79" type="Terrain">
+  <properties>
+   <property name="Name" value="nw-panelcorner-inside"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="79"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="80" type="Terrain">
+  <properties>
+   <property name="Name" value="north-paneldoorway"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="80"/>
+   <property name="Role" value="0"/>
+  </properties>
+ </tile>
+ <tile id="81" type="Terrain">
+  <properties>
+   <property name="Name" value="east-paneldoorway"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="81"/>
+   <property name="Role" value="0"/>
+  </properties>
+ </tile>
+ <tile id="82" type="Terrain">
+  <properties>
+   <property name="Name" value="south-paneldoorway"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="82"/>
+   <property name="Role" value="0"/>
+  </properties>
+ </tile>
+ <tile id="83" type="Terrain">
+  <properties>
+   <property name="Name" value="west-paneldoorway"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="83"/>
+   <property name="Role" value="0"/>
+  </properties>
+ </tile>
+ <tile id="84" type="None">
+  <properties>
+   <property name="Name" value=""/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="84"/>
+   <property name="Role" value="1"/>
+  </properties>
+ </tile>
+ <tile id="85" type="None">
+  <properties>
+   <property name="Name" value=""/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="85"/>
+   <property name="Role" value="1"/>
+  </properties>
+ </tile>
+ <tile id="86" type="None">
+  <properties>
+   <property name="Name" value=""/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="86"/>
+   <property name="Role" value="1"/>
+  </properties>
+ </tile>
+ <tile id="87" type="None">
+  <properties>
+   <property name="Name" value=""/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" value="87"/>
    <property name="Role" value="1"/>
   </properties>
  </tile>

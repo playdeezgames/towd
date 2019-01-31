@@ -11,6 +11,7 @@ namespace Engine
         public string Terrain { get; set; }
         public RoomTileRole? RoleOverride { get; set; }
         public Teleport Teleport { get; set; }
+        public Sign Sign { get; set; }
         public string CreatureInstance { get; set; }
     }
 }

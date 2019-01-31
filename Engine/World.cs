@@ -37,6 +37,7 @@ namespace Engine
             var map = new TmxMap(fileName);
             Room room = new Room(map.Width, map.Height);
             room.Caption = map.Properties["RoomCaption"];
+            string roomIdentifier = map.Properties["RoomId"];
             room.Loaded = true;
             Dictionary<int, string> terrains = new Dictionary<int, string>();
             foreach(var tileset in map.Tilesets)
@@ -95,8 +96,8 @@ namespace Engine
                         CreatureInstance creatureInstance = new CreatureInstance
                         {
                             Column = column,
-                            Room = room.Caption,
-                            Row=row,
+                            Room = roomIdentifier,
+                            Row =row,
                             Creature=obj.Properties["Creature"]
                         };
                         CreatureInstances[identifier] = creatureInstance;
@@ -104,7 +105,7 @@ namespace Engine
                         break;
                 }
             }
-            Rooms[room.Caption] = room;
+            Rooms[roomIdentifier] = room;
             return room;
         }
 

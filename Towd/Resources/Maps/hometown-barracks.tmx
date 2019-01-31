@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="9" height="7" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="2">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="9" height="7" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="3">
  <properties>
-  <property name="RoomCaption" value="Dagger Dale's Shoppe"/>
-  <property name="RoomId" value="hometown-shoppe"/>
+  <property name="RoomCaption" value="Quotidian Garrison"/>
+  <property name="RoomId" value="hometown-barracks"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
  <layer id="3" name="RoomTiles" width="9" height="7">
@@ -28,12 +28,12 @@
 </data>
  </layer>
  <objectgroup id="5" name="Events">
-  <object id="1" name="shoppe-exit" type="Teleport" x="32" y="48" width="8" height="8">
+  <object id="1" name="barracks-exit" type="Teleport" x="32" y="48" width="8" height="8">
    <properties>
-    <property name="Column" type="int" value="9"/>
-    <property name="Prompt" value="Leave Shoppe?"/>
+    <property name="Column" type="int" value="24"/>
+    <property name="Prompt" value="Leave Barracks?"/>
     <property name="Room" value="hometown"/>
-    <property name="Row" type="int" value="7"/>
+    <property name="Row" type="int" value="15"/>
    </properties>
   </object>
  </objectgroup>

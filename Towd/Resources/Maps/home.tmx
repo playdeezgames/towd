@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="7">
  <properties>
-  <property name="RoomCaption" value="home"/>
+  <property name="RoomCaption" value="Home"/>
+  <property name="RoomId" value="home"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
- <tileset firstgid="73" source="Creatures.tsx"/>
+ <tileset firstgid="89" source="Creatures.tsx"/>
  <layer id="3" name="RoomTiles" width="6" height="6">
   <data encoding="csv">
 12,5,5,5,5,9,
@@ -21,7 +22,7 @@
 0,0,0,0,0,0,
 0,0,0,0,0,0,
 0,0,0,0,0,0,
-0,0,73,0,0,0,
+0,0,89,0,0,0,
 0,0,0,0,0,0
 </data>
  </layer>

@@ -147,6 +147,8 @@ namespace Towd
                 switch(_promptTile.RoleOverride.Value)
                 {
                     case RoomTileRole.Teleport:
+                        font.Draw(pixelWriter, CyColor.White, 0, Height - font.Height + 1, _promptTile.Teleport.Prompt, clipRect);
+                        font.Draw(pixelWriter, CyColor.White, 1, Height - font.Height, _promptTile.Teleport.Prompt, clipRect);
                         font.Draw(pixelWriter, CyColor.Black, 0, Height - font.Height, _promptTile.Teleport.Prompt, clipRect);
                         break;
                 }

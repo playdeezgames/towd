@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public enum RoomTileRole
+    public class Sign
     {
-        Open,
-        Solid,
-        Teleport,
-        Search,
-        Sign
+        public string Message { get; set; }
     }
 }
