@@ -4,7 +4,7 @@
  <tile id="0" type="Tagon">
   <properties>
    <property name="ColorKeyed" type="bool" value="true"/>
-   <property name="KeyColor" type="int" value="3"/>
+   <property name="KeyColor" type="int" value="0"/>
   </properties>
  </tile>
  <tile id="1" type="Snake">

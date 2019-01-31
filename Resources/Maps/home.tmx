@@ -24,7 +24,7 @@
 0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="Triggers">
+ <objectgroup id="4" name="TerrainTriggers">
   <object id="1" name="HomeExit" type="Teleporter" x="24" y="40" width="8" height="8">
    <properties>
     <property name="destination-map" value="hometown"/>
