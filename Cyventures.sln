@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Towd", "Towd\Towd.csproj", "{5E18CE76-C57D-4A03-8F3F-CA572058A4F2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{D6634045-815F-477C-AA38-6F354676D4C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{FF2BA171-B86B-4B36-9611-36868332A1B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +88,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B417EC14-F99E-4F0C-81B3-9DA9700F1F81} = {D6634045-815F-477C-AA38-6F354676D4C5}
+		{C021E084-558A-412C-8836-E33041D67B6A} = {FF2BA171-B86B-4B36-9611-36868332A1B6}
+		{EDC861DC-EF9E-46F9-9E02-F8C80E6A48CC} = {D6634045-815F-477C-AA38-6F354676D4C5}
+		{D3FC04EA-C5C5-4E30-AE4B-72FD05FEA175} = {D6634045-815F-477C-AA38-6F354676D4C5}
+		{E8EF6DB8-003E-4AF5-BD51-E0E179CF9AF8} = {FF2BA171-B86B-4B36-9611-36868332A1B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35C807A6-A575-4BB3-A359-AB61BB2DF102}
