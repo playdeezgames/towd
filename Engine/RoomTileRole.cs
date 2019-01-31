@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public enum TileRole
+    public enum RoomTileRole
     {
         Open,
         Solid,

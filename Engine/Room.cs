@@ -7,23 +7,25 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Room : Bitmap<Tile>
+    public class Room : Bitmap<RoomTile>
     {
         public string Caption { get; set; }
+        public string FileName { get; set; }
+        public bool Loaded { get; set; }
 
         public Room(int width, int height) : base(width, height)
         {
         }
 
-        public TileRole GetTileRole(int column, int row, Dictionary<string, Terrain> terrains)
+        public RoomTileRole GetTileRole(int column, int row, Dictionary<string, Terrain> terrains)
         {
             if(column<0 || column>=Width)
             {
-                return TileRole.Solid;
+                return RoomTileRole.Solid;
             }
             if(row<0 || row>=Height)
             {
-                return TileRole.Solid;
+                return RoomTileRole.Solid;
             }
             var tile = Get(column, row);
             return tile.RoleOverride ?? terrains[tile.Terrain].Role;

@@ -10,7 +10,7 @@ namespace Engine
     {
         public string ResourceIdentifier { get; set; }//references an exernal bitmapsequence manager
         public int ResourceIndex { get; set; }//references an exernal bitmapsequence manager
-        public TileRole Role { get; set; }
+        public RoomTileRole Role { get; set; }
         public string EventName { get; set; }
     }
 }

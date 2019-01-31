@@ -12,7 +12,7 @@ namespace Towd
 {
     public class RoomStateHandler : TowdStateHandler
     {
-        private Tile _promptTile = null;
+        private RoomTile _promptTile = null;
         public RoomStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
         }
@@ -62,18 +62,18 @@ namespace Towd
         {
             switch(_promptTile.RoleOverride.Value)
             {
-                case TileRole.Teleport:
+                case RoomTileRole.Teleport:
                     MoveCreature(World.Avatar, _promptTile.Teleport.Room, _promptTile.Teleport.Column, _promptTile.Teleport.Row);
                     break;
             }
             _promptTile = null;
         }
 
-        private void MoveCreature(int creatureInstance, string room, int column, int row)
+        private void MoveCreature(string creatureInstance, string room, int column, int row)
         {
             var instance = World.CreatureInstances[creatureInstance];
-            var oldTile = World.Rooms[instance.Room].Get(instance.Column, instance.Row);
-            var newTile = World.Rooms[room].Get(column, row);
+            var oldTile = World.GetRoom(instance.Room).Get(instance.Column, instance.Row);
+            var newTile = World.GetRoom(room).Get(column, row);
             oldTile.CreatureInstance = null;
             newTile.CreatureInstance = creatureInstance;
             instance.Room = room;
@@ -89,10 +89,10 @@ namespace Towd
             var nextY = deltaY + avatarCreature.Row;
             switch(World.GetAvatarRoom().GetTileRole(nextX, nextY, World.Terrains))
             {
-                case TileRole.Open:
+                case RoomTileRole.Open:
                     MoveCreature(World.Avatar, avatarCreature.Room, nextX, nextY);
                     break;
-                case TileRole.Teleport:
+                case RoomTileRole.Teleport:
                     _promptTile = World.GetAvatarRoom().Get(nextX, nextY);
                     break;
             }
@@ -131,9 +131,9 @@ namespace Towd
                     var terrain = World.Terrains[tile.Terrain];
                     var bitmap = BitmapSequenceManager[terrain.ResourceIdentifier][terrain.ResourceIndex];
                     bitmap.Draw(pixelWriter, CyPoint.Create(cellX, cellY), x => true, clipRect);
-                    if(tile.CreatureInstance.HasValue)
+                    if(!string.IsNullOrEmpty(tile.CreatureInstance))
                     {
-                        var creatureInstance = World.CreatureInstances[tile.CreatureInstance.Value];
+                        var creatureInstance = World.CreatureInstances[tile.CreatureInstance];
                         var creature = World.Creatures[creatureInstance.Creature];
                         bitmap = BitmapSequenceManager[creature.ResourceIdentifier][creature.ResourceIndex];
                         bitmap.Draw(pixelWriter, CyPoint.Create(cellX, cellY), x => x!= CyColor.White, clipRect);
@@ -146,7 +146,7 @@ namespace Towd
             {
                 switch(_promptTile.RoleOverride.Value)
                 {
-                    case TileRole.Teleport:
+                    case RoomTileRole.Teleport:
                         font.Draw(pixelWriter, CyColor.Black, 0, Height - font.Height, _promptTile.Teleport.Prompt, clipRect);
                         break;
                 }

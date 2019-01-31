@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Tile
+    public class RoomTile
     {
         public string Terrain { get; set; }
-        public TileRole? RoleOverride { get; set; }
+        public RoomTileRole? RoleOverride { get; set; }
         public Teleport Teleport { get; set; }
-        public int? CreatureInstance { get; set; }
+        public string CreatureInstance { get; set; }
     }
 }
