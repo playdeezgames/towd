@@ -43,15 +43,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MakeSign.cs" />
+    <Compile Include="ClearSearch.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="CreatureInstance.cs" />
     <Compile Include="Room.cs" />
+    <Compile Include="Search.cs" />
     <Compile Include="Sign.cs" />
     <Compile Include="Teleport.cs" />
     <Compile Include="Terrain.cs" />
     <Compile Include="RoomTile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomTileRole.cs" />
+    <Compile Include="TriggerEvent.cs" />
+    <Compile Include="TriggerEventType.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>

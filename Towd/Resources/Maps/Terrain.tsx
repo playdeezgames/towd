@@ -531,7 +531,7 @@
  </tile>
  <tile id="66" type="Terrain">
   <properties>
-   <property name="Name" value="merchant"/>
+   <property name="Name" value="ocean"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="66"/>
    <property name="Role" value="1"/>
@@ -545,9 +545,9 @@
    <property name="Role" value="1"/>
   </properties>
  </tile>
- <tile id="68" type="None">
+ <tile id="68" type="Terrain">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="town"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="68"/>
    <property name="Role" value="1"/>

@@ -12,6 +12,7 @@ namespace Engine
         public RoomTileRole? RoleOverride { get; set; }
         public Teleport Teleport { get; set; }
         public Sign Sign { get; set; }
+        public Search Search { get; set; }
         public string CreatureInstance { get; set; }
     }
 }

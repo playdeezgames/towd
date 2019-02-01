@@ -12,9 +12,59 @@ namespace Engine
         public string Caption { get; set; }
         public string FileName { get; set; }
         public bool Loaded { get; set; }
+        public Dictionary<string,List<TriggerEvent>> Triggers { get; set; }
+        public Queue<string> RoomMessages { get; set; }
+
+        public bool HasMessage()
+        {
+            return (RoomMessages?.Count() ?? 0) > 0;
+        }
+        public string GetNextMessage()
+        {
+            return RoomMessages?.Peek();
+        }
+        public string AcknowledgeNextMessage()
+        {
+            return RoomMessages?.Dequeue();
+        }
+        public void AddMessage(string message)
+        {
+            if(RoomMessages==null)
+            {
+                RoomMessages = new Queue<string>();
+            }
+            RoomMessages.Enqueue(message);
+        }
 
         public Room(int width, int height) : base(width, height)
         {
+        }
+
+        public RoomTile TryGet(int x, int y)
+        {
+            if(x>=0 && y>=0 && x<Width && y<Height)
+            {
+                return Get(x, y);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        public List<TriggerEvent> GetTrigger(string name)
+        {
+            if(Triggers.TryGetValue(name, out var tiggerEvents))
+            {
+                return tiggerEvents;
+            }
+            else
+            {
+                var triggerEvents = new List<TriggerEvent>();
+                Triggers[name] = triggerEvents;
+                return triggerEvents;
+            }
         }
 
         public RoomTileRole GetTileRole(int column, int row, Dictionary<string, Terrain> terrains)

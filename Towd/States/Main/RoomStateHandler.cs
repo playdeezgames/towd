@@ -19,10 +19,15 @@ namespace Towd
 
         protected override bool OnCommand(Command command)
         {
+            var room = World.GetAvatarRoom();
             switch (command)
             {
                 case Command.Red:
-                    if(_promptTile!=null)
+                    if(room.HasMessage())
+                    {
+                        room.AcknowledgeNextMessage();
+                    }
+                    else if(_promptTile!=null)
                     {
                         _promptTile = null;
                     }
@@ -32,26 +37,39 @@ namespace Towd
                     }
                     return true;
                 case Command.Green:
-                    if(_promptTile!=null)
+                    if (room.HasMessage())
+                    {
+                        room.AcknowledgeNextMessage();
+                    }
+                    else if (_promptTile!=null)
                     {
                         ConfirmPrompt();
                     }
                     return true;
                 case Command.Up:
-                    _promptTile = null;
-                    DoMove(0, -1);
+                    if (!room.HasMessage())
+                    {
+                        _promptTile = null;
+                        DoMove(0, -1);
+                    }
                     return true;
                 case Command.Down:
-                    _promptTile = null;
-                    DoMove(0, 1);
+                    if (!room.HasMessage())
+                    {
+                        _promptTile = null;
+                        DoMove(0, 1);
+                    }
                     return true;
                 case Command.Right:
                     _promptTile = null;
                     DoMove(1, 0);
                     return true;
                 case Command.Left:
-                    _promptTile = null;
-                    DoMove(-1, 0);
+                    if (!room.HasMessage())
+                    {
+                        _promptTile = null;
+                        DoMove(-1, 0);
+                    }
                     return true;
                 default:
                     return false;
@@ -65,9 +83,13 @@ namespace Towd
                 case RoomTileRole.Teleport:
                     MoveCreature(World.Avatar, _promptTile.Teleport.Room, _promptTile.Teleport.Column, _promptTile.Teleport.Row);
                     break;
+                case RoomTileRole.Search:
+                    World.ActivateTrigger(_promptTile.Search.Trigger);
+                    break;
             }
             _promptTile = null;
         }
+
 
         private void MoveCreature(string creatureInstance, string room, int column, int row)
         {
@@ -93,6 +115,8 @@ namespace Towd
                     MoveCreature(World.Avatar, avatarCreature.Room, nextX, nextY);
                     break;
                 case RoomTileRole.Teleport:
+                case RoomTileRole.Sign:
+                case RoomTileRole.Search:
                     _promptTile = World.GetAvatarRoom().Get(nextX, nextY);
                     break;
             }
@@ -121,11 +145,21 @@ namespace Towd
             int cellHeight = World.TileHeight;
             int offsetX = Width/2-avatarCreature.Column*cellWidth-cellWidth/2;
             int offsetY = Height/2-avatarCreature.Row*cellHeight-cellHeight/2;
-            for(int column=0;column<room.Width;++column)
+
+
+            for(int column= avatarCreature.Column-10; column<=avatarCreature.Column+10;++column)
             {
-                int cellX = column * cellWidth + offsetX;
-                for (int row=0;row<room.Height;++row)
+                if (column < 0 || column >= room.Width)
                 {
+                    continue;
+                }
+                int cellX = column * cellWidth + offsetX;
+                for (int row= avatarCreature.Row - 6; row<= avatarCreature.Row + 6; ++row)
+                {
+                    if (row < 0 || row >= room.Height)
+                    {
+                        continue;
+                    }
                     int cellY = row * cellHeight + offsetY;
                     var tile = room.Get(column, row);
                     var terrain = World.Terrains[tile.Terrain];
@@ -142,14 +176,31 @@ namespace Towd
             }
             var font = FontManager[TowdFont.Large];
             font.Draw(pixelWriter, CyColor.Black, 0, 0, room.Caption, clipRect);
-            if(_promptTile!=null)
+            if(room.HasMessage())
+            {
+                var message = room.GetNextMessage();
+                font.Draw(pixelWriter, CyColor.White, 0, Height - font.Height + 1, message, clipRect);
+                font.Draw(pixelWriter, CyColor.White, 1, Height - font.Height, message, clipRect);
+                font.Draw(pixelWriter, CyColor.Black, 0, Height - font.Height, message, clipRect);
+            }
+            else if(_promptTile!=null)
             {
                 switch(_promptTile.RoleOverride.Value)
                 {
+                    case RoomTileRole.Search:
+                        font.Draw(pixelWriter, CyColor.White, 0, Height - font.Height + 1, _promptTile.Search.Prompt, clipRect);
+                        font.Draw(pixelWriter, CyColor.White, 1, Height - font.Height, _promptTile.Search.Prompt, clipRect);
+                        font.Draw(pixelWriter, CyColor.Black, 0, Height - font.Height, _promptTile.Search.Prompt, clipRect);
+                        break;
                     case RoomTileRole.Teleport:
                         font.Draw(pixelWriter, CyColor.White, 0, Height - font.Height + 1, _promptTile.Teleport.Prompt, clipRect);
                         font.Draw(pixelWriter, CyColor.White, 1, Height - font.Height, _promptTile.Teleport.Prompt, clipRect);
                         font.Draw(pixelWriter, CyColor.Black, 0, Height - font.Height, _promptTile.Teleport.Prompt, clipRect);
+                        break;
+                    case RoomTileRole.Sign:
+                        font.Draw(pixelWriter, CyColor.White, 0, Height - font.Height + 1, _promptTile.Sign.Message, clipRect);
+                        font.Draw(pixelWriter, CyColor.White, 1, Height - font.Height, _promptTile.Sign.Message, clipRect);
+                        font.Draw(pixelWriter, CyColor.Black, 0, Height - font.Height, _promptTile.Sign.Message, clipRect);
                         break;
                 }
             }

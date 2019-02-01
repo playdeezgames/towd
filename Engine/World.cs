@@ -31,6 +31,45 @@ namespace Engine
             }
             return room;
         }
+        public void ActivateTrigger(string trigger)
+        {
+            var room = GetAvatarRoom();
+            var triggerEvents = room.GetTrigger(trigger).OrderBy(x => x.Order);
+            foreach (var triggerEvent in triggerEvents)
+            {
+                switch (triggerEvent.EventType)
+                {
+                    case TriggerEventType.ClearSearch:
+                        DoClearSearch(triggerEvent.ClearSearch);
+                        break;
+                    case TriggerEventType.MakeSign:
+                        DoMakeSign(triggerEvent.MakeSign);
+                        break;
+                }
+            }
+        }
+
+        private void DoMakeSign(MakeSign makeSign)
+        {
+            var room = GetAvatarRoom();
+            var roomTile = room.Get(makeSign.Column, makeSign.Row);
+            roomTile.RoleOverride = RoomTileRole.Sign;
+            roomTile.Sign = new Sign
+            {
+                Message = makeSign.Message
+            };
+        }
+
+        private void DoClearSearch(ClearSearch clearSearch)
+        {
+            var room = GetAvatarRoom();
+            var roomTile = room.Get(clearSearch.Column, clearSearch.Row);
+            if (roomTile.RoleOverride == RoomTileRole.Search)
+            {
+                roomTile.RoleOverride = null;
+                roomTile.Search = null;
+            }
+        }
 
         private Room LoadRoomFromFile(string fileName)
         {
@@ -39,6 +78,7 @@ namespace Engine
             room.Caption = map.Properties["RoomCaption"];
             string roomIdentifier = map.Properties["RoomId"];
             room.Loaded = true;
+            room.Triggers = new Dictionary<string, List<TriggerEvent>>();
             Dictionary<int, string> terrains = new Dictionary<int, string>();
             foreach(var tileset in map.Tilesets)
             {
@@ -68,9 +108,34 @@ namespace Engine
             var objectLayer = map.ObjectGroups["Events"];
             foreach(var obj in objectLayer.Objects)
             {
-                var roomTile = room.Get((int)(obj.X / obj.Width), (int)(obj.Y / obj.Height));
+                var roomTile = room.TryGet((int)(obj.X / obj.Width), (int)(obj.Y / obj.Height));
                 switch (obj.Type)
                 {
+                    case "ClearSearch":
+                        room.GetTrigger(obj.Properties["ForTrigger"]).Add(new TriggerEvent
+                        {
+                            Order = Convert.ToInt32(obj.Properties["Order"]),
+                            EventType= TriggerEventType.ClearSearch,
+                            ClearSearch=new ClearSearch
+                            {
+                                Column = Convert.ToInt32(obj.Properties["Column"]),
+                                Row = Convert.ToInt32(obj.Properties["Row"])
+                            }
+                        });
+                        break;
+                    case "MakeSign":
+                        room.GetTrigger(obj.Properties["ForTrigger"]).Add(new TriggerEvent
+                        {
+                            Order = Convert.ToInt32(obj.Properties["Order"]),
+                            EventType = TriggerEventType.MakeSign,
+                            MakeSign = new MakeSign
+                            {
+                                Column = Convert.ToInt32(obj.Properties["Column"]),
+                                Row = Convert.ToInt32(obj.Properties["Row"]),
+                                Message=obj.Properties["Message"]
+                            }
+                        });
+                        break;
                     case "Teleport":
                         Teleport teleport = new Teleport
                         {
@@ -81,6 +146,23 @@ namespace Engine
                         };
                         roomTile.RoleOverride = RoomTileRole.Teleport;
                         roomTile.Teleport = teleport;
+                        break;
+                    case "Sign":
+                        Sign sign = new Sign
+                        {
+                            Message=obj.Properties["Message"]
+                        };
+                        roomTile.RoleOverride = RoomTileRole.Sign;
+                        roomTile.Sign = sign;
+                        break;
+                    case "Search":
+                        Search search = new Search
+                        {
+                            Prompt=obj.Properties["Prompt"],
+                            Trigger=obj.Properties["Trigger"]
+                        };
+                        roomTile.Search = search;
+                        roomTile.RoleOverride = RoomTileRole.Search;
                         break;
                 }
             }
