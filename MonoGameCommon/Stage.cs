@@ -109,7 +109,7 @@ namespace MonoGameCommon
             [Command.Right] = x => x.DPad.Right == ButtonState.Pressed,
             [Command.Start] = x => x.Buttons.Start == ButtonState.Pressed,
             [Command.Up] = x => x.DPad.Up == ButtonState.Pressed,
-            [Command.Yellow] = x => x.Buttons.Y == ButtonState.Pressed,
+            [Command.Yellow] = x => x.Buttons.Y == ButtonState.Pressed
         };
 
         protected override void Update(GameTime gameTime)

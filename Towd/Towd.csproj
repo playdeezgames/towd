@@ -86,6 +86,8 @@
   <ItemGroup>
     <Compile Include="Boilerplate\NewWorldMessage.cs" />
     <Compile Include="Boilerplate\LoadWorldMessage.cs" />
+    <Compile Include="States\Main\InventoryStateHandler.cs" />
+    <Compile Include="States\Main\CharacterStateHandler.cs" />
     <Compile Include="States\Main\ExitPlayStateHandler.cs" />
     <Compile Include="States\Main\RoomStateHandler.cs" />
     <Compile Include="States\Main\HelpStateHandler.cs" />
@@ -159,6 +161,7 @@
     <Content Include="Resources\Maps\overworld.tmx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\BitmapSequences\DungeonItems.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -186,10 +189,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Tilesets\Creatures.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Tilesets\Terrain.png">
+    <Content Include="Resources\Tilesets\Creatures.png" />
+    <Content Include="Resources\Tilesets\Items.png" />
+    <Content Include="Resources\Tilesets\Terrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Maps\Items.tsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

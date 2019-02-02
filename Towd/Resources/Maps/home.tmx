@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="8">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="14">
  <properties>
   <property name="RoomCaption" value="Home"/>
   <property name="RoomId" value="home"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="129" source="Creatures.tsx"/>
+ <tileset firstgid="257" source="Items.tsx"/>
  <layer id="3" name="RoomTiles" width="6" height="6">
   <data encoding="csv">
 12,5,5,5,5,9,
@@ -22,7 +23,7 @@
 0,0,0,0,0,0,
 0,0,0,0,0,0,
 0,0,0,0,0,0,
-0,0,129,0,0,0,
+0,257,129,0,0,0,
 0,0,0,0,0,0
 </data>
  </layer>
@@ -49,12 +50,36 @@
     <property name="Trigger" value="OnSearchBed"/>
    </properties>
   </object>
+  <object id="10" name="OnSearchBed01" type="ClearSearch" x="56" y="0" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="1"/>
+    <property name="ForTrigger" value="OnSearchBed"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="Row" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="12" name="OnSearchBed02" type="MakeRoomMessage" x="56" y="8" width="8" height="8">
+   <properties>
+    <property name="ForTrigger" value="OnSearchBed"/>
+    <property name="Message" value="You find a old dagger!"/>
+    <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="13" name="OnSearchBed03" type="GiveItem" x="56" y="16" width="8" height="8">
+   <properties>
+    <property name="ForTrigger" value="OnSearchBed"/>
+    <property name="ItemIdentifier" value="RustyDagger"/>
+    <property name="Order" type="int" value="3"/>
+    <property name="Quantity" type="int" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="6" name="CreatureInstances">
   <object id="4" name="Tagon" type="CreatureInstance" x="16" y="32" width="8" height="8">
    <properties>
     <property name="Creature" value="Tagon"/>
     <property name="Identifier" value="B7700077-A641-4A3A-8C92-50862C26121D"/>
+    <property name="Name" value="Tagon"/>
    </properties>
   </object>
  </objectgroup>

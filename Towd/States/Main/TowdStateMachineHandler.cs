@@ -18,6 +18,8 @@ namespace Towd
             this[TowdState.Help] = new HelpStateHandler(this, null);
             this[TowdState.Room] = new RoomStateHandler(this, null);
             this[TowdState.ExitPlay] = new ExitPlayStateHandler(this, null);
+            this[TowdState.Character] = new CharacterStateHandler(this, null);
+            this[TowdState.Inventory] = new InventoryStateHandler(this, null);
             Current = TowdState.MainMenu;
         }
     }

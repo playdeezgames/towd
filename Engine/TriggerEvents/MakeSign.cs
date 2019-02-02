@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Terrain: VisibleElement
+    public class MakeSign: MakeRoomMessage
     {
-        public RoomTileRole Role { get; set; }
+        public int Column { get; set; }
+        public int Row { get; set; }
     }
 }

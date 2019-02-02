@@ -21,7 +21,8 @@ namespace Towd
         private static readonly Dictionary<string, string> _bitmapSequenceMap = new Dictionary<string, string>()
         {
             [TowdBitmapSequence.DungeonTiles] = "Towd.Resources.BitmapSequences.DungeonTiles.json",
-            [TowdBitmapSequence.DungeonCreatures] = "Towd.Resources.BitmapSequences.DungeonCreatures.json"
+            [TowdBitmapSequence.DungeonCreatures] = "Towd.Resources.BitmapSequences.DungeonCreatures.json",
+            [TowdBitmapSequence.DungeonItems] = "Towd.Resources.BitmapSequences.DungeonItems.json"
         };
 
         private Manager<TowdFont, CyFont> _fontManager;

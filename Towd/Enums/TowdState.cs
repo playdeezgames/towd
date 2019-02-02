@@ -14,6 +14,8 @@ namespace Towd
         Options,
         Help,
         Room,
-        ExitPlay
+        ExitPlay,
+        Character,
+        Inventory
     }
 }

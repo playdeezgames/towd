@@ -5,6 +5,7 @@
   <property name="RoomId" value="hometown-church"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
+ <tileset firstgid="129" source="Items.tsx"/>
  <layer id="3" name="RoomTiles" width="9" height="7">
   <data encoding="csv">
 80,73,73,73,73,73,73,73,77,

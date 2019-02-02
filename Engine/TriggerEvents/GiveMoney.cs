@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class MakeSign
+    public class GiveMoney
     {
-        public int Column { get; set; }
-        public int Row { get; set; }
-        public string Message { get; set; }
+        public int Amount { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace Engine
         public int TileWidth { get; set; }
         public int TileHeight { get; set; }
         public Dictionary<string, Terrain> Terrains { get; set; }
+        public Dictionary<string, Item> Items { get; set; }
         public Dictionary<string, Creature> Creatures { get; set; }
         public Dictionary<string, Room> Rooms { get; set; }
         public Dictionary<string, CreatureInstance> CreatureInstances { get; set; }
@@ -45,8 +46,33 @@ namespace Engine
                     case TriggerEventType.MakeSign:
                         DoMakeSign(triggerEvent.MakeSign);
                         break;
+                    case TriggerEventType.MakeRoomMessage:
+                        DoMakeRoomMessage(triggerEvent.MakeRoomMessage);
+                        break;
+                    case TriggerEventType.GiveMoney:
+                        DoGiveMoney(triggerEvent.GiveMoney);
+                        break;
+                    case TriggerEventType.GiveItem:
+                        DoGiveItem(triggerEvent.GiveItem);
+                        break;
                 }
             }
+        }
+
+        private void DoGiveItem(GiveItem giveItem)
+        {
+            GetAvatarCreatureInstance().GiveItem(giveItem.ItemIdentifier, giveItem.Quantity);
+        }
+
+        private void DoGiveMoney(GiveMoney giveMoney)
+        {
+            GetAvatarCreatureInstance().Money += giveMoney.Amount;
+        }
+
+        private void DoMakeRoomMessage(MakeRoomMessage makeRoomMessage)
+        {
+            var room = GetAvatarRoom();
+            room.AddMessage(makeRoomMessage.Message);
         }
 
         private void DoMakeSign(MakeSign makeSign)
@@ -88,6 +114,9 @@ namespace Engine
                     int gid = tile.Id + tileset.FirstGid;
                     switch(tile.Type)
                     {
+                        case "Item":
+                            AddItem(tile);
+                            break;
                         case "Terrain":
                             AddTerrain(tile);
                             terrains[gid] = tile.Properties["Name"];
@@ -111,30 +140,12 @@ namespace Engine
                 var roomTile = room.TryGet((int)(obj.X / obj.Width), (int)(obj.Y / obj.Height));
                 switch (obj.Type)
                 {
+                    case "MakeRoomMessage":
                     case "ClearSearch":
-                        room.GetTrigger(obj.Properties["ForTrigger"]).Add(new TriggerEvent
-                        {
-                            Order = Convert.ToInt32(obj.Properties["Order"]),
-                            EventType= TriggerEventType.ClearSearch,
-                            ClearSearch=new ClearSearch
-                            {
-                                Column = Convert.ToInt32(obj.Properties["Column"]),
-                                Row = Convert.ToInt32(obj.Properties["Row"])
-                            }
-                        });
-                        break;
                     case "MakeSign":
-                        room.GetTrigger(obj.Properties["ForTrigger"]).Add(new TriggerEvent
-                        {
-                            Order = Convert.ToInt32(obj.Properties["Order"]),
-                            EventType = TriggerEventType.MakeSign,
-                            MakeSign = new MakeSign
-                            {
-                                Column = Convert.ToInt32(obj.Properties["Column"]),
-                                Row = Convert.ToInt32(obj.Properties["Row"]),
-                                Message=obj.Properties["Message"]
-                            }
-                        });
+                    case "GiveMoney":
+                    case "GiveItem":
+                        room.AddTriggerFromTmxObject(obj);
                         break;
                     case "Teleport":
                         Teleport teleport = new Teleport
@@ -180,7 +191,8 @@ namespace Engine
                             Column = column,
                             Room = roomIdentifier,
                             Row =row,
-                            Creature=obj.Properties["Creature"]
+                            Creature=obj.Properties["Creature"],
+                            Items = new Dictionary<string, int>()
                         };
                         CreatureInstances[identifier] = creatureInstance;
                         room.Get(column, row).CreatureInstance = identifier;
@@ -189,6 +201,20 @@ namespace Engine
             }
             Rooms[roomIdentifier] = room;
             return room;
+        }
+
+        private void AddItem(TmxTilesetTile tile)
+        {
+            if (!Items.ContainsKey(tile.Properties["Name"]))
+            {
+                Item item = new Item
+                {
+                    ResourceIdentifier = tile.Properties["ResourceIdentifier"],
+                    ResourceIndex = Convert.ToInt32(tile.Properties["ResourceIndex"]),
+                    DisplayName = tile.Properties["DisplayName"]
+                };
+                Items[tile.Properties["Name"]] = item;
+            }
         }
 
         private void AddCreature(TmxTilesetTile tile)
@@ -202,7 +228,6 @@ namespace Engine
                 };
                 Creatures[tile.Properties["Name"]] = creature;
             }
-
         }
 
         private void AddTerrain(TmxTilesetTile tile)

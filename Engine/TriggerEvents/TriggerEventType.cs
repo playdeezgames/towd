@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Terrain: VisibleElement
+    public enum TriggerEventType
     {
-        public RoomTileRole Role { get; set; }
+        ClearSearch,
+        MakeSign,
+        MakeRoomMessage,
+        GiveMoney,
+        GiveItem
     }
 }

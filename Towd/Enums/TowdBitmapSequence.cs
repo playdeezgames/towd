@@ -10,5 +10,6 @@ namespace Towd
     {
         public const string DungeonTiles = "dungeon-tiles";
         public const string DungeonCreatures = "dungeon-creatures";
+        public const string DungeonItems = "dungeon-items";
     }
 }

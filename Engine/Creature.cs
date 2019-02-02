@@ -1,8 +1,6 @@
 ﻿namespace Engine
 {
-    public class Creature
+    public class Creature: VisibleElement
     {
-        public string ResourceIdentifier { get; set; }//references an exernal bitmapsequence manager
-        public int ResourceIndex { get; set; }//references an exernal bitmapsequence manager
     }
 }

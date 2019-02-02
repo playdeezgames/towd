@@ -22,6 +22,10 @@ namespace Towd
             var room = World.GetAvatarRoom();
             switch (command)
             {
+                case Command.Back:
+                    SetState(TowdState.ExitPlay);
+                    _promptTile = null;
+                    return true;
                 case Command.Red:
                     if(room.HasMessage())
                     {
@@ -33,8 +37,12 @@ namespace Towd
                     }
                     else
                     {
-                        SetState(TowdState.ExitPlay);
+                        SetState(TowdState.Inventory);
                     }
+                    return true;
+                case Command.Yellow:
+                    SetState(TowdState.Character);
+                    _promptTile = null;
                     return true;
                 case Command.Green:
                     if (room.HasMessage())

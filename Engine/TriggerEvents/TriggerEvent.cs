@@ -12,6 +12,8 @@ namespace Engine
         public TriggerEventType EventType { get; set; }
         public ClearSearch ClearSearch { get; set; }
         public MakeSign MakeSign { get; set; }
-        //TODO: make room message!
+        public MakeRoomMessage MakeRoomMessage { get; set; }
+        public GiveMoney GiveMoney { get; set; }
+        public GiveItem GiveItem { get; set; }
     }
 }

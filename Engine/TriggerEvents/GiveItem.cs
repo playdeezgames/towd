@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public enum TriggerEventType
+    public class GiveItem
     {
-        ClearSearch,
-        MakeSign
+        public string ItemIdentifier { get; set; }
+        public int Quantity { get; set; }
     }
 }

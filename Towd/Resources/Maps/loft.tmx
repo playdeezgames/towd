@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="5" height="5" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="7">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="5" height="5" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="9">
  <properties>
   <property name="RoomCaption" value="Loft"/>
   <property name="RoomId" value="loft"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="129" source="Creatures.tsx"/>
+ <tileset firstgid="257" source="Items.tsx"/>
  <layer id="2" name="RoomTiles" width="5" height="5">
   <data encoding="csv">
 12,5,5,5,9,
@@ -25,29 +26,14 @@
 </data>
  </layer>
  <objectgroup id="3" name="Events">
-  <object id="1" name="LadderDown" type="Teleport" x="8" y="8" width="8" height="8">
+  <object id="8" name="OnCrateSearched04-GiveMoney" type="GiveMoney" x="48" y="32" width="8" height="8">
    <properties>
-    <property name="Column" type="int" value="2"/>
-    <property name="Prompt" value="Climb Down?"/>
-    <property name="Room" value="home"/>
-    <property name="Row" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="2" name="Crate" type="Search" x="24" y="24" width="8" height="8">
-   <properties>
-    <property name="Prompt" value="Search Crate?"/>
-    <property name="Trigger" value="OnCrateSearched"/>
-   </properties>
-  </object>
-  <object id="3" name="ClearCrateSearch" type="ClearSearch" x="48" y="8" width="8" height="8">
-   <properties>
-    <property name="Column" type="int" value="3"/>
+    <property name="Amount" type="int" value="25"/>
     <property name="ForTrigger" value="OnCrateSearched"/>
-    <property name="Order" type="int" value="1"/>
-    <property name="Row" type="int" value="3"/>
+    <property name="Order" type="int" value="4"/>
    </properties>
   </object>
-  <object id="4" name="SearchedCrateSign" type="MakeSign" x="48" y="24" width="8" height="8">
+  <object id="4" name="OnCrateSearched03-SearchedCrateSign" type="MakeSign" x="48" y="24" width="8" height="8">
    <properties>
     <property name="Column" type="int" value="3"/>
     <property name="ForTrigger" value="OnCrateSearched"/>
@@ -56,11 +42,33 @@
     <property name="Row" type="int" value="3"/>
    </properties>
   </object>
-  <object id="6" name="SearchCrateMessage" type="MakeRoomMessage" x="48" y="16" width="8" height="8">
+  <object id="6" name="OnCrateSearched02-SearchCrateMessage" type="MakeRoomMessage" x="48" y="16" width="8" height="8">
    <properties>
     <property name="ForTrigger" value="OnCrateSearched"/>
-    <property name="Message" value="You find nothing"/>
+    <property name="Message" value="You find 25 gold coins!"/>
     <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="3" name="OnCrateSearched01-ClearCrate" type="ClearSearch" x="48" y="8" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="3"/>
+    <property name="ForTrigger" value="OnCrateSearched"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="Row" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="2" name="Crate" type="Search" x="24" y="24" width="8" height="8">
+   <properties>
+    <property name="Prompt" value="Search Crate?"/>
+    <property name="Trigger" value="OnCrateSearched"/>
+   </properties>
+  </object>
+  <object id="1" name="LadderDown" type="Teleport" x="8" y="8" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="2"/>
+    <property name="Prompt" value="Climb Down?"/>
+    <property name="Room" value="home"/>
+    <property name="Row" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Terrain: VisibleElement
+    public class MakeRoomMessage
     {
-        public RoomTileRole Role { get; set; }
+        public string Message { get; set; }
     }
 }
