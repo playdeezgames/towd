@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public enum RoomTileRole
+    public class Shoppe
     {
-        Open,
-        Solid,
-        Teleport,
-        Search,
-        Sign,
-        Shoppe
+        public string Prompt { get; set; }
+        public string ShoppeName { get; set; }
     }
 }

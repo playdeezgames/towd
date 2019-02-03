@@ -43,7 +43,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvatarStatus\ShoppeState.cs" />
+    <Compile Include="AvatarStatus\PromptedStatus.cs" />
+    <Compile Include="AvatarStatus\AvatarState.cs" />
+    <Compile Include="AvatarStatus\AvatarStatus.cs" />
+    <Compile Include="AvatarStatus\ShoppingStatus.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="Room\Shoppe.cs" />
+    <Compile Include="Room\ShoppeInventory.cs" />
     <Compile Include="TriggerEvents\GiveItem.cs" />
     <Compile Include="TriggerEvents\GiveMoney.cs" />
     <Compile Include="TriggerEvents\MakeRoomMessage.cs" />

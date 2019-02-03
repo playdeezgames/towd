@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public enum RoomTileRole
+    public class PromptedStatus
     {
-        Open,
-        Solid,
-        Teleport,
-        Search,
-        Sign,
-        Shoppe
+        public int Column { get; set; }
+        public int Row { get; set; }
     }
 }

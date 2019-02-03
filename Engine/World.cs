@@ -11,6 +11,7 @@ namespace Engine
     public class World
     {
         public string Avatar { get; set; }
+        public AvatarStatus AvatarStatus { get; set; }
         public int TileWidth { get; set; }
         public int TileHeight { get; set; }
         public Dictionary<string, Terrain> Terrains { get; set; }
@@ -19,6 +20,10 @@ namespace Engine
         public Dictionary<string, Room> Rooms { get; set; }
         public Dictionary<string, CreatureInstance> CreatureInstances { get; set; }
 
+        public bool CanAvatarMove()
+        {
+            return AvatarStatus.State == AvatarState.Normal && !GetAvatarRoom().HasMessage();
+        }
         public Room GetAvatarRoom()
         {
             return GetRoom(GetAvatarCreatureInstance().Room);
@@ -59,9 +64,26 @@ namespace Engine
             }
         }
 
+        public RoomTile GetPromptTile()
+        {
+            if (AvatarStatus.State == AvatarState.Prompted)
+            {
+                return GetAvatarRoom().Get(AvatarStatus.Prompted.Column, AvatarStatus.Prompted.Row);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private void DoGiveItem(GiveItem giveItem)
         {
             GetAvatarCreatureInstance().GiveItem(giveItem.ItemIdentifier, giveItem.Quantity);
+        }
+
+        public AvatarStatus GetAvatarStatus()
+        {
+            return AvatarStatus;
         }
 
         private void DoGiveMoney(GiveMoney giveMoney)
@@ -106,13 +128,13 @@ namespace Engine
             room.Loaded = true;
             room.Triggers = new Dictionary<string, List<TriggerEvent>>();
             Dictionary<int, string> terrains = new Dictionary<int, string>();
-            foreach(var tileset in map.Tilesets)
+            foreach (var tileset in map.Tilesets)
             {
-                foreach(var entry in tileset.Tiles)
+                foreach (var entry in tileset.Tiles)
                 {
                     var tile = entry.Value;
                     int gid = tile.Id + tileset.FirstGid;
-                    switch(tile.Type)
+                    switch (tile.Type)
                     {
                         case "Item":
                             AddItem(tile);
@@ -128,24 +150,35 @@ namespace Engine
                 }
             }
             var tileLayer = map.Layers["RoomTiles"];
-            foreach(var tile in tileLayer.Tiles)
+            foreach (var tile in tileLayer.Tiles)
             {
                 var roomTile = new RoomTile();
                 roomTile.Terrain = terrains[tile.Gid];
                 room.Set(tile.X, tile.Y, roomTile);
             }
             var objectLayer = map.ObjectGroups["Events"];
-            foreach(var obj in objectLayer.Objects)
+            foreach (var obj in objectLayer.Objects)
             {
                 var roomTile = room.TryGet((int)(obj.X / obj.Width), (int)(obj.Y / obj.Height));
                 switch (obj.Type)
                 {
+                    case "Buying":
+                    case "Selling":
                     case "MakeRoomMessage":
                     case "ClearSearch":
                     case "MakeSign":
                     case "GiveMoney":
                     case "GiveItem":
-                        room.AddTriggerFromTmxObject(obj);
+                        room.AddEventFromTmxObject(obj);
+                        break;
+                    case "Shoppe":
+                        Shoppe shoppe = new Shoppe
+                        {
+                            Prompt = obj.Properties["Prompt"],
+                            ShoppeName = obj.Properties["ShoppeName"]
+                        };
+                        roomTile.RoleOverride = RoomTileRole.Shoppe;
+                        roomTile.Shoppe = shoppe;
                         break;
                     case "Teleport":
                         Teleport teleport = new Teleport
@@ -161,7 +194,7 @@ namespace Engine
                     case "Sign":
                         Sign sign = new Sign
                         {
-                            Message=obj.Properties["Message"]
+                            Message = obj.Properties["Message"]
                         };
                         roomTile.RoleOverride = RoomTileRole.Sign;
                         roomTile.Sign = sign;
@@ -169,8 +202,8 @@ namespace Engine
                     case "Search":
                         Search search = new Search
                         {
-                            Prompt=obj.Properties["Prompt"],
-                            Trigger=obj.Properties["Trigger"]
+                            Prompt = obj.Properties["Prompt"],
+                            Trigger = obj.Properties["Trigger"]
                         };
                         roomTile.Search = search;
                         roomTile.RoleOverride = RoomTileRole.Search;
@@ -190,8 +223,8 @@ namespace Engine
                         {
                             Column = column,
                             Room = roomIdentifier,
-                            Row =row,
-                            Creature=obj.Properties["Creature"],
+                            Row = row,
+                            Creature = obj.Properties["Creature"],
                             Items = new Dictionary<string, int>()
                         };
                         CreatureInstances[identifier] = creatureInstance;
@@ -211,7 +244,9 @@ namespace Engine
                 {
                     ResourceIdentifier = tile.Properties["ResourceIdentifier"],
                     ResourceIndex = Convert.ToInt32(tile.Properties["ResourceIndex"]),
-                    DisplayName = tile.Properties["DisplayName"]
+                    DisplayName = tile.Properties["DisplayName"],
+                    BuyPrice = Convert.ToInt32(tile.Properties["BuyPrice"]),
+                    SellPrice = Convert.ToInt32(tile.Properties["SellPrice"])
                 };
                 Items[tile.Properties["Name"]] = item;
             }
@@ -219,7 +254,7 @@ namespace Engine
 
         private void AddCreature(TmxTilesetTile tile)
         {
-            if(!Creatures.ContainsKey(tile.Properties["Name"]))
+            if (!Creatures.ContainsKey(tile.Properties["Name"]))
             {
                 Creature creature = new Creature
                 {
@@ -232,7 +267,7 @@ namespace Engine
 
         private void AddTerrain(TmxTilesetTile tile)
         {
-            if(!Terrains.ContainsKey(tile.Properties["Name"]))
+            if (!Terrains.ContainsKey(tile.Properties["Name"]))
             {
                 Terrain terrain = new Terrain
                 {

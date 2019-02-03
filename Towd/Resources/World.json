@@ -2,6 +2,9 @@
   "TileWidth": 8,
   "TileHeight": 8,
   "Avatar": "B7700077-A641-4A3A-8C92-50862C26121D",
+  "AvatarStatus": {
+    "State": 0
+  },
   "Items": {
 
   },

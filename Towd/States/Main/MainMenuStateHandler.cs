@@ -12,25 +12,25 @@ namespace Towd
 {
     public class MainMenuStateHandler : TowdStateHandler
     {
-        private ListBoxControl _listBox;
+        private ListBoxControl<string> _listBox;
         public MainMenuStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
             var font = FontManager[TowdFont.Large];
             new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);
             new LabelControl(this, true, CyPoint.Create(0, 0), font, "Tombs of Woeful Doom!", CyColor.White);
-            _listBox = new ListBoxControl(
+            _listBox = new ListBoxControl<string>(
                 this, 
                 true, 
                 CyRect.Create(0, font.Height, Width, Height-font.Height), 
                 font, 
-                new string[] 
+                new ListBoxItem<string>[] 
                 {
-                    "New",
-                    "Load",
-                    "Help",
-                    "Options",
-                    "About",
-                    "Quit",
+                    ListBoxItem<string>.Create("New","New"),
+                    ListBoxItem<string>.Create("Load","Load"),
+                    ListBoxItem<string>.Create("Help","Help"),
+                    ListBoxItem<string>.Create("Options","Options"),
+                    ListBoxItem<string>.Create("About","About"),
+                    ListBoxItem<string>.Create("Quit","Quit"),
                 }, 
                 0, 
                 CyColor.Black, 

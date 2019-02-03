@@ -13,42 +13,42 @@
  </tile>
  <tile id="1" type="Item">
   <properties>
-   <property name="BuyPrice" type="int" value="5"/>
+   <property name="BuyPrice" type="int" value="25"/>
    <property name="DisplayName" value="dagger"/>
    <property name="Name" value="Dagger"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="1"/>
-   <property name="SellPrice" type="int" value="2"/>
+   <property name="SellPrice" type="int" value="3"/>
   </properties>
  </tile>
  <tile id="2" type="Item">
   <properties>
-   <property name="BuyPrice" type="int" value="10"/>
+   <property name="BuyPrice" type="int" value="100"/>
    <property name="DisplayName" value="shortsword"/>
    <property name="Name" value="ShortSword"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="2"/>
-   <property name="SellPrice" type="int" value="5"/>
+   <property name="SellPrice" type="int" value="10"/>
   </properties>
  </tile>
  <tile id="3" type="Item">
   <properties>
-   <property name="BuyPrice" type="int" value="25"/>
+   <property name="BuyPrice" type="int" value="250"/>
    <property name="DisplayName" value="longsword"/>
    <property name="Name" value="LongSword"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="3"/>
-   <property name="SellPrice" type="int" value="12"/>
+   <property name="SellPrice" type="int" value="25"/>
   </properties>
  </tile>
  <tile id="4" type="Item">
   <properties>
-   <property name="BuyPrice" type="int" value="50"/>
+   <property name="BuyPrice" type="int" value="500"/>
    <property name="DisplayName" value="greatsword"/>
    <property name="Name" value="GreatSword"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="4"/>
-   <property name="SellPrice" type="int" value="25"/>
+   <property name="SellPrice" type="int" value="50"/>
   </properties>
  </tile>
  <tile id="5" type="None"/>

@@ -15,6 +15,7 @@ namespace Engine
         public bool Loaded { get; set; }
         public Dictionary<string, List<TriggerEvent>> Triggers { get; set; }
         public Queue<string> RoomMessages { get; set; }
+        public Dictionary<string, ShoppeInventory> ShoppeInventories { get; set; }
 
         public bool HasMessage()
         {
@@ -87,71 +88,135 @@ namespace Engine
             return Pixels.Any(x => x.Terrain == terrain);
         }
 
-        internal void AddTriggerFromTmxObject(TmxObject obj)
+        internal void AddEventFromTmxObject(TmxObject obj)
         {
-            var trigger = GetTrigger(obj.Properties["ForTrigger"]);
             switch (obj.Type)
             {
+                case "Buying":
+                    AddBuying(obj);
+                    break;
+                case "Selling":
+                    AddSelling(obj);
+                    break;
                 case "MakeRoomMessage":
-                    trigger.Add(new TriggerEvent
-                    {
-                        Order = Convert.ToInt32(obj.Properties["Order"]),
-                        EventType = TriggerEventType.MakeRoomMessage,
-                        MakeRoomMessage = new MakeRoomMessage
-                        {
-                            Message = obj.Properties["Message"]
-                        }
-                    });
+                    AddMakeRoomMessage(obj);
                     break;
                 case "ClearSearch":
-                    trigger.Add(new TriggerEvent
-                    {
-                        Order = Convert.ToInt32(obj.Properties["Order"]),
-                        EventType = TriggerEventType.ClearSearch,
-                        ClearSearch = new ClearSearch
-                        {
-                            Column = Convert.ToInt32(obj.Properties["Column"]),
-                            Row = Convert.ToInt32(obj.Properties["Row"])
-                        }
-                    });
+                    AddClearSearch(obj);
                     break;
                 case "MakeSign":
-                    trigger.Add(new TriggerEvent
-                    {
-                        Order = Convert.ToInt32(obj.Properties["Order"]),
-                        EventType = TriggerEventType.MakeSign,
-                        MakeSign = new MakeSign
-                        {
-                            Column = Convert.ToInt32(obj.Properties["Column"]),
-                            Row = Convert.ToInt32(obj.Properties["Row"]),
-                            Message = obj.Properties["Message"]
-                        }
-                    });
+                    AddMakeSign(obj);
                     break;
                 case "GiveItem":
-                    trigger.Add(new TriggerEvent
-                    {
-                        Order = Convert.ToInt32(obj.Properties["Order"]),
-                        EventType = TriggerEventType.GiveItem,
-                        GiveItem = new GiveItem
-                        {
-                            ItemIdentifier = obj.Properties["ItemIdentifier"],
-                            Quantity = Convert.ToInt32(obj.Properties["Quantity"])
-                        }
-                    });
+                    AddGiveItem(obj);
                     break;
                 case "GiveMoney":
-                    trigger.Add(new TriggerEvent
-                    {
-                        Order = Convert.ToInt32(obj.Properties["Order"]),
-                        EventType = TriggerEventType.GiveMoney,
-                        GiveMoney = new GiveMoney
-                        {
-                            Amount = Convert.ToInt32(obj.Properties["Amount"])
-                        }
-                    });
+                    AddGiveMoney(obj);
                     break;
             }
+        }
+
+        private void AddGiveMoney(TmxObject obj)
+        {
+            var trigger = GetTrigger(obj.Properties["ForTrigger"]);
+            trigger.Add(new TriggerEvent
+            {
+                Order = Convert.ToInt32(obj.Properties["Order"]),
+                EventType = TriggerEventType.GiveMoney,
+                GiveMoney = new GiveMoney
+                {
+                    Amount = Convert.ToInt32(obj.Properties["Amount"])
+                }
+            });
+        }
+
+        private void AddGiveItem(TmxObject obj)
+        {
+            var trigger = GetTrigger(obj.Properties["ForTrigger"]);
+            trigger.Add(new TriggerEvent
+            {
+                Order = Convert.ToInt32(obj.Properties["Order"]),
+                EventType = TriggerEventType.GiveItem,
+                GiveItem = new GiveItem
+                {
+                    ItemIdentifier = obj.Properties["ItemIdentifier"],
+                    Quantity = Convert.ToInt32(obj.Properties["Quantity"])
+                }
+            });
+        }
+
+        private void AddMakeSign(TmxObject obj)
+        {
+            var trigger = GetTrigger(obj.Properties["ForTrigger"]);
+            trigger.Add(new TriggerEvent
+            {
+                Order = Convert.ToInt32(obj.Properties["Order"]),
+                EventType = TriggerEventType.MakeSign,
+                MakeSign = new MakeSign
+                {
+                    Column = Convert.ToInt32(obj.Properties["Column"]),
+                    Row = Convert.ToInt32(obj.Properties["Row"]),
+                    Message = obj.Properties["Message"]
+                }
+            });
+        }
+
+        private void AddClearSearch(TmxObject obj)
+        {
+            var trigger = GetTrigger(obj.Properties["ForTrigger"]);
+            trigger.Add(new TriggerEvent
+            {
+                Order = Convert.ToInt32(obj.Properties["Order"]),
+                EventType = TriggerEventType.ClearSearch,
+                ClearSearch = new ClearSearch
+                {
+                    Column = Convert.ToInt32(obj.Properties["Column"]),
+                    Row = Convert.ToInt32(obj.Properties["Row"])
+                }
+            });
+        }
+
+        private void AddMakeRoomMessage(TmxObject obj)
+        {
+            var trigger = GetTrigger(obj.Properties["ForTrigger"]);
+            trigger.Add(new TriggerEvent
+            {
+                Order = Convert.ToInt32(obj.Properties["Order"]),
+                EventType = TriggerEventType.MakeRoomMessage,
+                MakeRoomMessage = new MakeRoomMessage
+                {
+                    Message = obj.Properties["Message"]
+                }
+            });
+        }
+
+        private void AddSelling(TmxObject obj)
+        {
+            ShoppeInventory inventory = GetShoppeInventory(obj.Properties["ForShoppe"]);
+            inventory.AddSelling(obj.Properties["ItemName"]);
+        }
+
+        public ShoppeInventory GetShoppeInventory(string shoppeName)
+        {
+            if(ShoppeInventories==null)
+            {
+                ShoppeInventories = new Dictionary<string, ShoppeInventory>();
+            }
+            ShoppeInventory inventory;
+            if (!ShoppeInventories.TryGetValue(shoppeName, out inventory))
+            {
+                inventory = new ShoppeInventory();
+                inventory.Selling = new List<string>();
+                inventory.Buying = new List<string>();
+                ShoppeInventories.Add(shoppeName, inventory);
+            }
+            return inventory;
+        }
+
+        private void AddBuying(TmxObject obj)
+        {
+            ShoppeInventory inventory = GetShoppeInventory(obj.Properties["ForShoppe"]);
+            inventory.AddBuying(obj.Properties["ItemName"]);
         }
     }
 }

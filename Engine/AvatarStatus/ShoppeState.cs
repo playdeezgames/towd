@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public enum RoomTileRole
+    public enum ShoppeState
     {
-        Open,
-        Solid,
-        Teleport,
-        Search,
-        Sign,
-        Shoppe
+        Initial,
+        Buying,
+        Selling
     }
 }

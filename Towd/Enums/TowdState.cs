@@ -16,6 +16,7 @@ namespace Towd
         Room,
         ExitPlay,
         Character,
-        Inventory
+        Inventory,
+        Shopping
     }
 }

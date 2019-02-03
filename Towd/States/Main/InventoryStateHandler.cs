@@ -12,19 +12,18 @@ namespace Towd
     //TODO: have some content
     public class InventoryStateHandler : TowdStateHandler
     {
-        private ListBoxControl _listBox;
-        private Dictionary<int, string> _itemTable = new Dictionary<int, string>();
+        private ListBoxControl<string> _listBox;
         public InventoryStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
             var font = FontManager[TowdFont.Large];
             new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);
             new LabelControl(this, true, CyPoint.Create(0, 0), font, "Inventory", CyColor.White);
-            _listBox = new ListBoxControl(
+            _listBox = new ListBoxControl<string>(
                 this,
                 true,
                 CyRect.Create(0, font.Height, Width, Height - font.Height),
                 font,
-                new string[]
+                new ListBoxItem<string>[]
                 {
                 },
                 0,
@@ -56,13 +55,12 @@ namespace Towd
 
         protected override void OnStart()
         {
-            List<string> listBoxItems = new List<string>();
-            _itemTable.Clear();
+            List<ListBoxItem<string>> listBoxItems = new List<ListBoxItem<string>>();
             foreach(var entry in World.GetAvatarCreatureInstance().Items)
             {
                 var itemType = World.Items[entry.Key];
-                _itemTable[listBoxItems.Count()] = entry.Key;
-                listBoxItems.Add($"{itemType.DisplayName} x {entry.Value}");
+                var meta = entry.Key;
+                listBoxItems.Add(ListBoxItem<string>.Create(meta, $"{itemType.DisplayName} x {entry.Value}"));
             }
             _listBox.Items = listBoxItems;
             _listBox.Selected = 0;

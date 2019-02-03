@@ -11,21 +11,21 @@ namespace Towd
 {
     public class ConfirmQuitStateHandler : TowdStateHandler
     {
-        private ListBoxControl _listBox;
+        private ListBoxControl<bool> _listBox;
         public ConfirmQuitStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
             var font = FontManager[TowdFont.Large];
             new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);
             new LabelControl(this, true, CyPoint.Create(0, 0), font, "Are you sure?", CyColor.White);
-            _listBox = new ListBoxControl(
+            _listBox = new ListBoxControl<bool>(
                 this, 
                 true, 
                 CyRect.Create(0, font.Height, Width, Height-font.Height), 
                 font, 
-                new string[] 
+                new ListBoxItem<bool>[] 
                 {
-                    "No",
-                    "Yes"
+                    ListBoxItem<bool>.Create(false, "No"),
+                    ListBoxItem<bool>.Create(true, "Yes")
                 }, 
                 0, 
                 CyColor.Black, 

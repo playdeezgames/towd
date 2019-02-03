@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class ListBoxControl : ControlBase
+    public class ListBoxControl<TMeta> : ControlBase
     {
         private CyColor _foreground;
         private CyColor _background;
         private CyFont _font;
-        private List<string> _items;
-        public IEnumerable<string> Items
+        private List<ListBoxItem<TMeta>> _items;
+        public IEnumerable<ListBoxItem<TMeta>> Items
         {
             get
             {
@@ -54,7 +54,7 @@ namespace Common
             }
         }
 
-        public ListBoxControl(IMessageHandler<CyColor> parent, bool enabled, CyRect bounds, CyFont font, IEnumerable<string> items, int selected, CyColor foreground, CyColor background, Action<int> onActivate) : base(parent, enabled, bounds)
+        public ListBoxControl(IMessageHandler<CyColor> parent, bool enabled, CyRect bounds, CyFont font, IEnumerable<ListBoxItem<TMeta>> items, int selected, CyColor foreground, CyColor background, Action<int> onActivate) : base(parent, enabled, bounds)
         {
             _font = font;
             _items = items.ToList();
@@ -137,11 +137,11 @@ namespace Common
                 if(index==Selected)
                 {
                     pixelWriter.Box(CyRect.Create(0, y, Width, _font.Height), _foreground, clipRect);
-                    _font.Draw(pixelWriter, _background, 0, y, _items[index], clipRect);
+                    _font.Draw(pixelWriter, _background, 0, y, _items[index].Caption, clipRect);
                 }
                 else
                 {
-                    _font.Draw(pixelWriter, _foreground, 0, y, _items[index], clipRect);
+                    _font.Draw(pixelWriter, _foreground, 0, y, _items[index].Caption, clipRect);
                 }
                 y += _font.Height;
             }

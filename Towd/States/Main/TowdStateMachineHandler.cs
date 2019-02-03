@@ -20,6 +20,7 @@ namespace Towd
             this[TowdState.ExitPlay] = new ExitPlayStateHandler(this, null);
             this[TowdState.Character] = new CharacterStateHandler(this, null);
             this[TowdState.Inventory] = new InventoryStateHandler(this, null);
+            this[TowdState.Shopping] = new ShoppingStateHandler(this, null);
             Current = TowdState.MainMenu;
         }
     }

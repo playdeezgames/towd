@@ -17,7 +17,7 @@ namespace Towd
             var font = FontManager[TowdFont.Large];
             new FilledBoxControl(this, true, CyRect.Create(0, 0, Width, font.Height), CyColor.DarkGray);
             new LabelControl(this, true, CyPoint.Create(0, 0), font, "Character", CyColor.White);
-            _money = new LabelControl(this, true, CyPoint.Create(0, font.Height), font, "Money: ####", CyColor.Black);
+            _money = new LabelControl(this, true, CyPoint.Create(0, font.Height), font, "Money: ####G", CyColor.Black);
         }
 
         protected override bool OnCommand(Command command)
@@ -39,7 +39,7 @@ namespace Towd
 
         protected override void OnStart()
         {
-            _money.Text = $"Money: {World.GetAvatarCreatureInstance().Money}";
+            _money.Text = $"Money: {World.GetAvatarCreatureInstance().Money}g";
         }
 
         protected override void OnStop()

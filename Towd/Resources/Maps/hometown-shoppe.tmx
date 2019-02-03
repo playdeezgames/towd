@@ -18,7 +18,7 @@
 79,75,75,75,83,75,75,75,78
 </data>
  </layer>
- <layer id="4" name="Creatures" width="9" height="7">
+ <layer id="4" name="Contents" width="9" height="7">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,
 0,129,0,0,260,0,0,0,0,
@@ -41,7 +41,7 @@
   <object id="2" name="DaggerDales" type="Shoppe" x="32" y="16" width="8" height="8">
    <properties>
     <property name="Prompt" value="What'll it be?"/>
-    <property name="Shoppe" value="DaggerDalesShoppe"/>
+    <property name="ShoppeName" value="DaggerDalesShoppe"/>
    </properties>
   </object>
   <object id="3" name="SellingDagger" type="Selling" x="80" y="8" width="8" height="8">

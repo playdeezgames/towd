@@ -13,6 +13,7 @@ namespace Engine
         public Teleport Teleport { get; set; }
         public Sign Sign { get; set; }
         public Search Search { get; set; }
+        public Shoppe Shoppe { get; set; }
         public string CreatureInstance { get; set; }
     }
 }
