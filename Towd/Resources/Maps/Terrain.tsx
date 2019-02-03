@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.1" name="Terrain" tilewidth="8" tileheight="8" tilecount="88" columns="8">
- <image source="../Tilesets/Terrain.png" width="64" height="88"/>
+<tileset version="1.2" tiledversion="1.2.1" name="Terrain" tilewidth="8" tileheight="8" tilecount="128" columns="8">
+ <image source="../Tilesets/Terrain.png" width="64" height="128"/>
  <tile id="0" type="Terrain">
   <properties>
    <property name="Name" value="solid"/>
@@ -673,33 +673,33 @@
    <property name="Role" value="0"/>
   </properties>
  </tile>
- <tile id="84" type="None">
+ <tile id="84" type="Terrain">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="counter-ns"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="84"/>
    <property name="Role" value="1"/>
   </properties>
  </tile>
- <tile id="85" type="None">
+ <tile id="85" type="Terrain">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="counter-ne"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="85"/>
    <property name="Role" value="1"/>
   </properties>
  </tile>
- <tile id="86" type="None">
+ <tile id="86" type="Terrain">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="counter-ew"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="86"/>
    <property name="Role" value="1"/>
   </properties>
  </tile>
- <tile id="87" type="None">
+ <tile id="87" type="Terrain">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="counter-nw"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="87"/>
    <property name="Role" value="1"/>

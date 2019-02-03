@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Towd
 {
-    //TODO: have some content
     public class CharacterStateHandler : TowdStateHandler
     {
         private LabelControl _money;
@@ -25,7 +24,7 @@ namespace Towd
         {
             switch (command)
             {
-                case Command.Red:
+                case Command.Yellow:
                     SetState(TowdState.Room);
                     return true;
                 default:

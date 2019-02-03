@@ -126,6 +126,7 @@ namespace MonoGameCommon
             }
             _oldKeyboardState = newKeyboardState;
             var newGamePadState = GamePad.GetState(PlayerIndex.One);
+            System.Diagnostics.Debug.Print(newGamePadState.Buttons.Y.ToString());
             foreach (var entry in gamePadProcessor)
             {
                 if (entry.Value(newGamePadState) && !entry.Value(_oldGamePadState))
