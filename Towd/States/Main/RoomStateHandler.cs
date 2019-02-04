@@ -97,6 +97,10 @@ namespace Towd
             var instance = World.CreatureInstances[creatureInstance];
             var oldTile = World.GetRoom(instance.Room).Get(instance.Column, instance.Row);
             var newTile = World.GetRoom(room).Get(column, row);
+            if(newTile.CreatureInstance!=null)
+            {
+                return;
+            }
             oldTile.CreatureInstance = null;
             newTile.CreatureInstance = creatureInstance;
             instance.Room = room;

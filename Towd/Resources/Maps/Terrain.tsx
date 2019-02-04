@@ -705,4 +705,28 @@
    <property name="Role" value="1"/>
   </properties>
  </tile>
+ <tile id="88" type="Terrain">
+  <properties>
+   <property name="Name" value="table"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" type="int" value="88"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="89" type="Terrain">
+  <properties>
+   <property name="Name" value="chair1"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" type="int" value="89"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="90" type="Terrain">
+  <properties>
+   <property name="Name" value="chair2"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" type="int" value="90"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
 </tileset>

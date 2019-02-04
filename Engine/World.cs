@@ -169,6 +169,10 @@ namespace Engine
                     case "MakeSign":
                     case "GiveMoney":
                     case "GiveItem":
+                    case "DialogState":
+                    case "DialogNode":
+                    case "DialogChoice":
+                    case "DialogChoiceEvent":
                         room.AddEventFromTmxObject(obj);
                         break;
                     case "Shoppe":
@@ -225,7 +229,9 @@ namespace Engine
                             Room = roomIdentifier,
                             Row = row,
                             Creature = obj.Properties["Creature"],
-                            Items = new Dictionary<string, int>()
+                            Items = new Dictionary<string, int>(),
+                            Money = obj.GetProperty("Money", 0),
+                            DialogState = obj.GetProperty("DialogState", string.Empty)
                         };
                         CreatureInstances[identifier] = creatureInstance;
                         room.Get(column, row).CreatureInstance = identifier;

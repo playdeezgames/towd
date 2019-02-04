@@ -24,52 +24,88 @@
  </tile>
  <tile id="3" type="Creature">
   <properties>
-   <property name="Name" value="NpcDude"/>
+   <property name="Name" value="NpcDude1"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="3"/>
   </properties>
  </tile>
  <tile id="4" type="Creature">
   <properties>
-   <property name="Name" value="NpcLady"/>
+   <property name="Name" value="NpcLady1"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="4"/>
   </properties>
  </tile>
- <tile id="5" type="None"/>
- <tile id="6" type="None"/>
- <tile id="7" type="None"/>
- <tile id="8" type="None">
+ <tile id="5" type="Creature">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="NpcDude2"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
-   <property name="ResourceIndex" type="int" value="0"/>
+   <property name="ResourceIndex" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="9" type="None">
+ <tile id="6" type="Creature">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="NpcDude3"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
-   <property name="ResourceIndex" type="int" value="0"/>
+   <property name="ResourceIndex" type="int" value="6"/>
   </properties>
  </tile>
- <tile id="10" type="None">
+ <tile id="7" type="Creature">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="NpcDude4"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
-   <property name="ResourceIndex" type="int" value="0"/>
+   <property name="ResourceIndex" type="int" value="7"/>
   </properties>
  </tile>
- <tile id="11" type="None">
+ <tile id="8" type="Creature">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="NpcDude5"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
-   <property name="ResourceIndex" type="int" value="0"/>
+   <property name="ResourceIndex" type="int" value="8"/>
   </properties>
  </tile>
- <tile id="12" type="None"/>
- <tile id="13" type="None"/>
- <tile id="14" type="None"/>
+ <tile id="9" type="Creature">
+  <properties>
+   <property name="Name" value="NpcDude6"/>
+   <property name="ResourceIdentifier" value="dungeon-creatures"/>
+   <property name="ResourceIndex" type="int" value="9"/>
+  </properties>
+ </tile>
+ <tile id="10" type="Creature">
+  <properties>
+   <property name="Name" value="NpcLady2"/>
+   <property name="ResourceIdentifier" value="dungeon-creatures"/>
+   <property name="ResourceIndex" type="int" value="10"/>
+  </properties>
+ </tile>
+ <tile id="11" type="Creature">
+  <properties>
+   <property name="Name" value="NpcLady3"/>
+   <property name="ResourceIdentifier" value="dungeon-creatures"/>
+   <property name="ResourceIndex" type="int" value="11"/>
+  </properties>
+ </tile>
+ <tile id="12" type="Creature">
+  <properties>
+   <property name="Name" value="NpcLady4"/>
+   <property name="ResourceIdentifier" value="dungeon-creatures"/>
+   <property name="ResourceIndex" type="int" value="12"/>
+  </properties>
+ </tile>
+ <tile id="13" type="Creature">
+  <properties>
+   <property name="Name" value="NpcLady5"/>
+   <property name="ResourceIdentifier" value="dungeon-creatures"/>
+   <property name="ResourceIndex" type="int" value="13"/>
+  </properties>
+ </tile>
+ <tile id="14" type="Creature">
+  <properties>
+   <property name="Name" value="NpcLady6"/>
+   <property name="ResourceIdentifier" value="dungeon-creatures"/>
+   <property name="ResourceIndex" type="int" value="14"/>
+  </properties>
+ </tile>
  <tile id="15" type="None"/>
  <tile id="16" type="None">
   <properties>

@@ -16,6 +16,7 @@ namespace Engine
         public Dictionary<string, List<TriggerEvent>> Triggers { get; set; }
         public Queue<string> RoomMessages { get; set; }
         public Dictionary<string, ShoppeInventory> ShoppeInventories { get; set; }
+        public Dictionary<string, DialogState> DialogStates { get; set; }
 
         public bool HasMessage()
         {
@@ -92,6 +93,18 @@ namespace Engine
         {
             switch (obj.Type)
             {
+                case "DialogState":
+                    AddDialogState(obj);
+                    break;
+                case "DialogNode":
+                    AddDialogNode(obj);
+                    break;
+                case "DialogChoice":
+                    AddDialogChoice(obj);
+                    break;
+                case "DialogChoiceEvent":
+                    AddDialogChoiceEvent(obj);
+                    break;
                 case "Buying":
                     AddBuying(obj);
                     break;
@@ -114,6 +127,46 @@ namespace Engine
                     AddGiveMoney(obj);
                     break;
             }
+        }
+
+        private void AddDialogChoiceEvent(TmxObject obj)
+        {
+            var choice = GetDialogState(obj.Properties["ForDialog"]).GetNode(obj.Properties["ForState"]).GetChoice(obj.Properties["ForOption"]);
+            var choiceEvent = new DialogChoiceEvent
+            {
+                Order = obj.GetProperty("Order",0),
+                EventType = (DialogEventType)obj.GetProperty("DialogEventType",0)
+            };
+        }
+
+        private void AddDialogChoice(TmxObject obj)
+        {
+            var choice = GetDialogState(obj.Properties["ForDialog"]).GetNode(obj.Properties["ForState"]).GetChoice(obj.Properties["Option"]);
+            choice.Order = obj.GetProperty("Order", 0);
+        }
+
+        private void AddDialogNode(TmxObject obj)
+        {
+            var node = GetDialogState(obj.Properties["ForDialog"]).GetNode(obj.Properties["ForState"]);
+            node.Prompt = obj.Properties["Prompt"];
+        }
+
+        private void AddDialogState(TmxObject obj)
+        {
+            GetDialogState(obj.Properties["ForDialog"]).CurrentState = obj.Properties["CurrentState"];
+        }
+
+        private DialogState GetDialogState(string name)
+        {
+            if(DialogStates==null)
+            {
+                DialogStates = new Dictionary<string, DialogState>();
+            }
+            if(!DialogStates.ContainsKey(name))
+            {
+                DialogStates[name] = new DialogState();
+            }
+            return DialogStates[name];
         }
 
         private void AddGiveMoney(TmxObject obj)

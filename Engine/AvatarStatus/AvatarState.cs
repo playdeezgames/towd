@@ -10,6 +10,7 @@ namespace Engine
     {
         Normal,
         Prompted,
-        Shopping
+        Shopping,
+        Dialog
     }
 }

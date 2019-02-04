@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="21">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="29">
  <properties>
   <property name="RoomCaption" value="Town of Quotidian"/>
   <property name="RoomId" value="hometown"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="129" source="Items.tsx"/>
+ <tileset firstgid="257" source="Creatures.tsx"/>
  <layer id="3" name="RoomTiles" width="30" height="20">
   <data encoding="csv">
 32,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,29,
@@ -30,7 +31,7 @@
 31,27,27,27,27,27,27,27,27,27,27,27,27,27,57,27,27,27,27,27,27,27,27,27,27,27,27,27,27,30
 </data>
  </layer>
- <layer id="5" name="Creatures" width="30" height="20">
+ <layer id="5" name="Contents" width="30" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -48,7 +49,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,266,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -81,10 +82,10 @@
   </object>
   <object id="6" name="hotel-entrance" type="Teleport" x="40" y="120" width="8" height="8">
    <properties>
-    <property name="Column" type="int" value="4"/>
+    <property name="Column" type="int" value="6"/>
     <property name="Prompt" value="Enter Inn"/>
     <property name="Room" value="hometown-hotel-lobby"/>
-    <property name="Row" type="int" value="5"/>
+    <property name="Row" type="int" value="7"/>
    </properties>
   </object>
   <object id="7" name="church-entrance" type="Teleport" x="160" y="40" width="8" height="8">
@@ -149,6 +150,45 @@
     <property name="Message" value="Town of Quotidian"/>
    </properties>
   </object>
+  <object id="22" name="TownDrunkDlgState" type="DialogState" x="-24" y="0" width="8" height="8">
+   <properties>
+    <property name="CurrentState" value="Initial"/>
+    <property name="ForDialog" value="TownDrunk"/>
+   </properties>
+  </object>
+  <object id="23" name="TownDrunkInitial" type="DialogNode" x="-40" y="0" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="TownDrunk"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Prompt" value="*HIC*"/>
+   </properties>
+  </object>
+  <object id="26" name="TownDrunkInitialLeave" type="DialogChoice" x="-40" y="8" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="TownDrunk"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Option" value="Leave"/>
+    <property name="Order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="27" name="TDILeave 01" type="DialogChoiceEvent" x="-48" y="8" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="0"/>
+    <property name="ForDialog" value="TownDrunk"/>
+    <property name="ForOption" value="Leave"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Order" type="int" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="6" name="CreatureInstances"/>
+ <objectgroup id="6" name="CreatureInstances">
+  <object id="21" name="Town Drunk" type="CreatureInstance" x="24" y="128" width="8" height="8">
+   <properties>
+    <property name="Creature" value="NpcDude6"/>
+    <property name="DialogState" value="TownDrunk"/>
+    <property name="Identifier" value="95438fae-be55-40eb-813f-808e30b1fc9d"/>
+    <property name="Money" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

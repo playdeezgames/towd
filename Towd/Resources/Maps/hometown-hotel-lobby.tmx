@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="9" height="7" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="3">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="5">
  <properties>
   <property name="RoomCaption" value="Bromidic Inn"/>
   <property name="RoomId" value="hometown-hotel-lobby"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="129" source="Items.tsx"/>
- <layer id="3" name="RoomTiles" width="9" height="7">
+ <tileset firstgid="257" source="Creatures.tsx"/>
+ <layer id="7" name="RoomTiles" width="13" height="9">
   <data encoding="csv">
-80,73,73,73,73,73,73,73,77,
-76,4,4,4,4,4,4,4,74,
-76,4,4,4,4,4,4,4,74,
-76,4,4,4,4,4,4,4,74,
-76,4,4,4,4,4,4,4,74,
-76,4,4,4,4,4,4,4,74,
-79,75,75,75,83,75,75,75,78
+80,73,73,73,73,73,73,73,73,73,73,73,77,
+76,4,4,4,85,4,4,4,4,4,4,22,74,
+76,87,87,87,88,4,4,4,4,4,4,4,74,
+76,4,4,4,4,4,4,4,4,4,4,4,74,
+76,4,4,4,4,91,89,90,4,4,4,4,74,
+76,4,4,4,4,4,4,4,4,4,4,4,74,
+76,91,89,90,4,4,4,4,4,91,89,90,74,
+76,4,4,4,4,4,4,4,4,4,4,4,74,
+79,75,75,75,75,75,83,75,75,75,75,75,78
 </data>
  </layer>
- <layer id="4" name="Creatures" width="9" height="7">
+ <layer id="8" name="Contents" width="13" height="9">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,268,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <objectgroup id="5" name="Events">
-  <object id="1" name="hotel-exit" type="Teleport" x="32" y="48" width="8" height="8">
+  <object id="1" name="hotel-exit" type="Teleport" x="48" y="64" width="8" height="8">
    <properties>
     <property name="Column" type="int" value="5"/>
     <property name="Prompt" value="Leave Inn?"/>
@@ -37,6 +42,15 @@
     <property name="Row" type="int" value="16"/>
    </properties>
   </object>
+  <object id="4" name="InnKeeperDialog" type="StartDialog" x="24" y="16" width="8" height="8"/>
  </objectgroup>
- <objectgroup id="6" name="CreatureInstances"/>
+ <objectgroup id="6" name="CreatureInstances">
+  <object id="3" name="InnKeeper" type="CreatureInstance" x="24" y="8" width="8" height="8">
+   <properties>
+    <property name="Creature" value="NpcLady3"/>
+    <property name="Identifier" value="8886eb01-ce79-47e5-a5ee-ecc04bd46ada"/>
+    <property name="Money" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

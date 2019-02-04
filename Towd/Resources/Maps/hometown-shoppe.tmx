@@ -102,7 +102,7 @@
  <objectgroup id="6" name="CreatureInstances">
   <object id="12" name="Merchant" type="CreatureInstance" x="32" y="8" width="8" height="8">
    <properties>
-    <property name="Creature" value="NpcDude"/>
+    <property name="Creature" value="NpcDude1"/>
     <property name="Identifier" value="dc70726a-7592-415f-a7e4-361e613f6494"/>
     <property name="Money" type="int" value="0"/>
    </properties>
