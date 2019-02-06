@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Engine
 {
@@ -7,5 +8,14 @@ namespace Engine
         public int Order { get; set; }
         public string Option { get; set; }
         public List<DialogChoiceEvent> Events { get; set; }
+
+        internal void AddEvent(DialogChoiceEvent choiceEvent)
+        {
+            if(Events==null)
+            {
+                Events = new List<DialogChoiceEvent>();
+            }
+            Events.Add(choiceEvent);
+        }
     }
 }

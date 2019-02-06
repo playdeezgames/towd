@@ -134,15 +134,18 @@ namespace Engine
             var choice = GetDialogState(obj.Properties["ForDialog"]).GetNode(obj.Properties["ForState"]).GetChoice(obj.Properties["ForOption"]);
             var choiceEvent = new DialogChoiceEvent
             {
-                Order = obj.GetProperty("Order",0),
-                EventType = (DialogEventType)obj.GetProperty("DialogEventType",0)
+                Order = obj.GetProperty("Order", 0),
+                EventType = (DialogEventType)obj.GetProperty("DialogEventType", 0),
+                Shoppe = obj.GetProperty("Shoppe", string.Empty)
             };
+            choice.AddEvent(choiceEvent);
         }
 
         private void AddDialogChoice(TmxObject obj)
         {
             var choice = GetDialogState(obj.Properties["ForDialog"]).GetNode(obj.Properties["ForState"]).GetChoice(obj.Properties["Option"]);
             choice.Order = obj.GetProperty("Order", 0);
+            choice.Option = obj.Properties["Option"];
         }
 
         private void AddDialogNode(TmxObject obj)

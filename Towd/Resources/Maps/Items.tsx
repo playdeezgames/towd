@@ -51,10 +51,46 @@
    <property name="SellPrice" type="int" value="50"/>
   </properties>
  </tile>
- <tile id="5" type="None"/>
- <tile id="6" type="None"/>
- <tile id="7" type="None"/>
- <tile id="8" type="None"/>
+ <tile id="5" type="Item">
+  <properties>
+   <property name="BuyPrice" type="int" value="5"/>
+   <property name="DisplayName" value="cheese"/>
+   <property name="Name" value="Cheese"/>
+   <property name="ResourceIdentifier" value="dungeon-items"/>
+   <property name="ResourceIndex" type="int" value="5"/>
+   <property name="SellPrice" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="6" type="Item">
+  <properties>
+   <property name="BuyPrice" type="int" value="2"/>
+   <property name="DisplayName" value="taters"/>
+   <property name="Name" value="Taters"/>
+   <property name="ResourceIdentifier" value="dungeon-items"/>
+   <property name="ResourceIndex" type="int" value="6"/>
+   <property name="SellPrice" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="7" type="Item">
+  <properties>
+   <property name="BuyPrice" type="int" value="10"/>
+   <property name="DisplayName" value="meat"/>
+   <property name="Name" value="Meat"/>
+   <property name="ResourceIdentifier" value="dungeon-items"/>
+   <property name="ResourceIndex" type="int" value="7"/>
+   <property name="SellPrice" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="8" type="Item">
+  <properties>
+   <property name="BuyPrice" type="int" value="1"/>
+   <property name="DisplayName" value="bread"/>
+   <property name="Name" value="Bread"/>
+   <property name="ResourceIdentifier" value="dungeon-items"/>
+   <property name="ResourceIndex" type="int" value="7"/>
+   <property name="SellPrice" type="int" value="0"/>
+  </properties>
+ </tile>
  <tile id="9" type="None"/>
  <tile id="10" type="None"/>
  <tile id="11" type="None"/>

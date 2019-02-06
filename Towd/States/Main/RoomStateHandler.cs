@@ -99,6 +99,15 @@ namespace Towd
             var newTile = World.GetRoom(room).Get(column, row);
             if(newTile.CreatureInstance!=null)
             {
+                var otherCreature = World.CreatureInstances[newTile.CreatureInstance];
+                if(creatureInstance==World.Avatar)
+                {
+                    if(!string.IsNullOrEmpty(otherCreature.Dialog))
+                    {
+                        World.AvatarStatus.SetDialog(otherCreature.Dialog);
+                        SetState(TowdState.Dialog);
+                    }
+                }
                 return;
             }
             oldTile.CreatureInstance = null;
@@ -120,6 +129,10 @@ namespace Towd
                 {
                     case RoomTileRole.Open:
                         MoveCreature(World.Avatar, avatarCreature.Room, nextX, nextY);
+                        break;
+                    case RoomTileRole.StartDialog:
+                        World.AvatarStatus.SetDialog(World.GetAvatarRoom().Get(nextX, nextY).StartDialog.Dialog);
+                        SetState(TowdState.Dialog);
                         break;
                     case RoomTileRole.Teleport:
                     case RoomTileRole.Sign:

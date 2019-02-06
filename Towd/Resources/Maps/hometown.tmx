@@ -185,7 +185,7 @@
   <object id="21" name="Town Drunk" type="CreatureInstance" x="24" y="128" width="8" height="8">
    <properties>
     <property name="Creature" value="NpcDude6"/>
-    <property name="DialogState" value="TownDrunk"/>
+    <property name="Dialog" value="TownDrunk"/>
     <property name="Identifier" value="95438fae-be55-40eb-813f-808e30b1fc9d"/>
     <property name="Money" type="int" value="0"/>
    </properties>

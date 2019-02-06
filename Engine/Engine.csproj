@@ -57,6 +57,7 @@
     <Compile Include="Room\Dialog\DialogState.cs" />
     <Compile Include="Room\RoomTile\Shoppe.cs" />
     <Compile Include="Room\RoomTile\ShoppeInventory.cs" />
+    <Compile Include="Room\RoomTile\StartDialog.cs" />
     <Compile Include="TmxObjectExtensions.cs" />
     <Compile Include="TriggerEvents\GiveItem.cs" />
     <Compile Include="TriggerEvents\GiveMoney.cs" />

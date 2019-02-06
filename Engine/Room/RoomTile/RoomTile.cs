@@ -14,6 +14,7 @@ namespace Engine
         public Sign Sign { get; set; }
         public Search Search { get; set; }
         public Shoppe Shoppe { get; set; }
+        public StartDialog StartDialog { get; set; }
         public string CreatureInstance { get; set; }
     }
 }

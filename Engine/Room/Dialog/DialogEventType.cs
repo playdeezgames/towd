@@ -2,6 +2,7 @@
 {
     public enum DialogEventType
     {
-        ExitDialog
+        ExitDialog,
+        EnterShoppe
     }
 }

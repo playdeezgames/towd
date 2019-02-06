@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public enum RoomTileRole
+    public class StartDialog
     {
-        Open,
-        Solid,
-        Teleport,
-        Search,
-        Sign,
-        Shoppe,
-        StartDialog
+        public string Dialog { get; set; }
     }
 }

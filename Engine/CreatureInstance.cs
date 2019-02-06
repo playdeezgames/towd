@@ -16,7 +16,7 @@ namespace Engine
         //INVENTORY
         public int Money { get; set; }
         public Dictionary<string, int> Items { get; set; }
-        public string DialogState { get; set; }
+        public string Dialog { get; set; }
 
         internal void GiveItem(string itemIdentifier, int quantity)
         {

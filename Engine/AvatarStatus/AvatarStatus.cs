@@ -44,15 +44,14 @@ namespace Engine
             Dialog = null;
         }
 
-        public void SetDialog(string dialog, string state)
+        public void SetDialog(string dialog)
         {
             State = AvatarState.Dialog;
             Prompted = null;
             Shopping = null;
             Dialog = new DialogStatus
             {
-                Dialog = dialog,
-                State = state
+                Dialog = dialog
             };
         }
     }

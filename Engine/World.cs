@@ -175,6 +175,14 @@ namespace Engine
                     case "DialogChoiceEvent":
                         room.AddEventFromTmxObject(obj);
                         break;
+                    case "StartDialog":
+                        StartDialog startDialog = new StartDialog
+                        {
+                            Dialog = obj.Properties["Dialog"]
+                        };
+                        roomTile.RoleOverride = RoomTileRole.StartDialog;
+                        roomTile.StartDialog = startDialog;
+                        break;
                     case "Shoppe":
                         Shoppe shoppe = new Shoppe
                         {
@@ -231,7 +239,7 @@ namespace Engine
                             Creature = obj.Properties["Creature"],
                             Items = new Dictionary<string, int>(),
                             Money = obj.GetProperty("Money", 0),
-                            DialogState = obj.GetProperty("DialogState", string.Empty)
+                            Dialog = obj.GetProperty("Dialog", string.Empty)
                         };
                         CreatureInstances[identifier] = creatureInstance;
                         room.Get(column, row).CreatureInstance = identifier;
