@@ -17,6 +17,7 @@ namespace Engine
         public Queue<string> RoomMessages { get; set; }
         public Dictionary<string, ShoppeInventory> ShoppeInventories { get; set; }
         public Dictionary<string, DialogState> DialogStates { get; set; }
+        public Dictionary<string, bool> RoomFlags { get; set; }
 
         public bool HasMessage()
         {
@@ -93,6 +94,12 @@ namespace Engine
         {
             switch (obj.Type)
             {
+                case "DialogChoiceCondition":
+                    AddDialogChoiceCondition(obj);
+                    break;
+                case "RoomFlag":
+                    AddRoomFlag(obj);
+                    break;
                 case "DialogState":
                     AddDialogState(obj);
                     break;
@@ -126,7 +133,42 @@ namespace Engine
                 case "GiveMoney":
                     AddGiveMoney(obj);
                     break;
+                default:
+                    break;
             }
+        }
+
+        public bool GetFlag(string flagName)
+        {
+            if(RoomFlags!=null)
+            {
+                if(RoomFlags.ContainsKey(flagName))
+                {
+                    return RoomFlags[flagName];
+                }
+            }
+            return false;
+        }
+
+        private void AddDialogChoiceCondition(TmxObject obj)
+        {
+            var choice = GetDialogState(obj.Properties["ForDialog"]).GetNode(obj.Properties["ForState"]).GetChoice(obj.Properties["ForOption"]);
+            choice.AddCondition(new DialogChoiceCondition
+            {
+                ConditionType = (DialogConditionType)obj.GetProperty("ConditionType", 0),
+                FlagName = obj.GetProperty("FlagName", string.Empty)
+            });
+        }
+
+        private void AddRoomFlag(TmxObject obj)
+        {
+            string flagName = obj.Properties["Flag"];
+            bool value = obj.GetProperty("Value", false);
+            if(RoomFlags==null)
+            {
+                RoomFlags = new Dictionary<string, bool>();
+            }
+            RoomFlags[flagName] = value;
         }
 
         private void AddDialogChoiceEvent(TmxObject obj)
@@ -146,12 +188,17 @@ namespace Engine
             var choice = GetDialogState(obj.Properties["ForDialog"]).GetNode(obj.Properties["ForState"]).GetChoice(obj.Properties["Option"]);
             choice.Order = obj.GetProperty("Order", 0);
             choice.Option = obj.Properties["Option"];
+            choice.OptionText = obj.Properties["OptionText"];
         }
 
         private void AddDialogNode(TmxObject obj)
         {
             var node = GetDialogState(obj.Properties["ForDialog"]).GetNode(obj.Properties["ForState"]);
-            node.Prompt = obj.Properties["Prompt"];
+            node.Caption = obj.GetProperty("Caption", "Dialog");
+            node.SetPrompt(1, obj.GetProperty("Prompt1", string.Empty));
+            node.SetPrompt(2, obj.GetProperty("Prompt2", string.Empty));
+            node.SetPrompt(3, obj.GetProperty("Prompt3", string.Empty));
+            node.SetPrompt(4, obj.GetProperty("Prompt4", string.Empty));
         }
 
         private void AddDialogState(TmxObject obj)

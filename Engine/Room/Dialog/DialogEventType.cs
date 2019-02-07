@@ -3,6 +3,8 @@
     public enum DialogEventType
     {
         ExitDialog,
-        EnterShoppe
+        EnterShoppe,
+        SetDialogState,
+        SetRoomFlag
     }
 }

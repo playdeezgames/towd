@@ -51,7 +51,9 @@
     <Compile Include="AvatarStatus\ShoppingStatus.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Room\Dialog\DialogChoice.cs" />
+    <Compile Include="Room\Dialog\DialogChoiceCondition.cs" />
     <Compile Include="Room\Dialog\DialogChoiceEvent.cs" />
+    <Compile Include="Room\Dialog\DialogConditionType.cs" />
     <Compile Include="Room\Dialog\DialogEventType.cs" />
     <Compile Include="Room\Dialog\DialogNode.cs" />
     <Compile Include="Room\Dialog\DialogState.cs" />

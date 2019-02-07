@@ -196,7 +196,7 @@ namespace Towd
                 }
             }
             var font = FontManager[TowdFont.Large];
-            font.Draw(pixelWriter, CyColor.Black, 0, 0, room.Caption, clipRect);
+            DrawOutlinedText(pixelWriter,font,CyColor.Black, CyColor.LightGray, 1, 1, room.Caption, clipRect);
             if (room.HasMessage())
             {
                 var message = room.GetNextMessage();
@@ -207,16 +207,16 @@ namespace Towd
                 switch (World.GetPromptTile().RoleOverride.Value)
                 {
                     case RoomTileRole.Shoppe:
-                        DrawOutlinedText(pixelWriter, font, CyColor.Black, CyColor.White, 0, Height - font.Height, World.GetPromptTile().Shoppe.Prompt, clipRect);
+                        DrawOutlinedText(pixelWriter, font, CyColor.Black, CyColor.White, 1, Height - font.Height, World.GetPromptTile().Shoppe.Prompt, clipRect);
                         break;
                     case RoomTileRole.Search:
-                        DrawOutlinedText(pixelWriter, font, CyColor.Black, CyColor.White, 0, Height - font.Height, World.GetPromptTile().Search.Prompt, clipRect);
+                        DrawOutlinedText(pixelWriter, font, CyColor.Black, CyColor.White, 1, Height - font.Height, World.GetPromptTile().Search.Prompt, clipRect);
                         break;
                     case RoomTileRole.Teleport:
-                        DrawOutlinedText(pixelWriter, font, CyColor.Black, CyColor.White, 0, Height - font.Height, World.GetPromptTile().Teleport.Prompt, clipRect);
+                        DrawOutlinedText(pixelWriter, font, CyColor.Black, CyColor.White, 1, Height - font.Height, World.GetPromptTile().Teleport.Prompt, clipRect);
                         break;
                     case RoomTileRole.Sign:
-                        DrawOutlinedText(pixelWriter, font, CyColor.Black, CyColor.White, 0, Height - font.Height, World.GetPromptTile().Sign.Message, clipRect);
+                        DrawOutlinedText(pixelWriter, font, CyColor.Black, CyColor.White, 1, Height - font.Height, World.GetPromptTile().Sign.Message, clipRect);
                         break;
                 }
             }

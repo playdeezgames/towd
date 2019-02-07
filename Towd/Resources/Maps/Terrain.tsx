@@ -553,9 +553,9 @@
    <property name="Role" value="1"/>
   </properties>
  </tile>
- <tile id="69" type="None">
+ <tile id="69" type="Terrain">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="town-castleroof-back"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" value="69"/>
    <property name="Role" value="1"/>
@@ -726,6 +726,14 @@
    <property name="Name" value="chair2"/>
    <property name="ResourceIdentifier" value="dungeon-tiles"/>
    <property name="ResourceIndex" type="int" value="90"/>
+   <property name="Role" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="91" type="Terrain">
+  <properties>
+   <property name="Name" value="Shelves"/>
+   <property name="ResourceIdentifier" value="dungeon-tiles"/>
+   <property name="ResourceIndex" type="int" value="91"/>
    <property name="Role" type="int" value="1"/>
   </properties>
  </tile>

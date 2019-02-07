@@ -162,19 +162,6 @@ namespace Engine
                 var roomTile = room.TryGet((int)(obj.X / obj.Width), (int)(obj.Y / obj.Height));
                 switch (obj.Type)
                 {
-                    case "Buying":
-                    case "Selling":
-                    case "MakeRoomMessage":
-                    case "ClearSearch":
-                    case "MakeSign":
-                    case "GiveMoney":
-                    case "GiveItem":
-                    case "DialogState":
-                    case "DialogNode":
-                    case "DialogChoice":
-                    case "DialogChoiceEvent":
-                        room.AddEventFromTmxObject(obj);
-                        break;
                     case "StartDialog":
                         StartDialog startDialog = new StartDialog
                         {
@@ -219,6 +206,9 @@ namespace Engine
                         };
                         roomTile.Search = search;
                         roomTile.RoleOverride = RoomTileRole.Search;
+                        break;
+                    default:
+                        room.AddEventFromTmxObject(obj);
                         break;
                 }
             }

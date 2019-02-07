@@ -32,5 +32,17 @@ namespace Engine
                 return defaultValue;
             }
         }
+        public static bool GetProperty(this TmxObject obj, string propertyName, bool defaultValue)
+        {
+            var result = obj.GetProperty(propertyName, defaultValue.ToString());
+            if (bool.TryParse(result, out bool value))
+            {
+                return value;
+            }
+            else
+            {
+                return defaultValue;
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="16">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="30">
  <properties>
   <property name="RoomCaption" value="Bromidic Inn"/>
   <property name="RoomId" value="hometown-hotel-lobby"/>
@@ -34,6 +34,30 @@
 </data>
  </layer>
  <objectgroup id="5" name="Events">
+  <object id="13" name="SellingMeat" type="Selling" x="112" y="24" width="8" height="8">
+   <properties>
+    <property name="ForShoppe" value="FoodShoppe"/>
+    <property name="ItemName" value="Meat"/>
+   </properties>
+  </object>
+  <object id="12" name="SellingCheese" type="Selling" x="112" y="16" width="8" height="8">
+   <properties>
+    <property name="ForShoppe" value="FoodShoppe"/>
+    <property name="ItemName" value="Cheese"/>
+   </properties>
+  </object>
+  <object id="11" name="SellingTaters" type="Selling" x="112" y="8" width="8" height="8">
+   <properties>
+    <property name="ForShoppe" value="FoodShoppe"/>
+    <property name="ItemName" value="Taters"/>
+   </properties>
+  </object>
+  <object id="10" name="SellingBread" type="Selling" x="112" y="0" width="8" height="8">
+   <properties>
+    <property name="ForShoppe" value="FoodShoppe"/>
+    <property name="ItemName" value="Bread"/>
+   </properties>
+  </object>
   <object id="1" name="hotel-exit" type="Teleport" x="48" y="64" width="8" height="8">
    <properties>
     <property name="Column" type="int" value="5"/>
@@ -42,35 +66,32 @@
     <property name="Row" type="int" value="16"/>
    </properties>
   </object>
-  <object id="4" name="InnKeeperDialog" type="StartDialog" x="24" y="16" width="8" height="8">
-   <properties>
-    <property name="Dialog" value="InnKeeper"/>
-   </properties>
-  </object>
-  <object id="5" name="InnKeeperDialog2" type="StartDialog" x="32" y="8" width="8" height="8">
-   <properties>
-    <property name="Dialog" value="InnKeeper"/>
-   </properties>
-  </object>
-  <object id="6" name="InnKeeperDlgState" type="DialogState" x="-16" y="0" width="8" height="8">
-   <properties>
-    <property name="CurrentState" value="Initial"/>
-    <property name="ForDialog" value="InnKeeper"/>
-   </properties>
-  </object>
-  <object id="7" name="InnKeeperInitial" type="DialogNode" x="-32" y="0" width="8" height="8">
+  <object id="16" name="InnKeeperInitialRoom" type="DialogChoice" x="-32" y="24" width="8" height="8">
    <properties>
     <property name="ForDialog" value="InnKeeper"/>
     <property name="ForState" value="Initial"/>
-    <property name="Prompt" value="What can I do for you?"/>
+    <property name="Option" value="Room"/>
+    <property name="OptionText" value="Rent room"/>
+    <property name="Order" type="int" value="2"/>
    </properties>
   </object>
-  <object id="8" name="InnKeeperInitialLeave" type="DialogChoice" x="-32" y="8" width="8" height="8">
+  <object id="15" name="IKIFood01" type="DialogChoiceEvent" x="-40" y="16" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="1"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="Food"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="Shoppe" value="FoodShoppe"/>
+   </properties>
+  </object>
+  <object id="14" name="InnKeeperInitialFood" type="DialogChoice" x="-32" y="16" width="8" height="8">
    <properties>
     <property name="ForDialog" value="InnKeeper"/>
     <property name="ForState" value="Initial"/>
-    <property name="Option" value="Leave"/>
-    <property name="Order" type="int" value="99"/>
+    <property name="Option" value="Food"/>
+    <property name="OptionText" value="Food"/>
+    <property name="Order" type="int" value="1"/>
    </properties>
   </object>
   <object id="9" name="IKILeave01" type="DialogChoiceEvent" x="-40" y="8" width="8" height="8">
@@ -82,46 +103,139 @@
     <property name="Order" type="int" value="1"/>
    </properties>
   </object>
-  <object id="10" name="SellingBread" type="Selling" x="112" y="0" width="8" height="8">
-   <properties>
-    <property name="ForShoppe" value="FoodShoppe"/>
-    <property name="ItemName" value="Bread"/>
-   </properties>
-  </object>
-  <object id="11" name="SellingTaters" type="Selling" x="112" y="8" width="8" height="8">
-   <properties>
-    <property name="ForShoppe" value="FoodShoppe"/>
-    <property name="ItemName" value="Taters"/>
-   </properties>
-  </object>
-  <object id="12" name="SellingCheese" type="Selling" x="112" y="16" width="8" height="8">
-   <properties>
-    <property name="ForShoppe" value="FoodShoppe"/>
-    <property name="ItemName" value="Cheese"/>
-   </properties>
-  </object>
-  <object id="13" name="SellingMeat" type="Selling" x="112" y="24" width="8" height="8">
-   <properties>
-    <property name="ForShoppe" value="FoodShoppe"/>
-    <property name="ItemName" value="Meat"/>
-   </properties>
-  </object>
-  <object id="14" name="InnKeeperInitialFood" type="DialogChoice" x="-32" y="16" width="8" height="8">
+  <object id="8" name="InnKeeperInitialLeave" type="DialogChoice" x="-32" y="8" width="8" height="8">
    <properties>
     <property name="ForDialog" value="InnKeeper"/>
     <property name="ForState" value="Initial"/>
-    <property name="Option" value="Food"/>
+    <property name="Option" value="Leave"/>
+    <property name="OptionText" value="Leave"/>
+    <property name="Order" type="int" value="99"/>
+   </properties>
+  </object>
+  <object id="7" name="InnKeeperInitial" type="DialogNode" x="-32" y="0" width="8" height="8">
+   <properties>
+    <property name="Caption" value="Belara (Innkeeper)"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Prompt1" value="What can I do for you?"/>
+   </properties>
+  </object>
+  <object id="6" name="InnKeeperDlgState" type="DialogState" x="-16" y="0" width="8" height="8">
+   <properties>
+    <property name="CurrentState" value="Initial"/>
+    <property name="ForDialog" value="InnKeeper"/>
+   </properties>
+  </object>
+  <object id="5" name="InnKeeperDialog2" type="StartDialog" x="32" y="8" width="8" height="8">
+   <properties>
+    <property name="Dialog" value="InnKeeper"/>
+   </properties>
+  </object>
+  <object id="4" name="InnKeeperDialog" type="StartDialog" x="24" y="16" width="8" height="8">
+   <properties>
+    <property name="Dialog" value="InnKeeper"/>
+   </properties>
+  </object>
+  <object id="17" name="InnKeepereInitialQuest" type="DialogChoice" x="-32" y="32" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Option" value="Quest"/>
+    <property name="OptionText" value="I need work!"/>
+    <property name="Order" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="19" name="CanTakeCellarQuest" type="DialogChoiceCondition" x="-24" y="32" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="0"/>
+    <property name="FlagName" value="CellarQuestGiven"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="Quest"/>
+    <property name="ForState" value="Initial"/>
+   </properties>
+  </object>
+  <object id="20" name="RoomFlagCellarQuestGiven" type="RoomFlag" x="0" y="-16" width="8" height="8">
+   <properties>
+    <property name="Flag" value="CellarQuestGiven"/>
+    <property name="Value" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="22" name="InnKeeperGiveCellarQuest" type="DialogNode" x="-64" y="0" width="8" height="8">
+   <properties>
+    <property name="Caption" value="Belara (Innkeeper)"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForState" value="GiveCellarQuest"/>
+    <property name="Prompt1" value="I've got a big rat problem in the cellar"/>
+    <property name="Prompt2" value="If you could help me out"/>
+    <property name="Prompt3" value="I could pay you a few gold pieces"/>
+    <property name="Prompt4" value="What do you say?"/>
+   </properties>
+  </object>
+  <object id="23" name="IKIQuest01" type="DialogChoiceEvent" x="-40" y="32" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="2"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="Quest"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="State" value="GiveCellarQuest"/>
+   </properties>
+  </object>
+  <object id="24" name="IKGCQYes" type="DialogChoice" x="-64" y="8" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForState" value="GiveCellarQuest"/>
+    <property name="Option" value="Yes"/>
+    <property name="OptionText" value="I'll do it!"/>
     <property name="Order" type="int" value="1"/>
    </properties>
   </object>
-  <object id="15" name="IKIFood01" type="DialogChoiceEvent" x="-40" y="16" width="8" height="8">
+  <object id="25" name="IKGCQNo" type="DialogChoice" x="-64" y="16" width="8" height="8">
    <properties>
-    <property name="DialogEventType" type="int" value="1"/>
     <property name="ForDialog" value="InnKeeper"/>
-    <property name="ForOption" value="Food"/>
-    <property name="ForState" value="Initial"/>
+    <property name="ForState" value="GiveCellarQuest"/>
+    <property name="Option" value="No"/>
+    <property name="OptionText" value="Maybe later..."/>
+    <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="26" name="IKGCQNo01" type="DialogChoiceEvent" x="-72" y="16" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="2"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="No"/>
+    <property name="ForState" value="GiveCellarQuest"/>
     <property name="Order" type="int" value="1"/>
-    <property name="Shoppe" value="FoodShoppe"/>
+    <property name="State" value="Initial"/>
+   </properties>
+  </object>
+  <object id="27" name="IKGCQYes01" type="DialogChoiceEvent" x="-72" y="8" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="2"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="Yes"/>
+    <property name="ForState" value="GiveCellarQuest"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="State" value="Initial"/>
+   </properties>
+  </object>
+  <object id="28" name="IKGCQYes02" type="DialogChoiceEvent" x="-80" y="8" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="0"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="Yes"/>
+    <property name="ForState" value="GiveCellarQuest"/>
+    <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="29" name="IKGCQYes03" type="DialogChoiceEvent" x="-88" y="8" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="3"/>
+    <property name="Flag" value="CellarQuestGiven"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="Yes"/>
+    <property name="ForState" value="GiveCellarQuest"/>
+    <property name="Order" type="int" value="3"/>
    </properties>
   </object>
  </objectgroup>

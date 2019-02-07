@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="29">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="30">
  <properties>
   <property name="RoomCaption" value="Town of Quotidian"/>
   <property name="RoomId" value="hometown"/>
@@ -13,14 +13,14 @@
 28,4,4,4,4,4,4,4,4,46,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,26,
 28,4,4,46,4,4,4,4,44,47,45,4,4,4,4,4,4,4,4,4,54,4,4,4,4,4,4,4,4,26,
 28,4,44,47,45,4,4,44,2,43,1,45,4,4,4,4,4,4,4,52,51,45,4,4,4,52,53,4,4,26,
-28,4,2,43,1,4,4,2,41,35,42,1,4,4,4,4,4,4,4,49,63,50,4,4,52,49,50,53,4,26,
+28,4,2,43,1,4,4,2,41,35,42,1,4,70,70,70,4,4,4,49,63,50,4,4,52,49,50,53,4,26,
 28,4,41,33,42,4,4,41,33,33,33,42,4,48,48,48,4,4,4,37,38,37,4,4,49,37,37,50,4,26,
 28,4,33,34,33,4,4,35,35,34,36,35,4,33,33,33,4,4,4,4,57,4,4,4,37,37,37,37,4,26,
 28,4,4,57,4,4,4,4,4,57,4,4,4,33,65,33,4,4,4,4,57,4,4,4,37,40,38,37,4,26,
 28,4,4,57,57,57,57,57,57,57,4,4,4,33,33,33,4,4,4,4,57,4,4,4,4,4,57,4,4,26,
 28,4,4,4,4,4,4,4,4,57,4,4,4,33,65,33,4,4,57,57,57,57,57,57,57,57,57,4,4,26,
 28,4,4,4,44,45,4,4,4,57,4,4,4,33,33,33,4,4,57,4,4,4,4,4,4,4,4,4,4,26,
-28,4,4,44,41,42,45,4,4,57,4,4,4,33,65,33,4,4,57,4,4,4,4,4,4,4,4,4,4,26,
+28,4,4,44,41,42,45,4,4,57,4,4,4,33,65,33,4,4,57,4,4,4,70,70,70,70,70,4,4,26,
 28,4,4,41,35,35,42,4,4,57,4,4,4,33,34,36,4,4,57,4,4,4,56,56,56,56,56,4,4,26,
 28,4,4,35,35,35,35,4,4,57,4,4,4,4,57,4,4,4,57,4,4,4,37,37,37,37,37,4,4,26,
 28,4,4,35,35,35,35,4,4,57,57,57,57,57,57,57,57,57,57,4,4,4,37,37,38,40,37,4,4,26,
@@ -158,9 +158,11 @@
   </object>
   <object id="23" name="TownDrunkInitial" type="DialogNode" x="-40" y="0" width="8" height="8">
    <properties>
+    <property name="Caption" value="Anand"/>
     <property name="ForDialog" value="TownDrunk"/>
     <property name="ForState" value="Initial"/>
-    <property name="Prompt" value="*HIC*"/>
+    <property name="Prompt1" value="*HIC*"/>
+    <property name="Prompt3" value="(he's drunk)"/>
    </properties>
   </object>
   <object id="26" name="TownDrunkInitialLeave" type="DialogChoice" x="-40" y="8" width="8" height="8">
@@ -168,6 +170,7 @@
     <property name="ForDialog" value="TownDrunk"/>
     <property name="ForState" value="Initial"/>
     <property name="Option" value="Leave"/>
+    <property name="OptionText" value="Leave"/>
     <property name="Order" type="int" value="1"/>
    </properties>
   </object>

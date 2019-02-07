@@ -106,7 +106,13 @@
    <property name="ResourceIndex" type="int" value="14"/>
   </properties>
  </tile>
- <tile id="15" type="None"/>
+ <tile id="15" type="Creature">
+  <properties>
+   <property name="Name" value="Vampire"/>
+   <property name="ResourceIdentifier" value="dungeon-creatures"/>
+   <property name="ResourceIndex" type="int" value="15"/>
+  </properties>
+ </tile>
  <tile id="16" type="None">
   <properties>
    <property name="Name" value=""/>
