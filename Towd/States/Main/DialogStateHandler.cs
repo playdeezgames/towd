@@ -60,6 +60,9 @@ namespace Towd
                     case DialogEventType.SetRoomFlag:
                         World.GetAvatarRoom().SetRoomFlag(dialogEvent.Flag);
                         break;
+                    case DialogEventType.MakeTeleport:
+                        World.GetAvatarRoom().MakeTeleport(dialogEvent.Column, dialogEvent.Row, dialogEvent.Prompt, dialogEvent.DestinationRoom, dialogEvent.DestinationColumn, dialogEvent.DestinationRow);
+                        break;
                     default:
                         throw new NotImplementedException();
                 }

@@ -5,6 +5,7 @@
         ExitDialog,
         EnterShoppe,
         SetDialogState,
-        SetRoomFlag
+        SetRoomFlag,
+        MakeTeleport
     }
 }

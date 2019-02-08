@@ -138,6 +138,19 @@ namespace Engine
             }
         }
 
+        public void MakeTeleport(int column, int row, string prompt, string destinationRoom, int destinationColumn, int destinationRow)
+        {
+            var roomTile = Get(column, row);
+            roomTile.RoleOverride = RoomTileRole.Teleport;
+            roomTile.Teleport = new Teleport
+            {
+                Prompt = prompt,
+                Room = destinationRoom,
+                Column = destinationColumn,
+                Row = destinationRow
+            };
+        }
+
         public void SetRoomFlag(string flag)
         {
             if (RoomFlags == null)
@@ -149,9 +162,9 @@ namespace Engine
 
         public bool GetFlag(string flagName)
         {
-            if(RoomFlags!=null)
+            if (RoomFlags != null)
             {
-                if(RoomFlags.ContainsKey(flagName))
+                if (RoomFlags.ContainsKey(flagName))
                 {
                     return RoomFlags[flagName];
                 }
@@ -173,7 +186,7 @@ namespace Engine
         {
             string flagName = obj.Properties["Flag"];
             bool value = obj.GetProperty("Value", false);
-            if(RoomFlags==null)
+            if (RoomFlags == null)
             {
                 RoomFlags = new Dictionary<string, bool>();
             }
@@ -188,8 +201,14 @@ namespace Engine
                 Order = obj.GetProperty("Order", 0),
                 EventType = (DialogEventType)obj.GetProperty("DialogEventType", 0),
                 Shoppe = obj.GetProperty("Shoppe", string.Empty),
-                Flag=obj.GetProperty("Flag", string.Empty),
-                State=obj.GetProperty("State",string.Empty)
+                Flag = obj.GetProperty("Flag", string.Empty),
+                State = obj.GetProperty("State", string.Empty),
+                Column = obj.GetProperty("Column", 0),
+                Row = obj.GetProperty("Row", 0),
+                DestinationColumn = obj.GetProperty("DestinationColumn", 0),
+                DestinationRow = obj.GetProperty("DestinationRow", 0),
+                DestinationRoom = obj.GetProperty("DestinationRoom", string.Empty),
+                Prompt = obj.GetProperty("Prompt", string.Empty)
             };
             choice.AddEvent(choiceEvent);
         }
@@ -219,11 +238,11 @@ namespace Engine
 
         private DialogState GetDialogState(string name)
         {
-            if(DialogStates==null)
+            if (DialogStates == null)
             {
                 DialogStates = new Dictionary<string, DialogState>();
             }
-            if(!DialogStates.ContainsKey(name))
+            if (!DialogStates.ContainsKey(name))
             {
                 DialogStates[name] = new DialogState();
             }
@@ -312,7 +331,7 @@ namespace Engine
 
         public ShoppeInventory GetShoppeInventory(string shoppeName)
         {
-            if(ShoppeInventories==null)
+            if (ShoppeInventories == null)
             {
                 ShoppeInventories = new Dictionary<string, ShoppeInventory>();
             }

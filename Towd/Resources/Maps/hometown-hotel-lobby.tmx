@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="30">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="32">
  <properties>
   <property name="RoomCaption" value="Bromidic Inn"/>
   <property name="RoomId" value="hometown-hotel-lobby"/>
@@ -165,10 +165,10 @@
     <property name="Caption" value="Belara (Innkeeper)"/>
     <property name="ForDialog" value="InnKeeper"/>
     <property name="ForState" value="GiveCellarQuest"/>
-    <property name="Prompt1" value="I've got a big rat problem in the cellar"/>
-    <property name="Prompt2" value="If you could help me out"/>
-    <property name="Prompt3" value="I could pay you a few gold pieces"/>
-    <property name="Prompt4" value="What do you say?"/>
+    <property name="Prompt1" value="I've got a big rat problem"/>
+    <property name="Prompt2" value="in the cellar."/>
+    <property name="Prompt3" value="If you could help me out,"/>
+    <property name="Prompt4" value="I could pay a few gold."/>
    </properties>
   </object>
   <object id="23" name="IKIQuest01" type="DialogChoiceEvent" x="-40" y="32" width="8" height="8">
@@ -236,6 +236,26 @@
     <property name="ForOption" value="Yes"/>
     <property name="ForState" value="GiveCellarQuest"/>
     <property name="Order" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="30" name="CellarDoor" type="Sign" x="88" y="8" width="8" height="8">
+   <properties>
+    <property name="Message" value="It's dark down there."/>
+   </properties>
+  </object>
+  <object id="31" name="IKGCQTYes04" type="DialogChoiceEvent" x="-96" y="8" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="11"/>
+    <property name="DestinationColumn" type="int" value="11"/>
+    <property name="DestinationRoom" value="bromidic-cellar"/>
+    <property name="DestinationRow" type="int" value="2"/>
+    <property name="DialogEventType" type="int" value="4"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="Yes"/>
+    <property name="ForState" value="GiveCellarQuest"/>
+    <property name="Order" type="int" value="4"/>
+    <property name="Prompt" value="Enter cellar?"/>
+    <property name="Row" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>

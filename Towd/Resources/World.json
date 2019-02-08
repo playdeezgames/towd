@@ -25,6 +25,10 @@
   "Terrains": {
   },
   "Rooms": {
+    "bromidic-cellar": {
+      "FileName": "./Resources/Maps/bromidic-cellar.tmx",
+      "Loaded": false
+    },
     "overworld": {
       "FileName": "./Resources/Maps/overworld.tmx",
       "Loaded": false

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="11">
+ <properties>
+  <property name="RoomCaption" value="Cellar"/>
+  <property name="RoomId" value="bromidic-cellar"/>
+ </properties>
+ <tileset firstgid="1" source="Creatures.tsx"/>
+ <tileset firstgid="129" source="Items.tsx"/>
+ <tileset firstgid="257" source="Terrain.tsx"/>
+ <layer id="7" name="RoomTiles" width="13" height="9">
+  <data encoding="csv">
+268,261,261,261,261,261,261,261,265,257,268,261,265,
+264,260,260,260,260,260,260,260,262,257,264,277,262,
+267,263,269,260,272,263,269,260,262,257,264,260,262,
+257,257,264,260,262,257,264,260,262,257,264,260,262,
+268,261,270,260,262,257,264,260,262,257,264,260,262,
+264,260,260,260,262,257,264,260,262,257,264,260,262,
+264,260,272,263,266,257,264,260,271,261,270,260,262,
+264,260,262,257,257,257,264,260,260,260,260,260,262,
+267,263,266,257,257,257,267,263,263,263,263,263,266
+</data>
+ </layer>
+ <layer id="8" name="Contents" width="13" height="9">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,3,0,0,0,3,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,3,0,0,0,3,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,17,0,
+0,0,3,0,0,0,0,17,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,18,0,0,0,0,0,0,0,17,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="Events">
+  <object id="1" type="Teleport" x="88" y="8" width="8" height="8">
+   <properties>
+    <property name="Column" type="int" value="11"/>
+    <property name="Prompt" value="Go up?"/>
+    <property name="Room" value="hometown-hotel-lobby"/>
+    <property name="Row" type="int" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="CreatureInstances">
+  <object id="2" name="EasyRat" type="CreatureInstance" x="88" y="32" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Rat2"/>
+    <property name="Identifier" value="0640caa0-9c1c-4676-906a-7259c66f1c0e"/>
+   </properties>
+  </object>
+  <object id="3" name="EasyRat" type="CreatureInstance" x="72" y="56" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Rat2"/>
+    <property name="Identifier" value="354d6886-b248-495a-b61c-7d667e57cee5"/>
+   </properties>
+  </object>
+  <object id="4" name="EasyRat" type="CreatureInstance" x="56" y="40" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Rat2"/>
+    <property name="Identifier" value="d52d3c1d-19b6-4caf-b6d7-6df6794b43bc"/>
+   </properties>
+  </object>
+  <object id="5" name="NormalRat" type="CreatureInstance" x="56" y="24" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Rat1"/>
+    <property name="Identifier" value="46d497f5-1840-4afb-af5f-b400166faf43"/>
+   </properties>
+  </object>
+  <object id="6" name="NormalRat" type="CreatureInstance" x="40" y="8" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Rat1"/>
+    <property name="Identifier" value="bcaf91df-de8a-4113-ad79-e0fbd3322352"/>
+   </properties>
+  </object>
+  <object id="7" name="NormalRat" type="CreatureInstance" x="8" y="8" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Rat1"/>
+    <property name="Identifier" value="dd9229d6-3635-4c97-a90a-be31e8452b01"/>
+   </properties>
+  </object>
+  <object id="8" name="NormalRat" type="CreatureInstance" x="24" y="24" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Rat1"/>
+    <property name="Identifier" value="05def73e-8627-46ad-b4cd-5a15ccd5d603"/>
+   </properties>
+  </object>
+  <object id="9" name="NormalRat" type="CreatureInstance" x="16" y="40" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Rat1"/>
+    <property name="Identifier" value="c2ebeb3d-3c79-4584-8969-8bf3e57bd5e9"/>
+   </properties>
+  </object>
+  <object id="10" name="BossRat" type="CreatureInstance" x="8" y="56" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Rat3"/>
+    <property name="Identifier" value="a5b01c23-d4be-4547-b5dd-f5b000a7e980"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

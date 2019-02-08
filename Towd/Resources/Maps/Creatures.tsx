@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.1" name="Creatures" tilewidth="8" tileheight="8" tilecount="128" columns="8">
+<tileset version="1.2" tiledversion="1.2.2" name="Creatures" tilewidth="8" tileheight="8" tilecount="128" columns="8">
  <image source="../Tilesets/Creatures.png" trans="ffffff" width="64" height="128"/>
  <tile id="0" type="Creature">
   <properties>
@@ -17,7 +17,7 @@
  </tile>
  <tile id="2" type="Creature">
   <properties>
-   <property name="Name" value="Rat"/>
+   <property name="Name" value="Rat1"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="2"/>
   </properties>
@@ -113,18 +113,18 @@
    <property name="ResourceIndex" type="int" value="15"/>
   </properties>
  </tile>
- <tile id="16" type="None">
+ <tile id="16" type="Creature">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="Rat2"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
-   <property name="ResourceIndex" type="int" value="0"/>
+   <property name="ResourceIndex" type="int" value="16"/>
   </properties>
  </tile>
- <tile id="17" type="None">
+ <tile id="17" type="Creature">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="Rat3"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
-   <property name="ResourceIndex" type="int" value="0"/>
+   <property name="ResourceIndex" type="int" value="17"/>
   </properties>
  </tile>
  <tile id="18" type="None">
