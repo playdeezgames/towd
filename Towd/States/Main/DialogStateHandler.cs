@@ -45,13 +45,20 @@ namespace Towd
             {
                 switch (dialogEvent.EventType)
                 {
-                    case Engine.DialogEventType.ExitDialog:
+                    case DialogEventType.ExitDialog:
                         World.AvatarStatus.SetNormal();
                         SetState(TowdState.Room);
                         break;
-                    case Engine.DialogEventType.EnterShoppe:
+                    case DialogEventType.EnterShoppe:
                         World.AvatarStatus.SetShopping(dialogEvent.Shoppe, Engine.ShoppeState.Initial);
                         SetState(TowdState.Shopping);
+                        break;
+                    case DialogEventType.SetDialogState:
+                        dialogState.CurrentState = dialogEvent.State;
+                        UpdateDialog();
+                        break;
+                    case DialogEventType.SetRoomFlag:
+                        World.GetAvatarRoom().SetRoomFlag(dialogEvent.Flag);
                         break;
                     default:
                         throw new NotImplementedException();

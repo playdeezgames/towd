@@ -138,6 +138,15 @@ namespace Engine
             }
         }
 
+        public void SetRoomFlag(string flag)
+        {
+            if (RoomFlags == null)
+            {
+                RoomFlags = new Dictionary<string, bool>();
+            }
+            RoomFlags[flag] = true;
+        }
+
         public bool GetFlag(string flagName)
         {
             if(RoomFlags!=null)
@@ -178,7 +187,9 @@ namespace Engine
             {
                 Order = obj.GetProperty("Order", 0),
                 EventType = (DialogEventType)obj.GetProperty("DialogEventType", 0),
-                Shoppe = obj.GetProperty("Shoppe", string.Empty)
+                Shoppe = obj.GetProperty("Shoppe", string.Empty),
+                Flag=obj.GetProperty("Flag", string.Empty),
+                State=obj.GetProperty("State",string.Empty)
             };
             choice.AddEvent(choiceEvent);
         }
