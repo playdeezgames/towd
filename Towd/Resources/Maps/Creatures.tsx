@@ -3,128 +3,201 @@
  <image source="../Tilesets/Creatures.png" trans="ffffff" width="64" height="128"/>
  <tile id="0" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="EquipSlots" value="wshtfbn"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="Tagon"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="0"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="1" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="1"/>
+   <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Snake"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="1"/>
+   <property name="UnarmedAttack" value="w"/>
   </properties>
  </tile>
  <tile id="2" type="Creature">
   <properties>
+   <property name="BaseDefense" value="ww"/>
+   <property name="Body" type="int" value="1"/>
+   <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Rat1"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="2"/>
+   <property name="UnarmedAttack" value="w"/>
   </properties>
  </tile>
  <tile id="3" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude1"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="3"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="4" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady1"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="4"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="5" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude2"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="5"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="6" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude3"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="6"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="7" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude4"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="7"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="8" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude5"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="8"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="9" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude6"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="9"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="10" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady2"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="10"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="11" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady3"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="11"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="12" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady4"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="12"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="13" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady5"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="13"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="14" type="Creature">
   <properties>
+   <property name="BaseDefense" value="w"/>
+   <property name="Body" type="int" value="3"/>
+   <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady6"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="14"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="15" type="Creature">
   <properties>
+   <property name="BaseDefense" value="bbb"/>
+   <property name="Body" type="int" value="8"/>
+   <property name="Mind" type="int" value="8"/>
    <property name="Name" value="Vampire"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="15"/>
+   <property name="UnarmedAttack" value="bbb"/>
   </properties>
  </tile>
  <tile id="16" type="Creature">
   <properties>
+   <property name="BaseDefense" value="ww"/>
+   <property name="Body" type="int" value="1"/>
+   <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Rat2"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="16"/>
+   <property name="UnarmedAttack" value="r"/>
   </properties>
  </tile>
  <tile id="17" type="Creature">
   <properties>
+   <property name="BaseDefense" value="ww"/>
+   <property name="Body" type="int" value="2"/>
+   <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Rat3"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="17"/>
+   <property name="UnarmedAttack" value="b"/>
   </properties>
  </tile>
  <tile id="18" type="None">

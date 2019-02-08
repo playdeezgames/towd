@@ -34,6 +34,13 @@ namespace Towd
 
         private void OnListBoxActivate(int selected)
         {
+            //TODO:
+            //context menu
+            //equip
+            //unequip
+            //eat
+            //discard/drop?
+            //examine?
         }
 
         protected override bool OnCommand(Command command)
@@ -56,11 +63,13 @@ namespace Towd
         protected override void OnStart()
         {
             List<ListBoxItem<string>> listBoxItems = new List<ListBoxItem<string>>();
-            foreach(var entry in World.GetAvatarCreatureInstance().Items)
+            var creatureInstance = World.GetAvatarCreatureInstance();
+            foreach (var entry in creatureInstance.GetItems())
             {
-                var itemType = World.Items[entry.Key];
+                var itemDescriptor = World.Items[entry.Key];
                 var meta = entry.Key;
-                listBoxItems.Add(ListBoxItem<string>.Create(meta, $"{itemType.DisplayName} x {entry.Value}"));
+                var prefix = (creatureInstance.HasEquipped(entry.Key)) ? ("E-") : ("");
+                listBoxItems.Add(ListBoxItem<string>.Create(meta, $"{prefix}{itemDescriptor.DisplayName} x {entry.Value}"));
             }
             _listBox.Items = listBoxItems;
             _listBox.Selected = 0;

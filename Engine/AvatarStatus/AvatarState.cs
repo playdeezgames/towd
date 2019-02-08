@@ -12,5 +12,6 @@ namespace Engine
         Prompted,
         Shopping,
         Dialog
+            //inventory!
     }
 }

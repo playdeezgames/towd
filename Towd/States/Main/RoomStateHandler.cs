@@ -12,7 +12,6 @@ namespace Towd
 {
     public class RoomStateHandler : TowdStateHandler
     {
-        //private RoomTile _promptTile = null;
         public RoomStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
         }
@@ -106,6 +105,10 @@ namespace Towd
                     {
                         World.AvatarStatus.SetDialog(otherCreature.Dialog);
                         SetState(TowdState.Dialog);
+                    }
+                    else
+                    {
+                        //its a fight!
                     }
                 }
                 return;

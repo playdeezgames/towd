@@ -10,6 +10,7 @@ namespace Engine
 {
     public class World
     {
+        private Random _random = new Random();
         public string Avatar { get; set; }
         public AvatarStatus AvatarStatus { get; set; }
         public int TileWidth { get; set; }
@@ -19,6 +20,7 @@ namespace Engine
         public Dictionary<string, Creature> Creatures { get; set; }
         public Dictionary<string, Room> Rooms { get; set; }
         public Dictionary<string, CreatureInstance> CreatureInstances { get; set; }
+        public Dictionary<string, Dictionary<int, int>> IntGenerators { get; set; }
 
         public bool CanAvatarMove()
         {
@@ -221,15 +223,23 @@ namespace Engine
                 {
                     case "CreatureInstance":
                         string identifier = obj.Properties["Identifier"];
+                        string creatureName = obj.Properties["Creature"];
+                        var creature = Creatures[creatureName];
                         CreatureInstance creatureInstance = new CreatureInstance
                         {
                             Column = column,
                             Room = roomIdentifier,
                             Row = row,
-                            Creature = obj.Properties["Creature"],
+                            Creature = creatureName,
                             Items = new Dictionary<string, int>(),
                             Money = obj.GetProperty("Money", 0),
-                            Dialog = obj.GetProperty("Dialog", string.Empty)
+                            Dialog = obj.GetProperty("Dialog", string.Empty),
+                            Body = creature.Body,
+                            Mind=creature.Mind,
+                            BaseDefense=creature.BaseDefense,
+                            UnarmedAttack=creature.UnarmedAttack,
+                            Wounds=0,
+                            Name=obj.Name
                         };
                         CreatureInstances[identifier] = creatureInstance;
                         room.Get(column, row).CreatureInstance = identifier;
@@ -250,7 +260,11 @@ namespace Engine
                     ResourceIndex = Convert.ToInt32(tile.Properties["ResourceIndex"]),
                     DisplayName = tile.Properties["DisplayName"],
                     BuyPrice = Convert.ToInt32(tile.Properties["BuyPrice"]),
-                    SellPrice = Convert.ToInt32(tile.Properties["SellPrice"])
+                    SellPrice = Convert.ToInt32(tile.Properties["SellPrice"]),
+                    ItemType = (ItemType)tile.GetProperty("ItemType", 0),
+                    EquipSlots = new HashSet<char>(tile.GetProperty("EquipSlots", string.Empty).ToCharArray()),
+                    Attack = tile.GetProperty("Attack", string.Empty),
+                    Defense = tile.GetProperty("Defense", string.Empty)
                 };
                 Items[tile.Properties["Name"]] = item;
             }
@@ -263,7 +277,12 @@ namespace Engine
                 Creature creature = new Creature
                 {
                     ResourceIdentifier = tile.Properties["ResourceIdentifier"],
-                    ResourceIndex = Convert.ToInt32(tile.Properties["ResourceIndex"])
+                    ResourceIndex = Convert.ToInt32(tile.Properties["ResourceIndex"]),
+                    BaseDefense = tile.GetProperty("BaseDefense", string.Empty),
+                    UnarmedAttack=tile.GetProperty("UnarmedAttack", string.Empty),
+                    Body=tile.GetProperty("Body",1),
+                    Mind=tile.GetProperty("Mind",0),
+                    EquipSlots = new HashSet<char>(tile.GetProperty("EquipSlots", string.Empty).ToCharArray())
                 };
                 Creatures[tile.Properties["Name"]] = creature;
             }

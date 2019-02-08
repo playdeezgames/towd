@@ -50,6 +50,7 @@
     <Compile Include="AvatarStatus\AvatarStatus.cs" />
     <Compile Include="AvatarStatus\ShoppingStatus.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="ItemType.cs" />
     <Compile Include="Room\Dialog\DialogChoice.cs" />
     <Compile Include="Room\Dialog\DialogChoiceCondition.cs" />
     <Compile Include="Room\Dialog\DialogChoiceEvent.cs" />

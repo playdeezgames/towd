@@ -16,7 +16,14 @@ namespace Engine
         //INVENTORY
         public int Money { get; set; }
         public Dictionary<string, int> Items { get; set; }
+        public HashSet<string> Equipped { get; set; }
         public string Dialog { get; set; }
+        //COMBAT
+        public int Body { get; set; }
+        public int Wounds { get; set; }
+        public int Mind { get; set; }
+        public string UnarmedAttack { get; set; }
+        public string BaseDefense { get; set; }
 
         internal void GiveItem(string itemIdentifier, int quantity)
         {
@@ -71,6 +78,27 @@ namespace Engine
                     Items[itemName] = quantity;
                 }
             }
+        }
+
+        public Dictionary<string, int> GetItems()
+        {
+            if(Items==null)
+            {
+                Items = new Dictionary<string, int>();
+            }
+            return Items;
+        }
+        public HashSet<string> GetEquipped()
+        {
+            if(Equipped==null)
+            {
+                Equipped = new HashSet<string>();
+            }
+            return Equipped;
+        }
+        public bool HasEquipped(string itemName)
+        {
+            return GetEquipped().Contains(itemName);
         }
     }
 }

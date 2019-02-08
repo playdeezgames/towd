@@ -74,10 +74,6 @@ namespace Towd
         {
             switch (command)
             {
-                case Command.Red:
-                    World.AvatarStatus.SetNormal();
-                    SetState(TowdState.Room);
-                    return true;
                 default:
                     return false;
             }

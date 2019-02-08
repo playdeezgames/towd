@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.1" name="Items" tilewidth="8" tileheight="8" tilecount="128" columns="8">
+<tileset version="1.2" tiledversion="1.2.2" name="Items" tilewidth="8" tileheight="8" tilecount="128" columns="8">
  <image source="../Tilesets/Items.png" trans="ffffff" width="64" height="128"/>
  <tile id="0" type="Item">
   <properties>
+   <property name="Attack" value="w"/>
    <property name="BuyPrice" type="int" value="0"/>
    <property name="DisplayName" value="rusty dagger"/>
+   <property name="EquipSlots" value="w"/>
+   <property name="ItemType" type="int" value="2"/>
    <property name="Name" value="RustyDagger"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="0"/>
@@ -13,8 +16,11 @@
  </tile>
  <tile id="1" type="Item">
   <properties>
+   <property name="Attack" value="r"/>
    <property name="BuyPrice" type="int" value="25"/>
    <property name="DisplayName" value="dagger"/>
+   <property name="EquipSlots" value="w"/>
+   <property name="ItemType" type="int" value="2"/>
    <property name="Name" value="Dagger"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="1"/>
@@ -23,8 +29,11 @@
  </tile>
  <tile id="2" type="Item">
   <properties>
+   <property name="Attack" value="ww"/>
    <property name="BuyPrice" type="int" value="100"/>
    <property name="DisplayName" value="shortsword"/>
+   <property name="EquipSlots" value="w"/>
+   <property name="ItemType" type="int" value="2"/>
    <property name="Name" value="ShortSword"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="2"/>
@@ -33,8 +42,11 @@
  </tile>
  <tile id="3" type="Item">
   <properties>
+   <property name="Attack" value="rr"/>
    <property name="BuyPrice" type="int" value="250"/>
    <property name="DisplayName" value="longsword"/>
+   <property name="EquipSlots" value="w"/>
+   <property name="ItemType" type="int" value="2"/>
    <property name="Name" value="LongSword"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="3"/>
@@ -43,8 +55,11 @@
  </tile>
  <tile id="4" type="Item">
   <properties>
+   <property name="Attack" value="bb"/>
    <property name="BuyPrice" type="int" value="500"/>
    <property name="DisplayName" value="greatsword"/>
+   <property name="EquipSlots" value="ws"/>
+   <property name="ItemType" type="int" value="2"/>
    <property name="Name" value="GreatSword"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="4"/>
@@ -55,6 +70,7 @@
   <properties>
    <property name="BuyPrice" type="int" value="5"/>
    <property name="DisplayName" value="cheese"/>
+   <property name="ItemType" type="int" value="1"/>
    <property name="Name" value="Cheese"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="5"/>
@@ -65,6 +81,7 @@
   <properties>
    <property name="BuyPrice" type="int" value="2"/>
    <property name="DisplayName" value="taters"/>
+   <property name="ItemType" type="int" value="1"/>
    <property name="Name" value="Taters"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="6"/>
@@ -75,6 +92,7 @@
   <properties>
    <property name="BuyPrice" type="int" value="10"/>
    <property name="DisplayName" value="meat"/>
+   <property name="ItemType" type="int" value="1"/>
    <property name="Name" value="Meat"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
    <property name="ResourceIndex" type="int" value="7"/>
@@ -85,15 +103,50 @@
   <properties>
    <property name="BuyPrice" type="int" value="1"/>
    <property name="DisplayName" value="bread"/>
+   <property name="ItemType" type="int" value="1"/>
    <property name="Name" value="Bread"/>
    <property name="ResourceIdentifier" value="dungeon-items"/>
-   <property name="ResourceIndex" type="int" value="7"/>
+   <property name="ResourceIndex" type="int" value="8"/>
    <property name="SellPrice" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="9" type="None"/>
- <tile id="10" type="None"/>
- <tile id="11" type="None"/>
+ <tile id="9" type="Item">
+  <properties>
+   <property name="BuyPrice" type="int" value="0"/>
+   <property name="DisplayName" value="rat tail"/>
+   <property name="ItemType" type="int" value="0"/>
+   <property name="Name" value="RatTail"/>
+   <property name="ResourceIdentifier" value="dungeon-items"/>
+   <property name="ResourceIndex" type="int" value="9"/>
+   <property name="SellPrice" type="int" value="0"/>
+  </properties>
+ </tile>
+ <tile id="10" type="Item">
+  <properties>
+   <property name="BuyPrice" type="int" value="30"/>
+   <property name="Defense" value="w"/>
+   <property name="DisplayName" value="buckler"/>
+   <property name="EquipSlots" value="s"/>
+   <property name="ItemType" type="int" value="3"/>
+   <property name="Name" value="Buckler"/>
+   <property name="ResourceIdentifier" value="dungeon-items"/>
+   <property name="ResourceIndex" type="int" value="10"/>
+   <property name="SellPrice" type="int" value="15"/>
+  </properties>
+ </tile>
+ <tile id="11" type="Item">
+  <properties>
+   <property name="BuyPrice" type="int" value="60"/>
+   <property name="Defense" value="r"/>
+   <property name="DisplayName" value="shield"/>
+   <property name="EquipSlots" value="s"/>
+   <property name="ItemType" type="int" value="3"/>
+   <property name="Name" value="Shield"/>
+   <property name="ResourceIdentifier" value="dungeon-items"/>
+   <property name="ResourceIndex" type="int" value="11"/>
+   <property name="SellPrice" type="int" value="30"/>
+  </properties>
+ </tile>
  <tile id="12" type="None"/>
  <tile id="13" type="None"/>
  <tile id="14" type="None"/>
