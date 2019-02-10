@@ -24,5 +24,13 @@ namespace Engine
         public string Attack { get; set; }
         public string Defense { get; set; }
 
+        internal HashSet<char> GetEquipSlots()
+        {
+            if(EquipSlots==null)
+            {
+                EquipSlots = new HashSet<char>();
+            }
+            return EquipSlots;
+        }
     }
 }

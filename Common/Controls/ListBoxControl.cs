@@ -8,8 +8,8 @@ namespace Common
 {
     public class ListBoxControl<TMeta> : ControlBase
     {
-        private CyColor _foreground;
-        private CyColor _background;
+        public CyColor Foreground;
+        public CyColor Background;
         private CyFont _font;
         private List<ListBoxItem<TMeta>> _items;
         public IEnumerable<ListBoxItem<TMeta>> Items
@@ -59,8 +59,8 @@ namespace Common
             _font = font;
             _items = items.ToList();
             _offsetY = 0;
-            _foreground = foreground;
-            _background = background;
+            Foreground = foreground;
+            Background = background;
             _onActivate = onActivate;
             Selected = selected;
         }
@@ -130,18 +130,18 @@ namespace Common
 
         protected override void OnUpdate(IPixelWriter<CyColor> pixelWriter, CyRect? clipRect)
         {
-            pixelWriter.Clear(_background, clipRect);
+            pixelWriter.Clear(Background, clipRect);
             int y = _offsetY;
             for(int index=0;index<_items.Count();++index)
             {
                 if(index==Selected)
                 {
-                    pixelWriter.Box(CyRect.Create(0, y, Width, _font.Height), _foreground, clipRect);
-                    _font.Draw(pixelWriter, _background, 0, y, _items[index].Caption, clipRect);
+                    pixelWriter.Box(CyRect.Create(0, y, Width, _font.Height), Foreground, clipRect);
+                    _font.Draw(pixelWriter, Background, 0, y, _items[index].Caption, clipRect);
                 }
                 else
                 {
-                    _font.Draw(pixelWriter, _foreground, 0, y, _items[index].Caption, clipRect);
+                    _font.Draw(pixelWriter, Foreground, 0, y, _items[index].Caption, clipRect);
                 }
                 y += _font.Height;
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Engine
 {
@@ -99,6 +100,35 @@ namespace Engine
         public bool HasEquipped(string itemName)
         {
             return GetEquipped().Contains(itemName);
+        }
+
+        public bool CanEquip(Item itemDescriptor, Dictionary<string,Item> items)
+        {
+            var slots = itemDescriptor.GetEquipSlots();
+            if (slots.Any())
+            {
+                slots.IntersectWith(GetEquippedSlots(items));
+                return !slots.Any();
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private HashSet<char> GetEquippedSlots(Dictionary<string, Item> items)
+        {
+            HashSet<char> slots = new HashSet<char>();
+            foreach(var itemName in GetEquipped())
+            {
+                slots.UnionWith(items[itemName].GetEquipSlots());
+            }
+            return slots;
+        }
+
+        public bool CanEat(Item itemDescriptor)
+        {
+            return itemDescriptor.ItemType == ItemType.Food;
         }
     }
 }

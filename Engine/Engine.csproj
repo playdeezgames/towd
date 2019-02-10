@@ -49,8 +49,8 @@
     <Compile Include="AvatarStatus\AvatarState.cs" />
     <Compile Include="AvatarStatus\AvatarStatus.cs" />
     <Compile Include="AvatarStatus\ShoppingStatus.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="ItemType.cs" />
+    <Compile Include="Item\Item.cs" />
+    <Compile Include="Item\ItemType.cs" />
     <Compile Include="Room\Dialog\DialogChoice.cs" />
     <Compile Include="Room\Dialog\DialogChoiceCondition.cs" />
     <Compile Include="Room\Dialog\DialogChoiceEvent.cs" />
@@ -61,25 +61,25 @@
     <Compile Include="Room\RoomTile\Shoppe.cs" />
     <Compile Include="Room\RoomTile\ShoppeInventory.cs" />
     <Compile Include="Room\RoomTile\StartDialog.cs" />
-    <Compile Include="TmxObjectExtensions.cs" />
+    <Compile Include="Utility\TmxObjectExtensions.cs" />
     <Compile Include="TriggerEvents\GiveItem.cs" />
     <Compile Include="TriggerEvents\GiveMoney.cs" />
     <Compile Include="TriggerEvents\MakeRoomMessage.cs" />
     <Compile Include="TriggerEvents\MakeSign.cs" />
     <Compile Include="TriggerEvents\ClearSearch.cs" />
-    <Compile Include="Creature.cs" />
-    <Compile Include="CreatureInstance.cs" />
+    <Compile Include="Creature\Creature.cs" />
+    <Compile Include="Creature\CreatureInstance.cs" />
     <Compile Include="Room\Room.cs" />
     <Compile Include="Room\RoomTile\Search.cs" />
     <Compile Include="Room\RoomTile\Sign.cs" />
     <Compile Include="Room\RoomTile\Teleport.cs" />
-    <Compile Include="Terrain.cs" />
+    <Compile Include="Terrain\Terrain.cs" />
     <Compile Include="Room\RoomTile\RoomTile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room\RoomTile\RoomTileRole.cs" />
     <Compile Include="TriggerEvents\TriggerEvent.cs" />
     <Compile Include="TriggerEvents\TriggerEventType.cs" />
-    <Compile Include="VisibleElement.cs" />
+    <Compile Include="Base\VisibleElement.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>
