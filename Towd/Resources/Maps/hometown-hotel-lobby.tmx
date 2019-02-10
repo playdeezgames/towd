@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="32">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="36">
  <properties>
   <property name="RoomCaption" value="Bromidic Inn"/>
   <property name="RoomId" value="hometown-hotel-lobby"/>
@@ -243,7 +243,7 @@
     <property name="Message" value="It's dark down there."/>
    </properties>
   </object>
-  <object id="31" name="IKGCQTYes04" type="DialogChoiceEvent" x="-96" y="8" width="8" height="8">
+  <object id="31" name="IKGCQYes04" type="DialogChoiceEvent" x="-96" y="8" width="8" height="8">
    <properties>
     <property name="Column" type="int" value="11"/>
     <property name="DestinationColumn" type="int" value="11"/>
@@ -256,6 +256,17 @@
     <property name="Order" type="int" value="4"/>
     <property name="Prompt" value="Enter cellar?"/>
     <property name="Row" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="33" name="IKGCQYes05" type="DialogChoiceEvent" x="-96" y="16" width="8" height="8">
+   <properties>
+    <property name="Counter" value="CellarQuest"/>
+    <property name="DialogEventType" type="int" value="5"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="Yes"/>
+    <property name="ForState" value="GiveCellarQuest"/>
+    <property name="Order" type="int" value="5"/>
+    <property name="Value" type="int" value="9"/>
    </properties>
   </object>
  </objectgroup>

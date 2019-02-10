@@ -18,6 +18,7 @@ namespace Towd
         Character,
         Inventory,
         Shopping,
-        Dialog
+        Dialog,
+        Combat
     }
 }

@@ -26,7 +26,7 @@
  </tile>
  <tile id="2" type="Creature">
   <properties>
-   <property name="BaseDefense" value="ww"/>
+   <property name="BaseDefense" value="x"/>
    <property name="Body" type="int" value="1"/>
    <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Rat1"/>
@@ -180,24 +180,24 @@
  </tile>
  <tile id="16" type="Creature">
   <properties>
-   <property name="BaseDefense" value="ww"/>
+   <property name="BaseDefense" value="x"/>
    <property name="Body" type="int" value="1"/>
    <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Rat2"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="16"/>
-   <property name="UnarmedAttack" value="r"/>
+   <property name="UnarmedAttack" value="x"/>
   </properties>
  </tile>
  <tile id="17" type="Creature">
   <properties>
-   <property name="BaseDefense" value="ww"/>
+   <property name="BaseDefense" value="w"/>
    <property name="Body" type="int" value="2"/>
    <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Rat3"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
    <property name="ResourceIndex" type="int" value="17"/>
-   <property name="UnarmedAttack" value="b"/>
+   <property name="UnarmedAttack" value="w"/>
   </properties>
  </tile>
  <tile id="18" type="None">

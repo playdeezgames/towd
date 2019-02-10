@@ -11,7 +11,7 @@ namespace Engine
         Normal,
         Prompted,
         Shopping,
-        Dialog
-            //inventory!
+        Dialog,
+        Combat
     }
 }

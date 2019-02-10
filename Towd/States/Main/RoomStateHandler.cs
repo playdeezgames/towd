@@ -108,7 +108,8 @@ namespace Towd
                     }
                     else
                     {
-                        //its a fight!
+                        World.AvatarStatus.SetCombat(newTile.CreatureInstance);
+                        SetState(TowdState.Combat);
                     }
                 }
                 return;

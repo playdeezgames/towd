@@ -23,8 +23,20 @@ namespace Engine
         public int Body { get; set; }
         public int Wounds { get; set; }
         public int Mind { get; set; }
+        public int Fatigue { get; set; }
         public string UnarmedAttack { get; set; }
         public string BaseDefense { get; set; }
+        public string DeathEvent { get; set; }
+
+        public int GetCurrentBody()
+        {
+            return Math.Max(Body - Wounds, 0);
+        }
+
+        public int GetCurrentMind()
+        {
+            return Math.Max(Mind - Fatigue, 0);
+        }
 
         internal void GiveItem(string itemIdentifier, int quantity)
         {
@@ -129,6 +141,11 @@ namespace Engine
         public bool CanEat(Item itemDescriptor)
         {
             return itemDescriptor.ItemType == ItemType.Food;
+        }
+
+        public bool IsDead()
+        {
+            return Wounds >= Body;
         }
     }
 }

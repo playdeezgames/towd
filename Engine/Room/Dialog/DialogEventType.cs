@@ -6,6 +6,7 @@
         EnterShoppe,
         SetDialogState,
         SetRoomFlag,
-        MakeTeleport
+        MakeTeleport,
+        SetWorldCounter
     }
 }

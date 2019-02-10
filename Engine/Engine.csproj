@@ -43,14 +43,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvatarStatus\CombatStatus.cs" />
     <Compile Include="AvatarStatus\DialogStatus.cs" />
     <Compile Include="AvatarStatus\ShoppeState.cs" />
     <Compile Include="AvatarStatus\PromptedStatus.cs" />
     <Compile Include="AvatarStatus\AvatarState.cs" />
     <Compile Include="AvatarStatus\AvatarStatus.cs" />
     <Compile Include="AvatarStatus\ShoppingStatus.cs" />
+    <Compile Include="Room\DeathEvents\CreatureDeathEvent.cs" />
     <Compile Include="Item\Item.cs" />
     <Compile Include="Item\ItemType.cs" />
+    <Compile Include="Room\DeathEvents\DeathEventType.cs" />
     <Compile Include="Room\Dialog\DialogChoice.cs" />
     <Compile Include="Room\Dialog\DialogChoiceCondition.cs" />
     <Compile Include="Room\Dialog\DialogChoiceEvent.cs" />

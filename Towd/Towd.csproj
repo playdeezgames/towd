@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Boilerplate\NewWorldMessage.cs" />
     <Compile Include="Boilerplate\LoadWorldMessage.cs" />
+    <Compile Include="States\Main\CombatStateHandler.cs" />
     <Compile Include="States\Main\InventoryStateHandler.cs" />
     <Compile Include="States\Main\CharacterStateHandler.cs" />
     <Compile Include="States\Main\ExitPlayStateHandler.cs" />

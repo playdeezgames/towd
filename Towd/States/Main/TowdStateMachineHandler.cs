@@ -22,6 +22,7 @@ namespace Towd
             this[TowdState.Inventory] = new InventoryStateHandler(this, null);
             this[TowdState.Shopping] = new ShoppingStateHandler(this, null);
             this[TowdState.Dialog] = new DialogStateHandler(this, null);
+            this[TowdState.Combat] = new CombatStateHandler(this, null);
             Current = TowdState.MainMenu;
         }
     }

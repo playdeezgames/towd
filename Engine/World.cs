@@ -21,6 +21,7 @@ namespace Engine
         public Dictionary<string, Room> Rooms { get; set; }
         public Dictionary<string, CreatureInstance> CreatureInstances { get; set; }
         public Dictionary<string, Dictionary<int, int>> IntGenerators { get; set; }
+        public Dictionary<string, int> Counters { get; set; }
 
         public bool CanAvatarMove()
         {
@@ -93,6 +94,15 @@ namespace Engine
             GetAvatarCreatureInstance().Money += giveMoney.Amount;
         }
 
+        public void SetCounter(string counter, int value)
+        {
+            if(Counters==null)
+            {
+                Counters = new Dictionary<string, int>();
+            }
+            Counters[counter] = value;
+        }
+
         private void DoMakeRoomMessage(MakeRoomMessage makeRoomMessage)
         {
             var room = GetAvatarRoom();
@@ -107,6 +117,35 @@ namespace Engine
             roomTile.Sign = new Sign
             {
                 Message = makeSign.Message
+            };
+        }
+
+        public int Roll(string attack)
+        {
+            var generator = GetGenerator(attack);
+            var total = generator.Sum(x => x.Value);
+            var generated = _random.Next(total);
+            foreach(var entry in generator)
+            {
+                generated -= entry.Value;
+                if(generated<0)
+                {
+                    return entry.Key;
+                }
+            }
+            throw new NotImplementedException();
+        }
+
+        private Dictionary<int,int> GetGenerator(string attack)
+        {
+            if(IntGenerators!=null && IntGenerators.ContainsKey(attack))
+            {
+                return IntGenerators[attack];
+            }
+
+            return new Dictionary<int, int>
+            {
+                [0] = 1
             };
         }
 
@@ -235,11 +274,12 @@ namespace Engine
                             Money = obj.GetProperty("Money", 0),
                             Dialog = obj.GetProperty("Dialog", string.Empty),
                             Body = creature.Body,
-                            Mind=creature.Mind,
-                            BaseDefense=creature.BaseDefense,
-                            UnarmedAttack=creature.UnarmedAttack,
-                            Wounds=0,
-                            Name=obj.Name
+                            Mind = creature.Mind,
+                            BaseDefense = creature.BaseDefense,
+                            UnarmedAttack = creature.UnarmedAttack,
+                            Wounds = 0,
+                            Name = obj.Name,
+                            DeathEvent = obj.GetProperty("DeathEvent", string.Empty)
                         };
                         CreatureInstances[identifier] = creatureInstance;
                         room.Get(column, row).CreatureInstance = identifier;
@@ -248,6 +288,12 @@ namespace Engine
             }
             Rooms[roomIdentifier] = room;
             return room;
+        }
+
+        public void TriggerDeathEvent(CreatureInstance enemyInstance)
+        {
+            var room = GetRoom(enemyInstance.Room);
+            room.TriggerDeathEvent(enemyInstance, this);
         }
 
         private void AddItem(TmxTilesetTile tile)
@@ -267,6 +313,23 @@ namespace Engine
                     Defense = tile.GetProperty("Defense", string.Empty)
                 };
                 Items[tile.Properties["Name"]] = item;
+            }
+        }
+
+        internal void DecrementCounter(string counter)
+        {
+            SetCounter(counter, GetCounter(counter) - 1);
+        }
+
+        private int GetCounter(string counter)
+        {
+            if(Counters?.ContainsKey(counter) ?? false)
+            {
+                return Counters[counter];
+            }
+            else
+            {
+                return 0;
             }
         }
 

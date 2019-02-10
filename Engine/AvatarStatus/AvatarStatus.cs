@@ -12,12 +12,15 @@ namespace Engine
         public PromptedStatus Prompted { get; set; }
         public ShoppingStatus Shopping { get; set; }
         public DialogStatus Dialog { get; set; }
+        public CombatStatus Combat { get; set; }
 
         public void SetNormal()
         {
             State = AvatarState.Normal;
             Prompted = null;
             Shopping = null;
+            Dialog = null;
+            Combat = null;
         }
 
         public void SetPrompted(int column, int row)
@@ -30,6 +33,7 @@ namespace Engine
             };
             Shopping = null;
             Dialog = null;
+            Combat = null;
         }
 
         public void SetShopping(string shoppeName, ShoppeState shoppeState)
@@ -42,6 +46,7 @@ namespace Engine
                 State = shoppeState
             };
             Dialog = null;
+            Combat = null;
         }
 
         public void SetDialog(string dialog)
@@ -52,6 +57,19 @@ namespace Engine
             Dialog = new DialogStatus
             {
                 Dialog = dialog
+            };
+            Combat = null;
+        }
+
+        public void SetCombat(string enemyInstance)
+        {
+            State = AvatarState.Combat;
+            Prompted = null;
+            Shopping = null;
+            Dialog = null;
+            Combat = new CombatStatus
+            {
+                EnemyInstance = enemyInstance
             };
         }
     }

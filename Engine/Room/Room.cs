@@ -18,6 +18,7 @@ namespace Engine
         public Dictionary<string, ShoppeInventory> ShoppeInventories { get; set; }
         public Dictionary<string, DialogState> DialogStates { get; set; }
         public Dictionary<string, bool> RoomFlags { get; set; }
+        public Dictionary<string, List<CreatureDeathEvent>> DeathEvents { get; set; }
 
         public bool HasMessage()
         {
@@ -94,6 +95,9 @@ namespace Engine
         {
             switch (obj.Type)
             {
+                case "CreatureDeathEvent":
+                    AddCreatureDeathEvent(obj);
+                    break;
                 case "DialogChoiceCondition":
                     AddDialogChoiceCondition(obj);
                     break;
@@ -136,6 +140,21 @@ namespace Engine
                 default:
                     break;
             }
+        }
+
+        private void AddCreatureDeathEvent(TmxObject obj)
+        {
+            var deathEvent = new CreatureDeathEvent
+            {
+                Order = obj.GetProperty("Order",0),
+                Counter = obj.GetProperty("Counter", string.Empty)
+            };
+            AddCreatureDeathEvent(obj.Properties["ForEvent"], deathEvent);
+        }
+
+        private void AddCreatureDeathEvent(string eventName, CreatureDeathEvent deathEvent)
+        {
+            GetDeathEvent(eventName).Add(deathEvent);
         }
 
         public void MakeTeleport(int column, int row, string prompt, string destinationRoom, int destinationColumn, int destinationRow)
@@ -208,7 +227,9 @@ namespace Engine
                 DestinationColumn = obj.GetProperty("DestinationColumn", 0),
                 DestinationRow = obj.GetProperty("DestinationRow", 0),
                 DestinationRoom = obj.GetProperty("DestinationRoom", string.Empty),
-                Prompt = obj.GetProperty("Prompt", string.Empty)
+                Prompt = obj.GetProperty("Prompt", string.Empty),
+                Counter = obj.GetProperty("Counter", string.Empty),
+                Value = obj.GetProperty("Value", 0)
             };
             choice.AddEvent(choiceEvent);
         }
@@ -292,6 +313,36 @@ namespace Engine
                     Message = obj.Properties["Message"]
                 }
             });
+        }
+
+        internal void TriggerDeathEvent(CreatureInstance enemyInstance, World world)
+        {
+            if(!string.IsNullOrEmpty(enemyInstance.DeathEvent))
+            {
+                var deathEvents = GetDeathEvent(enemyInstance.DeathEvent);
+                foreach(var deathEvent in deathEvents)
+                {
+                    switch(deathEvent.EventType)
+                    {
+                        case DeathEventType.DecrementWorldCounter:
+                            world.DecrementCounter(deathEvent.Counter);
+                            break;
+                    }
+                }
+            }
+        }
+
+        private List<CreatureDeathEvent> GetDeathEvent(string eventName)
+        {
+            if (DeathEvents == null)
+            {
+                DeathEvents = new Dictionary<string, List<CreatureDeathEvent>>();
+            }
+            if (!DeathEvents.ContainsKey(eventName))
+            {
+                DeathEvents[eventName] = new List<CreatureDeathEvent>();
+            }
+            return DeathEvents[eventName];
         }
 
         private void AddClearSearch(TmxObject obj)

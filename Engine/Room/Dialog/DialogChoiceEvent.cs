@@ -13,5 +13,7 @@
         public int DestinationRow { get; set; }
         public string DestinationRoom { get; set; }
         public string Prompt { get; set; }
+        public string Counter { get; set; }
+        public int Value { get; set; }
     }
 }
