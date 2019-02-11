@@ -221,18 +221,18 @@
    <property name="UnarmedAttack" value="w"/>
   </properties>
  </tile>
- <tile id="18" type="None">
+ <tile id="18" type="Creature">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="Guard"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
-   <property name="ResourceIndex" type="int" value="0"/>
+   <property name="ResourceIndex" type="int" value="18"/>
   </properties>
  </tile>
- <tile id="19" type="None">
+ <tile id="19" type="Creature">
   <properties>
-   <property name="Name" value=""/>
+   <property name="Name" value="GuardCaptain"/>
    <property name="ResourceIdentifier" value="dungeon-creatures"/>
-   <property name="ResourceIndex" type="int" value="0"/>
+   <property name="ResourceIndex" type="int" value="19"/>
   </properties>
  </tile>
  <tile id="20" type="None"/>

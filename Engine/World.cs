@@ -261,7 +261,7 @@ namespace Engine
                 switch (obj.Type)
                 {
                     case "CreatureInstance":
-                        string identifier = obj.Properties["Identifier"];
+                        string identifier = obj.GetProperty("Identifier",Guid.NewGuid().ToString());
                         string creatureName = obj.Properties["Creature"];
                         var creature = Creatures[creatureName];
                         CreatureInstance creatureInstance = new CreatureInstance

@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="9" height="7" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="3">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="9" height="7" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="17">
  <properties>
   <property name="RoomCaption" value="Quotidian Garrison"/>
   <property name="RoomId" value="hometown-barracks"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="129" source="Items.tsx"/>
+ <tileset firstgid="257" source="Creatures.tsx"/>
  <layer id="3" name="RoomTiles" width="9" height="7">
   <data encoding="csv">
-80,73,73,73,73,73,73,73,77,
-76,4,4,4,4,4,4,4,74,
-76,4,4,4,4,4,4,4,74,
-76,4,4,4,4,4,4,4,74,
-76,4,4,4,4,4,4,4,74,
-76,4,4,4,4,4,4,4,74,
-79,75,75,75,83,75,75,75,78
+12,5,5,5,5,5,5,5,9,
+8,4,4,4,4,4,4,4,6,
+8,4,4,4,4,4,4,4,6,
+8,4,4,4,4,4,4,4,6,
+8,4,4,4,4,4,4,4,6,
+8,4,4,4,4,4,4,4,6,
+11,7,7,7,19,7,7,7,10
 </data>
  </layer>
  <layer id="4" name="Creatures" width="9" height="7">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,
+0,0,0,275,276,275,0,0,0,
 0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
+0,0,0,275,0,275,0,0,0,
 0,0,0,0,0,0,0,0,0
 </data>
  </layer>
@@ -37,6 +38,101 @@
     <property name="Row" type="int" value="15"/>
    </properties>
   </object>
+  <object id="8" name="GuardDlg" type="DialogState" x="80" y="0" width="8" height="8">
+   <properties>
+    <property name="CurrentState" value="Initial"/>
+    <property name="ForDialog" value="Guard"/>
+   </properties>
+  </object>
+  <object id="10" name="GuardInitial" type="DialogNode" x="96" y="0" width="8" height="8">
+   <properties>
+    <property name="Caption" value="Guard"/>
+    <property name="ForDialog" value="Guard"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Prompt1" value="My life for Quotidian!"/>
+   </properties>
+  </object>
+  <object id="11" name="GuardInitialLeave" type="DialogChoice" x="96" y="8" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Guard"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Option" value="Leave"/>
+    <property name="OptionText" value="Thanks for serving!"/>
+    <property name="Order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="12" name="GILeave01" type="DialogChoiceEvent" x="104" y="8" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="0"/>
+    <property name="ForDialog" value="Guard"/>
+    <property name="ForOption" value="Leave"/>
+    <property name="ForState" value="Initial"/>
+   </properties>
+  </object>
+  <object id="13" name="CaptainDlg" type="DialogState" x="80" y="24" width="8" height="8">
+   <properties>
+    <property name="CurrentState" value="Initial"/>
+    <property name="ForDialog" value="Captain"/>
+   </properties>
+  </object>
+  <object id="14" name="CaptainInitial" type="DialogNode" x="96" y="24" width="8" height="8">
+   <properties>
+    <property name="Caption" value="Captain"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Prompt1" value="How may I help you,"/>
+    <property name="Prompt2" value="citizen?"/>
+   </properties>
+  </object>
+  <object id="15" name="CaptainInitialLeave" type="DialogChoice" x="96" y="32" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Option" value="Leave"/>
+    <property name="OptionText" value="Nothing, thanks!"/>
+    <property name="Order" type="int" value="99"/>
+   </properties>
+  </object>
+  <object id="16" name="CILeave01" type="DialogChoiceEvent" x="104" y="32" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="0"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Leave"/>
+    <property name="ForState" value="Initial"/>
+    <property name="Order" type="int" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="6" name="CreatureInstances"/>
+ <objectgroup id="6" name="CreatureInstances">
+  <object id="3" name="Guard4" type="CreatureInstance" x="24" y="8" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Guard"/>
+    <property name="Dialog" value="Guard"/>
+   </properties>
+  </object>
+  <object id="4" name="Captain" type="CreatureInstance" x="32" y="8" width="8" height="8">
+   <properties>
+    <property name="Creature" value="GuardCaptain"/>
+    <property name="Dialog" value="Captain"/>
+   </properties>
+  </object>
+  <object id="5" name="Guard3" type="CreatureInstance" x="40" y="8" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Guard"/>
+    <property name="Dialog" value="Guard"/>
+   </properties>
+  </object>
+  <object id="6" name="Guard2" type="CreatureInstance" x="24" y="40" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Guard"/>
+    <property name="Dialog" value="Guard"/>
+   </properties>
+  </object>
+  <object id="7" name="Guard1" type="CreatureInstance" x="40" y="40" width="8" height="8">
+   <properties>
+    <property name="Creature" value="Guard"/>
+    <property name="Dialog" value="Guard"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
