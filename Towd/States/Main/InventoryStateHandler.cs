@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Towd
 {
-    //TODO: have some content
     public class InventoryStateHandler : TowdStateHandler
     {
         private enum InventoryAction
@@ -66,6 +65,10 @@ namespace Towd
                     break;
                 case InventoryAction.Unequip:
                     World.GetAvatarCreatureInstance().GetEquipped().Remove(itemName);
+                    RefreshItemListBox(itemName);
+                    break;
+                case InventoryAction.Eat:
+                    World.GetAvatarCreatureInstance().Eat(itemName, World.Items[itemName]);
                     RefreshItemListBox(itemName);
                     break;
             }

@@ -60,9 +60,8 @@ namespace Towd
                     switch(item.ItemType)
                     {
                         case Engine.ItemType.Food:
-                            avatarInstance.RemoveItem(itemName, 1);
+                            avatarInstance.Eat(itemName, item);
                             message = $"Body +{item.Body}";
-                            avatarInstance.Wounds = Math.Max(avatarInstance.Wounds - item.Body, 0);
                             break;
                     }
                 }

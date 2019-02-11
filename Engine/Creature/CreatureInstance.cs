@@ -103,6 +103,16 @@ namespace Engine
             }
             return Items;
         }
+
+        public void Eat(string itemName, Item item)
+        {
+            if(HasItem(itemName) && item.ItemType == ItemType.Food)
+            {
+                RemoveItem(itemName, 1);
+                Wounds = Math.Max(0, Wounds - item.Body);
+            }
+        }
+
         public HashSet<string> GetEquipped()
         {
             if(Equipped==null)
