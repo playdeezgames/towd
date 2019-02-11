@@ -23,6 +23,7 @@ namespace Engine
         //n=neck(necklace)
         public string Attack { get; set; }
         public string Defense { get; set; }
+        public int Body { get; set; }
 
         internal HashSet<char> GetEquipSlots()
         {

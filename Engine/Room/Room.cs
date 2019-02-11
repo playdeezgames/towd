@@ -197,7 +197,9 @@ namespace Engine
             choice.AddCondition(new DialogChoiceCondition
             {
                 ConditionType = (DialogConditionType)obj.GetProperty("ConditionType", 0),
-                FlagName = obj.GetProperty("FlagName", string.Empty)
+                FlagName = obj.GetProperty("FlagName", string.Empty),
+                CounterName = obj.GetProperty("CounterName", string.Empty),
+                Value = obj.GetProperty("Value", 0)
             });
         }
 

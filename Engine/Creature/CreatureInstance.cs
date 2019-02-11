@@ -27,6 +27,8 @@ namespace Engine
         public string UnarmedAttack { get; set; }
         public string BaseDefense { get; set; }
         public string DeathEvent { get; set; }
+        public int XP { get; set; }
+
 
         public int GetCurrentBody()
         {

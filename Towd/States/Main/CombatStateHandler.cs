@@ -9,13 +9,13 @@ namespace Towd
     {
         private enum CombatState
         {
-            Initial,//
-            AvatarTurn,//
-            EnemyTurn,//
-            AvatarTurnResult,//
-            AvatarItemSelect,
-            AvatarDeath,//
-            EnemyDeath//
+            Initial,
+            AvatarTurn,
+            EnemyTurn,
+            AvatarTurnResult,
+            AvatarItemSelect,//TODO: potions and heath recovery in combat
+            AvatarDeath,
+            EnemyDeath
         }
 
         private CombatState _state;
@@ -49,45 +49,70 @@ namespace Towd
 
         private void OnListBoxActivate(int selected)
         {
-            switch(_listBox.Items.ToList()[selected].Meta)
+            if (_state == CombatState.AvatarItemSelect)
             {
-                case "EnemyTurn":
-                    _state = CombatState.EnemyTurn;
-                    UpdateCombat(string.Empty);
-                    break;
-                case "AvatarTurn":
-                    _state = CombatState.AvatarTurn;
-                    UpdateCombat(string.Empty);
-                    break;
-                case "AvatarAttack":
-                    _state = CombatState.AvatarTurnResult;
-                    UpdateCombat(string.Empty);
-                    break;
-                case "MainMenu":
-                    SetState(TowdState.MainMenu);
-                    break;
-                case "AvatarItemSelect":
-                    break;
-                case "AvatarDeath":
-                    _state = CombatState.AvatarDeath;
-                    UpdateCombat(string.Empty);
-                    break;
-                case "EnemyDeath":
-                    _state = CombatState.EnemyDeath;
-                    UpdateCombat(string.Empty);
-                    break;
-                case "CombatComplete":
-                    World.AvatarStatus.SetNormal();
-                    SetState(TowdState.Room);
-                    break;
-                case "AvatarRun":
-                    World.AvatarStatus.SetNormal();
-                    SetState(TowdState.Room);
-                    break;
+                var avatarInstance = World.GetAvatarCreatureInstance();
+                string itemName = _listBox.Items.ToList()[selected].Meta;
+                string message = string.Empty;
+                if (!string.IsNullOrEmpty(itemName))
+                { 
+                    var item = World.Items[itemName];
+                    switch(item.ItemType)
+                    {
+                        case Engine.ItemType.Food:
+                            avatarInstance.RemoveItem(itemName, 1);
+                            message = $"Body +{item.Body}";
+                            avatarInstance.Wounds = Math.Max(avatarInstance.Wounds - item.Body, 0);
+                            break;
+                    }
+                }
+                _state = CombatState.AvatarTurn;
+                UpdateCombat(message);
+            }
+            else
+            {
+                switch (_listBox.Items.ToList()[selected].Meta)
+                {
+                    case "EnemyTurn":
+                        _state = CombatState.EnemyTurn;
+                        UpdateCombat(string.Empty);
+                        break;
+                    case "AvatarTurn":
+                        _state = CombatState.AvatarTurn;
+                        UpdateCombat(string.Empty);
+                        break;
+                    case "AvatarAttack":
+                        _state = CombatState.AvatarTurnResult;
+                        UpdateCombat(string.Empty);
+                        break;
+                    case "MainMenu":
+                        SetState(TowdState.MainMenu);
+                        break;
+                    case "AvatarItemSelect":
+                        _state = CombatState.AvatarItemSelect;
+                        UpdateCombat(string.Empty);
+                        break;
+                    case "AvatarDeath":
+                        _state = CombatState.AvatarDeath;
+                        UpdateCombat(string.Empty);
+                        break;
+                    case "EnemyDeath":
+                        _state = CombatState.EnemyDeath;
+                        UpdateCombat(string.Empty);
+                        break;
+                    case "CombatComplete":
+                        World.AvatarStatus.SetNormal();
+                        SetState(TowdState.Room);
+                        break;
+                    case "AvatarRun":
+                        World.AvatarStatus.SetNormal();
+                        SetState(TowdState.Room);
+                        break;
+                }
             }
         }
 
-        private void UpdateAvatarTurnResult(string lastSelected)
+        private void UpdateAvatarTurnResult(string message)
         {
             var avatarInstance = World.GetAvatarCreatureInstance();
             var weapons = avatarInstance.GetEquipped().Select(x => World.Items[x]).Where(x => x.ItemType == Engine.ItemType.Weapon).ToList();
@@ -121,11 +146,11 @@ namespace Towd
             {
                 output.Add("A miss!");
             }
-            ShowOutput(output);
             enemyInstance.Wounds += attack;
             List<ListBoxItem<string>> listBoxItems = new List<ListBoxItem<string>>();
             if(enemyInstance.IsDead())
             {
+                output.Add("It is dead!");
                 listBoxItems.Add(new ListBoxItem<string>
                 {
                     Meta = "EnemyDeath",
@@ -140,6 +165,7 @@ namespace Towd
                     Caption = "Ok"
                 });
             }
+            ShowOutput(output);
             _listBox.Items = listBoxItems;
             _listBox.Selected = 0;
         }
@@ -181,45 +207,71 @@ namespace Towd
             _listBox.Focus();
         }
 
-        private void UpdateCombat(string lastSelected)
+        private void UpdateCombat(string message)
         {
             switch (_state)
             {
                 case CombatState.Initial:
-                    UpdateInitial(lastSelected);
+                    UpdateInitial(message);
                     break;
                 case CombatState.AvatarTurn:
-                    UpdateAvatarTurn(lastSelected);
+                    UpdateAvatarTurn(message);
                     break;
                 case CombatState.AvatarTurnResult:
-                    UpdateAvatarTurnResult(lastSelected);
+                    UpdateAvatarTurnResult(message);
                     break;
                 case CombatState.AvatarItemSelect:
-                    UpdateAvatarItemSelect(lastSelected);
+                    UpdateAvatarItemSelect(message);
                     break;
                 case CombatState.EnemyTurn:
-                    UpdateEnemyTurn(lastSelected);
+                    UpdateEnemyTurn(message);
                     break;
                 case CombatState.AvatarDeath:
-                    UpdateAvatarDeath(lastSelected);
+                    UpdateAvatarDeath(message);
                     break;
                 case CombatState.EnemyDeath:
-                    UpdateEnemyDeath(lastSelected);
+                    UpdateEnemyDeath(message);
                     break;
             }
         }
 
-        private void UpdateAvatarItemSelect(string lastSelected)
+        private void UpdateAvatarItemSelect(string message)
         {
+            List<string> output = new List<string>();
+            output.Add("Pick an item to use:");
+
+            ShowOutput(output);
+            List<ListBoxItem<string>> listBoxItems = new List<ListBoxItem<string>>();
+            listBoxItems.Add(new ListBoxItem<string>
+            {
+                Meta = string.Empty,
+                Caption = "Nothing"
+            });
+            foreach(var entry in World.GetAvatarCreatureInstance().GetItems().Where(x=>x.Value>0))
+            {
+                var item = World.Items[entry.Key];
+                switch(item.ItemType)
+                {
+                    case Engine.ItemType.Food:
+                        listBoxItems.Add(new ListBoxItem<string>
+                        {
+                            Meta = entry.Key,
+                            Caption = item.DisplayName
+                        });
+                        break;
+                }
+            }
+            _listBox.Items = listBoxItems;
+            _listBox.Selected = 0;
         }
 
-        private void UpdateEnemyDeath(string lastSelected)
+        private void UpdateEnemyDeath(string message)
         {
             var enemyInstance = World.CreatureInstances[World.GetAvatarStatus().Combat.EnemyInstance];
             List<string> output = new List<string>();
-            output.Add("It is dead!");
             //TODO: loot
-            //TODO: xp
+            output.Add($"XP +{enemyInstance.XP}");
+            World.GetAvatarCreatureInstance().XP += enemyInstance.XP;
             //TODO: room event
             World.TriggerDeathEvent(enemyInstance);
             //TODO: quest tracking
@@ -240,7 +292,7 @@ namespace Towd
             _listBox.Selected = 0;
         }
 
-        private void UpdateAvatarDeath(string lastSelected)
+        private void UpdateAvatarDeath(string message)
         {
             List<string> output = new List<string>();
             output.Add("You are dead!");
@@ -255,7 +307,7 @@ namespace Towd
             _listBox.Selected = 0;
         }
 
-        private void UpdateEnemyTurn(string lastSelected)
+        private void UpdateEnemyTurn(string message)
         {
             var enemyInstance = World.CreatureInstances[World.GetAvatarStatus().Combat.EnemyInstance];
             List<string> output = new List<string>();
@@ -266,8 +318,11 @@ namespace Towd
             {
                 output.Add($"A hit for {attack}");
                 int defend = World.Roll(avatarInstance.BaseDefense);//TODO: fix when armor more fully implemented!
-                output.Add($"You defend {defend}");
-                attack = Math.Max(attack - defend, 0);
+                if (defend > 0)
+                {
+                    output.Add($"You defend {defend}");
+                    attack = Math.Max(attack - defend, 0);
+                }
             }
             else
             {
@@ -300,12 +355,16 @@ namespace Towd
             _listBox.Selected = 0;
         }
 
-        private void UpdateAvatarTurn(string lastSelected)
+        private void UpdateAvatarTurn(string message)
         {
-            _promptLabels[0].Text = "It is your turn!";
-            _promptLabels[1].Text = "What will you do?";
-            _promptLabels[2].Text = "";
-            _promptLabels[3].Text = "";
+            List<string> output = new List<string>();
+            if(!string.IsNullOrEmpty(message))
+            {
+                output.Add(message);
+            }
+            output.Add("It is your turn!");
+            output.Add("What will you do?");
+            ShowOutput(output);
             List<ListBoxItem<string>> listBoxItems = new List<ListBoxItem<string>>();
             listBoxItems.Add(new ListBoxItem<string>
             {
@@ -326,7 +385,7 @@ namespace Towd
             _listBox.Selected = 0;
         }
 
-        private void UpdateInitial(string lastSelected)
+        private void UpdateInitial(string message)
         {
             var enemyInstance = World.CreatureInstances[World.GetAvatarStatus().Combat.EnemyInstance];
             _headerLabel.Text = $"Fighting {enemyInstance.Name}";

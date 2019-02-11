@@ -68,6 +68,7 @@
  </tile>
  <tile id="5" type="Item">
   <properties>
+   <property name="Body" type="int" value="3"/>
    <property name="BuyPrice" type="int" value="5"/>
    <property name="DisplayName" value="cheese"/>
    <property name="ItemType" type="int" value="1"/>
@@ -79,6 +80,7 @@
  </tile>
  <tile id="6" type="Item">
   <properties>
+   <property name="Body" type="int" value="2"/>
    <property name="BuyPrice" type="int" value="2"/>
    <property name="DisplayName" value="taters"/>
    <property name="ItemType" type="int" value="1"/>
@@ -90,6 +92,7 @@
  </tile>
  <tile id="7" type="Item">
   <properties>
+   <property name="Body" type="int" value="4"/>
    <property name="BuyPrice" type="int" value="10"/>
    <property name="DisplayName" value="meat"/>
    <property name="ItemType" type="int" value="1"/>
@@ -101,6 +104,7 @@
  </tile>
  <tile id="8" type="Item">
   <properties>
+   <property name="Body" type="int" value="1"/>
    <property name="BuyPrice" type="int" value="1"/>
    <property name="DisplayName" value="bread"/>
    <property name="ItemType" type="int" value="1"/>

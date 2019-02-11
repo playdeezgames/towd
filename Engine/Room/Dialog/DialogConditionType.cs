@@ -2,7 +2,8 @@
 {
     public enum DialogConditionType
     {
-        WhenFlagClear,
-        WhenFlagSet
+        WhenRoomFlagClear,
+        WhenRoomFlagSet,
+        WhenWorldCounterEquals
     }
 }

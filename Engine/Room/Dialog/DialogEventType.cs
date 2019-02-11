@@ -7,6 +7,7 @@
         SetDialogState,
         SetRoomFlag,
         MakeTeleport,
-        SetWorldCounter
+        SetWorldCounter,
+        GiveMoney
     }
 }

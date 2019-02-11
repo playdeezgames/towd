@@ -96,7 +96,7 @@ namespace Engine
 
         public void SetCounter(string counter, int value)
         {
-            if(Counters==null)
+            if (Counters == null)
             {
                 Counters = new Dictionary<string, int>();
             }
@@ -125,10 +125,10 @@ namespace Engine
             var generator = GetGenerator(attack);
             var total = generator.Sum(x => x.Value);
             var generated = _random.Next(total);
-            foreach(var entry in generator)
+            foreach (var entry in generator)
             {
                 generated -= entry.Value;
-                if(generated<0)
+                if (generated < 0)
                 {
                     return entry.Key;
                 }
@@ -136,9 +136,9 @@ namespace Engine
             throw new NotImplementedException();
         }
 
-        private Dictionary<int,int> GetGenerator(string attack)
+        private Dictionary<int, int> GetGenerator(string attack)
         {
-            if(IntGenerators!=null && IntGenerators.ContainsKey(attack))
+            if (IntGenerators != null && IntGenerators.ContainsKey(attack))
             {
                 return IntGenerators[attack];
             }
@@ -279,7 +279,8 @@ namespace Engine
                             UnarmedAttack = creature.UnarmedAttack,
                             Wounds = 0,
                             Name = obj.Name,
-                            DeathEvent = obj.GetProperty("DeathEvent", string.Empty)
+                            DeathEvent = obj.GetProperty("DeathEvent", string.Empty),
+                            XP = obj.GetProperty("XP", creature.BaseXP)
                         };
                         CreatureInstances[identifier] = creatureInstance;
                         room.Get(column, row).CreatureInstance = identifier;
@@ -310,7 +311,8 @@ namespace Engine
                     ItemType = (ItemType)tile.GetProperty("ItemType", 0),
                     EquipSlots = new HashSet<char>(tile.GetProperty("EquipSlots", string.Empty).ToCharArray()),
                     Attack = tile.GetProperty("Attack", string.Empty),
-                    Defense = tile.GetProperty("Defense", string.Empty)
+                    Defense = tile.GetProperty("Defense", string.Empty),
+                    Body = tile.GetProperty("Body", 0)
                 };
                 Items[tile.Properties["Name"]] = item;
             }
@@ -321,9 +323,9 @@ namespace Engine
             SetCounter(counter, GetCounter(counter) - 1);
         }
 
-        private int GetCounter(string counter)
+        public int GetCounter(string counter)
         {
-            if(Counters?.ContainsKey(counter) ?? false)
+            if (Counters?.ContainsKey(counter) ?? false)
             {
                 return Counters[counter];
             }
@@ -342,10 +344,11 @@ namespace Engine
                     ResourceIdentifier = tile.Properties["ResourceIdentifier"],
                     ResourceIndex = Convert.ToInt32(tile.Properties["ResourceIndex"]),
                     BaseDefense = tile.GetProperty("BaseDefense", string.Empty),
-                    UnarmedAttack=tile.GetProperty("UnarmedAttack", string.Empty),
-                    Body=tile.GetProperty("Body",1),
-                    Mind=tile.GetProperty("Mind",0),
-                    EquipSlots = new HashSet<char>(tile.GetProperty("EquipSlots", string.Empty).ToCharArray())
+                    UnarmedAttack = tile.GetProperty("UnarmedAttack", string.Empty),
+                    Body = tile.GetProperty("Body", 1),
+                    Mind = tile.GetProperty("Mind", 0),
+                    EquipSlots = new HashSet<char>(tile.GetProperty("EquipSlots", string.Empty).ToCharArray()),
+                    BaseXP = tile.GetProperty("BaseXP", 0)
                 };
                 Creatures[tile.Properties["Name"]] = creature;
             }

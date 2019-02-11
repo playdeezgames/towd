@@ -49,6 +49,9 @@ namespace Towd
                         World.AvatarStatus.SetNormal();
                         SetState(TowdState.Room);
                         break;
+                    case DialogEventType.GiveMoney:
+                        World.GetAvatarCreatureInstance().Money += dialogEvent.Value;
+                        break;
                     case DialogEventType.EnterShoppe:
                         World.AvatarStatus.SetShopping(dialogEvent.Shoppe, Engine.ShoppeState.Initial);
                         SetState(TowdState.Shopping);
@@ -121,14 +124,20 @@ namespace Towd
             {
                 switch (condition.ConditionType)
                 {
-                    case DialogConditionType.WhenFlagClear:
+                    case DialogConditionType.WhenRoomFlagClear:
                         if (room.GetFlag(condition.FlagName))
                         {
                             return false;
                         }
                         break;
-                    case DialogConditionType.WhenFlagSet:
+                    case DialogConditionType.WhenRoomFlagSet:
                         if (!room.GetFlag(condition.FlagName))
+                        {
+                            return false;
+                        }
+                        break;
+                    case DialogConditionType.WhenWorldCounterEquals:
+                        if(World.GetCounter(condition.CounterName)!=condition.Value)
                         {
                             return false;
                         }

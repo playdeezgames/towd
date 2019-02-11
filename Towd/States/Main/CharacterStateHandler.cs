@@ -14,6 +14,7 @@ namespace Towd
         private LabelControl _money;
         private LabelControl _body;
         private LabelControl _mind;
+        private LabelControl _xp;
         private ListBoxControl<string> _equipped;
         public CharacterStateHandler(StateMachineHandler<CyColor, TowdState> parent, CyRect? bounds) : base(parent, bounds)
         {
@@ -23,7 +24,8 @@ namespace Towd
             _money = new LabelControl(this, true, CyPoint.Create(0, font.Height), font, "Money: ####G", CyColor.Black);
             _body = new LabelControl(this, true, CyPoint.Create(0, font.Height * 2), font, "Body: ##/##", CyColor.Black);
             _mind = new LabelControl(this, true, CyPoint.Create(0, font.Height * 3), font, "Money: ##/##", CyColor.Black);
-            _equipped = new ListBoxControl<string>(this, true, CyRect.Create(0, font.Height * 4, Width, Height - font.Height * 4), font, new ListBoxItem<string>[0], 0, CyColor.Black, CyColor.White, OnListBoxActivate);
+            _xp = new LabelControl(this, true, CyPoint.Create(0, font.Height * 4), font, "XP: #####", CyColor.Black);
+            _equipped = new ListBoxControl<string>(this, true, CyRect.Create(0, font.Height * 5, Width, Height - font.Height * 4), font, new ListBoxItem<string>[0], 0, CyColor.Black, CyColor.White, OnListBoxActivate);
         }
 
         private void OnListBoxActivate(int obj)
@@ -54,6 +56,7 @@ namespace Towd
             _money.Text = $"Money: {creatureInstance.Money}g";
             _body.Text = $"Body: {creatureInstance.GetCurrentBody()}/{creatureInstance.Body}";
             _mind.Text = $"Mind: {creatureInstance.GetCurrentMind()}/{creatureInstance.Mind}";
+            _xp.Text = $"XP: {creatureInstance.XP}";
             var equippedItems = creatureInstance.GetEquipped();
             List<ListBoxItem<string>> listItems = new List<ListBoxItem<string>>();
             foreach(var equippedItem in equippedItems)

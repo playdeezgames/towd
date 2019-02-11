@@ -27,6 +27,7 @@
  <tile id="2" type="Creature">
   <properties>
    <property name="BaseDefense" value="x"/>
+   <property name="BaseXP" type="int" value="1"/>
    <property name="Body" type="int" value="1"/>
    <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Rat1"/>
@@ -181,6 +182,7 @@
  <tile id="16" type="Creature">
   <properties>
    <property name="BaseDefense" value="x"/>
+   <property name="BaseXP" type="int" value="1"/>
    <property name="Body" type="int" value="1"/>
    <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Rat2"/>
@@ -192,6 +194,7 @@
  <tile id="17" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseXP" type="int" value="2"/>
    <property name="Body" type="int" value="2"/>
    <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Rat3"/>
