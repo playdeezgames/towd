@@ -277,6 +277,7 @@ namespace Engine
                             Mind = creature.Mind,
                             BaseDefense = creature.BaseDefense,
                             UnarmedAttack = creature.UnarmedAttack,
+                            Speed = creature.BaseSpeed,
                             Wounds = 0,
                             Name = obj.Name,
                             DeathEvent = obj.GetProperty("DeathEvent", string.Empty),
@@ -347,6 +348,7 @@ namespace Engine
                     UnarmedAttack = tile.GetProperty("UnarmedAttack", string.Empty),
                     Body = tile.GetProperty("Body", 1),
                     Mind = tile.GetProperty("Mind", 0),
+                    BaseSpeed = tile.GetProperty("BaseSpeed",string.Empty),
                     EquipSlots = new HashSet<char>(tile.GetProperty("EquipSlots", string.Empty).ToCharArray()),
                     BaseXP = tile.GetProperty("BaseXP", 0)
                 };

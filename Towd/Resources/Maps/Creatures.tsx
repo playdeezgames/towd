@@ -4,6 +4,7 @@
  <tile id="0" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="w"/>
    <property name="Body" type="int" value="3"/>
    <property name="EquipSlots" value="wshtfbn"/>
    <property name="Mind" type="int" value="3"/>
@@ -16,6 +17,7 @@
  <tile id="1" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="b"/>
    <property name="Body" type="int" value="1"/>
    <property name="Mind" type="int" value="1"/>
    <property name="Name" value="Snake"/>
@@ -27,6 +29,7 @@
  <tile id="2" type="Creature">
   <properties>
    <property name="BaseDefense" value="x"/>
+   <property name="BaseSpeed" value="r"/>
    <property name="BaseXP" type="int" value="1"/>
    <property name="Body" type="int" value="1"/>
    <property name="Mind" type="int" value="1"/>
@@ -39,6 +42,7 @@
  <tile id="3" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude1"/>
@@ -50,6 +54,7 @@
  <tile id="4" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady1"/>
@@ -61,6 +66,7 @@
  <tile id="5" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude2"/>
@@ -72,6 +78,7 @@
  <tile id="6" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude3"/>
@@ -83,6 +90,7 @@
  <tile id="7" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude4"/>
@@ -94,6 +102,7 @@
  <tile id="8" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude5"/>
@@ -105,6 +114,7 @@
  <tile id="9" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcDude6"/>
@@ -116,6 +126,7 @@
  <tile id="10" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady2"/>
@@ -127,6 +138,7 @@
  <tile id="11" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady3"/>
@@ -138,6 +150,7 @@
  <tile id="12" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady4"/>
@@ -149,6 +162,7 @@
  <tile id="13" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady5"/>
@@ -160,6 +174,7 @@
  <tile id="14" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="x"/>
    <property name="Body" type="int" value="3"/>
    <property name="Mind" type="int" value="3"/>
    <property name="Name" value="NpcLady6"/>
@@ -171,6 +186,7 @@
  <tile id="15" type="Creature">
   <properties>
    <property name="BaseDefense" value="bbb"/>
+   <property name="BaseSpeed" value="bb"/>
    <property name="Body" type="int" value="8"/>
    <property name="Mind" type="int" value="8"/>
    <property name="Name" value="Vampire"/>
@@ -182,6 +198,7 @@
  <tile id="16" type="Creature">
   <properties>
    <property name="BaseDefense" value="x"/>
+   <property name="BaseSpeed" value="r"/>
    <property name="BaseXP" type="int" value="1"/>
    <property name="Body" type="int" value="1"/>
    <property name="Mind" type="int" value="1"/>
@@ -194,6 +211,7 @@
  <tile id="17" type="Creature">
   <properties>
    <property name="BaseDefense" value="w"/>
+   <property name="BaseSpeed" value="b"/>
    <property name="BaseXP" type="int" value="2"/>
    <property name="Body" type="int" value="2"/>
    <property name="Mind" type="int" value="1"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="50">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="13" height="9" tilewidth="8" tileheight="8" infinite="0" nextlayerid="9" nextobjectid="51">
  <properties>
   <property name="RoomCaption" value="Bromidic Inn"/>
   <property name="RoomId" value="hometown-hotel-lobby"/>
@@ -345,13 +345,13 @@
     <property name="Order" type="int" value="1"/>
    </properties>
   </object>
-  <object id="47" name="IKGCQRThanks02" type="DialogChoiceEvent" x="-80" y="40" width="8" height="8">
+  <object id="47" name="IKGCQRThanks03" type="DialogChoiceEvent" x="-88" y="40" width="8" height="8">
    <properties>
     <property name="DialogEventType" type="int" value="0"/>
     <property name="ForDialog" value="InnKeeper"/>
     <property name="ForOption" value="Leave"/>
     <property name="ForState" value="GiveCellarQuestReward"/>
-    <property name="Order" type="int" value="2"/>
+    <property name="Order" type="int" value="3"/>
    </properties>
   </object>
   <object id="49" name="IKGCQRThanks01" type="DialogChoiceEvent" x="-72" y="40" width="8" height="8">
@@ -362,6 +362,16 @@
     <property name="ForState" value="GiveCellarQuestReward"/>
     <property name="Order" type="int" value="1"/>
     <property name="Value" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="50" name="IKGCQRThanks02" type="DialogChoiceEvent" x="-80" y="40" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="2"/>
+    <property name="ForDialog" value="InnKeeper"/>
+    <property name="ForOption" value="Leave"/>
+    <property name="ForState" value="GiveCellarQuestReward"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="State" value="Initial"/>
    </properties>
   </object>
  </objectgroup>

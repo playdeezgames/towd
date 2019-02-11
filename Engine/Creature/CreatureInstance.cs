@@ -28,6 +28,7 @@ namespace Engine
         public string BaseDefense { get; set; }
         public string DeathEvent { get; set; }
         public int XP { get; set; }
+        public string Speed { get; set; }
 
 
         public int GetCurrentBody()

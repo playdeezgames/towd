@@ -388,16 +388,29 @@ namespace Towd
         {
             var enemyInstance = World.CreatureInstances[World.GetAvatarStatus().Combat.EnemyInstance];
             _headerLabel.Text = $"Fighting {enemyInstance.Name}";
-            _promptLabels[0].Text = "You are in combat!";
-            _promptLabels[1].Text = "You will attack first.";
-            _promptLabels[2].Text = "";
-            _promptLabels[3].Text = "";
+            List<string> output = new List<string>();
             List<ListBoxItem<string>> listBoxItems = new List<ListBoxItem<string>>();
-            listBoxItems.Add(new ListBoxItem<string>
+            output.Add("You are in combat!");
+            if (World.Roll(enemyInstance.Speed) > World.Roll(World.GetAvatarCreatureInstance().Speed))
             {
-                Meta = "AvatarTurn",
-                Caption = "Ok"
-            });
+                output.Add("Enemy goes first!");
+                listBoxItems.Add(new ListBoxItem<string>
+                {
+                    Meta = "EnemyTurn",
+                    Caption = "Ok"
+                });
+
+            }
+            else
+            {
+                output.Add("You go first!");
+                listBoxItems.Add(new ListBoxItem<string>
+                {
+                    Meta = "AvatarTurn",
+                    Caption = "Ok"
+                });
+            }
+            ShowOutput(output);
             _listBox.Items = listBoxItems;
             _listBox.Selected = 0;
         }
