@@ -4,6 +4,9 @@
     {
         WhenRoomFlagClear,
         WhenRoomFlagSet,
-        WhenWorldCounterEquals
+        WhenWorldCounterEquals,
+        WhenEnoughMoney,
+        WhenEnoughXP,
+        WhenWorldCounterNotGreater
     }
 }

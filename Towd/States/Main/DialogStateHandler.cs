@@ -49,7 +49,7 @@ namespace Towd
                         World.AvatarStatus.SetNormal();
                         SetState(TowdState.Room);
                         break;
-                    case DialogEventType.GiveMoney:
+                    case DialogEventType.ChangeMoney:
                         World.GetAvatarCreatureInstance().Money += dialogEvent.Value;
                         break;
                     case DialogEventType.EnterShoppe:
@@ -68,6 +68,9 @@ namespace Towd
                         break;
                     case DialogEventType.MakeTeleport:
                         World.GetAvatarRoom().MakeTeleport(dialogEvent.Column, dialogEvent.Row, dialogEvent.Prompt, dialogEvent.DestinationRoom, dialogEvent.DestinationColumn, dialogEvent.DestinationRow);
+                        break;
+                    case DialogEventType.Rest:
+                        World.GetAvatarCreatureInstance().Rest();
                         break;
                     default:
                         throw new NotImplementedException();
@@ -138,6 +141,12 @@ namespace Towd
                         break;
                     case DialogConditionType.WhenWorldCounterEquals:
                         if(World.GetCounter(condition.CounterName)!=condition.Value)
+                        {
+                            return false;
+                        }
+                        break;
+                    case DialogConditionType.WhenEnoughMoney:
+                        if(World.GetAvatarCreatureInstance().Money<condition.Value)
                         {
                             return false;
                         }

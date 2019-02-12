@@ -151,6 +151,12 @@ namespace Engine
             return slots;
         }
 
+        public void Rest()
+        {
+            Wounds = 0;
+            Fatigue = 0;
+        }
+
         public bool CanEat(Item itemDescriptor)
         {
             return itemDescriptor.ItemType == ItemType.Food;

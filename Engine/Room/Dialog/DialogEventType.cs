@@ -8,6 +8,7 @@
         SetRoomFlag,
         MakeTeleport,
         SetWorldCounter,
-        GiveMoney
+        ChangeMoney,
+        Rest
     }
 }
