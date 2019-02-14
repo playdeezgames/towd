@@ -72,6 +72,12 @@ namespace Towd
                     case DialogEventType.Rest:
                         World.GetAvatarCreatureInstance().Rest();
                         break;
+                    case DialogEventType.ChangeXP:
+                        World.GetAvatarCreatureInstance().ChangeXP(dialogEvent.Value);
+                        break;
+                    case DialogEventType.ChangeBody:
+                        World.GetAvatarCreatureInstance().ChangeBody(dialogEvent.Value);
+                        break;
                     default:
                         throw new NotImplementedException();
                 }
@@ -146,11 +152,19 @@ namespace Towd
                         }
                         break;
                     case DialogConditionType.WhenEnoughMoney:
-                        if(World.GetAvatarCreatureInstance().Money<condition.Value)
+                        if (World.GetAvatarCreatureInstance().Money < condition.Value)
                         {
                             return false;
                         }
                         break;
+                    case DialogConditionType.WhenEnoughXP:
+                        if (World.GetAvatarCreatureInstance().XP < condition.Value)
+                        {
+                            return false;
+                        }
+                        break;
+                    default:
+                        throw new NotImplementedException();
                 }
             }
             return true;

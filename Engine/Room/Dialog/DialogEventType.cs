@@ -9,6 +9,8 @@
         MakeTeleport,
         SetWorldCounter,
         ChangeMoney,
-        Rest
+        Rest,
+        ChangeBody,
+        ChangeXP
     }
 }

@@ -151,6 +151,16 @@ namespace Engine
             return slots;
         }
 
+        public void ChangeXP(int value)
+        {
+            XP += value;
+        }
+
+        public void ChangeBody(int value)
+        {
+            Body += value;
+        }
+
         public void Rest()
         {
             Wounds = 0;

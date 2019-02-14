@@ -6,7 +6,6 @@
         WhenRoomFlagSet,
         WhenWorldCounterEquals,
         WhenEnoughMoney,
-        WhenEnoughXP,
-        WhenWorldCounterNotGreater
+        WhenEnoughXP
     }
 }

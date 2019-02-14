@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="9" height="7" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="31">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="9" height="7" tilewidth="8" tileheight="8" infinite="0" nextlayerid="7" nextobjectid="95">
  <properties>
   <property name="RoomCaption" value="Quotidian Garrison"/>
   <property name="RoomId" value="hometown-barracks"/>
@@ -205,6 +205,532 @@
     <property name="ForOption" value="TrainDefense"/>
     <property name="ForState" value="Services"/>
     <property name="Value" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="31" name="CaptainTrainBody" type="DialogNode" x="80" y="72" width="8" height="8">
+   <properties>
+    <property name="Caption" value="Captain"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Prompt1" value="I'm gonna pump"/>
+    <property name="Prompt2" value="you up, if you got"/>
+    <property name="Prompt3" value="enough money and xp!"/>
+   </properties>
+  </object>
+  <object id="32" name="CTBLeave" type="DialogChoice" x="80" y="80" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Option" value="Leave"/>
+    <property name="OptionText" value="Maybe later..."/>
+    <property name="Order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="33" name="CTBLeave01" type="DialogChoiceEvent" x="88" y="80" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="2"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Leave"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="State" value="Services"/>
+   </properties>
+  </object>
+  <object id="34" name="CTBLevel1" type="DialogChoice" x="80" y="88" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Option" value="Level1"/>
+    <property name="OptionText" value="Level I (100g, 10xp)"/>
+    <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="35" name="CTBLevel101" type="DialogChoiceEvent" x="88" y="88" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="8"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="Value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="36" name="CTBLevel102" type="DialogChoiceEvent" x="96" y="88" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="6"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-100"/>
+   </properties>
+  </object>
+  <object id="37" name="CTBLevel102" type="DialogChoiceEvent" x="104" y="88" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="9"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-10"/>
+   </properties>
+  </object>
+  <object id="38" name="CTBLevel103" type="DialogChoiceEvent" x="112" y="88" width="8" height="8">
+   <properties>
+    <property name="Counter" value="BodyLevel"/>
+    <property name="DialogEventType" type="int" value="5"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="3"/>
+    <property name="Value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="39" name="CTBLevel1CheckMoney" type="DialogChoiceCondition" x="72" y="88" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="3"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Value" type="int" value="100"/>
+   </properties>
+  </object>
+  <object id="40" name="CTBLevel1CheckXP" type="DialogChoiceCondition" x="64" y="88" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="4"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Value" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="41" name="CTBLevel1CheckCounter" type="DialogChoiceCondition" x="56" y="88" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="2"/>
+    <property name="CounterName" value="BodyLevel"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Value" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="51" name="CTBLevel2" type="DialogChoice" x="80" y="96" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Option" value="Level2"/>
+    <property name="OptionText" value="Level II (250g, 20xp)"/>
+    <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="52" name="CTBLevel201" type="DialogChoiceEvent" x="88" y="96" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="8"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="Value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="53" name="CTBLevel202" type="DialogChoiceEvent" x="96" y="96" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="6"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-250"/>
+   </properties>
+  </object>
+  <object id="54" name="CTBLevel202" type="DialogChoiceEvent" x="104" y="96" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="9"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-25"/>
+   </properties>
+  </object>
+  <object id="55" name="CTBLevel203" type="DialogChoiceEvent" x="112" y="96" width="8" height="8">
+   <properties>
+    <property name="Counter" value="BodyLevel"/>
+    <property name="DialogEventType" type="int" value="5"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="3"/>
+    <property name="Value" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="56" name="CTBLevel2CheckMoney" type="DialogChoiceCondition" x="72" y="96" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="3"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Value" type="int" value="250"/>
+   </properties>
+  </object>
+  <object id="57" name="CTBLevel2CheckXP" type="DialogChoiceCondition" x="64" y="96" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="4"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Value" type="int" value="25"/>
+   </properties>
+  </object>
+  <object id="58" name="CTBLevel2CheckCounter" type="DialogChoiceCondition" x="56" y="96" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="2"/>
+    <property name="CounterName" value="BodyLevel"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="60" name="CTBLevel3" type="DialogChoice" x="80" y="104" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Option" value="Level3"/>
+    <property name="OptionText" value="Level III (500g, 50xp)"/>
+    <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="61" name="CTBLevel301" type="DialogChoiceEvent" x="88" y="104" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="8"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="Value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="62" name="CTBLevel302" type="DialogChoiceEvent" x="96" y="104" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="6"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-500"/>
+   </properties>
+  </object>
+  <object id="63" name="CTBLevel302" type="DialogChoiceEvent" x="104" y="104" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="9"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-50"/>
+   </properties>
+  </object>
+  <object id="64" name="CTBLevel303" type="DialogChoiceEvent" x="112" y="104" width="8" height="8">
+   <properties>
+    <property name="Counter" value="BodyLevel"/>
+    <property name="DialogEventType" type="int" value="5"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Order" type="int" value="3"/>
+    <property name="Value" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="65" name="CTBLevel3CheckMoney" type="DialogChoiceCondition" x="72" y="104" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="3"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Value" type="int" value="100"/>
+   </properties>
+  </object>
+  <object id="66" name="CTBLevel3CheckXP" type="DialogChoiceCondition" x="64" y="104" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="4"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Value" type="int" value="50"/>
+   </properties>
+  </object>
+  <object id="67" name="CTBLevel3CheckCounter" type="DialogChoiceCondition" x="56" y="104" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="2"/>
+    <property name="CounterName" value="BodyLevel"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainBody"/>
+    <property name="Value" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="68" name="CaptainTrainDef" type="DialogNode" x="80" y="120" width="8" height="8">
+   <properties>
+    <property name="Caption" value="Captain"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Prompt1" value="I'm gonna pump"/>
+    <property name="Prompt2" value="you up, if you got"/>
+    <property name="Prompt3" value="enough money and xp!"/>
+   </properties>
+  </object>
+  <object id="69" name="CTDLeave" type="DialogChoice" x="80" y="128" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Option" value="Leave"/>
+    <property name="OptionText" value="Maybe later..."/>
+    <property name="Order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="70" name="CTDLeave01" type="DialogChoiceEvent" x="88" y="128" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="2"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Leave"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="1"/>
+    <property name="State" value="Services"/>
+   </properties>
+  </object>
+  <object id="71" name="CTDLevel1" type="DialogChoice" x="80" y="136" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Option" value="Level1"/>
+    <property name="OptionText" value="Level I (100g, 10xp)"/>
+    <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="72" name="CTDLevel101" type="DialogChoiceEvent" x="88" y="136" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="10"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Generator" value="r"/>
+    <property name="Order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="73" name="CTDLevel102" type="DialogChoiceEvent" x="96" y="136" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="6"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-100"/>
+   </properties>
+  </object>
+  <object id="74" name="CTDLevel102" type="DialogChoiceEvent" x="104" y="136" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="9"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-10"/>
+   </properties>
+  </object>
+  <object id="75" name="CTDLevel103" type="DialogChoiceEvent" x="112" y="136" width="8" height="8">
+   <properties>
+    <property name="Counter" value="DefenseLevel"/>
+    <property name="DialogEventType" type="int" value="5"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="3"/>
+    <property name="Value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="76" name="CTDLevel1CheckMoney" type="DialogChoiceCondition" x="72" y="136" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="3"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Value" type="int" value="100"/>
+   </properties>
+  </object>
+  <object id="77" name="CTDLevel1CheckXP" type="DialogChoiceCondition" x="64" y="136" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="4"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Value" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="78" name="CTDLevel1CheckCounter" type="DialogChoiceCondition" x="56" y="136" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="2"/>
+    <property name="CounterName" value="DefenseLevel"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level1"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Value" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="79" name="CTDLevel2" type="DialogChoice" x="80" y="144" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Option" value="Level2"/>
+    <property name="OptionText" value="Level II (250g, 20xp)"/>
+    <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="80" name="CTDLevel201" type="DialogChoiceEvent" x="88" y="144" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="10"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Generator" value="ww"/>
+    <property name="Order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="81" name="CTDLevel202" type="DialogChoiceEvent" x="96" y="144" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="6"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-250"/>
+   </properties>
+  </object>
+  <object id="82" name="CTDLevel202" type="DialogChoiceEvent" x="104" y="144" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="9"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-25"/>
+   </properties>
+  </object>
+  <object id="83" name="CTDLevel203" type="DialogChoiceEvent" x="112" y="144" width="8" height="8">
+   <properties>
+    <property name="Counter" value="DefenseLevel"/>
+    <property name="DialogEventType" type="int" value="5"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="3"/>
+    <property name="Value" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="84" name="CTDLevel2CheckMoney" type="DialogChoiceCondition" x="72" y="144" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="3"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Value" type="int" value="250"/>
+   </properties>
+  </object>
+  <object id="85" name="CTDLevel2CheckXP" type="DialogChoiceCondition" x="64" y="144" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="4"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Value" type="int" value="25"/>
+   </properties>
+  </object>
+  <object id="86" name="CTDLevel2CheckCounter" type="DialogChoiceCondition" x="56" y="144" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="2"/>
+    <property name="CounterName" value="DefenseLevel"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level2"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="87" name="CTDLevel3" type="DialogChoice" x="80" y="152" width="8" height="8">
+   <properties>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Option" value="Level3"/>
+    <property name="OptionText" value="Level III (500g, 50xp)"/>
+    <property name="Order" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="88" name="CTDLevel301" type="DialogChoiceEvent" x="88" y="152" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="10"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Generator" value="rw"/>
+    <property name="Order" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="89" name="CTDLevel302" type="DialogChoiceEvent" x="96" y="152" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="6"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-500"/>
+   </properties>
+  </object>
+  <object id="90" name="CTDLevel302" type="DialogChoiceEvent" x="104" y="152" width="8" height="8">
+   <properties>
+    <property name="DialogEventType" type="int" value="9"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="2"/>
+    <property name="Value" type="int" value="-50"/>
+   </properties>
+  </object>
+  <object id="91" name="CTDLevel303" type="DialogChoiceEvent" x="112" y="152" width="8" height="8">
+   <properties>
+    <property name="Counter" value="DefenseLevel"/>
+    <property name="DialogEventType" type="int" value="5"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Order" type="int" value="3"/>
+    <property name="Value" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="92" name="CTDLevel3CheckMoney" type="DialogChoiceCondition" x="72" y="152" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="3"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Value" type="int" value="100"/>
+   </properties>
+  </object>
+  <object id="93" name="CTDLevel3CheckXP" type="DialogChoiceCondition" x="64" y="152" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="4"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Value" type="int" value="50"/>
+   </properties>
+  </object>
+  <object id="94" name="CTDLevel3CheckCounter" type="DialogChoiceCondition" x="56" y="152" width="8" height="8">
+   <properties>
+    <property name="ConditionType" type="int" value="2"/>
+    <property name="CounterName" value="DefenseLevel"/>
+    <property name="ForDialog" value="Captain"/>
+    <property name="ForOption" value="Level3"/>
+    <property name="ForState" value="TrainDefense"/>
+    <property name="Value" type="int" value="2"/>
    </properties>
   </object>
  </objectgroup>
