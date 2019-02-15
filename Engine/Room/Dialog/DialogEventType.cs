@@ -11,6 +11,7 @@
         ChangeMoney,
         Rest,
         ChangeBody,
-        ChangeXP
+        ChangeXP,
+        ChangeBaseDefense
     }
 }
