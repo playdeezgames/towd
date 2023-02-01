@@ -1,0 +1,94 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Home.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "Creatures.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 16
+        },
+        "EventTypes.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 5.5
+        },
+        "Home.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 8,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": -12.625,
+                "y": 23.875
+            }
+        },
+        "Items.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 32
+        },
+        "Loft.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 11,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 15.45454545454546,
+                "y": 18.272727272727273
+            }
+        },
+        "Quotidian.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 4.480833333333333,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 112.2559047796169,
+                "y": 79.89585270596989
+            }
+        },
+        "Terrain.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 8
+        }
+    },
+    "last.imagePath": "E:/GIT/towd/Maps",
+    "map.height": 4,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
+    "map.width": 4,
+    "openFiles": [
+        "Items.tsx",
+        "Terrain.tsx",
+        "Creatures.tsx",
+        "Home.tmx",
+        "EventTypes.tsx",
+        "Quotidian.tmx",
+        "Loft.tmx"
+    ],
+    "project": "TOWD.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "Items.tsx",
+        "Terrain.tsx",
+        "Creatures.tsx",
+        "Loft.tmx",
+        "Quotidian.tmx",
+        "EventTypes.tsx",
+        "Home.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    },
+    "tileset.transparentColor": "#ffffff",
+    "tileset.useTransparentColor": true
+}

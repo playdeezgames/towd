@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="17">
+ <tileset firstgid="1" source="Terrain.tsx"/>
+ <tileset firstgid="129" source="EventTypes.tsx"/>
+ <layer id="1" name="Terrain" width="30" height="20">
+  <data encoding="csv">
+32,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,29,
+28,4,4,46,4,4,4,4,4,4,4,4,4,4,4,4,4,70,70,70,70,70,4,4,4,4,46,4,4,26,
+28,4,44,43,45,4,4,4,4,4,4,4,4,4,4,4,4,48,48,48,48,48,4,4,4,44,43,45,4,26,
+28,4,41,64,42,4,4,4,57,57,57,57,57,57,57,57,4,33,65,33,65,33,4,4,4,41,35,42,4,26,
+28,4,65,34,65,4,4,4,57,4,4,70,70,70,4,57,4,33,33,34,33,33,4,4,4,33,34,33,4,26,
+28,4,4,57,4,4,4,4,57,4,4,56,56,56,4,57,4,4,4,57,4,4,4,4,4,4,57,4,4,26,
+28,4,4,57,57,57,57,57,57,4,4,37,37,37,4,57,57,57,57,57,57,57,57,57,57,57,57,4,4,26,
+28,4,4,4,4,4,4,4,4,4,4,37,66,37,4,57,4,4,4,4,4,46,4,4,4,4,4,4,4,26,
+28,4,4,4,52,45,4,4,4,4,4,37,37,37,4,57,4,4,4,4,44,43,45,4,4,4,4,4,4,26,
+28,4,4,52,49,50,45,4,4,4,4,37,66,37,4,57,4,4,4,44,41,33,42,45,4,4,4,4,4,26,
+28,4,4,49,37,37,50,4,4,4,4,37,37,37,4,57,4,4,4,41,35,33,35,42,4,4,4,4,4,26,
+28,4,4,39,37,37,39,4,4,4,4,37,66,37,4,57,4,4,4,36,35,34,35,33,4,4,4,4,4,26,
+28,4,4,37,40,38,37,4,4,4,4,37,37,37,4,57,4,4,4,4,4,57,4,4,4,54,4,4,4,26,
+28,4,4,4,4,57,4,4,4,4,4,37,38,37,4,57,4,4,4,4,4,57,4,4,52,51,53,4,4,26,
+28,4,4,4,4,57,4,4,4,4,4,4,57,4,4,57,57,57,57,57,57,57,4,4,49,63,50,4,4,26,
+28,4,4,4,4,57,57,57,57,57,57,57,57,57,57,57,4,4,4,4,4,4,4,4,39,38,39,4,4,26,
+28,4,4,4,4,4,4,4,4,4,4,4,4,4,57,57,4,4,4,4,4,4,4,4,4,57,4,4,4,26,
+28,4,4,4,4,4,4,4,4,4,4,4,4,68,57,57,57,57,57,57,57,57,57,57,57,57,4,4,4,26,
+28,4,4,4,4,4,4,4,4,4,4,4,4,4,57,57,4,4,4,4,4,4,4,4,4,4,4,4,4,26,
+31,27,27,27,27,27,27,27,27,27,27,27,27,27,57,57,27,27,27,27,27,27,27,27,27,27,27,27,27,30
+</data>
+ </layer>
+ <objectgroup id="2" name="Events" opacity="0.47">
+  <object id="1" gid="130" x="208" y="40" width="8" height="8">
+   <properties>
+    <property name="OnEnter" type="object" value="2"/>
+   </properties>
+  </object>
+  <object id="2" gid="132" x="252.649" y="24.5319" width="8" height="8">
+   <properties>
+    <property name="ToMap" value="Home"/>
+    <property name="ToX" type="int" value="3"/>
+    <property name="ToY" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="3" gid="130" x="112" y="160" width="8" height="8"/>
+  <object id="4" gid="130" x="120" y="160" width="8" height="8"/>
+  <object id="5" gid="130" x="104" y="144" width="8" height="8">
+   <properties>
+    <property name="OnBump" type="object" value="11"/>
+   </properties>
+  </object>
+  <object id="6" gid="130" x="168" y="96" width="8" height="8"/>
+  <object id="7" gid="130" x="200" y="128" width="8" height="8"/>
+  <object id="8" gid="130" x="96" y="112" width="8" height="8"/>
+  <object id="9" gid="130" x="24" y="40" width="8" height="8"/>
+  <object id="10" gid="130" x="152" y="96" width="8" height="8">
+   <properties>
+    <property name="OnBump" type="object" value="12"/>
+   </properties>
+  </object>
+  <object id="11" gid="131" x="91.5179" y="178.075" width="8" height="8">
+   <properties>
+    <property name="Message" value="Welcome to the Town of Quotidian!"/>
+   </properties>
+  </object>
+  <object id="12" gid="131" x="272.288" y="120.05" width="8" height="8">
+   <properties>
+    <property name="Message" value="Bromidic Inn"/>
+   </properties>
+  </object>
+  <object id="13" gid="130" x="152" y="40" width="8" height="8"/>
+  <object id="14" gid="130" x="40" y="104" width="8" height="8"/>
+  <object id="15" gid="130" x="32" y="104" width="8" height="8">
+   <properties>
+    <property name="OnBump" type="object" value="16"/>
+   </properties>
+  </object>
+  <object id="16" gid="131" x="-38.3686" y="108.668" width="8" height="8">
+   <properties>
+    <property name="Message" value="Dagger Dale's Discount Daggers (and Cheese!)"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

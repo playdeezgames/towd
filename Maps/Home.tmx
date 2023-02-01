@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="23">
+ <tileset firstgid="1" source="Terrain.tsx"/>
+ <tileset firstgid="129" source="EventTypes.tsx"/>
+ <layer id="1" name="Terrain" width="6" height="6">
+  <data encoding="csv">
+12,5,5,5,5,9,
+8,21,4,4,92,6,
+8,4,4,4,4,6,
+8,4,4,91,89,6,
+8,23,4,4,4,6,
+11,7,7,19,7,10
+</data>
+ </layer>
+ <objectgroup id="2" name="Events" opacity="0.53">
+  <object id="11" name="Empty Bookcase Message" gid="131" x="61.375" y="-3.625" width="8" height="8">
+   <properties>
+    <property name="Message" value="The bookcase is bare."/>
+   </properties>
+  </object>
+  <object id="12" name="To Outside" gid="132" x="29.125" y="66.25" width="8" height="8">
+   <properties>
+    <property name="ToMap" value="Quotidian"/>
+    <property name="ToX" type="int" value="26"/>
+    <property name="ToY" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="13" name="To Loft" gid="132" x="13.875" y="-11.5" width="8" height="8">
+   <properties>
+    <property name="ToMap" value="Loft"/>
+    <property name="ToX" type="int" value="2"/>
+    <property name="ToY" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="14" name="Check If Bed Searched" gid="133" x="-20.75" y="45.125" width="8" height="8">
+   <properties>
+    <property name="Flag" value="HomeBedSearched"/>
+    <property name="WhenClear" type="object" value="15"/>
+   </properties>
+  </object>
+  <object id="15" name="Search Bed Message" gid="131" x="-39.875" y="45.875" width="8" height="8">
+   <properties>
+    <property name="Message" value="You find a rusty dagger!"/>
+    <property name="NextEvent" type="object" value="16"/>
+   </properties>
+  </object>
+  <object id="16" name="Set Bed Searched" gid="134" x="-55.5" y="50" width="8" height="8">
+   <properties>
+    <property name="Flag" value="HomeBedSearched"/>
+    <property name="NextEvent" type="object" value="17"/>
+   </properties>
+  </object>
+  <object id="17" name="Give Rusty Dagger" gid="136" x="-65.625" y="61.5" width="8" height="8">
+   <properties>
+    <property name="ItemCount" type="int" value="1"/>
+    <property name="ItemId" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="18" name="Bookcase" gid="130" x="32" y="16" width="8" height="8">
+   <properties>
+    <property name="OnBump" type="object" value="11"/>
+   </properties>
+  </object>
+  <object id="19" name="Ladder Up" gid="130" x="8" y="16" width="8" height="8">
+   <properties>
+    <property name="OnEnter" type="object" value="13"/>
+   </properties>
+  </object>
+  <object id="20" name="Bed" gid="130" x="8" y="40" width="8" height="8">
+   <properties>
+    <property name="OnBump" type="object" value="14"/>
+   </properties>
+  </object>
+  <object id="21" name="Exit" gid="130" x="24" y="48" width="8" height="8">
+   <properties>
+    <property name="OnEnter" type="object" value="12"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

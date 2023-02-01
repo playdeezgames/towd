@@ -1,0 +1,31 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+        {
+            "id": 1,
+            "name": "EventType",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Bump",
+                "Enter",
+                "Message",
+                "Teleport",
+                "CheckFlag",
+                "SetFlag",
+                "ClearFlag",
+                "GiveItem",
+                "TakeItem",
+                "GiveMoney",
+                "TakeMoney"
+            ],
+            "valuesAsFlags": false
+        }
+    ]
+}
