@@ -5,4 +5,5 @@
     SetFlag
     GiveItem
     Trigger
+    GiveMoney
 End Enum

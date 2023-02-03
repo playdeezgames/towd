@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="9" height="7" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="7">
+ <tileset firstgid="1" source="Terrain.tsx"/>
+ <tileset firstgid="129" source="Creatures.tsx"/>
+ <tileset firstgid="257" source="EventTypes.tsx"/>
+ <layer id="1" name="Terrain" width="9" height="7">
+  <data encoding="csv">
+80,73,73,73,73,73,73,73,77,
+76,4,4,4,4,4,4,4,74,
+76,4,4,4,4,4,4,4,74,
+76,4,4,4,4,4,4,4,74,
+76,4,4,4,4,4,4,4,74,
+76,4,4,4,4,4,4,4,74,
+79,75,75,75,83,75,75,75,78
+</data>
+ </layer>
+ <objectgroup id="2" name="Events">
+  <object id="1" gid="148" x="32" y="16" width="8" height="8"/>
+  <object id="2" gid="147" x="48" y="8" width="8" height="8">
+   <properties>
+    <property name="OnInteract" type="object" value="5"/>
+   </properties>
+  </object>
+  <object id="3" gid="147" x="16" y="8" width="8" height="8">
+   <properties>
+    <property name="OnInteract" type="object" value="4"/>
+   </properties>
+  </object>
+  <object id="4" gid="259" x="15.6241" y="-9.7594" width="8" height="8">
+   <properties>
+    <property name="Message" value="Walk my post in a military manner!"/>
+   </properties>
+  </object>
+  <object id="5" gid="259" x="50.5865" y="-10.7368" width="8" height="8">
+   <properties>
+    <property name="Message" value="Keeping always on the alert!"/>
+   </properties>
+  </object>
+  <object id="6" gid="258" x="32" y="56" width="8" height="8"/>
+ </objectgroup>
+</map>

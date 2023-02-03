@@ -92,4 +92,6 @@
     WestChair
     EastChair
     Bookcase
+    Stairs1
+    Stairs2
 End Enum

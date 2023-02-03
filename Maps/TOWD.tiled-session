@@ -3,18 +3,26 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Home.tmx",
+    "activeFile": "Garrison.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
         "Creatures.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 4,
             "scaleInEditor": 16
         },
         "EventTypes.tsx": {
             "scaleInDock": 3,
             "scaleInEditor": 5.5
+        },
+        "Garrison.tmx": {
+            "scale": 13.299999999999999,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 39.51127819548873,
+                "y": 22.030075187969928
+            }
         },
         "Home.tmx": {
             "expandedObjectLayers": [
@@ -23,12 +31,12 @@
             "scale": 8,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": -12.625,
-                "y": 23.875
+                "x": 24,
+                "y": 23.9375
             }
         },
         "Items.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 4,
             "scaleInEditor": 32
         },
         "Loft.tmx": {
@@ -38,8 +46,8 @@
             "scale": 11,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 15.45454545454546,
-                "y": 18.272727272727273
+                "x": 16.000000000000004,
+                "y": 16.045454545454543
             }
         },
         "Quotidian.tmx": {
@@ -49,21 +57,32 @@
             "scale": 4.480833333333333,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 112.2559047796169,
-                "y": 79.89585270596989
+                "x": 169.7228938069556,
+                "y": 41.95648130928028
             }
         },
         "Terrain.tsx": {
-            "scaleInDock": 3,
+            "scaleInDock": 4,
             "scaleInEditor": 8
+        },
+        "World.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 5.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 957.3636363636365,
+                "y": 934.1818181818182
+            }
         }
     },
     "last.imagePath": "E:/GIT/towd/Maps",
-    "map.height": 4,
+    "map.height": 8,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 8,
     "map.tileWidth": 8,
-    "map.width": 4,
+    "map.width": 10,
     "openFiles": [
         "Items.tsx",
         "Terrain.tsx",
@@ -71,18 +90,22 @@
         "Home.tmx",
         "EventTypes.tsx",
         "Quotidian.tmx",
-        "Loft.tmx"
+        "Loft.tmx",
+        "World.tmx",
+        "Garrison.tmx"
     ],
     "project": "TOWD.tiled-project",
-    "property.type": "int",
+    "property.type": "object",
     "recentFiles": [
         "Items.tsx",
         "Terrain.tsx",
         "Creatures.tsx",
-        "Loft.tmx",
-        "Quotidian.tmx",
+        "Home.tmx",
         "EventTypes.tsx",
-        "Home.tmx"
+        "Quotidian.tmx",
+        "Loft.tmx",
+        "World.tmx",
+        "Garrison.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

@@ -3,4 +3,5 @@
     ToY
     ItemId
     ItemCount
+    Amount
 End Enum

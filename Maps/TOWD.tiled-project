@@ -13,8 +13,6 @@
             "storageType": "string",
             "type": "enum",
             "values": [
-                "Bump",
-                "Enter",
                 "Message",
                 "Teleport",
                 "CheckFlag",
@@ -23,7 +21,9 @@
                 "GiveItem",
                 "TakeItem",
                 "GiveMoney",
-                "TakeMoney"
+                "TakeMoney",
+                "NPC",
+                "PC"
             ],
             "valuesAsFlags": false
         }
