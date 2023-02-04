@@ -18,12 +18,6 @@
         Return Creature
     End Function
 
-    Public WriteOnly Property TriggerData As EventData Implements ICell.TriggerData
-        Set(value As EventData)
-            _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns).Trigger = value
-        End Set
-    End Property
-
     Private ReadOnly Property Data As MapCellData
         Get
             Return _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns)
@@ -53,10 +47,17 @@
 
     Public Property Trigger As IEvent Implements ICell.Trigger
         Get
-            Return Nothing
+            If Not Data.Trigger.HasValue Then
+                Return Nothing
+            End If
+            Return New EventInstance(_worldData, Data.Trigger.Value)
         End Get
         Set(value As IEvent)
-            Throw New NotImplementedException()
+            If value Is Nothing Then
+                Data.Trigger = Nothing
+                Return
+            End If
+            Data.Trigger = value.Index
         End Set
     End Property
 End Class

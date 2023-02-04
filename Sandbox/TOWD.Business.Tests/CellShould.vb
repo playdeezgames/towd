@@ -37,4 +37,18 @@
         Dim subject = cell.CreateCreature()
         subject.ShouldNotBeNull
     End Sub
+    <Fact>
+    Public Sub set_trigger()
+        Const MapName = "one"
+        Const MapColumns = 2
+        Const MapRows = 3
+        Dim world As IWorld = New World
+        Dim map = world.CreateMap(MapName)
+        map.SetSize(MapColumns, MapRows)
+        Dim cell = map.GetCell(0, 0)
+        Dim expected = world.CreateEvent
+        cell.Trigger = expected
+        Dim actual = cell.Trigger
+        actual.Index.ShouldBe(expected.Index)
+    End Sub
 End Class
