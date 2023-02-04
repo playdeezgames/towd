@@ -45,7 +45,11 @@
             Return New EventInstance(_worldData, Data.OnInteract.Value)
         End Get
         Set(value As IEvent)
-            Throw New NotImplementedException()
+            If value Is Nothing Then
+                Data.OnInteract = Nothing
+                Return
+            End If
+            Data.OnInteract = value.Index
         End Set
     End Property
 End Class
