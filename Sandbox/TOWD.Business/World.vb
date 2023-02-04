@@ -1,6 +1,12 @@
 ﻿Public Class World
     Implements IWorld
-    Private ReadOnly _worldData As New WorldData
+    Private ReadOnly _worldData As WorldData
+    Public Sub New()
+        _worldData = New WorldData
+    End Sub
+    Friend Sub New(worldData As WorldData)
+        _worldData = worldData
+    End Sub
 
     Public ReadOnly Property Maps As IEnumerable(Of IMap) Implements IWorld.Maps
         Get

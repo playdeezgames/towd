@@ -37,6 +37,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property World As IWorld Implements IMap.World
+        Get
+            Return New World(_worldData)
+        End Get
+    End Property
+
     Public Sub SetSize(columns As Integer, rows As Integer) Implements IMap.SetSize
         Data.Columns = columns
         Data.Rows = rows

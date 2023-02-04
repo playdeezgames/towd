@@ -41,4 +41,11 @@ Public Class MapShould
         subject.SetSize(MapColumns, MapRows)
         subject.GetCell(column, row).ShouldBeNull()
     End Sub
+    <Fact>
+    Public Sub have_world()
+        Const MapName = "one"
+        Dim world As IWorld = New World
+        Dim subject = world.CreateMap(MapName)
+        subject.World.ShouldNotBeNull
+    End Sub
 End Class
