@@ -27,7 +27,7 @@
  <tile id="4">
   <properties>
    <property name="EventType" propertytype="EventType" value="CheckFlag"/>
-   <property name="Flag" value=""/>
+   <property name="FlagType" propertytype="FlagType" value="InnRatQuestGiven"/>
    <property name="WhenClear" type="object" value="0"/>
    <property name="WhenSet" type="object" value="0"/>
   </properties>
@@ -35,14 +35,14 @@
  <tile id="5">
   <properties>
    <property name="EventType" propertytype="EventType" value="SetFlag"/>
-   <property name="Flag" value=""/>
+   <property name="FlagType" propertytype="FlagType" value="InnRatQuestGiven"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="6">
   <properties>
    <property name="EventType" propertytype="EventType" value="ClearFlag"/>
-   <property name="Flag" value=""/>
+   <property name="FlagType" propertytype="FlagType" value="InnRatQuestGiven"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
@@ -50,7 +50,7 @@
   <properties>
    <property name="EventType" propertytype="EventType" value="GiveItem"/>
    <property name="ItemCount" type="int" value="0"/>
-   <property name="ItemId" type="int" value="0"/>
+   <property name="ItemType" propertytype="ItemType" value="RustyDagger"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
@@ -58,7 +58,7 @@
   <properties>
    <property name="EventType" propertytype="EventType" value="TakeItem"/>
    <property name="ItemCount" type="int" value="0"/>
-   <property name="ItemId" type="int" value="0"/>
+   <property name="ItemType" propertytype="ItemType" value="RustyDagger"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
@@ -78,14 +78,25 @@
  </tile>
  <tile id="11">
   <properties>
-   <property name="EventType" propertytype="EventType" value="Bump"/>
-   <property name="NextEvent" type="object" value="0"/>
+   <property name="EventType" propertytype="EventType" value="Dialog"/>
+   <property name="Message" value=""/>
+   <property name="OnOption1" type="object" value="0"/>
+   <property name="OnOption2" type="object" value="0"/>
+   <property name="OnOption3" type="object" value="0"/>
+   <property name="OnOption4" type="object" value="0"/>
+   <property name="Option1" value=""/>
+   <property name="Option2" value=""/>
+   <property name="Option3" value=""/>
+   <property name="Option4" value=""/>
   </properties>
  </tile>
  <tile id="12">
   <properties>
-   <property name="EventType" propertytype="EventType" value="Bump"/>
-   <property name="NextEvent" type="object" value="0"/>
+   <property name="EventType" propertytype="EventType" value="CheckItemQuantity"/>
+   <property name="ItemCount" type="int" value="0"/>
+   <property name="ItemType" propertytype="ItemType" value="RustyDagger"/>
+   <property name="WhenMet" type="object" value="0"/>
+   <property name="WhenUnmet" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="13">

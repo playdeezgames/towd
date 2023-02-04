@@ -57,6 +57,16 @@ Module Program
                 Throw New NotImplementedException
         End Select
     End Sub
+    Const EventTypeText = "EventType"
+    Const MessageText = "Message"
+    Const TeleportText = "Teleport"
+    Const CheckFlagText = "CheckFlag"
+    Const SetFlagText = "SetFlag"
+    Const GiveItemText = "GiveItem"
+    Const TriggerText = "Trigger"
+    Const PCText = "PC"
+    Const NPCText = "NPC"
+    Const GiveMoneyText = "GiveMoney"
 
     Private Sub ProcessObjectGroup(l As ObjectLayer, tileTable As Dictionary(Of Integer, (ITileset, Integer)), cellWidth As Integer, cellHeight As Integer, data As MapData)
         Dim objectTable = l.Objects.ToDictionary(Function(x) x.Id, Function(x) DirectCast(x, TileObject))
@@ -66,24 +76,24 @@ Module Program
             Dim obj = entry.Value
             Dim tile = tileTable(obj.Gid)
             Dim properties As Dictionary(Of String, String) = GetObjectProperties(obj, tile)
-            Select Case properties("EventType")
-                Case "Message"
+            Select Case properties(EventTypeText)
+                Case MessageText
                     eventTable = ProcessMessage(eventTable, eventId, properties)
-                Case "Teleport"
+                Case TeleportText
                     eventTable = ProcessTeleport(eventTable, eventId, properties)
-                Case "CheckFlag"
+                Case CheckFlagText
                     eventTable = ProcessCheckFlag(eventTable, eventId, properties)
-                Case "SetFlag"
+                Case SetFlagText
                     eventTable = ProcessSetFlag(eventTable, eventId, properties)
-                Case "GiveItem"
+                Case GiveItemText
                     eventTable = ProcessGiveItem(eventTable, eventId, properties)
-                Case "Trigger"
+                Case TriggerText
                     ProcessTrigger(cellWidth, cellHeight, data, eventTable, eventId, obj, properties)
-                Case "PC"
+                Case PCText
                     ProcessPC(cellWidth, cellHeight, data, obj, properties)
-                Case "GiveMoney"
+                Case GiveMoneyText
                     eventTable = ProcessGiveMoney(eventTable, eventId, properties)
-                Case "NPC"
+                Case NPCText
                     ProcessNPC(cellWidth, cellHeight, data, eventTable, eventId, obj, properties)
                 Case Else
                     Throw New NotImplementedException
@@ -91,16 +101,20 @@ Module Program
         Next
     End Sub
 
+    Const NullObject = "0"
+    Const OnInteractText = "OnInteract"
+    Const CreatureTypeText = "CreatureType"
+
     Private Sub ProcessNPC(cellWidth As Integer, cellHeight As Integer, data As MapData, eventTable As Dictionary(Of Integer, EventData), eventId As Integer, obj As TileObject, properties As Dictionary(Of String, String))
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
         Dim eventData As EventData = Nothing
-        If properties("OnInteract") <> "0" Then
-            eventData = eventTable(CInt(properties("OnInteract")))
+        If properties(OnInteractText) <> NullObject Then
+            eventData = eventTable(CInt(properties(OnInteractText)))
         End If
         data.Cells(row * data.Columns + column).Creature = New CreatureData With
         {
-            .CreatureType = CType(properties("CreatureType"), CreatureType),
+            .CreatureType = CType(properties(CreatureTypeText), CreatureType),
             .OnInteract = eventData
         }
     End Sub
@@ -110,16 +124,18 @@ Module Program
         Dim row = CInt(obj.Y) \ cellHeight - 1
         data.Cells(row * data.Columns + column).Creature = New CreatureData With
         {
-            .CreatureType = CType(properties("CreatureType"), CreatureType)
+            .CreatureType = CType(properties(CreatureTypeText), CreatureType)
         }
     End Sub
+
+    Const NextEventText = "NextEvent"
 
     Private ReadOnly Property ProcessGiveMoney(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         Get
             eventTable(eventId).EventType = EventType.GiveMoney
             eventTable(eventId).Integers(EventInteger.Amount) = CInt(properties("Amount"))
-            If properties("NextEvent") <> "0" Then
-                eventTable(eventId).Links(LinkType.NextEvent) = eventTable(CInt(properties("NextEvent")))
+            If properties(NextEventText) <> NullObject Then
+                eventTable(eventId).Links(LinkType.NextEvent) = eventTable(CInt(properties(NextEventText)))
             End If
             Return eventTable
         End Get
@@ -127,22 +143,22 @@ Module Program
 
     Private Sub ProcessTrigger(cellWidth As Integer, cellHeight As Integer, ByRef data As MapData, ByRef eventTable As Dictionary(Of Integer, EventData), eventId As Integer, obj As TileObject, properties As Dictionary(Of String, String))
         eventTable(eventId).EventType = EventType.Trigger
-        If properties("OnBump") <> "0" Then
+        If properties("OnBump") <> NullObject Then
             eventTable(eventId).Links(LinkType.OnBump) = eventTable(CInt(properties("OnBump")))
         End If
-        If properties("OnEnter") <> "0" Then
+        If properties("OnEnter") <> NullObject Then
             eventTable(eventId).Links(LinkType.OnEnter) = eventTable(CInt(properties("OnEnter")))
         End If
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
         data.Cells(row * data.Columns + column).Trigger = eventTable(eventId)
     End Sub
-
+    Const ItemTypeText = "ItemType"
     Private Function ProcessGiveItem(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.GiveItem
-        eventTable(eventId).Integers(EventInteger.ItemId) = CInt(properties("ItemId"))
+        eventTable(eventId).Strings(EventString.ItemType) = properties(ItemTypeText)
         eventTable(eventId).Integers(EventInteger.ItemCount) = CInt(properties("ItemCount"))
-        If properties("NextEvent") <> "0" Then
+        If properties("NextEvent") <> NullObject Then
             eventTable(eventId).Links(LinkType.NextEvent) = eventTable(CInt(properties("NextEvent")))
         End If
         Return eventTable
@@ -150,21 +166,23 @@ Module Program
 
     Private Function ProcessSetFlag(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.SetFlag
-        eventTable(eventId).Strings(EventString.Flag) = properties("Flag")
-        If properties("NextEvent") <> "0" Then
+        eventTable(eventId).Strings(EventString.FlagType) = properties(FlagTypeText)
+        If properties("NextEvent") <> NullObject Then
             eventTable(eventId).Links(LinkType.NextEvent) = eventTable(CInt(properties("NextEvent")))
         End If
 
         Return eventTable
     End Function
 
+    Const FlagTypeText = "FlagType"
+
     Private Function ProcessCheckFlag(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.CheckFlag
-        eventTable(eventId).Strings(EventString.Flag) = properties("Flag")
-        If properties("WhenClear") <> "0" Then
+        eventTable(eventId).Strings(EventString.FlagType) = properties(FlagTypeText)
+        If properties("WhenClear") <> NullObject Then
             eventTable(eventId).Links(LinkType.WhenClear) = eventTable(CInt(properties("WhenClear")))
         End If
-        If properties("WhenSet") <> "0" Then
+        If properties("WhenSet") <> NullObject Then
             eventTable(eventId).Links(LinkType.WhenSet) = eventTable(CInt(properties("WhenSet")))
         End If
 

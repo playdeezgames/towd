@@ -1,5 +1,6 @@
 ﻿Public Enum EventString
     ToMap
-    Flag
+    FlagType
     Message
+    ItemType
 End Enum

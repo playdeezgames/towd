@@ -38,7 +38,7 @@
   </object>
   <object id="14" name="Check If Bed Searched" gid="133" x="-20.75" y="45.125" width="8" height="8">
    <properties>
-    <property name="Flag" value="HomeBedSearched"/>
+    <property name="FlagType" propertytype="FlagType" value="HomeBedSearched"/>
     <property name="WhenClear" type="object" value="15"/>
    </properties>
   </object>
@@ -50,14 +50,13 @@
   </object>
   <object id="16" name="Set Bed Searched" gid="134" x="-55.5" y="50" width="8" height="8">
    <properties>
-    <property name="Flag" value="HomeBedSearched"/>
+    <property name="FlagType" propertytype="FlagType" value="HomeBedSearched"/>
     <property name="NextEvent" type="object" value="17"/>
    </properties>
   </object>
   <object id="17" name="Give Rusty Dagger" gid="136" x="-65.625" y="61.5" width="8" height="8">
    <properties>
     <property name="ItemCount" type="int" value="1"/>
-    <property name="ItemId" type="int" value="1"/>
    </properties>
   </object>
   <object id="18" name="Bookcase" gid="130" x="32" y="16" width="8" height="8">

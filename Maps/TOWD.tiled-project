@@ -8,6 +8,16 @@
     ],
     "propertyTypes": [
         {
+            "id": 3,
+            "name": "CreatureType",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Dude"
+            ],
+            "valuesAsFlags": false
+        },
+        {
             "id": 1,
             "name": "EventType",
             "storageType": "string",
@@ -23,7 +33,43 @@
                 "GiveMoney",
                 "TakeMoney",
                 "NPC",
-                "PC"
+                "PC",
+                "Dialog",
+                "CheckItemQuantity"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "id": 4,
+            "name": "FlagType",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "InnRatQuestGiven",
+                "InnRatQuestCompleted",
+                "HomeBedSearched",
+                "LoftCrateSearched"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "id": 2,
+            "name": "ItemType",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "RustyDagger",
+                "Dagger",
+                "ShortSword",
+                "Sword",
+                "LongSword",
+                "Cheese",
+                "Food",
+                "Meat",
+                "Bread",
+                "RatTail",
+                "WoodenShield",
+                "MetalShield"
             ],
             "valuesAsFlags": false
         }

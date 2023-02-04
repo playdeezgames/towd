@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Garrison.tmx",
+    "activeFile": "Inn.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -17,11 +17,14 @@
             "scaleInEditor": 5.5
         },
         "Garrison.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
             "scale": 13.299999999999999,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 39.51127819548873,
-                "y": 22.030075187969928
+                "x": 35.93984962406016,
+                "y": 27.932330827067673
             }
         },
         "Home.tmx": {
@@ -31,8 +34,19 @@
             "scale": 8,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 24,
-                "y": 23.9375
+                "x": -20.4375,
+                "y": 40.375
+            }
+        },
+        "Inn.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 13.288125,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": -33.22515403790979,
+                "y": 73.14801749682516
             }
         },
         "Items.tsx": {
@@ -46,8 +60,8 @@
             "scale": 11,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 16.000000000000004,
-                "y": 16.045454545454543
+                "x": 16.045454545454547,
+                "y": 40.09090909090909
             }
         },
         "Quotidian.tmx": {
@@ -57,8 +71,8 @@
             "scale": 4.480833333333333,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 169.7228938069556,
-                "y": 41.95648130928028
+                "x": 119.84377905895482,
+                "y": 79.78426631950902
             }
         },
         "Terrain.tsx": {
@@ -72,8 +86,8 @@
             "scale": 5.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 957.3636363636365,
-                "y": 934.1818181818182
+                "x": 960,
+                "y": 959.909090909091
             }
         }
     },
@@ -92,10 +106,11 @@
         "Quotidian.tmx",
         "Loft.tmx",
         "World.tmx",
-        "Garrison.tmx"
+        "Garrison.tmx",
+        "Inn.tmx"
     ],
     "project": "TOWD.tiled-project",
-    "property.type": "object",
+    "property.type": "FlagType",
     "recentFiles": [
         "Items.tsx",
         "Terrain.tsx",
@@ -105,7 +120,8 @@
         "Quotidian.tmx",
         "Loft.tmx",
         "World.tmx",
-        "Garrison.tmx"
+        "Garrison.tmx",
+        "Inn.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
