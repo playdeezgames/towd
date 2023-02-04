@@ -161,8 +161,8 @@ Module Program
     End Sub
 
     Private Sub ProcessSetFlag(eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, properties As Dictionary(Of String, String))
-        eventTable(eventId).Item1.EventType = EventType.SetFlag
-        eventTable(eventId).Item1.Strings(EventString.FlagType) = properties(FlagTypeText)
+        eventTable(eventId).Item2.EventType = EventType.SetFlag
+        eventTable(eventId).Item2.AssignString(EventString.FlagType, properties(FlagTypeText))
         AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
     End Sub
 
@@ -171,8 +171,8 @@ Module Program
     Const WhenSetText = "WhenSet"
 
     Private Sub ProcessCheckFlag(eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, properties As Dictionary(Of String, String))
-        eventTable(eventId).Item1.EventType = EventType.CheckFlag
-        eventTable(eventId).Item1.Strings(EventString.FlagType) = properties(FlagTypeText)
+        eventTable(eventId).Item2.EventType = EventType.CheckFlag
+        eventTable(eventId).Item2.AssignString(EventString.FlagType, properties(FlagTypeText))
         AssignLink(eventTable, eventId, properties, WhenClearText, LinkType.WhenClear)
         AssignLink(eventTable, eventId, properties, WhenSetText, LinkType.WhenSet)
     End Sub
@@ -182,16 +182,16 @@ Module Program
     Const ToMapText = "ToMap"
 
     Private Sub ProcessTeleport(eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, properties As Dictionary(Of String, String))
-        eventTable(eventId).Item1.EventType = EventType.Teleport
-        eventTable(eventId).Item1.Integers(EventInteger.ToX) = CInt(properties(ToXText))
-        eventTable(eventId).Item1.Integers(EventInteger.ToY) = CInt(properties(ToYText))
-        eventTable(eventId).Item1.Strings(EventString.ToMap) = properties(ToMapText)
+        eventTable(eventId).Item2.EventType = EventType.Teleport
+        eventTable(eventId).Item2.AssignInteger(EventInteger.ToX, CInt(properties(ToXText)))
+        eventTable(eventId).Item2.AssignInteger(EventInteger.ToY, CInt(properties(ToYText)))
+        eventTable(eventId).Item2.AssignString(EventString.ToMap, properties(ToMapText))
         AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
     End Sub
 
     Private Sub ProcessMessage(eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, properties As Dictionary(Of String, String))
-        eventTable(eventId).Item1.EventType = EventType.Message
-        eventTable(eventId).Item1.Strings(EventString.Message) = properties(MessageText)
+        eventTable(eventId).Item2.EventType = EventType.Message
+        eventTable(eventId).Item2.AssignString(EventString.Message, properties(MessageText))
         AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
     End Sub
 
