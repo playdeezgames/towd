@@ -114,7 +114,7 @@ Module Program
         Dim cell = map.GetCell(column, row)
         Dim creature = cell.CreateCreature()
         creature.CreatureType = CType(properties(CreatureTypeText), CreatureType)
-        creature.OnInteract = eventData
+        creature.OnInteractEventData = eventData
     End Sub
 
     Private Sub ProcessPC(cellWidth As Integer, cellHeight As Integer, map As IMap, obj As TileObject, properties As Dictionary(Of String, String))

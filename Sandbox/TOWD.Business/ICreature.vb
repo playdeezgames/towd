@@ -1,4 +1,5 @@
 ﻿Public Interface ICreature
     Property CreatureType As CreatureType
-    Property OnInteract As EventData
+    Property OnInteractEventData As EventData
+    Property OnInteract As IEvent
 End Interface

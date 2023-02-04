@@ -7,6 +7,7 @@
         Dim cell = map.GetCell(0, 0)
         Dim subject = cell.CreateCreature()
         subject.CreatureType.ShouldBe(CreatureType.Dude)
+        subject.OnInteractEventData.ShouldBeNull
         subject.OnInteract.ShouldBeNull
     End Sub
     <Fact>
@@ -19,5 +20,18 @@
         Dim subject = cell.CreateCreature()
         subject.CreatureType = expected
         subject.CreatureType.ShouldBe(expected)
+    End Sub
+    <Fact>
+    Public Sub set_on_interact_event()
+        Dim world As IWorld = New World
+        Dim map = world.CreateMap("test")
+        map.SetSize(1, 1)
+        Dim cell = map.GetCell(0, 0)
+        Dim subject = cell.CreateCreature()
+        Dim expected = world.CreateEvent
+        subject.OnInteract = expected
+        Dim actual = subject.OnInteract
+        actual.ShouldNotBeNull
+        actual.Index.ShouldBe(expected.Index)
     End Sub
 End Class

@@ -28,12 +28,24 @@
         End Set
     End Property
 
-    Public Property OnInteract As EventData Implements ICreature.OnInteract
+    Public Property OnInteractEventData As EventData Implements ICreature.OnInteractEventData
         Get
-            Return Data.OnInteract
+            Return Data.OnInteractEventData
         End Get
         Set(value As EventData)
-            Data.OnInteract = value
+            Data.OnInteractEventData = value
+        End Set
+    End Property
+
+    Public Property OnInteract As IEvent Implements ICreature.OnInteract
+        Get
+            If Not Data.OnInteract.HasValue Then
+                Return Nothing
+            End If
+            Return New EventInstance(_worldData, Data.OnInteract.Value)
+        End Get
+        Set(value As IEvent)
+            Throw New NotImplementedException()
         End Set
     End Property
 End Class

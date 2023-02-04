@@ -1,4 +1,5 @@
 ﻿Public Class CreatureData
     Public Property CreatureType As CreatureType
-    Public Property OnInteract As EventData
+    Public Property OnInteractEventData As EventData
+    Public Property OnInteract As Integer?
 End Class
