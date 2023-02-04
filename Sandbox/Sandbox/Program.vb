@@ -134,43 +134,41 @@ Module Program
         Get
             eventTable(eventId).EventType = EventType.GiveMoney
             eventTable(eventId).Integers(EventInteger.Amount) = CInt(properties("Amount"))
-            If properties(NextEventText) <> NullObject Then
-                eventTable(eventId).Links(LinkType.NextEvent) = eventTable(CInt(properties(NextEventText)))
-            End If
+            AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
             Return eventTable
         End Get
     End Property
+    Const OnBumpText = "OnBump"
+    Const OnEnterText = "OnEnter"
 
     Private Sub ProcessTrigger(cellWidth As Integer, cellHeight As Integer, ByRef data As MapData, ByRef eventTable As Dictionary(Of Integer, EventData), eventId As Integer, obj As TileObject, properties As Dictionary(Of String, String))
         eventTable(eventId).EventType = EventType.Trigger
-        If properties("OnBump") <> NullObject Then
-            eventTable(eventId).Links(LinkType.OnBump) = eventTable(CInt(properties("OnBump")))
-        End If
-        If properties("OnEnter") <> NullObject Then
-            eventTable(eventId).Links(LinkType.OnEnter) = eventTable(CInt(properties("OnEnter")))
-        End If
+        AssignLink(eventTable, eventId, properties, OnBumpText, LinkType.OnBump)
+        AssignLink(eventTable, eventId, properties, OnEnterText, LinkType.OnEnter)
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
         data.Cells(row * data.Columns + column).Trigger = eventTable(eventId)
     End Sub
+
+    Private Sub AssignLink(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String), propertyName As String, linkType As LinkType)
+        If properties(propertyName) <> NullObject Then
+            eventTable(eventId).Links(linkType) = eventTable(CInt(properties(propertyName)))
+        End If
+    End Sub
+
     Const ItemTypeText = "ItemType"
     Private Function ProcessGiveItem(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.GiveItem
         eventTable(eventId).Strings(EventString.ItemType) = properties(ItemTypeText)
         eventTable(eventId).Integers(EventInteger.ItemCount) = CInt(properties("ItemCount"))
-        If properties("NextEvent") <> NullObject Then
-            eventTable(eventId).Links(LinkType.NextEvent) = eventTable(CInt(properties("NextEvent")))
-        End If
+        AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
         Return eventTable
     End Function
 
     Private Function ProcessSetFlag(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.SetFlag
         eventTable(eventId).Strings(EventString.FlagType) = properties(FlagTypeText)
-        If properties("NextEvent") <> NullObject Then
-            eventTable(eventId).Links(LinkType.NextEvent) = eventTable(CInt(properties("NextEvent")))
-        End If
-
+        AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
         Return eventTable
     End Function
 
@@ -194,20 +192,14 @@ Module Program
         eventTable(eventId).Integers(EventInteger.ToX) = CInt(properties("ToX"))
         eventTable(eventId).Integers(EventInteger.ToY) = CInt(properties("ToY"))
         eventTable(eventId).Strings(EventString.ToMap) = properties("ToMap")
-        If properties("NextEvent") <> "0" Then
-            eventTable(eventId).Links(LinkType.NextEvent) = eventTable(CInt(properties("NextEvent")))
-        End If
-
+        AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
         Return eventTable
     End Function
 
     Private Function ProcessMessage(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.Message
         eventTable(eventId).Strings(EventString.Message) = properties("Message")
-        If properties("NextEvent") <> "0" Then
-            eventTable(eventId).Links(LinkType.NextEvent) = eventTable(CInt(properties("NextEvent")))
-        End If
-
+        AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
         Return eventTable
     End Function
 
@@ -216,7 +208,6 @@ Module Program
         For Each prop In obj.Properties
             properties(prop.Key) = prop.Value
         Next
-
         Return properties
     End Function
 
