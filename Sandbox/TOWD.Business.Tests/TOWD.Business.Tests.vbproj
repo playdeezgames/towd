@@ -6,7 +6,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <ImportedNamespaces>Shouldly=False,Xunit=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,TOWD.Business.Tests=True</ImportedNamespaces>
+    <ImportedNamespaces>Shouldly=False,TOWD.Business=False,TOWD.Data=False,Xunit=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,TOWD.Business.Tests=True</ImportedNamespaces>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +29,8 @@
 
   <ItemGroup>
     <Import Include="Shouldly" />
+    <Import Include="TOWD.Business" />
+    <Import Include="TOWD.Data" />
     <Import Include="Xunit" />
   </ItemGroup>
 

@@ -2,7 +2,7 @@
 
 Public Class MapShould
     <Fact>
-    Sub set_size_and_read_size()
+    Public Sub set_size_and_read_size()
         Const MapName = "one"
         Const MapColumns = 2
         Const MapRows = 3
@@ -18,7 +18,7 @@ Public Class MapShould
     <InlineData(1, 0)>
     <InlineData(0, 2)>
     <InlineData(1, 2)>
-    Sub read_cell_from_inside_map(column As Integer, row As Integer)
+    Public Sub read_cell_from_inside_map(column As Integer, row As Integer)
         Const MapName = "one"
         Const MapColumns = 2
         Const MapRows = 3
@@ -32,7 +32,7 @@ Public Class MapShould
     <InlineData(2, -1)>
     <InlineData(-1, 3)>
     <InlineData(2, 3)>
-    Sub return_nothing_from_outside_map(column As Integer, row As Integer)
+    Public Sub return_nothing_from_outside_map(column As Integer, row As Integer)
         Const MapName = "one"
         Const MapColumns = 2
         Const MapRows = 3

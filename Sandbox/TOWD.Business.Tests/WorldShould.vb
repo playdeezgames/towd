@@ -1,13 +1,13 @@
 Namespace TOWD.Business.Tests
     Public Class WorldShould
         <Fact>
-        Sub instantiate_a_new_world_with_no_maps()
+        Public Sub instantiate_a_new_world_with_no_maps()
             Dim subject As IWorld = New World()
             subject.ShouldNotBeNull
             subject.Maps.ShouldBeEmpty
         End Sub
         <Fact>
-        Sub create_a_map()
+        Public Sub create_a_map()
             Const MapName = "One"
             Dim subject As IWorld = New World
             Dim map As IMap = subject.CreateMap(MapName)

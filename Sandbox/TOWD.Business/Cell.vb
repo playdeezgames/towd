@@ -25,9 +25,21 @@
         End Set
     End Property
 
-    Public WriteOnly Property Data As MapCellData Implements ICell.Data
+    Public Property Data As MapCellData Implements ICell.Data
+        Private Get
+            Return _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns)
+        End Get
         Set(value As MapCellData)
             _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns) = value
+        End Set
+    End Property
+
+    Public Property TerrainType As TerrainType Implements ICell.TerrainType
+        Get
+            Return Data.TerrainType
+        End Get
+        Set(value As TerrainType)
+            Data.TerrainType = value
         End Set
     End Property
 End Class
