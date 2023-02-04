@@ -13,12 +13,18 @@
         _row = row
     End Sub
 
+    Private ReadOnly Property Data As CreatureData
+        Get
+            Return _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns).Creature
+        End Get
+    End Property
+
     Public Property CreatureType As CreatureType Implements ICreature.CreatureType
         Get
-            Return CreatureType.Dude
+            Return Data.CreatureType
         End Get
         Set(value As CreatureType)
-            Throw New NotImplementedException()
+            Data.CreatureType = value
         End Set
     End Property
 
