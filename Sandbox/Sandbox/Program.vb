@@ -129,6 +129,9 @@ Module Program
     Const AmountText = "Amount"
 
     Private Sub ProcessGiveMoney(eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, properties As Dictionary(Of String, String))
+        eventTable(eventId).Item2.EventType = EventType.GiveMoney
+        eventTable(eventId).Item2.AssignInteger(EventInteger.Amount, CInt(properties(AmountText)))
+
         eventTable(eventId).Item1.EventType = EventType.GiveMoney
         eventTable(eventId).Item1.Integers(EventInteger.Amount) = CInt(properties(AmountText))
         AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)

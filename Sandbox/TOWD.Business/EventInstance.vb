@@ -1,6 +1,4 @@
-﻿Imports System.Diagnostics.CodeAnalysis
-
-Friend Class EventInstance
+﻿Friend Class EventInstance
     Implements IEvent
     Private _worldData As WorldData
     Private _index As Integer
@@ -38,6 +36,24 @@ Friend Class EventInstance
         End Get
     End Property
 
+    Public Property EventType As EventType Implements IEvent.EventType
+        Get
+            Return Data.EventType
+        End Get
+        Set(value As EventType)
+            Data.EventType = value
+        End Set
+    End Property
+
+    Public ReadOnly Property Integers As IEnumerable(Of (EventInteger, Integer)) Implements IEvent.Integers
+        Get
+            Return Data.Integers.Select(Function(x)
+                                            Dim result As (EventInteger, Integer) = (x.Key, x.Value)
+                                            Return result
+                                        End Function)
+        End Get
+    End Property
+
     Public Sub AssignLink(linkType As LinkType, eventInstance As IEvent) Implements IEvent.AssignLink
         If eventInstance Is Nothing Then
             Data.LinkIndices.Remove(linkType)
@@ -45,4 +61,15 @@ Friend Class EventInstance
         End If
         Data.LinkIndices(linkType) = eventInstance.Index
     End Sub
+
+    Public Sub AssignInteger(identifier As EventInteger, value As Integer) Implements IEvent.AssignInteger
+        Data.Integers(identifier) = value
+    End Sub
+
+    Public Function GetInteger(identifier As EventInteger) As Integer? Implements IEvent.GetInteger
+        If Not Data.Integers.ContainsKey(identifier) Then
+            Return Nothing
+        End If
+        Return Data.Integers(identifier)
+    End Function
 End Class
