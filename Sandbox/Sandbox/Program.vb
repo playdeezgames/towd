@@ -107,14 +107,14 @@ Module Program
     Private Sub ProcessNPC(cellWidth As Integer, cellHeight As Integer, map As IMap, eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, obj As TileObject, properties As Dictionary(Of String, String))
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
-        Dim eventData As EventData = Nothing
+        Dim eventInstance As IEvent = Nothing
         If properties(OnInteractText) <> NullObject Then
-            eventData = eventTable(CInt(properties(OnInteractText))).Item1
+            eventInstance = eventTable(CInt(properties(OnInteractText))).Item2
         End If
         Dim cell = map.GetCell(column, row)
         Dim creature = cell.CreateCreature()
         creature.CreatureType = CType(properties(CreatureTypeText), CreatureType)
-        creature.OnInteractEventData = eventData
+        creature.OnInteract = eventInstance
     End Sub
 
     Private Sub ProcessPC(cellWidth As Integer, cellHeight As Integer, map As IMap, obj As TileObject, properties As Dictionary(Of String, String))

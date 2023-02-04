@@ -7,7 +7,6 @@
         Dim cell = map.GetCell(0, 0)
         Dim subject = cell.CreateCreature()
         subject.CreatureType.ShouldBe(CreatureType.Dude)
-        subject.OnInteractEventData.ShouldBeNull
         subject.OnInteract.ShouldBeNull
     End Sub
     <Fact>

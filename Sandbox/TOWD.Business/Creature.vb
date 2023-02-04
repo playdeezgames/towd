@@ -28,15 +28,6 @@
         End Set
     End Property
 
-    Public Property OnInteractEventData As EventData Implements ICreature.OnInteractEventData
-        Get
-            Return Data.OnInteractEventData
-        End Get
-        Set(value As EventData)
-            Data.OnInteractEventData = value
-        End Set
-    End Property
-
     Public Property OnInteract As IEvent Implements ICreature.OnInteract
         Get
             If Not Data.OnInteract.HasValue Then
