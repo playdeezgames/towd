@@ -2,6 +2,7 @@
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="8" tileheight="8" infinite="0" nextlayerid="3" nextobjectid="24">
  <properties>
   <property name="DefaultTerrain" type="int" value="1"/>
+  <property name="Name" value="Home"/>
  </properties>
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="129" source="EventTypes.tsx"/>

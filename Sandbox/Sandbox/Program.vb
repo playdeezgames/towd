@@ -14,17 +14,17 @@ Module Program
         ProcessFile("E:\GIT\towd\Maps\World.tmx", "World.json", world)
         ProcessFile("E:\GIT\towd\Maps\Garrison.tmx", "Garrison.json", world)
     End Sub
-
+    Const NameText = "Name"
     Private Sub ProcessFile(inputFilename As String, outputFilename As String, world As IWorld)
-        Dim data As New MapData
         Using stream = File.OpenRead(inputFilename)
             Dim tileTable As New Dictionary(Of Integer, (ITileset, Integer))
             Dim fromMap = TiledLib.Map.FromStream(stream, Function(ts) File.OpenRead(Path.Combine(Path.GetDirectoryName(inputFilename), ts.Source)))
-            InitializeMap(data, fromMap)
+            Dim map = world.CreateMap(fromMap.Properties(NameText))
+            InitializeMap(map.Data, fromMap)
             tileTable = InitializeTileTable(tileTable, fromMap)
-            ProcessLayers(data, tileTable, fromMap)
+            ProcessLayers(map.Data, tileTable, fromMap)
+            File.WriteAllText(outputFilename, JsonSerializer.Serialize(map.Data))
         End Using
-        File.WriteAllText(outputFilename, JsonSerializer.Serialize(data))
     End Sub
 
     Private Function InitializeTileTable(tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map) As Dictionary(Of Integer, (ITileset, Integer))

@@ -23,8 +23,8 @@
             "scale": 13.299999999999999,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 35.93984962406016,
-                "y": 27.932330827067673
+                "x": 35.977443609022565,
+                "y": 27.96992481203008
             }
         },
         "Home.tmx": {
@@ -71,8 +71,8 @@
             "scale": 4.480833333333333,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 119.84377905895482,
-                "y": 79.78426631950902
+                "x": 119.95536544541567,
+                "y": 79.89585270596989
             }
         },
         "Terrain.tsx": {
@@ -86,8 +86,8 @@
             "scale": 5.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 960,
-                "y": 959.909090909091
+                "x": 959.909090909091,
+                "y": 959.8181818181818
             }
         }
     },
@@ -110,7 +110,7 @@
         "Inn.tmx"
     ],
     "project": "TOWD.tiled-project",
-    "property.type": "FlagType",
+    "property.type": "string",
     "recentFiles": [
         "Items.tsx",
         "Terrain.tsx",
