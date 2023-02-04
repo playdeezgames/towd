@@ -1,6 +1,6 @@
 ﻿Public Class CellShould
     <Fact>
-    Public Sub read_terrain_type()
+    Public Sub have_expected_initial_values()
         Const MapName = "one"
         Const MapColumns = 2
         Const MapRows = 3
@@ -9,6 +9,8 @@
         map.SetSize(MapColumns, MapRows)
         Dim cell = map.GetCell(0, 0)
         cell.TerrainType.ShouldBe(TerrainType.None)
+        cell.Creature.ShouldBeNull
+        cell.Trigger.ShouldBeNull
     End Sub
     <Fact>
     Public Sub write_terrain_type()
