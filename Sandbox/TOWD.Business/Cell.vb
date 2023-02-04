@@ -12,4 +12,31 @@
         _column = column
         _row = row
     End Sub
+
+    Public Property Creature As CreatureData Implements ICell.Creature
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As CreatureData)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property Trigger As EventData Implements ICell.Trigger
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As EventData)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property Data As MapCellData Implements ICell.Data
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As MapCellData)
+            Throw New NotImplementedException()
+        End Set
+    End Property
 End Class

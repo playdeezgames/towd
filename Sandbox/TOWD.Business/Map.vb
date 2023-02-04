@@ -7,7 +7,7 @@
         _mapName = mapName
     End Sub
 
-    Public ReadOnly Property Data As MapData Implements IMap.Data
+    Private ReadOnly Property Data As MapData
         Get
             Return _worldData.Maps(_mapName)
         End Get
@@ -22,6 +22,18 @@
     Public ReadOnly Property Rows As Integer Implements IMap.Rows
         Get
             Return Data.Rows
+        End Get
+    End Property
+
+    Public ReadOnly Property Cells As IEnumerable(Of ICell) Implements IMap.Cells
+        Get
+            Dim result As New List(Of ICell)
+            For row = 0 To Rows - 1
+                For column = 0 To Columns - 1
+                    result.Add(GetCell(column, row))
+                Next
+            Next
+            Return result
         End Get
     End Property
 

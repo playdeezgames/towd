@@ -11,7 +11,7 @@ Public Class MapShould
         subject.SetSize(MapColumns, MapRows)
         subject.Columns.ShouldBe(MapColumns)
         subject.Rows.ShouldBe(MapRows)
-        subject.Data.Cells.Count().ShouldBe(MapColumns * MapRows)
+        subject.Cells.Count().ShouldBe(MapColumns * MapRows)
     End Sub
     <Theory>
     <InlineData(0, 0)>
