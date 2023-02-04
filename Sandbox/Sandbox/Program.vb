@@ -51,9 +51,9 @@ Module Program
     Private Sub ProcessLayer(map As IMap, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map, l As BaseLayer)
         Select Case l.LayerType
             Case LayerType.tilelayer
-                ProcessTileLayer(DirectCast(l, TileLayer), tileTable, map.Data)
+                ProcessTileLayer(DirectCast(l, TileLayer), tileTable, map)
             Case LayerType.objectgroup
-                ProcessObjectGroup(DirectCast(l, ObjectLayer), tileTable, fromMap.CellWidth, fromMap.CellHeight, map.Data)
+                ProcessObjectGroup(DirectCast(l, ObjectLayer), tileTable, fromMap.CellWidth, fromMap.CellHeight, map)
             Case Else
                 Throw New NotImplementedException
         End Select
@@ -69,7 +69,7 @@ Module Program
     Const NPCText = "NPC"
     Const GiveMoneyText = "GiveMoney"
 
-    Private Sub ProcessObjectGroup(l As ObjectLayer, tileTable As Dictionary(Of Integer, (ITileset, Integer)), cellWidth As Integer, cellHeight As Integer, data As MapData)
+    Private Sub ProcessObjectGroup(l As ObjectLayer, tileTable As Dictionary(Of Integer, (ITileset, Integer)), cellWidth As Integer, cellHeight As Integer, map As IMap)
         Dim objectTable = l.Objects.ToDictionary(Function(x) x.Id, Function(x) DirectCast(x, TileObject))
         Dim eventTable = l.Objects.ToDictionary(Function(x) x.Id, Function(x) New EventData)
         For Each entry In objectTable
@@ -89,13 +89,13 @@ Module Program
                 Case GiveItemText
                     eventTable = ProcessGiveItem(eventTable, eventId, properties)
                 Case TriggerText
-                    ProcessTrigger(cellWidth, cellHeight, data, eventTable, eventId, obj, properties)
+                    ProcessTrigger(cellWidth, cellHeight, map, eventTable, eventId, obj, properties)
                 Case PCText
-                    ProcessPC(cellWidth, cellHeight, data, obj, properties)
+                    ProcessPC(cellWidth, cellHeight, map, obj, properties)
                 Case GiveMoneyText
                     eventTable = ProcessGiveMoney(eventTable, eventId, properties)
                 Case NPCText
-                    ProcessNPC(cellWidth, cellHeight, data, eventTable, eventId, obj, properties)
+                    ProcessNPC(cellWidth, cellHeight, map, eventTable, eventId, obj, properties)
                 Case Else
                     Throw New NotImplementedException
             End Select
@@ -106,24 +106,24 @@ Module Program
     Const OnInteractText = "OnInteract"
     Const CreatureTypeText = "CreatureType"
 
-    Private Sub ProcessNPC(cellWidth As Integer, cellHeight As Integer, data As MapData, eventTable As Dictionary(Of Integer, EventData), eventId As Integer, obj As TileObject, properties As Dictionary(Of String, String))
+    Private Sub ProcessNPC(cellWidth As Integer, cellHeight As Integer, map As IMap, eventTable As Dictionary(Of Integer, EventData), eventId As Integer, obj As TileObject, properties As Dictionary(Of String, String))
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
         Dim eventData As EventData = Nothing
         If properties(OnInteractText) <> NullObject Then
             eventData = eventTable(CInt(properties(OnInteractText)))
         End If
-        data.Cells(row * data.Columns + column).Creature = New CreatureData With
+        map.Data.Cells(row * map.Data.Columns + column).Creature = New CreatureData With
         {
             .CreatureType = CType(properties(CreatureTypeText), CreatureType),
             .OnInteract = eventData
         }
     End Sub
 
-    Private Sub ProcessPC(cellWidth As Integer, cellHeight As Integer, data As MapData, obj As TileObject, properties As Dictionary(Of String, String))
+    Private Sub ProcessPC(cellWidth As Integer, cellHeight As Integer, map As IMap, obj As TileObject, properties As Dictionary(Of String, String))
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
-        data.Cells(row * data.Columns + column).Creature = New CreatureData With
+        map.Data.Cells(row * map.Data.Columns + column).Creature = New CreatureData With
         {
             .CreatureType = CType(properties(CreatureTypeText), CreatureType)
         }
@@ -143,13 +143,13 @@ Module Program
     Const OnBumpText = "OnBump"
     Const OnEnterText = "OnEnter"
 
-    Private Sub ProcessTrigger(cellWidth As Integer, cellHeight As Integer, ByRef data As MapData, ByRef eventTable As Dictionary(Of Integer, EventData), eventId As Integer, obj As TileObject, properties As Dictionary(Of String, String))
+    Private Sub ProcessTrigger(cellWidth As Integer, cellHeight As Integer, ByRef map As IMap, ByRef eventTable As Dictionary(Of Integer, EventData), eventId As Integer, obj As TileObject, properties As Dictionary(Of String, String))
         eventTable(eventId).EventType = EventType.Trigger
         AssignLink(eventTable, eventId, properties, OnBumpText, LinkType.OnBump)
         AssignLink(eventTable, eventId, properties, OnEnterText, LinkType.OnEnter)
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
-        data.Cells(row * data.Columns + column).Trigger = eventTable(eventId)
+        map.Data.Cells(row * map.Data.Columns + column).Trigger = eventTable(eventId)
     End Sub
 
     Private Sub AssignLink(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String), propertyName As String, linkType As LinkType)
@@ -215,22 +215,22 @@ Module Program
         Return properties
     End Function
 
-    Private Sub ProcessTileLayer(l As TileLayer, tileTable As Dictionary(Of Integer, (ITileset, Integer)), data As MapData)
+    Private Sub ProcessTileLayer(l As TileLayer, tileTable As Dictionary(Of Integer, (ITileset, Integer)), map As IMap)
         Dim index = 0
         For row = 0 To l.Height - 1
             For column = 0 To l.Width - 1
-                index = ProcessTile(l, tileTable, data, index)
+                index = ProcessTile(l, tileTable, map, index)
             Next
         Next
     End Sub
 
     Const TerrainTypeText = "TerrainType"
 
-    Private Function ProcessTile(l As TileLayer, tileTable As Dictionary(Of Integer, (ITileset, Integer)), data As MapData, index As Integer) As Integer
+    Private Function ProcessTile(l As TileLayer, tileTable As Dictionary(Of Integer, (ITileset, Integer)), map As IMap, index As Integer) As Integer
         Dim cell = l.Data(index)
         Dim tile = tileTable(cell)
         Dim tileProperties = tile.Item1.TileProperties(tile.Item2)
-        data.Cells.Add(New MapCellData With
+        map.Data.Cells.Add(New MapCellData With
                        {
                         .TerrainType = CType(tileProperties(TerrainTypeText), TerrainType)
                        })
