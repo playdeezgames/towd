@@ -3,28 +3,31 @@ Imports System.Text.Json
 Imports TiledLib
 Imports TiledLib.Layer
 Imports TiledLib.Objects
+Imports TOWD.Business
+
 Module Program
     Sub Main(args As String())
-        ProcessFile("E:\GIT\towd\Maps\Home.tmx", "Home.json")
-        ProcessFile("E:\GIT\towd\Maps\Loft.tmx", "Loft.json")
-        ProcessFile("E:\GIT\towd\Maps\Quotidian.tmx", "Quotidian.json")
-        ProcessFile("E:\GIT\towd\Maps\World.tmx", "World.json")
-        ProcessFile("E:\GIT\towd\Maps\Garrison.tmx", "Garrison.json")
+        Dim world As IWorld = New World()
+        ProcessFile("E:\GIT\towd\Maps\Home.tmx", "Home.json", world)
+        ProcessFile("E:\GIT\towd\Maps\Loft.tmx", "Loft.json", world)
+        ProcessFile("E:\GIT\towd\Maps\Quotidian.tmx", "Quotidian.json", world)
+        ProcessFile("E:\GIT\towd\Maps\World.tmx", "World.json", world)
+        ProcessFile("E:\GIT\towd\Maps\Garrison.tmx", "Garrison.json", world)
     End Sub
 
-    Private Sub ProcessFile(inputFilename As String, outputFilename As String)
+    Private Sub ProcessFile(inputFilename As String, outputFilename As String, world As IWorld)
         Dim data As New MapData
         Using stream = File.OpenRead(inputFilename)
             Dim tileTable As New Dictionary(Of Integer, (ITileset, Integer))
-            Dim fromMap = Map.FromStream(stream, Function(ts) File.OpenRead(Path.Combine(Path.GetDirectoryName(inputFilename), ts.Source)))
-            data = InitializeMap(data, fromMap)
+            Dim fromMap = TiledLib.Map.FromStream(stream, Function(ts) File.OpenRead(Path.Combine(Path.GetDirectoryName(inputFilename), ts.Source)))
+            InitializeMap(data, fromMap)
             tileTable = InitializeTileTable(tileTable, fromMap)
             ProcessLayers(data, tileTable, fromMap)
         End Using
         File.WriteAllText(outputFilename, JsonSerializer.Serialize(data))
     End Sub
 
-    Private Function InitializeTileTable(tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As Map) As Dictionary(Of Integer, (ITileset, Integer))
+    Private Function InitializeTileTable(tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map) As Dictionary(Of Integer, (ITileset, Integer))
         For Each tileSet In fromMap.Tilesets
             For tileIndex = 0 To tileSet.TileCount - 1
                 tileTable(tileSet.FirstGid + tileIndex) = (tileSet, tileIndex)
@@ -33,20 +36,19 @@ Module Program
         Return tileTable
     End Function
 
-    Private Function InitializeMap(data As MapData, fromMap As Map) As MapData
+    Private Sub InitializeMap(data As MapData, fromMap As TiledLib.Map)
         data.Columns = fromMap.Width
         data.Rows = fromMap.Height
         data.Cells.Clear()
-        Return data
-    End Function
+    End Sub
 
-    Private Sub ProcessLayers(data As MapData, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As Map)
+    Private Sub ProcessLayers(data As MapData, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map)
         For Each l In fromMap.Layers
             ProcessLayer(data, tileTable, fromMap, l)
         Next
     End Sub
 
-    Private Sub ProcessLayer(data As MapData, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As Map, l As BaseLayer)
+    Private Sub ProcessLayer(data As MapData, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map, l As BaseLayer)
         Select Case l.LayerType
             Case LayerType.tilelayer
                 ProcessTileLayer(DirectCast(l, TileLayer), tileTable, data)
