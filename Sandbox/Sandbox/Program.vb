@@ -22,8 +22,8 @@ Module Program
             Dim map = world.CreateMap(fromMap.Properties(NameText))
             InitializeMap(map, fromMap)
             tileTable = InitializeTileTable(tileTable, fromMap)
-            ProcessLayers(map.Data, tileTable, fromMap)
-            File.WriteAllText(outputFilename, JsonSerializer.Serialize(map.Data))
+            ProcessLayers(map, tileTable, fromMap)
+            File.WriteAllText(outputFilename, JsonSerializer.Serialize(map.Data)) 'TODO: this can be IMap's "save" method
         End Using
     End Sub
 
@@ -42,18 +42,18 @@ Module Program
         map.Data.Cells.Clear()
     End Sub
 
-    Private Sub ProcessLayers(data As MapData, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map)
+    Private Sub ProcessLayers(map As IMap, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map)
         For Each l In fromMap.Layers
-            ProcessLayer(data, tileTable, fromMap, l)
+            ProcessLayer(map, tileTable, fromMap, l)
         Next
     End Sub
 
-    Private Sub ProcessLayer(data As MapData, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map, l As BaseLayer)
+    Private Sub ProcessLayer(map As IMap, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map, l As BaseLayer)
         Select Case l.LayerType
             Case LayerType.tilelayer
-                ProcessTileLayer(DirectCast(l, TileLayer), tileTable, data)
+                ProcessTileLayer(DirectCast(l, TileLayer), tileTable, map.Data)
             Case LayerType.objectgroup
-                ProcessObjectGroup(DirectCast(l, ObjectLayer), tileTable, fromMap.CellWidth, fromMap.CellHeight, data)
+                ProcessObjectGroup(DirectCast(l, ObjectLayer), tileTable, fromMap.CellWidth, fromMap.CellHeight, map.Data)
             Case Else
                 Throw New NotImplementedException
         End Select
