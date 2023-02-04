@@ -18,12 +18,6 @@
         Return Creature
     End Function
 
-    Public WriteOnly Property CreatureData As CreatureData Implements ICell.CreatureData
-        Set(value As CreatureData)
-            _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns).Creature = value
-        End Set
-    End Property
-
     Public WriteOnly Property TriggerData As EventData Implements ICell.TriggerData
         Set(value As EventData)
             _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns).Trigger = value

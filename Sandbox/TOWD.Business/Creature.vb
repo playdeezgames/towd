@@ -30,10 +30,10 @@
 
     Public Property OnInteract As EventData Implements ICreature.OnInteract
         Get
-            Return Nothing
+            Return Data.OnInteract
         End Get
         Set(value As EventData)
-            Throw New NotImplementedException()
+            Data.OnInteract = value
         End Set
     End Property
 End Class

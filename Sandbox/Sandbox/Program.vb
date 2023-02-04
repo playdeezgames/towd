@@ -120,10 +120,9 @@ Module Program
     Private Sub ProcessPC(cellWidth As Integer, cellHeight As Integer, map As IMap, obj As TileObject, properties As Dictionary(Of String, String))
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
-        map.GetCell(column, row).CreatureData = New CreatureData With
-        {
-            .CreatureType = CType(properties(CreatureTypeText), CreatureType)
-        }
+        Dim cell = map.GetCell(column, row)
+        Dim creature = cell.CreateCreature()
+        creature.CreatureType = CType(properties(CreatureTypeText), CreatureType)
     End Sub
 
     Const NextEventText = "NextEvent"
