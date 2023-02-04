@@ -1,4 +1,4 @@
 ﻿Public Interface IWorld
     ReadOnly Property Maps As IEnumerable(Of IMap)
-    Function CreateMap() As IMap
+    Function CreateMap(name As String) As IMap
 End Interface

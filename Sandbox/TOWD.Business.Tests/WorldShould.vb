@@ -8,8 +8,9 @@ Namespace TOWD.Business.Tests
         End Sub
         <Fact>
         Sub create_a_map()
+            Const MapName = "One"
             Dim subject As IWorld = New World
-            Dim map As IMap = subject.CreateMap()
+            Dim map As IMap = subject.CreateMap(MapName)
             map.ShouldNotBeNull
             subject.Maps.ShouldNotBeEmpty
         End Sub

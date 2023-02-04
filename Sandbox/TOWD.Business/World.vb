@@ -1,17 +1,17 @@
-﻿Public Class World
+﻿Imports TOWD.Data
+
+Public Class World
     Implements IWorld
-    Private ReadOnly _maps As New List(Of IMap)
+    Private ReadOnly _worldData As New WorldData
 
     Public ReadOnly Property Maps As IEnumerable(Of IMap) Implements IWorld.Maps
         Get
-            Return _maps
+            Return _worldData.Maps.Select(Function(x) New Map(_worldData, x.Key))
         End Get
     End Property
 
-    Public Function CreateMap() As IMap Implements IWorld.CreateMap
-        Dim map As IMap
-        map = New Map()
-        _maps.Add(map)
-        Return map
+    Public Function CreateMap(name As String) As IMap Implements IWorld.CreateMap
+        _worldData.Maps(name) = New MapData
+        Return New Map(_worldData, name)
     End Function
 End Class
