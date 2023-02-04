@@ -5,6 +5,7 @@
     <RootNamespace>Sandbox</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
     <OptionStrict>On</OptionStrict>
+    <ImportedNamespaces>TOWD.Data=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,Sandbox=True</ImportedNamespaces>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,6 +19,14 @@
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="7.0.1" />
     <PackageReference Include="TiledLib" Version="4.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TOWD.Data\TOWD.Data.vbproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="TOWD.Data" />
   </ItemGroup>
 
 </Project>

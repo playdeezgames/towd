@@ -30,7 +30,6 @@ Module Program
                 tileTable(tileSet.FirstGid + tileIndex) = (tileSet, tileIndex)
             Next
         Next
-
         Return tileTable
     End Function
 
@@ -129,11 +128,12 @@ Module Program
     End Sub
 
     Const NextEventText = "NextEvent"
+    Const AmountText = "Amount"
 
     Private ReadOnly Property ProcessGiveMoney(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         Get
             eventTable(eventId).EventType = EventType.GiveMoney
-            eventTable(eventId).Integers(EventInteger.Amount) = CInt(properties("Amount"))
+            eventTable(eventId).Integers(EventInteger.Amount) = CInt(properties(AmountText))
             AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
             Return eventTable
         End Get
@@ -157,10 +157,11 @@ Module Program
     End Sub
 
     Const ItemTypeText = "ItemType"
+    Const ItemCountText = "ItemCount"
     Private Function ProcessGiveItem(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.GiveItem
         eventTable(eventId).Strings(EventString.ItemType) = properties(ItemTypeText)
-        eventTable(eventId).Integers(EventInteger.ItemCount) = CInt(properties("ItemCount"))
+        eventTable(eventId).Integers(EventInteger.ItemCount) = CInt(properties(ItemCountText))
         AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
         Return eventTable
     End Function
@@ -173,32 +174,33 @@ Module Program
     End Function
 
     Const FlagTypeText = "FlagType"
+    Const WhenClearText = "WhenClear"
+    Const WhenSetText = "WhenSet"
 
     Private Function ProcessCheckFlag(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.CheckFlag
         eventTable(eventId).Strings(EventString.FlagType) = properties(FlagTypeText)
-        If properties("WhenClear") <> NullObject Then
-            eventTable(eventId).Links(LinkType.WhenClear) = eventTable(CInt(properties("WhenClear")))
-        End If
-        If properties("WhenSet") <> NullObject Then
-            eventTable(eventId).Links(LinkType.WhenSet) = eventTable(CInt(properties("WhenSet")))
-        End If
-
+        AssignLink(eventTable, eventId, properties, WhenClearText, LinkType.WhenClear)
+        AssignLink(eventTable, eventId, properties, WhenSetText, LinkType.WhenSet)
         Return eventTable
     End Function
 
+    Const ToXText = "ToX"
+    Const ToYText = "ToY"
+    Const ToMapText = "ToMap"
+
     Private Function ProcessTeleport(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.Teleport
-        eventTable(eventId).Integers(EventInteger.ToX) = CInt(properties("ToX"))
-        eventTable(eventId).Integers(EventInteger.ToY) = CInt(properties("ToY"))
-        eventTable(eventId).Strings(EventString.ToMap) = properties("ToMap")
+        eventTable(eventId).Integers(EventInteger.ToX) = CInt(properties(ToXText))
+        eventTable(eventId).Integers(EventInteger.ToY) = CInt(properties(ToYText))
+        eventTable(eventId).Strings(EventString.ToMap) = properties(ToMapText)
         AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
         Return eventTable
     End Function
 
     Private Function ProcessMessage(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String)) As Dictionary(Of Integer, EventData)
         eventTable(eventId).EventType = EventType.Message
-        eventTable(eventId).Strings(EventString.Message) = properties("Message")
+        eventTable(eventId).Strings(EventString.Message) = properties(MessageText)
         AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
         Return eventTable
     End Function
@@ -220,13 +222,15 @@ Module Program
         Next
     End Sub
 
+    Const TerrainTypeText = "TerrainType"
+
     Private Function ProcessTile(l As TileLayer, tileTable As Dictionary(Of Integer, (ITileset, Integer)), data As MapData, index As Integer) As Integer
         Dim cell = l.Data(index)
         Dim tile = tileTable(cell)
         Dim tileProperties = tile.Item1.TileProperties(tile.Item2)
         data.Cells.Add(New MapCellData With
                        {
-                        .TerrainType = CType(tileProperties("TerrainType"), TerrainType)
+                        .TerrainType = CType(tileProperties(TerrainTypeText), TerrainType)
                        })
         index += 1
         Return index
