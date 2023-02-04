@@ -6,12 +6,17 @@
     Private ReadOnly _column As Integer
     Private ReadOnly _row As Integer
 
-    Public Sub New(worldData As WorldData, mapName As String, column As Integer, row As Integer)
+    Friend Sub New(worldData As WorldData, mapName As String, column As Integer, row As Integer)
         _worldData = worldData
         _mapName = mapName
         _column = column
         _row = row
     End Sub
+
+    Public Function CreateCreature() As ICreature Implements ICell.CreateCreature
+        Data.Creature = New CreatureData
+        Return Creature
+    End Function
 
     Public WriteOnly Property CreatureData As CreatureData Implements ICell.CreatureData
         Set(value As CreatureData)
@@ -42,7 +47,10 @@
 
     Public Property Creature As ICreature Implements ICell.Creature
         Get
-            Return Nothing
+            If Data.Creature Is Nothing Then
+                Return Nothing
+            End If
+            Return New Creature(_worldData, _mapName, _column, _row)
         End Get
         Set(value As ICreature)
             Throw New NotImplementedException()

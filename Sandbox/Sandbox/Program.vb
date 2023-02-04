@@ -111,11 +111,10 @@ Module Program
         If properties(OnInteractText) <> NullObject Then
             eventData = eventTable(CInt(properties(OnInteractText)))
         End If
-        map.GetCell(column, row).CreatureData = New CreatureData With
-        {
-            .CreatureType = CType(properties(CreatureTypeText), CreatureType),
-            .OnInteract = eventData
-        }
+        Dim cell = map.GetCell(column, row)
+        Dim creature = cell.CreateCreature()
+        creature.CreatureType = CType(properties(CreatureTypeText), CreatureType)
+        creature.OnInteract = eventData
     End Sub
 
     Private Sub ProcessPC(cellWidth As Integer, cellHeight As Integer, map As IMap, obj As TileObject, properties As Dictionary(Of String, String))

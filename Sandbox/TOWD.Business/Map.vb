@@ -2,7 +2,7 @@
     Implements IMap
     Private ReadOnly _worldData As WorldData
     Private ReadOnly _mapName As String
-    Sub New(worldData As WorldData, mapName As String)
+    Friend Sub New(worldData As WorldData, mapName As String)
         _worldData = worldData
         _mapName = mapName
     End Sub
