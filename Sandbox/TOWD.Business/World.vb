@@ -20,6 +20,8 @@
     End Function
 
     Public Function CreateEvent() As IEvent Implements IWorld.CreateEvent
-        Return New EventInstance()
+        Dim index = _worldData.Events.Count
+        _worldData.Events.Add(New EventData)
+        Return New EventInstance(_worldData, index)
     End Function
 End Class
