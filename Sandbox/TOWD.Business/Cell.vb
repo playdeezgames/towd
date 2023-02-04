@@ -13,25 +13,22 @@
         _row = row
     End Sub
 
-    Public WriteOnly Property Creature As CreatureData Implements ICell.Creature
+    Public WriteOnly Property CreatureData As CreatureData Implements ICell.CreatureData
         Set(value As CreatureData)
             _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns).Creature = value
         End Set
     End Property
 
-    Public WriteOnly Property Trigger As EventData Implements ICell.Trigger
+    Public WriteOnly Property TriggerData As EventData Implements ICell.TriggerData
         Set(value As EventData)
             _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns).Trigger = value
         End Set
     End Property
 
-    Public Property Data As MapCellData Implements ICell.Data
-        Private Get
+    Private ReadOnly Property Data As MapCellData
+        Get
             Return _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns)
         End Get
-        Set(value As MapCellData)
-            _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns) = value
-        End Set
     End Property
 
     Public Property TerrainType As TerrainType Implements ICell.TerrainType

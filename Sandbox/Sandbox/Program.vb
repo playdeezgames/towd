@@ -8,15 +8,15 @@ Imports TOWD.Business
 Module Program
     Sub Main(args As String())
         Dim world As IWorld = New World()
-        ProcessFile("E:\GIT\towd\Maps\Home.tmx", "Home.json", world)
-        ProcessFile("E:\GIT\towd\Maps\Loft.tmx", "Loft.json", world)
-        ProcessFile("E:\GIT\towd\Maps\Quotidian.tmx", "Quotidian.json", world)
-        ProcessFile("E:\GIT\towd\Maps\World.tmx", "World.json", world)
-        ProcessFile("E:\GIT\towd\Maps\Garrison.tmx", "Garrison.json", world)
+        ProcessFile("E:\GIT\towd\Maps\Home.tmx", world)
+        ProcessFile("E:\GIT\towd\Maps\Loft.tmx", world)
+        ProcessFile("E:\GIT\towd\Maps\Quotidian.tmx", world)
+        ProcessFile("E:\GIT\towd\Maps\World.tmx", world)
+        ProcessFile("E:\GIT\towd\Maps\Garrison.tmx", world)
         'TODO: save the world
     End Sub
     Const NameText = "Name"
-    Private Sub ProcessFile(inputFilename As String, outputFilename As String, world As IWorld)
+    Private Sub ProcessFile(inputFilename As String, world As IWorld)
         Using stream = File.OpenRead(inputFilename)
             Dim tileTable As New Dictionary(Of Integer, (ITileset, Integer))
             Dim fromMap = TiledLib.Map.FromStream(stream, Function(ts) File.OpenRead(Path.Combine(Path.GetDirectoryName(inputFilename), ts.Source)))
@@ -111,7 +111,7 @@ Module Program
         If properties(OnInteractText) <> NullObject Then
             eventData = eventTable(CInt(properties(OnInteractText)))
         End If
-        map.GetCell(column, row).Creature = New CreatureData With
+        map.GetCell(column, row).CreatureData = New CreatureData With
         {
             .CreatureType = CType(properties(CreatureTypeText), CreatureType),
             .OnInteract = eventData
@@ -121,7 +121,7 @@ Module Program
     Private Sub ProcessPC(cellWidth As Integer, cellHeight As Integer, map As IMap, obj As TileObject, properties As Dictionary(Of String, String))
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
-        map.GetCell(column, row).Creature = New CreatureData With
+        map.GetCell(column, row).CreatureData = New CreatureData With
         {
             .CreatureType = CType(properties(CreatureTypeText), CreatureType)
         }
@@ -147,7 +147,7 @@ Module Program
         AssignLink(eventTable, eventId, properties, OnEnterText, LinkType.OnEnter)
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
-        map.GetCell(column, row).Trigger = eventTable(eventId)
+        map.GetCell(column, row).TriggerData = eventTable(eventId)
     End Sub
 
     Private Sub AssignLink(eventTable As Dictionary(Of Integer, EventData), eventId As Integer, properties As Dictionary(Of String, String), propertyName As String, linkType As LinkType)
@@ -230,10 +230,7 @@ Module Program
         Dim tileProperties = tile.Item1.TileProperties(tile.Item2)
         Dim column = index Mod map.Columns
         Dim row = index \ map.Columns
-        map.GetCell(column, row).Data = New MapCellData With
-                       {
-                        .TerrainType = CType(tileProperties(TerrainTypeText), TerrainType)
-                       }
+        map.GetCell(column, row).TerrainType = CType(tileProperties(TerrainTypeText), TerrainType)
         index += 1
         Return index
     End Function

@@ -1,6 +1,5 @@
 ﻿Public Interface ICell
-    WriteOnly Property Creature As CreatureData
-    WriteOnly Property Trigger As EventData
-    WriteOnly Property Data As MapCellData
+    WriteOnly Property CreatureData As CreatureData
+    WriteOnly Property TriggerData As EventData
     Property TerrainType As TerrainType
 End Interface
