@@ -13,6 +13,18 @@
         End Get
     End Property
 
+    Public ReadOnly Property Columns As Integer Implements IMap.Columns
+        Get
+            Return Data.Columns
+        End Get
+    End Property
+
+    Public ReadOnly Property Rows As Integer Implements IMap.Rows
+        Get
+            Return Data.Rows
+        End Get
+    End Property
+
     Public Sub SetSize(columns As Integer, rows As Integer) Implements IMap.SetSize
         Data.Columns = columns
         Data.Rows = rows
