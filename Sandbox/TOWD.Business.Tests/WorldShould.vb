@@ -14,6 +14,12 @@ Namespace TOWD.Business.Tests
             map.ShouldNotBeNull
             subject.Maps.ShouldNotBeEmpty
         End Sub
+        <Fact>
+        Public Sub create_an_event()
+            Dim world As IWorld = New World
+            Dim subject = world.CreateEvent()
+            subject.ShouldNotBeNull
+        End Sub
     End Class
 End Namespace
 
