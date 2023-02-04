@@ -13,30 +13,21 @@
         _row = row
     End Sub
 
-    Public Property Creature As CreatureData Implements ICell.Creature
-        Get
-            Throw New NotImplementedException()
-        End Get
+    Public WriteOnly Property Creature As CreatureData Implements ICell.Creature
         Set(value As CreatureData)
-            Throw New NotImplementedException()
+            _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns).Creature = value
         End Set
     End Property
 
-    Public Property Trigger As EventData Implements ICell.Trigger
-        Get
-            Throw New NotImplementedException()
-        End Get
+    Public WriteOnly Property Trigger As EventData Implements ICell.Trigger
         Set(value As EventData)
-            Throw New NotImplementedException()
+            _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns).Trigger = value
         End Set
     End Property
 
-    Public Property Data As MapCellData Implements ICell.Data
-        Get
-            Throw New NotImplementedException()
-        End Get
+    Public WriteOnly Property Data As MapCellData Implements ICell.Data
         Set(value As MapCellData)
-            Throw New NotImplementedException()
+            _worldData.Maps(_mapName).Cells(_column + _row * _worldData.Maps(_mapName).Columns) = value
         End Set
     End Property
 End Class
