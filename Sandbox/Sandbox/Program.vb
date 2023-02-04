@@ -20,7 +20,7 @@ Module Program
             Dim tileTable As New Dictionary(Of Integer, (ITileset, Integer))
             Dim fromMap = TiledLib.Map.FromStream(stream, Function(ts) File.OpenRead(Path.Combine(Path.GetDirectoryName(inputFilename), ts.Source)))
             Dim map = world.CreateMap(fromMap.Properties(NameText))
-            InitializeMap(map.Data, fromMap)
+            InitializeMap(map, fromMap)
             tileTable = InitializeTileTable(tileTable, fromMap)
             ProcessLayers(map.Data, tileTable, fromMap)
             File.WriteAllText(outputFilename, JsonSerializer.Serialize(map.Data))
@@ -36,10 +36,10 @@ Module Program
         Return tileTable
     End Function
 
-    Private Sub InitializeMap(data As MapData, fromMap As TiledLib.Map)
-        data.Columns = fromMap.Width
-        data.Rows = fromMap.Height
-        data.Cells.Clear()
+    Private Sub InitializeMap(map As IMap, fromMap As TiledLib.Map)
+        map.Data.Columns = fromMap.Width
+        map.Data.Rows = fromMap.Height
+        map.Data.Cells.Clear()
     End Sub
 
     Private Sub ProcessLayers(data As MapData, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map)
