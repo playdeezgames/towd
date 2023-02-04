@@ -8,6 +8,7 @@
         subject.Links.ShouldBeEmpty
         subject.EventType.ShouldBe(EventType.Message)
         subject.Integers.ShouldBeEmpty
+        subject.Strings.ShouldBeEmpty
     End Sub
     <Fact>
     Public Sub set_event_type()
@@ -36,6 +37,16 @@
         subject.AssignInteger(EventInteger.Amount, expected)
         subject.Integers.Count.ShouldBe(1)
         Dim actual = subject.GetInteger(EventInteger.Amount)
+        actual.ShouldBe(expected)
+    End Sub
+    <Fact>
+    Public Sub assign_string()
+        Dim world As IWorld = New World
+        Dim subject = world.CreateEvent()
+        Const expected = "something"
+        subject.AssignString(EventString.Message, expected)
+        subject.Strings.Count.ShouldBe(1)
+        Dim actual = subject.GetString(EventString.Message)
         actual.ShouldBe(expected)
     End Sub
 End Class

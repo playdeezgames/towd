@@ -1,7 +1,7 @@
 ﻿Friend Class EventInstance
     Implements IEvent
-    Private _worldData As WorldData
-    Private _index As Integer
+    Private ReadOnly _worldData As WorldData
+    Private ReadOnly _index As Integer
     Friend Sub New(worldData As WorldData, index As Integer)
         _worldData = worldData
         _index = index
@@ -54,6 +54,15 @@
         End Get
     End Property
 
+    Public ReadOnly Property Strings As IEnumerable(Of (EventString, String)) Implements IEvent.Strings
+        Get
+            Return Data.Strings.Select(Function(x)
+                                           Dim result As (EventString, String) = (x.Key, x.Value)
+                                           Return result
+                                       End Function)
+        End Get
+    End Property
+
     Public Sub AssignLink(linkType As LinkType, eventInstance As IEvent) Implements IEvent.AssignLink
         If eventInstance Is Nothing Then
             Data.LinkIndices.Remove(linkType)
@@ -71,5 +80,16 @@
             Return Nothing
         End If
         Return Data.Integers(identifier)
+    End Function
+
+    Public Sub AssignString(identifier As EventString, value As String) Implements IEvent.AssignString
+        Data.Strings(identifier) = value
+    End Sub
+
+    Public Function GetString(identifier As EventString) As String Implements IEvent.GetString
+        If Not Data.Strings.ContainsKey(identifier) Then
+            Return Nothing
+        End If
+        Return Data.Strings(identifier)
     End Function
 End Class

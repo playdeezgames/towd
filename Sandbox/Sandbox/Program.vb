@@ -131,26 +131,22 @@ Module Program
     Private Sub ProcessGiveMoney(eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, properties As Dictionary(Of String, String))
         eventTable(eventId).Item2.EventType = EventType.GiveMoney
         eventTable(eventId).Item2.AssignInteger(EventInteger.Amount, CInt(properties(AmountText)))
-
-        eventTable(eventId).Item1.EventType = EventType.GiveMoney
-        eventTable(eventId).Item1.Integers(EventInteger.Amount) = CInt(properties(AmountText))
         AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
     End Sub
     Const OnBumpText = "OnBump"
     Const OnEnterText = "OnEnter"
 
     Private Sub ProcessTrigger(cellWidth As Integer, cellHeight As Integer, ByRef map As IMap, ByRef eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, obj As TileObject, properties As Dictionary(Of String, String))
-        eventTable(eventId).Item1.EventType = EventType.Trigger
+        eventTable(eventId).Item2.EventType = EventType.Trigger
         AssignLink(eventTable, eventId, properties, OnBumpText, LinkType.OnBump)
         AssignLink(eventTable, eventId, properties, OnEnterText, LinkType.OnEnter)
         Dim column = CInt(obj.X) \ cellWidth
         Dim row = CInt(obj.Y) \ cellHeight - 1
-        map.GetCell(column, row).TriggerData = eventTable(eventId).Item1
+        map.GetCell(column, row).Trigger = eventTable(eventId).Item2
     End Sub
 
     Private Sub AssignLink(eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, properties As Dictionary(Of String, String), propertyName As String, linkType As LinkType)
         If properties(propertyName) <> NullObject Then
-            eventTable(eventId).Item1.Links(linkType) = eventTable(CInt(properties(propertyName))).Item1
             eventTable(eventId).Item2.AssignLink(linkType, eventTable(CInt(properties(propertyName))).Item2)
         End If
     End Sub
@@ -158,9 +154,9 @@ Module Program
     Const ItemTypeText = "ItemType"
     Const ItemCountText = "ItemCount"
     Private Sub ProcessGiveItem(eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, properties As Dictionary(Of String, String))
-        eventTable(eventId).Item1.EventType = EventType.GiveItem
-        eventTable(eventId).Item1.Strings(EventString.ItemType) = properties(ItemTypeText)
-        eventTable(eventId).Item1.Integers(EventInteger.ItemCount) = CInt(properties(ItemCountText))
+        eventTable(eventId).Item2.EventType = EventType.GiveItem
+        eventTable(eventId).Item2.AssignString(EventString.ItemType, properties(ItemTypeText))
+        eventTable(eventId).Item2.AssignInteger(EventInteger.ItemCount, CInt(properties(ItemCountText)))
         AssignLink(eventTable, eventId, properties, NextEventText, LinkType.NextEvent)
     End Sub
 
