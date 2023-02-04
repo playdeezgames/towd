@@ -12,4 +12,13 @@
             Return _worldData.Maps(_mapName)
         End Get
     End Property
+
+    Public Sub SetSize(columns As Integer, rows As Integer) Implements IMap.SetSize
+        Data.Columns = columns
+        Data.Rows = rows
+        Data.Cells.Clear()
+        While Data.Cells.Count < Data.Columns * Data.Rows
+            Data.Cells.Add(New MapCellData)
+        End While
+    End Sub
 End Class

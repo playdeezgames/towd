@@ -37,9 +37,7 @@ Module Program
     End Function
 
     Private Sub InitializeMap(map As IMap, fromMap As TiledLib.Map)
-        map.Data.Columns = fromMap.Width
-        map.Data.Rows = fromMap.Height
-        map.Data.Cells.Clear()
+        map.SetSize(fromMap.Width, fromMap.Height)
     End Sub
 
     Private Sub ProcessLayers(map As IMap, tileTable As Dictionary(Of Integer, (ITileset, Integer)), fromMap As TiledLib.Map)
