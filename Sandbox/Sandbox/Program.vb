@@ -148,6 +148,7 @@ Module Program
     Private Sub AssignLink(eventTable As Dictionary(Of Integer, (EventData, IEvent)), eventId As Integer, properties As Dictionary(Of String, String), propertyName As String, linkType As LinkType)
         If properties(propertyName) <> NullObject Then
             eventTable(eventId).Item1.Links(linkType) = eventTable(CInt(properties(propertyName))).Item1
+            eventTable(eventId).Item2.AssignLink(linkType, eventTable(CInt(properties(propertyName))).Item2)
         End If
     End Sub
 
