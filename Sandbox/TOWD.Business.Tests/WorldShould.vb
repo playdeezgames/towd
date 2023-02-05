@@ -4,6 +4,7 @@ Public Class WorldShould
         Dim subject As IWorld = New World()
         subject.ShouldNotBeNull
         subject.Maps.ShouldBeEmpty
+        subject.Avatar.ShouldBeNull
     End Sub
     <Fact>
     Public Sub create_a_map()

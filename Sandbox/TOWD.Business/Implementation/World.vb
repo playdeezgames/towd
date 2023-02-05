@@ -14,6 +14,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property Avatar As IAvatar Implements IWorld.Avatar
+        Get
+            Return Nothing
+        End Get
+    End Property
+
     Public Function CreateMap(name As String) As IMap Implements IWorld.CreateMap
         _worldData.Maps(name) = New MapData
         Return New Map(_worldData, name)
