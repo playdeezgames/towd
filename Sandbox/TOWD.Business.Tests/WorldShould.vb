@@ -26,6 +26,17 @@ Public Class WorldShould
         Dim subject = world.Serialize()
         subject.ShouldNotBeNull()
     End Sub
+    <Fact>
+    Public Sub create_avatar()
+        Const MapName = "one"
+        Const MapColumn = 2
+        Const MapRow = 3
+        Dim subject As IWorld = New World
+        subject.CreateAvatar(MapName, MapColumn, MapRow)
+        subject.Avatar.MapName.ShouldBe(MapName)
+        subject.Avatar.MapColumn.ShouldBe(MapColumn)
+        subject.Avatar.MapRow.ShouldBe(MapRow)
+    End Sub
 End Class
 
 

@@ -48,4 +48,11 @@ Public Class MapShould
         Dim subject = world.CreateMap(MapName)
         subject.World.ShouldNotBeNull
     End Sub
+    <Fact>
+    Public Sub have_a_name()
+        Const MapName = "one"
+        Dim world As IWorld = New World
+        Dim subject = world.CreateMap(MapName)
+        subject.Name.ShouldBe(MapName)
+    End Sub
 End Class

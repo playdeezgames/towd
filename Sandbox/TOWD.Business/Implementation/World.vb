@@ -16,9 +16,21 @@
 
     Public ReadOnly Property Avatar As IAvatar Implements IWorld.Avatar
         Get
-            Return Nothing
+            If _worldData.Avatar Is Nothing Then
+                Return Nothing
+            End If
+            Return New Avatar(_worldData)
         End Get
     End Property
+
+    Public Sub CreateAvatar(name As String, column As Integer, row As Integer) Implements IWorld.CreateAvatar
+        _worldData.Avatar = New AvatarData With
+            {
+                .MapColumn = column,
+                .MapName = name,
+                .MapRow = row
+            }
+    End Sub
 
     Public Function CreateMap(name As String) As IMap Implements IWorld.CreateMap
         _worldData.Maps(name) = New MapData

@@ -115,6 +115,7 @@ Module Program
         Dim cell = map.GetCell(column, row)
         Dim creature = cell.CreateCreature()
         creature.CreatureType = CType(properties(CreatureTypeText), CreatureType)
+        map.World.CreateAvatar(map.Name, column, row)
     End Sub
 
     Const NextEventText = "NextEvent"

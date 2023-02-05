@@ -43,6 +43,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property Name As String Implements IMap.Name
+        Get
+            Return _mapName
+        End Get
+    End Property
+
     Public Sub SetSize(columns As Integer, rows As Integer) Implements IMap.SetSize
         Data.Columns = columns
         Data.Rows = rows
