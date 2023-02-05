@@ -58,14 +58,6 @@ Module Program
     End Sub
     Const EventTypeText = "EventType"
     Const MessageText = "Message"
-    Const TeleportText = "Teleport"
-    Const CheckFlagText = "CheckFlag"
-    Const SetFlagText = "SetFlag"
-    Const GiveItemText = "GiveItem"
-    Const TriggerText = "Trigger"
-    Const PCText = "PC"
-    Const NPCText = "NPC"
-    Const GiveMoneyText = "GiveMoney"
 
     Private Sub ProcessObjectGroup(l As ObjectLayer, tileTable As Dictionary(Of Integer, (ITileset, Integer)), cellWidth As Integer, cellHeight As Integer, map As IMap)
         Dim objectTable = l.Objects.ToDictionary(Function(x) x.Id, Function(x) DirectCast(x, TileObject))
