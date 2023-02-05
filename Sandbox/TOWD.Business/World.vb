@@ -24,4 +24,8 @@
         _worldData.Events.Add(New EventData)
         Return New EventInstance(_worldData, index)
     End Function
+
+    Public Function Serialize() As String Implements IWorld.Serialize
+        Return JsonSerializer.Serialize(_worldData)
+    End Function
 End Class

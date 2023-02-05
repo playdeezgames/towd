@@ -13,7 +13,7 @@ Module Program
         ProcessFile("E:\GIT\towd\Maps\Quotidian.tmx", world)
         ProcessFile("E:\GIT\towd\Maps\World.tmx", world)
         ProcessFile("E:\GIT\towd\Maps\Garrison.tmx", world)
-        'TODO: save the world
+        File.WriteAllText("output.json", world.Serialize())
     End Sub
     Const NameText = "Name"
     Private Sub ProcessFile(inputFilename As String, world As IWorld)
