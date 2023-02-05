@@ -473,7 +473,7 @@
  </tile>
  <tile id="94">
   <properties>
-   <property name="TerrainType" type="int" propertytype="TerrainType" value="95"/>
+   <property name="TerrainType" type="int" propertytype="TerrainType" value="0"/>
   </properties>
  </tile>
  <tile id="95">
