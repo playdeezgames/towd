@@ -75,24 +75,24 @@ Module Program
             Dim obj = entry.Value
             Dim tile = tileTable(obj.Gid)
             Dim properties As Dictionary(Of String, String) = GetObjectProperties(obj, tile)
-            Select Case properties(EventTypeText)
-                Case MessageText
+            Select Case CType(properties(EventTypeText), EventType)
+                Case EventType.Message
                     ProcessMessage(eventTable, eventId, properties)
-                Case TeleportText
+                Case EventType.Teleport
                     ProcessTeleport(eventTable, eventId, properties)
-                Case CheckFlagText
+                Case EventType.CheckFlag
                     ProcessCheckFlag(eventTable, eventId, properties)
-                Case SetFlagText
+                Case EventType.SetFlag
                     ProcessSetFlag(eventTable, eventId, properties)
-                Case GiveItemText
+                Case EventType.GiveItem
                     ProcessGiveItem(eventTable, eventId, properties)
-                Case TriggerText
+                Case EventType.Trigger
                     ProcessTrigger(cellWidth, cellHeight, map, eventTable, eventId, obj, properties)
-                Case PCText
+                Case EventType.PC
                     ProcessPC(cellWidth, cellHeight, map, obj, properties)
-                Case GiveMoneyText
+                Case EventType.GiveMoney
                     ProcessGiveMoney(eventTable, eventId, properties)
-                Case NPCText
+                Case EventType.NPC
                     ProcessNPC(cellWidth, cellHeight, map, eventTable, eventId, obj, properties)
                 Case Else
                     Throw New NotImplementedException

@@ -3,7 +3,14 @@
     Teleport
     CheckFlag
     SetFlag
+    ClearFlag
     GiveItem
-    Trigger
+    TakeItem
     GiveMoney
+    TakeMoney
+    NPC
+    PC
+    Dialog
+    CheckItemQuantity
+    Trigger
 End Enum

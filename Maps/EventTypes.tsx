@@ -3,21 +3,21 @@
  <image source="EventTypes.png" width="64" height="128"/>
  <tile id="1">
   <properties>
-   <property name="EventType" value="Trigger"/>
+   <property name="EventType" type="int" propertytype="EventType" value="13"/>
    <property name="OnBump" type="object" value="0"/>
    <property name="OnEnter" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="2">
   <properties>
-   <property name="EventType" propertytype="EventType" value="Message"/>
+   <property name="EventType" type="int" propertytype="EventType" value="0"/>
    <property name="Message" value=""/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="3">
   <properties>
-   <property name="EventType" propertytype="EventType" value="Teleport"/>
+   <property name="EventType" type="int" propertytype="EventType" value="1"/>
    <property name="NextEvent" type="object" value="0"/>
    <property name="ToMap" value=""/>
    <property name="ToX" type="int" value="0"/>
@@ -26,7 +26,7 @@
  </tile>
  <tile id="4">
   <properties>
-   <property name="EventType" propertytype="EventType" value="CheckFlag"/>
+   <property name="EventType" type="int" propertytype="EventType" value="2"/>
    <property name="FlagType" propertytype="FlagType" value="InnRatQuestGiven"/>
    <property name="WhenClear" type="object" value="0"/>
    <property name="WhenSet" type="object" value="0"/>
@@ -34,51 +34,51 @@
  </tile>
  <tile id="5">
   <properties>
-   <property name="EventType" propertytype="EventType" value="SetFlag"/>
+   <property name="EventType" type="int" propertytype="EventType" value="3"/>
    <property name="FlagType" propertytype="FlagType" value="InnRatQuestGiven"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="6">
   <properties>
-   <property name="EventType" propertytype="EventType" value="ClearFlag"/>
+   <property name="EventType" type="int" propertytype="EventType" value="4"/>
    <property name="FlagType" propertytype="FlagType" value="InnRatQuestGiven"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="7">
   <properties>
-   <property name="EventType" propertytype="EventType" value="GiveItem"/>
+   <property name="EventType" type="int" propertytype="EventType" value="5"/>
    <property name="ItemCount" type="int" value="0"/>
-   <property name="ItemType" propertytype="ItemType" value="RustyDagger"/>
+   <property name="ItemType" type="int" propertytype="ItemType" value="0"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="8">
   <properties>
-   <property name="EventType" propertytype="EventType" value="TakeItem"/>
+   <property name="EventType" type="int" propertytype="EventType" value="6"/>
    <property name="ItemCount" type="int" value="0"/>
-   <property name="ItemType" propertytype="ItemType" value="RustyDagger"/>
+   <property name="ItemType" type="int" propertytype="ItemType" value="0"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="9">
   <properties>
    <property name="Amount" type="int" value="0"/>
-   <property name="EventType" propertytype="EventType" value="GiveMoney"/>
+   <property name="EventType" type="int" propertytype="EventType" value="7"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="10">
   <properties>
    <property name="Amount" type="int" value="0"/>
-   <property name="EventType" propertytype="EventType" value="TakeMoney"/>
+   <property name="EventType" type="int" propertytype="EventType" value="8"/>
    <property name="NextEvent" type="object" value="0"/>
   </properties>
  </tile>
  <tile id="11">
   <properties>
-   <property name="EventType" propertytype="EventType" value="Dialog"/>
+   <property name="EventType" type="int" propertytype="EventType" value="11"/>
    <property name="Message" value=""/>
    <property name="OnOption1" type="object" value="0"/>
    <property name="OnOption2" type="object" value="0"/>
@@ -92,9 +92,9 @@
  </tile>
  <tile id="12">
   <properties>
-   <property name="EventType" propertytype="EventType" value="CheckItemQuantity"/>
+   <property name="EventType" type="int" propertytype="EventType" value="12"/>
    <property name="ItemCount" type="int" value="0"/>
-   <property name="ItemType" propertytype="ItemType" value="RustyDagger"/>
+   <property name="ItemType" type="int" propertytype="ItemType" value="0"/>
    <property name="WhenMet" type="object" value="0"/>
    <property name="WhenUnmet" type="object" value="0"/>
   </properties>

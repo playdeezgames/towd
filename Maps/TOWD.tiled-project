@@ -20,7 +20,7 @@
         {
             "id": 1,
             "name": "EventType",
-            "storageType": "string",
+            "storageType": "int",
             "type": "enum",
             "values": [
                 "Message",
@@ -35,7 +35,8 @@
                 "NPC",
                 "PC",
                 "Dialog",
-                "CheckItemQuantity"
+                "CheckItemQuantity",
+                "Trigger"
             ],
             "valuesAsFlags": false
         },

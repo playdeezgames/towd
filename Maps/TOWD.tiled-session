@@ -111,7 +111,7 @@
         "Inn.tmx"
     ],
     "project": "TOWD.tiled-project",
-    "property.type": "TerrainType",
+    "property.type": "EventType",
     "recentFiles": [
         "Items.tsx",
         "Terrain.tsx",
