@@ -1,13 +1,9 @@
 local grimoire = require "game.grimoire"
 local M = {}
 M.HERO = "HERO"
-M.DRUID = "DRUID"
 local data = {
     [M.HERO] = {
         tile = grimoire.TILE_HERO
-    },
-    [M.DRUID] = {
-        tile = grimoire.TILE_DRUID
     }
 }
 local function get_descriptor(character_type_id)

@@ -1,30 +1,6 @@
 local grimoire = require "game.grimoire"
 local M = {}
-M.PINE = "PINE"
-M.WELL = "WELL"
-M.PORTAL = "PORTAL"
-M.WOOD_BUYER = "WOOD_BUYER"
-M.SIGN = "SIGN"
-M.STRENGTH_TRAINER = "STRENGTH_TRAINER"
 local data = {
-    [M.PINE]={
-        tile = grimoire.TILE_PINE
-    },
-    [M.WELL]={
-        tile = grimoire.TILE_WELL
-    },
-    [M.PORTAL]={
-        tile = grimoire.TILE_PORTAL
-    },
-    [M.WOOD_BUYER] = {
-        tile = grimoire.TILE_WOOD_BUYER
-    },
-    [M.SIGN] = {
-        tile = grimoire.TILE_SIGN
-    },
-    [M.STRENGTH_TRAINER] = {
-        tile = grimoire.TILE_STRENGTH_TRAINER
-    }
 }
 local function get_descriptor(feature_type_id)
     assert(type(feature_type_id)=="string", "feature_type_id should be a string")
