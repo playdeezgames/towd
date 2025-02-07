@@ -1,9 +1,9 @@
 local M = {}
 
-function M.new(caption, metadata)
+function M.new(caption, predicate)
     local instance = {
         caption = caption,
-        metadata = metadata
+        predicate = predicate
     }
     return instance
 end

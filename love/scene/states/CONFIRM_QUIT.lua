@@ -5,7 +5,7 @@ local menu = require "gfx.menu"
 local menu_item = require "gfx.menu_item"
 local gamestates = require "game.gamestates"
 local M = {}
-local main_menu = {}
+local confirm_menu = {}
 function M.set_state(_)
     assert(false, "set_state did not get set by the state machine")
 end
@@ -14,21 +14,22 @@ end
 function M.update()
     love.graphics.setBackgroundColor(colors.WHITE)
     love.graphics.clear()
-    main_menu:draw()
-end
-local function handle_embark()
-end
-local function handle_quit()
-    M.set_state(gamestates.CONFIRM_QUIT)
+    confirm_menu:draw()
 end
 function M.handle_command(command, isrepeat)
-    main_menu:handle_command(command, isrepeat)
+    confirm_menu:handle_command(command, isrepeat)
+end
+local function handle_no()
+    M.set_state(gamestates.TITLE)
+end
+local function handle_yes()
+    love.event.quit()
 end
 function M.start()
-    main_menu = menu.new("Main Menu",{
-        menu_item.new("Embark!", handle_embark),
-        menu_item.new("Quit", handle_quit)
-    },handle_quit, 0, 0, grimoire.VIEW_WIDTH, grimoire.VIEW_HEIGHT, gfx.get_font(grimoire.FONT5X7))
+    confirm_menu = menu.new("Confirm quit?",{
+        menu_item.new("No", handle_no),
+        menu_item.new("Yes", handle_yes)
+    },handle_no, 0, 0, grimoire.VIEW_WIDTH, grimoire.VIEW_HEIGHT, gfx.get_font(grimoire.FONT5X7))
 end
 function M.finish()
 end

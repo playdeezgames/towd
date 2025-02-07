@@ -1,7 +1,8 @@
 local colors = require "game.colors"
+local grimoire = require "game.grimoire"
 local M = {}
 
-function M.new(caption, items, x, y, width, height, font)
+function M.new(caption, items, cancel_predicate, x, y, width, height, font)
     local instance = {
         caption = caption,
         x = x,
@@ -10,7 +11,8 @@ function M.new(caption, items, x, y, width, height, font)
         height = height,
         font = font,
         items = items,
-        item_index = 1
+        item_index = 1,
+        cancel_predicate = cancel_predicate
     }
     function instance:draw()
         local line_height = self.font.cell_height
@@ -44,6 +46,20 @@ function M.new(caption, items, x, y, width, height, font)
             self.item_index = #self.items
         else
             self.item_index = self.item_index - 1
+        end
+    end
+    function instance:get_current_item()
+        return self.items[self.item_index]
+    end
+    function instance:handle_command(command, isrepeat)
+        if command == grimoire.COMMAND_UP then
+            self:previous_item()
+        elseif command == grimoire.COMMAND_DOWN or command == grimoire.COMMAND_YELLOW then
+            self:next_item()
+        elseif command == grimoire.COMMAND_GREEN or command == grimoire.COMMAND_BLUE then
+            self:get_current_item().predicate()
+        elseif command == grimoire.COMMAND_RED then
+            self.cancel_predicate()
         end
     end
     return instance
