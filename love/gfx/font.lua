@@ -7,6 +7,7 @@ local STARTING_CHARACTER = 32
 function M.new(filename)
     local instance = {}
     instance.image = love.graphics.newImage(filename)
+    instance.image:setFilter("nearest","nearest")
     instance.quads = {}
     instance.cell_width = instance.image:getWidth() / COLUMNS
     instance.cell_height = instance.image:getHeight() / ROWS
@@ -35,6 +36,12 @@ function M.new(filename)
     end
     function instance:draw_text_centered(text, x, y, color)
         self:draw_text(text, x - #text * self.cell_width / 2, y, color)
+    end
+    function instance:get_cell_width()
+        return self.cell_width
+    end
+    function instance:get_cell_height()
+        return self.cell_height
     end
     return instance
 end
