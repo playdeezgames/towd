@@ -22,13 +22,13 @@ end
 local function handle_no()
     M.set_state(gamestates.TITLE)
 end
-local function handle_yes()
-    love.event.quit()
+local function handle_hell_no()
+    confirm_menu:set_current_item_index(1)
 end
 function M.start()
     confirm_menu = menu.new("Confirm quit?",{
         menu_item.new("No", handle_no),
-        menu_item.new("Yes", handle_yes)
+        menu_item.new("Hell No", handle_hell_no)
     },handle_no, 0, 0, grimoire.VIEW_WIDTH, grimoire.VIEW_HEIGHT, gfx.get_font(grimoire.FONT5X7))
 end
 function M.finish()

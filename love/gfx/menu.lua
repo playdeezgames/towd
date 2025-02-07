@@ -62,6 +62,9 @@ function M.new(caption, items, cancel_predicate, x, y, width, height, font)
             self.cancel_predicate()
         end
     end
+    function instance:set_current_item_index(index)
+        self.item_index = index
+    end
     return instance
 end
 

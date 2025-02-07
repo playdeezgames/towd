@@ -1,10 +1,50 @@
 local grimoire = require "game.grimoire"
 local M = {}
 M.BLANK = "BLANK"
+M.NORTH_WALL = "NORTH_WALL"
+M.EAST_WALL = "EAST_WALL"
+M.SOUTH_WALL = "SOUTH_WALL"
+M.WEST_WALL = "WEST_WALL"
+M.NORTHEAST_INSIDE_CORNER = "NORTHEAST_INSIDE_CORNER"
+M.SOUTHEAST_INSIDE_CORNER = "SOUTHEAST_INSIDE_CORNER"
+M.SOUTHWEST_INSIDE_CORNER = "SOUTHWEST_INSIDE_CORNER"
+M.NORTHWEST_INSIDE_CORNER = "NORTHWEST_INSIDE_CORNER"
 local data = {
     [M.BLANK] = {
         tile = grimoire.TILE_BLANK,
         blocking = false
+    },
+    [M.NORTH_WALL] = {
+        tile = grimoire.TILE_NORTH_WALL,
+        blocking = true
+    },
+    [M.EAST_WALL] = {
+        tile = grimoire.TILE_EAST_WALL,
+        blocking = true
+    },
+    [M.SOUTH_WALL] = {
+        tile = grimoire.TILE_SOUTH_WALL,
+        blocking = true
+    },
+    [M.WEST_WALL] = {
+        tile = grimoire.TILE_WEST_WALL,
+        blocking = true
+    },
+    [M.NORTHEAST_INSIDE_CORNER] = {
+        tile = grimoire.TILE_NORTHEAST_INSIDE_CORNER,
+        blocking = true
+    },
+    [M.SOUTHEAST_INSIDE_CORNER] = {
+        tile = grimoire.TILE_SOUTHEAST_INSIDE_CORNER,
+        blocking = true
+    },
+    [M.SOUTHWEST_INSIDE_CORNER] = {
+        tile = grimoire.TILE_SOUTHWEST_INSIDE_CORNER,
+        blocking = true
+    },
+    [M.NORTHWEST_INSIDE_CORNER] = {
+        tile = grimoire.TILE_NORTHWEST_INSIDE_CORNER,
+        blocking = true
     }
 }
 local function get_descriptor(room_cell_type_id)

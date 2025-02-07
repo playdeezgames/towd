@@ -4,6 +4,7 @@ local grimoire = require "game.grimoire"
 local menu = require "gfx.menu"
 local menu_item = require "gfx.menu_item"
 local gamestates = require "game.gamestates"
+local world_initializer = require "world.initializers.world"
 local M = {}
 local main_menu = {}
 function M.set_state(_)
@@ -17,6 +18,8 @@ function M.update()
     main_menu:draw()
 end
 local function handle_embark()
+    world_initializer.initialize()
+    M.set_state(gamestates.IN_PLAY)
 end
 local function handle_quit()
     M.set_state(gamestates.CONFIRM_QUIT)

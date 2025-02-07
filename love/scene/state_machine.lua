@@ -2,7 +2,8 @@ local gamestates = require "game.gamestates"
 local M = {}
 local states = {
     [gamestates.TITLE] = require "scene.states.TITLE",
-    [gamestates.CONFIRM_QUIT] = require "scene.states.CONFIRM_QUIT"
+    [gamestates.CONFIRM_QUIT] = require "scene.states.CONFIRM_QUIT",
+    [gamestates.IN_PLAY] = require "scene.states.IN_PLAY"
 }
 local current = nil
 function M.load()
