@@ -2,6 +2,9 @@ local feature_type = require "world.feature_type"
 local world = require "world.world"
 local M = {}
 world.data.features = {}
+function world.get_features()
+	return M
+end
 local function get_feature_data(feature_id)
     return world.data.features[feature_id]
 end
@@ -18,6 +21,7 @@ function M.initialize(feature_id, feature_type_id)
 end
 function M.create(feature_type_id)
     assert(type(feature_type_id)=="string", "feature_type_id should be a string")
+    --TODO: look for a recycled feature first
     local feature_id = #world.data.features + 1
     M.initialize(feature_id, feature_type_id)
     return feature_id

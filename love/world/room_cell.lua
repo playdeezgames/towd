@@ -2,7 +2,9 @@ local room_cell_type = require "world.room_cell_type"
 local world = require "world.world"
 local M = {}
 world.data.room_cells = {}
-local describer = nil
+function world.get_room_cells()
+	return M
+end
 local function get_room_cell_data(room_cell_id)
     return world.data.room_cells[room_cell_id]
 end
@@ -20,6 +22,7 @@ function M.initialize(room_cell_id, room_cell_type_id, room_id, column, row)
 end
 function M.create(room_cell_type_id, room_id, column, row)
     assert(type(room_cell_type_id)=="string", "room_cell_type_id should be a string")
+    --TODO: look for a recycled room cell first
     local room_cell_id = #world.data.room_cells + 1
     M.initialize(room_cell_id, room_cell_type_id, room_id, column, row)
     return room_cell_id
@@ -81,14 +84,5 @@ function M.can_enter(room_cell_id)
     local room_cell_type_id = M.get_room_cell_type(room_cell_id)
     if room_cell_type.get_blocking(room_cell_type_id) then return false end
     return true
-end
-function M.get_description(room_cell_id)
-    if room_cell_id == nil then return "" end
-    if describer == nil then return "" end
-    return describer(room_cell_id)
-end
-function M.set_describer(new_describer)
-    assert(type(describer)=="function" or type(describer)=="nil", "describer must be a function or nil")
-    describer = new_describer
 end
 return M

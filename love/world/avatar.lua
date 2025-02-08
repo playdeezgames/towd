@@ -3,8 +3,14 @@ local interaction_type = require "world.interaction_type"
 local character = require "world.character"
 local M = {}
 world.data.avatar = {}
+function world.get_avatar()
+	return M
+end
 local function get_avatar_data()
     return world.data.avatar
+end
+function M.abandon()
+	print("abandon avatar")
 end
 function M.get_character()
     return get_avatar_data().character_id

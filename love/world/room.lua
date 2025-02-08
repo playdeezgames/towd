@@ -5,7 +5,9 @@ local feature = require "world.feature"
 local character = require "world.character"
 local M = {}
 world.data.rooms = {}
-
+function world.get_rooms()
+	return M
+end
 local function get_room_data(room_id)
     return world.data.rooms[room_id]
 end
@@ -17,6 +19,7 @@ function M.initialize(room_id)
     end
 end
 function M.create(room_type_id, columns, rows)
+    --TODO: look for a recycled room first
     local room_id = #world.data.rooms + 1
     world.data.rooms[room_id]={
         room_type_id = room_type_id,

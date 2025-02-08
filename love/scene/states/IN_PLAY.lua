@@ -9,6 +9,7 @@ local room_cell_type = require "world.room_cell_type"
 local character_type = require "world.character_type"
 local verb_type      = require "world.verb_type"
 local directions     = require "game.directions"
+local gamestates     = require "game.gamestates"
 
 local M = {}
 function M.set_state(_)
@@ -51,6 +52,8 @@ function M.handle_command(command, isrepeat)
         character.do_verb(avatar.get_character(), verb_type.MOVE, {direction_id = directions.WEST})
     elseif command == grimoire.COMMAND_RIGHT then
         character.do_verb(avatar.get_character(), verb_type.MOVE, {direction_id = directions.EAST})
+    elseif command == grimoire.COMMAND_RED then
+        M.set_state(gamestates.GAME_MENU)
     end
 end
 function M.start()

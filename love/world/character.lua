@@ -3,6 +3,9 @@ local character_type = require "world.character_type"
 local world = require "world.world"
 local M = {}
 world.data.characters = {}
+function world.get_characters()
+	return M
+end
 local function get_character_data(character_id)
     assert(type(character_id)=="number", "character_id must be a number.")
     return world.data.characters[character_id]
@@ -20,6 +23,7 @@ end
 function M.create(character_type_id, room_cell_id)
     assert(type(character_type_id)=="string", "character_type_id must be a string.")
     assert(type(room_cell_id)=="number", "room_cell_id must be a number")
+    --TODO: look for a recycled character first
     local character_id = #world.data.characters + 1
     M.initialize(character_id, character_type_id, room_cell_id)
     return character_id

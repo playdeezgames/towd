@@ -2,4 +2,5 @@ local M = {}
 M.TITLE = "TITLE"
 M.CONFIRM_QUIT = "CONFIRM_QUIT"
 M.IN_PLAY = "IN_PLAY"
+M.GAME_MENU = "GAME_MENU"
 return M
