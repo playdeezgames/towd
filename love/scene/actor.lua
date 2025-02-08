@@ -42,18 +42,25 @@ function M.new(parent)
             self:on_draw()
         end
         for _, child in ipairs(self.children) do
-            child:on_draw()
+            child:draw()
         end
     end
     function instance:quit()
-        return false
+        local result = false
+        if self.on_quit ~= nil then
+            result = result or self:on_quit()
+        end
+        for _, child in ipairs(self.children) do
+            result = result or child:quit()
+        end
+        return result
     end
     function instance:keypressed(key, scancode, isrepeat)
         if self.on_keypressed ~= nil then
             self:on_keypressed(key, scancode, isrepeat)
         end
         for _, child in ipairs(self.children) do
-            child:on_keypressed(key, scancode, isrepeat)
+            child:keypressed(key, scancode, isrepeat)
         end
     end
     function instance:keyreleased(key, scancode)
@@ -61,7 +68,15 @@ function M.new(parent)
             self:on_keyreleased(key, scancode)
         end
         for _, child in ipairs(self.children) do
-            child:on_keypressed(key, scancode)
+            child:keyreleased(key, scancode)
+        end
+    end
+    function instance:load()
+        if self.on_load ~= nil then
+            self:on_load()
+        end
+        for _, child in ipairs(self.children) do
+            child:on_load()
         end
     end
     instance:set_parent(parent)

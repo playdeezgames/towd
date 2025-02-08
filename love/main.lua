@@ -7,6 +7,7 @@ local root = nil
 function love.load(arg)
   love.keyboard.setKeyRepeat(true)
   root = stage.new()
+  root:load()
 end
 
 function love.update(dt)
