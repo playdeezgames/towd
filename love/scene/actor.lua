@@ -2,8 +2,24 @@ local M = {}
 
 function M.new(parent)
     local instance = {
-        children={}
+        children={},
+        enabled = true
     }
+    function instance:set_enabled(enabled)
+        self.enabled = enabled
+    end
+    function instance:is_enabled()
+        return self.enabled
+    end
+    function instance:enable()
+        self:set_enabled(true)
+    end
+    function instance:disable()
+        self:set_enabled(false)
+    end
+    function instance:toggle_enabled()
+        self:set_enabled(not self:is_enabled())
+    end
     function instance:get_parent()
         return self.parent
     end
@@ -18,7 +34,7 @@ function M.new(parent)
     end
     function instance:add_child(child)
         self:remove_child(child)
-        table.insert(self.children)
+        table.insert(self.children, child)
     end
     function instance:remove_child(child)
         local index = 1
@@ -30,6 +46,9 @@ function M.new(parent)
         end
     end
     function instance:update(dt)
+        if not self:is_enabled() then
+            return
+        end
         if self.on_update ~= nil then
             self:on_update(dt)
         end
@@ -38,6 +57,9 @@ function M.new(parent)
         end
     end
     function instance:draw()
+        if not self:is_enabled() then
+            return
+        end
         if self.on_draw ~= nil then
             self:on_draw()
         end
@@ -47,15 +69,20 @@ function M.new(parent)
     end
     function instance:quit()
         local result = false
-        if self.on_quit ~= nil then
-            result = result or self:on_quit()
-        end
-        for _, child in ipairs(self.children) do
-            result = result or child:quit()
+        if self:is_enabled() then
+            if self.on_quit ~= nil then
+                result = result or self:on_quit()
+            end
+            for _, child in ipairs(self.children) do
+                result = result or child:quit()
+            end
         end
         return result
     end
     function instance:keypressed(key, scancode, isrepeat)
+        if not self:is_enabled() then
+            return
+        end
         if self.on_keypressed ~= nil then
             self:on_keypressed(key, scancode, isrepeat)
         end
@@ -64,6 +91,9 @@ function M.new(parent)
         end
     end
     function instance:keyreleased(key, scancode)
+        if not self:is_enabled() then
+            return
+        end
         if self.on_keyreleased ~= nil then
             self:on_keyreleased(key, scancode)
         end
@@ -76,7 +106,7 @@ function M.new(parent)
             self:on_load()
         end
         for _, child in ipairs(self.children) do
-            child:on_load()
+            child:load()
         end
     end
     instance:set_parent(parent)
