@@ -2,7 +2,18 @@ local stage = require "scene.stage"
 local states = require "game.states"
 local splash_state = require "game.splash_state"
 local main_menu_state = require "game.main_menu_state"
+local commands = require "game.commands"
 local M = {}
+local command_table = {
+    ["return"] = commands.BLUE,
+    down = commands.DOWN,
+    space = commands.GREEN,
+    left = commands.LEFT,
+    escape = commands.RED,
+    right = commands.RIGHT,
+    up = commands.UP,
+    tab = commands.YELLOW
+}
 function M.new()
     local instance = stage.new()
     instance.states = {
@@ -26,6 +37,12 @@ function M.new()
     end
     function instance:on_draw()
         love.graphics.clear()
+    end
+    function instance:on_keypressed(key, scancode, isrepeat)
+        local which = command_table[key]
+        if which ~= nil then
+            instance:get_current_state():handle_command(which)
+        end
     end
     instance:set_state(states.SPLASH)
     return instance

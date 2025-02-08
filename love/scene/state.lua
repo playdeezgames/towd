@@ -14,6 +14,14 @@ function M.new(parent)
             self:on_finish()
         end
     end
+    function instance:handle_command(command)
+        if not self:is_enabled() then
+            return
+        end
+        if self.on_command ~= nil then
+            self:on_command(command)
+        end
+    end
     instance:disable()
     return instance
 end
