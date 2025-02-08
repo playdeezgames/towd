@@ -1,1 +1,0 @@
-require "world.initializers.room_type.START"
