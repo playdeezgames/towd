@@ -10,12 +10,14 @@ function M.new(parent)
     local EMBARK_TEXT = "Embark!"
     local LOAD_TEXT = "Load..."
     local OPTIONS_TEXT = "Options..."
+    local ABOUT_TEXT = "About..."
     local QUIT_TEXT = "Quit"
     local MAIN_MENU_TEXT = "Main Menu:"
     instance.menu_items = {
         EMBARK_TEXT,
         LOAD_TEXT,
         OPTIONS_TEXT,
+        ABOUT_TEXT,
         QUIT_TEXT
     }
     instance.menu_item_index = 1
@@ -24,14 +26,14 @@ function M.new(parent)
         local view_size = gfx.get_size()
         local font_height = font:get_height()
         local y = math.floor(view_size.height / 2 - font_height * (1 + #self.menu_items) / 2)
-        font:write_centered(MAIN_MENU_TEXT, view_size.width, y, hues.WHITE)
+        font:write_centered(MAIN_MENU_TEXT, view_size.width/2, y, hues.WHITE)
         y = y + font_height
         for index, menu_item in ipairs(self.menu_items) do
             local hue = hues.BLUE
             if index == self.menu_item_index then
                 hue = hues.LIGHT_BLUE
             end
-            font:write_centered(menu_item, view_size.width, y, hue)
+            font:write_centered(menu_item, view_size.width/2, y, hue)
             y = y + font_height
         end
     end
