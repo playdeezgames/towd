@@ -37,6 +37,16 @@ function M.new(parent)
             y = y + font_height
         end
     end
+    function instance:handle_menu_item(menu_item)
+        if self.on_menu_item ~= nil then
+            self:on_menu_item(menu_item)
+        end
+    end
+    function instance:handle_cancel()
+        if self.on_cancel ~= nil then
+            self:on_cancel()
+        end
+    end
     function instance:on_command(command)
         if command == commands.UP then
             if self.menu_item_index == 1 then
@@ -51,9 +61,9 @@ function M.new(parent)
                 self.menu_item_index = self.menu_item_index + 1
             end
         elseif command == commands.GREEN or command == commands.BLUE then
-            local menu_item = self.menu_items[self.menu_item_index]
-            
+            self:handle_menu_item(self.menu_items[self.menu_item_index])
         elseif command == commands.RED then
+            self:handle_cancel()
         end
     end
     return instance
