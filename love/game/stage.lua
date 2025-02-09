@@ -3,6 +3,9 @@ local states = require "game.states"
 local splash_state = require "game.splash_state"
 local main_menu_state = require "game.main_menu_state"
 local commands = require "game.commands"
+local gfx = require "gfx.gfx"
+local hues= require "gfx.hues"
+local fonts = require "gfx.fonts"
 local M = {}
 local command_table = {
     ["return"] = commands.BLUE,
@@ -36,13 +39,16 @@ function M.new()
         end
     end
     function instance:on_draw()
-        love.graphics.clear()
+        gfx.clear(hues.BLACK)
     end
     function instance:on_keypressed(key, scancode, isrepeat)
         local which = command_table[key]
         if which ~= nil then
             instance:get_current_state():handle_command(which)
         end
+    end
+    function instance:on_load()
+        fonts.load()
     end
     instance:set_state(states.SPLASH)
     return instance
