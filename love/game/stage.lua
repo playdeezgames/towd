@@ -2,6 +2,7 @@ local stage = require "scene.stage"
 local states = require "game.states"
 local splash_state = require "game.splash_state"
 local main_menu_state = require "game.main_menu_state"
+local confirm_quit_state = require "game.confirm_quit_state"
 local commands = require "game.commands"
 local gfx = require "gfx.gfx"
 local hues= require "gfx.hues"
@@ -21,7 +22,8 @@ function M.new()
     local instance = stage.new()
     instance.states = {
         [states.SPLASH] = splash_state.new(instance),
-        [states.MAIN_MENU] = main_menu_state.new(instance)
+        [states.MAIN_MENU] = main_menu_state.new(instance),
+        [states.CONFIRM_QUIT] = confirm_quit_state.new(instance)
     }
     function instance:get_current_state()
         if instance.state == nil then
