@@ -17,6 +17,9 @@ function M.new(parent, font, text, x, y, hue, justify)
             font:write(self.text, self.x, self.y, self.hue)
         end
     end
+    function instance:set_hue(hue)
+        self.hue = hue
+    end
     return instance
 end
 return M
