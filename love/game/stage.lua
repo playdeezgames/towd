@@ -3,10 +3,12 @@ local states = require "game.states"
 local splash_state = require "game.splash_state"
 local commands = require "game.commands"
 local gfx = require "gfx.gfx"
-local hues= require "gfx.hues"
-local fonts = require "gfx.fonts"
-local images= require "gfx.images"
+local hues= require "game.hues"
+local fonts = require "game.fonts"
+local images= require "game.images"
 local main_menu_state = require "game.main_menu_state"
+local image_id        = require "game.image_id"
+local font_id         = require "game.font_id"
 local M = {}
 local command_table = {
     ["return"] = commands.BLUE,
@@ -22,7 +24,7 @@ function M.new()
     local instance = stage.new()
     instance.states = {
         [states.SPLASH] = splash_state.new(instance),
-        [states.MAIN_MENU] = main_menu_state.new(instance)
+        [states.MAIN_MENU] = main_menu_state.new(instance, image_id.SPLASH, font_id.M6X11PLUS_48, "Main Menu:", {"Embark!","Load...","Options...","About...","Quit"})
     }
     function instance:get_current_state()
         if instance.state == nil then

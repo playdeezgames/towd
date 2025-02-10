@@ -1,11 +1,6 @@
 local M = {}
 
-local font_table = {
-    M6X11PLUS_48 = {"assets/fonts/m6x11plus.ttf",48},
-    M6X11PLUS_96 = {"assets/fonts/m6x11plus.ttf",96}
-}
-
-local function create_font_wrapper(filename, height)
+function M.new(filename, height)
     assert(type(filename)=="string", "filename should be a string")
     assert(type(height)=="number", "height should be a number")
     local instance = {}
@@ -31,12 +26,6 @@ local function create_font_wrapper(filename, height)
         return instance.font:getHeight()
     end
     return instance
-end
-
-function M.load()
-    for k, v in pairs(font_table) do
-        M[k] = create_font_wrapper(v[1], v[2])
-    end
 end
 
 return M
