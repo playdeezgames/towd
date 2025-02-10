@@ -7,6 +7,7 @@ local commands = require "game.commands"
 local gfx = require "gfx.gfx"
 local hues= require "gfx.hues"
 local fonts = require "gfx.fonts"
+local images= require "gfx.images"
 local M = {}
 local command_table = {
     ["return"] = commands.BLUE,
@@ -51,6 +52,7 @@ function M.new()
     end
     function instance:on_load()
         fonts.load()
+        images.load()
     end
     instance:set_state(states.SPLASH)
     return instance

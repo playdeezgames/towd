@@ -16,7 +16,7 @@ function M.new(parent, caption, caption_hue, menu_items)
     instance.caption = caption
     instance.caption_hue = caption_hue
     function instance:on_draw()
-        local font = fonts.M6X11PLUS
+        local font = fonts.M6X11PLUS_48
         local view_size = gfx.get_size()
         local font_height = font:get_height()
         local y = math.floor(view_size.height / 2 - font_height * (1 + #self.menu_items) / 2)

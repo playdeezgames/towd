@@ -1,7 +1,8 @@
 local M = {}
 
 local font_table = {
-    M6X11PLUS = "assets/fonts/m6x11plus.ttf"
+    M6X11PLUS_48 = {"assets/fonts/m6x11plus.ttf",48},
+    M6X11PLUS_96 = {"assets/fonts/m6x11plus.ttf",96}
 }
 
 local function create_font_wrapper(filename, height)
@@ -34,7 +35,7 @@ end
 
 function M.load()
     for k, v in pairs(font_table) do
-        M[k] = create_font_wrapper(v, 48)
+        M[k] = create_font_wrapper(v[1], v[2])
     end
 end
 

@@ -1,6 +1,7 @@
 local picker_state = require "game.picker_state"
 local states       = require "game.states"
 local hues         = require "gfx.hues"
+local images       = require "gfx.images"
 local M = {}
 
 function M.new(parent)
@@ -17,6 +18,12 @@ function M.new(parent)
         ABOUT_TEXT,
         QUIT_TEXT
     })
+    local old_on_draw = instance.on_draw
+---@diagnostic disable-next-line: duplicate-set-field
+    function instance:on_draw()
+        images.SPLASH:draw(0,0)
+        old_on_draw(self)
+    end
     function instance:on_menu_item(menu_item)
         if menu_item == QUIT_TEXT then
             self:get_parent():set_state(states.CONFIRM_QUIT)
