@@ -20,6 +20,9 @@ function M.new(parent, font, text, x, y, hue, justify)
     function instance:set_hue(hue)
         self.hue = hue
     end
+    function instance:get_text()
+        return instance.text
+    end
     return instance
 end
 return M

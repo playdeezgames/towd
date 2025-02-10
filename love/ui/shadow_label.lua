@@ -13,6 +13,9 @@ function M.new(parent, font, text, x, y, dx, dy, hue, shadow_hue, justify)
     function instance:set_shadow_hue(hue)
         self.shadow:set_hue(hue)
     end
+    function instance:get_text()
+        return self.label:get_text()
+    end
     return instance
 end
 return M
