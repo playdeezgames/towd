@@ -8,6 +8,8 @@ local images= require "game.images"
 local label = require "ui.label"
 local decal = require "ui.decal"
 local shadow_label = require "ui.shadow_label"
+local sources      = require "game.sources"
+local source_id    = require "game.source_id"
 local M = {}
 
 function M.new(parent)
@@ -15,6 +17,7 @@ function M.new(parent)
     function instance:on_command(command)
         if command == commands.GREEN then
             self:get_parent():set_state(states.MAIN_MENU)
+            sources[source_id.BOOP]:play()
         end
     end
     function instance:on_load()
