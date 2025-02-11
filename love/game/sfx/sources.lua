@@ -1,4 +1,4 @@
-local source_id = require "game.source_id"
+local source_id = require "game.sfx.source_id"
 local source_wrapper = require "sfx.source_wrapper"
 local M = {}
 

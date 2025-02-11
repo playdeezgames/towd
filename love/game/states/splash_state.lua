@@ -8,8 +8,8 @@ local images= require "game.gfx.images"
 local label = require "ui.label"
 local decal = require "ui.decal"
 local shadow_label = require "ui.shadow_label"
-local sources      = require "game.sources"
-local source_id    = require "game.source_id"
+local sources      = require "game.sfx.sources"
+local source_id    = require "game.sfx.source_id"
 local M = {}
 
 function M.new(parent)

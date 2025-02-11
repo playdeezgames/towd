@@ -7,8 +7,8 @@ local gfx   = require "gfx.gfx"
 local hues  = require "game.gfx.hues"
 local shadow_label = require "ui.shadow_label"
 local commands     = require "game.commands"
-local sources      = require "game.sources"
-local source_id    = require "game.source_id"
+local sources      = require "game.sfx.sources"
+local source_id    = require "game.sfx.source_id"
 local M = {}
 function M.new(parent, image_id, font_id, caption, menu_items)
     assert(type(parent)=="table", "parent should be a table")
