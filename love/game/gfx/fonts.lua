@@ -1,5 +1,5 @@
 local font_wrapper = require "gfx.font_wrapper"
-local font_id      = require "game.font_id"
+local font_id      = require "game.gfx.font_id"
 local M = {}
 
 local font_table = {

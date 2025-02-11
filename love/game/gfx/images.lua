@@ -1,5 +1,5 @@
 local image_wrapper = require "gfx.image_wrapper"
-local image_id = require "game.image_id"
+local image_id = require "game.gfx.image_id"
 local M = {}
 
 local image_table = {

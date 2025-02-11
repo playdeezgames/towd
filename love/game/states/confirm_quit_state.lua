@@ -1,7 +1,7 @@
-local picker_state = require "game.picker_state"
-local image_id     = require "game.image_id"
-local font_id      = require "game.font_id"
-local states       = require "game.states"
+local picker_state = require "game.states.picker_state"
+local image_id     = require "game.gfx.image_id"
+local font_id      = require "game.gfx.font_id"
+local states       = require "game.states.states"
 local game         = require "game.game"
 local M = {}
 function M.new(parent)
