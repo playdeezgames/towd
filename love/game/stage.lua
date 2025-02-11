@@ -7,6 +7,8 @@ local hues= require "game.hues"
 local fonts = require "game.fonts"
 local images= require "game.images"
 local main_menu_state = require "game.main_menu_state"
+local sources         = require "game.sources"
+local confirm_quit_state = require "game.confirm_quit_state"
 local M = {}
 local command_table = {
     ["return"] = commands.BLUE,
@@ -22,7 +24,8 @@ function M.new()
     local instance = stage.new()
     instance.states = {
         [states.SPLASH] = splash_state.new(instance),
-        [states.MAIN_MENU] = main_menu_state.new(instance)
+        [states.MAIN_MENU] = main_menu_state.new(instance),
+        [states.CONFIRM_QUIT] = confirm_quit_state.new(instance)
     }
     function instance:get_current_state()
         if instance.state == nil then
@@ -51,6 +54,7 @@ function M.new()
     function instance:on_load()
         fonts.load()
         images.load()
+        sources.load()
     end
     instance:set_state(states.SPLASH)
     return instance

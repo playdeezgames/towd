@@ -7,6 +7,8 @@ local gfx   = require "gfx.gfx"
 local hues  = require "game.hues"
 local shadow_label = require "ui.shadow_label"
 local commands     = require "game.commands"
+local sources      = require "game.sources"
+local source_id    = require "game.source_id"
 local M = {}
 function M.new(parent, image_id, font_id, caption, menu_items)
     assert(type(parent)=="table", "parent should be a table")
@@ -33,18 +35,22 @@ function M.new(parent, image_id, font_id, caption, menu_items)
             else
                 self.menu_item_index = self.menu_item_index + 1
             end
+            sources[source_id.BLIP]:play()
         elseif command == commands.UP then
             if self.menu_item_index == 1 then
                 self.menu_item_index = #self.menu_items
             else
                 self.menu_item_index = self.menu_item_index - 1
             end
+            sources[source_id.BLIP]:play()
         elseif command == commands.GREEN then
             if self.on_menu_item ~= nil then
+                sources[source_id.BOOP]:play()
                 self:on_menu_item(self.menu_items[self.menu_item_index])
             end
         elseif command == commands.RED then
             if self.on_cancel ~= nil then
+                sources[source_id.BOOP]:play()
                 self:on_cancel()
             end
         end
