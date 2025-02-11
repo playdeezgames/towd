@@ -24,6 +24,9 @@ function M.new(parent, image_id, font_id, caption, menu_items, options)
     options.menu_item_hue = options.menu_item_hue or hues.BLUE
     options.menu_item_hilite_hue = options.menu_item_hilite_hue or hues.LIGHT_BLUE
     options.menu_item_shadow_hue = options.menu_item_shadow_hue or hues.DARK_GRAY
+    options.move_source_id = options.move_source_id or source_id.BLIP
+    options.choose_source_id = options.choose_source_id or source_id.BOOP
+    options.cancel_source_id = options.cancel_source_id or source_id.BOOP
     local instance = state.new(parent)
     function instance:on_update()
         for i, v in ipairs(self.menu_items) do
@@ -43,22 +46,22 @@ function M.new(parent, image_id, font_id, caption, menu_items, options)
             else
                 self.menu_item_index = self.menu_item_index + 1
             end
-            sources[source_id.BLIP]:play()
+            sources[options.move_source_id]:play()
         elseif command == commands.UP then
             if self.menu_item_index == 1 then
                 self.menu_item_index = #self.menu_items
             else
                 self.menu_item_index = self.menu_item_index - 1
             end
-            sources[source_id.BLIP]:play()
+            sources[options.move_source_id]:play()
         elseif command == commands.GREEN then
             if self.on_menu_item ~= nil then
-                sources[source_id.BOOP]:play()
+                sources[options.choose_source_id]:play()
                 self:on_menu_item(self.menu_items[self.menu_item_index])
             end
         elseif command == commands.RED then
             if self.on_cancel ~= nil then
-                sources[source_id.BOOP]:play()
+                sources[options.cancel_source_id]:play()
                 self:on_cancel()
             end
         end
