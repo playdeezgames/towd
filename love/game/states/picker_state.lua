@@ -10,21 +10,29 @@ local commands     = require "game.commands"
 local sources      = require "game.sfx.sources"
 local source_id    = require "game.sfx.source_id"
 local M = {}
-function M.new(parent, image_id, font_id, caption, menu_items)
+function M.new(parent, image_id, font_id, caption, menu_items, options)
     assert(type(parent)=="table", "parent should be a table")
     assert(type(menu_items)=="table", "menu_items should be a table")
     assert(type(image_id)=="string", "image_id should be a string")
     assert(type(font_id)=="string", "font_id should be a string")
     assert(type(caption)=="string", "caption should be a string")
+    if options == nil then
+        options = {}
+    end
+    options.caption_hue = options.caption_hue or hues.WHITE
+    options.caption_shadow_hue = options.caption_shadow_hue or hues.DARK_GRAY
+    options.menu_item_hue = options.menu_item_hue or hues.BLUE
+    options.menu_item_hilite_hue = options.menu_item_hilite_hue or hues.LIGHT_BLUE
+    options.menu_item_shadow_hue = options.menu_item_shadow_hue or hues.DARK_GRAY
     local instance = state.new(parent)
     function instance:on_update()
         for i, v in ipairs(self.menu_items) do
             if i == self.menu_item_index then
-                v:set_hue(hues.LIGHT_BLUE)
-                v:set_shadow_hue(hues.BLUE)
+                v:set_hue(options.menu_item_hilite_hue)
+                v:set_shadow_hue(options.menu_item_hue)
             else
-                v:set_hue(hues.BLUE)
-                v:set_shadow_hue(hues.DARK_GRAY)
+                v:set_hue(options.menu_item_hue)
+                v:set_shadow_hue(options.menu_item_shadow_hue)
             end
         end
     end
@@ -61,12 +69,12 @@ function M.new(parent, image_id, font_id, caption, menu_items)
         local font = fonts[font_id]
         local font_height = font:get_height()
         local y_offset = view_size.height / 2 - font_height * (1 + #menu_items) / 2
-        shadow_label.new(self, font, caption, view_size.width / 2, y_offset, 2, 2, hues.WHITE, hues.DARK_GRAY, label.CENTER)
+        shadow_label.new(self, font, caption, view_size.width / 2, y_offset, 2, 2, options.caption_hue, options.caption_shadow_hue, label.CENTER)
         y_offset = y_offset + font_height
         self.menu_item_index = 1
         self.menu_items = {}
         for _, v in ipairs(menu_items) do
-            table.insert(self.menu_items, shadow_label.new(self, font, v, view_size.width / 2, y_offset, 2, 2, hues.BLUE, hues.DARK_GRAY, label.CENTER))
+            table.insert(self.menu_items, shadow_label.new(self, font, v, view_size.width / 2, y_offset, 2, 2, options.menu_item_hue, options.menu_item_shadow_hue, label.CENTER))
             y_offset = y_offset + font_height
         end
     end
