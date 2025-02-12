@@ -9,6 +9,8 @@ local images= require "game.gfx.images"
 local main_menu_state = require "game.states.main_menu_state"
 local sources         = require "game.sfx.sources"
 local confirm_quit_state = require "game.states.confirm_quit_state"
+local source_id          = require "game.sfx.source_id"
+local sfx                = require "sfx.sfx"
 local M = {}
 local command_table = {
     ["return"] = commands.BLUE,
@@ -54,7 +56,9 @@ function M.new()
     function instance:on_load()
         fonts.load()
         images.load()
+        sfx.load()
         sources.load()
+        sources[source_id.MINOR_SONG]:loop()
     end
     instance:set_state(states.SPLASH)
     return instance
