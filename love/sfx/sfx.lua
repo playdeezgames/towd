@@ -2,7 +2,7 @@ local json = require "json"
 
 local M = {}
 local DEFAULT_MASTER_VOLUME = 0.5
-local DEFAULT_SFX_VOLUME = 0.75
+local DEFAULT_SFX_VOLUME = 0.7
 local DEFAULT_MUX_VOLUME = 1.0
 local AUDIO_SETTINGS_FILENAME = "audio_settings.json"
 local settings = {
@@ -65,15 +65,15 @@ function M.get_mux_volume()
 end
 
 function M.set_master_volume(volume)
-    settings.master_volume = volume
+    settings.master_volume = math.min(math.max(volume, 0), 1)
 end
 
 function M.set_sfx_volume(volume)
-    settings.sfx_volume = volume
+    settings.sfx_volume = math.min(math.max(volume, 0), 1)
 end
 
 function M.set_mux_volume(volume)
-    settings.mux_volume = volume
+    settings.mux_volume = math.min(math.max(volume, 0), 1)
 end
 
 function M.apply_volumes()

@@ -1,4 +1,3 @@
-local picker_state = require "game.states.picker_state"
 local image_id     = require "game.gfx.image_id"
 local font_id      = require "game.gfx.font_id"
 local states       = require "game.states.states"
@@ -13,17 +12,59 @@ local hues         = require "game.gfx.hues"
 local label        = require "ui.label"
 local sfx          = require "sfx.sfx"
 local slider       = require "ui.slider"
+local sources      = require "game.sfx.sources"
+local source_id    = require "game.sfx.source_id"
 local M = {}
 function M.new(parent)
     local instance = state.new(parent)
-    function instance:on_command(command)
-        if command == commands.RED then
-            self:get_parent():set_state(states.MAIN_MENU)
-        end
-    end
     local menu_items = {}
     local sliders = {}
     local menu_item_index = 1
+    function instance:on_command(command)
+        if command == commands.RED then
+            sources[source_id.BOOP]:play()
+            self:get_parent():set_state(states.MAIN_MENU)
+            sfx.save()
+        elseif command == commands.UP then
+            if menu_item_index == 1 then
+                menu_item_index = #menu_items
+            else
+                menu_item_index = menu_item_index - 1
+            end
+            sources[source_id.BLIP]:play()
+        elseif command == commands.DOWN then
+            if menu_item_index == #menu_items then
+                menu_item_index = 1
+            else
+                menu_item_index = menu_item_index + 1
+            end
+            sources[source_id.BLIP]:play()
+        elseif command == commands.LEFT then
+            if menu_item_index == 1 then
+                sfx.set_master_volume(sfx.get_master_volume() - 0.1)
+                sfx.apply_volumes()
+            elseif menu_item_index == 2 then
+                sfx.set_sfx_volume(sfx.get_sfx_volume() - 0.1)
+                sfx.apply_volumes()
+            elseif menu_item_index == 3 then
+                sfx.set_mux_volume(sfx.get_mux_volume() - 0.1)
+                sfx.apply_volumes()
+            end
+            sources[source_id.BOOP]:play()
+        elseif command == commands.RIGHT then
+            if menu_item_index == 1 then
+                sfx.set_master_volume(sfx.get_master_volume() + 0.1)
+                sfx.apply_volumes()
+            elseif menu_item_index == 2 then
+                sfx.set_sfx_volume(sfx.get_sfx_volume() + 0.1)
+                sfx.apply_volumes()
+            elseif menu_item_index == 3 then
+                sfx.set_mux_volume(sfx.get_mux_volume() + 0.1)
+                sfx.apply_volumes()
+            end
+            sources[source_id.BOOP]:play()
+        end
+    end
     function instance:on_update(dt)
         local percent = math.floor(sfx.get_master_volume() * 100)
         menu_items[1]:set_text("Master Volume ("..percent.."%)")
@@ -36,6 +77,20 @@ function M.new(parent)
         percent = math.floor(sfx.get_mux_volume() * 100)
         menu_items[3]:set_text("Mux Volume ("..percent.."%)")
         sliders[3]:set_value(sfx.get_mux_volume())
+
+        for index = 1, #menu_items do
+            if index == menu_item_index then
+                menu_items[index]:set_hue(hues.LIGHT_BLUE)
+                menu_items[index]:set_shadow_hue(hues.BLUE)
+                sliders[index]:set_border_hue(hues.WHITE)
+                sliders[index]:set_full_hue(hues.LIGHT_GREEN)
+            else
+                menu_items[index]:set_hue(hues.BLUE)
+                menu_items[index]:set_shadow_hue(hues.DARK_GRAY)
+                sliders[index]:set_border_hue(hues.GRAY)
+                sliders[index]:set_full_hue(hues.GREEN)
+            end
+        end
     end
     function instance:on_load()
         decal.new(self, images[image_id.SPLASH], 0, 0)
@@ -85,7 +140,6 @@ function M.new(parent)
             value = 0.5})
         y_offset = y_offset + slider_height
         menu_items[3] = shadow_label.new(self, font, "Mux Volume", view_size.width / 2, y_offset, 2, 2, hues.BLUE, hues.DARK_GRAY, label.CENTER)
-
     end
     return instance
 end

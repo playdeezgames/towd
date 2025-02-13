@@ -25,6 +25,12 @@ function M.new(parent, options)
     function instance:set_value(value)
         self.value = value
     end
+    function instance:set_border_hue(hue)
+        self.border_hue = hue
+    end
+    function instance:set_full_hue(hue)
+        self.full_hue = hue
+    end
     return instance
 end
 return M
