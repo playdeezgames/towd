@@ -81,6 +81,32 @@ function M.new(parent, image_id, font_id, caption, menu_items, options)
             y_offset = y_offset + font_height
         end
     end
+    function instance:on_mousemoved(x,y,dx,dy,istouch)
+        local result = false
+        for index=1,#self.menu_items do
+            local menu_item = self.menu_items[index]
+            if y>= menu_item:get_top() and y<= menu_item:get_bottom() then
+                self.menu_item_index = index
+                result = true
+            end
+        end
+        return result
+    end
+    function instance:on_mousereleased(x,y,button,istouch,presses)
+        local result = false
+        for index=1,#self.menu_items do
+            local menu_item = self.menu_items[index]
+            if y>= menu_item:get_top() and y<= menu_item:get_bottom() then
+                self.menu_item_index = index
+                if self.on_menu_item ~= nil then
+                    sources[options.choose_source_id]:play()
+                    self:on_menu_item(self.menu_items[self.menu_item_index])
+                end
+                result = true
+            end
+        end
+        return result
+    end
     return instance
 end
 return M

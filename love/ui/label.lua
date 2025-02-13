@@ -26,6 +26,12 @@ function M.new(parent, font, text, x, y, hue, justify)
     function instance:set_text(text)
         self.text = text
     end
+    function instance:get_top()
+        return self.y
+    end
+    function instance:get_bottom()
+        return self:get_top() + self.font:get_height() - 1
+    end
     return instance
 end
 return M

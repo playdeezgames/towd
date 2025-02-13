@@ -103,36 +103,54 @@ function M.new(parent)
     end
     function instance:mousemoved(x,y,dx,dy,istouch)
         if not self:is_enabled() then
-            return
+            return false
+        end
+        for index = #self.children, 1, -1 do
+            local child = self.children[index]
+            if child:mousemoved(x,y,dx,dy,istouch) then
+                return true
+            end
         end
         if self.on_mousemoved ~= nil then
-            self:on_mousemoved(x,y,dx,dy,istouch)
+            if self:on_mousemoved(x,y,dx,dy,istouch) then
+                return true
+            end
         end
-        for _, child in ipairs(self.children) do
-            child:mousemoved(x,y,dx,dy,istouch)
-        end
+        return false
     end
     function instance:mousepressed(x, y, button, istouch, presses)
         if not self:is_enabled() then
-            return
+            return false
+        end
+        for index = #self.children, 1, -1 do
+            local child = self.children[index]
+            if child:mousepressed(x, y, button, istouch, presses) then
+                return true
+            end
         end
         if self.on_mousepressed ~= nil then
-            self:on_mousepressed(x, y, button, istouch, presses)
+            if self:on_mousepressed(x, y, button, istouch, presses) then
+                return true
+            end
         end
-        for _, child in ipairs(self.children) do
-            child:mousepressed(x, y, button, istouch, presses)
-        end
+        return false
     end
     function instance:mousereleased(x, y, button, istouch, presses)
         if not self:is_enabled() then
-            return
+            return false
+        end
+        for index = #self.children, 1, -1 do
+            local child = self.children[index]
+            if child:mousereleased(x, y, button, istouch, presses) then
+                return true
+            end
         end
         if self.on_mousereleased ~= nil then
-            self:on_mousereleased(x, y, button, istouch, presses)
+            if self:on_mousereleased(x, y, button, istouch, presses) then
+                return true
+            end
         end
-        for _, child in ipairs(self.children) do
-            child:mousereleased(x, y, button, istouch, presses)
-        end
+        return false
     end
     function instance:load()
         if self.on_load ~= nil then

@@ -20,6 +20,12 @@ function M.new(parent, font, text, x, y, dx, dy, hue, shadow_hue, justify)
         self.shadow:set_text(text)
         self.label:set_text(text)
     end
+    function instance:get_top()
+        return math.min(self.label:get_top(), self.shadow:get_top())
+    end
+    function instance:get_bottom()
+        return math.max(self.label:get_bottom(), self.shadow:get_bottom())
+    end
     return instance
 end
 return M
