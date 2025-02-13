@@ -16,6 +16,10 @@ function M.new(parent, font, text, x, y, dx, dy, hue, shadow_hue, justify)
     function instance:get_text()
         return self.label:get_text()
     end
+    function instance:set_text(text)
+        self.shadow:set_text(text)
+        self.label:set_text(text)
+    end
     return instance
 end
 return M

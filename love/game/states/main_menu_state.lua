@@ -14,6 +14,8 @@ function M.new(parent)
         local item_text = menu_item:get_text()
         if item_text == QUIT_TEXT then
             self:get_parent():set_state(states.CONFIRM_QUIT)
+        elseif item_text == OPTIONS_TEXT then
+            self:get_parent():set_state(states.OPTIONS)
         end
     end
     function instance:on_cancel()

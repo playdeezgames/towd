@@ -11,6 +11,7 @@ local sources         = require "game.sfx.sources"
 local confirm_quit_state = require "game.states.confirm_quit_state"
 local source_id          = require "game.sfx.source_id"
 local sfx                = require "sfx.sfx"
+local options_state      = require "game.states.options_state"
 local M = {}
 local command_table = {
     ["return"] = commands.BLUE,
@@ -27,7 +28,8 @@ function M.new()
     instance.states = {
         [states.SPLASH] = splash_state.new(instance),
         [states.MAIN_MENU] = main_menu_state.new(instance),
-        [states.CONFIRM_QUIT] = confirm_quit_state.new(instance)
+        [states.CONFIRM_QUIT] = confirm_quit_state.new(instance),
+        [states.OPTIONS] = options_state.new(instance)
     }
     function instance:get_current_state()
         if instance.state == nil then
