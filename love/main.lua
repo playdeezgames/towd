@@ -34,3 +34,19 @@ function love.keyreleased(key, scancode)
   assert(root~=nil,"root should not be nil")
   root:keyreleased(key, scancode)
 end
+
+function love.mousemoved(x, y, dx, dy, istouch)
+  assert(root~=nil,"root should not be nil")
+  root:mousemoved(x,y,dx,dy,istouch)
+end
+
+function love.mousepressed(x, y, button, istouch, presses)
+  assert(root~=nil,"root should not be nil")
+  root:mousepressed(x, y, button, istouch, presses)
+end
+
+
+function love.mousereleased(x, y, button, istouch, presses)
+  assert(root~=nil,"root should not be nil")
+  root:mousereleased(x, y, button, istouch, presses)
+end

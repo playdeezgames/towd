@@ -101,6 +101,39 @@ function M.new(parent)
             child:keyreleased(key, scancode)
         end
     end
+    function instance:mousemoved(x,y,dx,dy,istouch)
+        if not self:is_enabled() then
+            return
+        end
+        if self.on_mousemoved ~= nil then
+            self:on_mousemoved(x,y,dx,dy,istouch)
+        end
+        for _, child in ipairs(self.children) do
+            child:mousemoved(x,y,dx,dy,istouch)
+        end
+    end
+    function instance:mousepressed(x, y, button, istouch, presses)
+        if not self:is_enabled() then
+            return
+        end
+        if self.on_mousepressed ~= nil then
+            self:on_mousepressed(x, y, button, istouch, presses)
+        end
+        for _, child in ipairs(self.children) do
+            child:mousepressed(x, y, button, istouch, presses)
+        end
+    end
+    function instance:mousereleased(x, y, button, istouch, presses)
+        if not self:is_enabled() then
+            return
+        end
+        if self.on_mousereleased ~= nil then
+            self:on_mousereleased(x, y, button, istouch, presses)
+        end
+        for _, child in ipairs(self.children) do
+            child:mousereleased(x, y, button, istouch, presses)
+        end
+    end
     function instance:load()
         if self.on_load ~= nil then
             self:on_load()
