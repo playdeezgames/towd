@@ -143,7 +143,6 @@ function M.new(parent)
     end
     function instance:on_mousemoved(x,y,dx,dy,istouch, buttons)
         local result = false
-        print(tostring(buttons[1]))
         for index = 1, #menu_items do
             local menu_item = menu_items[index]
             local slider_item = sliders[index]

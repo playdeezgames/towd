@@ -55,5 +55,5 @@ function love.mousereleased(x, y, button, istouch, presses)
 end
 
 function love.resize(w,h)
-  print(w.."x"..h)
+  gfx.handle_resize(w,h)
 end
