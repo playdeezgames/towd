@@ -101,18 +101,18 @@ function M.new(parent)
             child:keyreleased(key, scancode)
         end
     end
-    function instance:mousemoved(x,y,dx,dy,istouch)
+    function instance:mousemoved(x,y,dx,dy,istouch, buttons)
         if not self:is_enabled() then
             return false
         end
         for index = #self.children, 1, -1 do
             local child = self.children[index]
-            if child:mousemoved(x,y,dx,dy,istouch) then
+            if child:mousemoved(x,y,dx,dy,istouch, buttons) then
                 return true
             end
         end
         if self.on_mousemoved ~= nil then
-            if self:on_mousemoved(x,y,dx,dy,istouch) then
+            if self:on_mousemoved(x,y,dx,dy,istouch, buttons) then
                 return true
             end
         end

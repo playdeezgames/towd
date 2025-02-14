@@ -48,6 +48,7 @@ function M.new()
     end
     function instance:on_draw()
         gfx.clear(hues.BLACK)
+        gfx.update_scale()
     end
     function instance:on_keypressed(key, scancode, isrepeat)
         local which = command_table[key]

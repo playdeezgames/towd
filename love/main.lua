@@ -1,3 +1,4 @@
+local gfx = require "gfx.gfx"
 if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" then
   require("lldebugger").start()
 end
@@ -37,16 +38,22 @@ end
 
 function love.mousemoved(x, y, dx, dy, istouch)
   assert(root~=nil,"root should not be nil")
-  root:mousemoved(x,y,dx,dy,istouch)
+  x, y = gfx.adjust_xy(x, y)
+  root:mousemoved(x,y,dx,dy,istouch, {love.mouse.isDown(1), love.mouse.isDown(2), love.mouse.isDown(3)})
 end
 
 function love.mousepressed(x, y, button, istouch, presses)
   assert(root~=nil,"root should not be nil")
+  x, y = gfx.adjust_xy(x, y)
   root:mousepressed(x, y, button, istouch, presses)
 end
 
-
 function love.mousereleased(x, y, button, istouch, presses)
   assert(root~=nil,"root should not be nil")
+  x, y = gfx.adjust_xy(x, y)
   root:mousereleased(x, y, button, istouch, presses)
+end
+
+function love.resize(w,h)
+  print(w.."x"..h)
 end

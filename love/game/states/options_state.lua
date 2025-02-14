@@ -141,6 +141,51 @@ function M.new(parent)
         y_offset = y_offset + slider_height
         menu_items[3] = shadow_label.new(self, font, "Mux Volume", view_size.width / 2, y_offset, 2, 2, hues.BLUE, hues.DARK_GRAY, label.CENTER)
     end
+    function instance:on_mousemoved(x,y,dx,dy,istouch, buttons)
+        local result = false
+        print(tostring(buttons[1]))
+        for index = 1, #menu_items do
+            local menu_item = menu_items[index]
+            local slider_item = sliders[index]
+            if (y>= menu_item:get_top() and y<=menu_item:get_bottom()) or (y>=slider_item:get_top() and y<=slider_item:get_bottom()) then
+                if menu_item_index ~= index then
+                    menu_item_index = index
+                    sources[source_id.BLIP]:play()
+                end
+                result = true
+            end
+        end
+        return result
+    end
+    function instance:on_mousepressed(x,y,button,istouch,presses)
+        local result = false
+        for index = 1, #menu_items do
+            local slider_item = sliders[index]
+            if y>=slider_item:get_top() and y<=slider_item:get_bottom()  then
+                local percent
+                if x>=slider_item:get_left() and x<=slider_item:get_right() then
+                    percent = (x - slider_item:get_left()) / (slider_item:get_right() - slider_item:get_left())
+                elseif x<=slider_item:get_left() then
+                    percent = 0
+                elseif x>= slider_item:get_right() then
+                    percent = 1
+                end
+                if menu_item_index == 1 then
+                    sfx.set_master_volume(percent)
+                    sfx.apply_volumes()
+                elseif menu_item_index == 2 then
+                    sfx.set_sfx_volume(percent)
+                    sfx.apply_volumes()
+                elseif menu_item_index == 3 then
+                    sfx.set_mux_volume(percent)
+                    sfx.apply_volumes()
+                end
+                sources[source_id.BOOP]:play()
+                result = true
+            end
+        end
+        return result
+    end
     return instance
 end
 return M
