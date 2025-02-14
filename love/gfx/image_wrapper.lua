@@ -8,6 +8,12 @@ function M.new(filename)
         assert(type(y)=="number","y should be a number")
         love.graphics.draw(self.image, x, y)
     end
+    function instance:get_width()
+        return self.image:getWidth()
+    end
+    function instance:get_height()
+        return self.image:getHeight()
+    end
     return instance
 end
 

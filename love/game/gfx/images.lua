@@ -3,7 +3,8 @@ local image_id = require "game.gfx.image_id"
 local M = {}
 
 local image_table = {
-    [image_id.SPLASH] = "assets/images/splash.png"
+    [image_id.SPLASH] = "assets/images/splash.png",
+    [image_id.BACK_BUTTON] = "assets/images/back_button.png"
 }
 
 function M.load()

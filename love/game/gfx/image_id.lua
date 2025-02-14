@@ -1,3 +1,4 @@
 local M = {}
 M.SPLASH = "SPLASH"
+M.BACK_BUTTON = "BACK_BUTTON"
 return M

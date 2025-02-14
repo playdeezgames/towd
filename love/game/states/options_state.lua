@@ -20,6 +20,8 @@ function M.new(parent)
     local menu_items = {}
     local sliders = {}
     local menu_item_index = 1
+    local back_button
+    local back_button_hover = false
     function instance:on_command(command)
         if command == commands.RED then
             sources[source_id.BOOP]:play()
@@ -91,9 +93,16 @@ function M.new(parent)
                 sliders[index]:set_full_hue(hues.GREEN)
             end
         end
+
+        if back_button_hover then
+            back_button:set_hue(hues.LIGHT_RED)
+        else
+            back_button:set_hue(hues.RED)
+        end
     end
     function instance:on_load()
         decal.new(self, images[image_id.SPLASH], 0, 0)
+        back_button = decal.new(self, images[image_id.BACK_BUTTON], 0, 0)
         local view_size = gfx.get_view_size()
         local font = fonts[font_id.M6X11PLUS_48]
         local font_height = font:get_height()
@@ -180,6 +189,10 @@ function M.new(parent)
                 result = true
             end
         end
+        if not result then
+            back_button_hover = x >= back_button:get_left() and x <= back_button:get_right() and y >= back_button:get_top() and y <= back_button:get_bottom()
+            result = back_button_hover
+        end
         return result
     end
     function instance:on_mousepressed(x,y,button,istouch,presses)
@@ -209,10 +222,21 @@ function M.new(parent)
                 result = true
             end
         end
+        if not result then
+            back_button_hover = x >= back_button:get_left() and x <= back_button:get_right() and y >= back_button:get_top() and y <= back_button:get_bottom()
+            result = back_button_hover
+        end
         return result
     end
     function instance:on_mousereleased(x,y,button,istouch,presses)
         if button ~= 1 then return false end
+        if back_button_hover then
+            sources[source_id.BOOP]:play()
+            self:get_parent():set_state(states.MAIN_MENU)
+            sfx.save()
+            back_button_hover = false
+            return true
+        end
         local result = false
         for index = 1, #menu_items do
             local slider_item = sliders[index]
