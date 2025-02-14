@@ -146,10 +146,36 @@ function M.new(parent)
         for index = 1, #menu_items do
             local menu_item = menu_items[index]
             local slider_item = sliders[index]
-            if (y>= menu_item:get_top() and y<=menu_item:get_bottom()) or (y>=slider_item:get_top() and y<=slider_item:get_bottom()) then
+            if (y>= menu_item:get_top() and y<=menu_item:get_bottom()) then
                 if menu_item_index ~= index then
                     menu_item_index = index
                     sources[source_id.BLIP]:play()
+                end
+                result = true
+            elseif (y>=slider_item:get_top() and y<=slider_item:get_bottom()) then
+                if menu_item_index ~= index then
+                    menu_item_index = index
+                    sources[source_id.BLIP]:play()
+                end
+                if buttons[1] then
+                    local percent
+                    if x>=slider_item:get_left() and x<=slider_item:get_right() then
+                        percent = (x - slider_item:get_left()) / (slider_item:get_right() - slider_item:get_left())
+                    elseif x<=slider_item:get_left() then
+                        percent = 0
+                    elseif x>= slider_item:get_right() then
+                        percent = 1
+                    end
+                    if menu_item_index == 1 then
+                        sfx.set_master_volume(percent)
+                        sfx.apply_volumes()
+                    elseif menu_item_index == 2 then
+                        sfx.set_sfx_volume(percent)
+                        sfx.apply_volumes()
+                    elseif menu_item_index == 3 then
+                        sfx.set_mux_volume(percent)
+                        sfx.apply_volumes()
+                    end
                 end
                 result = true
             end
@@ -157,6 +183,36 @@ function M.new(parent)
         return result
     end
     function instance:on_mousepressed(x,y,button,istouch,presses)
+        if button ~= 1 then return false end
+        local result = false
+        for index = 1, #menu_items do
+            local slider_item = sliders[index]
+            if y>=slider_item:get_top() and y<=slider_item:get_bottom()  then
+                local percent
+                if x>=slider_item:get_left() and x<=slider_item:get_right() then
+                    percent = (x - slider_item:get_left()) / (slider_item:get_right() - slider_item:get_left())
+                elseif x<=slider_item:get_left() then
+                    percent = 0
+                elseif x>= slider_item:get_right() then
+                    percent = 1
+                end
+                if menu_item_index == 1 then
+                    sfx.set_master_volume(percent)
+                    sfx.apply_volumes()
+                elseif menu_item_index == 2 then
+                    sfx.set_sfx_volume(percent)
+                    sfx.apply_volumes()
+                elseif menu_item_index == 3 then
+                    sfx.set_mux_volume(percent)
+                    sfx.apply_volumes()
+                end
+                result = true
+            end
+        end
+        return result
+    end
+    function instance:on_mousereleased(x,y,button,istouch,presses)
+        if button ~= 1 then return false end
         local result = false
         for index = 1, #menu_items do
             local slider_item = sliders[index]
