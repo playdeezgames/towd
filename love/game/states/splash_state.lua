@@ -22,7 +22,7 @@ function M.new(parent)
     end
     function instance:on_load()
         decal.new(self, images.SPLASH, 0, 0)
-        local view_size = gfx.get_size()
+        local view_size = gfx.get_view_size()
         shadow_label.new(self, fonts.M6X11PLUS_96, "Tomb of Woeful DOOM!", view_size.width/2,view_size.height / 2 - fonts.M6X11PLUS_96:get_height()/2,4,4, hues.LIGHT_CYAN, hues.CYAN, label.CENTER)
         shadow_label.new(self, fonts.M6X11PLUS_48, "Press SPACE or (A)", view_size.width/2,view_size.height - fonts.M6X11PLUS_48:get_height(),2,2, hues.WHITE, hues.DARK_GRAY, label.CENTER)
     end

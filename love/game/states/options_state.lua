@@ -94,7 +94,7 @@ function M.new(parent)
     end
     function instance:on_load()
         decal.new(self, images[image_id.SPLASH], 0, 0)
-        local view_size = gfx.get_size()
+        local view_size = gfx.get_view_size()
         local font = fonts[font_id.M6X11PLUS_48]
         local font_height = font:get_height()
         local slider_width = view_size.width / 2

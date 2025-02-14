@@ -5,12 +5,15 @@ function M.clear(hue)
     assert(type(hue)=="table","hue should be a table")
     love.graphics.clear(hue[1],hue[2],hue[3])
 end
-function M.get_size()
+function M.get_window_size()
     local width, height = love.window.getMode()
     return { width = width, height = height}
 end
+function M.get_view_size()
+    return { width = M.VIEW_WIDTH, height = M.VIEW_HEIGHT}
+end
 function M.update_scale()
-    local view_size = M.get_size()
+    local view_size = M.get_window_size()
     local x_ratio = view_size.width / M.VIEW_WIDTH
     local y_ratio = view_size.height / M.VIEW_HEIGHT
     local ratio = math.min(x_ratio, y_ratio)
@@ -22,7 +25,7 @@ function M.update_scale()
     love.graphics.scale(ratio, ratio)
 end
 function M.adjust_xy(x,y)
-    local view_size = M.get_size()
+    local view_size = M.get_window_size()
     local x_ratio = view_size.width / M.VIEW_WIDTH
     local y_ratio = view_size.height / M.VIEW_HEIGHT
     local ratio = math.min(x_ratio, y_ratio)

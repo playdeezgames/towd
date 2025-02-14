@@ -68,7 +68,7 @@ function M.new(parent, image_id, font_id, caption, menu_items, options)
     end
     function instance:on_load()
         decal.new(self, images[image_id], 0, 0)
-        local view_size = gfx.get_size()
+        local view_size = gfx.get_view_size()
         local font = fonts[font_id]
         local font_height = font:get_height()
         local y_offset = view_size.height / 2 - font_height * (1 + #menu_items) / 2
