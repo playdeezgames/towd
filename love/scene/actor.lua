@@ -90,6 +90,28 @@ function M.new(parent)
             child:keypressed(key, scancode, isrepeat)
         end
     end
+    function instance:gamepadpressed(joystick, button)
+        if not self:is_enabled() then
+            return
+        end
+        if self.on_gamepadpressed ~= nil then
+            self:on_gamepadpressed(joystick, button)
+        end
+        for _, child in ipairs(self.children) do
+            child:gamepadpressed(joystick, button)
+        end
+    end
+    function instance:gamepadreleased(joystick, button)
+        if not self:is_enabled() then
+            return
+        end
+        if self.on_gamepadreleased ~= nil then
+            self:on_gamepadreleased(joystick, button)
+        end
+        for _, child in ipairs(self.children) do
+            child:gamepadreleased(joystick, button)
+        end
+    end
     function instance:keyreleased(key, scancode)
         if not self:is_enabled() then
             return

@@ -23,6 +23,16 @@ local command_table = {
     up = commands.UP,
     tab = commands.YELLOW
 }
+local button_table = {
+    a=commands.GREEN,
+    b=commands.RED,
+    x=commands.BLUE,
+    y=commands.YELLOW,
+    dpup=commands.UP,
+    dpdown=commands.DOWN,
+    dpleft=commands.LEFT,
+    dpright=commands.RIGHT
+}
 function M.new()
     local instance = stage.new()
     instance.states = {
@@ -53,7 +63,13 @@ function M.new()
     function instance:on_keypressed(key, scancode, isrepeat)
         local which = command_table[key]
         if which ~= nil then
-            instance:get_current_state():handle_command(which)
+            self:get_current_state():handle_command(which)
+        end
+    end
+    function instance:on_gamepadpressed(joystick, button)
+        local which = button_table[button]
+        if which ~= nil then
+            self:get_current_state():handle_command(which)
         end
     end
     function instance:on_load()

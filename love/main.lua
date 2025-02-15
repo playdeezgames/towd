@@ -57,3 +57,14 @@ end
 function love.resize(w,h)
   gfx.handle_resize(w,h)
 end
+
+function love.gamepadpressed(joystick, button)
+  print(button)
+  assert(root~=nil,"root should not be nil")
+  root:gamepadpressed(joystick, button)
+end
+
+function love.gamepadreleased(joystick, button)
+  assert(root~=nil,"root should not be nil")
+  root:gamepadreleased(joystick, button)
+end
