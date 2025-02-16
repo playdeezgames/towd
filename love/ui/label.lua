@@ -10,7 +10,7 @@ function M.new(parent, font, text, x, y, hue, justify)
     instance.y = y
     instance.hue = hue
     instance.justify = justify
-    function instance:on_draw()
+    function instance:legacy_on_draw()
         if self.justify == M.CENTER then
             font:write_centered(self.text, self.x, self.y, self.hue)
         else

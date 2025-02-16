@@ -205,8 +205,8 @@ function M.new(parent, properties)
         if not self:is_enabled() then
             return
         end
-        if self.on_draw ~= nil then
-            self:on_draw()
+        if self.legacy_on_draw ~= nil then
+            self:legacy_on_draw()
         end
         for _, child in ipairs(self.children) do
             child:draw()

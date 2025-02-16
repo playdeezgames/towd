@@ -56,7 +56,7 @@ function M.new()
             instance:get_current_state():start()
         end
     end
-    function instance:on_draw()
+    function instance:legacy_on_draw()
         gfx.clear(hues.BLACK)
         gfx.update_scale()
     end

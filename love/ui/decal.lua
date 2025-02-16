@@ -7,7 +7,7 @@ function M.new(parent, image, x, y)
     instance.x = x
     instance.y = y
     instance.hue = {1,1,1}
-    function instance:on_draw()
+    function instance:legacy_on_draw()
         local r, g, b, a = love.graphics.getColor()
         love.graphics.setColor(self.hue)
         self.image:draw(x,y)

@@ -12,7 +12,7 @@ function M.new(parent, options)
     instance.empty_hue = options.empty_hue
     instance.full_hue = options.full_hue
     instance.value = options.value
-    function instance:on_draw()
+    function instance:legacy_on_draw()
         local r, g, b, a = love.graphics.getColor()
         love.graphics.setColor(self.border_hue)
         love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
