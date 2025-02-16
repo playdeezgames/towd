@@ -3,7 +3,7 @@ local font_id      = require "game.gfx.font_id"
 local states       = require "game.states.states"
 local state        = require "scene.state"
 local commands     = require "game.commands"
-local decal        = require "ui.legacy_decal"
+local legacy_decal        = require "ui.legacy_decal"
 local images       = require "game.gfx.images"
 local fonts        = require "game.gfx.fonts"
 local shadow_label = require "ui.shadow_label"
@@ -101,8 +101,8 @@ function M.new(parent)
         end
     end
     function instance:on_load()
-        decal.new(self, images[image_id.SPLASH], 0, 0)
-        back_button = decal.new(self, images[image_id.BACK_BUTTON], 0, 0)
+        legacy_decal.new(self, images[image_id.SPLASH], 0, 0)
+        back_button = legacy_decal.new(self, images[image_id.BACK_BUTTON], 0, 0)
         local view_size = gfx.get_view_size()
         local font = fonts[font_id.M6X11PLUS_48]
         local font_height = font:get_height()

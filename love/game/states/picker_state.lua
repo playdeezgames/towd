@@ -1,5 +1,5 @@
 local state = require "scene.state"
-local decal = require "ui.legacy_decal"
+local legacy_decal = require "ui.legacy_decal"
 local images= require "game.gfx.images"
 local fonts = require "game.gfx.fonts"
 local label = require "ui.label"
@@ -67,7 +67,7 @@ function M.new(parent, image_id, font_id, caption, menu_items, options)
         end
     end
     function instance:on_load()
-        decal.new(self, images[image_id], 0, 0)
+        legacy_decal.new(self, images[image_id], 0, 0)
         local view_size = gfx.get_view_size()
         local font = fonts[font_id]
         local font_height = font:get_height()

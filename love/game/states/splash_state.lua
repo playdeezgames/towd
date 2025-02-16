@@ -6,7 +6,7 @@ local hues  = require "game.gfx.hues"
 local gfx   = require "gfx.gfx"
 local images= require "game.gfx.images"
 local label = require "ui.label"
-local decal = require "ui.legacy_decal"
+local legacy_decal = require "ui.legacy_decal"
 local shadow_label = require "ui.shadow_label"
 local sources      = require "game.sfx.sources"
 local source_id    = require "game.sfx.source_id"
@@ -21,7 +21,7 @@ function M.new(parent)
         end
     end
     function instance:on_load()
-        decal.new(self, images.SPLASH, 0, 0)
+        legacy_decal.new(self, images.SPLASH, 0, 0)
         local view_size = gfx.get_view_size()
         shadow_label.new(self, fonts.M6X11PLUS_96, "Tomb of Woeful DOOM!", view_size.width/2,view_size.height / 2 - fonts.M6X11PLUS_96:get_height()/2,4,4, hues.LIGHT_CYAN, hues.CYAN, label.CENTER)
         shadow_label.new(self, fonts.M6X11PLUS_48, "Press SPACE or (A)", view_size.width/2,view_size.height - fonts.M6X11PLUS_48:get_height(),2,2, hues.WHITE, hues.DARK_GRAY, label.CENTER)
