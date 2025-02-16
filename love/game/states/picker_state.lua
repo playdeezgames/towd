@@ -1,5 +1,5 @@
 local state = require "scene.state"
-local decal = require "ui.decal"
+local decal = require "ui.legacy_decal"
 local images= require "game.gfx.images"
 local fonts = require "game.gfx.fonts"
 local label = require "ui.label"
