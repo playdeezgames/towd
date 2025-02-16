@@ -1,4 +1,5 @@
 local gfx = require "gfx.gfx"
+local message_types = require "game.enum.message_types"
 if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" then
   require("lldebugger").start()
 end
@@ -14,11 +15,13 @@ end
 function love.update(dt)
   assert(root~=nil,"root should not be nil")
   root:update(dt)
+  root:broadcast_message({type=message_types.UPDATE,dt=dt}, false)
 end
 
 function love.draw()
   assert(root~=nil,"root should not be nil")
   root:draw()
+  root:broadcast_message({type=message_types.DRAW}, false)
 end
 
 function love.quit()

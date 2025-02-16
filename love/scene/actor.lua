@@ -1,11 +1,84 @@
 local M = {}
 
-function M.new(parent)
+function M.new(parent, properties)
+    if properties == nil then
+        properties = {}
+    end
     local instance = {
         children={},
         enabled = true,
-        visible = true
+        visible = true,
+        x= properties.x or 0,
+        y= properties.y or 0,
+        angle= properties.angle or 0,
+        scale_x= properties.scale_x or 1,
+        scale_y= properties.scale_y or 1,
+        origin_x= properties.origin_x or 0,
+        origin_y= properties.origin_y or 0,
+        shear_x= properties.shear_x or 0,
+        shear_y= properties.shear_y or 0,
+        canvas = properties.canvas
     }
+    function instance:get_x()
+        return self.x
+    end
+    function instance:get_y()
+        return self.y
+    end
+    function instance:get_angle()
+        return self.angle
+    end
+    function instance:get_scale_x()
+        return self.scale_x
+    end
+    function instance:get_scale_y()
+        return self.scale_y
+    end
+    function instance:get_origin_x()
+        return self.origin_x
+    end
+    function instance:get_origin_y()
+        return self.origin_y
+    end
+    function instance:get_shear_x()
+        return self.shear_x
+    end
+    function instance:get_shear_y()
+        return self.shear_y
+    end
+    function instance:get_canvas()
+        return self.canvas
+    end
+    function instance:set_x(x)
+        self.x = x
+    end
+    function instance:set_y(y)
+        self.y = y
+    end
+    function instance:set_angle(angle)
+        self.angle = angle
+    end
+    function instance:set_scale_x(scale_x)
+        self.scale_x = scale_x
+    end
+    function instance:set_scale_y(scale_y)
+        self.scale_y = scale_y
+    end
+    function instance:set_origin_x(origin_x)
+        self.origin_x = origin_x
+    end
+    function instance:set_origin_y(origin_y)
+        self.origin_y = origin_y
+    end
+    function instance:set_shear_x(shear_x)
+        self.shear_x = shear_x
+    end
+    function instance:set_shear_y(shear_y)
+        self.shear_y = shear_y
+    end
+    function instance:set_canvas(canvas)
+        self.canvas = canvas
+    end
     function instance:set_enabled(enabled)
         assert(type(enabled)=="boolean","enabled should be a boolean")
         self.enabled = enabled
