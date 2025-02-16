@@ -31,17 +31,17 @@ function M.new(parent, options)
     function instance:set_full_hue(hue)
         self.full_hue = hue
     end
-    function instance:get_top()
+    function instance:legacy_get_top()
         return self.y
     end
-    function instance:get_bottom()
-        return self:get_top() + self.height - 1
+    function instance:legacy_get_bottom()
+        return self:legacy_get_top() + self.height - 1
     end
-    function instance:get_left()
+    function instance:legacy_get_left()
         return self.x
     end
-    function instance:get_right()
-        return self:get_left() +  self.width - 1
+    function instance:legacy_get_right()
+        return self:legacy_get_left() +  self.width - 1
     end
     return instance
 end

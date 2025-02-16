@@ -85,7 +85,7 @@ function M.new(parent, image_id, font_id, caption, menu_items, options)
         local result = false
         for index=1,#self.menu_items do
             local menu_item = self.menu_items[index]
-            if y>= menu_item:get_top() and y<= menu_item:get_bottom() then
+            if y>= menu_item:legacy_get_top() and y<= menu_item:legacy_get_bottom() then
                 if self.menu_item_index ~= index then
                     self.menu_item_index = index
                     sources[options.move_source_id]:play()
@@ -99,7 +99,7 @@ function M.new(parent, image_id, font_id, caption, menu_items, options)
         local result = false
         for index=1,#self.menu_items do
             local menu_item = self.menu_items[index]
-            if y>= menu_item:get_top() and y<= menu_item:get_bottom() then
+            if y>= menu_item:legacy_get_top() and y<= menu_item:legacy_get_bottom() then
                 self.menu_item_index = index
                 if self.on_menu_item ~= nil then
                     sources[options.choose_source_id]:play()

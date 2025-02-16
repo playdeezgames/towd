@@ -13,17 +13,17 @@ function M.new(parent, image, x, y)
         self.image:draw(x,y)
         love.graphics.setColor(r,g,b,a)
     end
-    function instance:get_left()
+    function instance:legacy_get_left()
         return self.x
     end
-    function instance:get_top()
+    function instance:legacy_get_top()
         return self.y
     end
-    function instance:get_right()
-        return self:get_left() + instance.image:get_width() - 1
+    function instance:legacy_get_right()
+        return self:legacy_get_left() + instance.image:get_width() - 1
     end
-    function instance:get_bottom()
-        return self:get_top() + instance.image:get_height() - 1
+    function instance:legacy_get_bottom()
+        return self:legacy_get_top() + instance.image:get_height() - 1
     end
     function instance:set_hue(hue)
         instance.hue = hue

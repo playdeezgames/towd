@@ -3,9 +3,11 @@ local M = {}
 function M.new(parent)
     local instance = {
         children={},
-        enabled = true
+        enabled = true,
+        visible = true
     }
     function instance:set_enabled(enabled)
+        assert(type(enabled)=="boolean","enabled should be a boolean")
         self.enabled = enabled
     end
     function instance:is_enabled()
@@ -19,6 +21,22 @@ function M.new(parent)
     end
     function instance:toggle_enabled()
         self:set_enabled(not self:is_enabled())
+    end
+    function instance:set_visible(visible)
+        assert(type(visible)=="boolean","visible should be a boolean")
+        self.visible = visible
+    end
+    function instance:is_visible()
+        return self.visible
+    end
+    function instance:show()
+        self:set_visible(true)
+    end
+    function instance:hide()
+        self:set_visible(false)
+    end
+    function instance:toggle_visible()
+        self:set_visible(not self:is_visible())
     end
     function instance:get_parent()
         return self.parent

@@ -155,24 +155,24 @@ function M.new(parent)
         for index = 1, #menu_items do
             local menu_item = menu_items[index]
             local slider_item = sliders[index]
-            if (y>= menu_item:get_top() and y<=menu_item:get_bottom()) then
+            if (y>= menu_item:legacy_get_top() and y<=menu_item:legacy_get_bottom()) then
                 if menu_item_index ~= index then
                     menu_item_index = index
                     sources[source_id.BLIP]:play()
                 end
                 result = true
-            elseif (y>=slider_item:get_top() and y<=slider_item:get_bottom()) then
+            elseif (y>=slider_item:legacy_get_top() and y<=slider_item:legacy_get_bottom()) then
                 if menu_item_index ~= index then
                     menu_item_index = index
                     sources[source_id.BLIP]:play()
                 end
                 if buttons[1] then
                     local percent
-                    if x>=slider_item:get_left() and x<=slider_item:get_right() then
-                        percent = (x - slider_item:get_left()) / (slider_item:get_right() - slider_item:get_left())
-                    elseif x<=slider_item:get_left() then
+                    if x>=slider_item:legacy_get_left() and x<=slider_item:legacy_get_right() then
+                        percent = (x - slider_item:legacy_get_left()) / (slider_item:legacy_get_right() - slider_item:legacy_get_left())
+                    elseif x<=slider_item:legacy_get_left() then
                         percent = 0
-                    elseif x>= slider_item:get_right() then
+                    elseif x>= slider_item:legacy_get_right() then
                         percent = 1
                     end
                     if menu_item_index == 1 then
@@ -190,7 +190,7 @@ function M.new(parent)
             end
         end
         if not result then
-            back_button_hover = x >= back_button:get_left() and x <= back_button:get_right() and y >= back_button:get_top() and y <= back_button:get_bottom()
+            back_button_hover = x >= back_button:legacy_get_left() and x <= back_button:legacy_get_right() and y >= back_button:legacy_get_top() and y <= back_button:legacy_get_bottom()
             result = back_button_hover
         end
         return result
@@ -200,13 +200,13 @@ function M.new(parent)
         local result = false
         for index = 1, #menu_items do
             local slider_item = sliders[index]
-            if y>=slider_item:get_top() and y<=slider_item:get_bottom()  then
+            if y>=slider_item:legacy_get_top() and y<=slider_item:legacy_get_bottom()  then
                 local percent
-                if x>=slider_item:get_left() and x<=slider_item:get_right() then
-                    percent = (x - slider_item:get_left()) / (slider_item:get_right() - slider_item:get_left())
-                elseif x<=slider_item:get_left() then
+                if x>=slider_item:legacy_get_left() and x<=slider_item:legacy_get_right() then
+                    percent = (x - slider_item:legacy_get_left()) / (slider_item:legacy_get_right() - slider_item:legacy_get_left())
+                elseif x<=slider_item:legacy_get_left() then
                     percent = 0
-                elseif x>= slider_item:get_right() then
+                elseif x>= slider_item:legacy_get_right() then
                     percent = 1
                 end
                 if menu_item_index == 1 then
@@ -223,7 +223,7 @@ function M.new(parent)
             end
         end
         if not result then
-            back_button_hover = x >= back_button:get_left() and x <= back_button:get_right() and y >= back_button:get_top() and y <= back_button:get_bottom()
+            back_button_hover = x >= back_button:legacy_get_left() and x <= back_button:legacy_get_right() and y >= back_button:legacy_get_top() and y <= back_button:legacy_get_bottom()
             result = back_button_hover
         end
         return result
@@ -240,13 +240,13 @@ function M.new(parent)
         local result = false
         for index = 1, #menu_items do
             local slider_item = sliders[index]
-            if y>=slider_item:get_top() and y<=slider_item:get_bottom()  then
+            if y>=slider_item:legacy_get_top() and y<=slider_item:legacy_get_bottom()  then
                 local percent
-                if x>=slider_item:get_left() and x<=slider_item:get_right() then
-                    percent = (x - slider_item:get_left()) / (slider_item:get_right() - slider_item:get_left())
-                elseif x<=slider_item:get_left() then
+                if x>=slider_item:legacy_get_left() and x<=slider_item:legacy_get_right() then
+                    percent = (x - slider_item:legacy_get_left()) / (slider_item:legacy_get_right() - slider_item:legacy_get_left())
+                elseif x<=slider_item:legacy_get_left() then
                     percent = 0
-                elseif x>= slider_item:get_right() then
+                elseif x>= slider_item:legacy_get_right() then
                     percent = 1
                 end
                 if menu_item_index == 1 then
