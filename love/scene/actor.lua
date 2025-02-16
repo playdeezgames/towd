@@ -50,6 +50,9 @@ function M.new(parent)
             self:get_parent():add_child(self)
         end
     end
+    function instance:has_parent()
+        return self:get_parent() ~= nil
+    end
     function instance:add_child(child)
         self:remove_child(child)
         table.insert(self.children, child)
@@ -63,6 +66,57 @@ function M.new(parent)
             index = index + 1
         end
     end
+    function instance:handle_message(message)
+        if not self:is_enabled() then
+            return false
+        elseif type(self.on_message)=="function" and self:on_message(message) then
+            return true
+        elseif self:has_parent() then
+            return self:get_parent():handle_message(message)
+        else
+            return false
+        end
+    end
+    function instance:broadcast_message(message, reverse_order)
+        if not self:is_enabled() then
+            return
+        elseif reverse_order then
+            for index = #self.children, 1, -1 do
+                self.children[index]:broadcast_message(message, reverse_order)
+            end
+            if type(self.on_message)=="function" then self:on_message(message) end
+        else
+            if type(self.on_message)=="function" then self:on_message(message) end
+            for index =  1, #self.children do
+                self.children[index]:broadcast_message(message, reverse_order)
+            end
+        end
+    end
+    function instance:handle_broadcast_message(message, reverse_order)
+        if not self:is_enabled() then
+            return false
+        elseif reverse_order then
+            for index = #self.children, 1, -1 do
+                if self.children[index]:broadcast_message(message, reverse_order) then
+                    return true
+                end
+            end
+            if type(self.on_message)=="function" then 
+                return self:on_message(message) 
+            end
+        else
+            if type(self.on_message)=="function" and self:on_message(message) then 
+                return true 
+            end
+            for index =  1, #self.children do
+                if self.children[index]:broadcast_message(message, reverse_order) then
+                    return true
+                end
+            end
+        end
+        return false
+    end
+    ------------------------------------------------------------------------------
     function instance:update(dt)
         if not self:is_enabled() then
             return
@@ -200,6 +254,7 @@ function M.new(parent)
             child:load()
         end
     end
+    ---------------------------------------
     instance:set_parent(parent)
     return instance
 end
