@@ -36,49 +36,46 @@ class InPlay {
         table.appendChild(third_row);
         document.body.appendChild(table);
         Utility.add_button_to(top_cell, "N", InPlay.move_north);
-        Utility.add_button_to(bottom_cell, "S", InPlay.move_north);
-        Utility.add_button_to(left_cell, "W", InPlay.move_north);
-        Utility.add_button_to(right_cell, "E", InPlay.move_north);
+        Utility.add_button_to(bottom_cell, "S", InPlay.move_south);
+        Utility.add_button_to(left_cell, "W", InPlay.move_west);
+        Utility.add_button_to(right_cell, "E", InPlay.move_east);
     }
 
     static move_north(){
         let world = new World();
         world.get_avatar().move_north();
-        InPlay.run()
+        InPlay.run();
     }
     static move_south(){
         let world = new World();
         world.get_avatar().move_south();
-        InPlay.run()
+        InPlay.run();
     }
     static move_east(){
         let world = new World();
         world.get_avatar().move_east();
-        InPlay.run()
+        InPlay.run();
     }
     static move_west(){
         let world = new World();
         world.get_avatar().move_west();
-        InPlay.run()
+        InPlay.run();
     }
 
     static render_room(room) {
-        let table = document.createElement("table");
         for (let row = 0; row < room.get_rows(); ++row) {
-            let table_row = document.createElement("tr");
+            let row_div = Utility.add_div();
             for (let column = 0; column < room.get_columns(); ++column) {
                 let room_cell = room.get_cell(column, row);
-                let table_data = document.createElement("td");
                 let character = room_cell.get_character();
                 if (character != null) {
-                    table_data.innerText = character.get_character_type();
+                    let character_type_id = character.get_character_type();
+                    Utility.add_img_to(row_div, CharacterTypes[character_type_id].img_url);
                 } else {
-                    table_data.innerText = room_cell.get_terrain_type();
+                    let terrain_type_id = room_cell.get_terrain_type();
+                    Utility.add_img_to(row_div, TerrainTypes[terrain_type_id].img_url);
                 }
-                table_row.appendChild(table_data);
             }
-            table.appendChild(table_row);
         }
-        document.body.appendChild(table);
     }
 }

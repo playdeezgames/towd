@@ -1,7 +1,5 @@
 const BOARD_COLUMNS = 8;
 const BOARD_ROWS = 9;
-const TERRAIN_TYPE_EMPTY = "empty";
-const CHARACTER_TYPE_N00B = "n00b";
 class World {
     constructor() {
     }
@@ -66,8 +64,8 @@ class World {
     }
     initialize(){
         this.clear();
-        let room = this.create_room(BOARD_COLUMNS, BOARD_ROWS, TERRAIN_TYPE_EMPTY);
-        let character = this.create_character(CHARACTER_TYPE_N00B, room.get_cell(Math.floor(BOARD_COLUMNS/2), Math.floor(BOARD_ROWS/2)))
+        let room = this.create_room(BOARD_COLUMNS, BOARD_ROWS, TerrainType.EMPTY);
+        let character = this.create_character(CharacterType.N00B, room.get_cell(Math.floor(BOARD_COLUMNS/2), Math.floor(BOARD_ROWS/2)))
         this.set_avatar(character);
     }
 }

@@ -35,8 +35,14 @@ class Character {
     }
     move_by(dx, dy) {
         let room_cell = this.get_room_cell();
+        let room = room_cell.get_room();
         this.set_room_cell(null);
-        //TODO: this is where you are
+        let column = room_cell.get_column() + dx;
+        let row = room_cell.get_row() + dy;
+        let next_room_cell = room.get_cell(column, row);
+        if(next_room_cell!=null){
+            room_cell = next_room_cell;
+        }
         this.set_room_cell(room_cell)
     }
     move_north() {

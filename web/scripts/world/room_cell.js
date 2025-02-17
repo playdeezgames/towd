@@ -11,6 +11,12 @@ class RoomCell {
     get_terrain_type() {
         return this.get_data().terrain_type;
     }
+    get_column() {
+        return this.column;
+    }
+    get_row() {
+        return this.row;
+    }
     get_id() {
         return {
             room_id: this.room_id,
