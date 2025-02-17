@@ -1,4 +1,5 @@
 local M = {}
 M.UPDATE = "UPDATE"
 M.DRAW = "DRAW"
+M.MOUSE_MOVE = "MOUSE_MOVE"
 return M

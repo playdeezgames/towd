@@ -43,6 +43,7 @@ function love.mousemoved(x, y, dx, dy, istouch)
   assert(root~=nil,"root should not be nil")
   x, y = gfx.adjust_xy(x, y)
   root:mousemoved(x,y,dx,dy,istouch, {love.mouse.isDown(1), love.mouse.isDown(2), love.mouse.isDown(3)})
+  root:handle_broadcast_message({type=message_types.MOUSE_MOVE, x = x, y = y}, true)
 end
 
 function love.mousepressed(x, y, button, istouch, presses)
@@ -70,4 +71,8 @@ end
 function love.gamepadreleased(joystick, button)
   assert(root~=nil,"root should not be nil")
   root:gamepadreleased(joystick, button)
+end
+
+for k, v in pairs(_G.love) do
+  print(k..": "..type(v))
 end

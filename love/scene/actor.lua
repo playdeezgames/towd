@@ -17,6 +17,7 @@ function M.new(parent, properties)
         origin_y= properties.origin_y or 0,
         shear_x= properties.shear_x or 0,
         shear_y= properties.shear_y or 0,
+        hue = properties.hue or {1,1,1},
         canvas = properties.canvas
     }
     function instance:get_x()
@@ -49,6 +50,9 @@ function M.new(parent, properties)
     function instance:get_canvas()
         return self.canvas
     end
+    function instance:get_hue()
+        return self.hue
+    end
     function instance:set_x(x)
         self.x = x
     end
@@ -78,6 +82,9 @@ function M.new(parent, properties)
     end
     function instance:set_canvas(canvas)
         self.canvas = canvas
+    end
+    function instance:set_hue(hue)
+        self.hue = hue
     end
     function instance:set_enabled(enabled)
         assert(type(enabled)=="boolean","enabled should be a boolean")

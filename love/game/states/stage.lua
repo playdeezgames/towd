@@ -12,6 +12,7 @@ local confirm_quit_state = require "game.states.confirm_quit_state"
 local source_id          = require "game.sfx.source_id"
 local sfx                = require "sfx.sfx"
 local options_state      = require "game.states.options_state"
+local decal              = require "ui.decal"
 local M = {}
 local command_table = {
     ["return"] = commands.BLUE,
@@ -41,6 +42,16 @@ function M.new()
         [states.CONFIRM_QUIT] = confirm_quit_state.new(instance),
         [states.OPTIONS] = options_state.new(instance)
     }
+    decal.new(
+        instance,
+        {
+            image = love.graphics.newImage("assets/images/back_button.png"),
+            x = 64,
+            y = 64,
+            origin_x = 32,
+            origin_y = 32,
+            hue = {0.5,1,1}
+        })
     function instance:get_current_state()
         if instance.state == nil then
             return nil

@@ -25,6 +25,7 @@ function M.new(parent, image, x, y)
     function instance:legacy_get_bottom()
         return self:legacy_get_top() + instance.image:get_height() - 1
     end
+---@diagnostic disable-next-line: duplicate-set-field
     function instance:set_hue(hue)
         instance.hue = hue
     end
