@@ -33,4 +33,22 @@ class Character {
     get_room() {
         return this.get_room_cell().get_room();
     }
+    move_by(dx, dy) {
+        let room_cell = this.get_room_cell();
+        this.set_room_cell(null);
+        //TODO: this is where you are
+        this.set_room_cell(room_cell)
+    }
+    move_north() {
+        this.move_by(0, -1);
+    }
+    move_south() {
+        this.move_by(0, 1);
+    }
+    move_east() {
+        this.move_by(1, 0);
+    }
+    move_west() {
+        this.move_by(-1, 0);
+    }
 }
