@@ -13,11 +13,12 @@ class Inventory{
         }
         return result;
     }
-    add_items(item_type_id, quantity){
+    add_item(item){
         let inventory_data = this.get_data();
+        let item_type_id = item.get_item_type();
         if(inventory_data[item_type_id] == null){
-            inventory_data[item_type_id] = 0;
+            inventory_data[item_type_id] = [];
         }
-        inventory_data[item_type_id] += quantity;
+        inventory_data[item_type_id].push(item.get_id());
     }
 }

@@ -22,6 +22,7 @@ class InPlay {
 
     static render_stats(){
         let avatar = (new World()).get_avatar();
+        Utility.add_paragraph(`Terrain: ${avatar.get_room_cell().get_name()}`);
         Utility.add_paragraph(`Satiety: ${avatar.get_statistic(StatisticType.SATIETY)}/${avatar.get_statistic(StatisticType.MAXIMUM_SATIETY)}`);
         Utility.add_paragraph(`Health: ${avatar.get_statistic(StatisticType.HEALTH)}/${avatar.get_statistic(StatisticType.MAXIMUM_HEALTH)}`);
     }
@@ -34,7 +35,10 @@ class InPlay {
         Utility.add_break();
         Utility.add_button("S", InPlay.move_south);
         Utility.add_break();
-        Utility.add_button("Forage", InPlay.forage);
+        let avatar = (new World()).get_avatar();
+        if(avatar.can_forage()){
+            Utility.add_button("Forage", InPlay.forage);
+        }
     }
 
     static with_avatar(predicate){

@@ -28,7 +28,7 @@ class Character {
         return this.character_id;
     }
     get_character_type() {
-        return this.get_data().character_type;
+        return this.get_data().character_type_id;
     }
     get_room() {
         return this.get_room_cell().get_room();
@@ -105,11 +105,17 @@ class Character {
         let health = this.get_statistic(StatisticType.HEALTH);
         return health == 0;
     }
+    can_forage(){
+        let terrain_type_id = this.get_room_cell().get_terrain_type();
+        return TerrainTypes[terrain_type_id].do_forage != null;
+    }
     forage(){
         this.clear_messages();
-        this.add_message("You forage.")
-        let terrain_type_id = this.get_room_cell().get_terrain_type();
-        TerrainTypes[terrain_type_id].do_forage(this);
+        if(this.can_forage()){
+            this.add_message("You forage.")
+            let terrain_type_id = this.get_room_cell().get_terrain_type();
+            TerrainTypes[terrain_type_id].do_forage(this);
+        }
     }
     get_inventory(){
         return new Inventory(this.world_data, this.character_id);
@@ -119,5 +125,8 @@ class Character {
     }
     initialize(){
         CharacterTypes[this.get_character_type()].initialize(this);
+    }
+    get_world(){
+        return new World(this.world_data);
     }
 }

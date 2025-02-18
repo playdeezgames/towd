@@ -51,4 +51,22 @@ class Utility {
     static add_div(){
         return this.add_div_to(document.body);
     }
+    static generate(table){
+        let total = 0;
+        for(let key in table){
+            total += table[key];
+        }
+        let generated = Math.floor(Math.random() * total);
+        for(let key in table){
+            if(generated<table[key]){
+                return key;
+            }else{
+                generated -= table[key];
+            }
+        }
+        throw "not found";
+    }
+    static roll(value){
+        return Math.floor(Math.random() * value);
+    }
 }

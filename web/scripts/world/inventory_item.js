@@ -5,10 +5,7 @@ class InventoryItem {
         this.item_type_id = item_type_id;
     }
     get_quantity(){
-        return this.world_data.characters[this.character_id].inventory[this.item_type_id];
-    }
-    set_quantity(value){
-        this.world_data.characters[this.character_id].inventory[this.item_type_id] = value;
+        return this.world_data.characters[this.character_id].inventory[this.item_type_id].length;
     }
     get_name(){
         return ItemTypes[this.item_type_id].name;

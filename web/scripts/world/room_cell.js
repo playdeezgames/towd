@@ -47,4 +47,10 @@ class RoomCell {
     get_img_url(){
         return TerrainTypes[this.get_data().terrain_type_id].img_url;
     }
+    set_terrain_type(terrain_type_id){
+        this.get_data().terrain_type_id = terrain_type_id;
+    }
+    get_name(){
+        return TerrainTypes[this.get_data().terrain_type_id].name;
+    }
 }

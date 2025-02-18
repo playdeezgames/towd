@@ -1,13 +1,19 @@
 const BOARD_COLUMNS = 9;
 const BOARD_ROWS = 9;
 class World {
-    constructor() {
+    constructor(world_data) {
+        if(world_data==null){
+            world_data = WorldData.data;
+        }
+        this.world_data = world_data;
     }
     get_data() {
-        return WorldData.data;
+        return this.world_data;
     }
     clear() {
-        WorldData.data = {};
+        for(let key in this.get_data()){
+            delete this.get_data()[key];
+        }
     }
     create_room(columns, rows, room_type_id) {
         if(this.get_data().rooms == null) {
@@ -17,7 +23,8 @@ class World {
         let room_data = {
             columns: columns,
             rows: rows,
-            cells: []
+            cells: [],
+            room_type_id: room_type_id
         };
         let terrain_type_id = RoomTypes[room_type_id].terrain_type_id;
         while(room_data.cells.length < columns) {
@@ -38,13 +45,13 @@ class World {
     get_character(character_id) {
         return new Character(this.get_data(), character_id);
     }
-    create_character(character_type, map_cell) {
+    create_character(character_type_id, map_cell) {
         if(this.get_data().characters == null) {
             this.get_data().characters = [];
         }
         let character_id = this.get_data().characters.length;
         let character_data = {
-            character_type: character_type,
+            character_type_id: character_type_id,
             inventory: {}
         };
         this.get_data().characters.push(character_data);
@@ -72,5 +79,22 @@ class World {
         let room = this.create_room(BOARD_COLUMNS, BOARD_ROWS, RoomType.FIELD);
         let character = this.create_character(CharacterType.N00B, room.get_cell(Math.floor(BOARD_COLUMNS/2), Math.floor(BOARD_ROWS/2)))
         this.set_avatar(character);
+    }
+    create_item(item_type_id){
+        let world_data = this.get_data();
+        if(world_data.items==null){
+            world_data.items=[];
+        }
+        let item_id = this.get_data().items.length;
+        let item_data = {
+            item_type_id: item_type_id
+        };
+        this.get_data().items.push(item_data);
+        let item =  this.get_item(item_id);
+        item.initialize();
+        return item
+    }
+    get_item(item_id){
+        return new Item(this.world_data, item_id);
     }
 }

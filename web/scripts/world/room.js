@@ -18,7 +18,11 @@ class Room {
     get_columns() {
         return this.get_data().columns;
     }
+    get_room_type(){
+        return this.get_data().room_type_id;
+    }
     initialize(){
+        RoomTypes[this.get_room_type()].initialize(this);
         for(let column = 0; column < this.get_columns();++column){
             for(let row = 0; row < this.get_rows(); ++ row){
                 this.get_cell(column, row).initialize();
