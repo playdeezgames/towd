@@ -57,4 +57,16 @@ class Character {
     move_west() {
         this.move_by(-1, 0);
     }
+    set_statistic(statistic_type_id, value){
+        if(this.get_data().statistics == null){
+            this.get_data().statistics = {};
+        }
+        this.get_data().statistics[statistic_type_id] = value;
+    }
+    get_statistic(statistic_type_id){
+        if(this.get_data().statistics == null){
+            return null;
+        }
+        return this.get_data().statistics[statistic_type_id];
+    }
 }

@@ -1,4 +1,4 @@
-const BOARD_COLUMNS = 8;
+const BOARD_COLUMNS = 9;
 const BOARD_ROWS = 9;
 class World {
     constructor() {
@@ -46,6 +46,7 @@ class World {
         this.get_data().characters.push(character_data);
         let character =  this.get_character(character_id);
         character.set_room_cell(map_cell);
+        CharacterTypes[character_type].initialize(character);
         return character
     }
     set_avatar(character) {

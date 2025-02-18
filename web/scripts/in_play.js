@@ -1,11 +1,15 @@
 class InPlay {
     static run() {
         Utility.cls();
-        Utility.add_paragraph("In Play");
-        let world = new World();
-        let room = world.get_avatar().get_room();
-        InPlay.render_room(room);
+        InPlay.render_room();
+        InPlay.render_stats();
         InPlay.render_controls();
+    }
+
+    static render_stats(){
+        let avatar = (new World()).get_avatar();
+        Utility.add_paragraph(`Satiety: ${avatar.get_statistic(StatisticType.SATIETY)}/${avatar.get_statistic(StatisticType.MAXIMUM_SATIETY)}`);
+        Utility.add_paragraph(`Health: ${avatar.get_statistic(StatisticType.HEALTH)}/${avatar.get_statistic(StatisticType.MAXIMUM_HEALTH)}`);
     }
 
     static render_controls() {
@@ -62,7 +66,9 @@ class InPlay {
         InPlay.run();
     }
 
-    static render_room(room) {
+    static render_room() {
+        let world = new World();
+        let room = world.get_avatar().get_room();
         for (let row = 0; row < room.get_rows(); ++row) {
             let row_div = Utility.add_div();
             for (let column = 0; column < room.get_columns(); ++column) {
