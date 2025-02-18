@@ -75,7 +75,7 @@ class InPlay {
                     Utility.add_img_to(row_div, CharacterTypes[character_type_id].img_url);
                 } else {
                     let terrain_type_id = room_cell.get_terrain_type();
-                    Utility.add_img_to(row_div, TerrainTypes[terrain_type_id].img_url);
+                    Utility.add_img_to(row_div, room_cell.get_img_url());
                 }
             }
         }

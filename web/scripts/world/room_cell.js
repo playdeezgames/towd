@@ -44,4 +44,7 @@ class RoomCell {
     initialize(){
         //TODO: initialize based on terrain
     }
+    get_img_url(){
+        return TerrainTypes[this.get_data().terrain_type_id].img_url;
+    }
 }
