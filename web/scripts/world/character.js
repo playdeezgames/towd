@@ -33,6 +33,17 @@ class Character {
     get_room() {
         return this.get_room_cell().get_room();
     }
+    apply_hunger(amount){
+        let satiety = this.get_statistic(StatisticType.SATIETY);
+        let health = this.get_statistic(StatisticType.HEALTH);
+        let satiety_loss = Math.min(satiety, amount);
+        amount -= satiety_loss;
+        satiety -= satiety_loss;
+        this.set_statistic(StatisticType.SATIETY, satiety);
+        let health_loss = Math.min(health, amount);
+        health -= health_loss;
+        this.set_statistic(StatisticType.HEALTH, health);
+    }
     move_by(dx, dy) {
         let room_cell = this.get_room_cell();
         let room = room_cell.get_room();
@@ -44,6 +55,7 @@ class Character {
             room_cell = next_room_cell;
         }
         this.set_room_cell(room_cell)
+        this.apply_hunger(1);
     }
     move_north() {
         this.move_by(0, -1);
@@ -68,5 +80,9 @@ class Character {
             return null;
         }
         return this.get_data().statistics[statistic_type_id];
+    }
+    is_dead(){
+        let health = this.get_statistic(StatisticType.HEALTH);
+        return health == 0;
     }
 }

@@ -46,24 +46,40 @@ class InPlay {
     }
 
     static move_north(){
-        let world = new World();
-        world.get_avatar().move_north();
-        InPlay.run();
+        let avatar = (new World()).get_avatar();
+        avatar.move_north();
+        if(avatar.is_dead()) {
+            GameOver.run();
+        }else{
+            InPlay.run();
+        }
     }
     static move_south(){
-        let world = new World();
-        world.get_avatar().move_south();
-        InPlay.run();
+        let avatar = (new World()).get_avatar();
+        avatar.move_south();
+        if(avatar.is_dead()) {
+            GameOver.run();
+        }else{
+            InPlay.run();
+        }
     }
     static move_east(){
-        let world = new World();
-        world.get_avatar().move_east();
-        InPlay.run();
+        let avatar = (new World()).get_avatar();
+        avatar.move_east();
+        if(avatar.is_dead()) {
+            GameOver.run();
+        }else{
+            InPlay.run();
+        }
     }
     static move_west(){
-        let world = new World();
-        world.get_avatar().move_west();
-        InPlay.run();
+        let avatar = (new World()).get_avatar();
+        avatar.move_west();
+        if(avatar.is_dead()) {
+            GameOver.run();
+        }else{
+            InPlay.run();
+        }
     }
 
     static render_room() {
