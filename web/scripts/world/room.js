@@ -18,4 +18,7 @@ class Room {
     get_columns() {
         return this.get_data().columns;
     }
+    initialize(){
+        //TODO: initialize based on room type        
+    }
 }

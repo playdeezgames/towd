@@ -9,7 +9,7 @@ class World {
     clear() {
         WorldData.data = {};
     }
-    create_room(columns, rows, terrain_type) {
+    create_room(columns, rows, room_type_id) {
         if(this.get_data().rooms == null) {
             this.get_data().rooms = [];
         }
@@ -19,15 +19,23 @@ class World {
             rows: rows,
             cells: []
         };
+        let terrain_type_id = RoomTypes[room_type_id].terrain_type_id;
         while(room_data.cells.length < columns) {
             let column_data = [];
             room_data.cells.push(column_data);
             while(column_data.length < rows) {
-                column_data.push({terrain_type: terrain_type})
+                column_data.push({terrain_type_id: terrain_type_id})
             }
         }
         this.get_data().rooms.push(room_data);
-        return this.get_room(room_id);
+        let room = this.get_room(room_id);
+        room.initialize();
+        for(let column = 0; column < room.get_columns();++column){
+            for(let row = 0; row < room.get_rows(); ++ row){
+                room.get_cell(column, row).initialize();
+            }
+        }
+        return room
     }
     get_room(room_id) {
         return new Room(this.get_data(), room_id);
@@ -66,7 +74,7 @@ class World {
     }
     initialize(){
         this.clear();
-        let room = this.create_room(BOARD_COLUMNS, BOARD_ROWS, TerrainType.EMPTY);
+        let room = this.create_room(BOARD_COLUMNS, BOARD_ROWS, RoomType.FIELD);
         let character = this.create_character(CharacterType.N00B, room.get_cell(Math.floor(BOARD_COLUMNS/2), Math.floor(BOARD_ROWS/2)))
         this.set_avatar(character);
     }

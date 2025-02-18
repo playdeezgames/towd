@@ -9,7 +9,7 @@ class RoomCell {
         return this.world_data.rooms[this.room_id].cells[this.column][this.row];
     }
     get_terrain_type() {
-        return this.get_data().terrain_type;
+        return this.get_data().terrain_type_id;
     }
     get_column() {
         return this.column;
@@ -40,5 +40,8 @@ class RoomCell {
     }
     get_room() {
         return new Room(this.world_data, this.room_id);
+    }
+    initialize(){
+        //TODO: initialize based on terrain
     }
 }
