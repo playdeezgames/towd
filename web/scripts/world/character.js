@@ -114,4 +114,10 @@ class Character {
     get_inventory(){
         return new Inventory(this.world_data, this.character_id);
     }
+    get_img_url(){
+        return CharacterTypes[this.get_character_type()].img_url;
+    }
+    initialize(){
+        CharacterTypes[this.get_character_type()].initialize(this);
+    }
 }

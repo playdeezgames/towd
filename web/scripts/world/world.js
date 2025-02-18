@@ -30,11 +30,6 @@ class World {
         this.get_data().rooms.push(room_data);
         let room = this.get_room(room_id);
         room.initialize();
-        for(let column = 0; column < room.get_columns();++column){
-            for(let row = 0; row < room.get_rows(); ++ row){
-                room.get_cell(column, row).initialize();
-            }
-        }
         return room
     }
     get_room(room_id) {
@@ -55,7 +50,7 @@ class World {
         this.get_data().characters.push(character_data);
         let character =  this.get_character(character_id);
         character.set_room_cell(map_cell);
-        CharacterTypes[character_type].initialize(character);
+        character.initialize();
         return character
     }
     set_avatar(character) {

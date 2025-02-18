@@ -71,10 +71,8 @@ class InPlay {
                 let room_cell = room.get_cell(column, row);
                 let character = room_cell.get_character();
                 if (character != null) {
-                    let character_type_id = character.get_character_type();
-                    Utility.add_img_to(row_div, CharacterTypes[character_type_id].img_url);
+                    Utility.add_img_to(row_div, character.get_img_url());
                 } else {
-                    let terrain_type_id = room_cell.get_terrain_type();
                     Utility.add_img_to(row_div, room_cell.get_img_url());
                 }
             }

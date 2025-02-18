@@ -42,7 +42,7 @@ class RoomCell {
         return new Room(this.world_data, this.room_id);
     }
     initialize(){
-        //TODO: initialize based on terrain
+        TerrainTypes[this.get_data().terrain_type_id].initialize(this);
     }
     get_img_url(){
         return TerrainTypes[this.get_data().terrain_type_id].img_url;

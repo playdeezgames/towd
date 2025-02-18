@@ -9,6 +9,9 @@ TerrainTypes[TerrainType.EMPTY] = {
         character.apply_hunger(1);
         character.get_inventory().add_items(ItemType.PLANT_FIBER, 1);
         character.add_message(`You find 1 ${ItemTypes[ItemType.PLANT_FIBER].name}.`);
+    },
+    initialize: (room_cell) => {
+        
     }
 };
 Object.freeze(TerrainTypes);
