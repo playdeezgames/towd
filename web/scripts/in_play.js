@@ -2,8 +2,22 @@ class InPlay {
     static run() {
         Utility.cls();
         InPlay.render_room();
-        InPlay.render_stats();
         InPlay.render_controls();
+        InPlay.render_stats();
+        InPlay.render_messages();
+        InPlay.render_inventory();
+    }
+
+    static render_messages(){
+        (new World()).get_avatar().get_messages().forEach((message)=>{
+            Utility.add_paragraph(message);
+        });
+    }
+
+    static render_inventory(){
+        (new World()).get_avatar().get_inventory().get_items().forEach((item)=>{
+            Utility.add_paragraph(`${item.get_name()}: ${item.get_quantity()}`)
+        })
     }
 
     static render_stats(){
@@ -13,73 +27,39 @@ class InPlay {
     }
 
     static render_controls() {
-        let table = document.createElement("table");
-        let first_row = document.createElement("tr");
-        let upper_left_cell = document.createElement("td");
-        let top_cell = document.createElement("td");
-        let upper_right_cell = document.createElement("td");
-        first_row.appendChild(upper_left_cell);
-        first_row.appendChild(top_cell);
-        first_row.appendChild(upper_right_cell);
-        let second_row = document.createElement("tr");
-        let left_cell = document.createElement("td");
-        let middle_cell = document.createElement("td");
-        let right_cell = document.createElement("td");
-        second_row.appendChild(left_cell);
-        second_row.appendChild(middle_cell);
-        second_row.appendChild(right_cell);
-        let third_row = document.createElement("tr");
-        let lower_left_cell = document.createElement("td");
-        let bottom_cell = document.createElement("td");
-        let lower_right_cell = document.createElement("td");
-        third_row.appendChild(lower_left_cell);
-        third_row.appendChild(bottom_cell);
-        third_row.appendChild(lower_right_cell);
-        table.appendChild(first_row);
-        table.appendChild(second_row);
-        table.appendChild(third_row);
-        document.body.appendChild(table);
-        Utility.add_button_to(top_cell, "N", InPlay.move_north);
-        Utility.add_button_to(bottom_cell, "S", InPlay.move_south);
-        Utility.add_button_to(left_cell, "W", InPlay.move_west);
-        Utility.add_button_to(right_cell, "E", InPlay.move_east);
+        Utility.add_button("N", InPlay.move_north);
+        Utility.add_break();
+        Utility.add_button("W", InPlay.move_west);
+        Utility.add_button("E", InPlay.move_east);
+        Utility.add_break();
+        Utility.add_button("S", InPlay.move_south);
+        Utility.add_break();
+        Utility.add_button("Forage", InPlay.forage);
     }
 
-    static move_north(){
+    static with_avatar(predicate){
         let avatar = (new World()).get_avatar();
-        avatar.move_north();
+        predicate(avatar);
         if(avatar.is_dead()) {
             GameOver.run();
         }else{
             InPlay.run();
         }
+    }
+    static forage(){
+        InPlay.with_avatar((avatar)=>avatar.forage());
+    }
+    static move_north(){
+        InPlay.with_avatar((avatar)=>avatar.move_north());
     }
     static move_south(){
-        let avatar = (new World()).get_avatar();
-        avatar.move_south();
-        if(avatar.is_dead()) {
-            GameOver.run();
-        }else{
-            InPlay.run();
-        }
+        InPlay.with_avatar((avatar)=>avatar.move_south());
     }
     static move_east(){
-        let avatar = (new World()).get_avatar();
-        avatar.move_east();
-        if(avatar.is_dead()) {
-            GameOver.run();
-        }else{
-            InPlay.run();
-        }
+        InPlay.with_avatar((avatar)=>avatar.move_east());
     }
     static move_west(){
-        let avatar = (new World()).get_avatar();
-        avatar.move_west();
-        if(avatar.is_dead()) {
-            GameOver.run();
-        }else{
-            InPlay.run();
-        }
+        InPlay.with_avatar((avatar)=>avatar.move_west());
     }
 
     static render_room() {

@@ -44,7 +44,26 @@ class Character {
         health -= health_loss;
         this.set_statistic(StatisticType.HEALTH, health);
     }
-    move_by(dx, dy) {
+    clear_messages() {
+        this.get_data().messages = [];
+    }
+    get_messages() {
+        let messages = this.get_data().messages;
+        if(messages == null){
+            return [];
+        }
+        return messages;
+    }
+    add_message(message){
+        let messages = this.get_data().messages;
+        if(messages == null){
+            messages = [];
+            this.get_data().messages = messages;
+        }
+        messages.push(message);
+    }
+    move_by(dx, dy, direction_name) {
+        this.clear_messages();
         let room_cell = this.get_room_cell();
         let room = room_cell.get_room();
         this.set_room_cell(null);
@@ -55,19 +74,20 @@ class Character {
             room_cell = next_room_cell;
         }
         this.set_room_cell(room_cell)
+        this.add_message(`You move ${direction_name}.`);
         this.apply_hunger(1);
     }
     move_north() {
-        this.move_by(0, -1);
+        this.move_by(0, -1, "north");
     }
     move_south() {
-        this.move_by(0, 1);
+        this.move_by(0, 1, "south");
     }
     move_east() {
-        this.move_by(1, 0);
+        this.move_by(1, 0, "east");
     }
     move_west() {
-        this.move_by(-1, 0);
+        this.move_by(-1, 0, "west");
     }
     set_statistic(statistic_type_id, value){
         if(this.get_data().statistics == null){
@@ -84,5 +104,14 @@ class Character {
     is_dead(){
         let health = this.get_statistic(StatisticType.HEALTH);
         return health == 0;
+    }
+    forage(){
+        this.clear_messages();
+        this.add_message("You forage.")
+        let terrain_type_id = this.get_room_cell().get_terrain_type();
+        TerrainTypes[terrain_type_id].do_forage(this);
+    }
+    get_inventory(){
+        return new Inventory(this.world_data, this.character_id);
     }
 }

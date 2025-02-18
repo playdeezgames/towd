@@ -41,7 +41,8 @@ class World {
         }
         let character_id = this.get_data().characters.length;
         let character_data = {
-            character_type: character_type
+            character_type: character_type,
+            inventory: {}
         };
         this.get_data().characters.push(character_data);
         let character =  this.get_character(character_id);
