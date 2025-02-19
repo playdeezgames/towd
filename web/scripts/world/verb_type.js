@@ -22,8 +22,8 @@ VerbTypes[VerbType.FORAGE] = {
 VerbTypes[VerbType.CRAFT] = {
     name: "Craft",
     can_perform: (character) => { 
-        for(let recipe_type_id in RecipeType){
-            if(Recipe.can_craft(character, recipe_type_id)){
+        for(let recipe of Recipes){
+            if(recipe.can_craft(character)){
                 return true;
             }
         }

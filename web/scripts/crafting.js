@@ -2,11 +2,11 @@ class Crafting {
     static run(){
         Utility.cls();
         let character = World.get_avatar();
-        for(let recipe_type_id in RecipeType){
-            if(Recipe.can_craft(character, recipe_type_id)){
-                Utility.add_button(Recipe.get_name(recipe_type_id), ()=>{
+        for(let recipe of Recipes){
+            if(recipe.can_craft(character)){
+                Utility.add_button(recipe.get_name(), ()=>{
                     character.clear_messages();
-                    Recipe.craft(character, recipe_type_id);
+                    recipe.craft(character);
                     Neutral.run();
                 });
                 Utility.add_break();

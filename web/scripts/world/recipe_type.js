@@ -1,30 +1,23 @@
-let RecipeType = {
-    TWINE: "TWINE"
-};
-Object.freeze(RecipeType);
-let RecipeTypes = {};
-RecipeTypes[RecipeType.TWINE] = {
-    inputs: {},
-    outputs: {}
-}
-RecipeTypes[RecipeType.TWINE].inputs[ItemType.PLANT_FIBER] = 2;
-RecipeTypes[RecipeType.TWINE].outputs[ItemType.TWINE] = 1;
-Object.freeze(RecipeTypes);
 class Recipe {
-    static can_craft(character, recipe_type_id){
-        let inputs = RecipeTypes[recipe_type_id].inputs;
-        for(let item_type_id in inputs){
-            let quantity = inputs[item_type_id];
-            if(character.get_inventory().get_items_of_type(item_type_id).get_quantity() < quantity){
-                return false;
-            }
-        }
-        return true;
+    constructor(){
+        this.inputs= {};
+        this.outputs={};
     }
-    static get_name(recipe_type_id){
+    static create(){
+        return new Recipe();
+    }
+    add_input(item_type_id, quantity){
+        this.inputs[item_type_id] = quantity;
+        return this;
+    }
+    add_output(item_type_id, quantity){
+        this.outputs[item_type_id] = quantity;
+        return this;
+    }
+    get_name(){
         let first = true;
         let result = "";
-        let inputs = RecipeTypes[recipe_type_id].inputs;
+        let inputs = this.inputs;
         for(let item_type_id in inputs){
             if(!first){
                 result += " + ";
@@ -38,7 +31,7 @@ class Recipe {
         }
         result += " -> "
         first = true;
-        let outputs = RecipeTypes[recipe_type_id].outputs;
+        let outputs = this.outputs;
         for(let item_type_id in outputs){
             if(!first){
                 result += " + ";
@@ -52,11 +45,21 @@ class Recipe {
         }
         return result;
     }
-    static craft(character, recipe_type_id){
-        if(!Recipe.can_craft(character, recipe_type_id)){
+    can_craft(character){
+        let inputs = this.inputs;
+        for(let item_type_id in inputs){
+            let quantity = inputs[item_type_id];
+            if(character.get_inventory().get_items_of_type(item_type_id).get_quantity() < quantity){
+                return false;
+            }
+        }
+        return true;
+    }
+    craft(character){
+        if(!this.can_craft(character)){
             return;
         }
-        let inputs = RecipeTypes[recipe_type_id].inputs;
+        let inputs = this.inputs;
         for(let item_type_id in inputs){
             let quantity = inputs[item_type_id];
             let items_of_type = character.get_inventory().get_items_of_type(item_type_id);
@@ -67,7 +70,7 @@ class Recipe {
                 --quantity;
             }
         }
-        let outputs = RecipeTypes[recipe_type_id].outputs;
+        let outputs = this.outputs;
         for(let item_type_id in outputs){
             let quantity = outputs[item_type_id];
             while(quantity>0){
@@ -79,3 +82,7 @@ class Recipe {
         }
     }
 }
+let Recipes = [
+    Recipe.create().add_input(ItemType.PLANT_FIBER, 2).add_output(ItemType.TWINE, 1),
+    Recipe.create().add_input(ItemType.ROCK, 2).add_output(ItemType.ROCK,1).add_output(ItemType.SHARP_ROCK,1)
+];
