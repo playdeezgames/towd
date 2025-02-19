@@ -9,19 +9,19 @@ class InPlay {
     }
 
     static render_messages(){
-        (new World()).get_avatar().get_messages().forEach((message)=>{
+        World.get_avatar().get_messages().forEach((message)=>{
             Utility.add_paragraph(message);
         });
     }
 
     static render_inventory(){
-        (new World()).get_avatar().get_inventory().get_items().forEach((item)=>{
+        World.get_avatar().get_inventory().get_items().forEach((item)=>{
             Utility.add_paragraph(`${item.get_name()}: ${item.get_quantity()}`)
         })
     }
 
     static render_stats(){
-        let avatar = (new World()).get_avatar();
+        let avatar = World.get_avatar();
         Utility.add_paragraph(`Terrain: ${avatar.get_room_cell().get_name()}`);
         Utility.add_paragraph(`Satiety: ${avatar.get_statistic(StatisticType.SATIETY)}/${avatar.get_statistic(StatisticType.MAXIMUM_SATIETY)}`);
         Utility.add_paragraph(`Health: ${avatar.get_statistic(StatisticType.HEALTH)}/${avatar.get_statistic(StatisticType.MAXIMUM_HEALTH)}`);
@@ -35,25 +35,21 @@ class InPlay {
         Utility.add_break();
         Utility.add_button("S", InPlay.move_south);
         Utility.add_break();
-        let avatar = (new World()).get_avatar();
+        let avatar = World.get_avatar();
         for(let key in VerbType) {
             if(avatar.can_do_verb(key)){
                 Utility.add_button(VerbTypes[key].name, () => { 
                     avatar.do_verb(key);
-                    InPlay.run();
+                    Neutral.run();
                 });
             }
         }
     }
 
     static with_avatar(predicate){
-        let avatar = (new World()).get_avatar();
+        let avatar = World.get_avatar();
         predicate(avatar);
-        if(avatar.is_dead()) {
-            GameOver.run();
-        }else{
-            InPlay.run();
-        }
+        Neutral.run();
     }
     static move_north(){
         InPlay.with_avatar((avatar)=>avatar.move_north());

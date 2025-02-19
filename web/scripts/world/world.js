@@ -97,4 +97,8 @@ class World {
     get_item(item_id){
         return new Item(this.world_data, item_id);
     }
+    static get_avatar(){
+        let world = new World();
+        return world.get_avatar();
+    }
 }
