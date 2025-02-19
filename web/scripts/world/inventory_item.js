@@ -5,9 +5,20 @@ class InventoryItem {
         this.item_type_id = item_type_id;
     }
     get_quantity(){
-        return this.world_data.characters[this.character_id].inventory[this.item_type_id].length;
+        let item_ids = this.world_data.characters[this.character_id].inventory[this.item_type_id]
+        if(item_ids==null){
+            return 0;
+        }
+        return item_ids.length;
     }
     get_name(){
         return ItemTypes[this.item_type_id].name;
+    }
+    pop_item(){
+        let item_ids = this.world_data.characters[this.character_id].inventory[this.item_type_id]
+        if(item_ids==null || item_ids.length == 0){
+            return null;
+        }
+        return new Item(this.world_data, item_ids.pop())
     }
 }

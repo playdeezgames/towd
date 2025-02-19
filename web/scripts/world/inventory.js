@@ -9,9 +9,12 @@ class Inventory{
     get_items() {
         let result = [];
         for(let item_type_id in this.get_data()){
-            result.push(new InventoryItem(this.world_data, this.character_id, item_type_id));
+            result.push(this.get_items_of_type(item_type_id));
         }
         return result;
+    }
+    get_items_of_type(item_type_id){
+        return new InventoryItem(this.world_data, this.character_id, item_type_id);
     }
     add_item(item){
         let inventory_data = this.get_data();

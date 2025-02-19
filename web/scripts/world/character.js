@@ -123,4 +123,18 @@ class Character {
     get_world(){
         return new World(this.world_data);
     }
+    set_flag(flag_type_id, value){
+        let character_data = this.get_data();
+        if(character_data.flags==null){
+            character_data.flags = {};
+        }
+        character_data.flags[flag_type_id]=value;
+    }
+    get_flag(flag_type_id){
+        let character_data = this.get_data();
+        if(character_data.flags==null || character_data.flags[flag_type_id]==null){
+            return false
+        }
+        return character_data.flags[flag_type_id];
+    }
 }

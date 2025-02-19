@@ -18,4 +18,11 @@ class Item {
     get_name(){
         return ItemTypes[this.get_item_type()].name
     }
+    recycle(){
+        this.world_data[this.item_id] = null;
+        if(this.world_data.item_graveyard==null){
+            this.world_data.item_graveyard = [];
+        }
+        this.world_data.item_graveyard.push(this.item_id);
+    }
 }

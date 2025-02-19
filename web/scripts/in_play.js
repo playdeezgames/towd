@@ -16,7 +16,10 @@ class InPlay {
 
     static render_inventory(){
         World.get_avatar().get_inventory().get_items().forEach((item)=>{
-            Utility.add_paragraph(`${item.get_name()}: ${item.get_quantity()}`)
+            let quantity = item.get_quantity();
+            if(quantity>0){
+                Utility.add_paragraph(`${item.get_name()}: ${quantity}`)
+            }
         })
     }
 
