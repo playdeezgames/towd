@@ -36,8 +36,13 @@ class InPlay {
         Utility.add_button("S", InPlay.move_south);
         Utility.add_break();
         let avatar = (new World()).get_avatar();
-        if(avatar.can_forage()){
-            Utility.add_button("Forage", InPlay.forage);
+        for(let key in VerbType) {
+            if(avatar.can_do_verb(key)){
+                Utility.add_button(VerbTypes[key].name, () => { 
+                    avatar.do_verb(key);
+                    InPlay.run();
+                });
+            }
         }
     }
 
@@ -49,9 +54,6 @@ class InPlay {
         }else{
             InPlay.run();
         }
-    }
-    static forage(){
-        InPlay.with_avatar((avatar)=>avatar.forage());
     }
     static move_north(){
         InPlay.with_avatar((avatar)=>avatar.move_north());

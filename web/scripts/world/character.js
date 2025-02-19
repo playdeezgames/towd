@@ -105,17 +105,11 @@ class Character {
         let health = this.get_statistic(StatisticType.HEALTH);
         return health == 0;
     }
-    can_forage(){
-        let terrain_type_id = this.get_room_cell().get_terrain_type();
-        return TerrainTypes[terrain_type_id].do_forage != null;
+    can_do_verb(verb_type_id) {
+        return VerbTypes[verb_type_id].can_perform(this);
     }
-    forage(){
-        this.clear_messages();
-        if(this.can_forage()){
-            this.add_message("You forage.")
-            let terrain_type_id = this.get_room_cell().get_terrain_type();
-            TerrainTypes[terrain_type_id].do_forage(this);
-        }
+    do_verb(verb_type_id){
+        VerbTypes[verb_type_id].perform(this);
     }
     get_inventory(){
         return new Inventory(this.world_data, this.character_id);
