@@ -84,5 +84,6 @@ class Recipe {
 }
 let Recipes = [
     Recipe.create().add_input(ItemType.PLANT_FIBER, 2).add_output(ItemType.TWINE, 1),
-    Recipe.create().add_input(ItemType.ROCK, 2).add_output(ItemType.ROCK,1).add_output(ItemType.SHARP_ROCK,1)
+    Recipe.create().add_input(ItemType.ROCK, 2).add_output(ItemType.ROCK,1).add_output(ItemType.SHARP_ROCK,1),
+    Recipe.create().add_input(ItemType.SHARP_ROCK,1).add_input(ItemType.TWINE,1).add_input(ItemType.STICK,1).add_output(ItemType.HATCHET, 1)
 ];
