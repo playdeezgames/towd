@@ -89,7 +89,12 @@ class World {
         let item_data = {
             item_type_id: item_type_id
         };
-        this.get_data().items.push(item_data);
+        if(world_data.item_graveyard!=null && world_data.item_graveyard.length>0) {
+            item_id = world_data.item_graveyard.pop();
+            this.get_data().items[item_id] = item_data;
+        } else {
+            this.get_data().items.push(item_data);
+        }
         let item =  this.get_item(item_id);
         item.initialize();
         return item
