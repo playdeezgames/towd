@@ -39,4 +39,9 @@ class Item {
         }
         return item_data.statistics[statistic_type_id];
     }
+    change_statistic(statistic_type_id, delta){
+        let value = this.get_statistic(statistic_type_id) + delta;
+        this.set_statistic(statistic_type_id, value);
+        return value;
+    }
 }

@@ -5,7 +5,9 @@ let ItemType = {
     TWINE: "TWINE",
     SHARP_ROCK: "SHARP_ROCK",
     HATCHET: "HATCHET",
-    LOG: "LOG"
+    LOG: "LOG",
+    HAMMER: "HAMMER",
+    PLANK: "PLANK"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -38,6 +40,17 @@ ItemTypes[ItemType.HATCHET] = {
 };
 ItemTypes[ItemType.LOG] = {
     name: "Log",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.HAMMER] = {
+    name: "Hammer",
+    initialize: (item) => {
+        item.set_statistic(StatisticType.DURABILITY, 30);
+        item.set_statistic(StatisticType.MAXIMUM_DURABILITY, 30);
+    }
+};
+ItemTypes[ItemType.PLANK] = {
+    name: "Plank",
     initialize: (item) => {}
 };
 Object.freeze(ItemTypes);

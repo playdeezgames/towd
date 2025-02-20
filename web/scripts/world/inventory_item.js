@@ -11,6 +11,13 @@ class InventoryItem {
         }
         return item_ids.length;
     }
+    get_durability(){
+        let result = 0;
+        for(let item of this.get_items()){
+            result += item.get_statistic(StatisticType.DURABILITY);
+        }
+        return result;
+    }
     get_name(){
         return ItemTypes[this.item_type_id].name;
     }
