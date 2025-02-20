@@ -59,20 +59,25 @@ class Recipe {
         if(!this.can_craft(character)){
             return;
         }
-        let inputs = this.inputs;
-        for(let item_type_id in inputs){
-            let quantity = inputs[item_type_id];
+        let quantities = {};
+        for(let item_type_id in this.outputs){
+            quantities[item_type_id] = this.outputs[item_type_id];
+        }
+        for(let item_type_id in this.inputs){
+            if(quantities[item_type_id] == null){
+                quantities[item_type_id] = 0;
+            }
+            quantities[item_type_id] -= this.inputs[item_type_id];
+        }
+        for(let item_type_id in quantities){
+            let quantity = quantities[item_type_id];
             let items_of_type = character.get_inventory().get_items_of_type(item_type_id);
-            while(quantity>0){
+            while(quantity<0){
                 let item = items_of_type.pop_item();
                 character.add_message(`-1 ${item.get_name()}`)
                 item.recycle();
-                --quantity;
+                ++quantity;
             }
-        }
-        let outputs = this.outputs;
-        for(let item_type_id in outputs){
-            let quantity = outputs[item_type_id];
             while(quantity>0){
                 let item = character.get_world().create_item(item_type_id);
                 character.get_inventory().add_item(item);
