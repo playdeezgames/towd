@@ -31,7 +31,10 @@ ItemTypes[ItemType.SHARP_ROCK] = {
 };
 ItemTypes[ItemType.HATCHET] = {
     name: "Hatchet",
-    initialize: (item) => {}
+    initialize: (item) => {
+        item.set_statistic(StatisticType.DURABILITY, 30);
+        item.set_statistic(StatisticType.MAXIMUM_DURABILITY, 30);
+    }
 };
 ItemTypes[ItemType.LOG] = {
     name: "Log",

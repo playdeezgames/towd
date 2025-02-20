@@ -25,4 +25,11 @@ class Item {
         }
         this.world_data.item_graveyard.push(this.item_id);
     }
+    set_statistic(statistic_type_id, value){
+        let item_data = this.get_data();
+        if(item_data.statistics==null){
+            item_data.statistics={};
+        }
+        item_data.statistics[statistic_type_id] = value;
+    }
 }
