@@ -6,7 +6,7 @@ class Inventory{
     get_data() {
         return this.world_data.characters[this.character_id].inventory;
     }
-    get_items() {
+    get_item_stacks() {
         let result = [];
         for(let item_type_id in this.get_data()){
             result.push(this.get_items_of_type(item_type_id));
@@ -14,7 +14,7 @@ class Inventory{
         return result;
     }
     get_items_of_type(item_type_id){
-        return new InventoryItem(this.world_data, this.character_id, item_type_id);
+        return new InventoryItemStack(this.world_data, this.character_id, item_type_id);
     }
     add_item(item){
         let inventory_data = this.get_data();
