@@ -32,4 +32,11 @@ class Item {
         }
         item_data.statistics[statistic_type_id] = value;
     }
+    get_statistic(statistic_type_id){
+        let item_data = this.get_data();
+        if(item_data.statistics==null){
+            return null;
+        }
+        return item_data.statistics[statistic_type_id];
+    }
 }

@@ -28,4 +28,8 @@ class Inventory{
         }
         inventory_data[item_type_id].push(item.get_id());
     }
+    remove_item(item){
+        let item_type_id = item.get_item_type();
+        this.get_items_of_type(item_type_id).remove_item(item);
+    }
 }
