@@ -16,6 +16,10 @@ class Inventory{
     get_items_of_type(item_type_id){
         return new InventoryItem(this.world_data, this.character_id, item_type_id);
     }
+    has_items_of_type(item_type_id){
+        let quantity = this.get_items_of_type(item_type_id).get_quantity();
+        return quantity > 0;
+    }
     add_item(item){
         let inventory_data = this.get_data();
         let item_type_id = item.get_item_type();

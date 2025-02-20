@@ -4,7 +4,8 @@ let ItemType = {
     ROCK: "ROCK",
     TWINE: "TWINE",
     SHARP_ROCK: "SHARP_ROCK",
-    HATCHET: "HATCHET"
+    HATCHET: "HATCHET",
+    LOG: "LOG"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -25,5 +26,8 @@ ItemTypes[ItemType.SHARP_ROCK] = {
 };
 ItemTypes[ItemType.HATCHET] = {
     name: "Hatchet"
+};
+ItemTypes[ItemType.LOG] = {
+    name: "Log"
 };
 Object.freeze(ItemTypes);

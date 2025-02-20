@@ -27,6 +27,12 @@ TerrainTypes[TerrainType.PINE] = {
         character.get_inventory().add_item(item);
         character.add_message(`You find 1 ${item.get_name()}.`);
     },
+    do_chop: (character) => {
+        character.apply_hunger(1);
+        let item = character.get_world().create_item(ItemType.LOG);
+        character.get_inventory().add_item(item);
+        character.add_message(`You chop 1 ${item.get_name()}.`);
+    },
     initialize: (room_cell) => {
 
     }
