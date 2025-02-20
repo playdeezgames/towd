@@ -4,26 +4,53 @@ let ItemType = {
     ROCK: "ROCK",
     TWINE: "TWINE",
     SHARP_ROCK: "SHARP_ROCK",
-    HATCHET: "HATCHET"
+    HATCHET: "HATCHET",
+    LOG: "LOG",
+    HAMMER: "HAMMER",
+    PLANK: "PLANK"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
 ItemTypes[ItemType.PLANT_FIBER] = {
-    name: "Plant Fiber"
+    name: "Plant Fiber",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.STICK] = {
-    name: "Stick"
+    name: "Stick",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.ROCK] = {
-    name: "Rock"
+    name: "Rock",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.TWINE] = {
-    name: "Twine"
+    name: "Twine",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.SHARP_ROCK] = {
-    name: "Sharp Rock"
+    name: "Sharp Rock",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.HATCHET] = {
-    name: "Hatchet"
+    name: "Hatchet",
+    initialize: (item) => {
+        item.set_statistic(StatisticType.DURABILITY, 30);
+        item.set_statistic(StatisticType.MAXIMUM_DURABILITY, 30);
+    }
+};
+ItemTypes[ItemType.LOG] = {
+    name: "Log",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.HAMMER] = {
+    name: "Hammer",
+    initialize: (item) => {
+        item.set_statistic(StatisticType.DURABILITY, 30);
+        item.set_statistic(StatisticType.MAXIMUM_DURABILITY, 30);
+    }
+};
+ItemTypes[ItemType.PLANK] = {
+    name: "Plank",
+    initialize: (item) => {}
 };
 Object.freeze(ItemTypes);

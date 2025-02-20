@@ -10,8 +10,7 @@ TerrainTypes[TerrainType.GRASS] = {
     name: "Grass",
     do_forage: (character) => {
         character.apply_hunger(1);
-        let item = character.get_world().create_item(ItemType.PLANT_FIBER);
-        character.get_inventory().add_item(item);
+        let item = character.create_item_of_type(ItemType.PLANT_FIBER);
         character.add_message(`You find 1 ${item.get_name()}.`);
     },
     initialize: (room_cell) => {
@@ -23,9 +22,23 @@ TerrainTypes[TerrainType.PINE] = {
     name: "Pine Tree",
     do_forage: (character) => {
         character.apply_hunger(1);
-        let item = character.get_world().create_item(ItemType.STICK);
-        character.get_inventory().add_item(item);
+        let item = character.create_item_of_type(ItemType.STICK);
         character.add_message(`You find 1 ${item.get_name()}.`);
+    },
+    do_chop: (character) => {
+        character.apply_hunger(1);
+        let item = character.create_item_of_type(ItemType.LOG);
+        character.add_message(`You chop 1 ${item.get_name()}.`);
+        item = character.get_item_of_type(ItemType.HATCHET);
+        let durability = item.get_statistic(StatisticType.DURABILITY);
+        --durability;
+        item.set_statistic(StatisticType.DURABILITY, durability);
+        character.add_message(`-1 ${item.get_name()} durability(${durability}).`);
+        if(durability<=0){
+            character.add_message(`Yer ${item.get_name()} breaks.`);
+            character.remove_item(item);
+            item.recycle();
+        }
     },
     initialize: (room_cell) => {
 
@@ -36,8 +49,7 @@ TerrainTypes[TerrainType.ROCK] = {
     name: "Rock",
     do_forage: (character) => {
         character.apply_hunger(1);
-        let item = character.get_world().create_item(ItemType.ROCK);
-        character.get_inventory().add_item(item);
+        let item = character.create_item_of_type(ItemType.ROCK);
         character.add_message(`You find 1 ${item.get_name()}.`);
     },
     initialize: (room_cell) => {

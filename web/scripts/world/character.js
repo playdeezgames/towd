@@ -137,4 +137,19 @@ class Character {
         }
         return character_data.flags[flag_type_id];
     }
+    create_item_of_type(item_type_id){
+        let item = this.get_world().create_item(item_type_id);
+        this.get_inventory().add_item(item);
+        return item;
+    }
+    get_item_of_type(item_type_id){
+        let items = this.get_inventory().get_items_of_type(item_type_id).get_items();
+        if(items.length==0){
+            return null;
+        }
+        return items[0];
+    }
+    remove_item(item){
+        this.get_inventory().remove_item(item);
+    }
 }
