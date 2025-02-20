@@ -10,24 +10,31 @@ let ItemType = {
 Object.freeze(ItemType);
 let ItemTypes = {};
 ItemTypes[ItemType.PLANT_FIBER] = {
-    name: "Plant Fiber"
+    name: "Plant Fiber",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.STICK] = {
-    name: "Stick"
+    name: "Stick",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.ROCK] = {
-    name: "Rock"
+    name: "Rock",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.TWINE] = {
-    name: "Twine"
+    name: "Twine",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.SHARP_ROCK] = {
-    name: "Sharp Rock"
+    name: "Sharp Rock",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.HATCHET] = {
-    name: "Hatchet"
+    name: "Hatchet",
+    initialize: (item) => {}
 };
 ItemTypes[ItemType.LOG] = {
-    name: "Log"
+    name: "Log",
+    initialize: (item) => {}
 };
 Object.freeze(ItemTypes);

@@ -10,7 +10,7 @@ class Item {
         return this.world_data.items[this.item_id];
     }
     initialize(){
-
+        ItemTypes[this.get_item_type()].initialize(this);
     }
     get_item_type(){
         return this.get_data().item_type_id;
