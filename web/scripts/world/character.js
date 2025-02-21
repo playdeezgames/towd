@@ -45,22 +45,34 @@ class Character {
         this.set_statistic(StatisticType.HEALTH, health);
     }
     clear_messages() {
-        this.get_data().messages = [];
+        if(this.is_avatar()){
+            this.get_data().messages = [];
+        }
     }
     get_messages() {
-        let messages = this.get_data().messages;
-        if(messages == null){
+        if(this.is_avatar()){
+            let messages = this.get_data().messages;
+            if(messages == null){
+                return [];
+            }
+            return messages;
+        }else{
             return [];
         }
-        return messages;
     }
     add_message(message){
-        let messages = this.get_data().messages;
-        if(messages == null){
-            messages = [];
-            this.get_data().messages = messages;
+        if(this.is_avatar()){
+            let messages = this.get_data().messages;
+            if(messages == null){
+                messages = [];
+                this.get_data().messages = messages;
+            }
+            messages.push(message);
         }
-        messages.push(message);
+    }
+    is_avatar(){
+        let avatar = this.get_world().get_avatar();
+        return avatar!=null && avatar.get_id() == this.get_id();
     }
     move_by(dx, dy, direction_name) {
         this.clear_messages();
@@ -151,5 +163,17 @@ class Character {
     }
     remove_item(item){
         this.get_inventory().remove_item(item);
+    }
+    break_item(item){
+        this.add_message(`Yer ${item.get_name()} breaks.`);
+        this.remove_item(item);
+        item.recycle();
+    }
+    change_item_durability(item, delta){
+        let durability = item.change_statistic(StatisticType.DURABILITY, delta);
+        this.add_message(`${delta>0?"+":""}${delta} ${item.get_name()} durability(${durability}).`);
+        if(durability<=0){
+            this.break_item(item);
+        }
     }
 }

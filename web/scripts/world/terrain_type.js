@@ -30,15 +30,7 @@ TerrainTypes[TerrainType.PINE] = {
         let item = character.create_item_of_type(ItemType.LOG);
         character.add_message(`You chop 1 ${item.get_name()}.`);
         item = character.get_item_of_type(ItemType.HATCHET);
-        let durability = item.get_statistic(StatisticType.DURABILITY);
-        --durability;
-        item.set_statistic(StatisticType.DURABILITY, durability);
-        character.add_message(`-1 ${item.get_name()} durability(${durability}).`);
-        if(durability<=0){
-            character.add_message(`Yer ${item.get_name()} breaks.`);
-            character.remove_item(item);
-            item.recycle();
-        }
+        character.change_item_durability(item, -1)
     },
     initialize: (room_cell) => {
 

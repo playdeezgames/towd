@@ -7,16 +7,16 @@ class Recipe {
     static create(){
         return new Recipe();
     }
-    add_input(item_type_id, quantity){
-        this.inputs[item_type_id] = quantity;
+    set_input(item_type_id, quantity){
+        this.inputs[item_type_id] = quantity ?? 1;
         return this;
     }
-    add_durability_input(item_type_id, quantity){
-        this.durability_inputs[item_type_id] = quantity;
+    set_durability_input(item_type_id, quantity){
+        this.durability_inputs[item_type_id] = quantity ?? 1;
         return this;
     }
-    add_output(item_type_id, quantity){
-        this.outputs[item_type_id] = quantity;
+    set_output(item_type_id, quantity){
+        this.outputs[item_type_id] = quantity ?? 1;
         return this;
     }
     get_name(){
@@ -99,33 +99,40 @@ class Recipe {
         }
         let input_durabilities = this.durability_inputs;
         for(let item_type_id in input_durabilities){
-            let durability = input_durabilities[item_type_id];
-            while(durability>0){
+            let input_durability = input_durabilities[item_type_id];
+            while(input_durability>0){
                 let item = character.get_item_of_type(item_type_id);
-                let remaining = item.change_statistic(StatisticType.DURABILITY, -1);
-                character.add_message(`-1 durability ${item.get_name()}(${remaining})`)
-                if(remaining == 0){
-                    character.add_message(`Yer ${item.get_name()} broke.`)
-                    character.remove_item(item);
-                    item.recycle();
-                }
-                --durability;
+                character.change_item_durability(item, -1);
+                --input_durability;
             }
         }
     }
 }
 let Recipes = [
-    Recipe.create().add_input(ItemType.PLANT_FIBER, 2).add_output(ItemType.TWINE, 1),
-    Recipe.create().add_input(ItemType.ROCK, 2).add_output(ItemType.ROCK,1).add_output(ItemType.SHARP_ROCK,1),
-    Recipe.create().add_input(ItemType.SHARP_ROCK,1).add_input(ItemType.TWINE,1).add_input(ItemType.STICK,1).add_output(ItemType.HATCHET, 1),
-    Recipe.create().add_input(ItemType.ROCK,1).add_input(ItemType.TWINE,1).add_input(ItemType.STICK,1).add_output(ItemType.HAMMER, 1),
     Recipe.create().
-        add_input(ItemType.HATCHET,1).
-        add_output(ItemType.HATCHET,1).
-        add_durability_input(ItemType.HATCHET, 1).
-        add_input(ItemType.HAMMER,1).
-        add_output(ItemType.HAMMER,1).
-        add_durability_input(ItemType.HAMMER, 1).
-        add_input(ItemType.LOG,1).
-        add_output(ItemType.PLANK,4)
+        set_input(ItemType.PLANT_FIBER, 2).
+        set_output(ItemType.TWINE, 1),
+    Recipe.create().
+        set_input(ItemType.ROCK, 2).
+        set_output(ItemType.ROCK,1).
+        set_output(ItemType.SHARP_ROCK,1),
+    Recipe.create().
+        set_input(ItemType.SHARP_ROCK,1).
+        set_input(ItemType.TWINE,1).
+        set_input(ItemType.STICK,1).
+        set_output(ItemType.HATCHET, 1),
+    Recipe.create().
+        set_input(ItemType.ROCK,1).
+        set_input(ItemType.TWINE,1).
+        set_input(ItemType.STICK,1).
+        set_output(ItemType.HAMMER, 1),
+    Recipe.create().
+        set_input(ItemType.HATCHET,1).
+        set_output(ItemType.HATCHET,1).
+        set_durability_input(ItemType.HATCHET, 1).
+        set_input(ItemType.HAMMER,1).
+        set_output(ItemType.HAMMER,1).
+        set_durability_input(ItemType.HAMMER, 1).
+        set_input(ItemType.LOG,1).
+        set_output(ItemType.PLANK,4)
 ];
