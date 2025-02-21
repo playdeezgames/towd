@@ -10,7 +10,8 @@ let ItemType = {
     PLANK: "PLANK",
     SHARP_STICK: "SHARP_STICK",
     GRUB: "GRUB",
-    COOKING_FIRE: "COOKING_FIRE"
+    COOKING_FIRE: "COOKING_FIRE",
+    GRUB_ON_STICK: "GRUB_ON_STICK"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -58,7 +59,10 @@ ItemTypes[ItemType.PLANK] = {
 };
 ItemTypes[ItemType.SHARP_STICK] = {
     name: "Sharp Stick",
-    initialize: (item) => {}
+    initialize: (item) => {
+        item.set_statistic(StatisticType.DURABILITY, 30);
+        item.set_statistic(StatisticType.MAXIMUM_DURABILITY, 30);
+    }
 };
 ItemTypes[ItemType.GRUB] = {
     name: "Grub",
@@ -66,6 +70,10 @@ ItemTypes[ItemType.GRUB] = {
 };
 ItemTypes[ItemType.COOKING_FIRE] = {
     name: "Cooking Fire",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.GRUB_ON_STICK] = {
+    name: "Grub on a Stick",
     initialize: (item) => {}
 };
 Object.freeze(ItemTypes);

@@ -18,6 +18,8 @@ TerrainTypes[TerrainType.GRASS] = {
         character.apply_hunger(1);
         let item = character.create_item_of_type(ItemType.GRUB);
         character.add_message(`You find 1 ${item.get_name()}.`);
+        item = character.get_item_of_type(ItemType.SHARP_STICK);
+        character.change_item_durability(item, -1)
     },
     initialize: (room_cell) => {
     }
