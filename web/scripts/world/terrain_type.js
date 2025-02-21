@@ -1,7 +1,8 @@
 let TerrainType = {
     GRASS: "GRASS",
     PINE: "PINE",
-    ROCK: "ROCK"
+    ROCK: "ROCK",
+    COOKING_FIRE: "COOKING_FIRE"
 }
 Object.freeze(TerrainType);
 let TerrainTypes = {};
@@ -48,6 +49,13 @@ TerrainTypes[TerrainType.ROCK] = {
         let item = character.create_item_of_type(ItemType.ROCK);
         character.add_message(`You find 1 ${item.get_name()}.`);
     },
+    initialize: (room_cell) => {
+
+    }
+};
+TerrainTypes[TerrainType.COOKING_FIRE] = {
+    img_url: "assets/images/terrain_type_cooking_fire.png",
+    name: "Cooking Fire",
     initialize: (room_cell) => {
 
     }
