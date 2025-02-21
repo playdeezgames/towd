@@ -2,7 +2,8 @@ let VerbType = {
     FORAGE: "FORAGE",
     CRAFT: "CRAFT",
     CHOP: "CHOP",
-    DIG: "DIG"
+    DIG: "DIG",
+    EAT: "EAT"
 };
 Object.freeze(VerbType);
 let VerbTypes = {};
@@ -73,4 +74,25 @@ VerbTypes[VerbType.DIG] = {
             TerrainTypes[terrain_type_id].do_dig(character);
         }
     }
-};Object.freeze(VerbTypes);
+};
+VerbTypes[VerbType.EAT] = {
+    name: "Eat",
+    can_perform: (character) => { 
+        return character.get_inventory().has_items_of_type(ItemType.COOKED_GRUB);
+    },
+    perform: (character) => {
+        character.clear_messages();
+        if(character.can_do_verb(VerbType.EAT)){
+            character.add_message("You eat.")
+            let item = character.get_item_of_type(ItemType.COOKED_GRUB);
+            character.add_message(`-1 ${item.get_name()}`);
+            character.remove_item(item);
+            let satiety = character.get_statistic(StatisticType.SATIETY);
+            let maximum_satiety = character.get_statistic(StatisticType.MAXIMUM_SATIETY);
+            let delta = Math.min(10, maximum_satiety - satiety);
+            character.set_statistic(StatisticType.SATIETY, satiety + delta);
+            character.add_message(`+${delta} satiety`);
+        }
+    }
+};
+Object.freeze(VerbTypes);
