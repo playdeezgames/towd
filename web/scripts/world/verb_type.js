@@ -1,7 +1,8 @@
 let VerbType = {
     FORAGE: "FORAGE",
     CRAFT: "CRAFT",
-    CHOP: "CHOP"
+    CHOP: "CHOP",
+    DIG: "DIG"
 };
 Object.freeze(VerbType);
 let VerbTypes = {};
@@ -55,4 +56,21 @@ VerbTypes[VerbType.CHOP] = {
         }
     }
 };
-Object.freeze(VerbTypes);
+VerbTypes[VerbType.DIG] = {
+    name: "Dig",
+    can_perform: (character) => { 
+        if(!character.get_inventory().has_items_of_type(ItemType.SHARP_STICK)){
+            return false;
+        }
+        let terrain_type_id = character.get_room_cell().get_terrain_type();
+        return TerrainTypes[terrain_type_id].do_dig != null;
+    },
+    perform: (character) => {
+        character.clear_messages();
+        if(character.can_do_verb(VerbType.DIG)){
+            character.add_message("You dig.")
+            let terrain_type_id = character.get_room_cell().get_terrain_type();
+            TerrainTypes[terrain_type_id].do_dig(character);
+        }
+    }
+};Object.freeze(VerbTypes);

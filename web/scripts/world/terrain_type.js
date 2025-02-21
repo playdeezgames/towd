@@ -13,8 +13,12 @@ TerrainTypes[TerrainType.GRASS] = {
         let item = character.create_item_of_type(ItemType.PLANT_FIBER);
         character.add_message(`You find 1 ${item.get_name()}.`);
     },
+    do_dig: (character) => {
+        character.apply_hunger(1);
+        let item = character.create_item_of_type(ItemType.GRUB);
+        character.add_message(`You find 1 ${item.get_name()}.`);
+    },
     initialize: (room_cell) => {
-
     }
 };
 TerrainTypes[TerrainType.PINE] = {
