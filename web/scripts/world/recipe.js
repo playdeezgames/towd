@@ -167,5 +167,14 @@ let Recipes = [
         set_predicate((character)=> {
             character.remove_item_of_type(ItemType.COOKING_FIRE);
             character.get_room_cell().set_terrain_type(TerrainType.COOKING_FIRE);
+        }),
+    Recipe.create().
+        set_input(ItemType.SHARP_STICK, 1).
+        set_input(ItemType.GRUB, 1).
+        set_output(ItemType.SHARP_STICK, 1).
+        set_output(ItemType.COOKED_GRUB, 1).
+        set_durability_input(ItemType.SHARP_STICK, 1).
+        set_precondition((character) => { 
+            return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
         })
 ];

@@ -11,7 +11,7 @@ let ItemType = {
     SHARP_STICK: "SHARP_STICK",
     GRUB: "GRUB",
     COOKING_FIRE: "COOKING_FIRE",
-    GRUB_ON_STICK: "GRUB_ON_STICK"
+    COOKED_GRUB: "COOKED_GRUB"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -68,12 +68,12 @@ ItemTypes[ItemType.GRUB] = {
     name: "Grub",
     initialize: (item) => {}
 };
-ItemTypes[ItemType.COOKING_FIRE] = {
-    name: "Cooking Fire",
+ItemTypes[ItemType.COOKED_GRUB] = {
+    name: "Cooked Grub",
     initialize: (item) => {}
 };
-ItemTypes[ItemType.GRUB_ON_STICK] = {
-    name: "Grub on a Stick",
+ItemTypes[ItemType.COOKING_FIRE] = {
+    name: "Cooking Fire",
     initialize: (item) => {}
 };
 Object.freeze(ItemTypes);
