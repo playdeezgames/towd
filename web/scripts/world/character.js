@@ -164,6 +164,9 @@ class Character {
     remove_item(item){
         this.get_inventory().remove_item(item);
     }
+    remove_item_of_type(item_type_id){
+        this.remove_item(this.get_item_of_type(item_type_id));
+    }
     break_item(item){
         this.add_message(`Yer ${item.get_name()} breaks.`);
         this.remove_item(item);

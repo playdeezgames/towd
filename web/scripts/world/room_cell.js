@@ -49,6 +49,7 @@ class RoomCell {
     }
     set_terrain_type(terrain_type_id){
         this.get_data().terrain_type_id = terrain_type_id;
+        this.initialize();
     }
     get_name(){
         return TerrainTypes[this.get_data().terrain_type_id].name;

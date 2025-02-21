@@ -3,9 +3,19 @@ class Recipe {
         this.inputs= {};
         this.outputs={};
         this.durability_inputs = {};
+        this.precondition = (character) => true;
+        this.predicate = (character) => {};
     }
     static create(){
         return new Recipe();
+    }
+    set_precondition(precondition){
+        this.precondition = precondition;
+        return this;
+    }
+    set_predicate(predicate){
+        this.predicate = predicate;
+        return this;
     }
     set_input(item_type_id, quantity){
         this.inputs[item_type_id] = quantity ?? 1;
@@ -51,6 +61,9 @@ class Recipe {
         return result;
     }
     can_craft(character){
+        if(!this.precondition(character)) {
+            return false;
+        }
         let inputs = this.inputs;
         for(let item_type_id in inputs){
             let quantity = inputs[item_type_id];
@@ -106,6 +119,7 @@ class Recipe {
                 --input_durability;
             }
         }
+        this.predicate(character);
     }
 }
 let Recipes = [
@@ -142,5 +156,16 @@ let Recipes = [
         set_output(ItemType.HAMMER,1).
         set_durability_input(ItemType.HAMMER, 1).
         set_input(ItemType.LOG,1).
-        set_output(ItemType.PLANK,4)
+        set_output(ItemType.PLANK,4),
+    Recipe.create().
+        set_input(ItemType.ROCK, 8).
+        set_input(ItemType.STICK, 8).
+        set_output(ItemType.COOKING_FIRE, 1).
+        set_precondition((character) => { 
+            return character.get_room_cell().get_terrain_type() == TerrainType.GRASS; 
+        }).
+        set_predicate((character)=> {
+            character.remove_item_of_type(ItemType.COOKING_FIRE);
+            character.get_room_cell().set_terrain_type(TerrainType.COOKING_FIRE);
+        })
 ];

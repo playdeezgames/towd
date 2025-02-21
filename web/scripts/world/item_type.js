@@ -9,7 +9,8 @@ let ItemType = {
     HAMMER: "HAMMER",
     PLANK: "PLANK",
     SHARP_STICK: "SHARP_STICK",
-    GRUB: "GRUB"
+    GRUB: "GRUB",
+    COOKING_FIRE: "COOKING_FIRE"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -61,6 +62,10 @@ ItemTypes[ItemType.SHARP_STICK] = {
 };
 ItemTypes[ItemType.GRUB] = {
     name: "Grub",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.COOKING_FIRE] = {
+    name: "Cooking Fire",
     initialize: (item) => {}
 };
 Object.freeze(ItemTypes);
