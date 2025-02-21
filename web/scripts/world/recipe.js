@@ -113,8 +113,10 @@ let Recipes = [
         set_input(ItemType.PLANT_FIBER, 2).
         set_output(ItemType.TWINE, 1),
     Recipe.create().
-        set_input(ItemType.ROCK, 2).
-        set_output(ItemType.ROCK,1).
+        set_input(ItemType.ROCK, 1).
+        set_input(ItemType.HAMMER, 1).
+        set_output(ItemType.HAMMER,1).
+        set_durability_input(ItemType.HAMMER, 1).
         set_output(ItemType.SHARP_ROCK,1),
     Recipe.create().
         set_input(ItemType.SHARP_ROCK,1).
