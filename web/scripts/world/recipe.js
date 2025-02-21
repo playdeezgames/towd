@@ -119,6 +119,12 @@ let Recipes = [
         set_durability_input(ItemType.HAMMER, 1).
         set_output(ItemType.SHARP_ROCK,1),
     Recipe.create().
+        set_input(ItemType.STICK, 1).
+        set_input(ItemType.HATCHET, 1).
+        set_output(ItemType.HATCHET,1).
+        set_durability_input(ItemType.HATCHET, 1).
+        set_output(ItemType.SHARP_STICK,1),
+    Recipe.create().
         set_input(ItemType.SHARP_ROCK,1).
         set_input(ItemType.TWINE,1).
         set_input(ItemType.STICK,1).
