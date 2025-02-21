@@ -1,5 +1,6 @@
 class Crafting {
     static run(){
+        Utility.clear_command_hook();
         Utility.cls();
         let character = World.get_avatar();
         for(let recipe of Recipes){

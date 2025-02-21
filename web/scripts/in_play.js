@@ -1,11 +1,23 @@
 class InPlay {
     static run() {
+        Utility.set_command_hook(InPlay.command_hook)
         Utility.cls();
         InPlay.render_room();
         InPlay.render_controls();
         InPlay.render_stats();
         InPlay.render_messages();
         InPlay.render_inventory();
+    }
+    static command_hook(command){
+        if(command == COMMAND_UP){
+            InPlay.move_north();
+        }else if(command == COMMAND_DOWN){
+            InPlay.move_south();
+        }else if(command == COMMAND_LEFT){
+            InPlay.move_west();
+        }else if(command == COMMAND_RIGHT){
+            InPlay.move_east();
+        }
     }
 
     static render_messages(){

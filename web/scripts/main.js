@@ -1,5 +1,7 @@
 class Main {
     static run() {
+        Utility.hook_keyboard();
+        Utility.clear_command_hook();
         Utility.cls();
         Utility.add_button("Embark!", Embark.run);
         Utility.add_break();

@@ -1,3 +1,7 @@
+const COMMAND_UP = "UP";
+const COMMAND_DOWN = "DOWN";
+const COMMAND_LEFT = "LEFT";
+const COMMAND_RIGHT = "RIGHT";
 class Utility {
     static clear(element) {
         while(element.hasChildNodes()){
@@ -68,5 +72,31 @@ class Utility {
     }
     static roll(value){
         return Math.floor(Math.random() * value);
+    }
+    static command_hook = (command) => {};
+    static keyboard_hooked = false;
+    static command_table = {
+        w: COMMAND_UP,
+        z: COMMAND_UP,
+        a: COMMAND_LEFT,
+        q: COMMAND_LEFT,
+        s: COMMAND_DOWN,
+        d: COMMAND_RIGHT
+    };
+    static set_command_hook(hook){
+        Utility.command_hook = hook;
+    }
+    static clear_command_hook(){
+        Utility.set_command_hook((command)=>{});
+    }
+    static hook_keyboard(){
+        if(!this.keyboard_hooked){
+            document.body.addEventListener("keypress", (event)=>{
+                let command = this.command_table[event.key.toLowerCase()];
+                if(command != null){
+                    Utility.command_hook(command);
+                }
+            });
+        }
     }
 }
