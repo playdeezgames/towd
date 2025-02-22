@@ -2,7 +2,8 @@ let TerrainType = {
     GRASS: "GRASS",
     PINE: "PINE",
     ROCK: "ROCK",
-    COOKING_FIRE: "COOKING_FIRE"
+    COOKING_FIRE: "COOKING_FIRE",
+    DIRT: "DIRT"
 }
 Object.freeze(TerrainType);
 let TerrainTypes = {};
@@ -67,6 +68,21 @@ TerrainTypes[TerrainType.ROCK] = {
 TerrainTypes[TerrainType.COOKING_FIRE] = {
     img_url: "assets/images/terrain_type_cooking_fire.png",
     name: "Cooking Fire",
+    initialize: (room_cell) => {
+        room_cell.set_statistic(StatisticType.FUEL, 8);
+    },
+    advance_time: (room_cell) => {
+        if(room_cell.get_statistic(StatisticType.FUEL)>0){
+            room_cell.change_statistic(StatisticType.FUEL, -1);
+        } 
+        if(room_cell.get_statistic(StatisticType.FUEL)<=0){
+            room_cell.set_terrain_type(TerrainType.DIRT);
+        }       
+    }
+};
+TerrainTypes[TerrainType.DIRT] = {
+    img_url: "assets/images/terrain_type_dirt.png",
+    name: "Dirt",
     initialize: (room_cell) => {
 
     },

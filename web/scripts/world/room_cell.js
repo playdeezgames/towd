@@ -71,4 +71,23 @@ class RoomCell {
             --value;
         }
     }
+    set_statistic(statistic_type_id, value){
+        let room_cell_data = this.get_data();
+        if(room_cell_data.statistics==null){
+            room_cell_data.statistics={};
+        }
+        room_cell_data.statistics[statistic_type_id] = value;
+    }
+    get_statistic(statistic_type_id){
+        let room_cell_data = this.get_data();
+        if(room_cell_data.statistics==null){
+            return null;
+        }
+        return room_cell_data.statistics[statistic_type_id];
+    }
+    change_statistic(statistic_type_id, delta){
+        let value = this.get_statistic(statistic_type_id) + delta;
+        this.set_statistic(statistic_type_id, value);
+        return value;
+    }    
 }

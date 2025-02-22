@@ -162,7 +162,8 @@ let Recipes = [
         set_input(ItemType.STICK, 8).
         set_output(ItemType.COOKING_FIRE, 1).
         set_precondition((character) => { 
-            return character.get_room_cell().get_terrain_type() == TerrainType.GRASS; 
+            let terrain_type_id = character.get_room_cell().get_terrain_type();
+            return terrain_type_id == TerrainType.GRASS || terrain_type_id == TerrainType.DIRT; 
         }).
         set_predicate((character)=> {
             character.remove_item_of_type(ItemType.COOKING_FIRE);
