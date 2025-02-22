@@ -70,7 +70,9 @@ ItemTypes[ItemType.GRUB] = {
 };
 ItemTypes[ItemType.COOKED_GRUB] = {
     name: "Cooked Grub",
-    initialize: (item) => {}
+    initialize: (item) => {
+        item.set_statistic(StatisticType.SATIETY, 5);
+    }
 };
 ItemTypes[ItemType.COOKING_FIRE] = {
     name: "Cooking Fire",

@@ -41,17 +41,24 @@ class RoomCell {
     get_room() {
         return new Room(this.world_data, this.room_id);
     }
+    get_terrain_type_descriptor(){
+        return TerrainTypes[this.get_data().terrain_type_id];
+    }
     initialize(){
-        TerrainTypes[this.get_data().terrain_type_id].initialize(this);
+        this.get_terrain_type_descriptor().initialize(this);
     }
     get_img_url(){
-        return TerrainTypes[this.get_data().terrain_type_id].img_url;
+        return this.get_terrain_type_descriptor().img_url;
     }
     set_terrain_type(terrain_type_id){
-        this.get_data().terrain_type_id = terrain_type_id;
+        let character = this.get_character();
+        this.world_data.rooms[this.room_id].cells[this.column][this.row] = {
+            terrain_type_id: terrain_type_id
+        };
         this.initialize();
+        this.set_character(character);
     }
     get_name(){
-        return TerrainTypes[this.get_data().terrain_type_id].name;
+        return this.get_terrain_type_descriptor().name;
     }
 }

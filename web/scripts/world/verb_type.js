@@ -89,7 +89,7 @@ VerbTypes[VerbType.EAT] = {
             character.remove_item(item);
             let satiety = character.get_statistic(StatisticType.SATIETY);
             let maximum_satiety = character.get_statistic(StatisticType.MAXIMUM_SATIETY);
-            let delta = Math.min(10, maximum_satiety - satiety);
+            let delta = Math.min(item.get_statistic(StatisticType.SATIETY), maximum_satiety - satiety);
             character.set_statistic(StatisticType.SATIETY, satiety + delta);
             character.add_message(`+${delta} satiety`);
         }
