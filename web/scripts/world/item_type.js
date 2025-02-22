@@ -44,7 +44,9 @@ ItemTypes[ItemType.HATCHET] = {
 };
 ItemTypes[ItemType.LOG] = {
     name: "Log",
-    initialize: (item) => {}
+    initialize: (item) => {
+        item.set_statistic(StatisticType.FUEL, 16);
+    }
 };
 ItemTypes[ItemType.HAMMER] = {
     name: "Hammer",

@@ -3,7 +3,8 @@ let VerbType = {
     CRAFT: "CRAFT",
     CHOP: "CHOP",
     DIG: "DIG",
-    EAT: "EAT"
+    EAT: "EAT",
+    ADD_FUEL: "ADD_FUEL"
 };
 Object.freeze(VerbType);
 let VerbTypes = {};
@@ -92,6 +93,24 @@ VerbTypes[VerbType.EAT] = {
             let delta = Math.min(item.get_statistic(StatisticType.SATIETY), maximum_satiety - satiety);
             character.set_statistic(StatisticType.SATIETY, satiety + delta);
             character.add_message(`+${delta} satiety`);
+        }
+    }
+};
+VerbTypes[VerbType.ADD_FUEL] = {
+    name: "Add Fuel",
+    can_perform: (character) => { 
+        return character.get_inventory().has_items_of_type(ItemType.LOG) && character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE;
+    },
+    perform: (character) => {
+        character.clear_messages();
+        if(character.can_do_verb(VerbType.ADD_FUEL)){
+            character.add_message("You add fuel.")
+            let item = character.get_item_of_type(ItemType.LOG);
+            character.add_message(`-1 ${item.get_name()}`);
+            let fuel_delta = item.get_statistic(StatisticType.FUEL);
+            character.remove_item(item);
+            let fuel = character.get_room_cell().change_statistic(StatisticType.FUEL, fuel_delta);
+            character.add_message(`+${fuel_delta} Fuel(${fuel})`);
         }
     }
 };
