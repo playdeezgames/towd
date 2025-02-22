@@ -5,6 +5,9 @@ let StatisticType = {
     MAXIMUM_HEALTH: "MAXIMUM_HEALTH",
     DURABILITY: "DURABILITY",
     MAXIMUM_DURABILITY: "MAXIMUM_DURABILITY",
-    FUEL: "FUEL"
+    FUEL: "FUEL",
+    FORAGING: "FORAGING",
+    DIGGING: "DIGGING",
+    CHOPPING: "CHOPPING"
 }
 Object.freeze(StatisticType);

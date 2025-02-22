@@ -23,9 +23,13 @@ TerrainTypes[TerrainType.GRASS] = {
         character.change_item_durability(item, -1)
     },
     initialize: (room_cell) => {
+        room_cell.set_statistic(StatisticType.FORAGING, 25);
+        room_cell.set_statistic(StatisticType.DIGGING, 25);
     },
     advance_time: (room_cell) => {
-
+        if(room_cell.get_statistic(StatisticType.FORAGING)<=0 && room_cell.get_statistic(StatisticType.DIGGING)<=0){
+            room_cell.set_terrain_type(TerrainType.DIRT);
+        }
     }
 };
 TerrainTypes[TerrainType.PINE] = {
@@ -44,10 +48,13 @@ TerrainTypes[TerrainType.PINE] = {
         character.change_item_durability(item, -1)
     },
     initialize: (room_cell) => {
-
+        room_cell.set_statistic(StatisticType.FORAGING, 25);
+        room_cell.set_statistic(StatisticType.CHOPPING, 25);
     },
     advance_time: (room_cell) => {
-
+        if(room_cell.get_statistic(StatisticType.FORAGING)<=0 && room_cell.get_statistic(StatisticType.CHOPPING)<=0){
+            room_cell.set_terrain_type(TerrainType.DIRT);
+        }
     }
 };
 TerrainTypes[TerrainType.ROCK] = {
@@ -59,10 +66,12 @@ TerrainTypes[TerrainType.ROCK] = {
         character.add_message(`You find 1 ${item.get_name()}.`);
     },
     initialize: (room_cell) => {
-
+        room_cell.set_statistic(StatisticType.FORAGING, 25);
     },
     advance_time: (room_cell) => {
-
+        if(room_cell.get_statistic(StatisticType.FORAGING)<=0){
+            room_cell.set_terrain_type(TerrainType.DIRT);
+        }
     }
 };
 TerrainTypes[TerrainType.COOKING_FIRE] = {

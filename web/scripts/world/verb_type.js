@@ -12,12 +12,16 @@ VerbTypes[VerbType.FORAGE] = {
     name: "Forage",
     can_perform: (character) => { 
         let terrain_type_id = character.get_room_cell().get_terrain_type();
-        return TerrainTypes[terrain_type_id].do_forage != null;
+        if(TerrainTypes[terrain_type_id].do_forage == null){
+            return false;
+        }
+        return character.get_room_cell().get_statistic(StatisticType.FORAGING) > 0;
     },
     perform: (character) => {
         character.clear_messages();
         if(character.can_do_verb(VerbType.FORAGE)){
             character.add_message("You forage.")
+            character.get_room_cell().change_statistic(StatisticType.FORAGING, -1);
             let terrain_type_id = character.get_room_cell().get_terrain_type();
             TerrainTypes[terrain_type_id].do_forage(character);
         }
@@ -47,12 +51,16 @@ VerbTypes[VerbType.CHOP] = {
             return false;
         }
         let terrain_type_id = character.get_room_cell().get_terrain_type();
-        return TerrainTypes[terrain_type_id].do_chop != null;
+        if(TerrainTypes[terrain_type_id].do_chop == null){
+            return false;
+        }
+        return character.get_room_cell().get_statistic(StatisticType.CHOPPING) > 0;
     },
     perform: (character) => {
         character.clear_messages();
         if(character.can_do_verb(VerbType.CHOP)){
             character.add_message("You chop.")
+            character.get_room_cell().change_statistic(StatisticType.CHOPPING, -1);
             let terrain_type_id = character.get_room_cell().get_terrain_type();
             TerrainTypes[terrain_type_id].do_chop(character);
         }
@@ -65,12 +73,16 @@ VerbTypes[VerbType.DIG] = {
             return false;
         }
         let terrain_type_id = character.get_room_cell().get_terrain_type();
-        return TerrainTypes[terrain_type_id].do_dig != null;
+        if(TerrainTypes[terrain_type_id].do_dig == null){
+            return false;
+        }
+        return character.get_room_cell().get_statistic(StatisticType.DIGGING) > 0;
     },
     perform: (character) => {
         character.clear_messages();
         if(character.can_do_verb(VerbType.DIG)){
             character.add_message("You dig.")
+            character.get_room_cell().change_statistic(StatisticType.DIGGING, -1);
             let terrain_type_id = character.get_room_cell().get_terrain_type();
             TerrainTypes[terrain_type_id].do_dig(character);
         }
