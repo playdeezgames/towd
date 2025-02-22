@@ -77,7 +77,7 @@ class World {
     initialize(){
         this.clear();
         let room = this.create_room(BOARD_COLUMNS, BOARD_ROWS, RoomType.FIELD);
-        let character = this.create_character(CharacterType.N00B, room.get_cell(Math.floor(BOARD_COLUMNS/2), Math.floor(BOARD_ROWS/2)))
+        let character = this.create_character(CharacterType.N00B, room.get_room_cell(Math.floor(BOARD_COLUMNS/2), Math.floor(BOARD_ROWS/2)))
         this.set_avatar(character);
     }
     create_item(item_type_id){
@@ -105,5 +105,13 @@ class World {
     static get_avatar(){
         let world = new World();
         return world.get_avatar();
+    }
+    advance_time(value){
+        let avatar = this.get_avatar();
+        if(avatar==null){
+            return;
+        }
+        let room = avatar.get_room();
+        room.advance_time(value);
     }
 }

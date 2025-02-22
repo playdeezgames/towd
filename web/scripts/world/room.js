@@ -6,7 +6,7 @@ class Room {
     get_data() {
         return this.world_data.rooms[this.room_id];
     }
-    get_cell(column, row) {
+    get_room_cell(column, row) {
         if(column < 0 || row < 0 || column >= this.get_columns() || row >= this.get_rows()){
             return null;
         }
@@ -25,7 +25,14 @@ class Room {
         RoomTypes[this.get_room_type()].initialize(this);
         for(let column = 0; column < this.get_columns();++column){
             for(let row = 0; row < this.get_rows(); ++ row){
-                this.get_cell(column, row).initialize();
+                this.get_room_cell(column, row).initialize();
+            }
+        }
+    }
+    advance_time(value){
+        for(let column = 0; column < this.get_columns(); ++column){
+            for(let row = 0; row < this.get_rows(); ++row){
+                this.get_room_cell(column, row).advance_time(value);
             }
         }
     }

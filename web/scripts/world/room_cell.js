@@ -61,4 +61,14 @@ class RoomCell {
     get_name(){
         return this.get_terrain_type_descriptor().name;
     }
+    advance_time(value){
+        let character = this.get_character();
+        if(character != null){
+            character.advance_time(value);
+        }
+        while(value > 0){
+            this.get_terrain_type_descriptor().advance_time(this);
+            --value;
+        }
+    }
 }

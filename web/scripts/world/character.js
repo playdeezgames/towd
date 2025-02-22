@@ -38,9 +38,15 @@ class Character {
         let health = this.get_statistic(StatisticType.HEALTH);
         let satiety_loss = Math.min(satiety, amount);
         amount -= satiety_loss;
+        if(satiety_loss>0){
+            this.add_message(`- ${satiety_loss} Satiety`);
+        }
         satiety -= satiety_loss;
         this.set_statistic(StatisticType.SATIETY, satiety);
         let health_loss = Math.min(health, amount);
+        if(health_loss>0){
+            this.add_message(`- ${health_loss} Health`);
+        }
         health -= health_loss;
         this.set_statistic(StatisticType.HEALTH, health);
     }
@@ -81,13 +87,13 @@ class Character {
         this.set_room_cell(null);
         let column = room_cell.get_column() + dx;
         let row = room_cell.get_row() + dy;
-        let next_room_cell = room.get_cell(column, row);
+        let next_room_cell = room.get_room_cell(column, row);
         if(next_room_cell!=null){
             room_cell = next_room_cell;
         }
         this.set_room_cell(room_cell)
         this.add_message(`You move ${direction_name}.`);
-        this.apply_hunger(1);
+        this.get_world().advance_time(1);
     }
     move_north() {
         this.move_by(0, -1, "north");
@@ -126,11 +132,14 @@ class Character {
     get_inventory(){
         return new Inventory(this.world_data, this.character_id);
     }
+    get_character_type_descriptor(){
+        return CharacterTypes[this.get_character_type()]
+    }
     get_img_url(){
-        return CharacterTypes[this.get_character_type()].img_url;
+        return this.get_character_type_descriptor().img_url;
     }
     initialize(){
-        CharacterTypes[this.get_character_type()].initialize(this);
+        this.get_character_type_descriptor().initialize(this);
     }
     get_world(){
         return new World(this.world_data);
@@ -177,6 +186,12 @@ class Character {
         this.add_message(`${delta>0?"+":""}${delta} ${item.get_name()} durability(${durability}).`);
         if(durability<=0){
             this.break_item(item);
+        }
+    }
+    advance_time(value){
+        while(value > 0){
+            this.get_character_type_descriptor().advance_time(this);
+            --value;
         }
     }
 }

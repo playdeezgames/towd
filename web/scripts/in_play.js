@@ -85,7 +85,7 @@ class InPlay {
         for (let row = 0; row < room.get_rows(); ++row) {
             let row_div = Utility.add_div();
             for (let column = 0; column < room.get_columns(); ++column) {
-                let room_cell = room.get_cell(column, row);
+                let room_cell = room.get_room_cell(column, row);
                 let character = room_cell.get_character();
                 if (character != null) {
                     Utility.add_img_to(row_div, character.get_img_url());

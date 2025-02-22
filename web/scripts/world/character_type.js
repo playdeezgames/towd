@@ -10,6 +10,9 @@ CharacterTypes[CharacterType.N00B] = {
         character.set_statistic(StatisticType.MAXIMUM_HEALTH, 100);
         character.set_statistic(StatisticType.SATIETY, 100);
         character.set_statistic(StatisticType.MAXIMUM_SATIETY, 100);
+    },
+    advance_time: (character) => {
+        character.apply_hunger(1);
     }
 };
 Object.freeze(CharacterTypes);
