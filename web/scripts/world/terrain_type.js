@@ -30,6 +30,12 @@ TerrainTypes[TerrainType.GRASS] = {
         if(room_cell.get_statistic(StatisticType.FORAGING)<=0 && room_cell.get_statistic(StatisticType.DIGGING)<=0){
             room_cell.set_terrain_type(TerrainType.DIRT);
         }
+    },
+    get_details: (room_cell) => {
+        return [
+            `Foraging: ${room_cell.get_statistic(StatisticType.FORAGING)}`,
+            `Digging: ${room_cell.get_statistic(StatisticType.DIGGING)}`,
+        ];
     }
 };
 TerrainTypes[TerrainType.PINE] = {
@@ -55,6 +61,12 @@ TerrainTypes[TerrainType.PINE] = {
         if(room_cell.get_statistic(StatisticType.FORAGING)<=0 && room_cell.get_statistic(StatisticType.CHOPPING)<=0){
             room_cell.set_terrain_type(TerrainType.DIRT);
         }
+    },
+    get_details: (room_cell) => {
+        return [
+            `Foraging: ${room_cell.get_statistic(StatisticType.FORAGING)}`,
+            `Chopping: ${room_cell.get_statistic(StatisticType.CHOPPING)}`,
+        ];
     }
 };
 TerrainTypes[TerrainType.ROCK] = {
@@ -72,6 +84,11 @@ TerrainTypes[TerrainType.ROCK] = {
         if(room_cell.get_statistic(StatisticType.FORAGING)<=0){
             room_cell.set_terrain_type(TerrainType.DIRT);
         }
+    },
+    get_details: (room_cell) => {
+        return [
+            `Foraging: ${room_cell.get_statistic(StatisticType.FORAGING)}`
+        ];
     }
 };
 TerrainTypes[TerrainType.COOKING_FIRE] = {
@@ -87,6 +104,11 @@ TerrainTypes[TerrainType.COOKING_FIRE] = {
         if(room_cell.get_statistic(StatisticType.FUEL)<=0){
             room_cell.set_terrain_type(TerrainType.DIRT);
         }       
+    },
+    get_details: (room_cell) => {
+        return [
+            `Fuel: ${room_cell.get_statistic(StatisticType.FUEL)}`
+        ];
     }
 };
 TerrainTypes[TerrainType.DIRT] = {

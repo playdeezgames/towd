@@ -90,4 +90,11 @@ class RoomCell {
         this.set_statistic(statistic_type_id, value);
         return value;
     }    
+    get_details(){
+        if(this.get_terrain_type_descriptor().get_details==null){
+            return [];
+        }else{
+            return this.get_terrain_type_descriptor().get_details(this);
+        }
+    }
 }
