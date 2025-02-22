@@ -4,7 +4,8 @@ let VerbType = {
     CHOP: "CHOP",
     DIG: "DIG",
     EAT: "EAT",
-    ADD_FUEL: "ADD_FUEL"
+    ADD_FUEL: "ADD_FUEL",
+    WAIT: "WAIT"
 };
 Object.freeze(VerbType);
 let VerbTypes = {};
@@ -123,6 +124,19 @@ VerbTypes[VerbType.ADD_FUEL] = {
             character.remove_item(item);
             let fuel = character.get_room_cell().change_statistic(StatisticType.FUEL, fuel_delta);
             character.add_message(`+${fuel_delta} Fuel(${fuel})`);
+        }
+    }
+};
+VerbTypes[VerbType.WAIT] = {
+    name: "Wait",
+    can_perform: (character) => { 
+        return true;
+    },
+    perform: (character) => {
+        if(character.can_do_verb(VerbType.WAIT)){
+            character.clear_messages();
+            character.add_message("You wait.");
+            character.get_world().advance_time(1);
         }
     }
 };
