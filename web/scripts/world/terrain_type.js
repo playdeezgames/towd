@@ -3,7 +3,8 @@ let TerrainType = {
     PINE: "PINE",
     ROCK: "ROCK",
     COOKING_FIRE: "COOKING_FIRE",
-    DIRT: "DIRT"
+    DIRT: "DIRT",
+    POND: "POND"
 }
 Object.freeze(TerrainType);
 let TerrainTypes = {};
@@ -119,6 +120,28 @@ TerrainTypes[TerrainType.DIRT] = {
     },
     advance_time: (room_cell) => {
 
+    }
+};
+TerrainTypes[TerrainType.POND] = {
+    img_url: "assets/images/terrain_type_pond.png",
+    name: "Pond",
+    do_dig: (character) => {
+        character.get_world().advance_time(1);
+        let item = character.create_item_of_type(ItemType.CLAY);
+        character.add_message(`You find 1 ${item.get_name()}.`);
+        item = character.get_item_of_type(ItemType.SHARP_STICK);
+        character.change_item_durability(item, -1);
+    },
+    initialize: (room_cell) => {
+        room_cell.set_statistic(StatisticType.DIGGING, 25);
+    },
+    advance_time: (room_cell) => {
+
+    },
+    get_details: (room_cell) => {
+        return [
+            `Digging: ${room_cell.get_statistic(StatisticType.DIGGING)}`,
+        ];
     }
 };
 Object.freeze(TerrainTypes);
