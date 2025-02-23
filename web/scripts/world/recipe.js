@@ -187,5 +187,16 @@ let Recipes = [
         set_output(ItemType.BRICK, 1).
         set_precondition((character) => { 
             return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
-        })
+        }),
+    Recipe.create().
+        set_input(ItemType.BLADE, 1).
+        set_input(ItemType.TWINE, 1).
+        set_input(ItemType.STICK, 1).
+        set_output(ItemType.KNIFE, 1),
+    Recipe.create().
+        set_input(ItemType.SHARP_ROCK, 1).
+        set_input(ItemType.HAMMER, 1).
+        set_durability_input(ItemType.HAMMER, 1).
+        set_output(ItemType.HAMMER, 1).
+        set_output(ItemType.BLADE, 1)
 ];

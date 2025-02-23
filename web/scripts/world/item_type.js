@@ -17,7 +17,12 @@ let ItemType = {
     UNFIRED_BRICK: "UNFIRED_BRICK",
     BRICK: "BRICK",
     FISHING_NET: "FISHING_NET",
-    RAW_FISH: "RAW_FISH"
+    RAW_FISH: "RAW_FISH",
+    RAW_FISH_FILET: "RAW_FISH_FILET",
+    FISH_HEAD: "FISH_HEAD",
+    FISH_GUTS: "FISH_GUTS",
+    KNIFE: "KNIFE",
+    BLADE: "BLADE"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -106,8 +111,31 @@ ItemTypes[ItemType.RAW_FISH] = {
     name: "Raw Fish",
     initialize: (item) => {}
 };
+ItemTypes[ItemType.RAW_FISH_FILET] = {
+    name: "Raw Fish Filet",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.FISH_HEAD] = {
+    name: "Fish Head",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.FISH_GUTS] = {
+    name: "Fish Guts",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.BLADE] = {
+    name: "Blade",
+    initialize: (item) => {}
+};
 ItemTypes[ItemType.FISHING_NET] = {
     name: "Fishing Net",
+    initialize: (item) => {
+        item.set_statistic(StatisticType.DURABILITY, 30);
+        item.set_statistic(StatisticType.MAXIMUM_DURABILITY, 30);
+    }
+};
+ItemTypes[ItemType.KNIFE] = {
+    name: "Knife",
     initialize: (item) => {
         item.set_statistic(StatisticType.DURABILITY, 30);
         item.set_statistic(StatisticType.MAXIMUM_DURABILITY, 30);
