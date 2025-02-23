@@ -174,5 +174,12 @@ let Recipes = [
         set_output(ItemType.CHARCOAL, 1).
         set_precondition((character) => { 
             return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
+        }),
+    Recipe.create().
+        set_input(ItemType.PLANT_FIBER, 1).
+        set_input(ItemType.CLAY, 1).
+        set_output(ItemType.UNFIRED_BRICK, 1).
+        set_precondition((character) => { 
+            return true; 
         })
 ];
