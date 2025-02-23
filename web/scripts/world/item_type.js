@@ -14,7 +14,8 @@ let ItemType = {
     COOKED_GRUB: "COOKED_GRUB",
     CLAY: "CLAY",
     CHARCOAL: "CHARCOAL",
-    UNFIRED_BRICK: "UNFIRED_BRICK"
+    UNFIRED_BRICK: "UNFIRED_BRICK",
+    BRICK: "BRICK"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -93,6 +94,10 @@ ItemTypes[ItemType.CHARCOAL] = {
 };
 ItemTypes[ItemType.UNFIRED_BRICK] = {
     name: "Unfired Brick",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.BRICK] = {
+    name: "Brick",
     initialize: (item) => {}
 };
 Object.freeze(ItemTypes);

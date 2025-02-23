@@ -181,5 +181,11 @@ let Recipes = [
         set_output(ItemType.UNFIRED_BRICK, 1).
         set_precondition((character) => { 
             return true; 
+        }),
+    Recipe.create().
+        set_input(ItemType.UNFIRED_BRICK, 1).
+        set_output(ItemType.BRICK, 1).
+        set_precondition((character) => { 
+            return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
         })
 ];
