@@ -198,5 +198,13 @@ let Recipes = [
         set_input(ItemType.HAMMER, 1).
         set_durability_input(ItemType.HAMMER, 1).
         set_output(ItemType.HAMMER, 1).
-        set_output(ItemType.BLADE, 1)
+        set_output(ItemType.BLADE, 1),
+    Recipe.create().
+        set_input(ItemType.KNIFE, 1).
+        set_input(ItemType.RAW_FISH, 1).
+        set_durability_input(ItemType.KNIFE, 1).
+        set_output(ItemType.KNIFE,  1).
+        set_output(ItemType.FISH_GUTS, 1).
+        set_output(ItemType.FISH_HEAD, 1).
+        set_output(ItemType.RAW_FISH_FILET, 1)
 ];
