@@ -15,7 +15,8 @@ let ItemType = {
     CLAY: "CLAY",
     CHARCOAL: "CHARCOAL",
     UNFIRED_BRICK: "UNFIRED_BRICK",
-    BRICK: "BRICK"
+    BRICK: "BRICK",
+    FISHING_NET: "FISHING_NET"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -99,5 +100,12 @@ ItemTypes[ItemType.UNFIRED_BRICK] = {
 ItemTypes[ItemType.BRICK] = {
     name: "Brick",
     initialize: (item) => {}
+};
+ItemTypes[ItemType.FISHING_NET] = {
+    name: "Fishing Net",
+    initialize: (item) => {
+        item.set_statistic(StatisticType.DURABILITY, 30);
+        item.set_statistic(StatisticType.MAXIMUM_DURABILITY, 30);
+    }
 };
 Object.freeze(ItemTypes);

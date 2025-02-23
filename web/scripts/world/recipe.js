@@ -178,10 +178,10 @@ let Recipes = [
     Recipe.create().
         set_input(ItemType.PLANT_FIBER, 1).
         set_input(ItemType.CLAY, 1).
-        set_output(ItemType.UNFIRED_BRICK, 1).
-        set_precondition((character) => { 
-            return true; 
-        }),
+        set_output(ItemType.UNFIRED_BRICK, 1),
+    Recipe.create().
+        set_input(ItemType.TWINE, 4).
+        set_output(ItemType.FISHING_NET, 1),
     Recipe.create().
         set_input(ItemType.UNFIRED_BRICK, 1).
         set_output(ItemType.BRICK, 1).
