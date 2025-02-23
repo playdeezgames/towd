@@ -16,7 +16,8 @@ let ItemType = {
     CHARCOAL: "CHARCOAL",
     UNFIRED_BRICK: "UNFIRED_BRICK",
     BRICK: "BRICK",
-    FISHING_NET: "FISHING_NET"
+    FISHING_NET: "FISHING_NET",
+    RAW_FISH: "RAW_FISH"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -99,6 +100,10 @@ ItemTypes[ItemType.UNFIRED_BRICK] = {
 };
 ItemTypes[ItemType.BRICK] = {
     name: "Brick",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.RAW_FISH] = {
+    name: "Raw Fish",
     initialize: (item) => {}
 };
 ItemTypes[ItemType.FISHING_NET] = {

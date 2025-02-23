@@ -5,7 +5,8 @@ let VerbType = {
     DIG: "DIG",
     EAT: "EAT",
     ADD_FUEL: "ADD_FUEL",
-    WAIT: "WAIT"
+    WAIT: "WAIT",
+    FISH: "FISH"
 };
 Object.freeze(VerbType);
 let VerbTypes = {};
@@ -64,6 +65,28 @@ VerbTypes[VerbType.CHOP] = {
             character.get_room_cell().change_statistic(StatisticType.CHOPPING, -1);
             let terrain_type_id = character.get_room_cell().get_terrain_type();
             TerrainTypes[terrain_type_id].do_chop(character);
+        }
+    }
+};
+VerbTypes[VerbType.FISH] = {
+    name: "Fish",
+    can_perform: (character) => { 
+        if(!character.get_inventory().has_items_of_type(ItemType.FISHING_NET)){
+            return false;
+        }
+        let terrain_type_id = character.get_room_cell().get_terrain_type();
+        if(TerrainTypes[terrain_type_id].do_fish == null){
+            return false;
+        }
+        return character.get_room_cell().get_statistic(StatisticType.FISHING) > 0;
+    },
+    perform: (character) => {
+        character.clear_messages();
+        if(character.can_do_verb(VerbType.FISH)){
+            character.add_message("You fish.")
+            character.get_room_cell().change_statistic(StatisticType.FISHING, -1);
+            let terrain_type_id = character.get_room_cell().get_terrain_type();
+            TerrainTypes[terrain_type_id].do_fish(character);
         }
     }
 };

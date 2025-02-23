@@ -132,8 +132,16 @@ TerrainTypes[TerrainType.POND] = {
         item = character.get_item_of_type(ItemType.SHARP_STICK);
         character.change_item_durability(item, -1);
     },
+    do_fish: (character) => {
+        character.get_world().advance_time(1);
+        let item = character.create_item_of_type(ItemType.RAW_FISH);
+        character.add_message(`You find 1 ${item.get_name()}.`);
+        item = character.get_item_of_type(ItemType.FISHING_NET);
+        character.change_item_durability(item, -1);
+    },
     initialize: (room_cell) => {
         room_cell.set_statistic(StatisticType.DIGGING, 25);
+        room_cell.set_statistic(StatisticType.FISHING, 25);
     },
     advance_time: (room_cell) => {
 
@@ -141,6 +149,7 @@ TerrainTypes[TerrainType.POND] = {
     get_details: (room_cell) => {
         return [
             `Digging: ${room_cell.get_statistic(StatisticType.DIGGING)}`,
+            `Fishing: ${room_cell.get_statistic(StatisticType.FISHING)}`
         ];
     }
 };

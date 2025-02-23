@@ -8,6 +8,7 @@ let StatisticType = {
     FUEL: "FUEL",
     FORAGING: "FORAGING",
     DIGGING: "DIGGING",
-    CHOPPING: "CHOPPING"
+    CHOPPING: "CHOPPING",
+    FISHING: "FISHING"
 }
 Object.freeze(StatisticType);
