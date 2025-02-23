@@ -22,7 +22,8 @@ let ItemType = {
     FISH_HEAD: "FISH_HEAD",
     FISH_GUTS: "FISH_GUTS",
     KNIFE: "KNIFE",
-    BLADE: "BLADE"
+    BLADE: "BLADE",
+    COOKED_FISH_FILET: "COOKED_FISH_FILET"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -126,6 +127,12 @@ ItemTypes[ItemType.FISH_GUTS] = {
 ItemTypes[ItemType.BLADE] = {
     name: "Blade",
     initialize: (item) => {}
+};
+ItemTypes[ItemType.COOKED_FISH_FILET] = {
+    name: "Cooked Fish Filet",
+    initialize: (item) => {
+        item.set_statistic(StatisticType.SATIETY, 10);
+    }
 };
 ItemTypes[ItemType.FISHING_NET] = {
     name: "Fishing Net",

@@ -176,6 +176,24 @@ let Recipes = [
             return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
         }),
     Recipe.create().
+        set_input(ItemType.GRUB, 1).
+        set_input(ItemType.SHARP_STICK, 1).
+        set_durability_input(ItemType.SHARP_STICK, 1).
+        set_output(ItemType.SHARP_STICK, 1).
+        set_output(ItemType.COOKED_GRUB, 1).
+        set_precondition((character) => { 
+            return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
+        }),
+    Recipe.create().
+        set_input(ItemType.RAW_FISH_FILET, 1).
+        set_input(ItemType.SHARP_STICK, 1).
+        set_durability_input(ItemType.SHARP_STICK, 1).
+        set_output(ItemType.SHARP_STICK, 1).
+        set_output(ItemType.COOKED_FISH_FILET, 1).
+        set_precondition((character) => { 
+            return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
+        }),
+    Recipe.create().
         set_input(ItemType.PLANT_FIBER, 1).
         set_input(ItemType.CLAY, 1).
         set_output(ItemType.UNFIRED_BRICK, 1),
