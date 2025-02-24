@@ -2,7 +2,13 @@ class InPlay {
     static run() {
         CommandHook.set_command_hook(InPlay.command_hook)
         ElementStack.cls();
+        ElementStack.push(ElementStack.add_table());
+        ElementStack.push(ElementStack.add_table_row());
+        ElementStack.push(ElementStack.add_table_data());
         InPlay.render_room();
+        ElementStack.pop();
+        ElementStack.pop();
+        ElementStack.pop();
         InPlay.render_controls();
         InPlay.render_stats();
         InPlay.render_messages();

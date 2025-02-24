@@ -73,4 +73,21 @@ class ElementStack {
     static add_div(){
         return ElementStack.add_div_to(ElementStack.top());
     }
+    static add_element_to(parent, element_type, predicate){
+        let element = document.createElement(element_type);
+        if(predicate!=null){
+            predicate(element);
+        }
+        parent.appendChild(element);
+        return element;
+    }
+    static add_table(predicate){
+        return ElementStack.add_element_to(ElementStack.top(), "table", predicate);
+    }
+    static add_table_row(predicate){
+        return ElementStack.add_element_to(ElementStack.top(), "tr", predicate);
+    }
+    static add_table_data(predicate){
+        return ElementStack.add_element_to(ElementStack.top(), "td", predicate);
+    }
 }
