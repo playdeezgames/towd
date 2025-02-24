@@ -4,7 +4,8 @@ let TerrainType = {
     ROCK: "ROCK",
     COOKING_FIRE: "COOKING_FIRE",
     DIRT: "DIRT",
-    POND: "POND"
+    POND: "POND",
+    FURNACE: "FURNACE"
 }
 Object.freeze(TerrainType);
 let TerrainTypes = {};
@@ -96,7 +97,7 @@ TerrainTypes[TerrainType.COOKING_FIRE] = {
     img_url: "assets/images/terrain_type_cooking_fire.png",
     name: "Cooking Fire",
     initialize: (room_cell) => {
-        room_cell.set_statistic(StatisticType.FUEL, 8);
+        room_cell.set_statistic(StatisticType.FUEL, 9);
     },
     advance_time: (room_cell) => {
         if(room_cell.get_statistic(StatisticType.FUEL)>0){
@@ -110,6 +111,17 @@ TerrainTypes[TerrainType.COOKING_FIRE] = {
         return [
             `Fuel: ${room_cell.get_statistic(StatisticType.FUEL)}`
         ];
+    }
+};
+TerrainTypes[TerrainType.FURNACE] = {
+    img_url: "assets/images/terrain_type_furnace.png",
+    name: "Furnace",
+    initialize: (room_cell) => {
+    },
+    advance_time: (room_cell) => {
+    },
+    get_details: (room_cell) => {
+        return [];
     }
 };
 TerrainTypes[TerrainType.DIRT] = {

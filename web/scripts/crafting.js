@@ -8,6 +8,7 @@ class Crafting {
                 ElementStack.add_button(recipe.get_name(), ()=>{
                     character.clear_messages();
                     recipe.craft(character);
+                    character.get_world().advance_time(1);
                     Neutral.run();
                 });
                 ElementStack.add_break();

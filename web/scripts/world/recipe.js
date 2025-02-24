@@ -170,6 +170,17 @@ let Recipes = [
             character.get_room_cell().set_terrain_type(TerrainType.COOKING_FIRE);
         }),
     Recipe.create().
+        set_input(ItemType.BRICK, 8).
+        set_output(ItemType.FURNACE, 1).
+        set_precondition((character) => { 
+            let terrain_type_id = character.get_room_cell().get_terrain_type();
+            return terrain_type_id == TerrainType.GRASS || terrain_type_id == TerrainType.DIRT; 
+        }).
+        set_predicate((character)=> {
+            character.remove_item_of_type(ItemType.FURNACE);
+            character.get_room_cell().set_terrain_type(TerrainType.FURNACE);
+        }),
+    Recipe.create().
         set_input(ItemType.LOG, 2).
         set_output(ItemType.CHARCOAL, 1).
         set_precondition((character) => { 

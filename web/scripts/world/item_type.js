@@ -23,7 +23,8 @@ let ItemType = {
     FISH_GUTS: "FISH_GUTS",
     KNIFE: "KNIFE",
     BLADE: "BLADE",
-    COOKED_FISH_FILET: "COOKED_FISH_FILET"
+    COOKED_FISH_FILET: "COOKED_FISH_FILET",
+    FURNACE: "FURNACE"
 };
 Object.freeze(ItemType);
 let ItemTypes = {};
@@ -90,6 +91,10 @@ ItemTypes[ItemType.COOKED_GRUB] = {
 };
 ItemTypes[ItemType.COOKING_FIRE] = {
     name: "Cooking Fire",
+    initialize: (item) => {}
+};
+ItemTypes[ItemType.FURNACE] = {
+    name: "Furnace",
     initialize: (item) => {}
 };
 ItemTypes[ItemType.CLAY] = {
