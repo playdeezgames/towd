@@ -37,14 +37,13 @@ class InPlay {
 
     static render_stats(){
         let avatar = World.get_avatar();
-        let terrainStatus = `Terrain: ${avatar.get_room_cell().get_name()}`
+        Utility.push(Utility.add_paragraph(`Terrain: ${avatar.get_room_cell().get_name()}`));
         let report = avatar.get_room_cell().get_details();
         if(report.length>0){
-            terrainStatus += "(";
-            terrainStatus += report.join(", ");
-            terrainStatus += ")";
+            Utility.add_img(World.get_avatar().get_room_cell().get_img_url());
+            Utility.add_span(`(${report.join(", ")})`)
         }
-        Utility.add_paragraph(terrainStatus);
+        Utility.pop();
         Utility.add_paragraph(`Satiety: ${avatar.get_statistic(StatisticType.SATIETY)}/${avatar.get_statistic(StatisticType.MAXIMUM_SATIETY)}`);
         Utility.add_paragraph(`Health: ${avatar.get_statistic(StatisticType.HEALTH)}/${avatar.get_statistic(StatisticType.MAXIMUM_HEALTH)}`);
     }
