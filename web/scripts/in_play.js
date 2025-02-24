@@ -1,6 +1,6 @@
 class InPlay {
     static run() {
-        Utility.set_command_hook(InPlay.command_hook)
+        CommandHook.set_command_hook(InPlay.command_hook)
         Utility.cls();
         InPlay.render_room();
         InPlay.render_controls();

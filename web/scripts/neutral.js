@@ -1,6 +1,6 @@
 class Neutral {
     static run(){
-        Utility.clear_command_hook();
+        CommandHook.clear_command_hook();
         let avatar = World.get_avatar();
         if(avatar.is_dead()) {
             GameOver.run();
