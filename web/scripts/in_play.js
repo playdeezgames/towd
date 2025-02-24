@@ -3,16 +3,40 @@ class InPlay {
         CommandHook.set_command_hook(InPlay.command_hook)
         ElementStack.cls();
         ElementStack.push(ElementStack.add_table());
+
         ElementStack.push(ElementStack.add_table_row());
-        ElementStack.push(ElementStack.add_table_data());
+
+        ElementStack.push(ElementStack.add_table_data((element)=>{
+            element.rowSpan = 2;
+        }));
         InPlay.render_room();
         ElementStack.pop();
-        ElementStack.pop();
-        ElementStack.pop();
+
+        ElementStack.push(ElementStack.add_table_data());
         InPlay.render_controls();
-        InPlay.render_stats();
-        InPlay.render_messages();
+        ElementStack.pop();
+
+        ElementStack.push(ElementStack.add_table_data((element)=>{
+            element.rowSpan = 2;
+        }));
         InPlay.render_inventory();
+        ElementStack.pop();
+
+        ElementStack.pop();
+        ElementStack.push(ElementStack.add_table_row());
+
+        ElementStack.push(ElementStack.add_table_data());
+        InPlay.render_stats();
+        ElementStack.pop();
+
+        ElementStack.pop();
+
+        ElementStack.push(ElementStack.add_table_row());
+        ElementStack.push(ElementStack.add_table_data((element)=>{element.colSpan=3}));
+        InPlay.render_messages();
+        ElementStack.pop();
+        ElementStack.pop();
+        ElementStack.pop();
     }
     static command_hook(command){
         if(command == COMMAND_UP){
@@ -33,6 +57,7 @@ class InPlay {
     }
 
     static render_inventory(){
+        ElementStack.add_paragraph("Inventory:")
         World.get_avatar().get_inventory().get_item_stacks().forEach((item)=>{
             let quantity = item.get_quantity();
             if(quantity>0){
@@ -42,6 +67,7 @@ class InPlay {
     }
 
     static render_stats(){
+        ElementStack.add_paragraph("Statistics:")
         let avatar = World.get_avatar();
         ElementStack.push(ElementStack.add_paragraph(`Terrain: ${avatar.get_room_cell().get_name()}`));
         let report = avatar.get_room_cell().get_details();
@@ -55,12 +81,39 @@ class InPlay {
     }
 
     static render_controls() {
+        ElementStack.add_paragraph("Controls:")
+
+        ElementStack.push(ElementStack.add_table())
+        ElementStack.push(ElementStack.add_table_row())
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()
+        ElementStack.push(ElementStack.add_table_data())
         ElementStack.add_button("N", InPlay.move_north);
-        ElementStack.add_break();
+        ElementStack.pop()
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()
+        ElementStack.pop()
+        ElementStack.push(ElementStack.add_table_row())
+        ElementStack.push(ElementStack.add_table_data())
         ElementStack.add_button("W", InPlay.move_west);
+        ElementStack.pop()
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()
+        ElementStack.push(ElementStack.add_table_data())
         ElementStack.add_button("E", InPlay.move_east);
-        ElementStack.add_break();
+        ElementStack.pop()
+        ElementStack.pop()
+        ElementStack.push(ElementStack.add_table_row())
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()
+        ElementStack.push(ElementStack.add_table_data())
         ElementStack.add_button("S", InPlay.move_south);
+        ElementStack.pop()
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()
+        ElementStack.pop()
+        ElementStack.pop()
+
         ElementStack.add_break();
         let avatar = World.get_avatar();
         for(let key in VerbType) {
