@@ -1,7 +1,7 @@
 class InPlay {
     static run() {
         CommandHook.set_command_hook(InPlay.command_hook)
-        Utility.cls();
+        ElementStack.cls();
         InPlay.render_room();
         InPlay.render_controls();
         InPlay.render_stats();
@@ -22,7 +22,7 @@ class InPlay {
 
     static render_messages(){
         World.get_avatar().get_messages().forEach((message)=>{
-            Utility.add_paragraph(message);
+            ElementStack.add_paragraph(message);
         });
     }
 
@@ -30,36 +30,36 @@ class InPlay {
         World.get_avatar().get_inventory().get_item_stacks().forEach((item)=>{
             let quantity = item.get_quantity();
             if(quantity>0){
-                Utility.add_paragraph(`${item.get_name()}: ${quantity}`)
+                ElementStack.add_paragraph(`${item.get_name()}: ${quantity}`)
             }
         })
     }
 
     static render_stats(){
         let avatar = World.get_avatar();
-        Utility.push(Utility.add_paragraph(`Terrain: ${avatar.get_room_cell().get_name()}`));
+        ElementStack.push(ElementStack.add_paragraph(`Terrain: ${avatar.get_room_cell().get_name()}`));
         let report = avatar.get_room_cell().get_details();
         if(report.length>0){
-            Utility.add_img(World.get_avatar().get_room_cell().get_img_url());
-            Utility.add_span(`(${report.join(", ")})`)
+            ElementStack.add_img(World.get_avatar().get_room_cell().get_img_url());
+            ElementStack.add_span(`(${report.join(", ")})`)
         }
-        Utility.pop();
-        Utility.add_paragraph(`Satiety: ${avatar.get_statistic(StatisticType.SATIETY)}/${avatar.get_statistic(StatisticType.MAXIMUM_SATIETY)}`);
-        Utility.add_paragraph(`Health: ${avatar.get_statistic(StatisticType.HEALTH)}/${avatar.get_statistic(StatisticType.MAXIMUM_HEALTH)}`);
+        ElementStack.pop();
+        ElementStack.add_paragraph(`Satiety: ${avatar.get_statistic(StatisticType.SATIETY)}/${avatar.get_statistic(StatisticType.MAXIMUM_SATIETY)}`);
+        ElementStack.add_paragraph(`Health: ${avatar.get_statistic(StatisticType.HEALTH)}/${avatar.get_statistic(StatisticType.MAXIMUM_HEALTH)}`);
     }
 
     static render_controls() {
-        Utility.add_button("N", InPlay.move_north);
-        Utility.add_break();
-        Utility.add_button("W", InPlay.move_west);
-        Utility.add_button("E", InPlay.move_east);
-        Utility.add_break();
-        Utility.add_button("S", InPlay.move_south);
-        Utility.add_break();
+        ElementStack.add_button("N", InPlay.move_north);
+        ElementStack.add_break();
+        ElementStack.add_button("W", InPlay.move_west);
+        ElementStack.add_button("E", InPlay.move_east);
+        ElementStack.add_break();
+        ElementStack.add_button("S", InPlay.move_south);
+        ElementStack.add_break();
         let avatar = World.get_avatar();
         for(let key in VerbType) {
             if(avatar.can_do_verb(key)){
-                Utility.add_button(VerbTypes[key].name, () => { 
+                ElementStack.add_button(VerbTypes[key].name, () => { 
                     avatar.do_verb(key);
                     Neutral.run();
                 });
@@ -89,17 +89,17 @@ class InPlay {
         let world = new World();
         let room = world.get_avatar().get_room();
         for (let row = 0; row < room.get_rows(); ++row) {
-            Utility.push(Utility.add_div());
+            ElementStack.push(ElementStack.add_div());
             for (let column = 0; column < room.get_columns(); ++column) {
                 let room_cell = room.get_room_cell(column, row);
                 let character = room_cell.get_character();
                 if (character != null) {
-                    Utility.add_img(character.get_img_url());
+                    ElementStack.add_img(character.get_img_url());
                 } else {
-                    Utility.add_img(room_cell.get_img_url());
+                    ElementStack.add_img(room_cell.get_img_url());
                 }
             }
-            Utility.pop();
+            ElementStack.pop();
         }
     }
 }

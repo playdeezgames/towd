@@ -1,19 +1,19 @@
 class Crafting {
     static run(){
         CommandHook.clear_command_hook();
-        Utility.cls();
+        ElementStack.cls();
         let character = World.get_avatar();
         for(let recipe of Recipes){
             if(recipe.can_craft(character)){
-                Utility.add_button(recipe.get_name(), ()=>{
+                ElementStack.add_button(recipe.get_name(), ()=>{
                     character.clear_messages();
                     recipe.craft(character);
                     Neutral.run();
                 });
-                Utility.add_break();
+                ElementStack.add_break();
             }
         }
-        Utility.add_button("Stop Crafting", () => {
+        ElementStack.add_button("Stop Crafting", () => {
             let avatar = World.get_avatar();
             avatar.clear_messages();
             avatar.set_flag(FlagType.CRAFTING, false);
