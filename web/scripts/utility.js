@@ -1,8 +1,10 @@
+//TODO: move to command hook
 const COMMAND_UP = "UP";
 const COMMAND_DOWN = "DOWN";
 const COMMAND_LEFT = "LEFT";
 const COMMAND_RIGHT = "RIGHT";
 class Utility {
+    //TODO: move to element stack
     static clear(element) {
         while(element.hasChildNodes()){
             element.removeChild(element.firstChild);
@@ -77,6 +79,7 @@ class Utility {
     static add_div(){
         return this.add_div_to(Utility.top());
     }
+    //TODO: move to RNG
     static generate(table){
         let total = 0;
         for(let key in table){
@@ -95,6 +98,7 @@ class Utility {
     static roll(value){
         return Math.floor(Math.random() * value);
     }
+    //TODO: move to command hook
     static command_hook = (command) => {};
     static keyboard_hooked = false;
     static command_table = {

@@ -89,16 +89,17 @@ class InPlay {
         let world = new World();
         let room = world.get_avatar().get_room();
         for (let row = 0; row < room.get_rows(); ++row) {
-            let row_div = Utility.add_div();
+            Utility.push(Utility.add_div());
             for (let column = 0; column < room.get_columns(); ++column) {
                 let room_cell = room.get_room_cell(column, row);
                 let character = room_cell.get_character();
                 if (character != null) {
-                    Utility.add_img_to(row_div, character.get_img_url());
+                    Utility.add_img(character.get_img_url());
                 } else {
-                    Utility.add_img_to(row_div, room_cell.get_img_url());
+                    Utility.add_img(room_cell.get_img_url());
                 }
             }
+            Utility.pop();
         }
     }
 }
