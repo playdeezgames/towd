@@ -1,12 +1,9 @@
 ﻿Friend Class Location
+    Inherits LocationDataClient
     Implements ILocation
 
-    Private ReadOnly worldData As data.WorldData
-    Private ReadOnly locationId As Integer
-
     Public Sub New(worldData As data.WorldData, locationId As Integer)
-        Me.worldData = worldData
-        Me.locationId = locationId
+        MyBase.New(worldData, locationId)
     End Sub
 
     Public ReadOnly Property Id As Integer Implements ILocation.Id
