@@ -23,6 +23,6 @@
     End Sub
 
     Friend Overrides Sub UpdateView()
-        titleLabel.Text = $"Character Id: {World.Avatar.Id}"
+        titleLabel.Text = $"Character Id: {World.Avatar.Id}, Location Id: {World.Avatar.Location.Id}"
     End Sub
 End Class

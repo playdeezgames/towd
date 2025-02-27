@@ -26,7 +26,8 @@ Public Class World
     End Property
 
     Public Sub Initialize() Implements IWorld.Initialize
-        Avatar = CreateCharacter(CharacterType.N00b)
+        Dim location = CreateLocation(LocationType.Grass)
+        Avatar = CreateCharacter(CharacterType.N00b, location)
     End Sub
 
     Public Sub Abandon() Implements IWorld.Abandon
@@ -36,13 +37,24 @@ Public Class World
         End With
     End Sub
 
-    Public Function CreateCharacter(characterType As CharacterType) As ICharacter Implements IWorld.CreateCharacter
+    Public Function CreateCharacter(characterType As CharacterType, location As ILocation) As ICharacter Implements IWorld.CreateCharacter
         Dim characterId = worldData.Characters.Count
         worldData.Characters.Add(
             New CharacterData With
             {
-                .CharacterType = characterType
+                .CharacterType = characterType,
+                .LocationId = location.Id
             })
         Return New Character(worldData, characterId)
+    End Function
+
+    Public Function CreateLocation(locationType As LocationType) As ILocation Implements IWorld.CreateLocation
+        Dim locationId = worldData.Locations.Count
+        worldData.Locations.Add(
+            New LocationData With
+            {
+                .LocationType = locationType
+            })
+        Return New Location(worldData, locationId)
     End Function
 End Class
