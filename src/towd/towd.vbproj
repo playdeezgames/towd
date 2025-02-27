@@ -5,6 +5,7 @@
     <RootNamespace>towd</RootNamespace>
     <TargetFramework>net8.0</TargetFramework>
     <OptionStrict>On</OptionStrict>
+    <ImportedNamespaces>Terminal.Gui=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,towd=True</ImportedNamespaces>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,6 +18,10 @@
 
   <ItemGroup>
     <PackageReference Include="Terminal.Gui" Version="1.17.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="Terminal.Gui" />
   </ItemGroup>
 
 </Project>
