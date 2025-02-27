@@ -1,10 +1,22 @@
-﻿Friend MustInherit Class ChildView
+﻿Imports towd.business
+Imports towd.data
+
+Friend MustInherit Class ChildView
     Inherits View
-    Protected ReadOnly mainView As MainView
+    Private ReadOnly mainView As MainView
+    Private worldData As New WorldData
+    Protected ReadOnly Property World As IWorld
+        Get
+            Return New World(worldData)
+        End Get
+    End Property
     Sub New(mainView As MainView)
         Me.mainView = mainView
         Width = [Dim].Fill()
         Height = [Dim].Fill()
     End Sub
     Friend MustOverride Sub UpdateView()
+    Protected Sub ShowState(gameState As GameState)
+        mainView.ShowState(gameState)
+    End Sub
 End Class

@@ -19,7 +19,7 @@
     End Sub
 
     Private Sub OnOkButtonClicked()
-        mainView.ShowState(GameState.MainMenu)
+        ShowState(GameState.MainMenu)
     End Sub
 
     Friend Overrides Sub UpdateView()

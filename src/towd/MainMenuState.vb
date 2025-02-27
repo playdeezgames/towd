@@ -9,15 +9,28 @@
                 .X = Pos.Center
             }
 
+        Dim embarkButton As New Button With
+            {
+                .Text = "Embark!",
+                .Y = Pos.Bottom(titleLabel) + 1,
+                .X = Pos.Center
+            }
+        AddHandler embarkButton.Clicked, AddressOf OnEmbarkButtonClicked
+
         Dim quitButton As New Button With
             {
                 .Text = "Quit",
-                .Y = Pos.Bottom(titleLabel) + 1,
+                .Y = Pos.Bottom(embarkButton) + 1,
                 .X = Pos.Center
             }
         AddHandler quitButton.Clicked, AddressOf OnQuitButtonClicked
 
-        Add(titleLabel, quitButton)
+        Add(titleLabel, embarkButton, quitButton)
+    End Sub
+
+    Private Sub OnEmbarkButtonClicked()
+        World.Initialize()
+        ShowState(GameState.Neutral)
     End Sub
 
     Private Sub OnQuitButtonClicked()
