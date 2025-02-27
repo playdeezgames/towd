@@ -1,19 +1,11 @@
 ﻿Imports towd.data
 
 Friend Class Character
+    Inherits CharacterDataClient
     Implements ICharacter
 
-    Private ReadOnly worldData As data.WorldData
-    Private ReadOnly characterId As Integer
-    Private ReadOnly Property CharacterData As CharacterData
-        Get
-            Return worldData.Characters(characterId)
-        End Get
-    End Property
-
     Public Sub New(worldData As data.WorldData, characterId As Integer)
-        Me.worldData = worldData
-        Me.characterId = characterId
+        MyBase.New(worldData, characterId)
     End Sub
 
     Public ReadOnly Property Id As Integer Implements ICharacter.Id
