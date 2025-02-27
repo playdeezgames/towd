@@ -1,9 +1,10 @@
 ﻿Friend Class NavigationState
     Inherits ChildView
+    Private ReadOnly titleLabel As Label
 
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
-        Dim titleLabel As New Label With
+        titleLabel = New Label With
             {
                 .Text = "Yer playin' the game!"
             }
@@ -22,5 +23,6 @@
     End Sub
 
     Friend Overrides Sub UpdateView()
+        titleLabel.Text = $"Character Id: {World.Avatar.Id}"
     End Sub
 End Class

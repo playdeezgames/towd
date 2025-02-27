@@ -4,8 +4,8 @@ Imports towd.data
 Friend MustInherit Class ChildView
     Inherits View
     Private ReadOnly mainView As MainView
-    Private worldData As New WorldData
-    Protected ReadOnly Property World As IWorld
+    Private Shared worldData As New WorldData
+    Protected Shared ReadOnly Property World As IWorld
         Get
             Return New World(worldData)
         End Get
