@@ -1,11 +1,11 @@
 Imports towd.data
 
 Public Class World
+    Inherits WorldDataClient
     Implements IWorld
-    Private ReadOnly worldData As WorldData
 
     Sub New(worldData As WorldData)
-        Me.worldData = worldData
+        MyBase.New(worldData)
     End Sub
 
     Public Property Avatar As ICharacter Implements IWorld.Avatar
