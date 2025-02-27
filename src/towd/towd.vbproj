@@ -24,4 +24,8 @@
     <Import Include="Terminal.Gui" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\towd.business\towd.business.vbproj" />
+  </ItemGroup>
+
 </Project>
