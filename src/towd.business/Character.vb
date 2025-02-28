@@ -19,4 +19,10 @@ Friend Class Character
             Return New Location(worldData, CharacterData.LocationId)
         End Get
     End Property
+
+    Public ReadOnly Property CharacterType As ICharacterType Implements ICharacter.CharacterType
+        Get
+            Return CharacterData.CharacterType.ToDescriptor()
+        End Get
+    End Property
 End Class

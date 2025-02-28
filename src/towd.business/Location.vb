@@ -11,4 +11,10 @@
             Return locationId
         End Get
     End Property
+
+    Public ReadOnly Property LocationType As ILocationType Implements ILocation.LocationType
+        Get
+            Return LocationData.LocationType.ToDescriptor
+        End Get
+    End Property
 End Class
