@@ -17,4 +17,22 @@
             Return LocationData.LocationType.ToDescriptor
         End Get
     End Property
+
+    Public ReadOnly Property Column As Integer Implements ILocation.Column
+        Get
+            Return LocationData.Column
+        End Get
+    End Property
+
+    Public ReadOnly Property Row As Integer Implements ILocation.Row
+        Get
+            Return LocationData.Row
+        End Get
+    End Property
+
+    Public ReadOnly Property Map As IMap Implements ILocation.Map
+        Get
+            Return New Map(WorldData, LocationData.MapId)
+        End Get
+    End Property
 End Class

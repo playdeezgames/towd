@@ -14,10 +14,13 @@ Friend Class Character
         End Get
     End Property
 
-    Public ReadOnly Property Location As ILocation Implements ICharacter.Location
+    Public Property Location As ILocation Implements ICharacter.Location
         Get
-            Return New Location(worldData, CharacterData.LocationId)
+            Return New Location(WorldData, CharacterData.LocationId)
         End Get
+        Set(value As ILocation)
+            CharacterData.LocationId = value.Id
+        End Set
     End Property
 
     Public ReadOnly Property CharacterType As ICharacterType Implements ICharacter.CharacterType
@@ -25,4 +28,17 @@ Friend Class Character
             Return CharacterData.CharacterType.ToDescriptor()
         End Get
     End Property
+
+    Public Sub Move(direction As Direction) Implements ICharacter.Move
+        Dim descriptor = direction.ToDescriptor
+        Dim column = Location.Column
+        Dim row = Location.Row
+        Dim nextColumn = descriptor.NextColumn(column, row)
+        Dim nextRow = descriptor.NextRow(column, row)
+        Dim map = Location.Map
+        Dim nextLocation = map.GetLocation(nextColumn, nextRow)
+        If nextLocation IsNot Nothing Then
+            Location = nextLocation
+        End If
+    End Sub
 End Class

@@ -1,5 +1,6 @@
 ﻿Public Interface ICharacter
     ReadOnly Property Id As Integer
-    ReadOnly Property Location As ILocation
+    Property Location As ILocation
     ReadOnly Property CharacterType As ICharacterType
+    Sub Move(direction As Direction)
 End Interface
