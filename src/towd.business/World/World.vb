@@ -25,9 +25,13 @@ Public Class World
         End Set
     End Property
 
+
     Public Sub Initialize() Implements IWorld.Initialize
+        Const MapColumns = 9
+        Const MapRows = 9
+        Dim map = CreateMap(MapType.Normal, MapColumns, MapRows)
         Dim location = CreateLocation(LocationType.Grass)
-        Avatar = CreateCharacter(CharacterType.N00b, location)
+        Avatar = CreateCharacter(CharacterType.N00b, Location)
     End Sub
 
     Public Sub Abandon() Implements IWorld.Abandon
@@ -56,5 +60,18 @@ Public Class World
                 .LocationType = locationType
             })
         Return New Location(worldData, locationId)
+    End Function
+
+    Public Function CreateMap(mapType As MapType, columns As Integer, rows As Integer) As IMap Implements IWorld.CreateMap
+        Dim mapId = WorldData.Maps.Count
+        WorldData.Maps.Add(
+            New MapData With
+            {
+                .MapType = mapType,
+                .Columns = columns,
+                .Rows = rows,
+                .Locations = Enumerable.Range(0, columns * rows).Select(Function(x) CreateLocation(mapType.ToDescriptor().LocationType).Id).ToList
+            })
+        Return New Map(WorldData, mapId)
     End Function
 End Class
