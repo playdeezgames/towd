@@ -12,7 +12,8 @@
             {
                 .Text = "Continue",
                 .X = Pos.Center,
-                .Y = Pos.Bottom(titleLabel) + 1
+                .Y = Pos.Bottom(titleLabel) + 1,
+                .IsDefault = True
             }
         AddHandler continueButton.Clicked, AddressOf OnContinueButtonClicked
         Dim abandonButton As New Button With
@@ -26,7 +27,7 @@
     End Sub
 
     Private Sub OnAbandonButtonClicked()
-        If MessageBox.Query("Confirm Abandon?", "Are you sure you want to abandon the game?", "Yes", "No") = 0 Then
+        If MessageBox.Query("Confirm Abandon?", "Are you sure you want to abandon the game?", "No", "Yes") = 1 Then
             World.Abandon()
             ShowState(GameState.MainMenu)
         End If

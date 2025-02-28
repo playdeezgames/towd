@@ -29,8 +29,8 @@ Public Class World
     Public Sub Initialize() Implements IWorld.Initialize
         Const MapColumns = 9
         Const MapRows = 9
-        Dim map = CreateMap(MapType.Normal, MapColumns, MapRows)
-        Avatar = CreateCharacter(CharacterType.N00b, map.GetLocation(MapColumns \ 2, MapRows \ 2))
+        Dim map = CreateMap(MapType.Normal.ToDescriptor, MapColumns, MapRows)
+        Avatar = CreateCharacter(CharacterType.N00b.ToDescriptor, map.GetLocation(MapColumns \ 2, MapRows \ 2))
     End Sub
 
     Public Sub Abandon() Implements IWorld.Abandon
@@ -40,37 +40,46 @@ Public Class World
         End With
     End Sub
 
-    Public Function CreateCharacter(characterType As CharacterType, location As ILocation) As ICharacter Implements IWorld.CreateCharacter
-        Dim characterId = worldData.Characters.Count
-        worldData.Characters.Add(
+    Public Function CreateCharacter(characterType As ICharacterType, location As ILocation) As ICharacter Implements IWorld.CreateCharacter
+        Dim characterId = WorldData.Characters.Count
+        WorldData.Characters.Add(
             New CharacterData With
             {
-                .CharacterType = characterType,
+                .CharacterType = characterType.CharacterType,
                 .LocationId = location.Id
             })
-        Return New Character(worldData, characterId)
+        Return New Character(WorldData, characterId)
     End Function
 
-    Public Function CreateLocation(locationType As LocationType) As ILocation Implements IWorld.CreateLocation
-        Dim locationId = worldData.Locations.Count
-        worldData.Locations.Add(
+    Public Function CreateLocation(locationType As ILocationType, map As IMap, column As Integer, row As Integer) As ILocation Implements IWorld.CreateLocation
+        Dim locationId = WorldData.Locations.Count
+        WorldData.Locations.Add(
             New LocationData With
             {
-                .LocationType = locationType
+                .LocationType = locationType.LocationType,
+                .MapId = map.Id,
+                .Column = column,
+                .Row = row
             })
-        Return New Location(worldData, locationId)
+        Return New Location(WorldData, locationId)
     End Function
 
-    Public Function CreateMap(mapType As MapType, columns As Integer, rows As Integer) As IMap Implements IWorld.CreateMap
+    Public Function CreateMap(mapType As IMapType, columns As Integer, rows As Integer) As IMap Implements IWorld.CreateMap
         Dim mapId = WorldData.Maps.Count
         WorldData.Maps.Add(
             New MapData With
             {
-                .MapType = mapType,
+                .MapType = mapType.MapType,
                 .Columns = columns,
-                .Rows = rows,
-                .Locations = Enumerable.Range(0, columns * rows).Select(Function(x) CreateLocation(mapType.ToDescriptor().LocationType).Id).ToList
+                .Rows = rows
             })
-        Return New Map(WorldData, mapId)
+        Dim map = New Map(WorldData, mapId)
+        WorldData.Maps(mapId).Locations = Enumerable.Range(0, columns * rows).
+                    Select(Function(x) CreateLocation(
+                        mapType.LocationType,
+                        map,
+                        x Mod columns,
+                        x \ columns).Id).ToList
+        Return map
     End Function
 End Class

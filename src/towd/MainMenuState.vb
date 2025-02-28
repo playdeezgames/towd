@@ -13,7 +13,8 @@
             {
                 .Text = "Embark!",
                 .Y = Pos.Bottom(titleLabel) + 1,
-                .X = Pos.Center
+                .X = Pos.Center,
+                .IsDefault = True
             }
         AddHandler embarkButton.Clicked, AddressOf OnEmbarkButtonClicked
 
@@ -34,7 +35,7 @@
     End Sub
 
     Private Sub OnQuitButtonClicked()
-        If MessageBox.Query("Confirm Quit", "Are you sure you want to quit?", "Yes", "No") = 0 Then
+        If MessageBox.Query("Confirm Quit", "Are you sure you want to quit?", "No", "Yes") = 1 Then
             Application.RequestStop()
         End If
     End Sub
