@@ -30,8 +30,7 @@ Public Class World
         Const MapColumns = 9
         Const MapRows = 9
         Dim map = CreateMap(MapType.Normal, MapColumns, MapRows)
-        Dim location = CreateLocation(LocationType.Grass)
-        Avatar = CreateCharacter(CharacterType.N00b, Location)
+        Avatar = CreateCharacter(CharacterType.N00b, map.GetLocation(MapColumns \ 2, MapRows \ 2))
     End Sub
 
     Public Sub Abandon() Implements IWorld.Abandon
