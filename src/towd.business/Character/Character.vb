@@ -31,7 +31,7 @@ Friend Class Character
 
     Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb
         Get
-            Return False
+            Return VerbTypes.Descriptors.Keys.Any(Function(x) x.ToDescriptor.CanPerform(Me))
         End Get
     End Property
 
