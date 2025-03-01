@@ -1,4 +1,6 @@
-﻿Friend MustInherit Class Entity(Of TEntityType, TEntityData)
+﻿Imports towd.data
+
+Friend MustInherit Class Entity(Of TEntityType, TEntityData)
     Inherits WorldDataClient
     Implements IEntity(Of TEntityType)
 
@@ -6,7 +8,7 @@
         MyBase.New(worldData)
         Me.Id = entityId
     End Sub
-
+    Protected MustOverride ReadOnly Property EntityData As TEntityData
     Public ReadOnly Property Id As Integer Implements IEntity(Of TEntityType).Id
 
     Public ReadOnly Property World As IWorld Implements IEntity(Of TEntityType).World
