@@ -24,7 +24,7 @@
         End Get
     End Property
 
-    Public ReadOnly Property MapType As IMapType Implements IMap.MapType
+    Public ReadOnly Property EntityType As IMapType Implements IMap.EntityType
         Get
             Return MapData.MapType.ToDescriptor
         End Get
@@ -37,7 +37,7 @@
     End Property
 
     Public Sub AdvanceTime(amount As Integer) Implements IMap.AdvanceTime
-        MapType.AdvanceTime(Me, amount)
+        EntityType.AdvanceTime(Me, amount)
     End Sub
 
     Public Function GetLocation(column As Integer, row As Integer) As ILocation Implements IMap.GetLocation

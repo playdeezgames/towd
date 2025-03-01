@@ -18,7 +18,7 @@ Friend Class NormalMapTypeDescriptor
     Public Overrides Sub Initialize(map As IMap)
         For Each column In Enumerable.Range(0, map.Columns)
             For Each row In Enumerable.Range(0, map.Rows)
-                map.GetLocation(column, row).LocationType = terrainTable.Generate().ToDescriptor
+                map.GetLocation(column, row).EntityType = terrainTable.Generate().ToDescriptor
             Next
         Next
     End Sub

@@ -2,8 +2,11 @@
 
 Public Interface ICharacter
     ReadOnly Property Id As Integer
+    ReadOnly Property EntityType As ICharacterType
+    ReadOnly Property World As IWorld
+    Sub AdvanceTime(amount As Integer)
+
     Property Location As ILocation
-    ReadOnly Property CharacterType As ICharacterType
     Sub Move(direction As Direction)
     ReadOnly Property CanDoAnyVerb As Boolean
     Function CanDoVerb(verbType As VerbType) As Boolean
@@ -15,6 +18,4 @@ Public Interface ICharacter
     ReadOnly Property HasMessages As Boolean
     Sub DismissMessage()
     ReadOnly Property CurrentMessage As String()
-    ReadOnly Property World As IWorld
-    Sub AdvanceTime(amount As Integer)
 End Interface

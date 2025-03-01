@@ -23,7 +23,7 @@ Friend Class Character
         End Set
     End Property
 
-    Public ReadOnly Property CharacterType As ICharacterType Implements ICharacter.CharacterType
+    Public ReadOnly Property EntityType As ICharacterType Implements ICharacter.EntityType
         Get
             Return CharacterData.CharacterType.ToDescriptor()
         End Get
@@ -97,7 +97,7 @@ Friend Class Character
     End Sub
 
     Public Sub AdvanceTime(amount As Integer) Implements ICharacter.AdvanceTime
-        CharacterType.AdvanceTime(Me, amount)
+        EntityType.AdvanceTime(Me, amount)
     End Sub
 
     Public Sub AppendMessage(ParamArray lines() As String) Implements ICharacter.AppendMessage

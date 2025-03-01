@@ -12,7 +12,7 @@
         End Get
     End Property
 
-    Public Property LocationType As ILocationType Implements ILocation.LocationType
+    Public Property EntityType As ILocationType Implements ILocation.EntityType
         Get
             Return LocationData.LocationType.ToDescriptor
         End Get
@@ -41,6 +41,6 @@
     End Property
 
     Public Sub AdvanceTime(amount As Integer) Implements ILocation.AdvanceTime
-        LocationType.AdvanceTime(Me, amount)
+        EntityType.AdvanceTime(Me, amount)
     End Sub
 End Class

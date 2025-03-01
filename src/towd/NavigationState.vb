@@ -111,9 +111,9 @@ Friend Class NavigationState
         Dim character = World.Avatar
         Dim location = character.Location
         titleLabel.Text = $"Character Id: {character.Id}
-Character Type: {character.CharacterType.Name}
+Character Type: {character.EntityType.Name}
 Location Id: {location.Id}({location.Column},{location.Row})
-Location Type: {location.LocationType.Name}"
+Location Type: {location.EntityType.Name}"
         verbsButton.Enabled = character.CanDoAnyVerb
     End Sub
 End Class
