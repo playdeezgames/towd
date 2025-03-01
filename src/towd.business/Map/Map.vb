@@ -24,15 +24,24 @@
         End Get
     End Property
 
-    Public ReadOnly Property EntityType As IMapType Implements IMap.EntityType
+    Public Property EntityType As IMapType Implements IMap.EntityType
         Get
             Return MapData.MapType.ToDescriptor
         End Get
+        Set(value As IMapType)
+            Throw New NotImplementedException
+        End Set
     End Property
 
     Public ReadOnly Property Locations As IEnumerable(Of ILocation) Implements IMap.Locations
         Get
             Return MapData.Locations.Select(Function(x) New Location(WorldData, x))
+        End Get
+    End Property
+
+    Public ReadOnly Property World As IWorld Implements IMap.World
+        Get
+            Return New World(WorldData)
         End Get
     End Property
 

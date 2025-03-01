@@ -1,11 +1,7 @@
 ﻿Imports towd.data
 
 Public Interface ICharacter
-    ReadOnly Property Id As Integer
-    ReadOnly Property EntityType As ICharacterType
-    ReadOnly Property World As IWorld
-    Sub AdvanceTime(amount As Integer)
-
+    Inherits IEntity(Of ICharacterType)
     Property Location As ILocation
     Sub Move(direction As Direction)
     ReadOnly Property CanDoAnyVerb As Boolean

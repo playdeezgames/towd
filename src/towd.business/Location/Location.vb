@@ -40,6 +40,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property World As IWorld Implements ILocation.World
+        Get
+            Return New World(WorldData)
+        End Get
+    End Property
+
     Public Sub AdvanceTime(amount As Integer) Implements ILocation.AdvanceTime
         EntityType.AdvanceTime(Me, amount)
     End Sub

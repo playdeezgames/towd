@@ -6,7 +6,12 @@
         Dim titleLabel As New Label With
             {
                 .X = Pos.Center,
-                .Text = "TOWD"
+                .Text = ".___________.  ______   ____    __    ____  _______  
+|           | /  __  \  \   \  /  \  /   / |       \ 
+`---|  |----`|  |  |  |  \   \/    \/   /  |  .--.  |
+    |  |     |  |  |  |   \            /   |  |  |  |
+    |  |     |  `--'  |    \    /\    /    |  '--'  |
+    |__|      \______/      \__/  \__/     |_______/ "
             }
         Dim okButton As New Button With
             {

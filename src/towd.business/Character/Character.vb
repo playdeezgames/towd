@@ -23,10 +23,13 @@ Friend Class Character
         End Set
     End Property
 
-    Public ReadOnly Property EntityType As ICharacterType Implements ICharacter.EntityType
+    Public Property EntityType As ICharacterType Implements ICharacter.EntityType
         Get
             Return CharacterData.CharacterType.ToDescriptor()
         End Get
+        Set(value As ICharacterType)
+            Throw New NotImplementedException()
+        End Set
     End Property
 
     Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb

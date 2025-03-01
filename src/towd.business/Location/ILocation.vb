@@ -1,8 +1,7 @@
-﻿Public Interface ILocation
-    ReadOnly Property Id As Integer
-    Property EntityType As ILocationType
-    Sub AdvanceTime(amount As Integer)
+﻿Imports System.Security.Principal
 
+Public Interface ILocation
+    Inherits IEntity(Of ILocationType)
     ReadOnly Property Column As Integer
     ReadOnly Property Row As Integer
     ReadOnly Property Map As IMap
