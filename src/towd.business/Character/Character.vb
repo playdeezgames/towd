@@ -55,4 +55,8 @@ Friend Class Character
             CharacterData.Flags.Remove(flagType)
         End If
     End Sub
+
+    Public Function HasFlag(flagType As FlagType) As Boolean Implements ICharacter.HasFlag
+        Return CharacterData.Flags.Contains(flagType)
+    End Function
 End Class

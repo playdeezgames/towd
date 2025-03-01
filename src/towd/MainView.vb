@@ -8,6 +8,7 @@
         childViews.Add(GameState.Neutral, New NeutralState(Me))
         childViews.Add(GameState.Navigation, New NavigationState(Me))
         childViews.Add(GameState.GameMenu, New GameMenuState(Me))
+        childViews.Add(GameState.VerbMenu, New VerbMenuState(Me))
         ShowState(GameState.Splash)
     End Sub
     Public Sub ShowState(gameState As GameState)

@@ -4,4 +4,5 @@
     Neutral
     Navigation
     GameMenu
+    VerbMenu
 End Enum

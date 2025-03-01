@@ -1,4 +1,6 @@
-﻿Friend Class NeutralState
+﻿Imports towd.data
+
+Friend Class NeutralState
     Inherits ChildView
 
     Public Sub New(mainView As MainView)
@@ -6,6 +8,11 @@
     End Sub
 
     Friend Overrides Sub UpdateView()
-        ShowState(GameState.Navigation)
+        Dim character = World.Avatar
+        If character.HasFlag(FlagType.VerbMenu) Then
+            ShowState(GameState.VerbMenu)
+        Else
+            ShowState(GameState.Navigation)
+        End If
     End Sub
 End Class

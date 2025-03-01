@@ -7,4 +7,5 @@ Public Interface ICharacter
     Sub Move(direction As Direction)
     ReadOnly Property CanDoAnyVerb As Boolean
     Sub SetFlag(flagType As FlagType, flagValue As Boolean)
+    Function HasFlag(flagType As FlagType) As Boolean
 End Interface
