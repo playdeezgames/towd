@@ -20,23 +20,26 @@
             {
                 .Text = "E",
                 .Y = Pos.Top(northButton),
-                .X = Pos.Right(northButton)
+                .X = Pos.Right(northButton) + 1
             }
         AddHandler eastButton.Clicked, AddressOf OnEastButtonClicked
         Dim southButton As New Button With
             {
                 .Text = "S",
                 .Y = Pos.Top(eastButton),
-                .X = Pos.Right(eastButton)
+                .X = Pos.Right(eastButton) + 1
             }
         AddHandler southButton.Clicked, AddressOf OnSouthButtonClicked
         Dim westButton As New Button With
             {
                 .Text = "W",
                 .Y = Pos.Top(southButton),
-                .X = Pos.Right(southButton)
+                .X = Pos.Right(southButton) + 1
             }
         AddHandler westButton.Clicked, AddressOf OnWestButtonClicked
+
+        'TODO: verbs
+        'TODO: crafting
 
         Dim gameMenuButton As New Button With
             {
