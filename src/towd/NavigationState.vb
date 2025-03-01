@@ -1,6 +1,7 @@
 ﻿Friend Class NavigationState
     Inherits ChildView
     Private ReadOnly titleLabel As Label
+    Private ReadOnly verbsButton As Button
 
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
@@ -48,12 +49,18 @@
                 .Text = "Actions:",
                 .Y = Pos.Bottom(moveLabel) + 1
             }
-
+        verbsButton = New Button With
+            {
+                .Text = "Verbs",
+                .Y = Pos.Top(actionsLabel),
+                .X = Pos.Right(actionsLabel) + 1
+            }
+        AddHandler verbsButton.Clicked, AddressOf OnVerbsButtonClicked
         Dim gameMenuButton As New Button With
             {
                 .Text = "Menu",
-                .Y = Pos.Top(actionsLabel),
-                .X = Pos.Right(actionsLabel)
+                .Y = Pos.Top(verbsButton),
+                .X = Pos.Right(verbsButton) + 1
             }
         AddHandler gameMenuButton.Clicked, AddressOf OnGameMenuButtonClicked
 
@@ -65,7 +72,11 @@
             southButton,
             westButton,
             actionsLabel,
+            verbsButton,
             gameMenuButton)
+    End Sub
+
+    Private Sub OnVerbsButtonClicked()
     End Sub
 
     Private Sub OnSouthButtonClicked()
@@ -99,5 +110,6 @@
 Character Type: {character.CharacterType.Name}
 Location Id: {location.Id}({location.Column},{location.Row})
 Location Type: {location.LocationType.Name}"
+        verbsButton.Enabled = character.CanDoAnyVerb
     End Sub
 End Class

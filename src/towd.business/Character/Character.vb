@@ -29,6 +29,12 @@ Friend Class Character
         End Get
     End Property
 
+    Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb
+        Get
+            Return False
+        End Get
+    End Property
+
     Public Sub Move(direction As Direction) Implements ICharacter.Move
         Dim descriptor = direction.ToDescriptor
         Dim column = Location.Column
