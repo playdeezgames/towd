@@ -6,12 +6,6 @@
         MyBase.New(worldData, mapId)
     End Sub
 
-    Public ReadOnly Property Id As Integer Implements IMap.Id
-        Get
-            Return EntityId
-        End Get
-    End Property
-
     Public ReadOnly Property Columns As Integer Implements IMap.Columns
         Get
             Return EntityData.Columns
@@ -24,28 +18,22 @@
         End Get
     End Property
 
-    Public Property EntityType As IMapType Implements IMap.EntityType
-        Get
-            Return EntityData.MapType.ToDescriptor
-        End Get
-        Set(value As IMapType)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
     Public ReadOnly Property Locations As IEnumerable(Of ILocation) Implements IMap.Locations
         Get
             Return EntityData.Locations.Select(Function(x) New Location(WorldData, x))
         End Get
     End Property
 
-    Public ReadOnly Property World As IWorld Implements IMap.World
+    Public Overrides Property EntityType As IMapType
         Get
-            Return New World(WorldData)
+            Return EntityData.MapType.ToDescriptor
         End Get
+        Set(value As IMapType)
+            Throw New NotImplementedException()
+        End Set
     End Property
 
-    Public Sub AdvanceTime(amount As Integer) Implements IMap.AdvanceTime
+    Public Overrides Sub AdvanceTime(amount As Integer)
         EntityType.AdvanceTime(Me, amount)
     End Sub
 

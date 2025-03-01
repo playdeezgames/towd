@@ -1,7 +1,8 @@
-﻿Imports towd.data
+﻿Imports System.Reflection.Metadata
+Imports towd.data
 
-Friend Class MapDataClient
-    Inherits WorldDataClient
+Friend MustInherit Class MapDataClient
+    Inherits Entity(Of IMapType, MapData)
     Protected ReadOnly Property EntityId As Integer
     Protected ReadOnly Property EntityData As MapData
         Get
@@ -9,9 +10,8 @@ Friend Class MapDataClient
         End Get
     End Property
 
-
     Public Sub New(worldData As data.WorldData, mapId As Integer)
-        MyBase.New(worldData)
+        MyBase.New(worldData, mapId)
         Me.EntityId = mapId
     End Sub
 End Class
