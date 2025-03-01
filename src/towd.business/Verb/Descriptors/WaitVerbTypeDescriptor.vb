@@ -6,7 +6,7 @@
     End Sub
 
     Public Overrides Sub Perform(character As ICharacter)
-        Throw New NotImplementedException()
+        character.AddMessage("You wait.")
     End Sub
 
     Public Overrides Function CanPerform(character As ICharacter) As Boolean

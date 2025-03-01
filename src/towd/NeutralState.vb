@@ -9,7 +9,9 @@ Friend Class NeutralState
 
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
-        If character.HasFlag(FlagType.VerbMenu) Then
+        If character.HasMessages Then
+            ShowState(GameState.Message)
+        ElseIf character.HasFlag(FlagType.VerbMenu) Then
             ShowState(GameState.VerbMenu)
         Else
             ShowState(GameState.Navigation)

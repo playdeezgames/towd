@@ -5,4 +5,5 @@
     Navigation
     GameMenu
     VerbMenu
+    Message
 End Enum

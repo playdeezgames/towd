@@ -31,7 +31,29 @@ Friend Class Character
 
     Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb
         Get
-            Return VerbTypes.Descriptors.Keys.Any(Function(x) x.ToDescriptor.CanPerform(Me))
+            Return VerbTypes.Descriptors.Keys.Any(Function(x) CanDoVerb(x))
+        End Get
+    End Property
+
+    Public ReadOnly Property IsAvatar As Boolean Implements ICharacter.IsAvatar
+        Get
+            Return WorldData.AvatarId.HasValue AndAlso Id = WorldData.AvatarId.Value
+        End Get
+    End Property
+
+    Public ReadOnly Property HasMessages As Boolean Implements ICharacter.HasMessages
+        Get
+            Return IsAvatar AndAlso WorldData.Messages.Count <> 0
+        End Get
+    End Property
+
+    Public ReadOnly Property CurrentMessage As String() Implements ICharacter.CurrentMessage
+        Get
+            If HasMessages Then
+                Return WorldData.Messages(0)
+            Else
+                Return Nothing
+            End If
         End Get
     End Property
 
@@ -56,7 +78,23 @@ Friend Class Character
         End If
     End Sub
 
+    Public Sub AddMessage(ParamArray lines() As String) Implements ICharacter.AddMessage
+        If IsAvatar Then
+            WorldData.Messages.Add(lines)
+        End If
+    End Sub
+
+    Public Sub DismissMessage() Implements ICharacter.DismissMessage
+        If HasMessages Then
+            WorldData.Messages.RemoveAt(0)
+        End If
+    End Sub
+
     Public Function HasFlag(flagType As FlagType) As Boolean Implements ICharacter.HasFlag
         Return CharacterData.Flags.Contains(flagType)
+    End Function
+
+    Public Function CanDoVerb(verbType As VerbType) As Boolean Implements ICharacter.CanDoVerb
+        Return verbType.ToDescriptor.CanPerform(Me)
     End Function
 End Class

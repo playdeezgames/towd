@@ -1,8 +1,8 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports towd.data
 
-Friend Module VerbTypes
-    Friend ReadOnly Descriptors As IReadOnlyDictionary(Of VerbType, IVerbType) =
+Public Module VerbTypes
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of VerbType, IVerbType) =
         New List(Of IVerbType) From
         {
             New ForageVerbTypeDescriptor(),

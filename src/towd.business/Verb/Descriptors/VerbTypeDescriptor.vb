@@ -8,4 +8,7 @@
     Public ReadOnly Property Name As String Implements IVerbType.Name
     Public MustOverride Sub Perform(character As ICharacter) Implements IVerbType.Perform
     Public MustOverride Function CanPerform(character As ICharacter) As Boolean Implements IVerbType.CanPerform
+    Public Overrides Function ToString() As String
+        Return Name
+    End Function
 End Class
