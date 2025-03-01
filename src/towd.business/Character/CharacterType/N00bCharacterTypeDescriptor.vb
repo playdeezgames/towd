@@ -1,4 +1,6 @@
-﻿Friend Class N00bCharacterTypeDescriptor
+﻿Imports towd.data
+
+Friend Class N00bCharacterTypeDescriptor
     Inherits CharacterTypeDescriptor
 
     Public Sub New()
@@ -6,6 +8,21 @@
     End Sub
 
     Public Overrides Sub AdvanceTime(character As ICharacter, amount As Integer)
-        character.AppendMessage("-1 Satiety")
+        If character.GetStatistic(StatisticType.Satiety) > character.GetStatisticMinimum(StatisticType.Satiety) Then
+            character.ChangeStatistic(StatisticType.Satiety, -1)
+            character.AppendMessage($"-1 Satiety({character.GetStatistic(StatisticType.Satiety)} remaining)")
+        Else
+            character.ChangeStatistic(StatisticType.Health, -1)
+            character.AppendMessage($"-1 Health({character.GetStatistic(StatisticType.Health)} remaining)")
+        End If
+    End Sub
+
+    Public Overrides Sub Initialize(character As ICharacter)
+        character.SetStatisticMaximum(StatisticType.Satiety, 100)
+        character.SetStatisticMinimum(StatisticType.Satiety, 0)
+        character.SetStatistic(StatisticType.Satiety, 100)
+        character.SetStatisticMaximum(StatisticType.Health, 100)
+        character.SetStatisticMinimum(StatisticType.Health, 0)
+        character.SetStatistic(StatisticType.Health, 100)
     End Sub
 End Class

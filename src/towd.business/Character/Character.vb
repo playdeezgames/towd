@@ -1,18 +1,16 @@
 ﻿Imports towd.data
 
 Friend Class Character
-    Inherits CharacterDataClient
+    Inherits Entity(Of ICharacterType, CharacterData)
     Implements ICharacter
 
     Public Sub New(worldData As data.WorldData, characterId As Integer)
         MyBase.New(worldData, characterId)
     End Sub
+    Public Function CanDoVerb(verbType As VerbType) As Boolean Implements ICharacter.CanDoVerb
+        Return verbType.ToDescriptor.CanPerform(Me)
+    End Function
 
-    Public ReadOnly Property Id As Integer Implements ICharacter.Id
-        Get
-            Return EntityId
-        End Get
-    End Property
 
     Public Property Location As ILocation Implements ICharacter.Location
         Get
@@ -20,15 +18,6 @@ Friend Class Character
         End Get
         Set(value As ILocation)
             EntityData.LocationId = value.Id
-        End Set
-    End Property
-
-    Public Property EntityType As ICharacterType Implements ICharacter.EntityType
-        Get
-            Return EntityData.CharacterType.ToDescriptor()
-        End Get
-        Set(value As ICharacterType)
-            Throw New NotImplementedException()
         End Set
     End Property
 
@@ -60,9 +49,19 @@ Friend Class Character
         End Get
     End Property
 
-    Public ReadOnly Property World As IWorld Implements ICharacter.World
+    Public Overrides Property EntityType As ICharacterType
         Get
-            Return New World(WorldData)
+            Return EntityData.CharacterType.ToDescriptor()
+        End Get
+        Set(value As ICharacterType)
+            EntityData.CharacterType = value.CharacterType
+            value.Initialize(Me)
+        End Set
+    End Property
+
+    Protected Overrides ReadOnly Property EntityData As CharacterData
+        Get
+            Return WorldData.Characters(Id)
         End Get
     End Property
 
@@ -79,14 +78,6 @@ Friend Class Character
         End If
     End Sub
 
-    Public Sub SetFlag(flagType As FlagType, flagValue As Boolean) Implements ICharacter.SetFlag
-        If flagValue Then
-            EntityData.Flags.Add(flagType)
-        Else
-            EntityData.Flags.Remove(flagType)
-        End If
-    End Sub
-
     Public Sub AddMessage(ParamArray lines() As String) Implements ICharacter.AddMessage
         If IsAvatar Then
             WorldData.Messages.Add(lines.ToList)
@@ -99,7 +90,7 @@ Friend Class Character
         End If
     End Sub
 
-    Public Sub AdvanceTime(amount As Integer) Implements ICharacter.AdvanceTime
+    Public Overrides Sub AdvanceTime(amount As Integer)
         EntityType.AdvanceTime(Me, amount)
     End Sub
 
@@ -113,12 +104,4 @@ Friend Class Character
         End If
 
     End Sub
-
-    Public Function HasFlag(flagType As FlagType) As Boolean Implements ICharacter.HasFlag
-        Return EntityData.Flags.Contains(flagType)
-    End Function
-
-    Public Function CanDoVerb(verbType As VerbType) As Boolean Implements ICharacter.CanDoVerb
-        Return verbType.ToDescriptor.CanPerform(Me)
-    End Function
 End Class

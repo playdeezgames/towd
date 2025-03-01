@@ -1,9 +1,16 @@
-﻿Friend Class Map
-    Inherits MapDataClient
+﻿Imports towd.data
+
+Friend Class Map
+    Inherits Entity(Of IMapType, MapData)
     Implements IMap
     Public Sub New(worldData As data.WorldData, mapId As Integer)
         MyBase.New(worldData, mapId)
     End Sub
+    Protected Overrides ReadOnly Property EntityData As MapData
+        Get
+            Return WorldData.Maps(Id)
+        End Get
+    End Property
     Public ReadOnly Property Columns As Integer Implements IMap.Columns
         Get
             Return EntityData.Columns

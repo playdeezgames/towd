@@ -6,8 +6,6 @@ Public Interface ICharacter
     Sub Move(direction As Direction)
     ReadOnly Property CanDoAnyVerb As Boolean
     Function CanDoVerb(verbType As VerbType) As Boolean
-    Sub SetFlag(flagType As FlagType, flagValue As Boolean)
-    Function HasFlag(flagType As FlagType) As Boolean
     Sub AddMessage(ParamArray lines() As String)
     Sub AppendMessage(ParamArray lines() As String)
     ReadOnly Property IsAvatar As Boolean

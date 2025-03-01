@@ -68,7 +68,9 @@ Public Class World
                 .CharacterType = characterType.CharacterType,
                 .LocationId = location.Id
             })
-        Return New Character(WorldData, characterId)
+        Dim character = New Character(WorldData, characterId)
+        characterType.Initialize(character)
+        Return character
     End Function
 
     Public Function CreateLocation(locationType As ILocationType, map As IMap, column As Integer, row As Integer) As ILocation Implements IWorld.CreateLocation

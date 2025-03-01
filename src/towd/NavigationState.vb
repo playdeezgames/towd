@@ -113,7 +113,9 @@ Friend Class NavigationState
         titleLabel.Text = $"Character Id: {character.Id}
 Character Type: {character.EntityType.Name}
 Location Id: {location.Id}({location.Column},{location.Row})
-Location Type: {location.EntityType.Name}"
+Location Type: {location.EntityType.Name}
+Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}
+Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}"
         verbsButton.Enabled = character.CanDoAnyVerb
     End Sub
 End Class

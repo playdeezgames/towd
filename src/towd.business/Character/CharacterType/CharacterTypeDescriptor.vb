@@ -11,4 +11,5 @@ Friend MustInherit Class CharacterTypeDescriptor
     End Sub
 
     Public MustOverride Sub AdvanceTime(character As ICharacter, amount As Integer) Implements ICharacterType.AdvanceTime
+    Public MustOverride Sub Initialize(character As ICharacter) Implements ICharacterType.Initialize
 End Class
