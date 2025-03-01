@@ -1,4 +1,6 @@
-﻿Friend Class NavigationState
+﻿Imports towd.data
+
+Friend Class NavigationState
     Inherits ChildView
     Private ReadOnly titleLabel As Label
     Private ReadOnly verbsButton As Button
@@ -77,6 +79,8 @@
     End Sub
 
     Private Sub OnVerbsButtonClicked()
+        World.Avatar.SetFlag(FlagType.VerbMenu, True)
+        ShowState(GameState.Neutral)
     End Sub
 
     Private Sub OnSouthButtonClicked()

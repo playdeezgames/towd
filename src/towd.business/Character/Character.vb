@@ -47,4 +47,12 @@ Friend Class Character
             Location = nextLocation
         End If
     End Sub
+
+    Public Sub SetFlag(flagType As FlagType, flagValue As Boolean) Implements ICharacter.SetFlag
+        If flagValue Then
+            CharacterData.Flags.Add(flagType)
+        Else
+            CharacterData.Flags.Remove(flagType)
+        End If
+    End Sub
 End Class
