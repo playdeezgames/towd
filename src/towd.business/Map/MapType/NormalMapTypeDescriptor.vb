@@ -22,4 +22,7 @@ Friend Class NormalMapTypeDescriptor
             Next
         Next
     End Sub
+
+    Protected Overrides Sub OnAdvanceTime(amount As Integer)
+    End Sub
 End Class

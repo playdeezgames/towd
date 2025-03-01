@@ -39,4 +39,8 @@
             Return New Map(WorldData, LocationData.MapId)
         End Get
     End Property
+
+    Public Sub AdvanceTime(amount As Integer) Implements ILocation.AdvanceTime
+        LocationType.AdvanceTime(Me, amount)
+    End Sub
 End Class

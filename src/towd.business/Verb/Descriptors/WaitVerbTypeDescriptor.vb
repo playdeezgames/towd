@@ -7,6 +7,7 @@
 
     Public Overrides Sub Perform(character As ICharacter)
         character.AddMessage("You wait.")
+        character.World.AdvanceTime(1)
     End Sub
 
     Public Overrides Function CanPerform(character As ICharacter) As Boolean

@@ -1,6 +1,6 @@
 ﻿Imports towd.data
 
-Friend Class CharacterTypeDescriptor
+Friend MustInherit Class CharacterTypeDescriptor
     Implements ICharacterType
     Public ReadOnly Property CharacterType As CharacterType Implements ICharacterType.CharacterType
 
@@ -9,4 +9,6 @@ Friend Class CharacterTypeDescriptor
         Me.CharacterType = characterType
         Me.Name = name
     End Sub
+
+    Public MustOverride Sub AdvanceTime(character As ICharacter, amount As Integer) Implements ICharacterType.AdvanceTime
 End Class

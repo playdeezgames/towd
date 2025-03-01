@@ -25,6 +25,17 @@ Public Class World
         End Set
     End Property
 
+    Public ReadOnly Property Characters As IEnumerable(Of ICharacter) Implements IWorld.Characters
+        Get
+            Return Enumerable.Range(0, WorldData.Characters.Count).Select(Function(x) New Character(WorldData, x))
+        End Get
+    End Property
+
+    Public ReadOnly Property Maps As IEnumerable(Of IMap) Implements IWorld.Maps
+        Get
+            Return Enumerable.Range(0, WorldData.Maps.Count).Select(Function(x) New Map(WorldData, x))
+        End Get
+    End Property
 
     Public Sub Initialize() Implements IWorld.Initialize
         Const MapColumns = 9
@@ -38,6 +49,15 @@ Public Class World
             .AvatarId = Nothing
             .Characters.Clear()
         End With
+    End Sub
+
+    Public Sub AdvanceTime(amount As Integer) Implements IWorld.AdvanceTime
+        For Each character In Characters
+            character.AdvanceTime(amount)
+        Next
+        For Each map In Maps
+            map.AdvanceTime(amount)
+        Next
     End Sub
 
     Public Function CreateCharacter(characterType As ICharacterType, location As ILocation) As ICharacter Implements IWorld.CreateCharacter

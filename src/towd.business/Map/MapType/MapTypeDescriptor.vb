@@ -18,4 +18,11 @@ Public MustInherit Class MapTypeDescriptor
     End Property
     Public ReadOnly Property Name As String Implements IMapType.Name
     Public MustOverride Sub Initialize(map As IMap) Implements IMapType.Initialize
+    Protected MustOverride Sub OnAdvanceTime(amount As Integer)
+    Public Sub AdvanceTime(map As IMap, amount As Integer) Implements IMapType.AdvanceTime
+        OnAdvanceTime(amount)
+        For Each location In map.Locations
+            location.AdvanceTime(amount)
+        Next
+    End Sub
 End Class

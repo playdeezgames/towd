@@ -4,4 +4,5 @@ Public Interface ILocationType
     ReadOnly Property LocationType As LocationType
     ReadOnly Property Name As String
     Sub Initialize(location As ILocation)
+    Sub AdvanceTime(location As ILocation, amount As Integer)
 End Interface

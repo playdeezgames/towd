@@ -4,4 +4,5 @@
     ReadOnly Property Column As Integer
     ReadOnly Property Row As Integer
     ReadOnly Property Map As IMap
+    Sub AdvanceTime(amount As Integer)
 End Interface

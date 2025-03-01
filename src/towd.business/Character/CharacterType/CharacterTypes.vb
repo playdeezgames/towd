@@ -5,7 +5,7 @@ Friend Module CharacterTypes
     Friend ReadOnly Descriptors As IReadOnlyDictionary(Of CharacterType, ICharacterType) =
         New List(Of ICharacterType) From
         {
-            New CharacterTypeDescriptor(CharacterType.N00b, "N00b")
+            New N00bCharacterTypeDescriptor()
         }.
         ToDictionary(Function(x) x.CharacterType, Function(x) x)
     <Extension>

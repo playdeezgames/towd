@@ -7,4 +7,7 @@ Public Interface IWorld
     Function CreateLocation(locationType As ILocationType, map As IMap, column As Integer, row As Integer) As ILocation
     Function CreateMap(mapType As IMapType, columns As Integer, rows As Integer) As IMap
     Property Avatar As ICharacter
+    Sub AdvanceTime(amount As Integer)
+    ReadOnly Property Characters As IEnumerable(Of ICharacter)
+    ReadOnly Property Maps As IEnumerable(Of IMap)
 End Interface

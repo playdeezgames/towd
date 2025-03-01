@@ -11,4 +11,5 @@ Friend MustInherit Class LocationTypeDescriptor
     End Sub
 
     Public MustOverride Sub Initialize(location As ILocation) Implements ILocationType.Initialize
+    Public MustOverride Sub AdvanceTime(location As ILocation, amount As Integer) Implements ILocationType.AdvanceTime
 End Class

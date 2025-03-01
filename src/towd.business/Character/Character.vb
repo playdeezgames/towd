@@ -50,10 +50,16 @@ Friend Class Character
     Public ReadOnly Property CurrentMessage As String() Implements ICharacter.CurrentMessage
         Get
             If HasMessages Then
-                Return WorldData.Messages(0)
+                Return WorldData.Messages(0).ToArray
             Else
                 Return Nothing
             End If
+        End Get
+    End Property
+
+    Public ReadOnly Property World As IWorld Implements ICharacter.World
+        Get
+            Return New World(WorldData)
         End Get
     End Property
 
@@ -80,7 +86,7 @@ Friend Class Character
 
     Public Sub AddMessage(ParamArray lines() As String) Implements ICharacter.AddMessage
         If IsAvatar Then
-            WorldData.Messages.Add(lines)
+            WorldData.Messages.Add(lines.ToList)
         End If
     End Sub
 
@@ -88,6 +94,21 @@ Friend Class Character
         If HasMessages Then
             WorldData.Messages.RemoveAt(0)
         End If
+    End Sub
+
+    Public Sub AdvanceTime(amount As Integer) Implements ICharacter.AdvanceTime
+        CharacterType.AdvanceTime(Me, amount)
+    End Sub
+
+    Public Sub AppendMessage(ParamArray lines() As String) Implements ICharacter.AppendMessage
+        If IsAvatar Then
+            If HasMessages Then
+                WorldData.Messages.Last.AddRange(lines)
+            Else
+                AddMessage(lines)
+            End If
+        End If
+
     End Sub
 
     Public Function HasFlag(flagType As FlagType) As Boolean Implements ICharacter.HasFlag
