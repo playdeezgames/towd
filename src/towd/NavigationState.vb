@@ -9,11 +9,16 @@
                 .Text = "Yer playin' the game!"
             }
 
-
+        Dim moveLabel = New Label With
+            {
+                .Text = "Move:",
+                .Y = Pos.Bottom(titleLabel) + 1
+            }
         Dim northButton As New Button With
             {
                 .Text = "N",
-                .Y = Pos.Bottom(titleLabel) + 1
+                .Y = Pos.Top(moveLabel),
+                .X = Pos.Right(moveLabel) + 1
             }
         AddHandler northButton.Clicked, AddressOf OnNorthButtonClicked
         Dim eastButton As New Button With
@@ -38,17 +43,29 @@
             }
         AddHandler westButton.Clicked, AddressOf OnWestButtonClicked
 
-        'TODO: verbs
-        'TODO: crafting
+        Dim actionsLabel As New Label With
+            {
+                .Text = "Actions:",
+                .Y = Pos.Bottom(moveLabel) + 1
+            }
 
         Dim gameMenuButton As New Button With
             {
                 .Text = "Menu",
-                .Y = Pos.Bottom(northButton) + 1
+                .Y = Pos.Top(actionsLabel),
+                .X = Pos.Right(actionsLabel)
             }
         AddHandler gameMenuButton.Clicked, AddressOf OnGameMenuButtonClicked
 
-        Add(titleLabel, northButton, eastButton, southButton, westButton, gameMenuButton)
+        Add(
+            titleLabel,
+            moveLabel,
+            northButton,
+            eastButton,
+            southButton,
+            westButton,
+            actionsLabel,
+            gameMenuButton)
     End Sub
 
     Private Sub OnSouthButtonClicked()
