@@ -2,16 +2,16 @@
 
 Friend Class MapDataClient
     Inherits WorldDataClient
-    Protected ReadOnly Property MapId As Integer
-    Protected ReadOnly Property MapData As MapData
+    Protected ReadOnly Property EntityId As Integer
+    Protected ReadOnly Property EntityData As MapData
         Get
-            Return WorldData.Maps(MapId)
+            Return WorldData.Maps(EntityId)
         End Get
     End Property
 
 
     Public Sub New(worldData As data.WorldData, mapId As Integer)
         MyBase.New(worldData)
-        Me.MapId = mapId
+        Me.EntityId = mapId
     End Sub
 End Class

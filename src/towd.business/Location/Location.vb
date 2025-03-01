@@ -8,35 +8,35 @@
 
     Public ReadOnly Property Id As Integer Implements ILocation.Id
         Get
-            Return locationId
+            Return EntityId
         End Get
     End Property
 
     Public Property EntityType As ILocationType Implements ILocation.EntityType
         Get
-            Return LocationData.LocationType.ToDescriptor
+            Return EntityData.LocationType.ToDescriptor
         End Get
         Set(value As ILocationType)
-            LocationData.LocationType = value.LocationType
+            EntityData.LocationType = value.LocationType
             value.Initialize(Me)
         End Set
     End Property
 
     Public ReadOnly Property Column As Integer Implements ILocation.Column
         Get
-            Return LocationData.Column
+            Return EntityData.Column
         End Get
     End Property
 
     Public ReadOnly Property Row As Integer Implements ILocation.Row
         Get
-            Return LocationData.Row
+            Return EntityData.Row
         End Get
     End Property
 
     Public ReadOnly Property Map As IMap Implements ILocation.Map
         Get
-            Return New Map(WorldData, LocationData.MapId)
+            Return New Map(WorldData, EntityData.MapId)
         End Get
     End Property
 

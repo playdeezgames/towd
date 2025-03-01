@@ -8,25 +8,25 @@
 
     Public ReadOnly Property Id As Integer Implements IMap.Id
         Get
-            Return MapId
+            Return EntityId
         End Get
     End Property
 
     Public ReadOnly Property Columns As Integer Implements IMap.Columns
         Get
-            Return MapData.Columns
+            Return EntityData.Columns
         End Get
     End Property
 
     Public ReadOnly Property Rows As Integer Implements IMap.Rows
         Get
-            Return MapData.Rows
+            Return EntityData.Rows
         End Get
     End Property
 
     Public Property EntityType As IMapType Implements IMap.EntityType
         Get
-            Return MapData.MapType.ToDescriptor
+            Return EntityData.MapType.ToDescriptor
         End Get
         Set(value As IMapType)
             Throw New NotImplementedException
@@ -35,7 +35,7 @@
 
     Public ReadOnly Property Locations As IEnumerable(Of ILocation) Implements IMap.Locations
         Get
-            Return MapData.Locations.Select(Function(x) New Location(WorldData, x))
+            Return EntityData.Locations.Select(Function(x) New Location(WorldData, x))
         End Get
     End Property
 
@@ -53,6 +53,6 @@
         If column < 0 OrElse row < 0 OrElse column >= Columns OrElse row >= Rows Then
             Return Nothing
         End If
-        Return New Location(WorldData, MapData.Locations(row * Columns + column))
+        Return New Location(WorldData, EntityData.Locations(row * Columns + column))
     End Function
 End Class

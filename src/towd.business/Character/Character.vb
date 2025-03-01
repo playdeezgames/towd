@@ -10,22 +10,22 @@ Friend Class Character
 
     Public ReadOnly Property Id As Integer Implements ICharacter.Id
         Get
-            Return characterId
+            Return EntityId
         End Get
     End Property
 
     Public Property Location As ILocation Implements ICharacter.Location
         Get
-            Return New Location(WorldData, CharacterData.LocationId)
+            Return New Location(WorldData, EntityData.LocationId)
         End Get
         Set(value As ILocation)
-            CharacterData.LocationId = value.Id
+            EntityData.LocationId = value.Id
         End Set
     End Property
 
     Public Property EntityType As ICharacterType Implements ICharacter.EntityType
         Get
-            Return CharacterData.CharacterType.ToDescriptor()
+            Return EntityData.CharacterType.ToDescriptor()
         End Get
         Set(value As ICharacterType)
             Throw New NotImplementedException()
@@ -81,9 +81,9 @@ Friend Class Character
 
     Public Sub SetFlag(flagType As FlagType, flagValue As Boolean) Implements ICharacter.SetFlag
         If flagValue Then
-            CharacterData.Flags.Add(flagType)
+            EntityData.Flags.Add(flagType)
         Else
-            CharacterData.Flags.Remove(flagType)
+            EntityData.Flags.Remove(flagType)
         End If
     End Sub
 
@@ -115,7 +115,7 @@ Friend Class Character
     End Sub
 
     Public Function HasFlag(flagType As FlagType) As Boolean Implements ICharacter.HasFlag
-        Return CharacterData.Flags.Contains(flagType)
+        Return EntityData.Flags.Contains(flagType)
     End Function
 
     Public Function CanDoVerb(verbType As VerbType) As Boolean Implements ICharacter.CanDoVerb
