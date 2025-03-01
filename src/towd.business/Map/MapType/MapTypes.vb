@@ -5,7 +5,7 @@ Module MapTypes
     Friend Descriptors As IReadOnlyDictionary(Of MapType, IMapType) =
         New List(Of IMapType) From
         {
-            New MapTypeDescriptor(MapType.Normal, "Normal", LocationType.Grass)
+            New NormalMapTypeDescriptor()
         }.
         ToDictionary(Function(x) x.MapType, Function(x) x)
     <Extension>

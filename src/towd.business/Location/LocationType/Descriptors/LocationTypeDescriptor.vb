@@ -1,6 +1,6 @@
 ﻿Imports towd.data
 
-Friend Class LocationTypeDescriptor
+Friend MustInherit Class LocationTypeDescriptor
     Implements ILocationType
     Public ReadOnly Property LocationType As LocationType Implements ILocationType.LocationType
 
@@ -9,4 +9,6 @@ Friend Class LocationTypeDescriptor
         Me.LocationType = locationType
         Me.Name = name
     End Sub
+
+    Public MustOverride Sub Initialize(location As ILocation) Implements ILocationType.Initialize
 End Class

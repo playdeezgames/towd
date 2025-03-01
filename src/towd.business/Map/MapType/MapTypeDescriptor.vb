@@ -1,6 +1,6 @@
 ﻿Imports towd.data
 
-Public Class MapTypeDescriptor
+Public MustInherit Class MapTypeDescriptor
     Implements IMapType
     ReadOnly defaultLocationType As LocationType
 
@@ -17,4 +17,5 @@ Public Class MapTypeDescriptor
         End Get
     End Property
     Public ReadOnly Property Name As String Implements IMapType.Name
+    Public MustOverride Sub Initialize(map As IMap) Implements IMapType.Initialize
 End Class

@@ -61,7 +61,9 @@ Public Class World
                 .Column = column,
                 .Row = row
             })
-        Return New Location(WorldData, locationId)
+        Dim location = New Location(WorldData, locationId)
+        locationType.Initialize(location)
+        Return location
     End Function
 
     Public Function CreateMap(mapType As IMapType, columns As Integer, rows As Integer) As IMap Implements IWorld.CreateMap
@@ -80,6 +82,7 @@ Public Class World
                         map,
                         x Mod columns,
                         x \ columns).Id).ToList
+        mapType.Initialize(map)
         Return map
     End Function
 End Class

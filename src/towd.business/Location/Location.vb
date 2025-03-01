@@ -12,10 +12,14 @@
         End Get
     End Property
 
-    Public ReadOnly Property LocationType As ILocationType Implements ILocation.LocationType
+    Public Property LocationType As ILocationType Implements ILocation.LocationType
         Get
             Return LocationData.LocationType.ToDescriptor
         End Get
+        Set(value As ILocationType)
+            LocationData.LocationType = value.LocationType
+            value.Initialize(Me)
+        End Set
     End Property
 
     Public ReadOnly Property Column As Integer Implements ILocation.Column

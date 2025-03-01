@@ -5,7 +5,13 @@ Module LocationTypes
     Friend Descriptors As IReadOnlyDictionary(Of LocationType, ILocationType) =
         New List(Of ILocationType) From
         {
-            New LocationTypeDescriptor(LocationType.Grass, "Grass")
+            New GrassLocationTypeDescriptor(),
+            New PineLocationTypeDescriptor(),
+            New RockLocationTypeDescriptor(),
+            New CookingFireLocationTypeDescriptor(),
+            New DirtLocationTypeDescriptor(),
+            New PondLocationTypeDescriptor(),
+            New FurnaceLocationTypeDescriptor()
         }.
         ToDictionary(Function(x) x.LocationType, Function(x) x)
     <Extension>
