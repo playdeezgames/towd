@@ -71,6 +71,12 @@ Friend Class Character
         End Get
     End Property
 
+    Public ReadOnly Property HasItems As Boolean Implements ICharacter.HasItems
+        Get
+            Return EntityData.Items.Any(Function(x) x.Value.Count <> 0)
+        End Get
+    End Property
+
     Public Sub Move(direction As Direction) Implements ICharacter.Move
         Dim descriptor = direction.ToDescriptor
         Dim column = Location.Column

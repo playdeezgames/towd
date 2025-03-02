@@ -4,6 +4,7 @@ Friend Class NavigationState
     Inherits ChildView
     Private ReadOnly titleLabel As Label
     Private ReadOnly verbsButton As Button
+    Private ReadOnly inventoryButton As Button
 
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
@@ -51,11 +52,18 @@ Friend Class NavigationState
                 .Text = "Actions:",
                 .Y = Pos.Bottom(moveLabel) + 1
             }
+        inventoryButton = New Button With
+            {
+                .Text = "Inventory",
+                .Y = Pos.Top(actionsLabel),
+                .X = Pos.Right(actionsLabel) + 1
+            }
+        AddHandler inventoryButton.Clicked, AddressOf OnInventoryButtonClicked
         verbsButton = New Button With
             {
                 .Text = "Verbs",
-                .Y = Pos.Top(actionsLabel),
-                .X = Pos.Right(actionsLabel) + 1
+                .Y = Pos.Top(inventoryButton),
+                .X = Pos.Right(inventoryButton) + 1
             }
         AddHandler verbsButton.Clicked, AddressOf OnVerbsButtonClicked
         Dim gameMenuButton As New Button With
@@ -74,8 +82,12 @@ Friend Class NavigationState
             southButton,
             westButton,
             actionsLabel,
+            inventoryButton,
             verbsButton,
             gameMenuButton)
+    End Sub
+
+    Private Sub OnInventoryButtonClicked()
     End Sub
 
     Private Sub OnVerbsButtonClicked()
@@ -117,5 +129,6 @@ Location Type: {location.EntityType.Name}
 Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}
 Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}"
         verbsButton.Enabled = character.CanDoAnyVerb
+        inventoryButton.Enabled = character.HasItems
     End Sub
 End Class
