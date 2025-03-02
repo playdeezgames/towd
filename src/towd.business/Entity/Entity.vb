@@ -57,7 +57,7 @@ Friend MustInherit Class Entity(Of TEntityType, TEntityData As EntityData)
         If EntityData.StatisticMaximums.TryGetValue(statisticType, value) Then
             Return value
         End If
-        Return Integer.MinValue
+        Return Integer.MaxValue
     End Function
 
     Public Function GetStatistic(statisticType As StatisticType) As Integer Implements IEntity(Of TEntityType).GetStatistic

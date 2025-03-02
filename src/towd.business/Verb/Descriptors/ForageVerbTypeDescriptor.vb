@@ -6,10 +6,10 @@
     End Sub
 
     Public Overrides Sub Perform(character As ICharacter)
-        Throw New NotImplementedException()
+        character.AddMessage("You forage.")
     End Sub
 
     Public Overrides Function CanPerform(character As ICharacter) As Boolean
-        Return False
+        Return character.Location.GetStatistic(data.StatisticType.Foraging) > 0
     End Function
 End Class
