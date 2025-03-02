@@ -12,4 +12,5 @@ Public Interface ICharacter
     ReadOnly Property HasMessages As Boolean
     Sub DismissMessage()
     ReadOnly Property CurrentMessage As String()
+    ReadOnly Property IsDead As Boolean
 End Interface

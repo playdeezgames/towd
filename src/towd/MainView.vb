@@ -10,6 +10,7 @@
         childViews.Add(GameState.GameMenu, New GameMenuState(Me))
         childViews.Add(GameState.VerbMenu, New VerbMenuState(Me))
         childViews.Add(GameState.Message, New MessageState(Me))
+        childViews.Add(GameState.Dead, New DeadState(Me))
         ShowState(GameState.Splash)
     End Sub
     Public Sub ShowState(gameState As GameState)

@@ -6,4 +6,5 @@
     GameMenu
     VerbMenu
     Message
+    Dead
 End Enum

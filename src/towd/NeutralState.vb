@@ -11,6 +11,8 @@ Friend Class NeutralState
         Dim character = World.Avatar
         If character.HasMessages Then
             ShowState(GameState.Message)
+        ElseIf character.IsDead Then
+            ShowState(GameState.Dead)
         ElseIf character.HasFlag(FlagType.VerbMenu) Then
             ShowState(GameState.VerbMenu)
         Else

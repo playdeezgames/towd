@@ -65,6 +65,12 @@ Friend Class Character
         End Get
     End Property
 
+    Public ReadOnly Property IsDead As Boolean Implements ICharacter.IsDead
+        Get
+            Return GetStatistic(StatisticType.Health) = GetStatisticMinimum(StatisticType.Health)
+        End Get
+    End Property
+
     Public Sub Move(direction As Direction) Implements ICharacter.Move
         Dim descriptor = direction.ToDescriptor
         Dim column = Location.Column
