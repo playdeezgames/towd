@@ -13,7 +13,11 @@ Friend Class N00bCharacterTypeDescriptor
             character.AppendMessage($"-1 Satiety({character.GetStatistic(StatisticType.Satiety)} remaining)")
         Else
             character.ChangeStatistic(StatisticType.Health, -1)
+            character.AppendMessage($"Yer starving.")
             character.AppendMessage($"-1 Health({character.GetStatistic(StatisticType.Health)} remaining)")
+            If character.IsDead Then
+                character.AppendMessage($"Yer dead.")
+            End If
         End If
     End Sub
 

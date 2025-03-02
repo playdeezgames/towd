@@ -18,7 +18,10 @@ Friend MustInherit Class Entity(Of TEntityType, TEntityData As EntityData)
     Public MustOverride Sub AdvanceTime(amount As Integer) Implements IEntity(Of TEntityType).AdvanceTime
 
     Public Sub SetStatistic(statisticType As StatisticType, value As Integer) Implements IEntity(Of TEntityType).SetStatistic
-        EntityData.Statistics(statisticType) = Math.Clamp(value, GetStatisticMinimum(statisticType), GetStatisticMaximum(statisticType))
+        EntityData.Statistics(statisticType) =
+            Math.Clamp(value,
+                       GetStatisticMinimum(statisticType),
+                       GetStatisticMaximum(statisticType))
     End Sub
 
     Public Sub SetStatisticMinimum(statisticType As StatisticType, value As Integer) Implements IEntity(Of TEntityType).SetStatisticMinimum
@@ -58,7 +61,10 @@ Friend MustInherit Class Entity(Of TEntityType, TEntityData As EntityData)
     End Function
 
     Public Function GetStatistic(statisticType As StatisticType) As Integer Implements IEntity(Of TEntityType).GetStatistic
-        Return EntityData.Statistics(statisticType)
+        Return Math.Clamp(
+            EntityData.Statistics(statisticType),
+            GetStatisticMinimum(statisticType),
+            GetStatisticMaximum(statisticType))
     End Function
 
     Public Sub ChangeStatistic(statisticType As StatisticType, delta As Integer) Implements IEntity(Of TEntityType).ChangeStatistic

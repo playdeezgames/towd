@@ -67,7 +67,7 @@ Friend Class Character
 
     Public ReadOnly Property IsDead As Boolean Implements ICharacter.IsDead
         Get
-            Return GetStatistic(StatisticType.Health) = GetStatisticMinimum(StatisticType.Health)
+            Return GetStatistic(StatisticType.Health) <= GetStatisticMinimum(StatisticType.Health)
         End Get
     End Property
 
