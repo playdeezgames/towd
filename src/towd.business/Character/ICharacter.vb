@@ -16,4 +16,5 @@ Public Interface ICharacter
     ReadOnly Property HasItems As Boolean
     Sub AddItem(item As IItem)
     Function GetCountOfItemType(itemType As IItemType) As Integer
+    ReadOnly Property ItemStacks As IEnumerable(Of IItemStack)
 End Interface

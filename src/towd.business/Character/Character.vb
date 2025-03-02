@@ -77,6 +77,12 @@ Friend Class Character
         End Get
     End Property
 
+    Public ReadOnly Property ItemStacks As IEnumerable(Of IItemStack) Implements ICharacter.ItemStacks
+        Get
+            Return EntityData.Items.Where(Function(x) x.Value.Count <> 0).Select(Function(x) New ItemStack(Me, x.Key.ToDescriptor))
+        End Get
+    End Property
+
     Public Sub Move(direction As Direction) Implements ICharacter.Move
         Dim descriptor = direction.ToDescriptor
         Dim column = Location.Column

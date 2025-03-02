@@ -7,4 +7,5 @@
     VerbMenu
     Message
     Dead
+    Inventory
 End Enum

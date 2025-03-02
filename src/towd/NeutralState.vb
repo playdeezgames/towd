@@ -13,6 +13,8 @@ Friend Class NeutralState
             ShowState(GameState.Message)
         ElseIf character.IsDead Then
             ShowState(GameState.Dead)
+        ElseIf character.HasFlag(FlagType.Inventory) Then
+            ShowState(GameState.Inventory)
         ElseIf character.HasFlag(FlagType.VerbMenu) Then
             ShowState(GameState.VerbMenu)
         Else

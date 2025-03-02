@@ -88,6 +88,8 @@ Friend Class NavigationState
     End Sub
 
     Private Sub OnInventoryButtonClicked()
+        World.Avatar.SetFlag(FlagType.Inventory, True)
+        ShowState(GameState.Neutral)
     End Sub
 
     Private Sub OnVerbsButtonClicked()
