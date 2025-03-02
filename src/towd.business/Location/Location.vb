@@ -13,8 +13,12 @@ Friend Class Location
             Return EntityData.LocationType.ToDescriptor
         End Get
         Set(value As ILocationType)
-            EntityData.LocationType = value.LocationType
-            value.Initialize(Me)
+            If EntityData.LocationType <> value.LocationType Then
+                EntityData.LocationType = value.LocationType
+                EntityData.Statistics.Clear()
+                EntityData.Flags.Clear()
+                value.Initialize(Me)
+            End If
         End Set
     End Property
 
