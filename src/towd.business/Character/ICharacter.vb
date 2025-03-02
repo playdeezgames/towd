@@ -13,4 +13,6 @@ Public Interface ICharacter
     Sub DismissMessage()
     ReadOnly Property CurrentMessage As String()
     ReadOnly Property IsDead As Boolean
+    Sub AddItem(item As IItem)
+    Function GetCountOfItemType(itemType As IItemType) As Integer
 End Interface

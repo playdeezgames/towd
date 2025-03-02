@@ -107,4 +107,16 @@ Public Class World
         mapType.Initialize(map)
         Return map
     End Function
+
+    Public Function CreateItem(itemType As IItemType) As IItem Implements IWorld.CreateItem
+        Dim itemId = WorldData.Items.Count
+        WorldData.Items.Add(
+            New ItemData With
+            {
+                .ItemType = itemType.ItemType
+            })
+        Dim item = New Item(WorldData, itemId)
+        itemType.Initialize(item)
+        Return item
+    End Function
 End Class

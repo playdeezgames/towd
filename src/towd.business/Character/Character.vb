@@ -110,4 +110,21 @@ Friend Class Character
         End If
 
     End Sub
+    Public Sub AddItem(item As IItem) Implements ICharacter.AddItem
+        Dim itemType = item.EntityType.ItemType
+        Dim value As HashSet(Of Integer) = Nothing
+        If Not EntityData.Items.TryGetValue(itemType, value) Then
+            value = New HashSet(Of Integer)
+            EntityData.Items.Add(itemType, value)
+        End If
+        value.Add(item.Id)
+    End Sub
+
+    Public Function GetCountOfItemType(itemType As IItemType) As Integer Implements ICharacter.GetCountOfItemType
+        Dim value As HashSet(Of Integer) = Nothing
+        If EntityData.Items.TryGetValue(itemType.ItemType, value) Then
+            Return value.Count
+        End If
+        Return 0
+    End Function
 End Class

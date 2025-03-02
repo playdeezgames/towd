@@ -7,7 +7,9 @@
 
     Public Overrides Sub Initialize(location As ILocation)
         location.SetStatistic(data.StatisticType.Foraging, 30)
+        location.SetStatisticMinimum(data.StatisticType.Foraging, 0)
         location.SetStatistic(data.StatisticType.Chopping, 30)
+        location.SetStatisticMinimum(data.StatisticType.Chopping, 0)
     End Sub
 
     Public Overrides Sub AdvanceTime(location As ILocation, amount As Integer)
