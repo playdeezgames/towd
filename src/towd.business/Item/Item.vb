@@ -29,5 +29,6 @@ Friend Class Item
     End Property
 
     Public Overrides Sub AdvanceTime(amount As Integer)
+        EntityType.AdvanceTime(Me, amount)
     End Sub
 End Class

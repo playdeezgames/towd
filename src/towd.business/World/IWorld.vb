@@ -11,4 +11,5 @@ Public Interface IWorld
     Sub AdvanceTime(amount As Integer)
     ReadOnly Property Characters As IEnumerable(Of ICharacter)
     ReadOnly Property Maps As IEnumerable(Of IMap)
+    ReadOnly Property Items As IEnumerable(Of IItem)
 End Interface

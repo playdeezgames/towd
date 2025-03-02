@@ -37,6 +37,12 @@ Public Class World
         End Get
     End Property
 
+    Public ReadOnly Property Items As IEnumerable(Of IItem) Implements IWorld.Items
+        Get
+            Return Enumerable.Range(0, WorldData.Items.Count).Select(Function(x) New Item(WorldData, x))
+        End Get
+    End Property
+
     Public Sub Initialize() Implements IWorld.Initialize
         Const MapColumns = 9
         Const MapRows = 9
@@ -57,6 +63,9 @@ Public Class World
         Next
         For Each map In Maps
             map.AdvanceTime(amount)
+        Next
+        For Each item In Items
+            item.AdvanceTime(amount)
         Next
     End Sub
 
