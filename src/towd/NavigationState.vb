@@ -124,10 +124,8 @@ Friend Class NavigationState
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
         Dim location = character.Location
-        titleLabel.Text = $"Character Id: {character.Id}
-Character Type: {character.EntityType.Name}
-Location Id: {location.Id}({location.Column},{location.Row})
-Location Type: {location.EntityType.Name}
+        titleLabel.Text = $"Character Type: {character.EntityType.Name}
+Location Type: {location}
 Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}
 Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}"
         verbsButton.Enabled = character.CanDoAnyVerb

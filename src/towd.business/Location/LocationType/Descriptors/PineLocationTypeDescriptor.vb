@@ -14,4 +14,8 @@
 
     Public Overrides Sub AdvanceTime(location As ILocation, amount As Integer)
     End Sub
+
+    Public Overrides Function Describe(location As ILocation) As String
+        Return $"{MyBase.Describe(location)}(Foraging: {location.GetStatistic(data.StatisticType.Foraging)}, Chopping: {location.GetStatistic(data.StatisticType.Chopping)})"
+    End Function
 End Class

@@ -49,4 +49,8 @@ Friend Class Location
     Public Overrides Sub AdvanceTime(amount As Integer) Implements ILocation.AdvanceTime
         EntityType.AdvanceTime(Me, amount)
     End Sub
+
+    Public Overrides Function ToString() As String
+        Return EntityType.Describe(Me)
+    End Function
 End Class

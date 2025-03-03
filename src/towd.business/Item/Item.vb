@@ -34,6 +34,6 @@ Friend Class Item
     End Sub
 
     Public Overrides Function ToString() As String
-        Return EntityType.Name
+        Return EntityType.Describe(Me)
     End Function
 End Class
