@@ -14,4 +14,6 @@ Public Interface IEntity(Of TEntityType)
     Sub SetFlag(flagType As FlagType, flagValue As Boolean)
     Function HasFlag(flagType As FlagType) As Boolean
     Sub ChangeStatistic(statisticType As StatisticType, delta As Integer)
+    Function HasStatistic(statisticType As StatisticType) As Boolean
+    Sub ClearStatistic(statisticType As StatisticType)
 End Interface

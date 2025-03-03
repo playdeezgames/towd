@@ -5,7 +5,7 @@
         MyBase.New(VerbType.Cancel, "(cancel)")
     End Sub
 
-    Public Overrides Sub Perform(character As ICharacter)
+    Protected Overrides Sub OnPerform(character As ICharacter)
         character.SetFlag(data.FlagType.VerbMenu, False)
     End Sub
 

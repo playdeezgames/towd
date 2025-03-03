@@ -7,4 +7,6 @@
     Digging
     Chopping
     Fishing
+    LastVerb
+    CurrentItemType
 End Enum

@@ -1,4 +1,5 @@
-﻿Imports towd.data
+﻿Imports System.Reflection.Metadata.Ecma335
+Imports towd.data
 
 Friend Class Item
     Inherits Entity(Of IItemType, ItemData)
@@ -31,4 +32,8 @@ Friend Class Item
     Public Overrides Sub AdvanceTime(amount As Integer)
         EntityType.AdvanceTime(Me, amount)
     End Sub
+
+    Public Overrides Function ToString() As String
+        Return EntityType.Name
+    End Function
 End Class

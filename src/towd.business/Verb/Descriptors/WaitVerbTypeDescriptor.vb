@@ -5,7 +5,7 @@
         MyBase.New(VerbType.Wait, "Wait")
     End Sub
 
-    Public Overrides Sub Perform(character As ICharacter)
+    Protected Overrides Sub OnPerform(character As ICharacter)
         character.AddMessage("You wait.")
         character.World.AdvanceTime(1)
     End Sub

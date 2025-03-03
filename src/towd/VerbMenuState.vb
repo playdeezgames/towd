@@ -10,17 +10,10 @@ Friend Class VerbMenuState
         verbListView = New ListView With
             {
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill - 2
+                .Height = [Dim].Fill
             }
         AddHandler verbListView.OpenSelectedItem, AddressOf OnVerbListViewOpenSelectedItem
         Add(verbListView)
-        Dim goBackButton As New Button With
-            {
-                .Text = "Go Back",
-                .Y = Pos.Bottom(verbListView) + 1
-            }
-        AddHandler goBackButton.Clicked, AddressOf OnGoBackButtonClicked
-        Add(goBackButton)
     End Sub
 
     Private Sub OnVerbListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -29,14 +22,14 @@ Friend Class VerbMenuState
         ShowState(GameState.Neutral)
     End Sub
 
-    Private Sub OnGoBackButtonClicked()
-        World.Avatar.SetFlag(FlagType.VerbMenu, False)
-        ShowState(GameState.Neutral)
-    End Sub
-
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
-        Dim verbs = VerbTypes.Descriptors.Where(Function(x) character.CanDoVerb(x.Key)).Select(Function(x) x.Value).ToList
+        Dim verbs = VerbTypes.Descriptors.Where(Function(x) character.CanDoVerb(x.Key)).Select(Function(x) x.Value).OrderBy(Function(x) x.Name).ToList
         verbListView.SetSource(verbs)
+        Dim lastVerb = character.LastVerb
+        Dim verbIndex = verbs.FindIndex(Function(x) x.VerbType = If(lastVerb, VerbType.Cancel))
+        If verbIndex > -1 Then
+            verbListView.SelectedItem = verbIndex
+        End If
     End Sub
 End Class

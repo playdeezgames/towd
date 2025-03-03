@@ -83,6 +83,40 @@ Friend Class Character
         End Get
     End Property
 
+    Public Property LastVerb As VerbType? Implements ICharacter.LastVerb
+        Get
+            If HasStatistic(StatisticType.LastVerb) Then
+                Return CType(GetStatistic(StatisticType.LastVerb), VerbType)
+            Else
+                Return Nothing
+            End If
+        End Get
+        Set(value As VerbType?)
+            If value.HasValue Then
+                SetStatistic(StatisticType.LastVerb, CInt(value.Value))
+            Else
+                ClearStatistic(StatisticType.LastVerb)
+            End If
+        End Set
+    End Property
+
+    Public Property CurrentItemType As IItemType Implements ICharacter.CurrentItemType
+        Get
+            If HasStatistic(StatisticType.CurrentItemType) Then
+                Return CType(GetStatistic(StatisticType.CurrentItemType), data.ItemType).ToDescriptor
+            Else
+                Return Nothing
+            End If
+        End Get
+        Set(value As IItemType)
+            If value IsNot Nothing Then
+                SetStatistic(StatisticType.CurrentItemType, CInt(value.ItemType))
+            Else
+                ClearStatistic(StatisticType.CurrentItemType)
+            End If
+        End Set
+    End Property
+
     Public Sub Move(direction As Direction) Implements ICharacter.Move
         Dim descriptor = direction.ToDescriptor
         Dim column = Location.Column
@@ -138,5 +172,13 @@ Friend Class Character
             Return value.Count
         End If
         Return 0
+    End Function
+
+    Public Function GetItemsOfType(ItemType As IItemType) As IEnumerable(Of IItem) Implements ICharacter.GetItemsOfType
+        Dim value As HashSet(Of Integer) = Nothing
+        If EntityData.Items.TryGetValue(ItemType.ItemType, value) Then
+            Return value.Select(Function(x) New Item(WorldData, x))
+        End If
+        Return Array.Empty(Of IItem)
     End Function
 End Class

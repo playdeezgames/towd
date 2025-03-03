@@ -8,4 +8,5 @@
     Message
     Dead
     Inventory
+    ItemStack
 End Enum

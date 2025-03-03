@@ -17,4 +17,7 @@ Public Interface ICharacter
     Sub AddItem(item As IItem)
     Function GetCountOfItemType(itemType As IItemType) As Integer
     ReadOnly Property ItemStacks As IEnumerable(Of IItemStack)
+    Property LastVerb As VerbType?
+    Property CurrentItemType As IItemType
+    Function GetItemsOfType(ItemType As IItemType) As IEnumerable(Of IItem)
 End Interface

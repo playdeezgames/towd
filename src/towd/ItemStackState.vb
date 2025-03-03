@@ -1,42 +1,40 @@
 ﻿Imports towd.business
 Imports towd.data
 
-Friend Class InventoryState
+Friend Class ItemStackState
     Inherits ChildView
-    Private ReadOnly itemTypeListView As ListView
+    Private ReadOnly itemStackListView As ListView
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
 
-        itemTypeListView = New ListView With
+        itemStackListView = New ListView With
             {
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill - 2
             }
-        AddHandler itemTypeListView.OpenSelectedItem, AddressOf OnItemTypeListViewOpenSelectedItem
-        Add(itemTypeListView)
+        AddHandler itemStackListView.OpenSelectedItem, AddressOf OnItemStackListViewOpenSelectedItem
+        Add(itemStackListView)
         Dim goBackButton As New Button With
             {
                 .Text = "Go Back",
-                .Y = Pos.Bottom(itemTypeListView) + 1
+                .Y = Pos.Bottom(itemStackListView) + 1
             }
         AddHandler goBackButton.Clicked, AddressOf OnGoBackButtonClicked
         Add(goBackButton)
     End Sub
 
-    Private Sub OnItemTypeListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Dim itemStack = CType(args.Value, IItemStack)
-        World.Avatar.CurrentItemType = itemStack.ItemType
+    Private Sub OnItemStackListViewOpenSelectedItem(args As ListViewItemEventArgs)
         ShowState(GameState.Neutral)
     End Sub
 
     Private Sub OnGoBackButtonClicked()
-        World.Avatar.SetFlag(FlagType.Inventory, False)
+        World.Avatar.CurrentItemType = Nothing
         ShowState(GameState.Neutral)
     End Sub
 
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
-        Dim itemStacks = character.ItemStacks.ToList
-        itemTypeListView.SetSource(itemStacks)
+        Dim items = character.GetItemsOfType(character.CurrentItemType).ToList
+        itemStackListView.SetSource(items)
     End Sub
 End Class

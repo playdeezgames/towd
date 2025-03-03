@@ -70,4 +70,12 @@ Friend MustInherit Class Entity(Of TEntityType, TEntityData As EntityData)
     Public Sub ChangeStatistic(statisticType As StatisticType, delta As Integer) Implements IEntity(Of TEntityType).ChangeStatistic
         SetStatistic(statisticType, GetStatistic(statisticType) + delta)
     End Sub
+
+    Public Function HasStatistic(statisticType As StatisticType) As Boolean Implements IEntity(Of TEntityType).HasStatistic
+        Return EntityData.Statistics.ContainsKey(statisticType)
+    End Function
+
+    Public Sub ClearStatistic(statisticType As StatisticType) Implements IEntity(Of TEntityType).ClearStatistic
+        EntityData.Statistics.Remove(statisticType)
+    End Sub
 End Class

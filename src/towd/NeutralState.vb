@@ -14,7 +14,11 @@ Friend Class NeutralState
         ElseIf character.IsDead Then
             ShowState(GameState.Dead)
         ElseIf character.HasFlag(FlagType.Inventory) Then
-            ShowState(GameState.Inventory)
+            If character.CurrentItemType IsNot Nothing Then
+                ShowState(GameState.ItemStack)
+            Else
+                ShowState(GameState.Inventory)
+            End If
         ElseIf character.HasFlag(FlagType.VerbMenu) Then
             ShowState(GameState.VerbMenu)
         Else

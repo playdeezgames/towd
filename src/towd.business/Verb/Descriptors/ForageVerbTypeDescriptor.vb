@@ -15,7 +15,7 @@ Friend Class ForageVerbTypeDescriptor
             {LocationType.Rock, ItemType.Rock}
         }
 
-    Public Overrides Sub Perform(character As ICharacter)
+    Protected Overrides Sub OnPerform(character As ICharacter)
         Dim world = character.World
         character.AddMessage("You forage.")
         Dim location = character.Location

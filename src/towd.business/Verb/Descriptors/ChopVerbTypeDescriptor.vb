@@ -5,7 +5,7 @@
         MyBase.New(VerbType.Chop, "Chop")
     End Sub
 
-    Public Overrides Sub Perform(character As ICharacter)
+    Protected Overrides Sub OnPerform(character As ICharacter)
         Throw New NotImplementedException()
     End Sub
 
