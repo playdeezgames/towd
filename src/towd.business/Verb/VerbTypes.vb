@@ -12,7 +12,8 @@ Public Module VerbTypes
             New EatVerbTypeDescriptor(),
             New AddFuelVerbTypeDescriptor(),
             New WaitVerbTypeDescriptor(),
-            New FishVerbTypeDescriptor()
+            New FishVerbTypeDescriptor(),
+            New CancelVerbTypeDescriptor()
         }.ToDictionary(Function(x) x.VerbType, Function(x) x)
     <Extension>
     Friend Function ToDescriptor(verbType As VerbType) As IVerbType
