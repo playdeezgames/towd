@@ -4,7 +4,7 @@ Friend Class BrickRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.Brick)
+        MyBase.New(RecipeType.Brick, 1)
         SetInput(ItemType.UnfiredBrick, 1)
         SetOutput(ItemType.Brick, 1)
     End Sub

@@ -58,6 +58,9 @@ Public Class World
     End Sub
 
     Public Sub AdvanceTime(amount As Integer) Implements IWorld.AdvanceTime
+        If amount <= 0 Then
+            Return
+        End If
         For Each character In Characters
             character.AdvanceTime(amount)
         Next

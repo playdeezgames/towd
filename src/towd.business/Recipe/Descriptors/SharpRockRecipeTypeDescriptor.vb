@@ -2,7 +2,7 @@
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.SharpRock)
+        MyBase.New(RecipeType.SharpRock, 1)
         SetInput(data.ItemType.Rock, 1)
         SetInput(data.ItemType.Hammer, 1)
         SetOutput(data.ItemType.Hammer, 1)

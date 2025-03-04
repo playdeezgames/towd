@@ -6,6 +6,7 @@ Public MustInherit Class RecipeTypeDescriptor
     Private ReadOnly inputs As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly inputDurabilities As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly outputs As New Dictionary(Of data.ItemType, Integer)
+    Private ReadOnly timeTaken As Integer
     Protected Sub SetInput(itemType As data.ItemType, quantity As Integer)
         inputs(itemType) = quantity
     End Sub
@@ -15,8 +16,9 @@ Public MustInherit Class RecipeTypeDescriptor
     Protected Sub SetOutput(itemType As data.ItemType, quantity As Integer)
         outputs(itemType) = quantity
     End Sub
-    Sub New(recipeType As RecipeType)
+    Sub New(recipeType As RecipeType, timeTaken As Integer)
         Me.RecipeType = recipeType
+        Me.TimeTaken = timeTaken
     End Sub
     Public ReadOnly Property RecipeType As RecipeType Implements IRecipeType.RecipeType
 
@@ -69,6 +71,7 @@ Public MustInherit Class RecipeTypeDescriptor
             Next
         Next
         Predicate(character)
+        character.World.AdvanceTime(timeTaken)
         character.SetFlag(data.FlagType.CraftMenu, VerbType.Craft.ToDescriptor.CanPerform(character))
     End Sub
     Public Function CanCraft(character As ICharacter) As Boolean Implements IRecipeType.CanCraft

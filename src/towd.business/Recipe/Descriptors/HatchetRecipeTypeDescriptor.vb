@@ -4,7 +4,7 @@ Friend Class HatchetRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.Hatchet)
+        MyBase.New(RecipeType.Hatchet, 1)
         SetInput(ItemType.SharpRock, 1)
         SetInput(ItemType.Twine, 1)
         SetInput(ItemType.Stick, 1)

@@ -4,7 +4,7 @@ Friend Class HammerRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.Hammer)
+        MyBase.New(RecipeType.Hammer, 1)
         SetInput(ItemType.Rock, 1)
         SetInput(ItemType.Twine, 1)
         SetInput(ItemType.Stick, 1)

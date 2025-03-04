@@ -4,7 +4,7 @@ Friend Class FurnaceRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.Furnace)
+        MyBase.New(RecipeType.Furnace, 1)
         SetInput(data.ItemType.Brick, 8)
         SetOutput(data.ItemType.Furnace, 1)
     End Sub
