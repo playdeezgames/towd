@@ -4,7 +4,7 @@ Friend Class FishVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Fish, "Fish")
+        MyBase.New(VerbType.Fish, "Fish", 1)
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

@@ -4,7 +4,7 @@ Friend Class DigVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Dig, "Dig")
+        MyBase.New(VerbType.Dig, "Dig", 1)
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

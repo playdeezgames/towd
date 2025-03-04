@@ -2,7 +2,7 @@
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Cancel, "(cancel)")
+        MyBase.New(VerbType.Cancel, "(cancel)", 0)
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

@@ -2,7 +2,7 @@
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Eat, "Eat")
+        MyBase.New(VerbType.Eat, "Eat", 0)
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

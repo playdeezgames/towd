@@ -4,7 +4,7 @@ Friend Class ChopVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Chop, "Chop")
+        MyBase.New(VerbType.Chop, "Chop", 1)
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

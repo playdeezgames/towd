@@ -2,7 +2,7 @@
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Craft, "Craft")
+        MyBase.New(VerbType.Craft, "Craft", 0)
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

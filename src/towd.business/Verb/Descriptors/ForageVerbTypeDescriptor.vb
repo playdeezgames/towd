@@ -4,7 +4,7 @@ Friend Class ForageVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Forage, "Forage")
+        MyBase.New(VerbType.Forage, "Forage", 1)
     End Sub
 
     Private ReadOnly forageTable As IReadOnlyDictionary(Of LocationType, ItemType) =
@@ -24,7 +24,6 @@ Friend Class ForageVerbTypeDescriptor
         Dim item = world.CreateItem(itemType)
         character.AddItem(item)
         character.AppendMessage($"+1 {itemType.Name}(total {character.GetCountOfItemType(itemType)})")
-        world.AdvanceTime(1)
     End Sub
 
     Public Overrides Function CanPerform(character As ICharacter) As Boolean
