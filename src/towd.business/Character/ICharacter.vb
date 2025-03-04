@@ -18,10 +18,12 @@ Public Interface ICharacter
     Function GetCountOfItemType(itemType As IItemType) As Integer
     ReadOnly Property ItemStacks As IEnumerable(Of IItemStack)
     Property LastVerb As VerbType?
+    Property LastRecipe As RecipeType?
     Property CurrentItemType As IItemType
     Function GetItemsOfType(ItemType As IItemType) As IEnumerable(Of IItem)
     Function GetStatisticSumOfItemType(itemType As IItemType, statisticType As StatisticType) As Integer
     Sub RemoveItemOfType(itemType As IItemType)
     Sub ChangeItemDurability(item As IItem, delta As Integer)
     Sub RemoveItem(item As IItem)
+    Function GetCraftableRecipes() As IEnumerable(Of IRecipeType)
 End Interface

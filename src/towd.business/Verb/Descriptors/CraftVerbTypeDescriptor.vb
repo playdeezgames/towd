@@ -6,10 +6,10 @@
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)
-        Throw New NotImplementedException()
+        character.SetFlag(data.FlagType.CraftMenu, True)
     End Sub
 
     Public Overrides Function CanPerform(character As ICharacter) As Boolean
-        Return False
+        Return RecipeTypes.Descriptors.Values.Any(Function(x) x.CanCraft(character))
     End Function
 End Class

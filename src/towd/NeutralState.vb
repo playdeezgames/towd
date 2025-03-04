@@ -19,6 +19,8 @@ Friend Class NeutralState
             Else
                 ShowState(GameState.Inventory)
             End If
+        ElseIf character.HasFlag(FlagType.CraftMenu) Then
+            ShowState(GameState.CraftMenu)
         ElseIf character.HasFlag(FlagType.VerbMenu) Then
             ShowState(GameState.VerbMenu)
         Else

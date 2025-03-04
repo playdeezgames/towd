@@ -1,4 +1,5 @@
-﻿Imports towd.data
+﻿Imports System.Text
+Imports towd.data
 
 Public MustInherit Class RecipeTypeDescriptor
     Implements IRecipeType
@@ -18,10 +19,25 @@ Public MustInherit Class RecipeTypeDescriptor
         Me.RecipeType = recipeType
     End Sub
     Public ReadOnly Property RecipeType As RecipeType Implements IRecipeType.RecipeType
+
+    Public ReadOnly Property Name As String Implements IRecipeType.Name
+        Get
+            Dim builder As New StringBuilder
+            builder.Append(String.Join("+"c, inputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}")))
+            builder.Append("->")
+            builder.Append(String.Join("+"c, outputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}")))
+            Return builder.ToString()
+        End Get
+    End Property
+    Public Overrides Function ToString() As String
+        Return Name
+    End Function
+
     Public Sub Craft(character As ICharacter) Implements IRecipeType.Craft
         If Not CanCraft(character) Then
             Return
         End If
+        character.LastRecipe = RecipeType
         Dim quantities As New Dictionary(Of data.ItemType, Integer)
         For Each entry In outputs
             quantities(entry.Key) = entry.Value
@@ -37,13 +53,16 @@ Public MustInherit Class RecipeTypeDescriptor
                 For Each dummy In Enumerable.Range(0, -entry.Value)
                     character.RemoveItemOfType(entry.Key.ToDescriptor)
                 Next
-            Else
+                character.AppendMessage($"{entry.Value} {entry.Key.ToDescriptor.Name}(x{character.GetCountOfItemType(entry.Key.ToDescriptor)})")
+            ElseIf entry.Value > 0 Then
                 For Each dummy In Enumerable.Range(0, entry.Value)
                     character.AddItem(character.World.CreateItem(entry.Key.ToDescriptor))
                 Next
+                character.AppendMessage($"+{entry.Value} {entry.Key.ToDescriptor.Name}(x{character.GetCountOfItemType(entry.Key.ToDescriptor)})")
             End If
         Next
         For Each entry In inputDurabilities
+            character.AppendMessage($"{entry.Value} {entry.Key.ToDescriptor.Name} durability")
             For Each dummy In Enumerable.Range(0, entry.Value)
                 Dim item = character.GetItemsOfType(entry.Key.ToDescriptor).First
                 character.ChangeItemDurability(item, -1)

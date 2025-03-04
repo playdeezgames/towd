@@ -100,6 +100,23 @@ Friend Class Character
         End Set
     End Property
 
+    Public Property LastRecipe As RecipeType? Implements ICharacter.LastRecipe
+        Get
+            If HasStatistic(StatisticType.LastRecipe) Then
+                Return CType(GetStatistic(StatisticType.LastRecipe), RecipeType)
+            Else
+                Return Nothing
+            End If
+        End Get
+        Set(value As RecipeType?)
+            If value.HasValue Then
+                SetStatistic(StatisticType.LastRecipe, CInt(value.Value))
+            Else
+                ClearStatistic(StatisticType.LastRecipe)
+            End If
+        End Set
+    End Property
+
     Public Property CurrentItemType As IItemType Implements ICharacter.CurrentItemType
         Get
             If HasStatistic(StatisticType.CurrentItemType) Then
@@ -202,4 +219,8 @@ Friend Class Character
     Public Sub RemoveItem(item As IItem) Implements ICharacter.RemoveItem
         EntityData.Items(item.EntityType.ItemType).Remove(item.Id)
     End Sub
+
+    Public Function GetCraftableRecipes() As IEnumerable(Of IRecipeType) Implements ICharacter.GetCraftableRecipes
+        Return RecipeTypes.Descriptors.Values.Where(Function(x) x.CanCraft(Me)).OrderBy(Function(x) x.Name)
+    End Function
 End Class

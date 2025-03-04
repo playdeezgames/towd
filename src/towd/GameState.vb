@@ -9,4 +9,5 @@
     Dead
     Inventory
     ItemStack
+    CraftMenu
 End Enum

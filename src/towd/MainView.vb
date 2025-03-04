@@ -13,6 +13,7 @@
         childViews.Add(GameState.Dead, New DeadState(Me))
         childViews.Add(GameState.Inventory, New InventoryState(Me))
         childViews.Add(GameState.ItemStack, New ItemStackState(Me))
+        childViews.Add(GameState.CraftMenu, New CraftMenuState(Me))
         ShowState(GameState.Splash)
     End Sub
     Public Sub ShowState(gameState As GameState)

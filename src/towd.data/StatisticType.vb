@@ -9,4 +9,5 @@
     Fishing
     LastVerb
     CurrentItemType
+    LastRecipe
 End Enum

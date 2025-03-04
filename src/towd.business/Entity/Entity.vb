@@ -61,8 +61,10 @@ Friend MustInherit Class Entity(Of TEntityType, TEntityData As EntityData)
     End Function
 
     Public Function GetStatistic(statisticType As StatisticType) As Integer Implements IEntity(Of TEntityType).GetStatistic
+        Dim value As Integer = 0
+        EntityData.Statistics.TryGetValue(statisticType, value)
         Return Math.Clamp(
-            EntityData.Statistics(statisticType),
+            value,
             GetStatisticMinimum(statisticType),
             GetStatisticMaximum(statisticType))
     End Function
