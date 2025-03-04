@@ -62,13 +62,14 @@ Public MustInherit Class RecipeTypeDescriptor
             End If
         Next
         For Each entry In inputDurabilities
-            character.AppendMessage($"{entry.Value} {entry.Key.ToDescriptor.Name} durability")
+            character.AppendMessage($"-{entry.Value} {entry.Key.ToDescriptor.Name} durability")
             For Each dummy In Enumerable.Range(0, entry.Value)
                 Dim item = character.GetItemsOfType(entry.Key.ToDescriptor).First
                 character.ChangeItemDurability(item, -1)
             Next
         Next
         Predicate(character)
+        character.SetFlag(data.FlagType.CraftMenu, VerbType.Craft.ToDescriptor.CanPerform(character))
     End Sub
     Public Function CanCraft(character As ICharacter) As Boolean Implements IRecipeType.CanCraft
         If Not Precondition(character) Then
