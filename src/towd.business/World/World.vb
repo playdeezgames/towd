@@ -118,12 +118,19 @@ Public Class World
     End Function
 
     Public Function CreateItem(itemType As IItemType) As IItem Implements IWorld.CreateItem
-        Dim itemId = WorldData.Items.Count
-        WorldData.Items.Add(
-            New ItemData With
+        Dim itemData = New ItemData With
             {
                 .ItemType = itemType.ItemType
-            })
+            }
+        Dim itemId As Integer
+        If WorldData.RecycledItems.Count <> 0 Then
+            itemId = WorldData.RecycledItems.First
+            WorldData.RecycledItems.Remove(itemId)
+            WorldData.Items(itemId) = itemData
+        Else
+            itemId = WorldData.Items.Count
+            WorldData.Items.Add(itemData)
+        End If
         Dim item = New Item(WorldData, itemId)
         itemType.Initialize(item)
         Return item

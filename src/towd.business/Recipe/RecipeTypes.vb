@@ -13,13 +13,15 @@ Module RecipeTypes
             New PlankRecipeTypeDescriptor(),
             New CookingFireRecipeTypeDescriptor(),
             New FurnaceRecipeTypeDescriptor(),
-            New CharcoalRecipeTypeDescriptor(),
+            New CharcoalCookingFireRecipeTypeDescriptor(),
             New CookedGrubRecipeTypeDescriptor(),
             New CookedFishFiletRecipeTypeDescriptor(),
             New UnfiredBrickRecipeTypeDescriptor(),
             New KnifeRecipeTypeDescriptor(),
             New BladeRecipeTypeDescriptor(),
-            New RawFishFiletRecipeTypeDescriptor()
+            New RawFishFiletRecipeTypeDescriptor(),
+            New FishingNetRecipeTypeDescriptor(),
+            New BrickRecipeTypeDescriptor()
         }.
         ToDictionary(Function(x) x.RecipeType, Function(x) x)
     <Extension>

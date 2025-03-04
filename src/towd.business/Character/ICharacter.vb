@@ -20,4 +20,8 @@ Public Interface ICharacter
     Property LastVerb As VerbType?
     Property CurrentItemType As IItemType
     Function GetItemsOfType(ItemType As IItemType) As IEnumerable(Of IItem)
+    Function GetStatisticSumOfItemType(itemType As IItemType, statisticType As StatisticType) As Integer
+    Sub RemoveItemOfType(itemType As IItemType)
+    Sub ChangeItemDurability(item As IItem, delta As Integer)
+    Sub RemoveItem(item As IItem)
 End Interface

@@ -5,4 +5,5 @@ Public Class WorldData
     Public Property Maps As New List(Of MapData)
     Public Property Messages As New List(Of List(Of String))
     Public Property Items As New List(Of ItemData)
+    Public Property RecycledItems As New HashSet(Of Integer)
 End Class

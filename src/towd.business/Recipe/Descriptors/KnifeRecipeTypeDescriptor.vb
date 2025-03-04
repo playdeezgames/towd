@@ -1,7 +1,13 @@
-﻿Friend Class KnifeRecipeTypeDescriptor
+﻿Imports towd.data
+
+Friend Class KnifeRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
         MyBase.New(RecipeType.Knife)
+        SetInput(ItemType.Blade, 1)
+        SetInput(ItemType.Twine, 1)
+        SetInput(ItemType.Stick, 1)
+        SetOutput(ItemType.Knife, 1)
     End Sub
 End Class

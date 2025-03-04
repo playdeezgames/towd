@@ -1,5 +1,4 @@
-﻿Imports System.Reflection.Metadata.Ecma335
-Imports towd.data
+﻿Imports towd.data
 
 Friend Class Item
     Inherits Entity(Of IItemType, ItemData)
@@ -31,6 +30,11 @@ Friend Class Item
 
     Public Overrides Sub AdvanceTime(amount As Integer)
         EntityType.AdvanceTime(Me, amount)
+    End Sub
+
+    Public Sub Recycle() Implements IItem.Recycle
+        WorldData.Items(Id) = Nothing
+        WorldData.RecycledItems.Add(Id)
     End Sub
 
     Public Overrides Function ToString() As String

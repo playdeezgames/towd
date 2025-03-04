@@ -181,4 +181,25 @@ Friend Class Character
         End If
         Return Array.Empty(Of IItem)
     End Function
+
+    Public Function GetStatisticSumOfItemType(itemType As IItemType, statisticType As StatisticType) As Integer Implements ICharacter.GetStatisticSumOfItemType
+        Return GetItemsOfType(itemType).Sum(Function(x) x.GetStatistic(statisticType))
+    End Function
+
+    Public Sub RemoveItemOfType(itemType As IItemType) Implements ICharacter.RemoveItemOfType
+        Dim itemStack = EntityData.Items(itemType.ItemType)
+        itemStack.Remove(itemStack.First)
+    End Sub
+
+    Public Sub ChangeItemDurability(item As IItem, delta As Integer) Implements ICharacter.ChangeItemDurability
+        item.ChangeStatistic(StatisticType.Durability, delta)
+        If item.GetStatistic(StatisticType.Durability) <= item.GetStatisticMinimum(StatisticType.Durability) Then
+            RemoveItem(item)
+            item.Recycle()
+        End If
+    End Sub
+
+    Public Sub RemoveItem(item As IItem) Implements ICharacter.RemoveItem
+        EntityData.Items(item.EntityType.ItemType).Remove(item.Id)
+    End Sub
 End Class

@@ -7,11 +7,13 @@
     Plank
     CookingFire
     Furnace
-    Charcoal
+    CharcoalCookingFire
     CookedGrub
     CookedFishFilet
     UnfiredBrick
     Knife
     Blade
     RawFishFilet
+    FishingNet
+    Brick
 End Enum
