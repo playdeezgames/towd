@@ -11,8 +11,8 @@ Friend Class ChopVerbTypeDescriptor
         character.AppendMessage("You chop.")
         character.Location.ChangeStatistic(StatisticType.Chopping, -1)
         Dim item = character.GetItemsOfType(data.ItemType.Hatchet.ToDescriptor).First
-        character.ChangeItemDurability(item, -1)
         Dim itemType = data.ItemType.Log.ToDescriptor
+        character.ChangeItemDurability(item, -1)
         character.AddItem(character.World.CreateItem(itemType))
         character.AppendMessage($"+1 {itemType.Name}(x{character.GetCountOfItemType(itemType)})")
     End Sub
