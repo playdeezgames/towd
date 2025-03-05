@@ -4,11 +4,9 @@
     Chop
     Dig
     EatGrub
-    AddStickFuel
+    AddFuel
     Wait
     Fish
     Cancel
     EatFish
-    AddLogFuel
-    AddCharcoalFuel
 End Enum

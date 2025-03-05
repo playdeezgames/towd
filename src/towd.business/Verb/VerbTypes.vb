@@ -11,12 +11,10 @@ Public Module VerbTypes
             New DigVerbTypeDescriptor(),
             New EatGrubVerbTypeDescriptor(),
             New EatFishVerbTypeDescriptor(),
-            New AddStickFuelVerbTypeDescriptor(),
+            New AddFuelVerbTypeDescriptor(),
             New WaitVerbTypeDescriptor(),
             New FishVerbTypeDescriptor(),
-            New CancelVerbTypeDescriptor(),
-            New AddLogFuelVerbTypeDescriptor(),
-            New AddCharcoalFuelVerbTypeDescriptor()
+            New CancelVerbTypeDescriptor()
         }.ToDictionary(Function(x) x.VerbType, Function(x) x)
     <Extension>
     Friend Function ToDescriptor(verbType As VerbType) As IVerbType
