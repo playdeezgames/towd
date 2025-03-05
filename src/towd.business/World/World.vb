@@ -39,7 +39,10 @@ Public Class World
 
     Public ReadOnly Property Items As IEnumerable(Of IItem) Implements IWorld.Items
         Get
-            Return Enumerable.Range(0, WorldData.Items.Count).Select(Function(x) New Item(WorldData, x))
+            Return Enumerable.
+                Range(0, WorldData.Items.Count).
+                Where(Function(x) WorldData.Items(x) IsNot Nothing).
+                Select(Function(x) New Item(WorldData, x))
         End Get
     End Property
 

@@ -64,7 +64,6 @@ Public MustInherit Class RecipeTypeDescriptor
             End If
         Next
         For Each entry In inputDurabilities
-            character.AppendMessage($"-{entry.Value} {entry.Key.ToDescriptor.Name} durability")
             For Each dummy In Enumerable.Range(0, entry.Value)
                 Dim item = character.GetItemsOfType(entry.Key.ToDescriptor).First
                 character.ChangeItemDurability(item, -1)

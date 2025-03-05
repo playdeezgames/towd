@@ -210,7 +210,9 @@ Friend Class Character
 
     Public Sub ChangeItemDurability(item As IItem, delta As Integer) Implements ICharacter.ChangeItemDurability
         item.ChangeStatistic(StatisticType.Durability, delta)
+        AppendMessage($"{If(delta > 0, "+", "")}{delta} {item.EntityType.Name} durability({item.GetStatistic(StatisticType.Durability)} remaining)")
         If item.GetStatistic(StatisticType.Durability) <= item.GetStatisticMinimum(StatisticType.Durability) Then
+            AppendMessage($"Yer {item.EntityType.Name} broke.")
             RemoveItem(item)
             item.Recycle()
         End If
