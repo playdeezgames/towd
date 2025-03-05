@@ -3,9 +3,10 @@
     Craft
     Chop
     Dig
-    Eat
+    EatGrub
     AddFuel
     Wait
     Fish
     Cancel
+    EatFish
 End Enum

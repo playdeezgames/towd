@@ -1,13 +1,14 @@
-﻿Friend Class EatVerbTypeDescriptor
+﻿Friend MustInherit Class EatVerbTypeDescriptor
     Inherits VerbTypeDescriptor
+    Private ReadOnly itemType As IItemType
 
-    Public Sub New()
-        MyBase.New(VerbType.Eat, "Eat", 0)
+    Protected Sub New(verbType As VerbType, name As String, timeTaken As Integer, itemType As IItemType)
+        MyBase.New(verbType, name, timeTaken)
+        Me.itemType = itemType
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)
-        character.AppendMessage("You eat.")
-        Dim itemType = data.ItemType.CookedGrub.ToDescriptor
+        character.AppendMessage($"You eat {itemType.Name}.")
         Dim item = character.GetItemsOfType(itemType).First
         Dim satiety = item.GetStatistic(data.StatisticType.Satiety)
         character.RemoveItem(item)
@@ -18,6 +19,6 @@
     End Sub
 
     Public Overrides Function CanPerform(character As ICharacter) As Boolean
-        Return character.GetCountOfItemType(data.ItemType.CookedGrub.ToDescriptor) > 0
+        Return character.GetCountOfItemType(itemType) > 0
     End Function
 End Class
