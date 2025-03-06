@@ -10,25 +10,13 @@ Friend Class ItemStackState
         itemStackListView = New ListView With
             {
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill - 2
+                .Height = [Dim].Fill
             }
         AddHandler itemStackListView.OpenSelectedItem, AddressOf OnItemStackListViewOpenSelectedItem
         Add(itemStackListView)
-        Dim goBackButton As New Button With
-            {
-                .Text = "Go Back",
-                .Y = Pos.Bottom(itemStackListView) + 1
-            }
-        AddHandler goBackButton.Clicked, AddressOf OnGoBackButtonClicked
-        Add(goBackButton)
     End Sub
 
     Private Sub OnItemStackListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        ShowState(GameState.Neutral)
-    End Sub
-
-    Private Sub OnGoBackButtonClicked()
-        World.Avatar.CurrentItemType = Nothing
         ShowState(GameState.Neutral)
     End Sub
 
@@ -36,5 +24,13 @@ Friend Class ItemStackState
         Dim character = World.Avatar
         Dim items = character.GetItemsOfType(character.CurrentItemType).ToList
         itemStackListView.SetSource(items)
+    End Sub
+
+    Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
+        If args.KeyEvent.Key = Key.Esc Then
+            args.Handled = True
+            World.Avatar.CurrentItemType = Nothing
+            ShowState(GameState.Neutral)
+        End If
     End Sub
 End Class

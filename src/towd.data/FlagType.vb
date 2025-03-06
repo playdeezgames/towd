@@ -2,4 +2,5 @@
     VerbMenu
     Inventory
     CraftMenu
+    MoveMenu
 End Enum

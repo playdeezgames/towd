@@ -10,17 +10,10 @@ Friend Class InventoryState
         itemTypeListView = New ListView With
             {
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill - 2
+                .Height = [Dim].Fill
             }
         AddHandler itemTypeListView.OpenSelectedItem, AddressOf OnItemTypeListViewOpenSelectedItem
         Add(itemTypeListView)
-        Dim goBackButton As New Button With
-            {
-                .Text = "Go Back",
-                .Y = Pos.Bottom(itemTypeListView) + 1
-            }
-        AddHandler goBackButton.Clicked, AddressOf OnGoBackButtonClicked
-        Add(goBackButton)
     End Sub
 
     Private Sub OnItemTypeListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -32,9 +25,12 @@ Friend Class InventoryState
         End If
     End Sub
 
-    Private Sub OnGoBackButtonClicked()
-        World.Avatar.SetFlag(FlagType.Inventory, False)
-        ShowState(GameState.Neutral)
+    Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
+        If args.KeyEvent.Key = Key.Esc Then
+            args.Handled = True
+            World.Avatar.SetFlag(FlagType.Inventory, False)
+            ShowState(GameState.Neutral)
+        End If
     End Sub
 
     Friend Overrides Sub UpdateView()

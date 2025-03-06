@@ -2,133 +2,77 @@
 
 Friend Class NavigationState
     Inherits ChildView
-    Private ReadOnly titleLabel As Label
-    Private ReadOnly verbsButton As Button
-    Private ReadOnly inventoryButton As Button
+    Const MOVE_TEXT = "Move..."
+    Const INVENTORY_TEXT = "Inventory..."
+    Const VERB_TEXT = "Verb..."
+    Const MENU_TEXT = "Game Menu..."
+    Private ReadOnly locationLabel As Label
+    Private ReadOnly characterLabel As Label
+    Private ReadOnly commandListView As ListView
 
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
-        titleLabel = New Label With
+        locationLabel = New Label With
             {
-                .Text = "Yer playin' the game!"
+                .Text = "(information about location)",
+                .TextAlignment = TextAlignment.Left,
+                .Width = [Dim].Percent(50),
+                .Height = [Dim].Percent(70)
             }
-
-        Dim moveLabel = New Label With
+        characterLabel = New Label With
             {
-                .Text = "Move:",
-                .Y = Pos.Bottom(titleLabel) + 1
+                .Text = "(information about character)",
+                .TextAlignment = TextAlignment.Right,
+                .X = Pos.Right(locationLabel) + 1,
+                .Width = [Dim].Fill
             }
-        Dim northButton As New Button With
+        commandListView = New ListView With
             {
-                .Text = "N",
-                .Y = Pos.Top(moveLabel),
-                .X = Pos.Right(moveLabel) + 1
+                .Y = Pos.Bottom(locationLabel) + 1,
+                .Width = [Dim].Fill,
+                .Height = [Dim].Fill
             }
-        AddHandler northButton.Clicked, AddressOf OnNorthButtonClicked
-        Dim eastButton As New Button With
-            {
-                .Text = "E",
-                .Y = Pos.Top(northButton),
-                .X = Pos.Right(northButton) + 1
-            }
-        AddHandler eastButton.Clicked, AddressOf OnEastButtonClicked
-        Dim southButton As New Button With
-            {
-                .Text = "S",
-                .Y = Pos.Top(eastButton),
-                .X = Pos.Right(eastButton) + 1
-            }
-        AddHandler southButton.Clicked, AddressOf OnSouthButtonClicked
-        Dim westButton As New Button With
-            {
-                .Text = "W",
-                .Y = Pos.Top(southButton),
-                .X = Pos.Right(southButton) + 1
-            }
-        AddHandler westButton.Clicked, AddressOf OnWestButtonClicked
-
-        Dim actionsLabel As New Label With
-            {
-                .Text = "Actions:",
-                .Y = Pos.Bottom(moveLabel) + 1
-            }
-        inventoryButton = New Button With
-            {
-                .Text = "Inventory",
-                .Y = Pos.Top(actionsLabel),
-                .X = Pos.Right(actionsLabel) + 1
-            }
-        AddHandler inventoryButton.Clicked, AddressOf OnInventoryButtonClicked
-        verbsButton = New Button With
-            {
-                .Text = "Verbs",
-                .Y = Pos.Top(inventoryButton),
-                .X = Pos.Right(inventoryButton) + 1
-            }
-        AddHandler verbsButton.Clicked, AddressOf OnVerbsButtonClicked
-        Dim gameMenuButton As New Button With
-            {
-                .Text = "Menu",
-                .Y = Pos.Top(verbsButton),
-                .X = Pos.Right(verbsButton) + 1
-            }
-        AddHandler gameMenuButton.Clicked, AddressOf OnGameMenuButtonClicked
+        AddHandler commandListView.OpenSelectedItem, AddressOf OnCommandListViewOpenSelectedItem
 
         Add(
-            titleLabel,
-            moveLabel,
-            northButton,
-            eastButton,
-            southButton,
-            westButton,
-            actionsLabel,
-            inventoryButton,
-            verbsButton,
-            gameMenuButton)
+            locationLabel,
+            characterLabel,
+            commandListView)
     End Sub
 
-    Private Sub OnInventoryButtonClicked()
-        World.Avatar.SetFlag(FlagType.Inventory, True)
-        ShowState(GameState.Neutral)
+    Private Sub OnCommandListViewOpenSelectedItem(args As ListViewItemEventArgs)
+        Dim command = CStr(args.Value)
+        Select Case command
+            Case MOVE_TEXT
+                World.Avatar.SetFlag(FlagType.MoveMenu, True)
+                ShowState(GameState.Neutral)
+            Case VERB_TEXT
+                World.Avatar.SetFlag(FlagType.VerbMenu, True)
+                ShowState(GameState.Neutral)
+            Case INVENTORY_TEXT
+                World.Avatar.SetFlag(FlagType.Inventory, True)
+                ShowState(GameState.Neutral)
+            Case MENU_TEXT
+                ShowState(GameState.GameMenu)
+        End Select
     End Sub
-
-    Private Sub OnVerbsButtonClicked()
-        World.Avatar.SetFlag(FlagType.VerbMenu, True)
-        ShowState(GameState.Neutral)
-    End Sub
-
-    Private Sub OnSouthButtonClicked()
-        World.Avatar.Move(business.Direction.South)
-        ShowState(GameState.Neutral)
-    End Sub
-
-    Private Sub OnEastButtonClicked()
-        World.Avatar.Move(business.Direction.East)
-        ShowState(GameState.Neutral)
-    End Sub
-
-    Private Sub OnWestButtonClicked()
-        World.Avatar.Move(business.Direction.West)
-        ShowState(GameState.Neutral)
-    End Sub
-
-    Private Sub OnNorthButtonClicked()
-        World.Avatar.Move(business.Direction.North)
-        ShowState(GameState.Neutral)
-    End Sub
-
-    Private Sub OnGameMenuButtonClicked()
-        ShowState(GameState.GameMenu)
-    End Sub
-
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
         Dim location = character.Location
-        titleLabel.Text = $"Character Type: {character.EntityType.Name}
-Location Type: {location}
-Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}
+        locationLabel.Text = $"Location: {location}"
+        characterLabel.Text = $"Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}
 Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}"
-        verbsButton.Enabled = character.CanDoAnyVerb
-        inventoryButton.Enabled = character.HasItems
+        Dim commandList As New List(Of String) From
+            {
+                MOVE_TEXT
+            }
+        If character.HasItems Then
+            commandList.Add(INVENTORY_TEXT)
+        End If
+        If character.CanDoAnyVerb Then
+            commandList.Add(VERB_TEXT)
+        End If
+        commandList.Add(MENU_TEXT)
+        commandListView.SetSource(commandList)
     End Sub
 End Class

@@ -1,4 +1,5 @@
 ﻿Imports towd.business
+Imports towd.data
 
 Friend Class CraftMenuState
     Inherits ChildView
@@ -9,17 +10,10 @@ Friend Class CraftMenuState
         recipeListView = New ListView With
             {
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill - 2
+                .Height = [Dim].Fill
             }
         AddHandler recipeListView.OpenSelectedItem, AddressOf OnRecipeListViewOpenSelectedItem
         Add(recipeListView)
-        Dim goBackButton As New Button With
-            {
-                .Text = "Go Back",
-                .Y = Pos.Bottom(recipeListView) + 1
-            }
-        AddHandler goBackButton.Clicked, AddressOf OnGoBackButtonClicked
-        Add(goBackButton)
     End Sub
 
     Private Sub OnRecipeListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -41,6 +35,14 @@ Friend Class CraftMenuState
         Dim recipeIndex = If(lastRecipe.HasValue, recipes.FindIndex(Function(x) x.RecipeType = lastRecipe.Value), -1)
         If recipeIndex > -1 Then
             recipeListView.SelectedItem = recipeIndex
+        End If
+    End Sub
+
+    Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
+        If args.KeyEvent.Key = Key.Esc Then
+            args.Handled = True
+            World.Avatar.SetFlag(towd.data.FlagType.CraftMenu, False)
+            ShowState(GameState.Neutral)
         End If
     End Sub
 End Class

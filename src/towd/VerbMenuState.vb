@@ -27,9 +27,19 @@ Friend Class VerbMenuState
         Dim verbs = VerbTypes.Descriptors.Where(Function(x) character.CanDoVerb(x.Key)).Select(Function(x) x.Value).OrderBy(Function(x) x.Name).ToList
         verbListView.SetSource(verbs)
         Dim lastVerb = character.LastVerb
-        Dim verbIndex = verbs.FindIndex(Function(x) x.VerbType = If(lastVerb, VerbType.Cancel))
-        If verbIndex > -1 Then
-            verbListView.SelectedItem = verbIndex
+        If lastVerb.HasValue Then
+            Dim verbIndex = verbs.FindIndex(Function(x) x.VerbType = lastVerb.Value)
+            If verbIndex > -1 Then
+                verbListView.SelectedItem = verbIndex
+            End If
+        End If
+    End Sub
+
+    Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
+        If args.KeyEvent.Key = Key.Esc Then
+            args.Handled = True
+            World.Avatar.SetFlag(FlagType.VerbMenu, False)
+            ShowState(GameState.Neutral)
         End If
     End Sub
 End Class

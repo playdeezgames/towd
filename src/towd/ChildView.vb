@@ -14,6 +14,13 @@ Friend MustInherit Class ChildView
         Me.mainView = mainView
         Width = [Dim].Fill()
         Height = [Dim].Fill()
+        AddHandler Me.KeyPress, AddressOf OnKeyPress
+
+
+    End Sub
+
+    Protected Overridable Sub OnKeyPress(args As KeyEventEventArgs)
+        'nada
     End Sub
     Friend MustOverride Sub UpdateView()
     Protected Sub ShowState(gameState As GameState)

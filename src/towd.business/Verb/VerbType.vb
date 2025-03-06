@@ -7,6 +7,5 @@
     AddFuel
     Wait
     Fish
-    Cancel
     EatFish
 End Enum

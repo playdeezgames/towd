@@ -10,4 +10,5 @@
     Inventory
     ItemStack
     CraftMenu
+    MoveMenu
 End Enum
