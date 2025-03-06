@@ -16,4 +16,8 @@
             location.EntityType = data.LocationType.Dirt.ToDescriptor
         End If
     End Sub
+
+    Public Overrides Function Describe(location As ILocation) As String
+        Return $"{MyBase.Describe(location)}(Fuel: {location.GetStatistic(data.StatisticType.Fuel)})"
+    End Function
 End Class

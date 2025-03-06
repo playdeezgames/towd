@@ -12,4 +12,8 @@
 
     Public Overrides Sub AdvanceTime(location As ILocation, amount As Integer)
     End Sub
+
+    Public Overrides Function Describe(location As ILocation) As String
+        Return $"{MyBase.Describe(location)}(Fuel: {location.GetStatistic(data.StatisticType.Fuel)})"
+    End Function
 End Class
