@@ -6,9 +6,16 @@ Friend Class InventoryState
     Private ReadOnly itemTypeListView As ListView
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
-
+        Dim titleLabel As New Label With
+            {
+                .Width = [Dim].Fill,
+                .Text = "Inventory (Esc to cancel)",
+                .TextAlignment = TextAlignment.Centered
+            }
+        Add(titleLabel)
         itemTypeListView = New ListView With
             {
+                .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }

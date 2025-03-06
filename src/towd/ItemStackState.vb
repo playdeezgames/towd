@@ -7,8 +7,16 @@ Friend Class ItemStackState
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
 
+        Dim titleLabel As New Label With
+            {
+                .Width = [Dim].Fill,
+                .Text = "Items (Esc to cancel)",
+                .TextAlignment = TextAlignment.Centered
+            }
+        Add(titleLabel)
         itemStackListView = New ListView With
             {
+                .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }

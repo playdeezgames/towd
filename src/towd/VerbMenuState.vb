@@ -6,9 +6,16 @@ Friend Class VerbMenuState
     Private ReadOnly verbListView As ListView
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
-
+        Dim titleLabel As New Label With
+            {
+                .Width = [Dim].Fill,
+                .Text = "Verbs (Esc to cancel)",
+                .TextAlignment = TextAlignment.Centered
+            }
+        Add(titleLabel)
         verbListView = New ListView With
             {
+                .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }

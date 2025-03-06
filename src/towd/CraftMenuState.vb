@@ -6,9 +6,16 @@ Friend Class CraftMenuState
     Private ReadOnly recipeListView As ListView
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
-
+        Dim titleLabel As New Label With
+            {
+                .Width = [Dim].Fill,
+                .Text = "Craft (Esc to cancel)",
+                .TextAlignment = TextAlignment.Centered
+            }
+        Add(titleLabel)
         recipeListView = New ListView With
             {
+                .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }
