@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Blade, "Blade")
+        MyBase.New(data.ItemType.Blade, "Blade", True)
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

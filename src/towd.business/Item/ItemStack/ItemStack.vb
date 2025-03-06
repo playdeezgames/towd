@@ -14,6 +14,6 @@
     End Property
 
     Public Overrides Function ToString() As String
-        Return $"{ItemType.Name}(x{Quantity})"
+        Return $"{ItemType.Name}(x{Quantity}){If(ItemType.IsAggregate, "", "...")}"
     End Function
 End Class

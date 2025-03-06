@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Charcoal, "Charcoal")
+        MyBase.New(data.ItemType.Charcoal, "Charcoal", True)
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

@@ -25,8 +25,11 @@ Friend Class InventoryState
 
     Private Sub OnItemTypeListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim itemStack = CType(args.Value, IItemStack)
-        World.Avatar.CurrentItemType = itemStack.ItemType
-        ShowState(GameState.Neutral)
+        Dim itemType = itemStack.ItemType
+        If Not itemType.IsAggregate Then
+            World.Avatar.CurrentItemType = itemStack.ItemType
+            ShowState(GameState.Neutral)
+        End If
     End Sub
 
     Private Sub OnGoBackButtonClicked()

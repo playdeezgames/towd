@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.CookedGrub, "Cooked Grub")
+        MyBase.New(data.ItemType.CookedGrub, "Cooked Grub", True)
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

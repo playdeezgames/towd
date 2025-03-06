@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Stick, "Stick")
+        MyBase.New(data.ItemType.Stick, "Stick", True)
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.RawFishFilet, "Raw Fish Filet")
+        MyBase.New(data.ItemType.RawFishFilet, "Raw Fish Filet", True)
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

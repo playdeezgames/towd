@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Twine, "Twine")
+        MyBase.New(data.ItemType.Twine, "Twine", True)
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

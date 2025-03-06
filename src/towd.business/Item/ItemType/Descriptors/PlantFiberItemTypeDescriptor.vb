@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.PlantFiber, "Plant Fiber")
+        MyBase.New(data.ItemType.PlantFiber, "Plant Fiber", True)
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)
