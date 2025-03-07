@@ -143,7 +143,10 @@ Friend Class Character
         Dim map = Location.Map
         Dim nextLocation = map.GetLocation(nextColumn, nextRow)
         If nextLocation IsNot Nothing Then
+            AppendMessage($"You move {descriptor.Name}.")
             Location = nextLocation
+            ChangeStatistic(StatisticType.Steps, 1)
+            AdvanceTime(1)
         End If
     End Sub
 
@@ -225,4 +228,20 @@ Friend Class Character
     Public Function GetCraftableRecipes() As IEnumerable(Of IRecipeType) Implements ICharacter.GetCraftableRecipes
         Return RecipeTypes.Descriptors.Values.Where(Function(x) x.CanCraft(Me)).OrderBy(Function(x) x.Name)
     End Function
+
+    Public Function HasAchieved(achievementType As IAchievementType) As Boolean Implements ICharacter.HasAchieved
+        Return EntityData.Achievements.Contains(achievementType.AchievementType)
+    End Function
+
+    Public Function IsAvailable(achievementType As IAchievementType) As Boolean Implements ICharacter.IsAvailable
+        If HasAchieved(achievementType) Then
+            Return False
+        End If
+        Return achievementType.IsAvailable(Me)
+    End Function
+
+    Public Sub SetAchieved(descriptor As IAchievementType) Implements ICharacter.SetAchieved
+        descriptor.Achieve(Me)
+        EntityData.Achievements.Add(descriptor.AchievementType)
+    End Sub
 End Class

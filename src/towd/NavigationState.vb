@@ -5,6 +5,7 @@ Friend Class NavigationState
     Const MOVE_TEXT = "Move..."
     Const INVENTORY_TEXT = "Inventory..."
     Const VERB_TEXT = "Verb..."
+    Const ACHIEVEMENTS_TEXT = "Achievements..."
     Const MENU_TEXT = "Game Menu..."
     Private ReadOnly locationLabel As Label
     Private ReadOnly characterLabel As Label
@@ -52,6 +53,8 @@ Friend Class NavigationState
             Case INVENTORY_TEXT
                 World.Avatar.SetFlag(FlagType.Inventory, True)
                 ShowState(GameState.Neutral)
+            Case ACHIEVEMENTS_TEXT
+                ShowState(GameState.Achievements)
             Case MENU_TEXT
                 ShowState(GameState.GameMenu)
         End Select
@@ -72,6 +75,7 @@ Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMa
         If character.CanDoAnyVerb Then
             commandList.Add(VERB_TEXT)
         End If
+        commandList.Add(ACHIEVEMENTS_TEXT)
         commandList.Add(MENU_TEXT)
         commandListView.SetSource(commandList)
     End Sub

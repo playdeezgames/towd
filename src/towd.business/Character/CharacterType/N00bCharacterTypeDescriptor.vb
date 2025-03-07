@@ -19,6 +19,11 @@ Friend Class N00bCharacterTypeDescriptor
                 character.AppendMessage($"Yer dead.")
             End If
         End If
+        For Each descriptor In AchievementTypes.Descriptors.Values
+            If descriptor.HasAchieved(character) Then
+                character.SetAchieved(descriptor)
+            End If
+        Next
     End Sub
 
     Public Overrides Sub Initialize(character As ICharacter)
@@ -28,5 +33,6 @@ Friend Class N00bCharacterTypeDescriptor
         character.SetStatisticMaximum(StatisticType.Health, 100)
         character.SetStatisticMinimum(StatisticType.Health, 0)
         character.SetStatistic(StatisticType.Health, 100)
+        character.SetStatistic(StatisticType.Steps, 0)
     End Sub
 End Class

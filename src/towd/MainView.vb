@@ -15,6 +15,7 @@
         childViews.Add(GameState.ItemStack, New ItemStackState(Me))
         childViews.Add(GameState.CraftMenu, New CraftMenuState(Me))
         childViews.Add(GameState.MoveMenu, New MoveMenuState(Me))
+        childViews.Add(GameState.Achievements, New AchievementsState(Me))
 
         ShowState(GameState.Splash)
     End Sub

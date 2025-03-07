@@ -11,4 +11,5 @@
     ItemStack
     CraftMenu
     MoveMenu
+    Achievements
 End Enum

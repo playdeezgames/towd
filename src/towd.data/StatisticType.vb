@@ -10,4 +10,5 @@
     LastVerb
     CurrentItemType
     LastRecipe
+    Steps
 End Enum
