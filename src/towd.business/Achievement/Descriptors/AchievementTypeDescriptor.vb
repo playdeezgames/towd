@@ -2,7 +2,9 @@
 
 Public MustInherit Class AchievementTypeDescriptor
     Implements IAchievementType
-    Sub New(achievementType As data.AchievementType, name As String)
+    Private ReadOnly needed As HashSet(Of data.AchievementType)
+    Sub New(achievementType As data.AchievementType, name As String, needed As data.AchievementType())
+        Me.needed = New HashSet(Of data.AchievementType)(needed)
         Me.AchievementType = achievementType
         Me.Name = name
     End Sub
@@ -15,7 +17,9 @@ Public MustInherit Class AchievementTypeDescriptor
         OnAchieve(character)
     End Sub
     Protected MustOverride Sub OnAchieve(character As ICharacter)
-    Public MustOverride Function IsAvailable(character As ICharacter) As Boolean Implements IAchievementType.IsAvailable
+    Public Overridable Function IsAvailable(character As ICharacter) As Boolean Implements IAchievementType.IsAvailable
+        Return needed.All(Function(x) character.HasAchieved(x.ToDescriptor))
+    End Function
     Public Overrides Function ToString() As String
         Return Name
     End Function
