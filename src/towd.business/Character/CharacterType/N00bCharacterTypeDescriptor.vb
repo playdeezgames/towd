@@ -19,9 +19,9 @@ Friend Class N00bCharacterTypeDescriptor
                 character.AppendMessage($"Yer dead.")
             End If
         End If
-        For Each descriptor In AchievementTypes.Descriptors.Values
-            If descriptor.HasAchieved(character) Then
-                character.SetAchieved(descriptor)
+        For Each descriptor In Deeds.Descriptors.Values
+            If descriptor.HasDone(character) Then
+                character.SetDone(descriptor)
             End If
         Next
     End Sub

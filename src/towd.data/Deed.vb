@@ -1,4 +1,4 @@
-﻿Public Enum AchievementType
+﻿Public Enum Deed
     MoveOnce
     MoveTenTimes
     MoveHundredTimes

@@ -26,7 +26,7 @@ Public Interface ICharacter
     Sub ChangeItemDurability(item As IItem, delta As Integer)
     Sub RemoveItem(item As IItem)
     Function GetCraftableRecipes() As IEnumerable(Of IRecipeType)
-    Function HasAchieved(achievementType As IAchievementType) As Boolean
-    Function IsAvailable(achievementType As IAchievementType) As Boolean
-    Sub SetAchieved(descriptor As IAchievementType)
+    Function HasDone(deed As IDeed) As Boolean
+    Function IsAvailable(deed As IDeed) As Boolean
+    Sub SetDone(deed As IDeed)
 End Interface

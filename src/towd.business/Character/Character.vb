@@ -229,19 +229,19 @@ Friend Class Character
         Return RecipeTypes.Descriptors.Values.Where(Function(x) x.CanCraft(Me)).OrderBy(Function(x) x.Name)
     End Function
 
-    Public Function HasAchieved(achievementType As IAchievementType) As Boolean Implements ICharacter.HasAchieved
-        Return EntityData.Achievements.Contains(achievementType.AchievementType)
+    Public Function HasDone(deed As IDeed) As Boolean Implements ICharacter.HasDone
+        Return EntityData.Deeds.Contains(deed.Deed)
     End Function
 
-    Public Function IsAvailable(achievementType As IAchievementType) As Boolean Implements ICharacter.IsAvailable
-        If HasAchieved(achievementType) Then
+    Public Function IsAvailable(deed As IDeed) As Boolean Implements ICharacter.IsAvailable
+        If HasDone(deed) Then
             Return False
         End If
-        Return achievementType.IsAvailable(Me)
+        Return deed.IsAvailable(Me)
     End Function
 
-    Public Sub SetAchieved(descriptor As IAchievementType) Implements ICharacter.SetAchieved
-        descriptor.Achieve(Me)
-        EntityData.Achievements.Add(descriptor.AchievementType)
+    Public Sub SetDone(descriptor As IDeed) Implements ICharacter.SetDone
+        descriptor.Do(Me)
+        EntityData.Deeds.Add(descriptor.Deed)
     End Sub
 End Class

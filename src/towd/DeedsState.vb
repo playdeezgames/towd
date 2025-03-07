@@ -1,15 +1,15 @@
 ﻿Imports towd.business
 
-Friend Class AchievementsState
+Friend Class DeedsState
     Inherits ChildView
     Private ReadOnly availableListView As ListView
-    Private ReadOnly achievedListView As ListView
+    Private ReadOnly doneListView As ListView
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
         Dim titleLabel As New Label With
             {
                 .Width = [Dim].Fill,
-                .Text = "Achievements (Esc to cancel)",
+                .Text = "Deeds (Esc to cancel)",
                 .TextAlignment = TextAlignment.Centered
             }
         Add(titleLabel)
@@ -18,7 +18,7 @@ Friend Class AchievementsState
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }
-        achievedListView = New ListView With
+        doneListView = New ListView With
             {
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
@@ -34,13 +34,13 @@ Friend Class AchievementsState
                 .Text = "Available",
                 .View = availableListView
             }
-        Dim achievedTab As New TabView.Tab With
+        Dim doneTab As New TabView.Tab With
             {
-                .Text = "Achieved",
-                .View = achievedListView
+                .Text = "Done",
+                .View = doneListView
             }
         tabView.AddTab(availableTab, False)
-        tabView.AddTab(achievedTab, False)
+        tabView.AddTab(doneTab, False)
         Add(tabView)
     End Sub
 
@@ -52,17 +52,17 @@ Friend Class AchievementsState
     End Sub
 
     Friend Overrides Sub UpdateView()
-        Dim available As New List(Of IAchievementType)
-        Dim achieved As New List(Of IAchievementType)
+        Dim available As New List(Of IDeed)
+        Dim done As New List(Of IDeed)
         Dim character = World.Avatar
-        For Each descriptor In AchievementTypes.Descriptors.Values.OrderBy(Function(x) x.Name)
-            If character.HasAchieved(descriptor) Then
-                achieved.Add(descriptor)
+        For Each descriptor In Deeds.Descriptors.Values.OrderBy(Function(x) x.Name)
+            If character.HasDone(descriptor) Then
+                done.Add(descriptor)
             ElseIf character.IsAvailable(descriptor) Then
                 available.Add(descriptor)
             End If
         Next
         availableListView.SetSource(available)
-        achievedListView.SetSource(achieved)
+        doneListView.SetSource(done)
     End Sub
 End Class
