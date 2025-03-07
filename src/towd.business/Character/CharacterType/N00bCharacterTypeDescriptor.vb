@@ -20,7 +20,7 @@ Friend Class N00bCharacterTypeDescriptor
             End If
         End If
         For Each descriptor In Deeds.Descriptors.Values
-            If descriptor.HasDone(character) Then
+            If Not character.HasDone(descriptor) AndAlso descriptor.HasDone(character) Then
                 character.SetDone(descriptor)
             End If
         Next
