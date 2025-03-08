@@ -3,4 +3,8 @@
     MoveTenTimes
     MoveHundredTimes
     MoveThousandTimes
+    ForageOnce
+    ForageTenTimes
+    ForageHundredTimes
+    ForageThousandTimes
 End Enum

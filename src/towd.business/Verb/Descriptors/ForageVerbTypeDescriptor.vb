@@ -24,6 +24,7 @@ Friend Class ForageVerbTypeDescriptor
         Dim item = world.CreateItem(itemType)
         character.AddItem(item)
         character.AppendMessage($"+1 {itemType.Name}(total {character.GetCountOfItemType(itemType)})")
+        character.ChangeStatistic(StatisticType.Foraging, 1)
     End Sub
 
     Public Overrides Function CanPerform(character As ICharacter) As Boolean
