@@ -253,4 +253,8 @@ Friend Class Character
             Me.AppendMessage($"{delta} {statisticType.ToDescriptor.Name}({GetStatistic(statisticType)})")
         End If
     End Sub
+
+    Public Function CanAdvance(skillType As ISkillType) As Boolean Implements ICharacter.CanAdvance
+        Return skillType.CanAdvance(Me)
+    End Function
 End Class

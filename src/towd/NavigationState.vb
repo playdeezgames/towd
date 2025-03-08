@@ -7,6 +7,7 @@ Friend Class NavigationState
     Const VERB_TEXT = "Verb..."
     Const DEEDS_TEXT = "Deeds..."
     Const MENU_TEXT = "Game Menu..."
+    Const SKILLS_TEXT = "Skills..."
     Private ReadOnly locationLabel As Label
     Private ReadOnly characterLabel As Label
     Private ReadOnly commandListView As ListView
@@ -57,6 +58,9 @@ Friend Class NavigationState
                 ShowState(GameState.Deeds)
             Case MENU_TEXT
                 ShowState(GameState.GameMenu)
+            Case SKILLS_TEXT
+                World.Avatar.SetFlag(FlagType.SkillMenu, True)
+                ShowState(GameState.Neutral)
         End Select
     End Sub
     Friend Overrides Sub UpdateView()
@@ -77,6 +81,7 @@ XP: {character.GetStatistic(StatisticType.XP)}"
             commandList.Add(VERB_TEXT)
         End If
         commandList.Add(DEEDS_TEXT)
+        commandList.Add(SKILLS_TEXT)
         commandList.Add(MENU_TEXT)
         commandListView.SetSource(commandList)
     End Sub

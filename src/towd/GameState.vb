@@ -12,4 +12,5 @@
     CraftMenu
     MoveMenu
     Deeds
+    SkillMenu
 End Enum

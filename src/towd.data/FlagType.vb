@@ -3,4 +3,5 @@
     Inventory
     CraftMenu
     MoveMenu
+    SkillMenu
 End Enum
