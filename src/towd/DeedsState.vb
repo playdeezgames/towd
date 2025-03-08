@@ -48,12 +48,12 @@ Friend Class DeedsState
 
     Private Sub OnDoneListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim deed = CType(args.Value, IDeed)
-        MessageBox.Query(deed.Name, deed.Description, "Ok")
+        MessageBox.Query(deed.ToString, deed.Description, "Ok")
     End Sub
 
     Private Sub OnAvailableListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim deed = CType(args.Value, IDeed)
-        MessageBox.Query(deed.Name, deed.Description, "Ok")
+        MessageBox.Query(deed.ToString, deed.Description, "Ok")
     End Sub
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)

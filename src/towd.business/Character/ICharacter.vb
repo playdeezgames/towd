@@ -29,4 +29,5 @@ Public Interface ICharacter
     Function HasDone(deed As IDeed) As Boolean
     Function IsAvailable(deed As IDeed) As Boolean
     Sub SetDone(deed As IDeed)
+    Sub ReportChangeStatistic(statisticType As StatisticType, delta As Integer)
 End Interface

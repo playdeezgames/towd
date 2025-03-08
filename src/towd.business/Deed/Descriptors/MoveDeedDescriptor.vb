@@ -4,8 +4,8 @@ Friend Class MoveDeedDescriptor
     Inherits DeedDescriptor
     Private ReadOnly stepCount As Integer
 
-    Public Sub New(deed As Deed, name As String, stepCount As Integer, needed As data.Deed())
-        MyBase.New(deed, name, needed)
+    Public Sub New(deed As Deed, name As String, stepCount As Integer, xp As Integer, needed As data.Deed())
+        MyBase.New(deed, name, xp, needed)
         Me.stepCount = stepCount
     End Sub
 

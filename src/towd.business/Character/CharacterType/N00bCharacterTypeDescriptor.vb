@@ -34,5 +34,6 @@ Friend Class N00bCharacterTypeDescriptor
         character.SetStatisticMinimum(StatisticType.Health, 0)
         character.SetStatistic(StatisticType.Health, 100)
         character.SetStatistic(StatisticType.Steps, 0)
+        character.SetStatistic(StatisticType.XP, 0)
     End Sub
 End Class

@@ -11,4 +11,5 @@
     CurrentItemType
     LastRecipe
     Steps
+    XP
 End Enum

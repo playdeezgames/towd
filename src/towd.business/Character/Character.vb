@@ -244,4 +244,13 @@ Friend Class Character
         descriptor.Do(Me)
         EntityData.Deeds.Add(descriptor.Deed)
     End Sub
+
+    Public Sub ReportChangeStatistic(statisticType As StatisticType, delta As Integer) Implements ICharacter.ReportChangeStatistic
+        ChangeStatistic(statisticType, delta)
+        If delta > 0 Then
+            Me.AppendMessage($"+{delta} {statisticType.ToDescriptor.Name}({GetStatistic(statisticType)})")
+        ElseIf delta < 0 Then
+            Me.AppendMessage($"{delta} {statisticType.ToDescriptor.Name}({GetStatistic(statisticType)})")
+        End If
+    End Sub
 End Class

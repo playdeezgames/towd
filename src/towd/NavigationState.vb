@@ -64,7 +64,8 @@ Friend Class NavigationState
         Dim location = character.Location
         locationLabel.Text = $"Location: {location}"
         characterLabel.Text = $"Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}
-Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}"
+Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}
+XP: {character.GetStatistic(StatisticType.XP)}"
         Dim commandList As New List(Of String) From
             {
                 MOVE_TEXT
