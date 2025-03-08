@@ -9,6 +9,12 @@ Friend Class MoveDeedDescriptor
         Me.stepCount = stepCount
     End Sub
 
+    Public Overrides ReadOnly Property Description As String
+        Get
+            Return $"Successfully complete a move action {stepCount} times."
+        End Get
+    End Property
+
     Protected Overrides Sub OnDo(character As ICharacter)
     End Sub
 

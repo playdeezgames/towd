@@ -12,6 +12,8 @@ Public MustInherit Class DeedDescriptor
     Public ReadOnly Property Deed As Deed Implements IDeed.Deed
 
     Public ReadOnly Property Name As String Implements IDeed.Name
+    Public MustOverride ReadOnly Property Description As String Implements IDeed.Description
+
     Public Sub [Do](character As ICharacter) Implements IDeed.Do
         character.AppendMessage($"You have done ""{Name}""")
         OnDo(character)

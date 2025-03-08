@@ -18,11 +18,13 @@ Friend Class DeedsState
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }
+        AddHandler availableListView.OpenSelectedItem, AddressOf OnAvailableListViewOpenSelectedItem
         doneListView = New ListView With
             {
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }
+        AddHandler doneListView.OpenSelectedItem, AddressOf OnDoneListViewOpenSelectedItem
         Dim tabView As New TabView With
             {
                 .Y = Pos.Bottom(titleLabel),
@@ -42,6 +44,16 @@ Friend Class DeedsState
         tabView.AddTab(availableTab, False)
         tabView.AddTab(doneTab, False)
         Add(tabView)
+    End Sub
+
+    Private Sub OnDoneListViewOpenSelectedItem(args As ListViewItemEventArgs)
+        Dim deed = CType(args.Value, IDeed)
+        MessageBox.Query(deed.Name, deed.Description, "Ok")
+    End Sub
+
+    Private Sub OnAvailableListViewOpenSelectedItem(args As ListViewItemEventArgs)
+        Dim deed = CType(args.Value, IDeed)
+        MessageBox.Query(deed.Name, deed.Description, "Ok")
     End Sub
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
