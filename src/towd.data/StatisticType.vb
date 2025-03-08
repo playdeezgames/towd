@@ -3,7 +3,7 @@
     Health
     Durability
     Fuel
-    Foraging
+    ForagingCounter
     Digging
     Chopping
     Fishing
@@ -12,4 +12,5 @@
     LastRecipe
     Steps
     XP
+    ForagingSkill
 End Enum

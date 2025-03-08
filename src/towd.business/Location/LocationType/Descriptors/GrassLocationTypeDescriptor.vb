@@ -6,8 +6,8 @@
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)
-        location.SetStatistic(data.StatisticType.Foraging, 30)
-        location.SetStatisticMinimum(data.StatisticType.Foraging, 0)
+        location.SetStatistic(data.StatisticType.ForagingCounter, 30)
+        location.SetStatisticMinimum(data.StatisticType.ForagingCounter, 0)
         location.SetStatistic(data.StatisticType.Digging, 30)
         location.SetStatisticMinimum(data.StatisticType.Digging, 0)
     End Sub
@@ -16,6 +16,6 @@
     End Sub
 
     Public Overrides Function Describe(location As ILocation) As String
-        Return $"{MyBase.Describe(location)}(Foraging: {location.GetStatistic(data.StatisticType.Foraging)}, Digging: {location.GetStatistic(data.StatisticType.Digging)})"
+        Return $"{MyBase.Describe(location)}(Foraging: {location.GetStatistic(data.StatisticType.ForagingCounter)}, Digging: {location.GetStatistic(data.StatisticType.Digging)})"
     End Function
 End Class

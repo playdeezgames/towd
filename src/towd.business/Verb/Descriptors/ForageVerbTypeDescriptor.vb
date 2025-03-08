@@ -19,15 +19,18 @@ Friend Class ForageVerbTypeDescriptor
         Dim world = character.World
         character.AddMessage("You forage.")
         Dim location = character.Location
-        location.ChangeStatistic(StatisticType.Foraging, -1)
+        location.ChangeStatistic(StatisticType.ForagingCounter, -1)
         Dim itemType = forageTable(character.Location.EntityType.LocationType).ToDescriptor
-        Dim item = world.CreateItem(itemType)
-        character.AddItem(item)
-        character.AppendMessage($"+1 {itemType.Name}(total {character.GetCountOfItemType(itemType)})")
-        character.ChangeStatistic(StatisticType.Foraging, 1)
+        Dim itemCount = RNG.GenerateInclusiveRange(1, character.GetStatistic(StatisticType.ForagingSkill))
+        For Each dummy In Enumerable.Range(0, itemCount)
+            Dim item = world.CreateItem(itemType)
+            character.AddItem(item)
+        Next
+        character.AppendMessage($"+{itemCount} {itemType.Name}(total {character.GetCountOfItemType(itemType)})")
+        character.ChangeStatistic(StatisticType.ForagingCounter, 1)
     End Sub
 
     Public Overrides Function CanPerform(character As ICharacter) As Boolean
-        Return character.Location.GetStatistic(data.StatisticType.Foraging) > 0
+        Return character.Location.GetStatistic(data.StatisticType.ForagingCounter) > 0
     End Function
 End Class

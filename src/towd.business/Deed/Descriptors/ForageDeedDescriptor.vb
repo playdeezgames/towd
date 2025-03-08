@@ -23,6 +23,6 @@ Friend Class ForageDeedDescriptor
     End Function
 
     Public Overrides Function HasDone(character As ICharacter) As Boolean
-        Return character.GetStatistic(StatisticType.Foraging) >= forageCount
+        Return character.GetStatistic(StatisticType.ForagingCounter) >= forageCount
     End Function
 End Class
