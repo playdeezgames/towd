@@ -4,4 +4,5 @@
     ReadOnly Property TimeTaken As Integer
     Function CanPerform(character As ICharacter) As Boolean
     Sub Perform(character As ICharacter)
+    Function GetPerformCount(character As ICharacter) As Integer?
 End Interface

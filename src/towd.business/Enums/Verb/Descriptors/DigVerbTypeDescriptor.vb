@@ -32,4 +32,8 @@ Friend Class DigVerbTypeDescriptor
         End If
         Return character.Location.GetStatistic(StatisticType.Digging) > 0
     End Function
+
+    Public Overrides Function GetPerformCount(character As ICharacter) As Integer?
+        Return Math.Min(character.Location.GetStatistic(StatisticType.Digging), character.GetStatisticSumOfItemType(data.ItemType.SharpStick.ToDescriptor, StatisticType.Durability))
+    End Function
 End Class

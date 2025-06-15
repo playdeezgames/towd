@@ -23,4 +23,8 @@ Friend Class FishVerbTypeDescriptor
         End If
         Return character.Location.GetStatistic(StatisticType.Fishing) > 0
     End Function
+
+    Public Overrides Function GetPerformCount(character As ICharacter) As Integer?
+        Return character.Location.GetStatistic(StatisticType.Fishing)
+    End Function
 End Class

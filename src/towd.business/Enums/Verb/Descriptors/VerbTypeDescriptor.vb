@@ -19,4 +19,6 @@
     Public Overrides Function ToString() As String
         Return Name
     End Function
+
+    Public MustOverride Function GetPerformCount(character As ICharacter) As Integer? Implements IVerbType.GetPerformCount
 End Class

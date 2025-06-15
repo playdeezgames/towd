@@ -24,18 +24,18 @@ Friend Class VerbMenuState
     End Sub
 
     Private Sub OnVerbListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Dim descriptor = CType(args.Value, IVerbType)
-        descriptor.Perform(World.Avatar)
+        Dim listItem = CType(args.Value, VerbMenuListViewItem)
+        listItem.VerbType.Perform(World.Avatar)
         ShowState(GameState.Neutral)
     End Sub
 
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
-        Dim verbs = VerbTypes.Descriptors.Where(Function(x) character.CanDoVerb(x.Key)).Select(Function(x) x.Value).OrderBy(Function(x) x.Name).ToList
+        Dim verbs = VerbTypes.Descriptors.Where(Function(x) character.CanDoVerb(x.Key)).Select(Function(x) New VerbMenuListViewItem(x.Value, character)).OrderBy(Function(x) x.VerbType.Name).ToList
         verbListView.SetSource(verbs)
         Dim lastVerb = character.LastVerb
         If lastVerb.HasValue Then
-            Dim verbIndex = verbs.FindIndex(Function(x) x.VerbType = lastVerb.Value)
+            Dim verbIndex = verbs.FindIndex(Function(x) x.VerbType.VerbType = lastVerb.Value)
             If verbIndex > -1 Then
                 verbListView.SelectedItem = verbIndex
             End If

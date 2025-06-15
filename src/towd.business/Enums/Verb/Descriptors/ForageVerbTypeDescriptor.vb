@@ -33,4 +33,8 @@ Friend Class ForageVerbTypeDescriptor
     Public Overrides Function CanPerform(character As ICharacter) As Boolean
         Return character.Location.GetStatistic(data.StatisticType.ForagingCounter) > 0
     End Function
+
+    Public Overrides Function GetPerformCount(character As ICharacter) As Integer?
+        Return character.Location.GetStatistic(StatisticType.ForagingCounter)
+    End Function
 End Class
