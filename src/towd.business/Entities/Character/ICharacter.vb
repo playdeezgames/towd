@@ -3,6 +3,7 @@
 Public Interface ICharacter
     Inherits IEntity(Of ICharacterType)
     Property Location As ILocation
+    Function CanMove(direction As Direction) As Boolean
     Sub Move(direction As Direction)
     ReadOnly Property CanDoAnyVerb As Boolean
     Function CanDoVerb(verbType As VerbType) As Boolean

@@ -66,7 +66,8 @@ Friend Class NavigationState
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
         Dim location = character.Location
-        locationLabel.Text = $"Location: {location}"
+        locationLabel.Text = $"(X: {location.Column}, Y: {location.Row})
+{location}"
         characterLabel.Text = $"Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}
 Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}
 XP: {character.GetStatistic(StatisticType.XP)}"

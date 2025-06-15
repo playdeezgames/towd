@@ -136,12 +136,7 @@ Friend Class Character
 
     Public Sub Move(direction As Direction) Implements ICharacter.Move
         Dim descriptor = direction.ToDescriptor
-        Dim column = Location.Column
-        Dim row = Location.Row
-        Dim nextColumn = descriptor.NextColumn(column, row)
-        Dim nextRow = descriptor.NextRow(column, row)
-        Dim map = Location.Map
-        Dim nextLocation = map.GetLocation(nextColumn, nextRow)
+        Dim nextLocation As ILocation = GetNextLocation(descriptor)
         If nextLocation IsNot Nothing Then
             AppendMessage($"You move {descriptor.Name}.")
             Location = nextLocation
@@ -149,6 +144,16 @@ Friend Class Character
             AdvanceTime(1)
         End If
     End Sub
+
+    Private Function GetNextLocation(descriptor As IDirection) As ILocation
+        Dim column = Location.Column
+        Dim row = Location.Row
+        Dim nextColumn = descriptor.NextColumn(column, row)
+        Dim nextRow = descriptor.NextRow(column, row)
+        Dim map = Location.Map
+        Dim nextLocation = map.GetLocation(nextColumn, nextRow)
+        Return nextLocation
+    End Function
 
     Public Sub AddMessage(ParamArray lines() As String) Implements ICharacter.AddMessage
         If IsAvatar Then
@@ -256,5 +261,9 @@ Friend Class Character
 
     Public Function CanAdvance(skillType As ISkillType) As Boolean Implements ICharacter.CanAdvance
         Return skillType.CanAdvance(Me)
+    End Function
+
+    Public Function CanMove(direction As Direction) As Boolean Implements ICharacter.CanMove
+        Return GetNextLocation(direction.ToDescriptor) IsNot Nothing
     End Function
 End Class
