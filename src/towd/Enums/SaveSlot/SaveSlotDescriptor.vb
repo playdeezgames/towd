@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports System.Text.Json
+Imports towd.business
 
 Public Class SaveSlotDescriptor
     Implements ISaveSlot
@@ -16,6 +18,11 @@ Public Class SaveSlotDescriptor
     Public ReadOnly Property DisplayName As String Implements ISaveSlot.DisplayName
 
     Public ReadOnly Property Filename As String Implements ISaveSlot.Filename
+
+    Public Sub SaveGame(world As IWorld) Implements ISaveSlot.SaveGame
+        File.WriteAllText(Filename, JsonSerializer.Serialize(world.Data))
+    End Sub
+
     Public Overrides Function ToString() As String
         Dim result As String = DisplayName
         If File.Exists(Filename) Then

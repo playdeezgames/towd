@@ -32,8 +32,7 @@ Friend Class SaveMenuState
                 Return
             End If
         End If
-        File.WriteAllText(listItem.Filename, JsonSerializer.Serialize(World.Data))
-        JsonSerializer.Serialize(World.Data)
+        listItem.SaveGame(World)
     End Sub
 
     Friend Overrides Sub UpdateView()
