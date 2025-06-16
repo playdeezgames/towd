@@ -1,8 +1,11 @@
 ﻿Imports towd.business
+Imports towd.data
 
 Public Interface ISaveSlot
     ReadOnly Property SaveSlot As SaveSlot
     ReadOnly Property DisplayName As String
     ReadOnly Property Filename As String
-    Sub SaveGame(world As IWorld)
+    ReadOnly Property SaveExists As Boolean
+    Sub SaveGame(worldData As WorldData)
+    Function LoadGame() As WorldData
 End Interface

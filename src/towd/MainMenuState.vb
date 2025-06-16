@@ -1,5 +1,11 @@
-﻿Friend Class MainMenuState
+﻿Imports System.Data
+Imports System.Runtime.CompilerServices
+Imports System.Runtime.Loader
+
+Friend Class MainMenuState
     Inherits ChildView
+    Private scumLoadButton As Button
+    Private loadButton As Button
 
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
@@ -18,15 +24,43 @@
             }
         AddHandler embarkButton.Clicked, AddressOf OnEmbarkButtonClicked
 
+        scumLoadButton = New Button With
+            {
+                .Text = "Scum Load",
+                .Y = Pos.Bottom(embarkButton) + 1,
+                .X = Pos.Center,
+                .IsDefault = True
+            }
+        AddHandler scumLoadButton.Clicked, AddressOf OnScumLoadButtonClicked
+
+        loadButton = New Button With
+            {
+                .Text = "Load...",
+                .Y = Pos.Bottom(scumLoadButton) + 1,
+                .X = Pos.Center,
+                .IsDefault = True
+            }
+        AddHandler loadButton.Clicked, AddressOf OnLoadButtonClicked
+
         Dim quitButton As New Button With
             {
                 .Text = "Quit",
-                .Y = Pos.Bottom(embarkButton) + 1,
+                .Y = Pos.Bottom(loadButton) + 1,
                 .X = Pos.Center
             }
         AddHandler quitButton.Clicked, AddressOf OnQuitButtonClicked
 
-        Add(titleLabel, embarkButton, quitButton)
+        Add(titleLabel, embarkButton, scumLoadButton, loadButton, quitButton)
+    End Sub
+
+    Private Sub OnLoadButtonClicked()
+        ShowState(GameState.LoadMenu)
+    End Sub
+
+    Private Sub OnScumLoadButtonClicked()
+        If LoadGame(SaveSlot.ScumSlot) Then
+            ShowState(GameState.Neutral)
+        End If
     End Sub
 
     Private Sub OnEmbarkButtonClicked()
@@ -41,6 +75,7 @@
     End Sub
 
     Friend Overrides Sub UpdateView()
-        'nada
+        scumLoadButton.Enabled = SaveSlot.ScumSlot.ToDescriptor.SaveExists
+        loadButton.Enabled = SaveSlots.Descriptors.Any(Function(x) x.Value.SaveExists)
     End Sub
 End Class

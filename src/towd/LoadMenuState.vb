@@ -1,7 +1,4 @@
-﻿Imports System.IO
-Imports System.Text.Json
-
-Friend Class SaveMenuState
+﻿Friend Class LoadMenuState
     Inherits ChildView
     Private ReadOnly saveSlotListView As ListView
 
@@ -10,7 +7,7 @@ Friend Class SaveMenuState
         Dim titleLabel As New Label With
             {
                 .Width = [Dim].Fill,
-                .Text = "Save Menu (Esc to cancel)",
+                .Text = "Load Menu (Esc to cancel)",
                 .TextAlignment = TextAlignment.Centered
             }
         Add(titleLabel)
@@ -20,22 +17,19 @@ Friend Class SaveMenuState
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }
-        saveSlotListView.SetSource(SaveSlots.Descriptors.Values.ToList)
         AddHandler saveSlotListView.OpenSelectedItem, AddressOf OnSaveSlotListViewOpenSelectedItem
         Add(saveSlotListView)
     End Sub
 
     Private Sub OnSaveSlotListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim listItem = CType(args.Value, ISaveSlot)
-        If listItem.SaveExists Then
-            If MessageBox.Query("Confirm Overwrite?", "Are you sure you want to overwrite the save slot?", "No", "Yes") = 0 Then
-                Return
-            End If
+        If LoadGame(listItem.SaveSlot) Then
+            ShowState(GameState.Neutral)
         End If
-        SaveGame(listItem.SaveSlot)
     End Sub
 
     Friend Overrides Sub UpdateView()
+        saveSlotListView.SetSource(SaveSlots.Descriptors.Values.Where(Function(x) x.SaveExists).ToList)
     End Sub
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)

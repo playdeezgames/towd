@@ -23,11 +23,18 @@
                 .Y = Pos.Bottom(continueButton) + 1
             }
         AddHandler scumSaveButton.Clicked, AddressOf OnScumSaveButtonClicked
+        Dim scumLoadButton As New Button With
+            {
+                .Text = "Scum Load Game",
+                .X = Pos.Center,
+                .Y = Pos.Bottom(scumSaveButton) + 1
+            }
+        AddHandler scumLoadButton.Clicked, AddressOf OnScumLoadButtonClicked
         Dim saveButton As New Button With
             {
                 .Text = "Save Game",
                 .X = Pos.Center,
-                .Y = Pos.Bottom(scumSaveButton) + 1
+                .Y = Pos.Bottom(scumLoadButton) + 1
             }
         AddHandler saveButton.Clicked, AddressOf OnSaveButtonClicked
         Dim abandonButton As New Button With
@@ -37,11 +44,17 @@
                 .Y = Pos.Bottom(saveButton) + 1
             }
         AddHandler abandonButton.Clicked, AddressOf OnAbandonButtonClicked
-        Add(titleLabel, continueButton, scumSaveButton, saveButton, abandonButton)
+        Add(titleLabel, continueButton, scumSaveButton, scumLoadButton, saveButton, abandonButton)
+    End Sub
+
+    Private Sub OnScumLoadButtonClicked()
+        If LoadGame(SaveSlot.ScumSlot) Then
+            ShowState(GameState.Neutral)
+        End If
     End Sub
 
     Private Sub OnScumSaveButtonClicked()
-        SaveSlot.ScumSlot.ToDescriptor.SaveGame(World)
+        SaveGame(SaveSlot.ScumSlot)
         MessageBox.Query("Game Saved!", "You saved the game to the scum slot!", "Ok")
     End Sub
 

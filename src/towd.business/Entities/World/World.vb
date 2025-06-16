@@ -10,17 +10,17 @@ Public Class World
 
     Public Property Avatar As ICharacter Implements IWorld.Avatar
         Get
-            If worldData.AvatarId.HasValue Then
-                Return New Character(worldData, worldData.AvatarId.Value)
+            If WorldData.AvatarId.HasValue Then
+                Return New Character(WorldData, WorldData.AvatarId.Value)
             Else
                 Return Nothing
             End If
         End Get
         Set(value As ICharacter)
             If value IsNot Nothing Then
-                worldData.AvatarId = value.Id
+                WorldData.AvatarId = value.Id
             Else
-                worldData.AvatarId = Nothing
+                WorldData.AvatarId = Nothing
             End If
         End Set
     End Property
@@ -46,12 +46,6 @@ Public Class World
         End Get
     End Property
 
-    Public ReadOnly Property Data As WorldData Implements IWorld.Data
-        Get
-            Return WorldData
-        End Get
-    End Property
-
     Public Sub Initialize() Implements IWorld.Initialize
         Const MapColumns = 9
         Const MapRows = 9
@@ -60,7 +54,7 @@ Public Class World
     End Sub
 
     Public Sub Abandon() Implements IWorld.Abandon
-        With worldData
+        With WorldData
             .AvatarId = Nothing
             .Characters.Clear()
         End With

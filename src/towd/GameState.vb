@@ -14,4 +14,5 @@
     Deeds
     SkillMenu
     SaveMenu
+    LoadMenu
 End Enum
