@@ -12,4 +12,5 @@ Public Interface IWorld
     ReadOnly Property Characters As IEnumerable(Of ICharacter)
     ReadOnly Property Maps As IEnumerable(Of IMap)
     ReadOnly Property Items As IEnumerable(Of IItem)
+    ReadOnly Property Data As WorldData
 End Interface

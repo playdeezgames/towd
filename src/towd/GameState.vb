@@ -13,4 +13,5 @@
     MoveMenu
     Deeds
     SkillMenu
+    SaveMenu
 End Enum

@@ -16,14 +16,25 @@
                 .IsDefault = True
             }
         AddHandler continueButton.Clicked, AddressOf OnContinueButtonClicked
+        Dim saveButton As New Button With
+            {
+                .Text = "Save Game",
+                .X = Pos.Center,
+                .Y = Pos.Bottom(continueButton) + 1
+            }
+        AddHandler saveButton.Clicked, AddressOf OnSaveButtonClicked
         Dim abandonButton As New Button With
             {
                 .Text = "Abandon Game",
                 .X = Pos.Center,
-                .Y = Pos.Bottom(continueButton) + 1
+                .Y = Pos.Bottom(saveButton) + 1
             }
         AddHandler abandonButton.Clicked, AddressOf OnAbandonButtonClicked
-        Add(titleLabel, continueButton, abandonButton)
+        Add(titleLabel, continueButton, saveButton, abandonButton)
+    End Sub
+
+    Private Sub OnSaveButtonClicked()
+        ShowState(GameState.SaveMenu)
     End Sub
 
     Private Sub OnAbandonButtonClicked()

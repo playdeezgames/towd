@@ -46,6 +46,12 @@ Public Class World
         End Get
     End Property
 
+    Public ReadOnly Property Data As WorldData Implements IWorld.Data
+        Get
+            Return WorldData
+        End Get
+    End Property
+
     Public Sub Initialize() Implements IWorld.Initialize
         Const MapColumns = 9
         Const MapRows = 9
