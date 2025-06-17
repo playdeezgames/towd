@@ -28,7 +28,7 @@ Friend Class SaveMenuState
     Private Sub OnSaveSlotListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim listItem = CType(args.Value, ISaveSlot)
         If listItem.SaveExists Then
-            If MessageBox.Query("Confirm Overwrite?", "Are you sure you want to overwrite the save slot?", "No", "Yes") = 0 Then
+            If MessageBox.Query("Confirm Overwrite?", $"Are you sure you want to overwrite {listItem.DisplayName}?", "No", "Yes") = 0 Then
                 Return
             End If
         End If
