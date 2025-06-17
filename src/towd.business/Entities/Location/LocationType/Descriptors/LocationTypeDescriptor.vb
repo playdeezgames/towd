@@ -13,6 +13,6 @@ Friend MustInherit Class LocationTypeDescriptor
     Public MustOverride Sub Initialize(location As ILocation) Implements ILocationType.Initialize
     Public MustOverride Sub AdvanceTime(location As ILocation, amount As Integer) Implements ILocationType.AdvanceTime
     Public Overridable Function Describe(location As ILocation) As String Implements ILocationType.Describe
-        Return Name
+        Return $"[{location.Column},{location.Row}]{Name}"
     End Function
 End Class
