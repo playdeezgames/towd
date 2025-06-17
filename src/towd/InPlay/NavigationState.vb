@@ -10,15 +10,33 @@ Friend Class NavigationState
     Const DEEDS_TEXT = "Deeds..."
     Const MENU_TEXT = "Game Menu..."
     Const SKILLS_TEXT = "Skills..."
+    Private ReadOnly topicTable As IReadOnlyDictionary(Of String, Topic) =
+        New Dictionary(Of String, Topic) From
+        {
+            {DEEDS_TEXT, Topic.NavigationDeeds},
+            {MENU_TEXT, Topic.NavigationGameMenu},
+            {INVENTORY_TEXT, Topic.NavigationInventory},
+            {MOVE_TEXT, Topic.NavigationMove},
+            {SKILLS_TEXT, Topic.NavigationSkills},
+            {VERB_TEXT, Topic.NavigationVerb}
+        }
     Private ReadOnly locationLabel As Label
     Private ReadOnly characterLabel As Label
     Private ReadOnly commandListView As ListView
 
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
+        Dim titleLabel As New Label With
+            {
+                .Width = [Dim].Fill,
+                .Text = "Navigation (F1 for help)",
+                .TextAlignment = TextAlignment.Centered
+            }
+        Add(titleLabel)
         locationLabel = New Label With
             {
                 .Text = "(information about location)",
+                .Y = Pos.Bottom(titleLabel) + 1,
                 .TextAlignment = TextAlignment.Left,
                 .Width = [Dim].Percent(50),
                 .Height = [Dim].Percent(70)
@@ -28,6 +46,7 @@ Friend Class NavigationState
                 .Text = "(information about character)",
                 .TextAlignment = TextAlignment.Right,
                 .X = Pos.Right(locationLabel) + 1,
+                .Y = Pos.Bottom(titleLabel) + 1,
                 .Width = [Dim].Fill
             }
         commandListView = New ListView With
@@ -119,5 +138,14 @@ Friend Class NavigationState
         End If
 
         locationLabel.Text = builder.ToString
+    End Sub
+    Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
+        If args.KeyEvent.Key = Key.F1 Then
+            args.Handled = True
+            Dim currentIndex = commandListView.SelectedItem
+            Dim currentItem = commandListView.Source.ToList(currentIndex)
+            TopicState.Topic = topicTable(CStr(currentItem))
+            ShowState(GameState.Topic)
+        End If
     End Sub
 End Class

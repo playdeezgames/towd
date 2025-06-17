@@ -1,0 +1,5 @@
+﻿Public Interface ITopic
+    ReadOnly Property Topic As Topic
+    ReadOnly Property Title As String
+    ReadOnly Property Content As String
+End Interface

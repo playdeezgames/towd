@@ -19,6 +19,7 @@
         childViews.Add(GameState.SkillMenu, New SkillMenuState(Me))
         childViews.Add(GameState.SaveMenu, New SaveMenuState(Me))
         childViews.Add(GameState.LoadMenu, New LoadMenuState(Me))
+        childViews.Add(GameState.Topic, New TopicState(Me))
 
         ShowState(GameState.Splash)
     End Sub

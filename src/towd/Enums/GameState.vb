@@ -15,4 +15,5 @@
     SkillMenu
     SaveMenu
     LoadMenu
+    Topic
 End Enum
