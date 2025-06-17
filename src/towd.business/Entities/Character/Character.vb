@@ -138,6 +138,7 @@ Friend Class Character
         Dim descriptor = direction.ToDescriptor
         Dim nextLocation As ILocation = GetNextLocation(descriptor)
         If nextLocation IsNot Nothing Then
+            AddKnownLocation(nextLocation)
             AppendMessage($"You move {descriptor.Name}.")
             Location = nextLocation
             ChangeStatistic(StatisticType.Steps, 1)
