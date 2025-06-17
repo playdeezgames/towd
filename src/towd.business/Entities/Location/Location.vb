@@ -40,6 +40,20 @@ Friend Class Location
         End Get
     End Property
 
+    Public ReadOnly Property Neighbors As IReadOnlyDictionary(Of Direction, ILocation) Implements ILocation.Neighbors
+        Get
+            Dim result As New Dictionary(Of Direction, ILocation)
+            For Each descriptor In Directions.Descriptors
+                Dim neighborColumn = descriptor.Value.NextColumn(Column, Row)
+                Dim neighborRow = descriptor.Value.NextRow(Column, Row)
+                If neighborColumn >= 0 AndAlso neighborRow >= 0 AndAlso neighborColumn < Map.Columns AndAlso neighborRow < Map.Rows Then
+                    result.Add(descriptor.Key, Map.GetLocation(neighborColumn, neighborRow))
+                End If
+            Next
+            Return result
+        End Get
+    End Property
+
     Protected Overrides ReadOnly Property EntityData As LocationData
         Get
             Return WorldData.Locations(Id)

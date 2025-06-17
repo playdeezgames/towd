@@ -1,5 +1,6 @@
 ﻿Imports System.Text
 Imports towd.data
+Imports towd.business
 
 Friend Class NavigationState
     Inherits ChildView
@@ -102,8 +103,20 @@ Friend Class NavigationState
     Private Sub UpdateLocationLabel(character As business.ICharacter)
         Dim location = character.Location
         Dim builder As New StringBuilder
-        builder.AppendLine($"(X: {location.Column}, Y: {location.Row})")
         builder.AppendLine($"{location}")
+
+        Dim neighbors = location.Neighbors
+        If neighbors.Any Then
+            builder.AppendLine()
+            builder.AppendLine("Neighbors:")
+            For Each neighbor In neighbors
+                If character.KnowsLocation(neighbor.Value) Then
+                    builder.AppendLine($"{neighbor.Key.ToDescriptor.Name}: {neighbor.Value}")
+                Else
+                    builder.AppendLine($"{neighbor.Key.ToDescriptor.Name}: ????")
+                End If
+            Next
+        End If
 
         locationLabel.Text = builder.ToString
     End Sub

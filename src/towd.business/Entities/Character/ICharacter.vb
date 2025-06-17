@@ -33,4 +33,5 @@ Public Interface ICharacter
     Sub ReportChangeStatistic(statisticType As StatisticType, delta As Integer)
     Function CanAdvance(skillType As ISkillType) As Boolean
     Sub AddKnownLocation(location As ILocation)
+    Function KnowsLocation(location As ILocation) As Boolean
 End Interface

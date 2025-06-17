@@ -28,7 +28,6 @@
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }
-        directionListView.SetSource({NORTH_TEXT, EAST_TEXT, SOUTH_TEXT, WEST_TEXT}.ToList)
         AddHandler directionListView.OpenSelectedItem, AddressOf OnDirectionListViewOpenSelectedItem
         Add(directionListView)
     End Sub

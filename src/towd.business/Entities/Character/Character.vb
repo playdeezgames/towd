@@ -271,4 +271,8 @@ Friend Class Character
     Public Sub AddKnownLocation(location As ILocation) Implements ICharacter.AddKnownLocation
         EntityData.KnownLocations.Add(location.Id)
     End Sub
+
+    Public Function KnowsLocation(location As ILocation) As Boolean Implements ICharacter.KnowsLocation
+        Return EntityData.KnownLocations.Contains(location.Id)
+    End Function
 End Class
