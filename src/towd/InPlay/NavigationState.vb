@@ -1,4 +1,5 @@
-﻿Imports towd.data
+﻿Imports System.Text
+Imports towd.data
 
 Friend Class NavigationState
     Inherits ChildView
@@ -65,12 +66,15 @@ Friend Class NavigationState
     End Sub
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
-        Dim location = character.Location
-        locationLabel.Text = $"(X: {location.Column}, Y: {location.Row})
-{location}"
-        characterLabel.Text = $"Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}
-Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}
-XP: {character.GetStatistic(StatisticType.XP)}"
+
+        UpdateLocationLabel(character)
+
+        UpdateCharacterLabel(character)
+
+        UpdateCommandList(character)
+    End Sub
+
+    Private Sub UpdateCommandList(character As business.ICharacter)
         Dim commandList As New List(Of String) From
             {
                 MOVE_TEXT
@@ -85,5 +89,22 @@ XP: {character.GetStatistic(StatisticType.XP)}"
         commandList.Add(SKILLS_TEXT)
         commandList.Add(MENU_TEXT)
         commandListView.SetSource(commandList)
+    End Sub
+
+    Private Sub UpdateCharacterLabel(character As business.ICharacter)
+        Dim builder As New StringBuilder
+        builder.AppendLine($"Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}")
+        builder.AppendLine($"Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}")
+        builder.AppendLine($"XP: {character.GetStatistic(StatisticType.XP)}")
+        characterLabel.Text = builder.ToString
+    End Sub
+
+    Private Sub UpdateLocationLabel(character As business.ICharacter)
+        Dim location = character.Location
+        Dim builder As New StringBuilder
+        builder.AppendLine($"(X: {location.Column}, Y: {location.Row})")
+        builder.AppendLine($"{location}")
+
+        locationLabel.Text = builder.ToString
     End Sub
 End Class
