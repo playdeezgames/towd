@@ -266,4 +266,8 @@ Friend Class Character
     Public Function CanMove(direction As Direction) As Boolean Implements ICharacter.CanMove
         Return GetNextLocation(direction.ToDescriptor) IsNot Nothing
     End Function
+
+    Public Sub AddKnownLocation(location As ILocation) Implements ICharacter.AddKnownLocation
+        EntityData.KnownLocations.Add(location.Id)
+    End Sub
 End Class
