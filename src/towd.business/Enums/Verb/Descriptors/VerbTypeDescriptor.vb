@@ -1,13 +1,15 @@
 ﻿Public MustInherit Class VerbTypeDescriptor
     Implements IVerbType
-    Sub New(verbType As VerbType, name As String, timeTaken As Integer)
+    Sub New(verbType As VerbType, name As String, timeTaken As Integer, description As String)
         Me.VerbType = verbType
         Me.Name = name
         Me.TimeTaken = timeTaken
+        Me.Description = description
     End Sub
     Public ReadOnly Property VerbType As VerbType Implements IVerbType.VerbType
     Public ReadOnly Property Name As String Implements IVerbType.Name
     Public ReadOnly Property TimeTaken As Integer Implements IVerbType.TimeTaken
+    Public ReadOnly Property Description As String Implements IVerbType.Description
 
     Public Sub Perform(character As ICharacter) Implements IVerbType.Perform
         character.LastVerb = VerbType

@@ -2,7 +2,9 @@
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Craft, "Craft", 0)
+        MyBase.New(VerbType.Craft, "Craft", 0, "Turn junk into treasure. 
+Combine items from your pack to make tools or gear. 
+A steady hand and some luck can turn twigs into a lifeline—fail, and you’re stuck with splinters.")
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

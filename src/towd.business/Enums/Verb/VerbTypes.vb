@@ -16,7 +16,7 @@ Public Module VerbTypes
             New FishVerbTypeDescriptor()
         }.ToDictionary(Function(x) x.VerbType, Function(x) x)
     <Extension>
-    Friend Function ToDescriptor(verbType As VerbType) As IVerbType
+    Public Function ToDescriptor(verbType As VerbType) As IVerbType
         Return Descriptors(verbType)
     End Function
 End Module

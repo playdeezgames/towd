@@ -4,7 +4,9 @@ Friend Class DigVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Dig, "Dig", 1)
+        MyBase.New(VerbType.Dig, "Dig", 1, "Burrow into the earth for hidden goods. 
+Unearth roots, water, or relics with each shovel thrust. 
+Your digging skill decides the haul—poor luck digs you a grave instead.")
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

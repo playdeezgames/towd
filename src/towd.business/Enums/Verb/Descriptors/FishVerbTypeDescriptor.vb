@@ -4,7 +4,9 @@ Friend Class FishVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Fish, "Fish", 1)
+        MyBase.New(VerbType.Fish, "Fish", 1, "Cast a line into murky waters. 
+Reel in a meal if your skill holds—poor attempts might snag boots or worse. 
+Patience pays off, or you dine on disappointment.")
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

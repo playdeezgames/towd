@@ -17,6 +17,7 @@
         contentLabel = New Label With
             {
                 .Width = [Dim].Fill,
+                .Height = [Dim].Fill,
                 .Y = Pos.Bottom(titleLabel) + 1,
                 .Text = "????",
                 .TextAlignment = TextAlignment.Left

@@ -4,7 +4,9 @@ Friend Class ForageVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Forage, "Forage", 1)
+        MyBase.New(VerbType.Forage, "Forage", 1, "Scour the wild for sustenance. 
+Search grass, trees, or dirt for edible scraps or resources. 
+Success hinges on your foraging skill—low rolls might yield a mouthful of regret.")
     End Sub
 
     Private ReadOnly forageTable As IReadOnlyDictionary(Of LocationType, ItemType) =

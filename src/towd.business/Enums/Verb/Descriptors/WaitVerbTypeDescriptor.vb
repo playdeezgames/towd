@@ -2,7 +2,9 @@
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Wait, "Wait", 1)
+        MyBase.New(VerbType.Wait, "Wait", 1, "Bide your time in the Wastes. 
+Rest to recover health or wait for better odds, but danger lurks. 
+Every moment tests your patience and luck.")
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

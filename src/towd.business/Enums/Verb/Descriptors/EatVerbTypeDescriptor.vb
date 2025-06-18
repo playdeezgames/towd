@@ -2,8 +2,8 @@
     Inherits VerbTypeDescriptor
     Private ReadOnly itemType As IItemType
 
-    Protected Sub New(verbType As VerbType, name As String, timeTaken As Integer, itemType As IItemType)
-        MyBase.New(verbType, name, timeTaken)
+    Protected Sub New(verbType As VerbType, name As String, timeTaken As Integer, itemType As IItemType, description As String)
+        MyBase.New(verbType, name, timeTaken, description)
         Me.itemType = itemType
     End Sub
 

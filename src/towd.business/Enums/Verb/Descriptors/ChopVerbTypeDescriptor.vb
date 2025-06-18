@@ -4,7 +4,9 @@ Friend Class ChopVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Chop, "Chop", 1)
+        MyBase.New(VerbType.Chop, "Chop", 1, "Hack at the environment with purpose. 
+Cleave wood or break obstacles, but watch your stamina. 
+Higher chopping skill means faster cuts—botch it, and you might lose a finger.")
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

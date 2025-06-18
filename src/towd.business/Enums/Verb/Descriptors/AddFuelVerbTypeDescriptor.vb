@@ -2,7 +2,9 @@
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.AddFuel, "Add Fuel", 1)
+        MyBase.New(VerbType.AddFuel, "Add Fuel", 1, "Keep the fire alive. 
+Toss wood or debris into your camp’s blaze to ward off the cold. 
+More fuel, more warmth—run out, and the night claims you.")
     End Sub
 
     Protected Overrides Sub OnPerform(character As ICharacter)

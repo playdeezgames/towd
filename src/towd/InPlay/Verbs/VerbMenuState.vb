@@ -4,6 +4,19 @@ Imports towd.data
 Friend Class VerbMenuState
     Inherits ChildView
     Private ReadOnly verbListView As ListView
+    Private ReadOnly topicTable As IReadOnlyDictionary(Of VerbType, Topic) =
+        New Dictionary(Of VerbType, Topic) From
+        {
+            {VerbType.Forage, Topic.VerbTypeForage},
+            {VerbType.Craft, Topic.VerbTypeCraft},
+            {VerbType.Chop, Topic.VerbTypeChop},
+            {VerbType.Dig, Topic.VerbTypeDig},
+            {VerbType.EatGrub, Topic.VerbTypeEatGrub},
+            {VerbType.AddFuel, Topic.VerbTypeAddFuel},
+            {VerbType.Wait, Topic.VerbTypeWait},
+            {VerbType.Fish, Topic.VerbTypeFish},
+            {VerbType.EatFish, Topic.VerbTypeEatFish}
+        }
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
         Dim titleLabel As New Label With
@@ -47,6 +60,12 @@ Friend Class VerbMenuState
             args.Handled = True
             World.Avatar.SetFlag(FlagType.VerbMenu, False)
             ShowState(GameState.Neutral)
+        ElseIf args.KeyEvent.Key = Key.F1 Then
+            args.Handled = True
+            Dim currentIndex = verbListView.SelectedItem
+            Dim currentItem = verbListView.Source.ToList(currentIndex)
+            TopicState.Topic = topicTable(CType(currentItem, VerbMenuListViewItem).VerbType.VerbType)
+            ShowState(GameState.Topic)
         End If
     End Sub
 End Class
