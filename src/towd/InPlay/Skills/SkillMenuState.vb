@@ -55,6 +55,10 @@ Friend Class SkillMenuState
     End Sub
 
     Private Sub OnAllListViewOpenSelectedItem(args As ListViewItemEventArgs)
+        Dim skillType = CType(args.Value, SkillMenuListViewItem).SkillType
+        Dim character = World.Avatar
+        skillType.Advance(character)
+        CloseWindow()
     End Sub
 
     Private Sub OnAdvanceableListViewOpenSelectedItem(args As ListViewItemEventArgs)
