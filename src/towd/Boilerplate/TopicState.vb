@@ -14,15 +14,28 @@
                 .TextAlignment = TextAlignment.Centered
             }
         Add(titleLabel)
+
         contentLabel = New Label With
             {
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill,
+                .Height = [Dim].Fill - 3,
                 .Y = Pos.Bottom(titleLabel) + 1,
                 .Text = "????",
                 .TextAlignment = TextAlignment.Left
             }
         Add(contentLabel)
+
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center(),
+                .Y = Pos.Bottom(contentLabel) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf OnCloseButtonClicked
+        Add(closeButton)
+    End Sub
+
+    Private Sub OnCloseButtonClicked()
+        ShowState(GameState.Neutral)
     End Sub
 
     Friend Overrides Sub UpdateView()
