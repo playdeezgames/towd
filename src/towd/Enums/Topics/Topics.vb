@@ -3,8 +3,51 @@ Imports towd.business
 Imports towd.data
 
 Module Topics
-    Public ReadOnly Descriptors As IReadOnlyDictionary(Of Topic, ITopic) =
-        New List(Of ITopic) From
+    Public ReadOnly VerbTypeTopicTable As IReadOnlyDictionary(Of VerbType, Topic) =
+        New Dictionary(Of VerbType, Topic) From
+        {
+            {VerbType.Forage, Topic.VerbTypeForage},
+            {VerbType.Craft, Topic.VerbTypeCraft},
+            {VerbType.Chop, Topic.VerbTypeChop},
+            {VerbType.Dig, Topic.VerbTypeDig},
+            {VerbType.EatGrub, Topic.VerbTypeEatGrub},
+            {VerbType.AddFuel, Topic.VerbTypeAddFuel},
+            {VerbType.Wait, Topic.VerbTypeWait},
+            {VerbType.Fish, Topic.VerbTypeFish},
+            {VerbType.EatFish, Topic.VerbTypeEatFish}
+        }
+    Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of ItemType, Topic) =
+        New Dictionary(Of ItemType, Topic) From
+        {
+            {ItemType.PlantFiber, Topic.ItemTypePlantFiber},
+            {ItemType.Stick, Topic.ItemTypeStick},
+            {ItemType.Rock, Topic.ItemTypeRock},
+            {ItemType.Twine, Topic.ItemTypeTwine},
+            {ItemType.SharpRock, Topic.ItemTypeSharpRock},
+            {ItemType.Hatchet, Topic.ItemTypeHatchet},
+            {ItemType.Log, Topic.ItemTypeLog},
+            {ItemType.Hammer, Topic.ItemTypeHammer},
+            {ItemType.Plank, Topic.ItemTypePlank},
+            {ItemType.SharpStick, Topic.ItemTypeSharpStick},
+            {ItemType.Grub, Topic.ItemTypeGrub},
+            {ItemType.CookingFire, Topic.ItemTypeCookingFire},
+            {ItemType.CookedGrub, Topic.ItemTypeCookedGrub},
+            {ItemType.Clay, Topic.ItemTypeClay},
+            {ItemType.Charcoal, Topic.ItemTypeCharcoal},
+            {ItemType.UnfiredBrick, Topic.ItemTypeUnfiredBrick},
+            {ItemType.Brick, Topic.ItemTypeBrick},
+            {ItemType.FishingNet, Topic.ItemTypeFishingNet},
+            {ItemType.RawFish, Topic.ItemTypeRawFish},
+            {ItemType.RawFishFilet, Topic.ItemTypeRawFishFilet},
+            {ItemType.FishHead, Topic.ItemTypeFishHead},
+            {ItemType.FishGuts, Topic.ItemTypeFishGuts},
+            {ItemType.Knife, Topic.ItemTypeKnife},
+            {ItemType.Blade, Topic.ItemTypeBlade},
+            {ItemType.CookedFishFilet, Topic.ItemTypeCookedFishFilet},
+            {ItemType.Furnace, Topic.ItemTypeFurnace}
+        }
+    Private Function CreateDescriptors() As IReadOnlyDictionary(Of Topic, ITopic)
+        Dim topicTable = New List(Of ITopic) From
         {
             New TopicDescriptor(Topic.NavigationDeeds, "Deeds", "Your tale grows with every scrape and scavenge. 
 Review your triumphs and failures, etched in the dust of TOWD."),
@@ -57,6 +100,9 @@ Forage, dig, chop—choose your labor and test your skills against the wild’s 
             New ItemTypeTopicDescriptor(Topic.ItemTypeCookedFishFilet, ItemType.CookedFishFilet),
             New ItemTypeTopicDescriptor(Topic.ItemTypeFurnace, ItemType.Furnace)
         }.ToDictionary(Function(x) x.Topic, Function(x) x)
+        Return topicTable
+    End Function
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of Topic, ITopic) = CreateDescriptors()
     <Extension>
     Public Function ToDescriptor(topic As Topic) As ITopic
         Return Descriptors(topic)

@@ -4,36 +4,6 @@ Imports towd.data
 Friend Class InventoryState
     Inherits ChildView
     Private ReadOnly itemTypeListView As ListView
-    Private ReadOnly topicTable As IReadOnlyDictionary(Of ItemType, Topic) =
-        New Dictionary(Of ItemType, Topic) From
-        {
-            {ItemType.PlantFiber, Topic.ItemTypePlantFiber},
-            {ItemType.Stick, Topic.ItemTypeStick},
-            {ItemType.Rock, Topic.ItemTypeRock},
-            {ItemType.Twine, Topic.ItemTypeTwine},
-            {ItemType.SharpRock, Topic.ItemTypeSharpRock},
-            {ItemType.Hatchet, Topic.ItemTypeHatchet},
-            {ItemType.Log, Topic.ItemTypeLog},
-            {ItemType.Hammer, Topic.ItemTypeHammer},
-            {ItemType.Plank, Topic.ItemTypePlank},
-            {ItemType.SharpStick, Topic.ItemTypeSharpStick},
-            {ItemType.Grub, Topic.ItemTypeGrub},
-            {ItemType.CookingFire, Topic.ItemTypeCookingFire},
-            {ItemType.CookedGrub, Topic.ItemTypeCookedGrub},
-            {ItemType.Clay, Topic.ItemTypeClay},
-            {ItemType.Charcoal, Topic.ItemTypeCharcoal},
-            {ItemType.UnfiredBrick, Topic.ItemTypeUnfiredBrick},
-            {ItemType.Brick, Topic.ItemTypeBrick},
-            {ItemType.FishingNet, Topic.ItemTypeFishingNet},
-            {ItemType.RawFish, Topic.ItemTypeRawFish},
-            {ItemType.RawFishFilet, Topic.ItemTypeRawFishFilet},
-            {ItemType.FishHead, Topic.ItemTypeFishHead},
-            {ItemType.FishGuts, Topic.ItemTypeFishGuts},
-            {ItemType.Knife, Topic.ItemTypeKnife},
-            {ItemType.Blade, Topic.ItemTypeBlade},
-            {ItemType.CookedFishFilet, Topic.ItemTypeCookedFishFilet},
-            {ItemType.Furnace, Topic.ItemTypeFurnace}
-        }
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
         Dim titleLabel As New Label With
@@ -71,7 +41,7 @@ Friend Class InventoryState
             args.Handled = True
             Dim currentIndex = itemTypeListView.SelectedItem
             Dim currentItem = itemTypeListView.Source.ToList(currentIndex)
-            TopicState.Topic = topicTable(CType(currentItem, IItemStack).ItemType.ItemType)
+            TopicState.Topic = ItemTypeTopicTable(CType(currentItem, IItemStack).ItemType.ItemType)
             ShowState(GameState.Topic)
         End If
     End Sub
