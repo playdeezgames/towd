@@ -8,14 +8,13 @@ Public MustInherit Class SkillTypeDescriptor
         Me.Name = name
         Me.StatisticType = statisticType
     End Sub
-
     Public ReadOnly Property SkillType As SkillType Implements ISkillType.SkillType
-
     Public ReadOnly Property Name As String Implements ISkillType.Name
-
     Public ReadOnly Property StatisticType As StatisticType Implements ISkillType.StatisticType
     Public MustOverride Function CanAdvance(character As ICharacter) As Boolean Implements ISkillType.CanAdvance
     Public Overrides Function ToString() As String
         Return Name
     End Function
+    Public MustOverride Function Advance(character As ICharacter) As Boolean Implements ISkillType.Advance
+    Public MustOverride Function GetDescription(character As ICharacter) As String Implements ISkillType.GetDescription
 End Class

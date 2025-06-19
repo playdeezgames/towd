@@ -73,13 +73,13 @@ Friend Class SkillMenuState
     End Sub
 
     Friend Overrides Sub UpdateView()
-        Dim advanceable As New List(Of ISkillType)
-        Dim allSkills As New List(Of ISkillType)
+        Dim advanceable As New List(Of SkillMenuListViewItem)
+        Dim allSkills As New List(Of SkillMenuListViewItem)
         Dim character = World.Avatar
         For Each descriptor In SkillTypes.Descriptors.Values.OrderBy(Function(x) x.Name)
-            allSkills.Add(descriptor)
+            allSkills.Add(New SkillMenuListViewItem(descriptor, character))
             If character.CanAdvance(descriptor) Then
-                advanceable.Add(descriptor)
+                advanceable.Add(New SkillMenuListViewItem(descriptor, character))
             End If
         Next
         advanceableListView.SetSource(advanceable)

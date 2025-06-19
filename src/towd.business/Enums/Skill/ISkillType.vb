@@ -5,4 +5,6 @@ Public Interface ISkillType
     ReadOnly Property Name As String
     ReadOnly Property StatisticType As StatisticType
     Function CanAdvance(character As ICharacter) As Boolean
+    Function Advance(character As ICharacter) As Boolean
+    Function GetDescription(character As ICharacter) As String
 End Interface
