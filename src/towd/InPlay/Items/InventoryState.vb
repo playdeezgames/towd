@@ -17,10 +17,19 @@ Friend Class InventoryState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill
+                .Height = [Dim].Fill - 3
             }
         AddHandler itemTypeListView.OpenSelectedItem, AddressOf OnItemTypeListViewOpenSelectedItem
         Add(itemTypeListView)
+
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center,
+                .Y = Pos.Bottom(itemTypeListView) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf CloseWindow
+        Add(closeButton)
+
     End Sub
 
     Private Sub OnItemTypeListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -32,11 +41,15 @@ Friend Class InventoryState
         End If
     End Sub
 
+    Private Sub CloseWindow()
+        World.Avatar.SetFlag(FlagType.Inventory, False)
+        ShowState(GameState.Neutral)
+    End Sub
+
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
-            World.Avatar.SetFlag(FlagType.Inventory, False)
-            ShowState(GameState.Neutral)
+            CloseWindow()
         ElseIf args.KeyEvent.Key = Key.F1 Then
             args.Handled = True
             Dim currentIndex = itemTypeListView.SelectedItem

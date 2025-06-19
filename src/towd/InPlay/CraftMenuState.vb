@@ -17,10 +17,19 @@ Friend Class CraftMenuState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill
+                .Height = [Dim].Fill - 3
             }
         AddHandler recipeListView.OpenSelectedItem, AddressOf OnRecipeListViewOpenSelectedItem
         Add(recipeListView)
+
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center,
+                .Y = Pos.Bottom(recipeListView) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf CloseWindow
+        Add(closeButton)
+
     End Sub
 
     Private Sub OnRecipeListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -48,8 +57,12 @@ Friend Class CraftMenuState
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
-            World.Avatar.SetFlag(towd.data.FlagType.CraftMenu, False)
-            ShowState(GameState.Neutral)
+            CloseWindow()
         End If
+    End Sub
+
+    Private Sub CloseWindow()
+        World.Avatar.SetFlag(towd.data.FlagType.CraftMenu, False)
+        ShowState(GameState.Neutral)
     End Sub
 End Class

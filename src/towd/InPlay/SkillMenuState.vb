@@ -29,7 +29,7 @@ Friend Class SkillMenuState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill
+                .Height = [Dim].Fill - 3
             }
         Dim advanceableTab As New TabView.Tab With
             {
@@ -44,6 +44,14 @@ Friend Class SkillMenuState
         tabView.AddTab(allTab, False)
         tabView.AddTab(advanceableTab, False)
         Add(tabView)
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center,
+                .Y = Pos.Bottom(tabView) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf CloseWindow
+        Add(closeButton)
+
     End Sub
 
     Private Sub OnAllListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -55,9 +63,13 @@ Friend Class SkillMenuState
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
-            World.Avatar.SetFlag(towd.data.FlagType.SkillMenu, False)
-            ShowState(GameState.Neutral)
+            CloseWindow()
         End If
+    End Sub
+
+    Private Sub CloseWindow()
+        World.Avatar.SetFlag(towd.data.FlagType.SkillMenu, False)
+        ShowState(GameState.Neutral)
     End Sub
 
     Friend Overrides Sub UpdateView()

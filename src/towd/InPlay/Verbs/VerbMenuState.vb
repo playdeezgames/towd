@@ -17,15 +17,29 @@ Friend Class VerbMenuState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill
+                .Height = [Dim].Fill - 3
             }
         AddHandler verbListView.OpenSelectedItem, AddressOf OnVerbListViewOpenSelectedItem
         Add(verbListView)
+
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center,
+                .Y = Pos.Bottom(verbListView) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf CloseWindow
+        Add(closeButton)
+
     End Sub
 
     Private Sub OnVerbListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim listItem = CType(args.Value, VerbMenuListViewItem)
         listItem.VerbType.Perform(World.Avatar)
+        ShowState(GameState.Neutral)
+    End Sub
+
+    Private Sub CloseWindow()
+        World.Avatar.SetFlag(FlagType.VerbMenu, False)
         ShowState(GameState.Neutral)
     End Sub
 
@@ -45,8 +59,7 @@ Friend Class VerbMenuState
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
-            World.Avatar.SetFlag(FlagType.VerbMenu, False)
-            ShowState(GameState.Neutral)
+            CloseWindow()
         ElseIf args.KeyEvent.Key = Key.F1 Then
             args.Handled = True
             Dim currentIndex = verbListView.SelectedItem

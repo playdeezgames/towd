@@ -18,10 +18,19 @@ Friend Class ItemStackState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill
+                .Height = [Dim].Fill - 3
             }
         AddHandler itemStackListView.OpenSelectedItem, AddressOf OnItemStackListViewOpenSelectedItem
         Add(itemStackListView)
+
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center,
+                .Y = Pos.Bottom(itemStackListView) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf CloseWindow
+        Add(closeButton)
+
     End Sub
 
     Private Sub OnItemStackListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -37,8 +46,12 @@ Friend Class ItemStackState
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
-            World.Avatar.CurrentItemType = Nothing
-            ShowState(GameState.Neutral)
+            CloseWindow()
         End If
+    End Sub
+
+    Private Sub CloseWindow()
+        World.Avatar.CurrentItemType = Nothing
+        ShowState(GameState.Neutral)
     End Sub
 End Class

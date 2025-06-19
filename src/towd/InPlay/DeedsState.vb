@@ -29,7 +29,7 @@ Friend Class DeedsState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill
+                .Height = [Dim].Fill - 3
             }
         Dim availableTab As New TabView.Tab With
             {
@@ -44,6 +44,15 @@ Friend Class DeedsState
         tabView.AddTab(availableTab, False)
         tabView.AddTab(doneTab, False)
         Add(tabView)
+
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center,
+                .Y = Pos.Bottom(tabView) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf CloseWindow
+        Add(closeButton)
+
     End Sub
 
     Private Sub OnDoneListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -59,8 +68,12 @@ Friend Class DeedsState
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
-            ShowState(GameState.Neutral)
+            CloseWindow()
         End If
+    End Sub
+
+    Private Sub CloseWindow()
+        ShowState(GameState.Neutral)
     End Sub
 
     Friend Overrides Sub UpdateView()

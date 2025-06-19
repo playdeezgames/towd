@@ -26,11 +26,20 @@
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill
+                .Height = [Dim].Fill - 3
             }
         AddHandler directionListView.OpenSelectedItem, AddressOf OnDirectionListViewOpenSelectedItem
         Add(directionListView)
+
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center,
+                .Y = Pos.Bottom(directionListView) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf CloseWindow
+        Add(closeButton)
     End Sub
+
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
@@ -48,6 +57,10 @@
         Dim command = CStr(args.Value)
         Dim direction = directionTable(command)
         World.Avatar.Move(direction)
+        CloseWindow()
+    End Sub
+
+    Private Sub CloseWindow()
         World.Avatar.SetFlag(towd.data.FlagType.MoveMenu, False)
         ShowState(GameState.Neutral)
     End Sub
