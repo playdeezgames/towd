@@ -2,7 +2,8 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.CookedFishFilet, "Cooked Fish Filet", True)
+        MyBase.New(data.ItemType.CookedFishFilet, "Cooked Fish Filet", True, "A grilled fish slice. 
+Eat it to restore vigor—tastes of triumph, if you cooked it right.")
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

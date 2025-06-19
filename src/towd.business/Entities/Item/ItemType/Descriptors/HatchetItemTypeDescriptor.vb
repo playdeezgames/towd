@@ -2,7 +2,9 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Hatchet, "Hatchet", False)
+        MyBase.New(data.ItemType.Hatchet, "Hatchet", False, "A sturdy chopping blade. 
+Hew wood or foes with precision. 
+Keep it sharp to survive the Wastes.")
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

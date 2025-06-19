@@ -2,7 +2,9 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Stick, "Stick", True)
+        MyBase.New(data.ItemType.Stick, "Stick", True, "A simple branch from the Wastes. 
+Strike with it, fuel a fire, or craft something better. 
+Its worth depends on your ingenuity.")
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

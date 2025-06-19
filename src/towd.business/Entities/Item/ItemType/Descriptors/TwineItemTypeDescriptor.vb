@@ -2,7 +2,9 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Twine, "Twine", True)
+        MyBase.New(data.ItemType.Twine, "Twine", True, "Rope twisted from plant fibers. 
+Bind tools, mend gear, or rig a trap. 
+Weak alone, but strong in purpose.")
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

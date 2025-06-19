@@ -2,7 +2,10 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.FishingNet, "Fishing Net", False)
+        MyBase.New(data.ItemType.FishingNet, "Fishing Net", False, "A woven trap for the waters. 
+Cast it to catch fish—skill and luck determine your haul.
+Also good for making stockings.
+Or so I'm told.")
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

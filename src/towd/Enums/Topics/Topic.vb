@@ -14,4 +14,30 @@
     VerbTypeWait
     VerbTypeFish
     VerbTypeEatFish
+    ItemTypePlantFiber
+    ItemTypeStick
+    ItemTypeRock
+    ItemTypeTwine
+    ItemTypeSharpRock
+    ItemTypeHatchet
+    ItemTypeLog
+    ItemTypeHammer
+    ItemTypePlank
+    ItemTypeSharpStick
+    ItemTypeGrub
+    ItemTypeCookingFire
+    ItemTypeCookedGrub
+    ItemTypeClay
+    ItemTypeCharcoal
+    ItemTypeUnfiredBrick
+    ItemTypeBrick
+    ItemTypeFishingNet
+    ItemTypeRawFish
+    ItemTypeRawFishFilet
+    ItemTypeFishHead
+    ItemTypeFishGuts
+    ItemTypeKnife
+    ItemTypeBlade
+    ItemTypeCookedFishFilet
+    ItemTypeFurnace
 End Enum

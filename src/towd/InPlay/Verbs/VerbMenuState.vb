@@ -22,7 +22,7 @@ Friend Class VerbMenuState
         Dim titleLabel As New Label With
             {
                 .Width = [Dim].Fill,
-                .Text = "Verbs (Esc to cancel)",
+                .Text = "Verbs (Esc to cancel, F1 for help)",
                 .TextAlignment = TextAlignment.Centered
             }
         Add(titleLabel)

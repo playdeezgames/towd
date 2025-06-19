@@ -2,7 +2,8 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Blade, "Blade", True)
+        MyBase.New(data.ItemType.Blade, "Blade", True, "A refined steel edge. 
+Strike with power or precision—its edge is your life in the Wastes")
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

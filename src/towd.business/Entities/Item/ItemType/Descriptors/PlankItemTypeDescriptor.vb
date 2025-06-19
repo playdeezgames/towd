@@ -2,7 +2,8 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Plank, "Plank", True)
+        MyBase.New(data.ItemType.Plank, "Plank", True, "A smoothed wooden slab. 
+Build shelter or barter it—its utility grows with your skill.")
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)

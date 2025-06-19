@@ -7,4 +7,5 @@ Public Interface IItemType
     Sub AdvanceTime(item As IItem, amount As Integer)
     Function Describe(item As IItem) As String
     ReadOnly Property IsAggregate As Boolean
+    ReadOnly Property Description As String
 End Interface

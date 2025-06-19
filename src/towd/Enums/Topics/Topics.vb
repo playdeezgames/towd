@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports towd.business
+Imports towd.data
 
 Module Topics
     Public ReadOnly Descriptors As IReadOnlyDictionary(Of Topic, ITopic) =
@@ -28,7 +29,33 @@ Forage, dig, chop—choose your labor and test your skills against the wild’s 
             New VerbTypeTopicDescriptor(Topic.VerbTypeEatGrub, VerbType.EatGrub),
             New VerbTypeTopicDescriptor(Topic.VerbTypeFish, VerbType.Fish),
             New VerbTypeTopicDescriptor(Topic.VerbTypeForage, VerbType.Forage),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeWait, VerbType.Wait)
+            New VerbTypeTopicDescriptor(Topic.VerbTypeWait, VerbType.Wait),
+            New ItemTypeTopicDescriptor(Topic.ItemTypePlantFiber, ItemType.PlantFiber),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeStick, ItemType.Stick),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeRock, ItemType.Rock),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeTwine, ItemType.Twine),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeSharpRock, ItemType.SharpRock),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeHatchet, ItemType.Hatchet),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeLog, ItemType.Log),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeHammer, ItemType.Hammer),
+            New ItemTypeTopicDescriptor(Topic.ItemTypePlank, ItemType.Plank),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeSharpStick, ItemType.SharpStick),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeGrub, ItemType.Grub),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeCookingFire, ItemType.CookingFire),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeCookedGrub, ItemType.CookedGrub),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeClay, ItemType.Clay),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeCharcoal, ItemType.Charcoal),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeUnfiredBrick, ItemType.UnfiredBrick),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeBrick, ItemType.Brick),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeFishingNet, ItemType.FishingNet),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeRawFish, ItemType.RawFish),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeRawFishFilet, ItemType.RawFishFilet),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeFishHead, ItemType.FishHead),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeFishGuts, ItemType.FishGuts),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeKnife, ItemType.Knife),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeBlade, ItemType.Blade),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeCookedFishFilet, ItemType.CookedFishFilet),
+            New ItemTypeTopicDescriptor(Topic.ItemTypeFurnace, ItemType.Furnace)
         }.ToDictionary(Function(x) x.Topic, Function(x) x)
     <Extension>
     Public Function ToDescriptor(topic As Topic) As ITopic

@@ -2,7 +2,8 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Knife, "Knife", False)
+        MyBase.New(data.ItemType.Knife, "Knife", False, "A precise cutting edge. 
+Slice food or carve wood—keep it keen to cut your troubles.")
     End Sub
 
     Public Overrides Sub Initialize(item As IItem)
