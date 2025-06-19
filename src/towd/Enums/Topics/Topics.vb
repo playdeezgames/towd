@@ -63,43 +63,14 @@ Pick a direction, brave soul."),
             New TopicDescriptor(Topic.NavigationSkills, "Skills", "Hone your craft or weep in weakness. 
 Boost your foraging, digging, or chopping—every point could mean life or lunch."),
             New TopicDescriptor(Topic.NavigationVerb, "Verbs", "Actions speak louder than groans. 
-Forage, dig, chop—choose your labor and test your skills against the wild’s whims."),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeAddFuel, VerbType.AddFuel),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeChop, VerbType.Chop),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeCraft, VerbType.Craft),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeDig, VerbType.Dig),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeEatFish, VerbType.EatFish),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeEatGrub, VerbType.EatGrub),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeFish, VerbType.Fish),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeForage, VerbType.Forage),
-            New VerbTypeTopicDescriptor(Topic.VerbTypeWait, VerbType.Wait),
-            New ItemTypeTopicDescriptor(Topic.ItemTypePlantFiber, ItemType.PlantFiber),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeStick, ItemType.Stick),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeRock, ItemType.Rock),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeTwine, ItemType.Twine),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeSharpRock, ItemType.SharpRock),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeHatchet, ItemType.Hatchet),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeLog, ItemType.Log),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeHammer, ItemType.Hammer),
-            New ItemTypeTopicDescriptor(Topic.ItemTypePlank, ItemType.Plank),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeSharpStick, ItemType.SharpStick),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeGrub, ItemType.Grub),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeCookingFire, ItemType.CookingFire),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeCookedGrub, ItemType.CookedGrub),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeClay, ItemType.Clay),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeCharcoal, ItemType.Charcoal),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeUnfiredBrick, ItemType.UnfiredBrick),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeBrick, ItemType.Brick),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeFishingNet, ItemType.FishingNet),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeRawFish, ItemType.RawFish),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeRawFishFilet, ItemType.RawFishFilet),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeFishHead, ItemType.FishHead),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeFishGuts, ItemType.FishGuts),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeKnife, ItemType.Knife),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeBlade, ItemType.Blade),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeCookedFishFilet, ItemType.CookedFishFilet),
-            New ItemTypeTopicDescriptor(Topic.ItemTypeFurnace, ItemType.Furnace)
+Forage, dig, chop—choose your labor and test your skills against the wild’s whims.")
         }.ToDictionary(Function(x) x.Topic, Function(x) x)
+        For Each entry In VerbTypeTopicTable
+            topicTable.Add(entry.Value, New VerbTypeTopicDescriptor(entry.Value, entry.Key))
+        Next
+        For Each entry In ItemTypeTopicTable
+            topicTable.Add(entry.Value, New ItemTypeTopicDescriptor(entry.Value, entry.Key))
+        Next
         Return topicTable
     End Function
     Public ReadOnly Descriptors As IReadOnlyDictionary(Of Topic, ITopic) = CreateDescriptors()
