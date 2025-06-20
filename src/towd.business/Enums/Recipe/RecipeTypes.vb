@@ -1,8 +1,8 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports towd.data
 
-Module RecipeTypes
-    Friend ReadOnly Descriptors As IReadOnlyDictionary(Of RecipeType, IRecipeType) =
+Public Module RecipeTypes
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of RecipeType, IRecipeType) =
         New List(Of IRecipeType) From
         {
             New TwineRecipeTypeDescriptor(),

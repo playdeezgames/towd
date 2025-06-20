@@ -3,7 +3,8 @@ Imports towd.data
 
 Friend Class CraftMenuState
     Inherits ChildView
-    Private ReadOnly recipeListView As ListView
+    Private ReadOnly availableRecipeListView As ListView
+    Private ReadOnly allRecipeListView As ListView
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
         Dim titleLabel As New Label With
@@ -13,26 +14,66 @@ Friend Class CraftMenuState
                 .TextAlignment = TextAlignment.Centered
             }
         Add(titleLabel)
-        recipeListView = New ListView With
+
+        availableRecipeListView = New ListView With
+            {
+                .Width = [Dim].Fill,
+                .Height = [Dim].Fill
+            }
+        AddHandler availableRecipeListView.OpenSelectedItem, AddressOf OnAvailableRecipeListViewOpenSelectedItem
+
+        Dim availableRecipeListTab = New TabView.Tab With
+            {
+                .View = availableRecipeListView,
+                .Text = "Available"
+            }
+
+        allRecipeListView = New ListView With
+            {
+                .Width = [Dim].Fill,
+                .Height = [Dim].Fill
+            }
+        allRecipeListView.SetSource(RecipeTypes.Descriptors.Values.ToList)
+        AddHandler allRecipeListView.OpenSelectedItem, AddressOf OnAllRecipeListViewOpenSelectedItem
+
+        Dim allRecipeListTab = New TabView.Tab With
+            {
+                .View = allRecipeListView,
+                .Text = "All"
+            }
+
+        Dim tabView As New TabView With
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill - 3
             }
-        AddHandler recipeListView.OpenSelectedItem, AddressOf OnRecipeListViewOpenSelectedItem
-        Add(recipeListView)
+        tabView.AddTab(availableRecipeListTab, True)
+        tabView.AddTab(allRecipeListTab, False)
+        Add(tabView)
+
 
         Dim closeButton As New Button("Close") With
             {
                 .X = Pos.Center,
-                .Y = Pos.Bottom(recipeListView) + 1
+                .Y = Pos.Bottom(tabView) + 1
             }
         AddHandler closeButton.Clicked, AddressOf CloseWindow
         Add(closeButton)
 
     End Sub
 
-    Private Sub OnRecipeListViewOpenSelectedItem(args As ListViewItemEventArgs)
+    Private Sub OnAllRecipeListViewOpenSelectedItem(args As ListViewItemEventArgs)
+        Dim descriptor = CType(args.Value, IRecipeType)
+        If descriptor.CanCraft(World.Avatar) Then
+            descriptor.Craft(World.Avatar)
+            ShowState(GameState.Neutral)
+        Else
+            MessageBox.ErrorQuery("Sorry Not Sorry!", "You cannot craft that.", "OK")
+        End If
+    End Sub
+
+    Private Sub OnAvailableRecipeListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim descriptor = CType(args.Value, IRecipeType)
         descriptor.Craft(World.Avatar)
         ShowState(GameState.Neutral)
@@ -46,11 +87,11 @@ Friend Class CraftMenuState
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
         Dim recipes = character.GetCraftableRecipes().ToList()
-        recipeListView.SetSource(recipes)
+        availableRecipeListView.SetSource(recipes)
         Dim lastRecipe = character.LastRecipe
         Dim recipeIndex = If(lastRecipe.HasValue, recipes.FindIndex(Function(x) x.RecipeType = lastRecipe.Value), -1)
         If recipeIndex > -1 Then
-            recipeListView.SelectedItem = recipeIndex
+            availableRecipeListView.SelectedItem = recipeIndex
         End If
     End Sub
 
