@@ -16,6 +16,27 @@ Module Topics
             {VerbType.Fish, Topic.VerbTypeFish},
             {VerbType.EatFish, Topic.VerbTypeEatFish}
         }
+    Public ReadOnly RecipeTypeTopicTable As IReadOnlyDictionary(Of RecipeType, Topic) =
+        New Dictionary(Of RecipeType, Topic) From
+        {
+            {RecipeType.Twine, Topic.RecipeTypeTwine},
+            {RecipeType.SharpRock, Topic.RecipeTypeSharpRock},
+            {RecipeType.SharpStick, Topic.RecipeTypeSharpStick},
+            {RecipeType.Hatchet, Topic.RecipeTypeHatchet},
+            {RecipeType.Hammer, Topic.RecipeTypeHammer},
+            {RecipeType.Plank, Topic.RecipeTypePlank},
+            {RecipeType.CookingFire, Topic.RecipeTypeCookingFire},
+            {RecipeType.Furnace, Topic.RecipeTypeFurnace},
+            {RecipeType.CharcoalCookingFire, Topic.RecipeTypeCharcoalCookingFire},
+            {RecipeType.CookedGrub, Topic.RecipeTypeCookedGrub},
+            {RecipeType.CookedFishFilet, Topic.RecipeTypeCookedFishFilet},
+            {RecipeType.UnfiredBrick, Topic.RecipeTypeUnfiredBrick},
+            {RecipeType.Knife, Topic.RecipeTypeKnife},
+            {RecipeType.Blade, Topic.RecipeTypeBlade},
+            {RecipeType.RawFishFilet, Topic.RecipeTypeRawFishFilet},
+            {RecipeType.FishingNet, Topic.RecipeTypeFishingNet},
+            {RecipeType.Brick, Topic.RecipeTypeBrick}
+        }
     Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of ItemType, Topic) =
         New Dictionary(Of ItemType, Topic) From
         {
@@ -70,6 +91,9 @@ Forage, dig, chop—choose your labor and test your skills against the wild’s 
         Next
         For Each entry In ItemTypeTopicTable
             topicTable.Add(entry.Value, New ItemTypeTopicDescriptor(entry.Value, entry.Key))
+        Next
+        For Each entry In RecipeTypeTopicTable
+            topicTable.Add(entry.Value, New RecipeTypeTopicDescriptor(entry.Value, entry.Key))
         Next
         Return topicTable
     End Function

@@ -31,6 +31,32 @@ Public MustInherit Class RecipeTypeDescriptor
             Return builder.ToString()
         End Get
     End Property
+
+    Public ReadOnly Property Description As String Implements IRecipeType.Description
+        Get
+            Dim builder As New StringBuilder
+            If inputs.Any Then
+                builder.AppendLine("Inputs:")
+                For Each entry In inputs
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                Next
+            End If
+            If inputDurabilities.Any Then
+                builder.AppendLine("Input Durabilities:")
+                For Each entry In inputDurabilities
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                Next
+            End If
+            If outputs.Any Then
+                builder.AppendLine("Outputs:")
+                For Each entry In outputs
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                Next
+            End If
+            Return builder.ToString()
+        End Get
+    End Property
+
     Public Overrides Function ToString() As String
         Return Name
     End Function

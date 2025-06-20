@@ -25,7 +25,7 @@ Public Module RecipeTypes
         }.
         ToDictionary(Function(x) x.RecipeType, Function(x) x)
     <Extension>
-    Friend Function ToDescriptor(recipeType As RecipeType) As IRecipeType
+    Public Function ToDescriptor(recipeType As RecipeType) As IRecipeType
         Return Descriptors(recipeType)
     End Function
 

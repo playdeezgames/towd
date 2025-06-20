@@ -40,4 +40,21 @@
     ItemTypeBlade
     ItemTypeCookedFishFilet
     ItemTypeFurnace
+    RecipeTypeTwine
+    RecipeTypeSharpRock
+    RecipeTypeSharpStick
+    RecipeTypeHatchet
+    RecipeTypeHammer
+    RecipeTypePlank
+    RecipeTypeCookingFire
+    RecipeTypeFurnace
+    RecipeTypeCharcoalCookingFire
+    RecipeTypeCookedGrub
+    RecipeTypeCookedFishFilet
+    RecipeTypeUnfiredBrick
+    RecipeTypeKnife
+    RecipeTypeBlade
+    RecipeTypeRawFishFilet
+    RecipeTypeFishingNet
+    RecipeTypeBrick
 End Enum

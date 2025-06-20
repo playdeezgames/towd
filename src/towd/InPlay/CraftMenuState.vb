@@ -3,8 +3,12 @@ Imports towd.data
 
 Friend Class CraftMenuState
     Inherits ChildView
+
+    Private Const AVAILABLE_TEXT As String = "Available"
+    Private Const ALL_TEXT As String = "All"
     Private ReadOnly availableRecipeListView As ListView
     Private ReadOnly allRecipeListView As ListView
+    Private ReadOnly tabView As TabView
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
         Dim titleLabel As New Label With
@@ -25,7 +29,7 @@ Friend Class CraftMenuState
         Dim availableRecipeListTab = New TabView.Tab With
             {
                 .View = availableRecipeListView,
-                .Text = "Available"
+                .Text = AVAILABLE_TEXT
             }
 
         allRecipeListView = New ListView With
@@ -39,10 +43,10 @@ Friend Class CraftMenuState
         Dim allRecipeListTab = New TabView.Tab With
             {
                 .View = allRecipeListView,
-                .Text = "All"
+                .Text = ALL_TEXT
             }
 
-        Dim tabView As New TabView With
+        tabView = New TabView With
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
@@ -51,7 +55,6 @@ Friend Class CraftMenuState
         tabView.AddTab(availableRecipeListTab, True)
         tabView.AddTab(allRecipeListTab, False)
         Add(tabView)
-
 
         Dim closeButton As New Button("Close") With
             {
@@ -79,11 +82,6 @@ Friend Class CraftMenuState
         ShowState(GameState.Neutral)
     End Sub
 
-    Private Sub OnGoBackButtonClicked()
-        World.Avatar.SetFlag(towd.data.FlagType.CraftMenu, False)
-        ShowState(GameState.Neutral)
-    End Sub
-
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
         Dim recipes = character.GetCraftableRecipes().ToList()
@@ -99,6 +97,15 @@ Friend Class CraftMenuState
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
             CloseWindow()
+        ElseIf args.KeyEvent.Key = Key.F1 Then
+            args.Handled = True
+            Select Case tabView.SelectedTab.Text
+                Case ALL_TEXT
+                    TopicState.Topic = RecipeTypeTopicTable(CType(allRecipeListView.Source.ToList(allRecipeListView.SelectedItem), IRecipeType).RecipeType)
+                Case AVAILABLE_TEXT
+                    TopicState.Topic = RecipeTypeTopicTable(CType(availableRecipeListView.Source.ToList(availableRecipeListView.SelectedItem), IRecipeType).RecipeType)
+            End Select
+            ShowState(GameState.Topic)
         End If
     End Sub
 
