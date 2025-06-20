@@ -79,6 +79,9 @@ Friend Class CraftMenuState
     Private Sub OnAvailableRecipeListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim descriptor = CType(args.Value, IRecipeType)
         descriptor.Craft(World.Avatar)
+        If Not descriptor.CanCraft(World.Avatar) Then
+            World.Avatar.AddMessage($"You are now out of crafting supplies for {descriptor.Name}.")
+        End If
         ShowState(GameState.Neutral)
     End Sub
 
