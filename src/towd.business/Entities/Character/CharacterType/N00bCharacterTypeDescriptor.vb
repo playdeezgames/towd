@@ -38,6 +38,7 @@ Friend Class N00bCharacterTypeDescriptor
         character.SetStatistic(StatisticType.XP, 0)
 
         character.SetStatistic(StatisticType.ForagingSkill, 1)
+        character.SetStatistic(StatisticType.KnappingSkill, 0)
 
         character.SetStatistic(StatisticType.Steps, 0)
         character.SetStatistic(StatisticType.ForagingCounter, 0)

@@ -1,19 +1,19 @@
 ﻿Public Enum RecipeType
-    Twine
+    Blade
+    Brick
+    CharcoalCookingFire
+    CookedFishFilet
+    CookedGrub
+    CookingFire
+    FishingNet
+    Furnace
+    Hammer
+    Hatchet
+    Knife
+    Plank
     SharpRock
     SharpStick
-    Hatchet
-    Hammer
-    Plank
-    CookingFire
-    Furnace
-    CharcoalCookingFire
-    CookedGrub
-    CookedFishFilet
+    Twine
     UnfiredBrick
-    Knife
-    Blade
     RawFishFilet
-    FishingNet
-    Brick
 End Enum

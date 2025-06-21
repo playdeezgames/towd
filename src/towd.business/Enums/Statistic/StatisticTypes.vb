@@ -16,6 +16,7 @@ Public Module StatisticTypes
             New StatisticTypeDescriptor(StatisticType.ForagingSkill, "Foraging Skill"),
             New StatisticTypeDescriptor(StatisticType.Fuel, "Fuel"),
             New StatisticTypeDescriptor(StatisticType.Health, "Health"),
+            New StatisticTypeDescriptor(StatisticType.KnappingSkill, "Knapping Skill"),
             New StatisticTypeDescriptor(StatisticType.LastRecipe, "Last Recipe"),
             New StatisticTypeDescriptor(StatisticType.LastVerb, "Last Verb"),
             New StatisticTypeDescriptor(StatisticType.Satiety, "Satiety"),

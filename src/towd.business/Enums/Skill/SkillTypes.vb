@@ -5,7 +5,8 @@ Public Module SkillTypes
     Public ReadOnly Descriptors As IReadOnlyDictionary(Of SkillType, ISkillType) =
         New List(Of ISkillType) From
         {
-            New ForagingSkillTypeDescriptor()
+            New ForagingSkillTypeDescriptor(),
+            New KnappingSkillTypeDescriptor()
         }.ToDictionary(Function(x) x.SkillType, Function(x) x)
     <Extension>
     Public Function ToDescriptor(skillType As SkillType) As ISkillType

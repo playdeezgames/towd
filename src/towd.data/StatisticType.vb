@@ -9,6 +9,7 @@
     ForagingSkill
     Fuel
     Health
+    KnappingSkill
     LastRecipe
     LastVerb
     Satiety

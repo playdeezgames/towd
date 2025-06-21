@@ -5,8 +5,16 @@ Public MustInherit Class RecipeTypeDescriptor
     Implements IRecipeType
     Private ReadOnly inputs As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly inputDurabilities As New Dictionary(Of data.ItemType, Integer)
+    Private ReadOnly statisticMinimums As New Dictionary(Of data.StatisticType, Integer)
+    Private ReadOnly statisticMaximums As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly outputs As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly timeTaken As Integer
+    Protected Sub SetStatisticMinimum(statisticType As StatisticType, minimum As Integer)
+        statisticMinimums(statisticType) = minimum
+    End Sub
+    Protected Sub SetStatisticMaximum(statisticType As StatisticType, maximum As Integer)
+        statisticMaximums(statisticType) = maximum
+    End Sub
     Protected Sub SetInput(itemType As data.ItemType, quantity As Integer)
         inputs(itemType) = quantity
     End Sub
@@ -50,6 +58,18 @@ Public MustInherit Class RecipeTypeDescriptor
             If outputs.Any Then
                 builder.AppendLine("Outputs:")
                 For Each entry In outputs
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                Next
+            End If
+            If statisticMinimums.Any Then
+                builder.AppendLine("Statistic Minimums:")
+                For Each entry In statisticMinimums
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                Next
+            End If
+            If statisticMaximums.Any Then
+                builder.AppendLine("Statistic Maximums:")
+                For Each entry In statisticMaximums
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
@@ -104,6 +124,16 @@ Public MustInherit Class RecipeTypeDescriptor
         If Not Precondition(character) Then
             Return False
         End If
+        For Each entry In statisticMinimums
+            If character.GetStatistic(entry.Key) < entry.Value Then
+                Return False
+            End If
+        Next
+        For Each entry In statisticMaximums
+            If character.GetStatistic(entry.Key) > entry.Value Then
+                Return False
+            End If
+        Next
         For Each entry In inputs
             If character.GetCountOfItemType(entry.Key.ToDescriptor) < entry.Value Then
                 Return False
