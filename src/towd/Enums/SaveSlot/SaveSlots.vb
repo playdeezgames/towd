@@ -6,6 +6,7 @@ Public Module SaveSlots
         New List(Of ISaveSlot) From
         {
             New SaveSlotDescriptor(SaveSlot.ScumSlot, "Scum Slot", "scum.json"),
+            New SaveSlotDescriptor(SaveSlot.Auto, "Autosave Slot", "autosave.json"),
             New SaveSlotDescriptor(SaveSlot.Slot1, "Slot 1", "slot1.json"),
             New SaveSlotDescriptor(SaveSlot.Slot2, "Slot 2", "slot2.json"),
             New SaveSlotDescriptor(SaveSlot.Slot3, "Slot 3", "slot3.json"),

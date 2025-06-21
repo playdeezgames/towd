@@ -54,8 +54,7 @@
     End Sub
 
     Private Sub OnScumSaveButtonClicked()
-        SaveGame(SaveSlot.ScumSlot)
-        MessageBox.Query("Game Saved!", "You saved the game to the scum slot!", "Ok")
+        SaveGame(SaveSlot.ScumSlot, True)
     End Sub
 
     Private Sub OnSaveButtonClicked()

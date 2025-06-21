@@ -5,4 +5,5 @@
     Slot3
     Slot4
     Slot5
+    Auto
 End Enum

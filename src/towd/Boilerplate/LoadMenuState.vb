@@ -15,10 +15,22 @@
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill
+                .Height = [Dim].Fill - 3
             }
         AddHandler saveSlotListView.OpenSelectedItem, AddressOf OnSaveSlotListViewOpenSelectedItem
         Add(saveSlotListView)
+
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center,
+                .Y = Pos.Bottom(saveSlotListView) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf OnCloseButtonClicked
+        Add(closeButton)
+    End Sub
+
+    Private Sub OnCloseButtonClicked()
+        CloseWindow()
     End Sub
 
     Private Sub OnSaveSlotListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -35,7 +47,11 @@
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
-            ShowState(GameState.GameMenu)
+            CloseWindow()
         End If
+    End Sub
+
+    Private Sub CloseWindow()
+        ShowState(GameState.MainMenu)
     End Sub
 End Class

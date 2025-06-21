@@ -8,6 +8,7 @@ Friend Class NeutralState
     End Sub
 
     Friend Overrides Sub UpdateView()
+        SaveGame(SaveSlot.Auto, False)
         Dim character = World.Avatar
         If character.HasMessages Then
             ShowState(GameState.Message)

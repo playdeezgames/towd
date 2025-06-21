@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text.Json
+Imports System.Threading.Channels
 
 Friend Class SaveMenuState
     Inherits ChildView
@@ -18,11 +19,22 @@ Friend Class SaveMenuState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill
+                .Height = [Dim].Fill - 3
             }
         saveSlotListView.SetSource(SaveSlots.Descriptors.Values.ToList)
         AddHandler saveSlotListView.OpenSelectedItem, AddressOf OnSaveSlotListViewOpenSelectedItem
         Add(saveSlotListView)
+        Dim closeButton As New Button("Close") With
+            {
+                .X = Pos.Center,
+                .Y = Pos.Bottom(saveSlotListView) + 1
+            }
+        AddHandler closeButton.Clicked, AddressOf OnCloseButtonClicked
+        Add(closeButton)
+    End Sub
+
+    Private Sub OnCloseButtonClicked()
+        ShowState(GameState.GameMenu)
     End Sub
 
     Private Sub OnSaveSlotListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -32,7 +44,8 @@ Friend Class SaveMenuState
                 Return
             End If
         End If
-        SaveGame(listItem.SaveSlot)
+        SaveGame(listItem.SaveSlot, True)
+        UpdateView()
     End Sub
 
     Friend Overrides Sub UpdateView()

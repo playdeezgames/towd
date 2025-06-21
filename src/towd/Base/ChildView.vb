@@ -16,8 +16,11 @@ Friend MustInherit Class ChildView
             Return False
         End If
     End Function
-    Protected Shared Sub SaveGame(saveSlot As SaveSlot)
+    Protected Shared Sub SaveGame(saveSlot As SaveSlot, notify As Boolean)
         saveSlot.ToDescriptor.SaveGame(ChildView.worldData)
+        If notify Then
+            MessageBox.Query("Game Saved!", $"{saveSlot.ToDescriptor.DisplayName} is saved!", "Ok")
+        End If
     End Sub
     Protected Shared ReadOnly Property World As IWorld
         Get
