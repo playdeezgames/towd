@@ -18,10 +18,6 @@ Friend Class MoveDeedDescriptor
     Protected Overrides Sub OnDo(character As ICharacter)
     End Sub
 
-    Public Overrides Function IsAvailable(character As ICharacter) As Boolean
-        Return MyBase.IsAvailable(character)
-    End Function
-
     Public Overrides Function HasDone(character As ICharacter) As Boolean
         Return character.GetStatistic(StatisticType.Steps) >= stepCount
     End Function

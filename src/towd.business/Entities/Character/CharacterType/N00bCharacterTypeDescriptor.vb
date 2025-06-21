@@ -30,12 +30,17 @@ Friend Class N00bCharacterTypeDescriptor
         character.SetStatisticMaximum(StatisticType.Satiety, 100)
         character.SetStatisticMinimum(StatisticType.Satiety, 0)
         character.SetStatistic(StatisticType.Satiety, 100)
+
         character.SetStatisticMaximum(StatisticType.Health, 100)
         character.SetStatisticMinimum(StatisticType.Health, 0)
         character.SetStatistic(StatisticType.Health, 100)
-        character.SetStatistic(StatisticType.Steps, 0)
+
         character.SetStatistic(StatisticType.XP, 0)
-        character.SetStatistic(StatisticType.ForagingCounter, 0)
+
         character.SetStatistic(StatisticType.ForagingSkill, 1)
+
+        character.SetStatistic(StatisticType.Steps, 0)
+        character.SetStatistic(StatisticType.ForagingCounter, 0)
+        character.SetStatistic(StatisticType.CraftCounter, 0)
     End Sub
 End Class

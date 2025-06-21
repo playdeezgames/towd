@@ -95,6 +95,7 @@ Public MustInherit Class RecipeTypeDescriptor
                 character.ChangeItemDurability(item, -1)
             Next
         Next
+        character.ChangeStatistic(StatisticType.CraftCounter, 1)
         Predicate(character)
         character.World.AdvanceTime(timeTaken)
         character.SetFlag(data.FlagType.CraftMenu, VerbType.Craft.ToDescriptor.CanPerform(character))

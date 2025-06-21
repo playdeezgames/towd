@@ -1,16 +1,17 @@
 ﻿Public Enum StatisticType
-    Satiety
-    Health
-    Durability
-    Fuel
-    ForagingCounter
-    Digging
     Chopping
-    Fishing
-    LastVerb
+    CraftCounter
     CurrentItemType
+    Digging
+    Durability
+    Fishing
+    ForagingCounter
+    ForagingSkill
+    Fuel
+    Health
     LastRecipe
+    LastVerb
+    Satiety
     Steps
     XP
-    ForagingSkill
 End Enum
