@@ -2,7 +2,7 @@
     Inherits SkillTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.SkillType.Foraging, "Foraging", data.StatisticType.ForagingSkill, "Master the art of scavenging in the Tomb of Woeful Doom’s bleak sprawl.
+        MyBase.New(data.SkillType.Foraging, "Foraging", data.StatisticType.ForagingSkill, 5, "Master the art of scavenging in the Tomb of Woeful Doom’s bleak sprawl.
 Hunt for plant fibers, grubs, or questionable berries—your foraging skill decides if you eat or gag.
 Higher levels turn trash into treasure; low rolls might just dig up despair.")
     End Sub

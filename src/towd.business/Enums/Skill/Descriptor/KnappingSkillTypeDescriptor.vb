@@ -2,7 +2,7 @@
     Inherits SkillTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.SkillType.Knapping, "Knapping", data.StatisticType.KnappingSkill, "Unleash the ancient craft of knapping in the Tomb of Woeful Doom’s unforgiving wilds.
+        MyBase.New(data.SkillType.Knapping, "Knapping", data.StatisticType.KnappingSkill, 1, "Unleash the ancient craft of knapping in the Tomb of Woeful Doom’s unforgiving wilds.
 Shape rocks into sharp blades or tools with each precise strike—your skill determines a weapon or a pile of rubble.
 Higher levels forge deadly edges; low rolls might just bruise your pride.")
     End Sub

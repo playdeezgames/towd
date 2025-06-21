@@ -61,11 +61,17 @@ Friend Class SkillMenuState
     Private Sub OnAllListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim skillType = CType(args.Value, SkillMenuListViewItem).SkillType
         Dim character = World.Avatar
-        skillType.Advance(character)
-        CloseWindow()
+        If skillType.Advance(character) Then
+            CloseWindow()
+        End If
     End Sub
 
     Private Sub OnAdvanceableListViewOpenSelectedItem(args As ListViewItemEventArgs)
+        Dim skillType = CType(args.Value, SkillMenuListViewItem).SkillType
+        Dim character = World.Avatar
+        If skillType.Advance(character) Then
+            CloseWindow()
+        End If
     End Sub
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
