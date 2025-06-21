@@ -16,6 +16,11 @@ Module Topics
             {VerbType.Fish, Topic.VerbTypeFish},
             {VerbType.EatFish, Topic.VerbTypeEatFish}
         }
+    Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of SkillType, Topic) =
+        New Dictionary(Of SkillType, Topic) From
+        {
+            {SkillType.Foraging, Topic.SkillTypeForaging}
+        }
     Public ReadOnly RecipeTypeTopicTable As IReadOnlyDictionary(Of RecipeType, Topic) =
         New Dictionary(Of RecipeType, Topic) From
         {
@@ -94,6 +99,9 @@ Forage, dig, chop—choose your labor and test your skills against the wild’s 
         Next
         For Each entry In RecipeTypeTopicTable
             topicTable.Add(entry.Value, New RecipeTypeTopicDescriptor(entry.Value, entry.Key))
+        Next
+        For Each entry In SkillTypeTopicTable
+            topicTable.Add(entry.Value, New SkillTypeTopicDescriptor(entry.Value, entry.Key))
         Next
         Return topicTable
     End Function

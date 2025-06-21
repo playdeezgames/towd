@@ -1,60 +1,65 @@
 ﻿Public Enum Topic
-    NavigationMove
-    NavigationInventory
-    NavigationVerb
-    NavigationDeeds
-    NavigationGameMenu
-    NavigationSkills
-    VerbTypeForage
-    VerbTypeCraft
-    VerbTypeChop
-    VerbTypeDig
-    VerbTypeEatGrub
-    VerbTypeAddFuel
-    VerbTypeWait
-    VerbTypeFish
-    VerbTypeEatFish
-    ItemTypePlantFiber
-    ItemTypeStick
-    ItemTypeRock
-    ItemTypeTwine
-    ItemTypeSharpRock
+    ItemTypeBlade
+    ItemTypeBrick
+    ItemTypeCharcoal
+    ItemTypeClay
+    ItemTypeCookedFishFilet
+    ItemTypeCookedGrub
+    ItemTypeCookingFire
+    ItemTypeFishGuts
+    ItemTypeFishHead
+    ItemTypeFishingNet
+    ItemTypeFurnace
+    ItemTypeGrub
+    ItemTypeKnife
+    ItemTypeHammer
     ItemTypeHatchet
     ItemTypeLog
-    ItemTypeHammer
     ItemTypePlank
-    ItemTypeSharpStick
-    ItemTypeGrub
-    ItemTypeCookingFire
-    ItemTypeCookedGrub
-    ItemTypeClay
-    ItemTypeCharcoal
-    ItemTypeUnfiredBrick
-    ItemTypeBrick
-    ItemTypeFishingNet
+    ItemTypePlantFiber
     ItemTypeRawFish
     ItemTypeRawFishFilet
-    ItemTypeFishHead
-    ItemTypeFishGuts
-    ItemTypeKnife
-    ItemTypeBlade
-    ItemTypeCookedFishFilet
-    ItemTypeFurnace
-    RecipeTypeTwine
+    ItemTypeRock
+    ItemTypeSharpRock
+    ItemTypeSharpStick
+    ItemTypeStick
+    ItemTypeTwine
+    ItemTypeUnfiredBrick
+
+    NavigationDeeds
+    NavigationGameMenu
+    NavigationInventory
+    NavigationMove
+    NavigationSkills
+    NavigationVerb
+
+    RecipeTypeBlade
+    RecipeTypeBrick
+    RecipeTypeCharcoalCookingFire
+    RecipeTypeCookedFishFilet
+    RecipeTypeCookedGrub
+    RecipeTypeCookingFire
+    RecipeTypeFishingNet
+    RecipeTypeFurnace
+    RecipeTypeHammer
+    RecipeTypeHatchet
+    RecipeTypeKnife
+    RecipeTypePlank
+    RecipeTypeRawFishFilet
     RecipeTypeSharpRock
     RecipeTypeSharpStick
-    RecipeTypeHatchet
-    RecipeTypeHammer
-    RecipeTypePlank
-    RecipeTypeCookingFire
-    RecipeTypeFurnace
-    RecipeTypeCharcoalCookingFire
-    RecipeTypeCookedGrub
-    RecipeTypeCookedFishFilet
+    RecipeTypeTwine
     RecipeTypeUnfiredBrick
-    RecipeTypeKnife
-    RecipeTypeBlade
-    RecipeTypeRawFishFilet
-    RecipeTypeFishingNet
-    RecipeTypeBrick
+
+    SkillTypeForaging
+
+    VerbTypeAddFuel
+    VerbTypeChop
+    VerbTypeCraft
+    VerbTypeDig
+    VerbTypeEatFish
+    VerbTypeEatGrub
+    VerbTypeFish
+    VerbTypeForage
+    VerbTypeWait
 End Enum

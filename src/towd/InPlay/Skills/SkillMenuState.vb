@@ -2,8 +2,12 @@
 
 Friend Class SkillMenuState
     Inherits ChildView
+
+    Private Const ADVANCEABLE_TEXT As String = "Advanceable"
+    Private Const ALL_TEXT As String = "All"
     Private ReadOnly advanceableListView As ListView
     Private ReadOnly allListView As ListView
+    Private ReadOnly tabView As TabView
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
         Dim titleLabel As New Label With
@@ -25,7 +29,7 @@ Friend Class SkillMenuState
                 .Height = [Dim].Fill
             }
         AddHandler allListView.OpenSelectedItem, AddressOf OnAllListViewOpenSelectedItem
-        Dim tabView As New TabView With
+        tabView = New TabView With
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
@@ -33,12 +37,12 @@ Friend Class SkillMenuState
             }
         Dim advanceableTab As New TabView.Tab With
             {
-                .Text = "Advanceable",
+                .Text = ADVANCEABLE_TEXT,
                 .View = advanceableListView
             }
         Dim allTab As New TabView.Tab With
             {
-                .Text = "All",
+                .Text = ALL_TEXT,
                 .View = allListView
             }
         tabView.AddTab(allTab, False)
@@ -68,6 +72,15 @@ Friend Class SkillMenuState
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
             CloseWindow()
+        ElseIf args.KeyEvent.Key = Key.F1 Then
+            args.Handled = True
+            Select Case TabView.SelectedTab.Text
+                Case ALL_TEXT
+                    TopicState.Topic = SkillTypeTopicTable(CType(allListView.Source.ToList(allListView.SelectedItem), SkillMenuListViewItem).SkillType.SkillType)
+                Case ADVANCEABLE_TEXT
+                    TopicState.Topic = SkillTypeTopicTable(CType(advanceableListView.Source.ToList(advanceableListView.SelectedItem), SkillMenuListViewItem).SkillType.SkillType)
+            End Select
+            ShowState(GameState.Topic)
         End If
     End Sub
 

@@ -8,7 +8,7 @@ Public Module SkillTypes
             New ForagingSkillTypeDescriptor()
         }.ToDictionary(Function(x) x.SkillType, Function(x) x)
     <Extension>
-    Friend Function ToDescriptor(skillType As SkillType) As ISkillType
+    Public Function ToDescriptor(skillType As SkillType) As ISkillType
         Return Descriptors(skillType)
     End Function
 End Module
