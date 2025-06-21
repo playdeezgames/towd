@@ -10,5 +10,6 @@ Friend Class BladeRecipeTypeDescriptor
         SetInputDurability(ItemType.Hammer, 1)
         SetOutput(ItemType.Hammer, 1)
         SetOutput(ItemType.Blade, 1)
+        SetStatisticMinimum(StatisticType.KnappingSkill, 1)
     End Sub
 End Class
