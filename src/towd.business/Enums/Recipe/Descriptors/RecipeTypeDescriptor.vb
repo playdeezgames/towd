@@ -141,7 +141,6 @@ Public MustInherit Class RecipeTypeDescriptor
             character.Location.EntityType = locationTypeOutput.Value.ToDescriptor
             character.AppendMessage($"Changed location to {locationTypeOutput.Value.ToDescriptor.Name}.")
         End If
-        Predicate(character)
         character.World.AdvanceTime(timeTaken)
         character.SetFlag(data.FlagType.CraftMenu, VerbType.Craft.ToDescriptor.CanPerform(character))
     End Sub
@@ -173,7 +172,4 @@ Public MustInherit Class RecipeTypeDescriptor
         End If
         Return True
     End Function
-    Protected Overridable Sub Predicate(character As ICharacter)
-        'nada
-    End Sub
 End Class
