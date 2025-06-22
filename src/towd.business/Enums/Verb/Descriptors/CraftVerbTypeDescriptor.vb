@@ -12,7 +12,7 @@ A steady hand and some luck can turn twigs into a lifeline—fail, and you’re 
     End Sub
 
     Public Overrides Function CanPerform(character As ICharacter) As Boolean
-        Return RecipeTypes.Descriptors.Values.Any(Function(x) x.CanCraft(character))
+        Return True
     End Function
 
     Public Overrides Function GetPerformCount(character As ICharacter) As Integer?
