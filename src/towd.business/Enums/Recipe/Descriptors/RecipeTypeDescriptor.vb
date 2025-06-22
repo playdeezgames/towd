@@ -7,8 +7,12 @@ Public MustInherit Class RecipeTypeDescriptor
     Private ReadOnly inputDurabilities As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly statisticMinimums As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly statisticMaximums As New Dictionary(Of data.StatisticType, Integer)
+    Private ReadOnly requiredLocations As New HashSet(Of data.LocationType)
     Private ReadOnly outputs As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly timeTaken As Integer
+    Protected Sub SetRequiredLocation(locationType As data.LocationType)
+        requiredLocations.Add(locationType)
+    End Sub
     Protected Sub SetStatisticMinimum(statisticType As StatisticType, minimum As Integer)
         statisticMinimums(statisticType) = minimum
     End Sub
@@ -73,6 +77,12 @@ Public MustInherit Class RecipeTypeDescriptor
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
+            If requiredLocations.Any Then
+                builder.AppendLine("Required Location Type:")
+                For Each entry In requiredLocations
+                    builder.AppendLine($"  {entry.ToDescriptor.Name}")
+                Next
+            End If
             Return builder.ToString()
         End Get
     End Property
@@ -121,9 +131,6 @@ Public MustInherit Class RecipeTypeDescriptor
         character.SetFlag(data.FlagType.CraftMenu, VerbType.Craft.ToDescriptor.CanPerform(character))
     End Sub
     Public Function CanCraft(character As ICharacter) As Boolean Implements IRecipeType.CanCraft
-        If Not Precondition(character) Then
-            Return False
-        End If
         For Each entry In statisticMinimums
             If character.GetStatistic(entry.Key) < entry.Value Then
                 Return False
@@ -144,9 +151,11 @@ Public MustInherit Class RecipeTypeDescriptor
                 Return False
             End If
         Next
-        Return True
-    End Function
-    Protected Overridable Function Precondition(Character As ICharacter) As Boolean
+        If requiredLocations.Any Then
+            If Not requiredLocations.Contains(character.Location.EntityType.LocationType) Then
+                Return False
+            End If
+        End If
         Return True
     End Function
     Protected Overridable Sub Predicate(character As ICharacter)

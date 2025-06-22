@@ -7,9 +7,7 @@ Friend Class BrickRecipeTypeDescriptor
         MyBase.New(RecipeType.Brick, 1)
         SetInput(ItemType.UnfiredBrick, 1)
         SetOutput(ItemType.Brick, 1)
+        SetRequiredLocation(LocationType.CookingFire)
+        SetRequiredLocation(LocationType.Furnace)
     End Sub
-    Protected Overrides Function Precondition(Character As ICharacter) As Boolean
-        Dim locationType = Character.Location.EntityType.LocationType
-        Return locationType = LocationType.CookingFire OrElse locationType = LocationType.Furnace
-    End Function
 End Class

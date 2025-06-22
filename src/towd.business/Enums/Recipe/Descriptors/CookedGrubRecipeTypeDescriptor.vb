@@ -10,8 +10,6 @@ Friend Class CookedGrubRecipeTypeDescriptor
         SetInputDurability(ItemType.SharpStick, 1)
         SetOutput(ItemType.SharpStick, 1)
         SetOutput(ItemType.CookedGrub, 1)
+        SetRequiredLocation(LocationType.CookingFire)
     End Sub
-    Protected Overrides Function Precondition(Character As ICharacter) As Boolean
-        Return Character.Location.EntityType.LocationType = LocationType.CookingFire
-    End Function
 End Class
