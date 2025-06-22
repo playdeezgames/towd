@@ -5,11 +5,9 @@
     ItemTypeClay
     ItemTypeCookedFishFilet
     ItemTypeCookedGrub
-    ItemTypeCookingFire
     ItemTypeFishGuts
     ItemTypeFishHead
     ItemTypeFishingNet
-    ItemTypeFurnace
     ItemTypeGrub
     ItemTypeKnife
     ItemTypeHammer

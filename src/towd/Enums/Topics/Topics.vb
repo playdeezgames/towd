@@ -56,7 +56,6 @@ Module Topics
             {ItemType.Plank, Topic.ItemTypePlank},
             {ItemType.SharpStick, Topic.ItemTypeSharpStick},
             {ItemType.Grub, Topic.ItemTypeGrub},
-            {ItemType.CookingFire, Topic.ItemTypeCookingFire},
             {ItemType.CookedGrub, Topic.ItemTypeCookedGrub},
             {ItemType.Clay, Topic.ItemTypeClay},
             {ItemType.Charcoal, Topic.ItemTypeCharcoal},
@@ -69,8 +68,7 @@ Module Topics
             {ItemType.FishGuts, Topic.ItemTypeFishGuts},
             {ItemType.Knife, Topic.ItemTypeKnife},
             {ItemType.Blade, Topic.ItemTypeBlade},
-            {ItemType.CookedFishFilet, Topic.ItemTypeCookedFishFilet},
-            {ItemType.Furnace, Topic.ItemTypeFurnace}
+            {ItemType.CookedFishFilet, Topic.ItemTypeCookedFishFilet}
         }
     Private Function CreateDescriptors() As IReadOnlyDictionary(Of Topic, ITopic)
         Dim topicTable = New List(Of ITopic) From

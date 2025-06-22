@@ -8,8 +8,8 @@ Friend Class CookedFishFiletRecipeTypeDescriptor
         SetInput(ItemType.RawFishFilet, 1)
         SetInput(ItemType.SharpStick, 1)
         SetInputDurability(ItemType.SharpStick, 1)
-        SetOutput(ItemType.SharpStick, 1)
-        SetOutput(ItemType.CookedFishFilet, 1)
+        SetItemTypeOutput(ItemType.SharpStick, 1)
+        SetItemTypeOutput(ItemType.CookedFishFilet, 1)
         SetRequiredLocation(LocationType.CookingFire)
     End Sub
 End Class

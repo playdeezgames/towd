@@ -10,7 +10,6 @@
     Plank
     SharpStick
     Grub
-    CookingFire
     CookedGrub
     Clay
     Charcoal
@@ -24,5 +23,4 @@
     Knife
     Blade
     CookedFishFilet
-    Furnace
 End Enum

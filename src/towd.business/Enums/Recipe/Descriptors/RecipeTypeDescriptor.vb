@@ -8,8 +8,12 @@ Public MustInherit Class RecipeTypeDescriptor
     Private ReadOnly statisticMinimums As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly statisticMaximums As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly requiredLocations As New HashSet(Of data.LocationType)
-    Private ReadOnly outputs As New Dictionary(Of data.ItemType, Integer)
+    Private ReadOnly itemTypeOutputs As New Dictionary(Of data.ItemType, Integer)
+    Private locationTypeOutput As data.LocationType? = Nothing
     Private ReadOnly timeTaken As Integer
+    Protected Sub SetLocationTypeOutput(locationType As data.LocationType?)
+        Me.locationTypeOutput = locationType
+    End Sub
     Protected Sub SetRequiredLocation(locationType As data.LocationType)
         requiredLocations.Add(locationType)
     End Sub
@@ -25,12 +29,12 @@ Public MustInherit Class RecipeTypeDescriptor
     Protected Sub SetInputDurability(itemType As data.ItemType, quantity As Integer)
         inputDurabilities(itemType) = quantity
     End Sub
-    Protected Sub SetOutput(itemType As data.ItemType, quantity As Integer)
-        outputs(itemType) = quantity
+    Protected Sub SetItemTypeOutput(itemType As data.ItemType, quantity As Integer)
+        itemTypeOutputs(itemType) = quantity
     End Sub
     Sub New(recipeType As RecipeType, timeTaken As Integer)
         Me.RecipeType = recipeType
-        Me.TimeTaken = timeTaken
+        Me.timeTaken = timeTaken
     End Sub
     Public ReadOnly Property RecipeType As RecipeType Implements IRecipeType.RecipeType
 
@@ -39,7 +43,11 @@ Public MustInherit Class RecipeTypeDescriptor
             Dim builder As New StringBuilder
             builder.Append(String.Join("+"c, inputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}")))
             builder.Append("->")
-            builder.Append(String.Join("+"c, outputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}")))
+            Dim outputs = itemTypeOutputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}").ToList
+            If locationTypeOutput.HasValue Then
+                outputs.Add($"Builds {locationTypeOutput.Value.ToDescriptor.Name}")
+            End If
+            builder.Append(String.Join("+"c, outputs))
             Return builder.ToString()
         End Get
     End Property
@@ -59,9 +67,9 @@ Public MustInherit Class RecipeTypeDescriptor
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
-            If outputs.Any Then
+            If itemTypeOutputs.Any Then
                 builder.AppendLine("Outputs:")
-                For Each entry In outputs
+                For Each entry In itemTypeOutputs
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
@@ -83,6 +91,9 @@ Public MustInherit Class RecipeTypeDescriptor
                     builder.AppendLine($"  {entry.ToDescriptor.Name}")
                 Next
             End If
+            If locationTypeOutput.HasValue Then
+                builder.AppendLine($"Builds: {locationTypeOutput.Value.ToDescriptor.Name}")
+            End If
             Return builder.ToString()
         End Get
     End Property
@@ -97,7 +108,7 @@ Public MustInherit Class RecipeTypeDescriptor
         End If
         character.LastRecipe = RecipeType
         Dim quantities As New Dictionary(Of data.ItemType, Integer)
-        For Each entry In outputs
+        For Each entry In itemTypeOutputs
             quantities(entry.Key) = entry.Value
         Next
         For Each entry In inputs
@@ -126,6 +137,10 @@ Public MustInherit Class RecipeTypeDescriptor
             Next
         Next
         character.ChangeStatistic(StatisticType.CraftCounter, 1)
+        If locationTypeOutput.HasValue Then
+            character.Location.EntityType = locationTypeOutput.Value.ToDescriptor
+            character.AppendMessage($"Changed location to {locationTypeOutput.Value.ToDescriptor.Name}.")
+        End If
         Predicate(character)
         character.World.AdvanceTime(timeTaken)
         character.SetFlag(data.FlagType.CraftMenu, VerbType.Craft.ToDescriptor.CanPerform(character))

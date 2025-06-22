@@ -8,9 +8,9 @@ Friend Class RawFishFiletRecipeTypeDescriptor
         SetInput(ItemType.Knife, 1)
         SetInput(ItemType.RawFish, 1)
         SetInputDurability(ItemType.Knife, 1)
-        SetOutput(ItemType.Knife, 1)
-        SetOutput(ItemType.FishGuts, 1)
-        SetOutput(ItemType.FishHead, 1)
-        SetOutput(ItemType.RawFishFilet, 1)
+        SetItemTypeOutput(ItemType.Knife, 1)
+        SetItemTypeOutput(ItemType.FishGuts, 1)
+        SetItemTypeOutput(ItemType.FishHead, 1)
+        SetItemTypeOutput(ItemType.RawFishFilet, 1)
     End Sub
 End Class

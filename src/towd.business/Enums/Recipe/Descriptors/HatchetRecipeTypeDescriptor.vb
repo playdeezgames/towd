@@ -8,6 +8,6 @@ Friend Class HatchetRecipeTypeDescriptor
         SetInput(ItemType.SharpRock, 1)
         SetInput(ItemType.Twine, 1)
         SetInput(ItemType.Stick, 1)
-        SetOutput(ItemType.Hatchet, 1)
+        SetItemTypeOutput(ItemType.Hatchet, 1)
     End Sub
 End Class

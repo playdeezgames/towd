@@ -16,7 +16,6 @@ Public Module ItemTypes
             New PlankItemTypeDescriptor(),
             New SharpStickItemTypeDescriptor(),
             New GrubItemTypeDescriptor(),
-            New CookingFireItemTypeDescriptor(),
             New CookedGrubItemTypeDescriptor(),
             New ClayItemTypeDescriptor(),
             New CharcoalItemTypeDescriptor(),
@@ -29,8 +28,7 @@ Public Module ItemTypes
             New FishGutsItemTypeDescriptor(),
             New KnifeItemTypeDescriptor(),
             New BladeItemTypeDescriptor(),
-            New CookedFishFiletItemTypeDescriptor(),
-            New FurnaceItemTypeDescriptor()
+            New CookedFishFiletItemTypeDescriptor()
         }.
         ToDictionary(Function(x) x.ItemType, Function(x) x)
     <Extension>

@@ -8,8 +8,8 @@ Friend Class CookedGrubRecipeTypeDescriptor
         SetInput(ItemType.Grub, 1)
         SetInput(ItemType.SharpStick, 1)
         SetInputDurability(ItemType.SharpStick, 1)
-        SetOutput(ItemType.SharpStick, 1)
-        SetOutput(ItemType.CookedGrub, 1)
+        SetItemTypeOutput(ItemType.SharpStick, 1)
+        SetItemTypeOutput(ItemType.CookedGrub, 1)
         SetRequiredLocation(LocationType.CookingFire)
     End Sub
 End Class
