@@ -3,12 +3,16 @@ Imports towd.data
 
 Public MustInherit Class RecipeTypeDescriptor
     Implements IRecipeType
+    'location statistic minimum
+    'location statistic delta
+    'character statistic delta
     Private ReadOnly itemTypeInputs As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly itemTypeInputDurabilities As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly characterStatisticMinimums As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly characterStatisticMaximums As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly requiredLocationTypes As New HashSet(Of data.LocationType)
     Private ReadOnly itemTypeOutputs As New Dictionary(Of data.ItemType, Integer)
+    'itemTypeOutputGenerators
     Private buildsLocationType As data.LocationType? = Nothing
     Private ReadOnly timeTaken As Integer
     Protected Sub SetBuildsLocationType(locationType As data.LocationType?)
