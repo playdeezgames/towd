@@ -9,5 +9,6 @@ Friend Class KnifeRecipeTypeDescriptor
         SetItemTypeInput(ItemType.Twine, 1)
         SetItemTypeInput(ItemType.Stick, 1)
         SetItemTypeOutputGenerator(ItemType.Knife, New FixedGenerator(1))
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class

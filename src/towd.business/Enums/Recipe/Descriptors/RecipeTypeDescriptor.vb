@@ -179,7 +179,6 @@ Public MustInherit Class RecipeTypeDescriptor
                 character.ChangeItemDurability(item, -1)
             Next
         Next
-        character.ChangeStatistic(StatisticType.CraftCounter, 1)
         If buildsLocationType.HasValue Then
             character.Location.EntityType = buildsLocationType.Value.ToDescriptor
             character.AppendMessage($"Changed location to {buildsLocationType.Value.ToDescriptor.Name}.")

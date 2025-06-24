@@ -13,5 +13,6 @@ Friend Class PlankRecipeTypeDescriptor
         SetItemTypeInputDurability(ItemType.Hammer, 3)
         SetItemTypeInput(ItemType.Log, 1)
         SetItemTypeOutputGenerator(ItemType.Plank, New FixedGenerator(4))
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class

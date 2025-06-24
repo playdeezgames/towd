@@ -11,5 +11,6 @@ Friend Class CookedGrubRecipeTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.SharpStick, New FixedGenerator(1))
         SetItemTypeOutputGenerator(ItemType.CookedGrub, New FixedGenerator(1))
         SetRequiredLocationType(LocationType.CookingFire)
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class

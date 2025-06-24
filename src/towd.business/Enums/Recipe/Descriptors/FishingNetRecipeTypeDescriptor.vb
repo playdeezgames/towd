@@ -6,5 +6,6 @@ Friend Class FishingNetRecipeTypeDescriptor
         MyBase.New(RecipeType.FishingNet, 1)
         SetItemTypeInput(ItemType.Twine, 4)
         SetItemTypeOutputGenerator(ItemType.FishingNet, New FixedGenerator(1))
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class

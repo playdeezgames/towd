@@ -11,5 +11,6 @@ Friend Class BladeRecipeTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.Hammer, New FixedGenerator(1))
         SetItemTypeOutputGenerator(ItemType.Blade, New FixedGenerator(1))
         SetCharacterStatisticMinimum(StatisticType.KnappingSkill, 1)
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class

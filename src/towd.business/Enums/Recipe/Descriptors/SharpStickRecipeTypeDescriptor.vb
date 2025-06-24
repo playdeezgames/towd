@@ -10,5 +10,6 @@ Friend Class SharpStickRecipeTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.Hatchet, New FixedGenerator(1))
         SetItemTypeInputDurability(ItemType.Hatchet, 1)
         SetItemTypeOutputGenerator(ItemType.SharpStick, New FixedGenerator(1))
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class

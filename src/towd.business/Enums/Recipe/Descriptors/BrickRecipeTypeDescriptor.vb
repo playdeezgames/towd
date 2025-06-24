@@ -9,5 +9,6 @@ Friend Class BrickRecipeTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.Brick, New FixedGenerator(1))
         SetRequiredLocationType(LocationType.CookingFire)
         SetRequiredLocationType(LocationType.Furnace)
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class

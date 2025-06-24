@@ -19,4 +19,5 @@
     ForageGrass
     ForagePine
     ForageRock
+    Wait
 End Enum

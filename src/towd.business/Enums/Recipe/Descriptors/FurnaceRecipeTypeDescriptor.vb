@@ -9,5 +9,6 @@ Friend Class FurnaceRecipeTypeDescriptor
         SetRequiredLocationType(LocationType.Dirt)
         SetRequiredLocationType(LocationType.Grass)
         SetBuildsLocationType(LocationType.Furnace)
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class

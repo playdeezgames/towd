@@ -12,5 +12,6 @@ Friend Class RawFishFiletRecipeTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.FishGuts, New FixedGenerator(1))
         SetItemTypeOutputGenerator(ItemType.FishHead, New FixedGenerator(1))
         SetItemTypeOutputGenerator(ItemType.RawFishFilet, New FixedGenerator(1))
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class

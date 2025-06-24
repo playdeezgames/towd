@@ -7,5 +7,6 @@ Friend Class UnfiredBrickRecipeTypeDescriptor
         SetItemTypeInput(ItemType.PlantFiber, 1)
         SetItemTypeInput(ItemType.Clay, 1)
         SetItemTypeOutputGenerator(ItemType.UnfiredBrick, New FixedGenerator(1))
+        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
 End Class
