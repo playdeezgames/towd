@@ -12,7 +12,7 @@ Public MustInherit Class RecipeTypeDescriptor
     Private ReadOnly characterStatisticMaximums As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly requiredLocationTypes As New HashSet(Of data.LocationType)
     Private ReadOnly itemTypeOutputs As New Dictionary(Of data.ItemType, Integer)
-    'itemTypeOutputGenerators
+    Private ReadOnly itemTypeOutputGenerators As New Dictionary(Of data.ItemType, ICharacterWeightedGenerator)
     Private buildsLocationType As data.LocationType? = Nothing
     Private ReadOnly timeTaken As Integer
     Protected Sub SetBuildsLocationType(locationType As data.LocationType?)
@@ -36,6 +36,9 @@ Public MustInherit Class RecipeTypeDescriptor
     Protected Sub SetItemTypeOutput(itemType As data.ItemType, quantity As Integer)
         itemTypeOutputs(itemType) = quantity
     End Sub
+    Protected Sub SetItemTypeOutputGenerator(itemType As data.ItemType, generator As ICharacterWeightedGenerator)
+        itemTypeOutputGenerators(itemType) = generator
+    End Sub
     Sub New(recipeType As RecipeType, timeTaken As Integer)
         Me.RecipeType = recipeType
         Me.timeTaken = timeTaken
@@ -47,7 +50,7 @@ Public MustInherit Class RecipeTypeDescriptor
             Dim builder As New StringBuilder
             builder.Append(String.Join("+"c, itemTypeInputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}")))
             builder.Append("->")
-            Dim outputs = itemTypeOutputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}").ToList
+            Dim outputs = itemTypeOutputGenerators.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}").ToList
             If buildsLocationType.HasValue Then
                 outputs.Add($"Builds {buildsLocationType.Value.ToDescriptor.Name}")
             End If
