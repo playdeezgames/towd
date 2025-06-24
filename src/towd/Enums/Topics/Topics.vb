@@ -6,7 +6,6 @@ Module Topics
     Public ReadOnly VerbTypeTopicTable As IReadOnlyDictionary(Of VerbType, Topic) =
         New Dictionary(Of VerbType, Topic) From
         {
-            {VerbType.Forage, Topic.VerbTypeForage},
             {VerbType.Craft, Topic.VerbTypeCraft},
             {VerbType.Chop, Topic.VerbTypeChop},
             {VerbType.Dig, Topic.VerbTypeDig},

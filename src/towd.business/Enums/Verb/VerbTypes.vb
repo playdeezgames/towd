@@ -5,7 +5,6 @@ Public Module VerbTypes
     Public ReadOnly Descriptors As IReadOnlyDictionary(Of VerbType, IVerbType) =
         New List(Of IVerbType) From
         {
-            New ForageVerbTypeDescriptor(),
             New CraftVerbTypeDescriptor(),
             New ChopVerbTypeDescriptor(),
             New DigVerbTypeDescriptor(),

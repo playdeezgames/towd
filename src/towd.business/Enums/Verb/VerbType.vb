@@ -1,5 +1,4 @@
 ﻿Public Enum VerbType
-    Forage
     Craft
     Chop
     Dig

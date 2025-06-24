@@ -61,6 +61,5 @@
     VerbTypeEatFish
     VerbTypeEatGrub
     VerbTypeFish
-    VerbTypeForage
     VerbTypeWait
 End Enum
