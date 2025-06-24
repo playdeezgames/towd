@@ -8,6 +8,6 @@ Friend Class KnifeRecipeTypeDescriptor
         SetItemTypeInput(ItemType.Blade, 1)
         SetItemTypeInput(ItemType.Twine, 1)
         SetItemTypeInput(ItemType.Stick, 1)
-        SetItemTypeOutput(ItemType.Knife, 1)
+        SetItemTypeOutputGenerator(ItemType.Knife, New FixedGenerator(1))
     End Sub
 End Class

@@ -8,6 +8,6 @@ Friend Class HammerRecipeTypeDescriptor
         SetItemTypeInput(ItemType.Rock, 1)
         SetItemTypeInput(ItemType.Twine, 1)
         SetItemTypeInput(ItemType.Stick, 1)
-        SetItemTypeOutput(ItemType.Hammer, 1)
+        SetItemTypeOutputGenerator(ItemType.Hammer, New FixedGenerator(1))
     End Sub
 End Class

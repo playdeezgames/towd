@@ -8,8 +8,8 @@ Friend Class BladeRecipeTypeDescriptor
         SetItemTypeInput(ItemType.SharpRock, 1)
         SetItemTypeInput(ItemType.Hammer, 1)
         SetItemTypeInputDurability(ItemType.Hammer, 1)
-        SetItemTypeOutput(ItemType.Hammer, 1)
-        SetItemTypeOutput(ItemType.Blade, 1)
+        SetItemTypeOutputGenerator(ItemType.Hammer, New FixedGenerator(1))
+        SetItemTypeOutputGenerator(ItemType.Blade, New FixedGenerator(1))
         SetCharacterStatisticMinimum(StatisticType.KnappingSkill, 1)
     End Sub
 End Class

@@ -6,6 +6,6 @@ Friend Class UnfiredBrickRecipeTypeDescriptor
         MyBase.New(RecipeType.UnfiredBrick, 1)
         SetItemTypeInput(ItemType.PlantFiber, 1)
         SetItemTypeInput(ItemType.Clay, 1)
-        SetItemTypeOutput(ItemType.UnfiredBrick, 1)
+        SetItemTypeOutputGenerator(ItemType.UnfiredBrick, New FixedGenerator(1))
     End Sub
 End Class

@@ -11,7 +11,6 @@ Public MustInherit Class RecipeTypeDescriptor
     Private ReadOnly characterStatisticMinimums As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly characterStatisticMaximums As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly requiredLocationTypes As New HashSet(Of data.LocationType)
-    Private ReadOnly itemTypeOutputs As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly itemTypeOutputGenerators As New Dictionary(Of data.ItemType, ICharacterWeightedGenerator)
     Private buildsLocationType As data.LocationType? = Nothing
     Private ReadOnly timeTaken As Integer
@@ -32,9 +31,6 @@ Public MustInherit Class RecipeTypeDescriptor
     End Sub
     Protected Sub SetItemTypeInputDurability(itemType As data.ItemType, quantity As Integer)
         itemTypeInputDurabilities(itemType) = quantity
-    End Sub
-    Protected Sub SetItemTypeOutput(itemType As data.ItemType, quantity As Integer)
-        itemTypeOutputs(itemType) = quantity
     End Sub
     Protected Sub SetItemTypeOutputGenerator(itemType As data.ItemType, generator As ICharacterWeightedGenerator)
         itemTypeOutputGenerators(itemType) = generator
@@ -74,9 +70,9 @@ Public MustInherit Class RecipeTypeDescriptor
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
-            If itemTypeOutputs.Any Then
+            If itemTypeOutputGenerators.Any Then
                 builder.AppendLine("Item Type Outputs:")
-                For Each entry In itemTypeOutputs
+                For Each entry In itemTypeOutputGenerators
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
@@ -115,8 +111,8 @@ Public MustInherit Class RecipeTypeDescriptor
         End If
         character.LastRecipe = RecipeType
         Dim quantities As New Dictionary(Of data.ItemType, Integer)
-        For Each entry In itemTypeOutputs
-            quantities(entry.Key) = entry.Value
+        For Each entry In itemTypeOutputGenerators
+            quantities(entry.Key) = entry.Value.Generate(character)
         Next
         For Each entry In itemTypeInputs
             If Not quantities.ContainsKey(entry.Key) Then
