@@ -5,9 +5,9 @@ Friend Class HammerRecipeTypeDescriptor
 
     Public Sub New()
         MyBase.New(RecipeType.Hammer, 1)
-        SetInput(ItemType.Rock, 1)
-        SetInput(ItemType.Twine, 1)
-        SetInput(ItemType.Stick, 1)
+        SetItemTypeInput(ItemType.Rock, 1)
+        SetItemTypeInput(ItemType.Twine, 1)
+        SetItemTypeInput(ItemType.Stick, 1)
         SetItemTypeOutput(ItemType.Hammer, 1)
     End Sub
 End Class

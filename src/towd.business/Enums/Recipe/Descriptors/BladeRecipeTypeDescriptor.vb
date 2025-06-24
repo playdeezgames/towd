@@ -5,11 +5,11 @@ Friend Class BladeRecipeTypeDescriptor
 
     Public Sub New()
         MyBase.New(RecipeType.Blade, 1)
-        SetInput(ItemType.SharpRock, 1)
-        SetInput(ItemType.Hammer, 1)
-        SetInputDurability(ItemType.Hammer, 1)
+        SetItemTypeInput(ItemType.SharpRock, 1)
+        SetItemTypeInput(ItemType.Hammer, 1)
+        SetItemTypeInputDurability(ItemType.Hammer, 1)
         SetItemTypeOutput(ItemType.Hammer, 1)
         SetItemTypeOutput(ItemType.Blade, 1)
-        SetStatisticMinimum(StatisticType.KnappingSkill, 1)
+        SetCharacterStatisticMinimum(StatisticType.KnappingSkill, 1)
     End Sub
 End Class

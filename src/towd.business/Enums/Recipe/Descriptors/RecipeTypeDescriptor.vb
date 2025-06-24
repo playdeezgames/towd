@@ -3,31 +3,31 @@ Imports towd.data
 
 Public MustInherit Class RecipeTypeDescriptor
     Implements IRecipeType
-    Private ReadOnly inputs As New Dictionary(Of data.ItemType, Integer)
-    Private ReadOnly inputDurabilities As New Dictionary(Of data.ItemType, Integer)
-    Private ReadOnly statisticMinimums As New Dictionary(Of data.StatisticType, Integer)
-    Private ReadOnly statisticMaximums As New Dictionary(Of data.StatisticType, Integer)
-    Private ReadOnly requiredLocations As New HashSet(Of data.LocationType)
+    Private ReadOnly itemTypeInputs As New Dictionary(Of data.ItemType, Integer)
+    Private ReadOnly itemTypeInputDurabilities As New Dictionary(Of data.ItemType, Integer)
+    Private ReadOnly characterStatisticMinimums As New Dictionary(Of data.StatisticType, Integer)
+    Private ReadOnly characterStatisticMaximums As New Dictionary(Of data.StatisticType, Integer)
+    Private ReadOnly requiredLocationTypes As New HashSet(Of data.LocationType)
     Private ReadOnly itemTypeOutputs As New Dictionary(Of data.ItemType, Integer)
-    Private locationTypeOutput As data.LocationType? = Nothing
+    Private buildsLocationType As data.LocationType? = Nothing
     Private ReadOnly timeTaken As Integer
-    Protected Sub SetLocationTypeOutput(locationType As data.LocationType?)
-        Me.locationTypeOutput = locationType
+    Protected Sub SetBuildsLocationType(locationType As data.LocationType?)
+        Me.buildsLocationType = locationType
     End Sub
-    Protected Sub SetRequiredLocation(locationType As data.LocationType)
-        requiredLocations.Add(locationType)
+    Protected Sub SetRequiredLocationType(locationType As data.LocationType)
+        requiredLocationTypes.Add(locationType)
     End Sub
-    Protected Sub SetStatisticMinimum(statisticType As StatisticType, minimum As Integer)
-        statisticMinimums(statisticType) = minimum
+    Protected Sub SetCharacterStatisticMinimum(statisticType As StatisticType, minimum As Integer)
+        characterStatisticMinimums(statisticType) = minimum
     End Sub
-    Protected Sub SetStatisticMaximum(statisticType As StatisticType, maximum As Integer)
-        statisticMaximums(statisticType) = maximum
+    Protected Sub SetCharacterStatisticMaximum(statisticType As StatisticType, maximum As Integer)
+        characterStatisticMaximums(statisticType) = maximum
     End Sub
-    Protected Sub SetInput(itemType As data.ItemType, quantity As Integer)
-        inputs(itemType) = quantity
+    Protected Sub SetItemTypeInput(itemType As data.ItemType, quantity As Integer)
+        itemTypeInputs(itemType) = quantity
     End Sub
-    Protected Sub SetInputDurability(itemType As data.ItemType, quantity As Integer)
-        inputDurabilities(itemType) = quantity
+    Protected Sub SetItemTypeInputDurability(itemType As data.ItemType, quantity As Integer)
+        itemTypeInputDurabilities(itemType) = quantity
     End Sub
     Protected Sub SetItemTypeOutput(itemType As data.ItemType, quantity As Integer)
         itemTypeOutputs(itemType) = quantity
@@ -41,11 +41,11 @@ Public MustInherit Class RecipeTypeDescriptor
     Public ReadOnly Property Name As String Implements IRecipeType.Name
         Get
             Dim builder As New StringBuilder
-            builder.Append(String.Join("+"c, inputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}")))
+            builder.Append(String.Join("+"c, itemTypeInputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}")))
             builder.Append("->")
             Dim outputs = itemTypeOutputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}").ToList
-            If locationTypeOutput.HasValue Then
-                outputs.Add($"Builds {locationTypeOutput.Value.ToDescriptor.Name}")
+            If buildsLocationType.HasValue Then
+                outputs.Add($"Builds {buildsLocationType.Value.ToDescriptor.Name}")
             End If
             builder.Append(String.Join("+"c, outputs))
             Return builder.ToString()
@@ -55,44 +55,44 @@ Public MustInherit Class RecipeTypeDescriptor
     Public ReadOnly Property Description As String Implements IRecipeType.Description
         Get
             Dim builder As New StringBuilder
-            If inputs.Any Then
-                builder.AppendLine("Inputs:")
-                For Each entry In inputs
+            If itemTypeInputs.Any Then
+                builder.AppendLine("Item Type Inputs:")
+                For Each entry In itemTypeInputs
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
-            If inputDurabilities.Any Then
-                builder.AppendLine("Input Durabilities:")
-                For Each entry In inputDurabilities
+            If itemTypeInputDurabilities.Any Then
+                builder.AppendLine("Item Type Input Durabilities:")
+                For Each entry In itemTypeInputDurabilities
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
             If itemTypeOutputs.Any Then
-                builder.AppendLine("Outputs:")
+                builder.AppendLine("Item Type Outputs:")
                 For Each entry In itemTypeOutputs
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
-            If statisticMinimums.Any Then
-                builder.AppendLine("Statistic Minimums:")
-                For Each entry In statisticMinimums
+            If characterStatisticMinimums.Any Then
+                builder.AppendLine("Character Statistic Minimums:")
+                For Each entry In characterStatisticMinimums
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
-            If statisticMaximums.Any Then
-                builder.AppendLine("Statistic Maximums:")
-                For Each entry In statisticMaximums
+            If characterStatisticMaximums.Any Then
+                builder.AppendLine("Character Statistic Maximums:")
+                For Each entry In characterStatisticMaximums
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
                 Next
             End If
-            If requiredLocations.Any Then
+            If requiredLocationTypes.Any Then
                 builder.AppendLine("Required Location Type:")
-                For Each entry In requiredLocations
+                For Each entry In requiredLocationTypes
                     builder.AppendLine($"  {entry.ToDescriptor.Name}")
                 Next
             End If
-            If locationTypeOutput.HasValue Then
-                builder.AppendLine($"Builds: {locationTypeOutput.Value.ToDescriptor.Name}")
+            If buildsLocationType.HasValue Then
+                builder.AppendLine($"Builds: {buildsLocationType.Value.ToDescriptor.Name}")
             End If
             Return builder.ToString()
         End Get
@@ -111,7 +111,7 @@ Public MustInherit Class RecipeTypeDescriptor
         For Each entry In itemTypeOutputs
             quantities(entry.Key) = entry.Value
         Next
-        For Each entry In inputs
+        For Each entry In itemTypeInputs
             If Not quantities.ContainsKey(entry.Key) Then
                 quantities(entry.Key) = 0
             End If
@@ -130,43 +130,43 @@ Public MustInherit Class RecipeTypeDescriptor
                 character.AppendMessage($"+{entry.Value} {entry.Key.ToDescriptor.Name}(x{character.GetCountOfItemType(entry.Key.ToDescriptor)})")
             End If
         Next
-        For Each entry In inputDurabilities
+        For Each entry In itemTypeInputDurabilities
             For Each dummy In Enumerable.Range(0, entry.Value)
                 Dim item = character.GetItemsOfType(entry.Key.ToDescriptor).First
                 character.ChangeItemDurability(item, -1)
             Next
         Next
         character.ChangeStatistic(StatisticType.CraftCounter, 1)
-        If locationTypeOutput.HasValue Then
-            character.Location.EntityType = locationTypeOutput.Value.ToDescriptor
-            character.AppendMessage($"Changed location to {locationTypeOutput.Value.ToDescriptor.Name}.")
+        If buildsLocationType.HasValue Then
+            character.Location.EntityType = buildsLocationType.Value.ToDescriptor
+            character.AppendMessage($"Changed location to {buildsLocationType.Value.ToDescriptor.Name}.")
         End If
         character.World.AdvanceTime(timeTaken)
         character.SetFlag(data.FlagType.CraftMenu, VerbType.Craft.ToDescriptor.CanPerform(character))
     End Sub
     Public Function CanCraft(character As ICharacter) As Boolean Implements IRecipeType.CanCraft
-        For Each entry In statisticMinimums
+        For Each entry In characterStatisticMinimums
             If character.GetStatistic(entry.Key) < entry.Value Then
                 Return False
             End If
         Next
-        For Each entry In statisticMaximums
+        For Each entry In characterStatisticMaximums
             If character.GetStatistic(entry.Key) > entry.Value Then
                 Return False
             End If
         Next
-        For Each entry In inputs
+        For Each entry In itemTypeInputs
             If character.GetCountOfItemType(entry.Key.ToDescriptor) < entry.Value Then
                 Return False
             End If
         Next
-        For Each entry In inputDurabilities
+        For Each entry In itemTypeInputDurabilities
             If character.GetStatisticSumOfItemType(entry.Key.ToDescriptor, StatisticType.Durability) < entry.Value Then
                 Return False
             End If
         Next
-        If requiredLocations.Any Then
-            If Not requiredLocations.Contains(character.Location.EntityType.LocationType) Then
+        If requiredLocationTypes.Any Then
+            If Not requiredLocationTypes.Contains(character.Location.EntityType.LocationType) Then
                 Return False
             End If
         End If

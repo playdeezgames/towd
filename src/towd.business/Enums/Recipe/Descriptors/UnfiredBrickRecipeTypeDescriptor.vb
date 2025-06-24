@@ -4,8 +4,8 @@ Friend Class UnfiredBrickRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
     Public Sub New()
         MyBase.New(RecipeType.UnfiredBrick, 1)
-        SetInput(ItemType.PlantFiber, 1)
-        SetInput(ItemType.Clay, 1)
+        SetItemTypeInput(ItemType.PlantFiber, 1)
+        SetItemTypeInput(ItemType.Clay, 1)
         SetItemTypeOutput(ItemType.UnfiredBrick, 1)
     End Sub
 End Class

@@ -5,10 +5,10 @@ Friend Class CookingFireRecipeTypeDescriptor
 
     Public Sub New()
         MyBase.New(RecipeType.CookingFire, 1)
-        SetInput(ItemType.Rock, 8)
-        SetInput(ItemType.Stick, 8)
-        SetRequiredLocation(LocationType.Dirt)
-        SetRequiredLocation(LocationType.Grass)
-        SetLocationTypeOutput(LocationType.CookingFire)
+        SetItemTypeInput(ItemType.Rock, 8)
+        SetItemTypeInput(ItemType.Stick, 8)
+        SetRequiredLocationType(LocationType.Dirt)
+        SetRequiredLocationType(LocationType.Grass)
+        SetBuildsLocationType(LocationType.CookingFire)
     End Sub
 End Class

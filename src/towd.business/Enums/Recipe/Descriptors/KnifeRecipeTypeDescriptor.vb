@@ -5,9 +5,9 @@ Friend Class KnifeRecipeTypeDescriptor
 
     Public Sub New()
         MyBase.New(RecipeType.Knife, 1)
-        SetInput(ItemType.Blade, 1)
-        SetInput(ItemType.Twine, 1)
-        SetInput(ItemType.Stick, 1)
+        SetItemTypeInput(ItemType.Blade, 1)
+        SetItemTypeInput(ItemType.Twine, 1)
+        SetItemTypeInput(ItemType.Stick, 1)
         SetItemTypeOutput(ItemType.Knife, 1)
     End Sub
 End Class

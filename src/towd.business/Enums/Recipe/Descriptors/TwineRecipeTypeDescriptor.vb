@@ -3,7 +3,7 @@
 
     Public Sub New()
         MyBase.New(RecipeType.Twine, 1)
-        SetInput(data.ItemType.PlantFiber, 2)
+        SetItemTypeInput(data.ItemType.PlantFiber, 2)
         SetItemTypeOutput(data.ItemType.Twine, 1)
     End Sub
 End Class
