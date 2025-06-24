@@ -3,9 +3,9 @@ Imports towd.data
 
 Public MustInherit Class RecipeTypeDescriptor
     Implements IRecipeType
-    'location statistic minimum
-    'location statistic delta
-    'character statistic delta
+    Private ReadOnly locationStatisticMinimums As New Dictionary(Of data.StatisticType, Integer)
+    Private ReadOnly locationStatisticDeltas As New Dictionary(Of data.StatisticType, Integer)
+    Private ReadOnly characterStatisticDeltas As New Dictionary(Of data.StatisticType, Integer)
     Private ReadOnly itemTypeInputs As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly itemTypeInputDurabilities As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly characterStatisticMinimums As New Dictionary(Of data.StatisticType, Integer)
@@ -14,6 +14,15 @@ Public MustInherit Class RecipeTypeDescriptor
     Private ReadOnly itemTypeOutputGenerators As New Dictionary(Of data.ItemType, ICharacterWeightedGenerator)
     Private buildsLocationType As data.LocationType? = Nothing
     Private ReadOnly timeTaken As Integer
+    Protected Sub SetLocationStatisticMinimum(statisticType As StatisticType, minimum As Integer)
+        locationStatisticMinimums(statisticType) = minimum
+    End Sub
+    Protected Sub SetLocationStatisticDelta(statisticType As StatisticType, delta As Integer)
+        locationStatisticDeltas(statisticType) = delta
+    End Sub
+    Protected Sub SetCharacterStatisticDelta(statisticType As StatisticType, delta As Integer)
+        characterStatisticDeltas(statisticType) = delta
+    End Sub
     Protected Sub SetBuildsLocationType(locationType As data.LocationType?)
         Me.buildsLocationType = locationType
     End Sub
