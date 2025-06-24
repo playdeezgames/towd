@@ -16,4 +16,7 @@
     Twine
     UnfiredBrick
     RawFishFilet
+    ForageGrass
+    ForagePine
+    ForageRock
 End Enum

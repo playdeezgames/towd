@@ -13,7 +13,11 @@ Public MustInherit Class RecipeTypeDescriptor
     Private ReadOnly requiredLocationTypes As New HashSet(Of data.LocationType)
     Private ReadOnly itemTypeOutputGenerators As New Dictionary(Of data.ItemType, ICharacterWeightedGenerator)
     Private buildsLocationType As data.LocationType? = Nothing
+    Private displayName As String = Nothing
     Private ReadOnly timeTaken As Integer
+    Protected Sub SetDisplayName(displayName As String)
+        Me.displayName = displayName
+    End Sub
     Protected Sub SetLocationStatisticMinimum(statisticType As StatisticType, minimum As Integer)
         locationStatisticMinimums(statisticType) = minimum
     End Sub
@@ -52,6 +56,9 @@ Public MustInherit Class RecipeTypeDescriptor
 
     Public ReadOnly Property Name As String Implements IRecipeType.Name
         Get
+            If Not String.IsNullOrWhiteSpace(displayName) Then
+                Return displayName
+            End If
             Dim builder As New StringBuilder
             builder.Append(String.Join("+"c, itemTypeInputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}")))
             builder.Append("->")
@@ -103,6 +110,24 @@ Public MustInherit Class RecipeTypeDescriptor
                     builder.AppendLine($"  {entry.ToDescriptor.Name}")
                 Next
             End If
+            If locationStatisticMinimums.Any Then
+                builder.AppendLine("Location Statistic Minimums:")
+                For Each entry In locationStatisticMinimums
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                Next
+            End If
+            If locationStatisticDeltas.Any Then
+                builder.AppendLine("Location Statistic Deltas:")
+                For Each entry In locationStatisticDeltas
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                Next
+            End If
+            If characterStatisticDeltas.Any Then
+                builder.AppendLine("Character Statistic Deltas:")
+                For Each entry In characterStatisticDeltas
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                Next
+            End If
             If buildsLocationType.HasValue Then
                 builder.AppendLine($"Builds: {buildsLocationType.Value.ToDescriptor.Name}")
             End If
@@ -119,6 +144,12 @@ Public MustInherit Class RecipeTypeDescriptor
             Return
         End If
         character.LastRecipe = RecipeType
+        For Each entry In locationStatisticDeltas
+            character.Location.ChangeStatistic(entry.Key, entry.Value)
+        Next
+        For Each entry In characterStatisticDeltas
+            character.ChangeStatistic(entry.Key, entry.Value)
+        Next
         Dim quantities As New Dictionary(Of data.ItemType, Integer)
         For Each entry In itemTypeOutputGenerators
             quantities(entry.Key) = entry.Value.Generate(character)
@@ -157,6 +188,12 @@ Public MustInherit Class RecipeTypeDescriptor
         character.SetFlag(data.FlagType.CraftMenu, VerbType.Craft.ToDescriptor.CanPerform(character))
     End Sub
     Public Function CanCraft(character As ICharacter) As Boolean Implements IRecipeType.CanCraft
+        Dim location = character.Location
+        For Each entry In locationStatisticMinimums
+            If location.GetStatistic(entry.Key) < entry.Value Then
+                Return False
+            End If
+        Next
         For Each entry In characterStatisticMinimums
             If character.GetStatistic(entry.Key) < entry.Value Then
                 Return False

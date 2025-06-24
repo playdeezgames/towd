@@ -21,7 +21,10 @@ Public Module RecipeTypes
             New BladeRecipeTypeDescriptor(),
             New RawFishFiletRecipeTypeDescriptor(),
             New FishingNetRecipeTypeDescriptor(),
-            New BrickRecipeTypeDescriptor()
+            New BrickRecipeTypeDescriptor(),
+            New ForageGrassRecipeTypeDescriptor(),
+            New ForageRockRecipeTypeDescriptor(),
+            New ForagePineRecipeTypeDescriptor()
         }.
         ToDictionary(Function(x) x.RecipeType, Function(x) x)
     <Extension>

@@ -38,6 +38,9 @@
     RecipeTypeCookedGrub
     RecipeTypeCookingFire
     RecipeTypeFishingNet
+    RecipeTypeForageGrass
+    RecipeTypeForagePine
+    RecipeTypeForageRock
     RecipeTypeFurnace
     RecipeTypeHammer
     RecipeTypeHatchet

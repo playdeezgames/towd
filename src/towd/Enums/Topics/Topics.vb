@@ -40,7 +40,10 @@ Module Topics
             {RecipeType.Blade, Topic.RecipeTypeBlade},
             {RecipeType.RawFishFilet, Topic.RecipeTypeRawFishFilet},
             {RecipeType.FishingNet, Topic.RecipeTypeFishingNet},
-            {RecipeType.Brick, Topic.RecipeTypeBrick}
+            {RecipeType.Brick, Topic.RecipeTypeBrick},
+            {RecipeType.ForageGrass, Topic.RecipeTypeForageGrass},
+            {RecipeType.ForagePine, Topic.RecipeTypeForagePine},
+            {RecipeType.ForageRock, Topic.RecipeTypeForageRock}
         }
     Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of ItemType, Topic) =
         New Dictionary(Of ItemType, Topic) From
