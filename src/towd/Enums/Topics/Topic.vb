@@ -34,9 +34,12 @@
     RecipeTypeBlade
     RecipeTypeBrick
     RecipeTypeCharcoalCookingFire
+    RecipeTypeChop
     RecipeTypeCookedFishFilet
     RecipeTypeCookedGrub
     RecipeTypeCookingFire
+    RecipeTypeDigGrass
+    RecipeTypeDigPond
     RecipeTypeFishingNet
     RecipeTypeForageGrass
     RecipeTypeForagePine

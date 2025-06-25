@@ -20,4 +20,7 @@
     ForagePine
     ForageRock
     Wait
+    Chop
+    DigGrass
+    DigPond
 End Enum

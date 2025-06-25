@@ -25,7 +25,10 @@ Public Module RecipeTypes
             New ForageGrassRecipeTypeDescriptor(),
             New ForageRockRecipeTypeDescriptor(),
             New ForagePineRecipeTypeDescriptor(),
-            New WaitRecipeTypeDescriptor()
+            New WaitRecipeTypeDescriptor(),
+            New ChopRecipeTypeDescriptor(),
+            New DigGrassRecipeTypeDescriptor(),
+            New DigPondRecipeTypeDescriptor()
         }.
         ToDictionary(Function(x) x.RecipeType, Function(x) x)
     <Extension>

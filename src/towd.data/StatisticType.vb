@@ -1,8 +1,10 @@
 ﻿Public Enum StatisticType
     BuildCounter
+    ChopSkill
     Chopping
     CraftCounter
     CurrentItemType
+    DigSkill
     Digging
     Durability
     Fishing

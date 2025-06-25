@@ -6,7 +6,9 @@ Public Module SkillTypes
         New List(Of ISkillType) From
         {
             New ForagingSkillTypeDescriptor(),
-            New KnappingSkillTypeDescriptor()
+            New KnappingSkillTypeDescriptor(),
+            New DigSkillTypeDescriptor(),
+            New ChopSkillTypeDescriptor()
         }.ToDictionary(Function(x) x.SkillType, Function(x) x)
     <Extension>
     Public Function ToDescriptor(skillType As SkillType) As ISkillType
