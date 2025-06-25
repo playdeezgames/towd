@@ -1,4 +1,5 @@
 ﻿Public Enum StatisticType
+    BuildCounter
     Chopping
     CraftCounter
     CurrentItemType

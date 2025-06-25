@@ -13,4 +13,9 @@
     MoveTenTimes
     MoveHundredTimes
     MoveThousandTimes
+
+    BuildOnce
+    BuildTenTimes
+    BuildHundredTimes
+    BuildThousandTimes
 End Enum

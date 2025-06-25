@@ -10,6 +10,6 @@ Friend Class CookingFireRecipeTypeDescriptor
         SetRequiredLocationType(LocationType.Dirt)
         SetRequiredLocationType(LocationType.Grass)
         SetBuildsLocationType(LocationType.CookingFire)
-        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetCharacterStatisticDelta(StatisticType.BuildCounter, 1)
     End Sub
 End Class

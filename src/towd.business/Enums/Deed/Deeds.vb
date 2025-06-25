@@ -15,7 +15,11 @@ Public Module Deeds
             New MoveDeedDescriptor(data.Deed.MoveOnce, "Move once", 1, 1, Array.Empty(Of data.Deed)()),
             New MoveDeedDescriptor(data.Deed.MoveTenTimes, "Move ten times", 10, 1, {data.Deed.MoveOnce}),
             New MoveDeedDescriptor(data.Deed.MoveHundredTimes, "Move a hundred times", 100, 1, {data.Deed.MoveTenTimes}),
-            New MoveDeedDescriptor(data.Deed.MoveThousandTimes, "Move a thousand times", 1000, 1, {data.Deed.MoveHundredTimes})
+            New MoveDeedDescriptor(data.Deed.MoveThousandTimes, "Move a thousand times", 1000, 1, {data.Deed.MoveHundredTimes}),
+            New BuildDeedDescriptor(data.Deed.BuildOnce, "Build once", 1, 1, Array.Empty(Of data.Deed)()),
+            New BuildDeedDescriptor(data.Deed.BuildTenTimes, "Build ten times", 10, 1, {data.Deed.BuildOnce}),
+            New BuildDeedDescriptor(data.Deed.BuildHundredTimes, "Build a hundred times", 100, 1, {data.Deed.BuildTenTimes}),
+            New BuildDeedDescriptor(data.Deed.BuildThousandTimes, "Build a thousand times", 1000, 1, {data.Deed.BuildHundredTimes})
         }.ToDictionary(Function(x) x.Deed, Function(x) x)
     <Extension>
     Public Function ToDescriptor(deed As data.Deed) As IDeed
