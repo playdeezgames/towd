@@ -9,7 +9,6 @@ Module Topics
             {VerbType.Craft, Topic.VerbTypeCraft},
             {VerbType.EatGrub, Topic.VerbTypeEatGrub},
             {VerbType.AddFuel, Topic.VerbTypeAddFuel},
-            {VerbType.Wait, Topic.VerbTypeWait},
             {VerbType.Fish, Topic.VerbTypeFish},
             {VerbType.EatFish, Topic.VerbTypeEatFish}
         }
@@ -43,7 +42,8 @@ Module Topics
             {RecipeType.ForageRock, Topic.RecipeTypeForageRock},
             {RecipeType.Chop, Topic.RecipeTypeChop},
             {RecipeType.DigPond, Topic.RecipeTypeDigPond},
-            {RecipeType.DigGrass, Topic.RecipeTypeDigGrass}
+            {RecipeType.DigGrass, Topic.RecipeTypeDigGrass},
+            {RecipeType.Wait, Topic.RecipeTypeWait}
         }
     Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of ItemType, Topic) =
         New Dictionary(Of ItemType, Topic) From

@@ -2,7 +2,6 @@
     Craft
     EatGrub
     AddFuel
-    Wait
     Fish
     EatFish
 End Enum

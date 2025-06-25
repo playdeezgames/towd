@@ -54,6 +54,7 @@
     RecipeTypeSharpStick
     RecipeTypeTwine
     RecipeTypeUnfiredBrick
+    RecipeTypeWait
 
     SkillTypeForaging
 
@@ -62,5 +63,4 @@
     VerbTypeEatFish
     VerbTypeEatGrub
     VerbTypeFish
-    VerbTypeWait
 End Enum

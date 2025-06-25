@@ -9,7 +9,6 @@ Public Module VerbTypes
             New EatGrubVerbTypeDescriptor(),
             New EatFishVerbTypeDescriptor(),
             New AddFuelVerbTypeDescriptor(),
-            New WaitVerbTypeDescriptor(),
             New FishVerbTypeDescriptor()
         }.ToDictionary(Function(x) x.VerbType, Function(x) x)
     <Extension>
