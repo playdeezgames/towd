@@ -6,8 +6,6 @@ Public Module VerbTypes
         New List(Of IVerbType) From
         {
             New CraftVerbTypeDescriptor(),
-            New ChopVerbTypeDescriptor(),
-            New DigVerbTypeDescriptor(),
             New EatGrubVerbTypeDescriptor(),
             New EatFishVerbTypeDescriptor(),
             New AddFuelVerbTypeDescriptor(),

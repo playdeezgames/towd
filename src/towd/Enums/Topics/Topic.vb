@@ -58,9 +58,7 @@
     SkillTypeForaging
 
     VerbTypeAddFuel
-    VerbTypeChop
     VerbTypeCraft
-    VerbTypeDig
     VerbTypeEatFish
     VerbTypeEatGrub
     VerbTypeFish

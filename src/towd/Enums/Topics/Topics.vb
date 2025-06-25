@@ -7,8 +7,6 @@ Module Topics
         New Dictionary(Of VerbType, Topic) From
         {
             {VerbType.Craft, Topic.VerbTypeCraft},
-            {VerbType.Chop, Topic.VerbTypeChop},
-            {VerbType.Dig, Topic.VerbTypeDig},
             {VerbType.EatGrub, Topic.VerbTypeEatGrub},
             {VerbType.AddFuel, Topic.VerbTypeAddFuel},
             {VerbType.Wait, Topic.VerbTypeWait},
