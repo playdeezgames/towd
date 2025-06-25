@@ -1,6 +1,7 @@
 ﻿Public Enum SkillType
+    Chop
+    Dig
+    Fish
     Foraging
     Knapping
-    Dig
-    Chop
 End Enum

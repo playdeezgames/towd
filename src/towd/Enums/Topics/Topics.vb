@@ -15,7 +15,11 @@ Module Topics
     Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of SkillType, Topic) =
         New Dictionary(Of SkillType, Topic) From
         {
-            {SkillType.Foraging, Topic.SkillTypeForaging}
+            {SkillType.Foraging, Topic.SkillTypeForaging},
+            {SkillType.Dig, Topic.SkillTypeDig},
+            {SkillType.Knapping, Topic.SkillTypeKnapping},
+            {SkillType.Chop, Topic.SkillTypeChop},
+            {SkillType.Fish, Topic.SkillTypeFish}
         }
     Public ReadOnly RecipeTypeTopicTable As IReadOnlyDictionary(Of RecipeType, Topic) =
         New Dictionary(Of RecipeType, Topic) From
@@ -43,7 +47,8 @@ Module Topics
             {RecipeType.Chop, Topic.RecipeTypeChop},
             {RecipeType.DigPond, Topic.RecipeTypeDigPond},
             {RecipeType.DigGrass, Topic.RecipeTypeDigGrass},
-            {RecipeType.Wait, Topic.RecipeTypeWait}
+            {RecipeType.Wait, Topic.RecipeTypeWait},
+            {RecipeType.Fish, Topic.RecipeTypeFish}
         }
     Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of ItemType, Topic) =
         New Dictionary(Of ItemType, Topic) From

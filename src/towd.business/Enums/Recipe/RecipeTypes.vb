@@ -28,7 +28,8 @@ Public Module RecipeTypes
             New WaitRecipeTypeDescriptor(),
             New ChopRecipeTypeDescriptor(),
             New DigGrassRecipeTypeDescriptor(),
-            New DigPondRecipeTypeDescriptor()
+            New DigPondRecipeTypeDescriptor(),
+            New FishRecipeTypeDescriptor()
         }.
         ToDictionary(Function(x) x.RecipeType, Function(x) x)
     <Extension>

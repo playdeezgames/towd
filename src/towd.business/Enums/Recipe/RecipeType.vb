@@ -2,25 +2,26 @@
     Blade
     Brick
     CharcoalCookingFire
+    Chop
     CookedFishFilet
     CookedGrub
     CookingFire
+    DigGrass
+    DigPond
+    Fish
     FishingNet
+    ForageGrass
+    ForagePine
+    ForageRock
     Furnace
     Hammer
     Hatchet
     Knife
     Plank
+    RawFishFilet
     SharpRock
     SharpStick
     Twine
     UnfiredBrick
-    RawFishFilet
-    ForageGrass
-    ForagePine
-    ForageRock
     Wait
-    Chop
-    DigGrass
-    DigPond
 End Enum

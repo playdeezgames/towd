@@ -55,6 +55,7 @@
     RecipeTypeTwine
     RecipeTypeUnfiredBrick
     RecipeTypeWait
+    RecipeTypeFish
 
     SkillTypeForaging
 
@@ -63,4 +64,8 @@
     VerbTypeEatFish
     VerbTypeEatGrub
     VerbTypeFish
+    SkillTypeDig
+    SkillTypeKnapping
+    SkillTypeChop
+    SkillTypeFish
 End Enum

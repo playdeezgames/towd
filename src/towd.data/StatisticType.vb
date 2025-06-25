@@ -7,6 +7,7 @@
     DigSkill
     Digging
     Durability
+    FishSkill
     Fishing
     ForagingCounter
     ForagingSkill
