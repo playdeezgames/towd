@@ -1,6 +1,6 @@
 ﻿Public Enum VerbType
     Craft
     EatGrub
-    AddFuel
     EatFish
+    AddFuel
 End Enum
