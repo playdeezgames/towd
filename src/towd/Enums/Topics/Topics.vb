@@ -47,7 +47,9 @@ Public Module Topics
             {RecipeType.DigPond, Topic.RecipeTypeDigPond},
             {RecipeType.DigGrass, Topic.RecipeTypeDigGrass},
             {RecipeType.Wait, Topic.RecipeTypeWait},
-            {RecipeType.Fish, Topic.RecipeTypeFish}
+            {RecipeType.Fish, Topic.RecipeTypeFish},
+            {RecipeType.EatCookedFishFilet, Topic.RecipeTypeEatCookedFishFilet},
+            {RecipeType.EatCookedGrub, Topic.RecipeTypeEatCookedGrub}
         }
     Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of ItemType, Topic) =
         New Dictionary(Of ItemType, Topic) From

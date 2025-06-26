@@ -8,4 +8,5 @@ Public Interface IItemType
     Function Describe(item As IItem) As String
     ReadOnly Property IsAggregate As Boolean
     ReadOnly Property Description As String
+    ReadOnly Property Statistics As IReadOnlyDictionary(Of StatisticType, Integer)
 End Interface

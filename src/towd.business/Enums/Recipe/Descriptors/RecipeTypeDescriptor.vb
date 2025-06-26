@@ -149,6 +149,7 @@ Public MustInherit Class RecipeTypeDescriptor
         Next
         For Each entry In characterStatisticDeltas
             character.ChangeStatistic(entry.Key, entry.Value)
+            character.AppendMessage($"{entry.Value} {entry.Key.ToDescriptor.Name}({character.GetStatistic(entry.Key)})")
         Next
         Dim quantities As New Dictionary(Of data.ItemType, Integer)
         For Each entry In itemTypeOutputGenerators

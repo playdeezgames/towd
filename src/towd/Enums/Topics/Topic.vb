@@ -67,4 +67,6 @@
     SkillTypeKnapping
     SkillTypeChop
     SkillTypeFish
+    RecipeTypeEatCookedFishFilet
+    RecipeTypeEatCookedGrub
 End Enum

@@ -8,6 +8,8 @@
     CookingFire
     DigGrass
     DigPond
+    EatCookedFishFilet
+    EatCookedGrub
     Fish
     FishingNet
     ForageGrass
