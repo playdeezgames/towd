@@ -7,9 +7,7 @@ Public Module Topics
         New Dictionary(Of VerbType, Topic) From
         {
             {VerbType.Craft, Topic.VerbTypeCraft},
-            {VerbType.EatGrub, Topic.VerbTypeEatGrub},
-            {VerbType.AddFuel, Topic.VerbTypeAddFuel},
-            {VerbType.EatFish, Topic.VerbTypeEatFish}
+            {VerbType.AddFuel, Topic.VerbTypeAddFuel}
         }
     Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of SkillType, Topic) =
         New Dictionary(Of SkillType, Topic) From

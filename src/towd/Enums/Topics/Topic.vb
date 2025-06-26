@@ -61,8 +61,6 @@
 
     VerbTypeAddFuel
     VerbTypeCraft
-    VerbTypeEatFish
-    VerbTypeEatGrub
     SkillTypeDig
     SkillTypeKnapping
     SkillTypeChop

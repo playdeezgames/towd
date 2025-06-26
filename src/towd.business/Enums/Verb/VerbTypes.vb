@@ -6,8 +6,6 @@ Public Module VerbTypes
         New List(Of IVerbType) From
         {
             New CraftVerbTypeDescriptor(),
-            New EatGrubVerbTypeDescriptor(),
-            New EatFishVerbTypeDescriptor(),
             New AddFuelVerbTypeDescriptor()
         }.ToDictionary(Function(x) x.VerbType, Function(x) x)
     <Extension>

@@ -1,3 +1,4 @@
+Imports System.Reflection.Metadata.Ecma335
 Imports Shouldly
 Imports towd.data
 Imports Xunit
@@ -5,12 +6,22 @@ Imports Xunit
 Namespace towd.business.tests
     Public Class Enumeration_Values_Should_Have_Descriptors_For
         <Fact>
-        Sub Statistic_Types()
-            For Each statisticType In [Enum].GetValues(Of StatisticType)
+        Sub Recipe_Types()
+            For Each sut In [Enum].GetValues(Of RecipeType)
                 Try
-                    statisticType.ToDescriptor.ShouldNotBeNull($"{statisticType}'s Descriptor Should Not Be Null")
+                    sut.ToDescriptor.ShouldNotBeNull($"{sut}'s Descriptor Should Not Be Null")
                 Catch ex As Exception
-                    Assert.Fail($"{statisticType}'s Descriptor Should Exist")
+                    Assert.Fail($"{sut}'s Descriptor Should Exist")
+                End Try
+            Next
+        End Sub
+        <Fact>
+        Sub Statistic_Types()
+            For Each sut In [Enum].GetValues(Of StatisticType)
+                Try
+                    sut.ToDescriptor.ShouldNotBeNull($"{sut}'s Descriptor Should Not Be Null")
+                Catch ex As Exception
+                    Assert.Fail($"{sut}'s Descriptor Should Exist")
                 End Try
             Next
         End Sub
