@@ -59,7 +59,6 @@
 
     SkillTypeForaging
 
-    VerbTypeAddFuel
     VerbTypeCraft
     SkillTypeDig
     SkillTypeKnapping
@@ -67,4 +66,9 @@
     SkillTypeFish
     RecipeTypeEatCookedFishFilet
     RecipeTypeEatCookedGrub
+    RecipeTypeAddFuelCookingFireCharcoal
+    RecipeTypeAddFuelCookingFireLog
+    RecipeTypeAddFuelCookingFirePlank
+    RecipeTypeAddFuelCookingFireStick
+    RecipeTypeAddFuelFurnaceCharcoal
 End Enum

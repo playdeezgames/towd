@@ -6,8 +6,7 @@ Public Module Topics
     Public ReadOnly VerbTypeTopicTable As IReadOnlyDictionary(Of VerbType, Topic) =
         New Dictionary(Of VerbType, Topic) From
         {
-            {VerbType.Craft, Topic.VerbTypeCraft},
-            {VerbType.AddFuel, Topic.VerbTypeAddFuel}
+            {VerbType.Craft, Topic.VerbTypeCraft}
         }
     Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of SkillType, Topic) =
         New Dictionary(Of SkillType, Topic) From
@@ -47,7 +46,12 @@ Public Module Topics
             {RecipeType.Wait, Topic.RecipeTypeWait},
             {RecipeType.Fish, Topic.RecipeTypeFish},
             {RecipeType.EatCookedFishFilet, Topic.RecipeTypeEatCookedFishFilet},
-            {RecipeType.EatCookedGrub, Topic.RecipeTypeEatCookedGrub}
+            {RecipeType.EatCookedGrub, Topic.RecipeTypeEatCookedGrub},
+            {RecipeType.AddFuelCookingFireCharcoal, Topic.RecipeTypeAddFuelCookingFireCharcoal},
+            {RecipeType.AddFuelCookingFireLog, Topic.RecipeTypeAddFuelCookingFireLog},
+            {RecipeType.AddFuelCookingFirePlank, Topic.RecipeTypeAddFuelCookingFirePlank},
+            {RecipeType.AddFuelCookingFireStick, Topic.RecipeTypeAddFuelCookingFireStick},
+            {RecipeType.AddFuelFurnaceCharcoal, Topic.RecipeTypeAddFuelFurnaceCharcoal}
         }
     Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of ItemType, Topic) =
         New Dictionary(Of ItemType, Topic) From

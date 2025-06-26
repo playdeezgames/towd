@@ -31,7 +31,12 @@ Public Module RecipeTypes
             New DigPondRecipeTypeDescriptor(),
             New FishRecipeTypeDescriptor(),
             New EatCookedGrubRecipeTypeDescriptor(),
-            New EatCookedFishFiletRecipeTypeDescriptor()
+            New EatCookedFishFiletRecipeTypeDescriptor(),
+            New AddFuelCookingFireStickRecipeTypeDescriptor(),
+            New AddFuelCookingFirePlankRecipeTypeDescriptor(),
+            New AddFuelCookingFireLogRecipeTypeDescriptor(),
+            New AddFuelCookingFireCharcoalRecipeTypeDescriptor(),
+            New AddFuelFurnaceCharcoalRecipeTypeDescriptor()
         }.
         ToDictionary(Function(x) x.RecipeType, Function(x) x)
     <Extension>

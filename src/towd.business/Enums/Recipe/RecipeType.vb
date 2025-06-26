@@ -1,4 +1,9 @@
 ﻿Public Enum RecipeType
+    AddFuelCookingFireStick
+    AddFuelCookingFirePlank
+    AddFuelCookingFireLog
+    AddFuelCookingFireCharcoal
+    AddFuelFurnaceCharcoal
     Blade
     Brick
     CharcoalCookingFire

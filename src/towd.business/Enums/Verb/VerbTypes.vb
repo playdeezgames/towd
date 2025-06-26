@@ -5,8 +5,7 @@ Public Module VerbTypes
     Public ReadOnly Descriptors As IReadOnlyDictionary(Of VerbType, IVerbType) =
         New List(Of IVerbType) From
         {
-            New CraftVerbTypeDescriptor(),
-            New AddFuelVerbTypeDescriptor()
+            New CraftVerbTypeDescriptor()
         }.ToDictionary(Function(x) x.VerbType, Function(x) x)
     <Extension>
     Public Function ToDescriptor(verbType As VerbType) As IVerbType
