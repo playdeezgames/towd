@@ -2,14 +2,13 @@
 Imports towd.business
 Imports towd.data
 
-Module Topics
+Public Module Topics
     Public ReadOnly VerbTypeTopicTable As IReadOnlyDictionary(Of VerbType, Topic) =
         New Dictionary(Of VerbType, Topic) From
         {
             {VerbType.Craft, Topic.VerbTypeCraft},
             {VerbType.EatGrub, Topic.VerbTypeEatGrub},
             {VerbType.AddFuel, Topic.VerbTypeAddFuel},
-            {VerbType.Fish, Topic.VerbTypeFish},
             {VerbType.EatFish, Topic.VerbTypeEatFish}
         }
     Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of SkillType, Topic) =

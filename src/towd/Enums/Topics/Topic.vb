@@ -63,7 +63,6 @@
     VerbTypeCraft
     VerbTypeEatFish
     VerbTypeEatGrub
-    VerbTypeFish
     SkillTypeDig
     SkillTypeKnapping
     SkillTypeChop
