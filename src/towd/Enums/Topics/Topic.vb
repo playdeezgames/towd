@@ -69,4 +69,5 @@
     VerbTypeAddFuelCookingFirePlank
     VerbTypeAddFuelCookingFireStick
     VerbTypeAddFuelFurnaceCharcoal
+    ItemTypeRockFlake
 End Enum

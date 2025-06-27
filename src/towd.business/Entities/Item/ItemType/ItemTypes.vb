@@ -28,7 +28,8 @@ Public Module ItemTypes
             New FishGutsItemTypeDescriptor(),
             New KnifeItemTypeDescriptor(),
             New BladeItemTypeDescriptor(),
-            New CookedFishFiletItemTypeDescriptor()
+            New CookedFishFiletItemTypeDescriptor(),
+            New RockFlakeItemTypeDescriptor()
         }.
         ToDictionary(Function(x) x.ItemType, Function(x) x)
     <Extension>

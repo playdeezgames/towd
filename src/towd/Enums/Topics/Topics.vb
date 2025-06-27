@@ -74,7 +74,8 @@ Public Module Topics
             {ItemType.FishGuts, Topic.ItemTypeFishGuts},
             {ItemType.Knife, Topic.ItemTypeKnife},
             {ItemType.Blade, Topic.ItemTypeBlade},
-            {ItemType.CookedFishFilet, Topic.ItemTypeCookedFishFilet}
+            {ItemType.CookedFishFilet, Topic.ItemTypeCookedFishFilet},
+            {ItemType.RockFlake, Topic.ItemTypeRockFlake}
         }
     Private Function CreateDescriptors() As IReadOnlyDictionary(Of Topic, ITopic)
         Dim topicTable = New List(Of ITopic) From

@@ -23,4 +23,5 @@
     Knife
     Blade
     CookedFishFilet
+    RockFlake
 End Enum
