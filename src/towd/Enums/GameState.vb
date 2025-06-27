@@ -4,7 +4,6 @@
     Neutral
     Navigation
     GameMenu
-    VerbMenu
     Message
     Dead
     Inventory

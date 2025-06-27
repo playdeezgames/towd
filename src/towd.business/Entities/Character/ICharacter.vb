@@ -5,8 +5,6 @@ Public Interface ICharacter
     Property Location As ILocation
     Function CanMove(direction As Direction) As Boolean
     Sub Move(direction As Direction)
-    ReadOnly Property CanDoAnyVerb As Boolean
-    Function CanDoVerb(verbType As VerbType) As Boolean
     Sub AddMessage(ParamArray lines() As String)
     Sub AppendMessage(ParamArray lines() As String)
     ReadOnly Property IsAvatar As Boolean
@@ -18,7 +16,6 @@ Public Interface ICharacter
     Sub AddItem(item As IItem)
     Function GetCountOfItemType(itemType As IItemType) As Integer
     ReadOnly Property ItemStacks As IEnumerable(Of IItemStack)
-    Property LastVerb As VerbType?
     Property LastRecipe As RecipeType?
     Property CurrentItemType As IItemType
     Function GetItemsOfType(ItemType As IItemType) As IEnumerable(Of IItem)
@@ -34,4 +31,5 @@ Public Interface ICharacter
     Function CanAdvance(skillType As ISkillType) As Boolean
     Sub AddKnownLocation(location As ILocation)
     Function KnowsLocation(location As ILocation) As Boolean
+    ReadOnly Property CanDoAnyRecipe As Boolean
 End Interface

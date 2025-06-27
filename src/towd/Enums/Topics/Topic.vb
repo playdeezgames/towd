@@ -29,7 +29,7 @@
     NavigationInventory
     NavigationMove
     NavigationSkills
-    NavigationVerb
+    NavigationCraft
 
     RecipeTypeBlade
     RecipeTypeBrick
@@ -58,8 +58,6 @@
     RecipeTypeFish
 
     SkillTypeForaging
-
-    VerbTypeCraft
     SkillTypeDig
     SkillTypeKnapping
     SkillTypeChop

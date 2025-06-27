@@ -185,7 +185,6 @@ Public MustInherit Class RecipeTypeDescriptor
             character.AppendMessage($"Changed location to {buildsLocationType.Value.ToDescriptor.Name}.")
         End If
         character.World.AdvanceTime(timeTaken)
-        character.SetFlag(data.FlagType.CraftMenu, VerbType.Craft.ToDescriptor.CanPerform(character))
     End Sub
     Public Function CanCraft(character As ICharacter) As Boolean Implements IRecipeType.CanCraft
         Dim location = character.Location

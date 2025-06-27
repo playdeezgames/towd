@@ -21,7 +21,6 @@ Public Module StatisticTypes
             New StatisticTypeDescriptor(StatisticType.Health, "Health"),
             New StatisticTypeDescriptor(StatisticType.KnappingSkill, "Knapping Skill"),
             New StatisticTypeDescriptor(StatisticType.LastRecipe, "Last Recipe"),
-            New StatisticTypeDescriptor(StatisticType.LastVerb, "Last Verb"),
             New StatisticTypeDescriptor(StatisticType.Satiety, "Satiety"),
             New StatisticTypeDescriptor(StatisticType.Steps, "Steps"),
             New StatisticTypeDescriptor(StatisticType.XP, "XP")

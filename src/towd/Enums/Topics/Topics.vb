@@ -3,11 +3,6 @@ Imports towd.business
 Imports towd.data
 
 Public Module Topics
-    Public ReadOnly VerbTypeTopicTable As IReadOnlyDictionary(Of VerbType, Topic) =
-        New Dictionary(Of VerbType, Topic) From
-        {
-            {VerbType.Craft, Topic.VerbTypeCraft}
-        }
     Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of SkillType, Topic) =
         New Dictionary(Of SkillType, Topic) From
         {
@@ -97,12 +92,9 @@ Each step could lead to salvation or a thorn in your boot.
 Pick a direction, brave soul."),
             New TopicDescriptor(Topic.NavigationSkills, "Skills", "Hone your craft or weep in weakness. 
 Boost your foraging, digging, or chopping—every point could mean life or lunch."),
-            New TopicDescriptor(Topic.NavigationVerb, "Verbs", "Actions speak louder than groans. 
+            New TopicDescriptor(Topic.NavigationCraft, "Verbs", "Actions speak louder than groans. 
 Forage, dig, chop—choose your labor and test your skills against the wild’s whims.")
         }.ToDictionary(Function(x) x.Topic, Function(x) x)
-        For Each entry In VerbTypeTopicTable
-            topicTable.Add(entry.Value, New VerbTypeTopicDescriptor(entry.Value, entry.Key))
-        Next
         For Each entry In ItemTypeTopicTable
             topicTable.Add(entry.Value, New ItemTypeTopicDescriptor(entry.Value, entry.Key))
         Next

@@ -7,11 +7,6 @@ Friend Class Character
     Public Sub New(worldData As data.WorldData, characterId As Integer)
         MyBase.New(worldData, characterId)
     End Sub
-    Public Function CanDoVerb(verbType As VerbType) As Boolean Implements ICharacter.CanDoVerb
-        Return verbType.ToDescriptor.CanPerform(Me)
-    End Function
-
-
     Public Property Location As ILocation Implements ICharacter.Location
         Get
             Return New Location(WorldData, EntityData.LocationId)
@@ -20,25 +15,16 @@ Friend Class Character
             EntityData.LocationId = value.Id
         End Set
     End Property
-
-    Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb
-        Get
-            Return VerbTypes.Descriptors.Keys.Any(Function(x) CanDoVerb(x))
-        End Get
-    End Property
-
     Public ReadOnly Property IsAvatar As Boolean Implements ICharacter.IsAvatar
         Get
             Return WorldData.AvatarId.HasValue AndAlso Id = WorldData.AvatarId.Value
         End Get
     End Property
-
     Public ReadOnly Property HasMessages As Boolean Implements ICharacter.HasMessages
         Get
             Return IsAvatar AndAlso WorldData.Messages.Count <> 0
         End Get
     End Property
-
     Public ReadOnly Property CurrentMessage As String() Implements ICharacter.CurrentMessage
         Get
             If HasMessages Then
@@ -82,24 +68,6 @@ Friend Class Character
             Return EntityData.Items.Where(Function(x) x.Value.Count <> 0).Select(Function(x) New ItemStack(Me, x.Key.ToDescriptor))
         End Get
     End Property
-
-    Public Property LastVerb As VerbType? Implements ICharacter.LastVerb
-        Get
-            If HasStatistic(StatisticType.LastVerb) Then
-                Return CType(GetStatistic(StatisticType.LastVerb), VerbType)
-            Else
-                Return Nothing
-            End If
-        End Get
-        Set(value As VerbType?)
-            If value.HasValue Then
-                SetStatistic(StatisticType.LastVerb, CInt(value.Value))
-            Else
-                ClearStatistic(StatisticType.LastVerb)
-            End If
-        End Set
-    End Property
-
     Public Property LastRecipe As RecipeType? Implements ICharacter.LastRecipe
         Get
             If HasStatistic(StatisticType.LastRecipe) Then
@@ -132,6 +100,12 @@ Friend Class Character
                 ClearStatistic(StatisticType.CurrentItemType)
             End If
         End Set
+    End Property
+
+    Public ReadOnly Property CanDoAnyRecipe As Boolean Implements ICharacter.CanDoAnyRecipe
+        Get
+            Return RecipeTypes.Descriptors.Any(Function(x) x.Value.CanCraft(Me))
+        End Get
     End Property
 
     Public Sub Move(direction As Direction) Implements ICharacter.Move
