@@ -68,19 +68,19 @@ Friend Class Character
             Return EntityData.Items.Where(Function(x) x.Value.Count <> 0).Select(Function(x) New ItemStack(Me, x.Key.ToDescriptor))
         End Get
     End Property
-    Public Property LastRecipe As VerbType? Implements ICharacter.LastRecipe
+    Public Property LastVerb As VerbType? Implements ICharacter.LastVerb
         Get
-            If HasStatistic(StatisticType.LastRecipe) Then
-                Return CType(GetStatistic(StatisticType.LastRecipe), VerbType)
+            If HasStatistic(StatisticType.LastVerb) Then
+                Return CType(GetStatistic(StatisticType.LastVerb), VerbType)
             Else
                 Return Nothing
             End If
         End Get
         Set(value As VerbType?)
             If value.HasValue Then
-                SetStatistic(StatisticType.LastRecipe, CInt(value.Value))
+                SetStatistic(StatisticType.LastVerb, CInt(value.Value))
             Else
-                ClearStatistic(StatisticType.LastRecipe)
+                ClearStatistic(StatisticType.LastVerb)
             End If
         End Set
     End Property
@@ -102,9 +102,9 @@ Friend Class Character
         End Set
     End Property
 
-    Public ReadOnly Property CanDoAnyRecipe As Boolean Implements ICharacter.CanDoAnyRecipe
+    Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb
         Get
-            Return RecipeTypes.Descriptors.Any(Function(x) x.Value.CanCraft(Me))
+            Return VerbTypes.Descriptors.Any(Function(x) x.Value.CanCraft(Me))
         End Get
     End Property
 
@@ -205,8 +205,8 @@ Friend Class Character
         EntityData.Items(item.EntityType.ItemType).Remove(item.Id)
     End Sub
 
-    Public Function GetCraftableRecipes() As IEnumerable(Of IRecipeType) Implements ICharacter.GetCraftableRecipes
-        Return RecipeTypes.Descriptors.Values.Where(Function(x) x.CanCraft(Me)).OrderBy(Function(x) x.Name)
+    Public Function GetDoableVerbs() As IEnumerable(Of IVerbType) Implements ICharacter.GetDoableVerbs
+        Return VerbTypes.Descriptors.Values.Where(Function(x) x.CanCraft(Me)).OrderBy(Function(x) x.Name)
     End Function
 
     Public Function HasDone(deed As IDeed) As Boolean Implements ICharacter.HasDone

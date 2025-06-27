@@ -6,8 +6,8 @@ Friend Class CraftMenuState
 
     Private Const AVAILABLE_TEXT As String = "Available"
     Private Const ALL_TEXT As String = "All"
-    Private ReadOnly availableRecipeListView As ListView
-    Private ReadOnly allRecipeListView As ListView
+    Private ReadOnly availableVerbListView As ListView
+    Private ReadOnly allVerbListView As ListView
     Private ReadOnly tabView As TabView
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
@@ -19,30 +19,30 @@ Friend Class CraftMenuState
             }
         Add(titleLabel)
 
-        availableRecipeListView = New ListView With
+        availableVerbListView = New ListView With
             {
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }
-        AddHandler availableRecipeListView.OpenSelectedItem, AddressOf OnAvailableRecipeListViewOpenSelectedItem
+        AddHandler availableVerbListView.OpenSelectedItem, AddressOf OnAvailableVerbListViewOpenSelectedItem
 
-        Dim availableRecipeListTab = New TabView.Tab With
+        Dim availableVerbListTab = New TabView.Tab With
             {
-                .View = availableRecipeListView,
+                .View = availableVerbListView,
                 .Text = AVAILABLE_TEXT
             }
 
-        allRecipeListView = New ListView With
+        allVerbListView = New ListView With
             {
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }
-        allRecipeListView.SetSource(RecipeTypes.Descriptors.Values.ToList)
-        AddHandler allRecipeListView.OpenSelectedItem, AddressOf OnAllRecipeListViewOpenSelectedItem
+        allVerbListView.SetSource(VerbTypes.Descriptors.Values.ToList)
+        AddHandler allVerbListView.OpenSelectedItem, AddressOf OnAllVerbListViewOpenSelectedItem
 
-        Dim allRecipeListTab = New TabView.Tab With
+        Dim allVerbListTab = New TabView.Tab With
             {
-                .View = allRecipeListView,
+                .View = allVerbListView,
                 .Text = ALL_TEXT
             }
 
@@ -52,8 +52,8 @@ Friend Class CraftMenuState
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill - 3
             }
-        tabView.AddTab(availableRecipeListTab, True)
-        tabView.AddTab(allRecipeListTab, False)
+        tabView.AddTab(availableVerbListTab, True)
+        tabView.AddTab(allVerbListTab, False)
         Add(tabView)
 
         Dim closeButton As New Button("Close") With
@@ -66,8 +66,8 @@ Friend Class CraftMenuState
 
     End Sub
 
-    Private Sub OnAllRecipeListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Dim descriptor = CType(args.Value, IRecipeType)
+    Private Sub OnAllVerbListViewOpenSelectedItem(args As ListViewItemEventArgs)
+        Dim descriptor = CType(args.Value, IVerbType)
         If descriptor.CanCraft(World.Avatar) Then
             descriptor.Craft(World.Avatar)
             ShowState(GameState.Neutral)
@@ -76,8 +76,8 @@ Friend Class CraftMenuState
         End If
     End Sub
 
-    Private Sub OnAvailableRecipeListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Dim descriptor = CType(args.Value, IRecipeType)
+    Private Sub OnAvailableVerbListViewOpenSelectedItem(args As ListViewItemEventArgs)
+        Dim descriptor = CType(args.Value, IVerbType)
         descriptor.Craft(World.Avatar)
         If Not descriptor.CanCraft(World.Avatar) Then
             World.Avatar.AppendMessage($"You are now out of crafting supplies for {descriptor.Name}.")
@@ -87,12 +87,12 @@ Friend Class CraftMenuState
 
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
-        Dim recipes = character.GetCraftableRecipes().ToList()
-        availableRecipeListView.SetSource(recipes)
-        Dim lastRecipe = character.LastRecipe
-        Dim recipeIndex = If(lastRecipe.HasValue, recipes.FindIndex(Function(x) x.RecipeType = lastRecipe.Value), -1)
-        If recipeIndex > -1 Then
-            availableRecipeListView.SelectedItem = recipeIndex
+        Dim verbs = character.GetDoableVerbs().ToList()
+        availableVerbListView.SetSource(verbs)
+        Dim lastVerb = character.LastVerb
+        Dim verbIndex = If(lastVerb.HasValue, verbs.FindIndex(Function(x) x.VerbType = lastVerb.Value), -1)
+        If verbIndex > -1 Then
+            availableVerbListView.SelectedItem = verbIndex
         End If
     End Sub
 
@@ -104,9 +104,9 @@ Friend Class CraftMenuState
             args.Handled = True
             Select Case tabView.SelectedTab.Text
                 Case ALL_TEXT
-                    TopicState.Topic = RecipeTypeTopicTable(CType(allRecipeListView.Source.ToList(allRecipeListView.SelectedItem), IRecipeType).RecipeType)
+                    TopicState.Topic = VerbTypeTopicTable(CType(allVerbListView.Source.ToList(allVerbListView.SelectedItem), IVerbType).VerbType)
                 Case AVAILABLE_TEXT
-                    TopicState.Topic = RecipeTypeTopicTable(CType(availableRecipeListView.Source.ToList(availableRecipeListView.SelectedItem), IRecipeType).RecipeType)
+                    TopicState.Topic = VerbTypeTopicTable(CType(availableVerbListView.Source.ToList(availableVerbListView.SelectedItem), IVerbType).VerbType)
             End Select
             ShowState(GameState.Topic)
         End If

@@ -14,7 +14,7 @@
     Fuel
     Health
     KnappingSkill
-    LastRecipe
+    LastVerb
     Satiety
     Steps
     XP

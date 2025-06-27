@@ -16,14 +16,14 @@ Public Interface ICharacter
     Sub AddItem(item As IItem)
     Function GetCountOfItemType(itemType As IItemType) As Integer
     ReadOnly Property ItemStacks As IEnumerable(Of IItemStack)
-    Property LastRecipe As VerbType?
+    Property LastVerb As VerbType?
     Property CurrentItemType As IItemType
     Function GetItemsOfType(ItemType As IItemType) As IEnumerable(Of IItem)
     Function GetStatisticSumOfItemType(itemType As IItemType, statisticType As StatisticType) As Integer
     Sub RemoveItemOfType(itemType As IItemType)
     Sub ChangeItemDurability(item As IItem, delta As Integer)
     Sub RemoveItem(item As IItem)
-    Function GetCraftableRecipes() As IEnumerable(Of IRecipeType)
+    Function GetDoableVerbs() As IEnumerable(Of IVerbType)
     Function HasDone(deed As IDeed) As Boolean
     Function IsAvailable(deed As IDeed) As Boolean
     Sub SetDone(deed As IDeed)
@@ -31,5 +31,5 @@ Public Interface ICharacter
     Function CanAdvance(skillType As ISkillType) As Boolean
     Sub AddKnownLocation(location As ILocation)
     Function KnowsLocation(location As ILocation) As Boolean
-    ReadOnly Property CanDoAnyRecipe As Boolean
+    ReadOnly Property CanDoAnyVerb As Boolean
 End Interface

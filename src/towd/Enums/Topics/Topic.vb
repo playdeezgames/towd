@@ -38,35 +38,35 @@
     VerbTypeCookedFishFilet
     VerbTypeCookedGrub
     VerbTypeCookingFire
-    RecipeTypeDigGrass
-    RecipeTypeDigPond
-    RecipeTypeFishingNet
-    RecipeTypeForageGrass
-    RecipeTypeForagePine
-    RecipeTypeForageRock
-    RecipeTypeFurnace
-    RecipeTypeHammer
-    RecipeTypeHatchet
-    RecipeTypeKnife
-    RecipeTypePlank
-    RecipeTypeRawFishFilet
-    RecipeTypeSharpRock
-    RecipeTypeSharpStick
-    RecipeTypeTwine
-    RecipeTypeUnfiredBrick
-    RecipeTypeWait
-    RecipeTypeFish
+    VerbTypeDigGrass
+    VerbTypeDigPond
+    VerbTypeFishingNet
+    VerbTypeForageGrass
+    VerbTypeForagePine
+    VerbTypeForageRock
+    VerbTypeFurnace
+    VerbTypeHammer
+    VerbTypeHatchet
+    VerbTypeKnife
+    VerbTypePlank
+    VerbTypeRawFishFilet
+    VerbTypeSharpRock
+    VerbTypeSharpStick
+    VerbTypeTwine
+    VerbTypeUnfiredBrick
+    VerbTypeWait
+    VerbTypeFish
 
     SkillTypeForaging
     SkillTypeDig
     SkillTypeKnapping
     SkillTypeChop
     SkillTypeFish
-    RecipeTypeEatCookedFishFilet
-    RecipeTypeEatCookedGrub
-    RecipeTypeAddFuelCookingFireCharcoal
-    RecipeTypeAddFuelCookingFireLog
-    RecipeTypeAddFuelCookingFirePlank
-    RecipeTypeAddFuelCookingFireStick
-    RecipeTypeAddFuelFurnaceCharcoal
+    VerbTypeEatCookedFishFilet
+    VerbTypeEatCookedGrub
+    VerbTypeAddFuelCookingFireCharcoal
+    VerbTypeAddFuelCookingFireLog
+    VerbTypeAddFuelCookingFirePlank
+    VerbTypeAddFuelCookingFireStick
+    VerbTypeAddFuelFurnaceCharcoal
 End Enum

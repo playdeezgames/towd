@@ -102,7 +102,7 @@ Friend Class NavigationState
         If character.HasItems Then
             commandList.Add(INVENTORY_TEXT)
         End If
-        If character.CanDoAnyRecipe Then
+        If character.CanDoAnyVerb Then
             commandList.Add(VERB_TEXT)
         End If
         commandList.Add(DEEDS_TEXT)
