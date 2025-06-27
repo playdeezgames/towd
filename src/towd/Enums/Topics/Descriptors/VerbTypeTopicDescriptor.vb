@@ -1,25 +1,25 @@
 ﻿Imports towd.business
 
-Friend Class RecipeTypeTopicDescriptor
+Friend Class VerbTypeTopicDescriptor
     Implements ITopic
-    Private ReadOnly RecipeType As RecipeType
+    Private ReadOnly VerbType As VerbType
 
-    Public Sub New(topic As Topic, recipeType As RecipeType)
+    Public Sub New(topic As Topic, verbType As VerbType)
         Me.Topic = topic
-        Me.RecipeType = recipeType
+        Me.VerbType = verbType
     End Sub
 
     Public ReadOnly Property Topic As Topic Implements ITopic.Topic
 
     Public ReadOnly Property Title As String Implements ITopic.Title
         Get
-            Return RecipeType.ToDescriptor.Name
+            Return VerbType.ToDescriptor.Name
         End Get
     End Property
 
     Public ReadOnly Property Content As String Implements ITopic.Content
         Get
-            Return RecipeType.ToDescriptor.Description
+            Return VerbType.ToDescriptor.Description
         End Get
     End Property
 End Class

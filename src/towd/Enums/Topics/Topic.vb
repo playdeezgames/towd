@@ -31,13 +31,13 @@
     NavigationSkills
     NavigationCraft
 
-    RecipeTypeBlade
-    RecipeTypeBrick
-    RecipeTypeCharcoalCookingFire
-    RecipeTypeChop
-    RecipeTypeCookedFishFilet
-    RecipeTypeCookedGrub
-    RecipeTypeCookingFire
+    VerbTypeBlade
+    VerbTypeBrick
+    VerbTypeCharcoalCookingFire
+    VerbTypeChop
+    VerbTypeCookedFishFilet
+    VerbTypeCookedGrub
+    VerbTypeCookingFire
     RecipeTypeDigGrass
     RecipeTypeDigPond
     RecipeTypeFishingNet

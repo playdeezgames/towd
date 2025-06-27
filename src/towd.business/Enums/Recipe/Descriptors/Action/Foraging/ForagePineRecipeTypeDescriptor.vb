@@ -3,7 +3,7 @@
 
     Public Sub New()
         MyBase.New(
-            RecipeType.ForagePine,
+            VerbType.ForagePine,
             "Forage(Sticks)",
             data.LocationType.Pine,
             data.ItemType.Stick)

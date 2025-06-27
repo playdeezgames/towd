@@ -2,7 +2,7 @@
 Imports towd.data
 
 Public Module RecipeTypes
-    Public ReadOnly Descriptors As IReadOnlyDictionary(Of RecipeType, IRecipeType) =
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of VerbType, IRecipeType) =
         New List(Of IRecipeType) From
         {
             New TwineRecipeTypeDescriptor(),
@@ -40,7 +40,7 @@ Public Module RecipeTypes
         }.
         ToDictionary(Function(x) x.RecipeType, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(recipeType As RecipeType) As IRecipeType
+    Public Function ToDescriptor(recipeType As VerbType) As IRecipeType
         Return Descriptors(recipeType)
     End Function
 

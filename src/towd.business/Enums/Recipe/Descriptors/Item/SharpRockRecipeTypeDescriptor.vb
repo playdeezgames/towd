@@ -4,7 +4,7 @@ Friend Class SharpRockRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.SharpRock, 1)
+        MyBase.New(VerbType.SharpRock, 1)
         SetItemTypeInput(data.ItemType.Rock, 1)
         SetItemTypeInput(data.ItemType.Hammer, 1)
         SetItemTypeOutputGenerator(data.ItemType.Hammer, New FixedGenerator(1))

@@ -7,7 +7,7 @@ Namespace towd.business.tests
     Public Class Enumeration_Values_Should_Have_Descriptors_For
         <Fact>
         Sub Recipe_Types()
-            For Each sut In [Enum].GetValues(Of RecipeType)
+            For Each sut In [Enum].GetValues(Of VerbType)
                 Try
                     sut.ToDescriptor.ShouldNotBeNull($"{sut}'s Descriptor Should Not Be Null")
                 Catch ex As Exception

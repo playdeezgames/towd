@@ -3,7 +3,7 @@
 Public Class DigRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
-    Public Sub New(recipeType As RecipeType, name As String, requiredLocationType As LocationType, outputItemType As ItemType)
+    Public Sub New(recipeType As VerbType, name As String, requiredLocationType As LocationType, outputItemType As ItemType)
         MyBase.New(recipeType, 1)
         SetDisplayName(name)
         SetRequiredLocationType(requiredLocationType)

@@ -4,7 +4,7 @@ Friend Class AddFuelCookingFireCharcoalRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.AddFuelCookingFireCharcoal, 0)
+        MyBase.New(VerbType.AddFuelCookingFireCharcoal, 0)
         SetDisplayName("Add Charcoal to Cooking Fire")
         SetRequiredLocationType(LocationType.CookingFire)
         SetLocationStatisticDelta(data.StatisticType.Fuel, 8)

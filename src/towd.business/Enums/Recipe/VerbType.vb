@@ -1,4 +1,4 @@
-﻿Public Enum RecipeType
+﻿Public Enum VerbType
     AddFuelCookingFireStick
     AddFuelCookingFirePlank
     AddFuelCookingFireLog

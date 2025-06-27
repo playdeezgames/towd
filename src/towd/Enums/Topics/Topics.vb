@@ -12,41 +12,41 @@ Public Module Topics
             {SkillType.Chop, Topic.SkillTypeChop},
             {SkillType.Fish, Topic.SkillTypeFish}
         }
-    Public ReadOnly RecipeTypeTopicTable As IReadOnlyDictionary(Of RecipeType, Topic) =
-        New Dictionary(Of RecipeType, Topic) From
+    Public ReadOnly RecipeTypeTopicTable As IReadOnlyDictionary(Of VerbType, Topic) =
+        New Dictionary(Of VerbType, Topic) From
         {
-            {RecipeType.Twine, Topic.RecipeTypeTwine},
-            {RecipeType.SharpRock, Topic.RecipeTypeSharpRock},
-            {RecipeType.SharpStick, Topic.RecipeTypeSharpStick},
-            {RecipeType.Hatchet, Topic.RecipeTypeHatchet},
-            {RecipeType.Hammer, Topic.RecipeTypeHammer},
-            {RecipeType.Plank, Topic.RecipeTypePlank},
-            {RecipeType.CookingFire, Topic.RecipeTypeCookingFire},
-            {RecipeType.Furnace, Topic.RecipeTypeFurnace},
-            {RecipeType.CharcoalCookingFire, Topic.RecipeTypeCharcoalCookingFire},
-            {RecipeType.CookedGrub, Topic.RecipeTypeCookedGrub},
-            {RecipeType.CookedFishFilet, Topic.RecipeTypeCookedFishFilet},
-            {RecipeType.UnfiredBrick, Topic.RecipeTypeUnfiredBrick},
-            {RecipeType.Knife, Topic.RecipeTypeKnife},
-            {RecipeType.Blade, Topic.RecipeTypeBlade},
-            {RecipeType.RawFishFilet, Topic.RecipeTypeRawFishFilet},
-            {RecipeType.FishingNet, Topic.RecipeTypeFishingNet},
-            {RecipeType.Brick, Topic.RecipeTypeBrick},
-            {RecipeType.ForageGrass, Topic.RecipeTypeForageGrass},
-            {RecipeType.ForagePine, Topic.RecipeTypeForagePine},
-            {RecipeType.ForageRock, Topic.RecipeTypeForageRock},
-            {RecipeType.Chop, Topic.RecipeTypeChop},
-            {RecipeType.DigPond, Topic.RecipeTypeDigPond},
-            {RecipeType.DigGrass, Topic.RecipeTypeDigGrass},
-            {RecipeType.Wait, Topic.RecipeTypeWait},
-            {RecipeType.Fish, Topic.RecipeTypeFish},
-            {RecipeType.EatCookedFishFilet, Topic.RecipeTypeEatCookedFishFilet},
-            {RecipeType.EatCookedGrub, Topic.RecipeTypeEatCookedGrub},
-            {RecipeType.AddFuelCookingFireCharcoal, Topic.RecipeTypeAddFuelCookingFireCharcoal},
-            {RecipeType.AddFuelCookingFireLog, Topic.RecipeTypeAddFuelCookingFireLog},
-            {RecipeType.AddFuelCookingFirePlank, Topic.RecipeTypeAddFuelCookingFirePlank},
-            {RecipeType.AddFuelCookingFireStick, Topic.RecipeTypeAddFuelCookingFireStick},
-            {RecipeType.AddFuelFurnaceCharcoal, Topic.RecipeTypeAddFuelFurnaceCharcoal}
+            {VerbType.Twine, Topic.RecipeTypeTwine},
+            {VerbType.SharpRock, Topic.RecipeTypeSharpRock},
+            {VerbType.SharpStick, Topic.RecipeTypeSharpStick},
+            {VerbType.Hatchet, Topic.RecipeTypeHatchet},
+            {VerbType.Hammer, Topic.RecipeTypeHammer},
+            {VerbType.Plank, Topic.RecipeTypePlank},
+            {VerbType.CookingFire, Topic.VerbTypeCookingFire},
+            {VerbType.Furnace, Topic.RecipeTypeFurnace},
+            {VerbType.CharcoalCookingFire, Topic.VerbTypeCharcoalCookingFire},
+            {VerbType.CookedGrub, Topic.VerbTypeCookedGrub},
+            {VerbType.CookedFishFilet, Topic.VerbTypeCookedFishFilet},
+            {VerbType.UnfiredBrick, Topic.RecipeTypeUnfiredBrick},
+            {VerbType.Knife, Topic.RecipeTypeKnife},
+            {VerbType.Blade, Topic.VerbTypeBlade},
+            {VerbType.RawFishFilet, Topic.RecipeTypeRawFishFilet},
+            {VerbType.FishingNet, Topic.RecipeTypeFishingNet},
+            {VerbType.Brick, Topic.VerbTypeBrick},
+            {VerbType.ForageGrass, Topic.RecipeTypeForageGrass},
+            {VerbType.ForagePine, Topic.RecipeTypeForagePine},
+            {VerbType.ForageRock, Topic.RecipeTypeForageRock},
+            {VerbType.Chop, Topic.VerbTypeChop},
+            {VerbType.DigPond, Topic.RecipeTypeDigPond},
+            {VerbType.DigGrass, Topic.RecipeTypeDigGrass},
+            {VerbType.Wait, Topic.RecipeTypeWait},
+            {VerbType.Fish, Topic.RecipeTypeFish},
+            {VerbType.EatCookedFishFilet, Topic.RecipeTypeEatCookedFishFilet},
+            {VerbType.EatCookedGrub, Topic.RecipeTypeEatCookedGrub},
+            {VerbType.AddFuelCookingFireCharcoal, Topic.RecipeTypeAddFuelCookingFireCharcoal},
+            {VerbType.AddFuelCookingFireLog, Topic.RecipeTypeAddFuelCookingFireLog},
+            {VerbType.AddFuelCookingFirePlank, Topic.RecipeTypeAddFuelCookingFirePlank},
+            {VerbType.AddFuelCookingFireStick, Topic.RecipeTypeAddFuelCookingFireStick},
+            {VerbType.AddFuelFurnaceCharcoal, Topic.RecipeTypeAddFuelFurnaceCharcoal}
         }
     Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of ItemType, Topic) =
         New Dictionary(Of ItemType, Topic) From
@@ -99,7 +99,7 @@ Forage, dig, chop—choose your labor and test your skills against the wild’s 
             topicTable.Add(entry.Value, New ItemTypeTopicDescriptor(entry.Value, entry.Key))
         Next
         For Each entry In RecipeTypeTopicTable
-            topicTable.Add(entry.Value, New RecipeTypeTopicDescriptor(entry.Value, entry.Key))
+            topicTable.Add(entry.Value, New VerbTypeTopicDescriptor(entry.Value, entry.Key))
         Next
         For Each entry In SkillTypeTopicTable
             topicTable.Add(entry.Value, New SkillTypeTopicDescriptor(entry.Value, entry.Key))

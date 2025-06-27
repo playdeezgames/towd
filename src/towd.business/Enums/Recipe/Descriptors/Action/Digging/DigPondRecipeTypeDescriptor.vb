@@ -3,7 +3,7 @@
 
     Public Sub New()
         MyBase.New(
-            RecipeType.DigPond,
+            VerbType.DigPond,
             "Dig(Clay)",
             data.LocationType.Pond,
             data.ItemType.Clay)

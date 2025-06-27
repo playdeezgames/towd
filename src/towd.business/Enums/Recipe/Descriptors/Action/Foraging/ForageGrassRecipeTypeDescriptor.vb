@@ -3,7 +3,7 @@
 
     Public Sub New()
         MyBase.New(
-            RecipeType.ForageGrass,
+            VerbType.ForageGrass,
             "Forage(Plant Fibers)",
             data.LocationType.Grass,
             data.ItemType.PlantFiber)

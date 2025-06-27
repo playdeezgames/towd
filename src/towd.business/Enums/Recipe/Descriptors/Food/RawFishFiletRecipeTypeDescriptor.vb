@@ -4,7 +4,7 @@ Friend Class RawFishFiletRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.RawFishFilet, 1)
+        MyBase.New(VerbType.RawFishFilet, 1)
         SetItemTypeInput(ItemType.Knife, 1)
         SetItemTypeInput(ItemType.RawFish, 1)
         SetItemTypeInputDurability(ItemType.Knife, 1)

@@ -3,7 +3,7 @@
 
     Public Sub New()
         MyBase.New(
-            RecipeType.ForageRock,
+            VerbType.ForageRock,
             "Forage(Rocks)",
             data.LocationType.Rock,
             data.ItemType.Rock)

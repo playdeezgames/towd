@@ -4,7 +4,7 @@ Friend Class BladeRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.Blade, 1)
+        MyBase.New(VerbType.Blade, 1)
         SetItemTypeInput(ItemType.SharpRock, 1)
         SetItemTypeInput(ItemType.Hammer, 1)
         SetItemTypeInputDurability(ItemType.Hammer, 1)

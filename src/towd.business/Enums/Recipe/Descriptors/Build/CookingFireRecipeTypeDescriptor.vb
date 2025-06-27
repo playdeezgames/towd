@@ -4,7 +4,7 @@ Friend Class CookingFireRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.CookingFire, 1)
+        MyBase.New(VerbType.CookingFire, 1)
         SetItemTypeInput(ItemType.Rock, 8)
         SetItemTypeInput(ItemType.Stick, 8)
         SetRequiredLocationType(LocationType.Dirt)

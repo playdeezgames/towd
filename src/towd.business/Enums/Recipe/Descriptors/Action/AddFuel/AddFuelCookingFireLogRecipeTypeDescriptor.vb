@@ -4,7 +4,7 @@ Friend Class AddFuelCookingFireLogRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.AddFuelCookingFireLog, 0)
+        MyBase.New(VerbType.AddFuelCookingFireLog, 0)
         SetDisplayName("Add Log to Cooking Fire")
         SetRequiredLocationType(LocationType.CookingFire)
         SetLocationStatisticDelta(data.StatisticType.Fuel, 4)

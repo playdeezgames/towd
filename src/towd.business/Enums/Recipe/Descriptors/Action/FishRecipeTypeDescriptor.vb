@@ -4,7 +4,7 @@ Friend Class FishRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.Fish, 1)
+        MyBase.New(VerbType.Fish, 1)
         SetDisplayName("Fish")
         SetRequiredLocationType(LocationType.Pond)
         SetItemTypeInputDurability(ItemType.FishingNet, 1)

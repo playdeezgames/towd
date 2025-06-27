@@ -16,7 +16,7 @@ Public Interface ICharacter
     Sub AddItem(item As IItem)
     Function GetCountOfItemType(itemType As IItemType) As Integer
     ReadOnly Property ItemStacks As IEnumerable(Of IItemStack)
-    Property LastRecipe As RecipeType?
+    Property LastRecipe As VerbType?
     Property CurrentItemType As IItemType
     Function GetItemsOfType(ItemType As IItemType) As IEnumerable(Of IItem)
     Function GetStatisticSumOfItemType(itemType As IItemType, statisticType As StatisticType) As Integer

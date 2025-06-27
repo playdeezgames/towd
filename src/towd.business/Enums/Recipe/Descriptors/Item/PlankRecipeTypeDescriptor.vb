@@ -4,7 +4,7 @@ Friend Class PlankRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.Plank, 1)
+        MyBase.New(VerbType.Plank, 1)
         SetItemTypeInput(ItemType.Hatchet, 1)
         SetItemTypeOutputGenerator(ItemType.Hatchet, New FixedGenerator(1))
         SetItemTypeInputDurability(ItemType.Hatchet, 3)

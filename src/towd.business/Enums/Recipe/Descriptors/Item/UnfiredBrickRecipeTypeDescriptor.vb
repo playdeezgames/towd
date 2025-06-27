@@ -3,7 +3,7 @@
 Friend Class UnfiredBrickRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
     Public Sub New()
-        MyBase.New(RecipeType.UnfiredBrick, 1)
+        MyBase.New(VerbType.UnfiredBrick, 1)
         SetItemTypeInput(ItemType.PlantFiber, 1)
         SetItemTypeInput(ItemType.Clay, 1)
         SetItemTypeOutputGenerator(ItemType.UnfiredBrick, New FixedGenerator(1))

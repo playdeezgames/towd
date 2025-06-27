@@ -4,7 +4,7 @@ Friend Class ChopRecipeTypeDescriptor
     Inherits RecipeTypeDescriptor
 
     Public Sub New()
-        MyBase.New(RecipeType.Chop, 1)
+        MyBase.New(VerbType.Chop, 1)
         SetDisplayName("Chop")
         SetRequiredLocationType(LocationType.Pine)
         SetItemTypeInputDurability(ItemType.Hatchet, 1)

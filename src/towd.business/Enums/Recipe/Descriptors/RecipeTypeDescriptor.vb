@@ -48,11 +48,11 @@ Public MustInherit Class RecipeTypeDescriptor
     Protected Sub SetItemTypeOutputGenerator(itemType As data.ItemType, generator As ICharacterWeightedGenerator)
         itemTypeOutputGenerators(itemType) = generator
     End Sub
-    Sub New(recipeType As RecipeType, timeTaken As Integer)
+    Sub New(recipeType As VerbType, timeTaken As Integer)
         Me.RecipeType = recipeType
         Me.timeTaken = timeTaken
     End Sub
-    Public ReadOnly Property RecipeType As RecipeType Implements IRecipeType.RecipeType
+    Public ReadOnly Property RecipeType As VerbType Implements IRecipeType.RecipeType
 
     Public ReadOnly Property Name As String Implements IRecipeType.Name
         Get

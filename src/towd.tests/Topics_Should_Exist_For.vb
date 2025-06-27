@@ -5,7 +5,7 @@ Imports Xunit
 Public Class Topics_Should_Exist_For
     <Fact>
     Public Sub Recipe_Types()
-        For Each sut In [Enum].GetValues(Of RecipeType)
+        For Each sut In [Enum].GetValues(Of VerbType)
             Try
                 Topics.RecipeTypeTopicTable.ContainsKey(sut).ShouldBeTrue($"{sut} Should Have a Topic")
             Catch ex As Exception
