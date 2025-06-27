@@ -80,7 +80,7 @@ Friend Class CraftMenuState
         Dim descriptor = CType(args.Value, IVerbType)
         descriptor.Craft(World.Avatar)
         If Not descriptor.CanCraft(World.Avatar) Then
-            World.Avatar.AppendMessage($"You are now out of crafting supplies for {descriptor.Name}.")
+            World.Avatar.AppendMessage($"You no longer meet the requirements for performing {descriptor.Name}.")
         End If
         ShowState(GameState.Neutral)
     End Sub

@@ -3,7 +3,7 @@
 
     Public Shared Property Topic As Topic
     Private ReadOnly titleLabel As Label
-    Private ReadOnly contentLabel As Label
+    Private ReadOnly contentLabel As TextView
 
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
@@ -15,13 +15,15 @@
             }
         Add(titleLabel)
 
-        contentLabel = New Label With
+        contentLabel = New TextView With
             {
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill - 3,
                 .Y = Pos.Bottom(titleLabel) + 1,
                 .Text = "????",
-                .TextAlignment = TextAlignment.Left
+                .TextAlignment = TextAlignment.Left,
+                .WordWrap = True,
+                .[ReadOnly] = True
             }
         Add(contentLabel)
 
