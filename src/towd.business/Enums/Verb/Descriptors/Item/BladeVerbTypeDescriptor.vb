@@ -10,6 +10,7 @@ Friend Class BladeVerbTypeDescriptor
         SetItemTypeInputDurability(ItemType.Hammer, 1)
         SetItemTypeOutputGenerator(ItemType.Hammer, New FixedGenerator(1))
         SetItemTypeOutputGenerator(ItemType.Blade, New FixedGenerator(1))
+        SetItemTypeOutputGenerator(ItemType.RockFlake, New FixedGenerator(2))
         SetCharacterStatisticMinimum(StatisticType.KnappingSkill, 1)
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
     End Sub
