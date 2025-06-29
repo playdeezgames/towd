@@ -72,7 +72,7 @@ Friend Class CraftMenuState
             descriptor.Craft(World.Avatar)
             ShowState(GameState.Neutral)
         Else
-            MessageBox.ErrorQuery("Sorry Not Sorry!", "You cannot craft that.", "OK")
+            MessageBox.ErrorQuery("Sorry Not Sorry!", "You cannot do that.", "OK")
         End If
     End Sub
 
