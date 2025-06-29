@@ -1,4 +1,9 @@
-let VerbType = {
+import TerrainTypes from "../room/terrain_type.js";
+import { StatisticType } from "./statistic_type.js";
+import Recipes from "../item/recipe.js";
+import { ItemType } from "../item/item_type.js";
+import { FlagType } from "./flag_type.js";
+export const VerbType = {
     FORAGE: "FORAGE",
     CRAFT: "CRAFT",
     CHOP: "CHOP",
@@ -9,7 +14,7 @@ let VerbType = {
     FISH: "FISH"
 };
 Object.freeze(VerbType);
-let VerbTypes = {};
+export let VerbTypes = {};
 VerbTypes[VerbType.FORAGE] = {
     name: "Forage",
     can_perform: (character) => { 
@@ -164,3 +169,4 @@ VerbTypes[VerbType.WAIT] = {
     }
 };
 Object.freeze(VerbTypes);
+export default VerbTypes;

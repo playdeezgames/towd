@@ -1,4 +1,4 @@
-let StatisticType = {
+export const StatisticType = {
     SATIETY: "SATIETY",
     MAXIMUM_SATIETY: "MAXIMUM_SATIETY",
     HEALTH: "HEALTH",

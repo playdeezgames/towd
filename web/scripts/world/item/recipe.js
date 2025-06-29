@@ -1,4 +1,6 @@
-class Recipe {
+import { ItemType, ItemTypes } from "./item_type.js";
+import { TerrainType } from "../room/terrain_type.js";
+export class Recipe {
     constructor(){
         this.inputs= {};
         this.outputs={};
@@ -122,7 +124,7 @@ class Recipe {
         this.predicate(character);
     }
 }
-let Recipes = [
+export let Recipes = [
     Recipe.create().
         set_input(ItemType.PLANT_FIBER, 2).
         set_output(ItemType.TWINE, 1),
@@ -237,3 +239,4 @@ let Recipes = [
         set_output(ItemType.FISH_HEAD, 1).
         set_output(ItemType.RAW_FISH_FILET, 1)
 ];
+export default Recipes;

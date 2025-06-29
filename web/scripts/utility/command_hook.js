@@ -1,8 +1,8 @@
-const COMMAND_UP = "UP";
-const COMMAND_DOWN = "DOWN";
-const COMMAND_LEFT = "LEFT";
-const COMMAND_RIGHT = "RIGHT";
-class CommandHook {
+export const COMMAND_UP = "UP";
+export const COMMAND_DOWN = "DOWN";
+export const COMMAND_LEFT = "LEFT";
+export const COMMAND_RIGHT = "RIGHT";
+export default class CommandHook {
     static command_hook = (command) => {};
     static keyboard_hooked = false;
     static command_table = {

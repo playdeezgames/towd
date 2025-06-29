@@ -1,4 +1,7 @@
-class RoomCell {
+import TerrainTypes from "./terrain_type.js";
+import Room from "./room.js";
+import Character from "../character/character.js";
+export default class RoomCell {
     constructor(world_data, room_id, column, row) {
         this.world_data = world_data;
         this.room_id = room_id;

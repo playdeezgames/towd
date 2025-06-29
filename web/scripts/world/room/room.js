@@ -1,4 +1,6 @@
-class Room {
+import RoomTypes from "./room_type.js";
+import RoomCell from "./room_cell.js";
+export default class Room {
     constructor(world_data, room_id){
         this.world_data = world_data;
         this.room_id = room_id;

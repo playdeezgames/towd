@@ -1,4 +1,4 @@
-class ElementStack {
+export default class ElementStack {
     static clear(element) {
         while(element.hasChildNodes()){
             element.removeChild(element.firstChild);

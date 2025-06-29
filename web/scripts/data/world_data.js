@@ -1,3 +1,3 @@
-class WorldData {
+export default class WorldData {
     static data = {}
 }

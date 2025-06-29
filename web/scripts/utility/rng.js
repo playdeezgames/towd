@@ -1,4 +1,4 @@
-class RNG {
+export default class RNG {
     static generate(table){
         let total = 0;
         for(let key in table){

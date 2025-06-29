@@ -1,4 +1,4 @@
-let ItemType = {
+export const ItemType = {
     PLANT_FIBER: "PLANT_FIBER",
     STICK: "STICK",
     ROCK: "ROCK",
@@ -27,7 +27,7 @@ let ItemType = {
     FURNACE: "FURNACE"
 };
 Object.freeze(ItemType);
-let ItemTypes = {};
+export let ItemTypes = {};
 ItemTypes[ItemType.PLANT_FIBER] = {
     name: "Plant Fiber",
     initialize: (item) => {}
@@ -154,3 +154,4 @@ ItemTypes[ItemType.KNIFE] = {
     }
 };
 Object.freeze(ItemTypes);
+export default ItemTypes

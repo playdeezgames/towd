@@ -1,4 +1,6 @@
-class InventoryItemStack {
+import ItemTypes from "./item_type.js";
+import Item from "./item.js";
+export default class InventoryItemStack {
     constructor(world_data, character_id, item_type_id){
         this.world_data = world_data;
         this.character_id = character_id;

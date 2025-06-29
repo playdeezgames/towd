@@ -1,4 +1,6 @@
-let TerrainType = {
+import { StatisticType } from "../enums/statistic_type.js";
+import { ItemType } from "../item/item_type.js";
+export const TerrainType = {
     GRASS: "GRASS",
     PINE: "PINE",
     ROCK: "ROCK",
@@ -8,7 +10,7 @@ let TerrainType = {
     FURNACE: "FURNACE"
 }
 Object.freeze(TerrainType);
-let TerrainTypes = {};
+export let TerrainTypes = {};
 TerrainTypes[TerrainType.GRASS] = {
     img_url: "assets/images/terrain_type_grass.png",
     name: "Grass",
@@ -166,3 +168,4 @@ TerrainTypes[TerrainType.POND] = {
     }
 };
 Object.freeze(TerrainTypes);
+export default TerrainTypes;

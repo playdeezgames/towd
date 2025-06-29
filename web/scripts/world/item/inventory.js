@@ -1,4 +1,5 @@
-class Inventory{
+import InventoryItemStack from "./inventory_item_stack.js";
+export default class Inventory{
     constructor(world_data, character_id){
         this.world_data = world_data;
         this.character_id = character_id;

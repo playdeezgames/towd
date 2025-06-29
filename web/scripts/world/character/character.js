@@ -1,4 +1,10 @@
-class Character {
+import CharacterTypes from "./character_type.js";
+import { StatisticType } from "../enums/statistic_type.js";
+import RoomCell from "../room/room_cell.js";
+import VerbTypes from "../enums/verb_type.js";
+import Inventory from "../item/inventory.js";
+import World from "../world.js";
+export default class Character {
     constructor(world_data, character_id){
         this.world_data = world_data;
         this.character_id = character_id;

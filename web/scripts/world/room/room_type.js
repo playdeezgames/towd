@@ -1,8 +1,10 @@
-let RoomType = {
+import RNG from '../../utility/rng.js'
+import { TerrainType } from "./terrain_type.js";
+export const RoomType = {
     FIELD: "FIELD"
 };
 Object.freeze(RoomType);
-let RoomTypes = {};
+export let RoomTypes = {};
 RoomTypes[RoomType.FIELD] = {
     initialize: (room) => {
         let terrain_table = {}
@@ -20,3 +22,4 @@ RoomTypes[RoomType.FIELD] = {
     terrain_type_id: TerrainType.GRASS
 }
 Object.freeze(RoomTypes);
+export default RoomTypes;

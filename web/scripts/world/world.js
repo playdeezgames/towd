@@ -1,6 +1,12 @@
-const BOARD_COLUMNS = 9;
-const BOARD_ROWS = 9;
-class World {
+import WorldData from '../data/world_data.js'
+import {RoomType, RoomTypes} from './room/room_type.js'
+import Room from './room/room.js'
+import { CharacterType } from './character/character_type.js';
+import Character from './character/character.js';
+import Item from './item/item.js';
+export const BOARD_COLUMNS = 9;
+export const BOARD_ROWS = 9;
+export default class World {
     constructor(world_data) {
         if(world_data==null){
             world_data = WorldData.data;

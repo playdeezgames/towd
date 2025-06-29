@@ -1,4 +1,5 @@
-class Item {
+import ItemTypes from "./item_type.js";
+export default class Item {
     constructor(world_data, item_id){
         this.world_data = world_data;
         this.item_id = item_id;

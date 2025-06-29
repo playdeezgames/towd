@@ -1,4 +1,10 @@
-class InPlay {
+import CommandHook from "../../utility/command_hook.js";
+import ElementStack from "../../utility/element_stack.js";
+import World from "../../world/world.js";
+import { VerbType, VerbTypes } from "../../world/enums/verb_type.js";
+import { StatisticType } from "../../world/enums/statistic_type.js";
+import Neutral from "./neutral.js";
+export default class InPlay {
     static run() {
         CommandHook.set_command_hook(InPlay.command_hook)
         ElementStack.cls();

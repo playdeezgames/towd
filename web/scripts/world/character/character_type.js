@@ -1,7 +1,8 @@
-const CharacterType = {
+import { StatisticType } from "../enums/statistic_type.js";
+export const CharacterType = {
     N00B: "N00B"
 }
-let CharacterTypes = {};
+export let CharacterTypes = {};
 CharacterTypes[CharacterType.N00B] = {
     img_url: "assets/images/character_type_n00b.png",
     initialize: (character) => {
@@ -15,3 +16,4 @@ CharacterTypes[CharacterType.N00B] = {
     }
 };
 Object.freeze(CharacterTypes);
+export default CharacterTypes;
