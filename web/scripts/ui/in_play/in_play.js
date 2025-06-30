@@ -1,4 +1,4 @@
-import CommandHook from "../../utility/command_hook.js";
+import CommandHook, {COMMAND_DOWN, COMMAND_LEFT, COMMAND_RIGHT, COMMAND_UP} from "../../utility/command_hook.js";
 import ElementStack from "../../utility/element_stack.js";
 import World from "../../world/world.js";
 import { VerbType, VerbTypes } from "../../world/enums/verb_type.js";
@@ -44,18 +44,19 @@ export default class InPlay {
         ElementStack.pop();
         ElementStack.pop();
     }
-    static command_hook(command){
-        if(command == COMMAND_UP){
-            InPlay.move_north();
-        }else if(command == COMMAND_DOWN){
-            InPlay.move_south();
-        }else if(command == COMMAND_LEFT){
-            InPlay.move_west();
-        }else if(command == COMMAND_RIGHT){
-            InPlay.move_east();
+
+    static command_hook(command) {
+        const actions = {
+            [COMMAND_UP]: InPlay.move_north,
+            [COMMAND_DOWN]: InPlay.move_south,
+            [COMMAND_LEFT]: InPlay.move_west,
+            [COMMAND_RIGHT]: InPlay.move_east,
+        };
+        const action = actions[command];
+        if (action) {
+            action();
         }
     }
-
     static render_messages(){
         World.get_avatar().get_messages().forEach((message)=>{
             ElementStack.add_paragraph(message);
