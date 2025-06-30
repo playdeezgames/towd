@@ -1,6 +1,6 @@
 import ItemTypes from "./item_type.js";
 import Item from "./item.js";
-import {StatisticType} from "../enums/statistic_type";
+import {StatisticType} from "../enums/statistic_type.js";
 export default class InventoryItemStack {
     constructor(world_data, character_id, item_type_id){
         this.world_data = world_data;

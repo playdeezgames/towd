@@ -1,4 +1,4 @@
-import {StatisticType} from "../enums/statistic_type";
+import {StatisticType} from "../enums/statistic_type.js";
 
 export const ItemType = {
     PLANT_FIBER: "PLANT_FIBER",
