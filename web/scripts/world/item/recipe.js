@@ -5,8 +5,8 @@ export class Recipe {
         this.inputs= {};
         this.outputs={};
         this.durability_inputs = {};
-        this.precondition = (character) => true;
-        this.predicate = (character) => {};
+        this.precondition = (_) => true;
+        this.predicate = (_) => {};
     }
     static create(){
         return new Recipe();
@@ -165,7 +165,7 @@ export let Recipes = [
         set_output(ItemType.COOKING_FIRE, 1).
         set_precondition((character) => { 
             let terrain_type_id = character.get_room_cell().get_terrain_type();
-            return terrain_type_id == TerrainType.GRASS || terrain_type_id == TerrainType.DIRT; 
+            return terrain_type_id === TerrainType.GRASS || terrain_type_id === TerrainType.DIRT;
         }).
         set_predicate((character)=> {
             character.remove_item_of_type(ItemType.COOKING_FIRE);
@@ -176,7 +176,7 @@ export let Recipes = [
         set_output(ItemType.FURNACE, 1).
         set_precondition((character) => { 
             let terrain_type_id = character.get_room_cell().get_terrain_type();
-            return terrain_type_id == TerrainType.GRASS || terrain_type_id == TerrainType.DIRT; 
+            return terrain_type_id === TerrainType.GRASS || terrain_type_id === TerrainType.DIRT;
         }).
         set_predicate((character)=> {
             character.remove_item_of_type(ItemType.FURNACE);
@@ -186,7 +186,7 @@ export let Recipes = [
         set_input(ItemType.LOG, 2).
         set_output(ItemType.CHARCOAL, 1).
         set_precondition((character) => { 
-            return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
+            return character.get_room_cell().get_terrain_type() === TerrainType.COOKING_FIRE;
         }),
     Recipe.create().
         set_input(ItemType.GRUB, 1).
@@ -195,7 +195,7 @@ export let Recipes = [
         set_output(ItemType.SHARP_STICK, 1).
         set_output(ItemType.COOKED_GRUB, 1).
         set_precondition((character) => { 
-            return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
+            return character.get_room_cell().get_terrain_type() === TerrainType.COOKING_FIRE;
         }),
     Recipe.create().
         set_input(ItemType.RAW_FISH_FILET, 1).
@@ -204,7 +204,7 @@ export let Recipes = [
         set_output(ItemType.SHARP_STICK, 1).
         set_output(ItemType.COOKED_FISH_FILET, 1).
         set_precondition((character) => { 
-            return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
+            return character.get_room_cell().get_terrain_type() === TerrainType.COOKING_FIRE;
         }),
     Recipe.create().
         set_input(ItemType.PLANT_FIBER, 1).
@@ -217,7 +217,7 @@ export let Recipes = [
         set_input(ItemType.UNFIRED_BRICK, 1).
         set_output(ItemType.BRICK, 1).
         set_precondition((character) => { 
-            return character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE; 
+            return character.get_room_cell().get_terrain_type() === TerrainType.COOKING_FIRE;
         }),
     Recipe.create().
         set_input(ItemType.BLADE, 1).

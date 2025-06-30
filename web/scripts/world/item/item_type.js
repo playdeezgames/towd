@@ -1,3 +1,5 @@
+import {StatisticType} from "../enums/statistic_type";
+
 export const ItemType = {
     PLANT_FIBER: "PLANT_FIBER",
     STICK: "STICK",
@@ -30,23 +32,23 @@ Object.freeze(ItemType);
 export let ItemTypes = {};
 ItemTypes[ItemType.PLANT_FIBER] = {
     name: "Plant Fiber",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.STICK] = {
     name: "Stick",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.ROCK] = {
     name: "Rock",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.TWINE] = {
     name: "Twine",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.SHARP_ROCK] = {
     name: "Sharp Rock",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.HATCHET] = {
     name: "Hatchet",
@@ -70,7 +72,7 @@ ItemTypes[ItemType.HAMMER] = {
 };
 ItemTypes[ItemType.PLANK] = {
     name: "Plank",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.SHARP_STICK] = {
     name: "Sharp Stick",
@@ -81,7 +83,7 @@ ItemTypes[ItemType.SHARP_STICK] = {
 };
 ItemTypes[ItemType.GRUB] = {
     name: "Grub",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.COOKED_GRUB] = {
     name: "Cooked Grub",
@@ -91,47 +93,47 @@ ItemTypes[ItemType.COOKED_GRUB] = {
 };
 ItemTypes[ItemType.COOKING_FIRE] = {
     name: "Cooking Fire",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.FURNACE] = {
     name: "Furnace",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.CLAY] = {
     name: "Clay",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.CHARCOAL] = {
     name: "Charcoal",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.UNFIRED_BRICK] = {
     name: "Unfired Brick",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.BRICK] = {
     name: "Brick",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.RAW_FISH] = {
     name: "Raw Fish",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.RAW_FISH_FILET] = {
     name: "Raw Fish Filet",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.FISH_HEAD] = {
     name: "Fish Head",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.FISH_GUTS] = {
     name: "Fish Guts",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.BLADE] = {
     name: "Blade",
-    initialize: (item) => {}
+    initialize: (_) => {}
 };
 ItemTypes[ItemType.COOKED_FISH_FILET] = {
     name: "Cooked Fish Filet",

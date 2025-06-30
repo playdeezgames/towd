@@ -1,5 +1,6 @@
 import ItemTypes from "./item_type.js";
 import Item from "./item.js";
+import {StatisticType} from "../enums/statistic_type";
 export default class InventoryItemStack {
     constructor(world_data, character_id, item_type_id){
         this.world_data = world_data;
@@ -25,7 +26,7 @@ export default class InventoryItemStack {
     }
     pop_item(){
         let item_ids = this.world_data.characters[this.character_id].inventory[this.item_type_id]
-        if(item_ids==null || item_ids.length == 0){
+        if(item_ids==null || item_ids.length === 0){
             return null;
         }
         return new Item(this.world_data, item_ids.pop());

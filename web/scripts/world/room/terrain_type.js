@@ -118,21 +118,21 @@ TerrainTypes[TerrainType.COOKING_FIRE] = {
 TerrainTypes[TerrainType.FURNACE] = {
     img_url: "assets/images/terrain_type_furnace.png",
     name: "Furnace",
-    initialize: (room_cell) => {
+    initialize: (_) => {
     },
-    advance_time: (room_cell) => {
+    advance_time: (_) => {
     },
-    get_details: (room_cell) => {
+    get_details: (_) => {
         return [];
     }
 };
 TerrainTypes[TerrainType.DIRT] = {
     img_url: "assets/images/terrain_type_dirt.png",
     name: "Dirt",
-    initialize: (room_cell) => {
+    initialize: (_) => {
 
     },
-    advance_time: (room_cell) => {
+    advance_time: (_) => {
 
     }
 };
@@ -157,7 +157,7 @@ TerrainTypes[TerrainType.POND] = {
         room_cell.set_statistic(StatisticType.DIGGING, 25);
         room_cell.set_statistic(StatisticType.FISHING, 25);
     },
-    advance_time: (room_cell) => {
+    advance_time: (_) => {
 
     },
     get_details: (room_cell) => {

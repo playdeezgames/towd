@@ -1,4 +1,4 @@
-import TerrainTypes from "../room/terrain_type.js";
+import TerrainTypes, {TerrainType} from "../room/terrain_type.js";
 import { StatisticType } from "./statistic_type.js";
 import Recipes from "../item/recipe.js";
 import { ItemType } from "../item/item_type.js";
@@ -140,7 +140,7 @@ VerbTypes[VerbType.EAT] = {
 VerbTypes[VerbType.ADD_FUEL] = {
     name: "Add Fuel",
     can_perform: (character) => { 
-        return character.get_inventory().has_items_of_type(ItemType.LOG) && character.get_room_cell().get_terrain_type() == TerrainType.COOKING_FIRE;
+        return character.get_inventory().has_items_of_type(ItemType.LOG) && character.get_room_cell().get_terrain_type() === TerrainType.COOKING_FIRE;
     },
     perform: (character) => {
         character.clear_messages();
@@ -157,7 +157,7 @@ VerbTypes[VerbType.ADD_FUEL] = {
 };
 VerbTypes[VerbType.WAIT] = {
     name: "Wait",
-    can_perform: (character) => { 
+    can_perform: (_) => {
         return true;
     },
     perform: (character) => {

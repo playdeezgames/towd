@@ -3,7 +3,7 @@ export const COMMAND_DOWN = "DOWN";
 export const COMMAND_LEFT = "LEFT";
 export const COMMAND_RIGHT = "RIGHT";
 export default class CommandHook {
-    static command_hook = (command) => {};
+    static command_hook = (_) => {};
     static keyboard_hooked = false;
     static command_table = {
         w: COMMAND_UP,
@@ -17,7 +17,7 @@ export default class CommandHook {
         CommandHook.command_hook = hook;
     }
     static clear_command_hook(){
-        CommandHook.set_command_hook((command)=>{});
+        CommandHook.set_command_hook((_)=>{});
     }
     static hook_keyboard(){
         if(!CommandHook.keyboard_hooked){

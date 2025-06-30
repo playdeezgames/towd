@@ -84,7 +84,7 @@ export default class Character {
     }
     is_avatar(){
         let avatar = this.get_world().get_avatar();
-        return avatar!=null && avatar.get_id() == this.get_id();
+        return avatar!=null && avatar.get_id() === this.get_id();
     }
     move_by(dx, dy, direction_name) {
         this.clear_messages();
@@ -127,7 +127,7 @@ export default class Character {
     }
     is_dead(){
         let health = this.get_statistic(StatisticType.HEALTH);
-        return health == 0;
+        return health === 0;
     }
     can_do_verb(verb_type_id) {
         return VerbTypes[verb_type_id].can_perform(this);
@@ -171,7 +171,7 @@ export default class Character {
     }
     get_item_of_type(item_type_id){
         let items = this.get_inventory().get_items_of_type(item_type_id).get_items();
-        if(items.length==0){
+        if(items.length === 0){
             return null;
         }
         return items[0];
