@@ -16,7 +16,8 @@ export const VerbType = {
 Object.freeze(VerbType);
 export let VerbTypes = {};
 VerbTypes[VerbType.FORAGE] = {
-    name: "Forage",
+    img_url: "/assets/images/verb_type_forage.png",
+    name: "Forage!",
     can_perform: (character) => { 
         let terrain_type_id = character.get_room_cell().get_terrain_type();
         if(TerrainTypes[terrain_type_id].do_forage == null){
@@ -35,6 +36,7 @@ VerbTypes[VerbType.FORAGE] = {
     }
 };
 VerbTypes[VerbType.CRAFT] = {
+    img_url: "/assets/images/verb_type_craft.png",
     name: "Craft",
     can_perform: (character) => { 
         for(let recipe of Recipes){
@@ -52,6 +54,7 @@ VerbTypes[VerbType.CRAFT] = {
     }
 };
 VerbTypes[VerbType.CHOP] = {
+    img_url: "/assets/images/verb_type_chop.png",
     name: "Chop",
     can_perform: (character) => { 
         if(!character.get_inventory().has_items_of_type(ItemType.HATCHET)){
@@ -74,6 +77,7 @@ VerbTypes[VerbType.CHOP] = {
     }
 };
 VerbTypes[VerbType.FISH] = {
+    img_url: "/assets/images/verb_type_fish.png",
     name: "Fish",
     can_perform: (character) => { 
         if(!character.get_inventory().has_items_of_type(ItemType.FISHING_NET)){
@@ -96,6 +100,7 @@ VerbTypes[VerbType.FISH] = {
     }
 };
 VerbTypes[VerbType.DIG] = {
+    img_url: "/assets/images/verb_type_dig.png",
     name: "Dig",
     can_perform: (character) => { 
         if(!character.get_inventory().has_items_of_type(ItemType.SHARP_STICK)){
@@ -118,6 +123,7 @@ VerbTypes[VerbType.DIG] = {
     }
 };
 VerbTypes[VerbType.EAT] = {
+    img_url: "/assets/images/verb_type_eat.png",
     name: "Eat",
     can_perform: (character) => { 
         return character.get_inventory().has_items_of_type(ItemType.COOKED_GRUB);
@@ -138,6 +144,7 @@ VerbTypes[VerbType.EAT] = {
     }
 };
 VerbTypes[VerbType.ADD_FUEL] = {
+    img_url: "/assets/images/verb_type_add_fuel.png",
     name: "Add Fuel",
     can_perform: (character) => { 
         return character.get_inventory().has_items_of_type(ItemType.LOG) && character.get_room_cell().get_terrain_type() === TerrainType.COOKING_FIRE;
@@ -156,6 +163,7 @@ VerbTypes[VerbType.ADD_FUEL] = {
     }
 };
 VerbTypes[VerbType.WAIT] = {
+    img_url: "/assets/images/verb_type_wait.png",
     name: "Wait",
     can_perform: (_) => {
         return true;

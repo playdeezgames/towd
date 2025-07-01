@@ -1,7 +1,16 @@
 IMG {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 div {
     height: 32px;
+}
+button {
+    margin: 0;
+    padding: 0;
+}
+button img {
+    margin: 0;
+    padding: 0;
+    display: block;
 }

@@ -78,8 +78,8 @@ export default class InPlay {
         let avatar = World.get_avatar();
         ElementStack.push(ElementStack.add_paragraph(`Terrain: ${avatar.get_room_cell().get_name()}`));
         let report = avatar.get_room_cell().get_details();
+        ElementStack.add_img(World.get_avatar().get_room_cell().get_img_url());
         if(report.length>0){
-            ElementStack.add_img(World.get_avatar().get_room_cell().get_img_url());
             ElementStack.add_span(`(${report.join(", ")})`)
         }
         ElementStack.pop();
@@ -88,49 +88,83 @@ export default class InPlay {
     }
 
     static render_controls() {
-        ElementStack.add_paragraph("Controls:")
-
-        ElementStack.push(ElementStack.add_table())
-        ElementStack.push(ElementStack.add_table_row())
-        ElementStack.push(ElementStack.add_table_data())
-        ElementStack.pop()
-        ElementStack.push(ElementStack.add_table_data())
-        ElementStack.add_button("N", InPlay.move_north);
-        ElementStack.pop()
-        ElementStack.push(ElementStack.add_table_data())
-        ElementStack.pop()
-        ElementStack.pop()
-        ElementStack.push(ElementStack.add_table_row())
-        ElementStack.push(ElementStack.add_table_data())
-        ElementStack.add_button("W", InPlay.move_west);
-        ElementStack.pop()
-        ElementStack.push(ElementStack.add_table_data())
-        ElementStack.pop()
-        ElementStack.push(ElementStack.add_table_data())
-        ElementStack.add_button("E", InPlay.move_east);
-        ElementStack.pop()
-        ElementStack.pop()
-        ElementStack.push(ElementStack.add_table_row())
-        ElementStack.push(ElementStack.add_table_data())
-        ElementStack.pop()
-        ElementStack.push(ElementStack.add_table_data())
-        ElementStack.add_button("S", InPlay.move_south);
-        ElementStack.pop()
-        ElementStack.push(ElementStack.add_table_data())
-        ElementStack.pop()
-        ElementStack.pop()
-        ElementStack.pop()
+        InPlay.render_direction_controls();
 
         ElementStack.add_break();
         let avatar = World.get_avatar();
         for(let key in VerbType) {
             if(avatar.can_do_verb(key)){
-                ElementStack.add_button(VerbTypes[key].name, () => { 
+                let verbType = VerbTypes[key];
+                let name = verbType.name;
+                let img_url = verbType.img_url;
+                let predicate =  () => {
                     avatar.do_verb(key);
                     Neutral.run();
-                });
+                };
+                let button = ElementStack.add_button("",predicate);
+                ElementStack.push(button);
+                ElementStack.add_img(img_url);
+                ElementStack.add_break();
+                ElementStack.add_span(name);
+                ElementStack.pop();
             }
         }
+    }
+
+    static render_direction_button(img_url, predicate){
+        let button = ElementStack.add_button("", predicate);
+        ElementStack.push(button);
+        ElementStack.add_img(img_url);
+        ElementStack.pop();
+    }
+
+    static render_direction_controls() {
+        ElementStack.push(ElementStack.add_table())
+
+        ElementStack.push(ElementStack.add_table_row())
+
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()//td
+
+        ElementStack.push(ElementStack.add_table_data())
+        InPlay.render_direction_button("/assets/images/direction_north.png", InPlay.move_north)
+        ElementStack.pop()//td
+
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()//td
+
+        ElementStack.pop()//tr
+
+        ElementStack.push(ElementStack.add_table_row())
+
+        ElementStack.push(ElementStack.add_table_data())
+        InPlay.render_direction_button("/assets/images/direction_west.png", InPlay.move_west)
+        ElementStack.pop()//td
+
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()//td
+
+        ElementStack.push(ElementStack.add_table_data())
+        InPlay.render_direction_button("/assets/images/direction_east.png", InPlay.move_east)
+        ElementStack.pop()//td
+
+        ElementStack.pop()//tr
+
+        ElementStack.push(ElementStack.add_table_row())
+
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()//td
+
+        ElementStack.push(ElementStack.add_table_data())
+        InPlay.render_direction_button("/assets/images/direction_south.png", InPlay.move_south)
+        ElementStack.pop()//td
+
+        ElementStack.push(ElementStack.add_table_data())
+        ElementStack.pop()//td
+
+        ElementStack.pop()//tr
+
+        ElementStack.pop()//table
     }
 
     static with_avatar(predicate){

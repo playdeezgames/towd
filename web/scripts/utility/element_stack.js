@@ -22,18 +22,24 @@ export default class ElementStack {
     }
     static add_button(text, on_click, predicate) {
         let element = ElementStack.add_element_to(ElementStack.top(), "button", predicate)
-        element.innerText = text;
+        if(text){
+            element.innerText = text;
+        }
         element.addEventListener("click", on_click);
         return element
     }
     static add_paragraph(text, predicate) {
         let element = ElementStack.add_element_to(ElementStack.top(), "p", predicate)
-        element.innerText = text;
+        if(text){
+            element.innerText = text;
+        }
         return element
     }
     static add_span(text, predicate) {
         let element = ElementStack.add_element_to(ElementStack.top(), "span", predicate)
-        element.innerText = text;
+        if(text){
+            element.innerText = text;
+        }
         return element
     }
     static add_break(predicate) {
