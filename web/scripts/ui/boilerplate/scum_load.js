@@ -1,11 +1,11 @@
 import {Display} from "../../common/Display.js";
 import {MainMenu} from "./main_menu.js";
 
-export class Embark {
+export class ScumLoad{
     static run(){
         Display.clear();
-        Display.addSimpleChild("p", "Embark");
-        Display.addButton("Cancel", Embark.cancel);
+        Display.addSimpleChild("p", "Scum Load");
+        Display.addButton("Cancel", ScumLoad.cancel);
     }
     static cancel(){
         MainMenu.run();
