@@ -38,10 +38,10 @@ export const StatisticTypes = {
         img_url:""
     },
     [StatisticType.MAXIMUM_HEALTH]: {
-        img_url:""
+        img_url:"/assets/images/statistic_type_health.png"
     },
     [StatisticType.MAXIMUM_SATIETY]: {
-        img_url:""
+        img_url:"/assets/images/statistic_type_satiety.png"
     },
     [StatisticType.SATIETY]: {
         img_url:"/assets/images/statistic_type_satiety.png"

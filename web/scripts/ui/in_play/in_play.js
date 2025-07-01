@@ -76,22 +76,31 @@ export default class InPlay {
     static render_stats(){
         ElementStack.add_paragraph("Statistics:")
         let avatar = World.get_avatar();
-        ElementStack.push(ElementStack.add_paragraph(`Terrain: ${avatar.get_room_cell().get_name()}`));
-        let report = avatar.get_room_cell().get_details();
-        ElementStack.add_img(World.get_avatar().get_room_cell().get_img_url());
-        if(report.length>0){
-            ElementStack.add_span(`(${report.join(", ")})`)
-        }
-        ElementStack.pop();
+
+        InPlay.render_terrain_stats(avatar.get_room_cell());
 
         InPlay.render_stat(avatar, StatisticType.SATIETY, StatisticType.MAXIMUM_SATIETY);
         InPlay.render_stat(avatar, StatisticType.HEALTH, StatisticType.MAXIMUM_HEALTH);
     }
 
-    static render_stat(avatar, statisticType, maximumStatisticType){
+    static render_terrain_stats(room_cell){
+        ElementStack.push(ElementStack.add_paragraph(`Terrain: ${room_cell.get_name()}`));
+        let report = room_cell.get_details();
+        ElementStack.add_img(room_cell.get_img_url());
+        if(report.length>0){
+            ElementStack.add_span(`(${report.join(", ")})`)
+        }
+        ElementStack.pop();
+    }
+
+    static render_stat(entity, statisticType, maximumStatisticType){
         ElementStack.push(ElementStack.add_paragraph());
         ElementStack.add_img(StatisticTypes[statisticType].img_url);
-        ElementStack.add_span(`${avatar.get_statistic(statisticType)}/${avatar.get_statistic(maximumStatisticType)}`);
+        if(maximumStatisticType){
+            ElementStack.add_span(`${entity.get_statistic(statisticType)}/${entity.get_statistic(maximumStatisticType)}`);
+        }else{
+            ElementStack.add_span(`${entity.get_statistic(statisticType)}`);
+        }
         ElementStack.pop();
     }
 
