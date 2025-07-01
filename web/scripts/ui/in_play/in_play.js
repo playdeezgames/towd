@@ -2,7 +2,7 @@ import CommandHook, {COMMAND_DOWN, COMMAND_LEFT, COMMAND_RIGHT, COMMAND_UP} from
 import ElementStack from "../../utility/element_stack.js";
 import World from "../../world/world.js";
 import { VerbType, VerbTypes } from "../../world/enums/verb_type.js";
-import { StatisticType } from "../../world/enums/statistic_type.js";
+import {StatisticType, StatisticTypes} from "../../world/enums/statistic_type.js";
 import Neutral from "./neutral.js";
 export default class InPlay {
     static run() {
@@ -83,8 +83,16 @@ export default class InPlay {
             ElementStack.add_span(`(${report.join(", ")})`)
         }
         ElementStack.pop();
-        ElementStack.add_paragraph(`Satiety: ${avatar.get_statistic(StatisticType.SATIETY)}/${avatar.get_statistic(StatisticType.MAXIMUM_SATIETY)}`);
-        ElementStack.add_paragraph(`Health: ${avatar.get_statistic(StatisticType.HEALTH)}/${avatar.get_statistic(StatisticType.MAXIMUM_HEALTH)}`);
+
+        InPlay.render_stat(avatar, StatisticType.SATIETY, StatisticType.MAXIMUM_SATIETY);
+        InPlay.render_stat(avatar, StatisticType.HEALTH, StatisticType.MAXIMUM_HEALTH);
+    }
+
+    static render_stat(avatar, statisticType, maximumStatisticType){
+        ElementStack.push(ElementStack.add_paragraph());
+        ElementStack.add_img(StatisticTypes[statisticType].img_url);
+        ElementStack.add_span(`${avatar.get_statistic(statisticType)}/${avatar.get_statistic(maximumStatisticType)}`);
+        ElementStack.pop();
     }
 
     static render_controls() {
