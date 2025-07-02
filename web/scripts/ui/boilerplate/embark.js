@@ -1,13 +1,9 @@
-import {Display} from "../../common/Display.js";
-import {MainMenu} from "./main_menu.js";
+import {World} from "../../World/world.js";
+import {Neutral} from "../InPlay/neutral.js";
 
 export class Embark {
     static run(){
-        Display.clear();
-        Display.addSimpleChild("p", "Embark");
-        Display.addButton("Cancel", Embark.cancel);
-    }
-    static cancel(){
-        MainMenu.run();
+        World.initialize();
+        Neutral.run();
     }
 }
