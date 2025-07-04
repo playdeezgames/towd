@@ -1,10 +1,10 @@
 import {Display} from "../../common/Display.js";
-import {MainMenu} from "./main_menu.js";
-export default class Main{
+import {MainMenuState} from "./mainMenuState.js";
+export default class SplashState {
     static run(){
         Display.clear();
         Display.addSimpleChild("p", "TOWD");
-        Display.addButton("Ok", MainMenu.run);
+        Display.addButton("Ok", MainMenuState.run);
     }
 }
-Main.run();
+SplashState.run();

@@ -1,7 +1,7 @@
 ﻿Imports towd.business
 Imports towd.data
 
-Friend Class CraftMenuState
+Friend Class VerbMenuState
     Inherits ChildView
 
     Private Const AVAILABLE_TEXT As String = "Available"
@@ -14,7 +14,7 @@ Friend Class CraftMenuState
         Dim titleLabel As New Label With
             {
                 .Width = [Dim].Fill,
-                .Text = "Craft (Esc to cancel)",
+                .Text = "Verbs (Esc to cancel, F1 for help)",
                 .TextAlignment = TextAlignment.Centered
             }
         Add(titleLabel)
@@ -68,8 +68,8 @@ Friend Class CraftMenuState
 
     Private Sub OnAllVerbListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim descriptor = CType(args.Value, IVerbType)
-        If descriptor.CanCraft(World.Avatar) Then
-            descriptor.Craft(World.Avatar)
+        If descriptor.CanPerform(World.Avatar) Then
+            descriptor.Perform(World.Avatar)
             ShowState(GameState.Neutral)
         Else
             MessageBox.ErrorQuery("Sorry Not Sorry!", "You cannot do that.", "OK")
@@ -78,8 +78,8 @@ Friend Class CraftMenuState
 
     Private Sub OnAvailableVerbListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim descriptor = CType(args.Value, IVerbType)
-        descriptor.Craft(World.Avatar)
-        If Not descriptor.CanCraft(World.Avatar) Then
+        descriptor.Perform(World.Avatar)
+        If Not descriptor.CanPerform(World.Avatar) Then
             World.Avatar.AppendMessage($"You no longer meet the requirements for performing {descriptor.Name}.")
         End If
         ShowState(GameState.Neutral)
@@ -113,7 +113,7 @@ Friend Class CraftMenuState
     End Sub
 
     Private Sub CloseWindow()
-        World.Avatar.SetFlag(towd.data.FlagType.CraftMenu, False)
+        World.Avatar.SetFlag(towd.data.FlagType.VerbMenu, False)
         ShowState(GameState.Neutral)
     End Sub
 End Class

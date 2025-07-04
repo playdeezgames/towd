@@ -12,7 +12,7 @@
         childViews.Add(GameState.Dead, New DeadState(Me))
         childViews.Add(GameState.Inventory, New InventoryState(Me))
         childViews.Add(GameState.ItemStack, New ItemStackState(Me))
-        childViews.Add(GameState.CraftMenu, New CraftMenuState(Me))
+        childViews.Add(GameState.VerbMenu, New VerbMenuState(Me))
         childViews.Add(GameState.MoveMenu, New MoveMenuState(Me))
         childViews.Add(GameState.Deeds, New DeedsState(Me))
         childViews.Add(GameState.SkillMenu, New SkillMenuState(Me))

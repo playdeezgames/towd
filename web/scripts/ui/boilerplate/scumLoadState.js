@@ -1,13 +1,13 @@
 import {Display} from "../../common/Display.js";
-import {MainMenu} from "./main_menu.js";
+import {MainMenuState} from "./mainMenuState.js";
 
-export class ScumLoad{
+export class scumLoadState {
     static run(){
         Display.clear();
-        Display.addSimpleChild("p", "Scum Load");
-        Display.addButton("Cancel", ScumLoad.cancel);
+        Display.addSimpleChild("p", "Scum LoadState");
+        Display.addButton("Cancel", scumLoadState.cancel);
     }
     static cancel(){
-        MainMenu.run();
+        MainMenuState.run();
     }
 }

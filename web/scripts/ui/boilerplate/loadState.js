@@ -1,13 +1,13 @@
 import {Display} from "../../common/Display.js";
-import {MainMenu} from "./main_menu.js";
+import {MainMenuState} from "./mainMenuState.js";
 
-export class Load{
+export class LoadState {
     static run(){
         Display.clear();
-        Display.addSimpleChild("p", "Load");
-        Display.addButton("Cancel", Load.cancel);
+        Display.addSimpleChild("p", "LoadState");
+        Display.addButton("Cancel", LoadState.cancel);
     }
     static cancel(){
-        MainMenu.run();
+        MainMenuState.run();
     }
 }

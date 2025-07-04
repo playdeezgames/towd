@@ -1,9 +1,9 @@
 import {World} from "../../World/world.js";
-import {Neutral} from "../InPlay/neutral.js";
+import {NeutralState} from "../InPlay/neutralState.js";
 
-export class Embark {
+export class EmbarkState {
     static run(){
         World.initialize();
-        Neutral.run();
+        NeutralState.run();
     }
 }

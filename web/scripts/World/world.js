@@ -57,4 +57,12 @@ export class World{
         descriptor.initialize(mapCell);
         return mapCell;
     }
+
+    static save(saveSlot, notify) {
+        throw "NOT IMPLEMENTED";
+    }
+
+    static getAvatar() {
+        throw "NOT IMPLEMENTED";
+    }
 }

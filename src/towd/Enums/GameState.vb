@@ -8,7 +8,7 @@
     Dead
     Inventory
     ItemStack
-    CraftMenu
+    VerbMenu
     MoveMenu
     Deeds
     SkillMenu

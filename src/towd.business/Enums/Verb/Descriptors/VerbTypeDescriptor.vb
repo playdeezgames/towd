@@ -139,8 +139,8 @@ Public MustInherit Class VerbTypeDescriptor
         Return Name
     End Function
 
-    Public Sub Craft(character As ICharacter) Implements IVerbType.Craft
-        If Not CanCraft(character) Then
+    Public Sub Perform(character As ICharacter) Implements IVerbType.Perform
+        If Not CanPerform(character) Then
             Return
         End If
         character.LastVerb = VerbType
@@ -186,7 +186,7 @@ Public MustInherit Class VerbTypeDescriptor
         End If
         character.World.AdvanceTime(timeTaken)
     End Sub
-    Public Function CanCraft(character As ICharacter) As Boolean Implements IVerbType.CanCraft
+    Public Function CanPerform(character As ICharacter) As Boolean Implements IVerbType.CanPerform
         Dim location = character.Location
         For Each entry In locationStatisticMinimums
             If location.GetStatistic(entry.Key) < entry.Value Then

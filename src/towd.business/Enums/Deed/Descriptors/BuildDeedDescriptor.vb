@@ -4,9 +4,9 @@
 
     Private ReadOnly buildCount As Integer
 
-    Public Sub New(deed As data.Deed, name As String, craftCount As Integer, xp As Integer, needed() As data.Deed)
+    Public Sub New(deed As data.Deed, name As String, performCount As Integer, xp As Integer, needed() As data.Deed)
         MyBase.New(deed, name, xp, needed)
-        Me.buildCount = craftCount
+        Me.buildCount = performCount
     End Sub
 
     Public Overrides ReadOnly Property Description As String

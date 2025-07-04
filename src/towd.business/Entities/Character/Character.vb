@@ -104,7 +104,7 @@ Friend Class Character
 
     Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb
         Get
-            Return VerbTypes.Descriptors.Any(Function(x) x.Value.CanCraft(Me))
+            Return VerbTypes.Descriptors.Any(Function(x) x.Value.CanPerform(Me))
         End Get
     End Property
 
@@ -206,7 +206,7 @@ Friend Class Character
     End Sub
 
     Public Function GetDoableVerbs() As IEnumerable(Of IVerbType) Implements ICharacter.GetDoableVerbs
-        Return VerbTypes.Descriptors.Values.Where(Function(x) x.CanCraft(Me)).OrderBy(Function(x) x.Name)
+        Return VerbTypes.Descriptors.Values.Where(Function(x) x.CanPerform(Me)).OrderBy(Function(x) x.Name)
     End Function
 
     Public Function HasDone(deed As IDeed) As Boolean Implements ICharacter.HasDone

@@ -18,7 +18,7 @@ Friend Class NavigationState
             {INVENTORY_TEXT, Topic.NavigationInventory},
             {MOVE_TEXT, Topic.NavigationMove},
             {SKILLS_TEXT, Topic.NavigationSkills},
-            {VERB_TEXT, Topic.NavigationCraft}
+            {VERB_TEXT, Topic.NavigationVerb}
         }
     Private ReadOnly locationLabel As Label
     Private ReadOnly characterLabel As Label
@@ -70,7 +70,7 @@ Friend Class NavigationState
                 World.Avatar.SetFlag(FlagType.MoveMenu, True)
                 ShowState(GameState.Neutral)
             Case VERB_TEXT
-                World.Avatar.SetFlag(FlagType.CraftMenu, True)
+                World.Avatar.SetFlag(FlagType.VerbMenu, True)
                 ShowState(GameState.Neutral)
             Case INVENTORY_TEXT
                 World.Avatar.SetFlag(FlagType.Inventory, True)

@@ -2,28 +2,28 @@ import {Display} from "../../common/Display.js";
 import {SaveSlot} from "../../World/enums/save_slots.js";
 import {World} from "../../World/world.js";
 
-export class Neutral{
+export class NeutralState {
     static run(){
         World.save(SaveSlot.AUTO, false);
-        // Dim character = World.Avatar
-        // If character.HasMessages Then
-        // ShowState(GameState.Message)
-        // ElseIf character.IsDead Then
-        // ShowState(GameState.Dead)
-        // ElseIf character.HasFlag(FlagType.Inventory) Then
-        // If character.CurrentItemType IsNot Nothing Then
-        // ShowState(GameState.ItemStack)
-        // Else
-        // ShowState(GameState.Inventory)
-        // End If
-        // ElseIf character.HasFlag(FlagType.SkillMenu) Then
-        // ShowState(GameState.SkillMenu)
-        // ElseIf character.HasFlag(FlagType.MoveMenu) Then
-        // ShowState(GameState.MoveMenu)
-        // ElseIf character.HasFlag(FlagType.CraftMenu) Then
-        // ShowState(GameState.CraftMenu)
-        // Else
-        // ShowState(GameState.Navigation)
-        // End If
+        let character = World.getAvatar();
+        if(character.hasMessages()){
+            MessageState.run();
+        } else if(character.isDead()){
+            GameOverState.run();
+        } else if(character.hasFlag(FlagType.INVENTORY)){
+            if(character.hasCurrentItemType()){
+                ItemStackState.run();
+            }else{
+                InventoryState.run();
+            }
+        } else if(character.hasFlag(FlagType.SKILL_MENU)){
+            SkillMenuState.run();
+        } else if(character.hasFlag(FlagType.MOVE_MENU)){
+            MoveMenuState.run();
+        } else if(character.hasFlag(FlagType.CRAFT_MENU)){
+            CraftMenuState.run();
+        } else{
+            NavigationState.run();
+        }
     }
 }

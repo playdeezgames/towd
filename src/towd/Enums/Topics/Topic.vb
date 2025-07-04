@@ -29,7 +29,7 @@
     NavigationInventory
     NavigationMove
     NavigationSkills
-    NavigationCraft
+    NavigationVerb
 
     VerbTypeBlade
     VerbTypeBrick

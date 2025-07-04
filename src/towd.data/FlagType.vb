@@ -1,6 +1,6 @@
 ﻿Public Enum FlagType
     Inventory
-    CraftMenu
+    VerbMenu
     MoveMenu
     SkillMenu
 End Enum

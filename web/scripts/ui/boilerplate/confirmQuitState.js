@@ -1,18 +1,18 @@
 import {Display} from "../../common/Display.js";
-import {MainMenu} from "./main_menu.js";
-import Main from "./main.js";
+import {MainMenuState} from "./mainMenuState.js";
+import SplashState from "./splashState.js";
 
-export class ConfirmQuit{
+export class ConfirmQuitState {
     static run(){
         Display.clear();
         Display.addSimpleChild("p", "Are you sure you want to quit?");
-        Display.addButton("Yes", ConfirmQuit.confirm);
-        Display.addButton("No", ConfirmQuit.cancel)
+        Display.addButton("Yes", ConfirmQuitState.confirm);
+        Display.addButton("No", ConfirmQuitState.cancel)
     }
     static confirm(){
-        Main.run();
+        SplashState.run();
     }
     static cancel(){
-        MainMenu.run();
+        MainMenuState.run();
     }
 }

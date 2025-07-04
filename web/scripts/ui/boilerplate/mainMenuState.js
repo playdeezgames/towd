@@ -1,28 +1,28 @@
 import {Display} from "../../common/Display.js";
-import {Embark} from "./embark.js";
-import {ScumLoad} from "./scum_load.js";
-import {Load} from "./load.js";
-import {ConfirmQuit} from "./confirm_quit.js";
+import {EmbarkState} from "./embarkState.js";
+import {scumLoadState} from "./scumLoadState.js";
+import {LoadState} from "./loadState.js";
+import {ConfirmQuitState} from "./confirmQuitState.js";
 
-export class MainMenu{
+export class MainMenuState {
     static run(){
         Display.clear();
-        Display.addSimpleChild("p", "Main Menu:");
-        Display.addButton("Embark!", MainMenu.embark);
-        Display.addButton("Scum Load", MainMenu.scumLoad);
-        Display.addButton("Load...", MainMenu.load);
-        Display.addButton("Quit", MainMenu.quit);
+        Display.addSimpleChild("p", "SplashState Menu:");
+        Display.addButton("EmbarkState!", MainMenuState.embark);
+        Display.addButton("Scum LoadState", MainMenuState.scumLoad);
+        Display.addButton("LoadState...", MainMenuState.load);
+        Display.addButton("Quit", MainMenuState.quit);
     }
     static embark(){
-        Embark.run();
+        EmbarkState.run();
     }
     static scumLoad(){
-        ScumLoad.run();
+        scumLoadState.run();
     }
     static load(){
-        Load.run();
+        LoadState.run();
     }
     static quit(){
-        ConfirmQuit.run();
+        ConfirmQuitState.run();
     }
 }
