@@ -3,7 +3,7 @@
 
     Public Shared Property Topic As Topic
     Private ReadOnly titleLabel As Label
-    Private ReadOnly contentLabel As TextView
+    Private ReadOnly contentTextView As TextView
 
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
@@ -15,7 +15,7 @@
             }
         Add(titleLabel)
 
-        contentLabel = New TextView With
+        contentTextView = New TextView With
             {
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill - 3,
@@ -25,12 +25,12 @@
                 .WordWrap = True,
                 .[ReadOnly] = True
             }
-        Add(contentLabel)
+        Add(contentTextView)
 
         Dim closeButton As New Button("Close") With
             {
                 .X = Pos.Center(),
-                .Y = Pos.Bottom(contentLabel) + 1
+                .Y = Pos.Bottom(contentTextView) + 1
             }
         AddHandler closeButton.Clicked, AddressOf OnCloseButtonClicked
         Add(closeButton)
@@ -42,7 +42,7 @@
 
     Friend Overrides Sub UpdateView()
         titleLabel.Text = $"{Topic.ToDescriptor.Title} (Esc to continue game)"
-        contentLabel.Text = Topic.ToDescriptor.Content
+        contentTextView.Text = Topic.ToDescriptor.Content
     End Sub
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)

@@ -20,8 +20,8 @@ Friend Class NavigationState
             {SKILLS_TEXT, Topic.NavigationSkills},
             {VERB_TEXT, Topic.NavigationVerb}
         }
-    Private ReadOnly locationLabel As Label
-    Private ReadOnly characterLabel As Label
+    Private ReadOnly locationTextView As TextView
+    Private ReadOnly characterTextView As TextView
     Private ReadOnly commandListView As ListView
 
     Public Sub New(mainView As MainView)
@@ -33,33 +33,37 @@ Friend Class NavigationState
                 .TextAlignment = TextAlignment.Centered
             }
         Add(titleLabel)
-        locationLabel = New Label With
+        locationTextView = New TextView With
             {
                 .Text = "(information about location)",
-                .Y = Pos.Bottom(titleLabel) + 1,
+                .Y = Pos.Bottom(titleLabel),
                 .TextAlignment = TextAlignment.Left,
-                .Width = [Dim].Percent(50),
-                .Height = [Dim].Percent(70)
+                .Width = [Dim].Percent(75),
+                .Height = [Dim].Percent(70),
+                .WordWrap = True,
+                .Enabled = False
             }
-        characterLabel = New Label With
+        characterTextView = New TextView With
             {
                 .Text = "(information about character)",
-                .TextAlignment = TextAlignment.Right,
-                .X = Pos.Right(locationLabel) + 1,
-                .Y = Pos.Bottom(titleLabel) + 1,
-                .Width = [Dim].Fill
+                .X = Pos.Right(locationTextView) + 1,
+                .Y = Pos.Bottom(titleLabel),
+                .Width = [Dim].Fill,
+                .Height = [Dim].Percent(70),
+                .WordWrap = True,
+                .Enabled = False
             }
         commandListView = New ListView With
             {
-                .Y = Pos.Bottom(locationLabel) + 1,
+                .Y = Pos.Bottom(locationTextView),
                 .Width = [Dim].Fill,
                 .Height = [Dim].Fill
             }
         AddHandler commandListView.OpenSelectedItem, AddressOf OnCommandListViewOpenSelectedItem
 
         Add(
-            locationLabel,
-            characterLabel,
+            locationTextView,
+            characterTextView,
             commandListView)
     End Sub
 
@@ -116,7 +120,7 @@ Friend Class NavigationState
         builder.AppendLine($"Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}")
         builder.AppendLine($"Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}")
         builder.AppendLine($"XP: {character.GetStatistic(StatisticType.XP)}")
-        characterLabel.Text = builder.ToString
+        characterTextView.Text = builder.ToString
     End Sub
 
     Private Sub UpdateLocationLabel(character As business.ICharacter)
@@ -137,7 +141,7 @@ Friend Class NavigationState
             Next
         End If
 
-        locationLabel.Text = builder.ToString
+        locationTextView.Text = builder.ToString
     End Sub
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.F1 Then
