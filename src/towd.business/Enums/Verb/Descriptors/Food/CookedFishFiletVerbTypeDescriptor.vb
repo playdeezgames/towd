@@ -4,7 +4,7 @@ Friend Class CookedFishFiletVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.CookedFishFilet, 1)
+        MyBase.New(VerbType.CookedFishFilet, VerbCategoryType.Craft, 1)
         SetItemTypeInput(ItemType.RawFishFilet, 1)
         SetItemTypeInput(ItemType.SharpStick, 1)
         SetItemTypeInputDurability(ItemType.SharpStick, 1)

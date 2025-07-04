@@ -4,7 +4,7 @@ Public Class ForageVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New(verbType As VerbType, name As String, requiredLocationType As LocationType, outputItemType As ItemType)
-        MyBase.New(verbType, 1)
+        MyBase.New(verbType, VerbCategoryType.Forage, 1)
         SetDisplayName(name)
         SetRequiredLocationType(requiredLocationType)
         SetLocationStatisticMinimum(data.StatisticType.ForagingCounter, 1)

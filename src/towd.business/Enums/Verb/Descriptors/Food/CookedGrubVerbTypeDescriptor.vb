@@ -4,7 +4,7 @@ Friend Class CookedGrubVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.CookedGrub, 1)
+        MyBase.New(VerbType.CookedGrub, VerbCategoryType.Craft, 1)
         SetItemTypeInput(ItemType.Grub, 1)
         SetItemTypeInput(ItemType.SharpStick, 1)
         SetItemTypeInputDurability(ItemType.SharpStick, 1)

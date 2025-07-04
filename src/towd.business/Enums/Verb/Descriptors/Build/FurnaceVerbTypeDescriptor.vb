@@ -4,7 +4,7 @@ Friend Class FurnaceVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Furnace, 1)
+        MyBase.New(VerbType.Furnace, VerbCategoryType.Build, 1)
         SetItemTypeInput(data.ItemType.Brick, 8)
         SetRequiredLocationType(LocationType.Dirt)
         SetRequiredLocationType(LocationType.Grass)

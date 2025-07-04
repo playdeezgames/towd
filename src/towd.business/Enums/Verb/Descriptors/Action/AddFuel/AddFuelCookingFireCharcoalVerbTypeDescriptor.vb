@@ -4,7 +4,7 @@ Friend Class AddFuelCookingFireCharcoalVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.AddFuelCookingFireCharcoal, 0)
+        MyBase.New(VerbType.AddFuelCookingFireCharcoal, VerbCategoryType.AddFuel, 0)
         SetDisplayName("Add Charcoal to Cooking Fire")
         SetRequiredLocationType(LocationType.CookingFire)
         SetLocationStatisticDelta(data.StatisticType.Fuel, 8)

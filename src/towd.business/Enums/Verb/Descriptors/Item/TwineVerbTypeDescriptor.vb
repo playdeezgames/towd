@@ -4,7 +4,7 @@ Friend Class TwineVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Twine, 1)
+        MyBase.New(VerbType.Twine, VerbCategoryType.Craft, 1)
         SetItemTypeInput(data.ItemType.PlantFiber, 2)
         SetItemTypeOutputGenerator(data.ItemType.Twine, New FixedGenerator(1))
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
