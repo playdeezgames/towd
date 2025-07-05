@@ -1,4 +1,6 @@
-﻿Friend Class PondLocationTypeDescriptor
+﻿Imports System.Text
+
+Friend Class PondLocationTypeDescriptor
     Inherits LocationTypeDescriptor
 
     Public Sub New()
@@ -14,6 +16,9 @@
     End Sub
 
     Public Overrides Function Describe(location As ILocation) As String
-        Return $"{MyBase.Describe(location)}(Fishing: {location.GetStatistic(data.StatisticType.Fishing)}, Digging: {location.GetStatistic(data.StatisticType.Digging)})"
+        Dim builder As New StringBuilder(MyBase.Describe(location))
+        builder.AppendLine($"Fishing Remaining: {location.GetStatistic(data.StatisticType.Fishing)}")
+        builder.AppendLine($"Digging Remaining: {location.GetStatistic(data.StatisticType.Digging)}")
+        Return builder.ToString
     End Function
 End Class

@@ -1,4 +1,6 @@
-﻿Friend Class CookingFireLocationTypeDescriptor
+﻿Imports System.Text
+
+Friend Class CookingFireLocationTypeDescriptor
     Inherits LocationTypeDescriptor
 
     Public Sub New()
@@ -18,6 +20,8 @@
     End Sub
 
     Public Overrides Function Describe(location As ILocation) As String
-        Return $"{MyBase.Describe(location)}(Fuel: {location.GetStatistic(data.StatisticType.Fuel)})"
+        Dim builder As New StringBuilder(MyBase.Describe(location))
+        builder.AppendLine($"Fuel Remaining: {location.GetStatistic(data.StatisticType.Fuel)}")
+        Return builder.ToString
     End Function
 End Class

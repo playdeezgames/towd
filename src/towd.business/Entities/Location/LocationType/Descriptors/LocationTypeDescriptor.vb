@@ -1,4 +1,5 @@
-﻿Imports towd.data
+﻿Imports System.Text
+Imports towd.data
 
 Friend MustInherit Class LocationTypeDescriptor
     Implements ILocationType
@@ -13,6 +14,9 @@ Friend MustInherit Class LocationTypeDescriptor
     Public MustOverride Sub Initialize(location As ILocation) Implements ILocationType.Initialize
     Public MustOverride Sub AdvanceTime(location As ILocation, amount As Integer) Implements ILocationType.AdvanceTime
     Public Overridable Function Describe(location As ILocation) As String Implements ILocationType.Describe
-        Return $"[{location.Column},{location.Row}]{Name}"
+        Dim builder As New StringBuilder
+        builder.AppendLine($"Location: [{location.Column}, {location.Row}]")
+        builder.AppendLine($"Terrain: {Name}")
+        Return builder.ToString
     End Function
 End Class

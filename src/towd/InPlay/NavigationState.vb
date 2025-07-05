@@ -91,9 +91,9 @@ Friend Class NavigationState
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
 
-        UpdateLocationLabel(character)
+        UpdateLocationTextView(character)
 
-        UpdateCharacterLabel(character)
+        UpdateCharacterTextView(character)
 
         UpdateCommandList(character)
     End Sub
@@ -115,32 +115,29 @@ Friend Class NavigationState
         commandListView.SetSource(commandList)
     End Sub
 
-    Private Sub UpdateCharacterLabel(character As business.ICharacter)
+    Private Sub UpdateCharacterTextView(character As business.ICharacter)
         Dim builder As New StringBuilder
+        builder.AppendLine($"Statistics:")
         builder.AppendLine($"Satiety: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)}")
         builder.AppendLine($"Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}")
         builder.AppendLine($"XP: {character.GetStatistic(StatisticType.XP)}")
         characterTextView.Text = builder.ToString
     End Sub
 
-    Private Sub UpdateLocationLabel(character As business.ICharacter)
+    Private Sub UpdateLocationTextView(character As business.ICharacter)
         Dim location = character.Location
         Dim builder As New StringBuilder
         builder.AppendLine($"{location}")
-
         Dim neighbors = location.Neighbors
-        If neighbors.Any Then
-            builder.AppendLine()
-            builder.AppendLine("Neighbors:")
-            For Each neighbor In neighbors
-                If character.KnowsLocation(neighbor.Value) Then
-                    builder.AppendLine($"{neighbor.Key.ToDescriptor.Name}: {neighbor.Value}")
-                Else
-                    builder.AppendLine($"{neighbor.Key.ToDescriptor.Name}: ????")
-                End If
-            Next
-        End If
-
+        For Each neighbor In neighbors
+            If character.KnowsLocation(neighbor.Value) Then
+                builder.AppendLine()
+                builder.AppendLine($"To the {neighbor.Key.ToDescriptor.Name} there is {neighbor.Value.EntityType.Name}.")
+            Else
+                builder.AppendLine()
+                builder.AppendLine($"To the {neighbor.Key.ToDescriptor.Name} is unexplored.")
+            End If
+        Next
         locationTextView.Text = builder.ToString
     End Sub
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)

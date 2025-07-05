@@ -1,4 +1,6 @@
-﻿Friend Class RockLocationTypeDescriptor
+﻿Imports System.Text
+
+Friend Class RockLocationTypeDescriptor
     Inherits LocationTypeDescriptor
 
     Public Sub New()
@@ -15,6 +17,8 @@
     End Sub
 
     Public Overrides Function Describe(location As ILocation) As String
-        Return $"{MyBase.Describe(location)}(Foraging: {location.GetStatistic(data.StatisticType.ForagingCounter)})"
+        Dim builder As New StringBuilder(MyBase.Describe(location))
+        builder.AppendLine($"Foraging Remaining: {location.GetStatistic(data.StatisticType.ForagingCounter)}")
+        Return builder.ToString
     End Function
 End Class
