@@ -1,6 +1,7 @@
 ﻿Imports System.Text
 Imports towd.data
 Imports towd.business
+Imports NStack
 
 Friend Class NavigationState
     Inherits ChildView
@@ -71,8 +72,7 @@ Friend Class NavigationState
         Dim command = CStr(args.Value)
         Select Case command
             Case MOVE_TEXT
-                World.Avatar.SetFlag(FlagType.MoveMenu, True)
-                ShowState(GameState.Neutral)
+                HandleMoveCommand()
             Case VERB_TEXT
                 World.Avatar.SetFlag(FlagType.VerbMenu, True)
                 ShowState(GameState.Neutral)
@@ -88,6 +88,17 @@ Friend Class NavigationState
                 ShowState(GameState.Neutral)
         End Select
     End Sub
+
+    Private Sub HandleMoveCommand()
+        Dim directionTable = World.Avatar.Location.Neighbors.ToDictionary(Function(x) CType(x.Key.ToDescriptor.Name, ustring), Function(x) x.Key)
+        Dim buttons = directionTable.Keys.ToArray
+        Dim answer = MessageBox.Query("Which Way?", "Choose a direction.", buttons)
+        If answer > -1 Then
+            World.Avatar.Move(directionTable(buttons(answer)))
+            ShowState(GameState.Neutral)
+        End If
+    End Sub
+
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
 
@@ -127,14 +138,12 @@ Friend Class NavigationState
     Private Sub UpdateLocationTextView(character As business.ICharacter)
         Dim location = character.Location
         Dim builder As New StringBuilder
-        builder.AppendLine($"{location}")
+        builder.Append($"{location}")
         Dim neighbors = location.Neighbors
         For Each neighbor In neighbors
             If character.KnowsLocation(neighbor.Value) Then
-                builder.AppendLine()
                 builder.AppendLine($"To the {neighbor.Key.ToDescriptor.Name} there is {neighbor.Value.EntityType.Name}.")
             Else
-                builder.AppendLine()
                 builder.AppendLine($"To the {neighbor.Key.ToDescriptor.Name} is unexplored.")
             End If
         Next

@@ -22,8 +22,6 @@ Friend Class NeutralState
             End If
         ElseIf character.HasFlag(FlagType.SkillMenu) Then
             ShowState(GameState.SkillMenu)
-        ElseIf character.HasFlag(FlagType.MoveMenu) Then
-            ShowState(GameState.MoveMenu)
         ElseIf character.HasFlag(FlagType.VerbMenu) Then
             ShowState(GameState.VerbMenu)
         Else

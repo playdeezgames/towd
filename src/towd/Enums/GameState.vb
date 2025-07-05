@@ -9,7 +9,6 @@
     Inventory
     ItemStack
     VerbMenu
-    MoveMenu
     Deeds
     SkillMenu
     SaveMenu
