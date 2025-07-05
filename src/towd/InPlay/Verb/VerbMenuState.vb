@@ -101,6 +101,11 @@ Friend Class VerbMenuState
 
     Friend Overrides Sub UpdateView()
         UpdateAvailableVerbTree()
+        Dim character = World.Avatar
+        While Character.HasMessages
+            MessageBox.Query("", String.Join(vbCrLf, Character.CurrentMessage), "Ok")
+            Character.DismissMessage()
+        End While
     End Sub
 
     Private Sub UpdateAvailableVerbTree()

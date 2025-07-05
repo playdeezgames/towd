@@ -107,6 +107,11 @@ Friend Class NavigationState
         UpdateCharacterTextView(character)
 
         UpdateCommandList(character)
+
+        While character.HasMessages
+            MessageBox.Query("", String.Join(vbCrLf, character.CurrentMessage), "Ok")
+            character.DismissMessage()
+        End While
     End Sub
 
     Private Sub UpdateCommandList(character As business.ICharacter)

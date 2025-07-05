@@ -4,7 +4,6 @@
     Neutral
     Navigation
     GameMenu
-    Message
     Dead
     Inventory
     ItemStack
