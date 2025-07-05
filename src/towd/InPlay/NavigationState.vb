@@ -11,6 +11,7 @@ Friend Class NavigationState
     Const DEEDS_TEXT = "Deeds..."
     Const MENU_TEXT = "Game Menu..."
     Const SKILLS_TEXT = "Skills..."
+    Const MAP_TEXT = "Map..."
     Private ReadOnly topicTable As IReadOnlyDictionary(Of String, Topic) =
         New Dictionary(Of String, Topic) From
         {
@@ -19,7 +20,8 @@ Friend Class NavigationState
             {INVENTORY_TEXT, Topic.NavigationInventory},
             {MOVE_TEXT, Topic.NavigationMove},
             {SKILLS_TEXT, Topic.NavigationSkills},
-            {VERB_TEXT, Topic.NavigationVerb}
+            {VERB_TEXT, Topic.NavigationVerb},
+            {MAP_TEXT, Topic.NavigationMap}
         }
     Private ReadOnly locationTextView As TextView
     Private ReadOnly characterTextView As TextView
@@ -86,6 +88,8 @@ Friend Class NavigationState
             Case SKILLS_TEXT
                 World.Avatar.SetFlag(FlagType.SkillMenu, True)
                 ShowState(GameState.Neutral)
+            Case MAP_TEXT
+                ShowState(GameState.Map)
         End Select
     End Sub
 
@@ -117,7 +121,8 @@ Friend Class NavigationState
     Private Sub UpdateCommandList(character As business.ICharacter)
         Dim commandList As New List(Of String) From
             {
-                MOVE_TEXT
+                MOVE_TEXT,
+                MAP_TEXT
             }
         If character.HasItems Then
             commandList.Add(INVENTORY_TEXT)

@@ -13,4 +13,5 @@
     SaveMenu
     LoadMenu
     Topic
+    Map
 End Enum

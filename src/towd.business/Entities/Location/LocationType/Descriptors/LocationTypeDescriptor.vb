@@ -6,9 +6,13 @@ Friend MustInherit Class LocationTypeDescriptor
     Public ReadOnly Property LocationType As LocationType Implements ILocationType.LocationType
 
     Public ReadOnly Property Name As String Implements ILocationType.Name
-    Sub New(locationType As LocationType, name As String)
+
+    Public ReadOnly Property MapLegend As Char Implements ILocationType.MapLegend
+
+    Sub New(locationType As LocationType, name As String, mapLegend As Char)
         Me.LocationType = locationType
         Me.Name = name
+        Me.MapLegend = mapLegend
     End Sub
 
     Public MustOverride Sub Initialize(location As ILocation) Implements ILocationType.Initialize

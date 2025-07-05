@@ -1,8 +1,8 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports towd.data
 
-Module LocationTypes
-    Friend Descriptors As IReadOnlyDictionary(Of LocationType, ILocationType) =
+Public Module LocationTypes
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of LocationType, ILocationType) =
         New List(Of ILocationType) From
         {
             New GrassLocationTypeDescriptor(),

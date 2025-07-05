@@ -17,6 +17,7 @@
         childViews.Add(GameState.SaveMenu, New SaveMenuState(Me))
         childViews.Add(GameState.LoadMenu, New LoadMenuState(Me))
         childViews.Add(GameState.Topic, New TopicState(Me))
+        childViews.Add(GameState.Map, New MapState(Me))
 
         ShowState(GameState.Splash)
     End Sub

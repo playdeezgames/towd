@@ -4,7 +4,7 @@ Friend Class PondLocationTypeDescriptor
     Inherits LocationTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.LocationType.Pond, "Pond")
+        MyBase.New(data.LocationType.Pond, "Pond", "p"c)
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)
