@@ -143,6 +143,14 @@ Friend Class NavigationState
         builder.AppendLine($"Health: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)}")
         builder.AppendLine($"XP: {character.GetStatistic(StatisticType.XP)}")
         characterTextView.Text = builder.ToString
+        characterTextView.ColorScheme = New ColorScheme With
+                {
+                    .Normal = ColorScheme.Normal,
+                    .Disabled = ColorScheme.Normal,
+                    .Focus = ColorScheme.Focus,
+                    .HotFocus = ColorScheme.HotFocus,
+                    .HotNormal = ColorScheme.HotNormal
+                }
     End Sub
 
     Private Sub UpdateLocationTextView(character As business.ICharacter)
@@ -158,6 +166,14 @@ Friend Class NavigationState
             End If
         Next
         locationTextView.Text = builder.ToString
+        locationTextView.ColorScheme = New ColorScheme With
+                {
+                    .Normal = ColorScheme.Normal,
+                    .Disabled = ColorScheme.Normal,
+                    .Focus = ColorScheme.Focus,
+                    .HotFocus = ColorScheme.HotFocus,
+                    .HotNormal = ColorScheme.HotNormal
+                }
     End Sub
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.F1 Then

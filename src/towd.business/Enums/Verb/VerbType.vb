@@ -7,6 +7,7 @@
     Blade
     Brick
     CharcoalCookingFire
+    CharcoalFurnace
     Chop
     CookedFishFilet
     CookedGrub

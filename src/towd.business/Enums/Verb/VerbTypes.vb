@@ -14,6 +14,7 @@ Public Module VerbTypes
             New CookingFireVerbTypeDescriptor(),
             New FurnaceVerbTypeDescriptor(),
             New CharcoalCookingFireVerbTypeDescriptor(),
+            New CharcoalFurnaceVerbTypeDescriptor(),
             New CookedGrubVerbTypeDescriptor(),
             New CookedFishFiletVerbTypeDescriptor(),
             New UnfiredBrickVerbTypeDescriptor(),

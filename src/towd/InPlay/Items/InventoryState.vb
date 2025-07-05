@@ -17,7 +17,7 @@ Friend Class InventoryState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill - 3
+                .Height = [Dim].Fill - 1
             }
         AddHandler itemTypeListView.OpenSelectedItem, AddressOf OnItemTypeListViewOpenSelectedItem
         Add(itemTypeListView)
@@ -25,7 +25,7 @@ Friend Class InventoryState
         Dim closeButton As New Button("Close") With
             {
                 .X = Pos.Center,
-                .Y = Pos.Bottom(itemTypeListView) + 1
+                .Y = Pos.Bottom(itemTypeListView)
             }
         AddHandler closeButton.Clicked, AddressOf CloseWindow
         Add(closeButton)
