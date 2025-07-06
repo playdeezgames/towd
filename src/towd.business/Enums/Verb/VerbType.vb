@@ -6,8 +6,8 @@
     AddFuelFurnaceCharcoal
     Blade
     Brick
-    CharcoalCookingFire
-    CharcoalFurnace
+    CharcoalFromCookingFire
+    CharcoalFromFurnace
     Chop
     CookedFishFilet
     CookedGrub

@@ -2,6 +2,7 @@
     BuildCounter
     ChopSkill
     Chopping
+    CookingCounter
     CraftCounter
     CurrentItemType
     DigSkill
@@ -16,6 +17,7 @@
     KnappingSkill
     LastVerb
     Satiety
+    SmeltingCounter
     Steps
     XP
 End Enum

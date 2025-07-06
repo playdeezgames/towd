@@ -10,6 +10,7 @@ Public Module StatisticTypes
             New StatisticTypeDescriptor(StatisticType.Digging, "Digging"),
             New StatisticTypeDescriptor(StatisticType.ChopSkill, "Chop Skill"),
             New StatisticTypeDescriptor(StatisticType.Chopping, "Chopping"),
+            New StatisticTypeDescriptor(StatisticType.CookingCounter, "Cooking"),
             New StatisticTypeDescriptor(StatisticType.CraftCounter, "Crafting"),
             New StatisticTypeDescriptor(StatisticType.CurrentItemType, "Current Item Type"),
             New StatisticTypeDescriptor(StatisticType.Durability, "Durability"),
@@ -22,6 +23,7 @@ Public Module StatisticTypes
             New StatisticTypeDescriptor(StatisticType.KnappingSkill, "Knapping Skill"),
             New StatisticTypeDescriptor(StatisticType.LastVerb, "Last Verb"),
             New StatisticTypeDescriptor(StatisticType.Satiety, "Satiety"),
+            New StatisticTypeDescriptor(StatisticType.SmeltingCounter, "Smelting"),
             New StatisticTypeDescriptor(StatisticType.Steps, "Steps"),
             New StatisticTypeDescriptor(StatisticType.XP, "XP")
         }.ToDictionary(Function(x) x.StatisticType, Function(x) x)

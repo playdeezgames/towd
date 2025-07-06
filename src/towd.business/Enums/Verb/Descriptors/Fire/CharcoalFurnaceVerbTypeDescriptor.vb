@@ -4,7 +4,7 @@ Friend Class CharcoalFurnaceVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.CharcoalFurnace, VerbCategoryType.Craft, 1)
+        MyBase.New(VerbType.CharcoalFromFurnace, VerbCategoryType.Craft, 1)
         SetItemTypeInput(data.ItemType.Log, 1)
         SetItemTypeOutputGenerator(data.ItemType.Charcoal, New FixedGenerator(1))
         SetRequiredLocationType(data.LocationType.Furnace)

@@ -11,6 +11,6 @@ Friend Class CookedFishFiletVerbTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.SharpStick, New FixedGenerator(1))
         SetItemTypeOutputGenerator(ItemType.CookedFishFilet, New FixedGenerator(1))
         SetRequiredLocationType(LocationType.CookingFire)
-        SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetCharacterStatisticDelta(StatisticType.CookingCounter, 1)
     End Sub
 End Class

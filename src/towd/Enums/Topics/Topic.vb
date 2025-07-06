@@ -33,7 +33,7 @@
 
     VerbTypeBlade
     VerbTypeBrick
-    VerbTypeCharcoalCookingFire
+    VerbTypeCharcoalFromCookingFire
     VerbTypeChop
     VerbTypeCookedFishFilet
     VerbTypeCookedGrub
@@ -71,4 +71,5 @@
     VerbTypeAddFuelFurnaceCharcoal
     ItemTypeRockFlake
     NavigationMap
+    VerbTypeCharcoalFromFurnace
 End Enum
