@@ -42,6 +42,7 @@
 
     Friend Overrides Sub UpdateView()
         saveSlotListView.SetSource(SaveSlots.Descriptors.Values.Where(Function(x) x.SaveExists).ToList)
+        MyBase.UpdateView()
     End Sub
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)

@@ -30,6 +30,6 @@
     End Sub
 
     Friend Overrides Sub UpdateView()
-        'nada
+        MyBase.UpdateView()
     End Sub
 End Class

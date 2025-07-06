@@ -51,6 +51,7 @@
                 .HotFocus = ColorScheme.HotFocus,
                 .HotNormal = ColorScheme.HotNormal
             }
+        MyBase.UpdateView()
     End Sub
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)

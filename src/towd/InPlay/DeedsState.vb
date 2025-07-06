@@ -110,5 +110,6 @@ Friend Class DeedsState
         availableListView.SetSource(available)
         doneListView.SetSource(done)
         allListView.SetSource(all)
+        MyBase.UpdateView()
     End Sub
 End Class

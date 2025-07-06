@@ -49,6 +49,7 @@ Friend Class SaveMenuState
     End Sub
 
     Friend Overrides Sub UpdateView()
+        MyBase.UpdateView()
     End Sub
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)

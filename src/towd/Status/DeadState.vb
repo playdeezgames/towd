@@ -22,6 +22,6 @@
     End Sub
 
     Friend Overrides Sub UpdateView()
-
+        MyBase.UpdateView()
     End Sub
 End Class

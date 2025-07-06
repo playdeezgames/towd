@@ -77,5 +77,6 @@ Friend Class MainMenuState
     Friend Overrides Sub UpdateView()
         scumLoadButton.Enabled = SaveSlot.ScumSlot.ToDescriptor.SaveExists
         loadButton.Enabled = SaveSlots.Descriptors.Any(Function(x) x.Value.SaveExists)
+        MyBase.UpdateView()
     End Sub
 End Class

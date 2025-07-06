@@ -62,5 +62,6 @@ Friend Class InventoryState
         Dim character = World.Avatar
         Dim itemStacks = character.ItemStacks.ToList
         itemTypeListView.SetSource(itemStacks)
+        MyBase.UpdateView()
     End Sub
 End Class
