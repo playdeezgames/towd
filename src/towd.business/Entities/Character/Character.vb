@@ -68,23 +68,6 @@ Friend Class Character
             Return EntityData.Items.Where(Function(x) x.Value.Count <> 0).Select(Function(x) New ItemStack(Me, x.Key.ToDescriptor))
         End Get
     End Property
-    Public Property LastVerb As VerbType? Implements ICharacter.LastVerb
-        Get
-            If HasStatistic(StatisticType.LastVerb) Then
-                Return CType(GetStatistic(StatisticType.LastVerb), VerbType)
-            Else
-                Return Nothing
-            End If
-        End Get
-        Set(value As VerbType?)
-            If value.HasValue Then
-                SetStatistic(StatisticType.LastVerb, CInt(value.Value))
-            Else
-                ClearStatistic(StatisticType.LastVerb)
-            End If
-        End Set
-    End Property
-
     Public Property CurrentItemType As IItemType Implements ICharacter.CurrentItemType
         Get
             If HasStatistic(StatisticType.CurrentItemType) Then

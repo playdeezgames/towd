@@ -146,7 +146,6 @@ Public MustInherit Class VerbTypeDescriptor
         If Not CanPerform(character) Then
             Return
         End If
-        character.LastVerb = VerbType
         For Each entry In locationStatisticDeltas
             character.Location.ChangeStatistic(entry.Key, entry.Value)
         Next

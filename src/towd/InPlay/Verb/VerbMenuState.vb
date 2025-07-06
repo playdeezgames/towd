@@ -9,6 +9,7 @@ Friend Class VerbMenuState
     Private ReadOnly availableVerbTreeView As TreeView
     Private ReadOnly allVerbListView As ListView
     Private ReadOnly tabView As TabView
+    Private lastVerb As IVerbType
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
         Dim titleLabel As New Label With
@@ -72,6 +73,7 @@ Friend Class VerbMenuState
             Dim descriptor = verbTreeNode.Descriptor
             If descriptor.CanPerform(World.Avatar) Then
                 descriptor.Perform(World.Avatar)
+                LastVerb = descriptor
                 UpdateView()
             Else
                 MessageBox.ErrorQuery("Sorry Not Sorry!", "You cannot do that.", "OK")
@@ -83,7 +85,8 @@ Friend Class VerbMenuState
         Dim descriptor = CType(args.Value, IVerbType)
         If descriptor.CanPerform(World.Avatar) Then
             descriptor.Perform(World.Avatar)
-            ShowState(GameState.Neutral)
+            LastVerb = descriptor
+            UpdateView()
         Else
             MessageBox.ErrorQuery("Sorry Not Sorry!", "You cannot do that.", "OK")
         End If
@@ -96,14 +99,13 @@ Friend Class VerbMenuState
 
     Private Sub UpdateAvailableVerbTree()
         Dim character = World.Avatar
-        Dim lastVerb = character.LastVerb
         Dim verbCategories = character.GetDoableVerbs().GroupBy(Function(x) x.VerbCategoryType)
         Dim selectedNode As ITreeNode = Nothing
         availableVerbTreeView.ClearObjects()
         For Each categoryEntry In verbCategories
             If categoryEntry.Count = 1 Then
                 Dim verbNode As TreeNode = New VerbTreeNode(categoryEntry.Single)
-                If categoryEntry.Single.VerbType = lastVerb Then
+                If categoryEntry.Single.VerbType = lastVerb?.VerbType Then
                     selectedNode = verbNode
                 End If
                 availableVerbTreeView.AddObject(verbNode)
@@ -115,7 +117,7 @@ Friend Class VerbMenuState
                 For Each verbEntry In categoryEntry
                     Dim verbNode As TreeNode = New VerbTreeNode(verbEntry.VerbType.ToDescriptor)
                     children.Add(verbNode)
-                    If verbEntry.VerbType = lastVerb Then
+                    If verbEntry.VerbType = lastVerb?.VerbType Then
                         found = True
                         selectedNode = verbNode
                     End If
