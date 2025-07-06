@@ -4,7 +4,6 @@
     Chopping
     CookingCounter
     CraftCounter
-    CurrentItemType
     DigSkill
     Digging
     Durability
@@ -15,7 +14,6 @@
     Fuel
     Health
     KnappingSkill
-    LastVerb
     Satiety
     SmeltingCounter
     Steps

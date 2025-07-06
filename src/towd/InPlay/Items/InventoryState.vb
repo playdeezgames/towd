@@ -36,8 +36,8 @@ Friend Class InventoryState
         Dim itemStack = CType(args.Value, IItemStack)
         Dim itemType = itemStack.ItemType
         If Not itemType.IsAggregate Then
-            World.Avatar.CurrentItemType = itemStack.ItemType
-            ShowState(GameState.Neutral)
+            ItemStackState.CurrentItemType = itemStack.ItemType
+            ShowState(GameState.ItemStack)
         End If
     End Sub
 

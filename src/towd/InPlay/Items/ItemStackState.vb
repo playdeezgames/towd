@@ -4,6 +4,8 @@ Imports towd.data
 Friend Class ItemStackState
     Inherits ChildView
     Private ReadOnly itemStackListView As ListView
+    Public Shared Property CurrentItemType As IItemType
+
     Public Sub New(mainView As MainView)
         MyBase.New(mainView)
 
@@ -39,7 +41,7 @@ Friend Class ItemStackState
 
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
-        Dim items = character.GetItemsOfType(character.CurrentItemType).ToList
+        Dim items = character.GetItemsOfType(CurrentItemType).ToList
         itemStackListView.SetSource(items)
     End Sub
 
@@ -51,7 +53,6 @@ Friend Class ItemStackState
     End Sub
 
     Private Sub CloseWindow()
-        World.Avatar.CurrentItemType = Nothing
         ShowState(GameState.Neutral)
     End Sub
 End Class

@@ -68,23 +68,6 @@ Friend Class Character
             Return EntityData.Items.Where(Function(x) x.Value.Count <> 0).Select(Function(x) New ItemStack(Me, x.Key.ToDescriptor))
         End Get
     End Property
-    Public Property CurrentItemType As IItemType Implements ICharacter.CurrentItemType
-        Get
-            If HasStatistic(StatisticType.CurrentItemType) Then
-                Return CType(GetStatistic(StatisticType.CurrentItemType), data.ItemType).ToDescriptor
-            Else
-                Return Nothing
-            End If
-        End Get
-        Set(value As IItemType)
-            If value IsNot Nothing Then
-                SetStatistic(StatisticType.CurrentItemType, CInt(value.ItemType))
-            Else
-                ClearStatistic(StatisticType.CurrentItemType)
-            End If
-        End Set
-    End Property
-
     Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb
         Get
             Return VerbTypes.Descriptors.Any(Function(x) x.Value.CanPerform(Me))
