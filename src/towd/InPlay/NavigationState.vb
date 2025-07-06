@@ -12,6 +12,7 @@ Friend Class NavigationState
     Const MENU_TEXT = "Game Menu..."
     Const SKILLS_TEXT = "Skills..."
     Const MAP_TEXT = "Map..."
+    Const STATISTICS_TEXT = "Statistics..."
     Private ReadOnly topicTable As IReadOnlyDictionary(Of String, Topic) =
         New Dictionary(Of String, Topic) From
         {
@@ -21,7 +22,8 @@ Friend Class NavigationState
             {MOVE_TEXT, Topic.NavigationMove},
             {SKILLS_TEXT, Topic.NavigationSkills},
             {VERB_TEXT, Topic.NavigationVerb},
-            {MAP_TEXT, Topic.NavigationMap}
+            {MAP_TEXT, Topic.NavigationMap},
+            {STATISTICS_TEXT, Topic.NavigationStatistics}
         }
     Private ReadOnly locationTextView As TextView
     Private ReadOnly characterTextView As TextView
@@ -90,6 +92,8 @@ Friend Class NavigationState
                 ShowState(GameState.Neutral)
             Case MAP_TEXT
                 ShowState(GameState.Map)
+            Case STATISTICS_TEXT
+                ShowState(GameState.Statistics)
         End Select
     End Sub
 
@@ -122,7 +126,8 @@ Friend Class NavigationState
         Dim commandList As New List(Of String) From
             {
                 MOVE_TEXT,
-                MAP_TEXT
+                MAP_TEXT,
+                STATISTICS_TEXT
             }
         If character.HasItems Then
             commandList.Add(INVENTORY_TEXT)

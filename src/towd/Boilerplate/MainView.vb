@@ -18,6 +18,7 @@
         childViews.Add(GameState.LoadMenu, New LoadMenuState(Me))
         childViews.Add(GameState.Topic, New TopicState(Me))
         childViews.Add(GameState.Map, New MapState(Me))
+        childViews.Add(GameState.Statistics, New StatisticsState(Me))
 
         ShowState(GameState.Splash)
     End Sub

@@ -72,4 +72,5 @@
     ItemTypeRockFlake
     NavigationMap
     VerbTypeCharcoalFromFurnace
+    NavigationStatistics
 End Enum

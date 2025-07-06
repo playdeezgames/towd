@@ -14,4 +14,5 @@
     LoadMenu
     Topic
     Map
+    Statistics
 End Enum

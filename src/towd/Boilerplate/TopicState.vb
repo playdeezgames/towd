@@ -18,19 +18,19 @@
         contentTextView = New TextView With
             {
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill - 3,
-                .Y = Pos.Bottom(titleLabel) + 1,
+                .Height = [Dim].Fill - 1,
+                .Y = Pos.Bottom(titleLabel),
                 .Text = "????",
                 .TextAlignment = TextAlignment.Left,
                 .WordWrap = True,
-                .[ReadOnly] = True
+                .Enabled = False
             }
         Add(contentTextView)
 
         Dim closeButton As New Button("Close") With
             {
                 .X = Pos.Center(),
-                .Y = Pos.Bottom(contentTextView) + 1
+                .Y = Pos.Bottom(contentTextView)
             }
         AddHandler closeButton.Clicked, AddressOf OnCloseButtonClicked
         Add(closeButton)
@@ -43,6 +43,14 @@
     Friend Overrides Sub UpdateView()
         titleLabel.Text = $"{Topic.ToDescriptor.Title} (Esc to continue game)"
         contentTextView.Text = Topic.ToDescriptor.Content
+        contentTextView.ColorScheme = New ColorScheme With
+            {
+                .Normal = ColorScheme.Normal,
+                .Disabled = ColorScheme.Normal,
+                .Focus = ColorScheme.Focus,
+                .HotFocus = ColorScheme.HotFocus,
+                .HotNormal = ColorScheme.HotNormal
+            }
     End Sub
 
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
