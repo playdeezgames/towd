@@ -37,7 +37,13 @@ Friend MustInherit Class ChildView
     Protected Overridable Sub OnKeyPress(args As KeyEventEventArgs)
         'nada
     End Sub
-    Friend MustOverride Sub UpdateView()
+    Friend Overridable Sub UpdateView()
+        Dim character = World?.Avatar
+        While character?.HasMessages
+            MessageBox.Query("", String.Join(vbCrLf, character.CurrentMessage), "Ok")
+            character.DismissMessage()
+        End While
+    End Sub
     Protected Sub ShowState(gameState As GameState)
         mainView.ShowState(gameState)
     End Sub

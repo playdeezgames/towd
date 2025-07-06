@@ -11,8 +11,6 @@ Public Interface IEntity(Of TEntityType)
     Function GetStatisticMinimum(statisticType As StatisticType) As Integer
     Sub SetStatisticMaximum(statisticType As StatisticType, value As Integer)
     Function GetStatisticMaximum(statisticType As StatisticType) As Integer
-    Sub SetFlag(flagType As FlagType, flagValue As Boolean)
-    Function HasFlag(flagType As FlagType) As Boolean
     Sub ChangeStatistic(statisticType As StatisticType, delta As Integer)
     Function HasStatistic(statisticType As StatisticType) As Boolean
     Sub ClearStatistic(statisticType As StatisticType)

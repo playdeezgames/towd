@@ -78,18 +78,15 @@ Friend Class NavigationState
             Case MOVE_TEXT
                 HandleMoveCommand()
             Case VERB_TEXT
-                World.Avatar.SetFlag(FlagType.VerbMenu, True)
-                ShowState(GameState.Neutral)
+                ShowState(GameState.VerbMenu)
             Case INVENTORY_TEXT
-                World.Avatar.SetFlag(FlagType.Inventory, True)
-                ShowState(GameState.Neutral)
+                ShowState(GameState.Inventory)
             Case DEEDS_TEXT
                 ShowState(GameState.Deeds)
             Case MENU_TEXT
                 ShowState(GameState.GameMenu)
             Case SKILLS_TEXT
-                World.Avatar.SetFlag(FlagType.SkillMenu, True)
-                ShowState(GameState.Neutral)
+                ShowState(GameState.SkillMenu)
             Case MAP_TEXT
                 ShowState(GameState.Map)
             Case STATISTICS_TEXT
@@ -116,10 +113,7 @@ Friend Class NavigationState
 
         UpdateCommandList(character)
 
-        While character.HasMessages
-            MessageBox.Query("", String.Join(vbCrLf, character.CurrentMessage), "Ok")
-            character.DismissMessage()
-        End While
+        MyBase.UpdateView()
     End Sub
 
     Private Sub UpdateCommandList(character As business.ICharacter)

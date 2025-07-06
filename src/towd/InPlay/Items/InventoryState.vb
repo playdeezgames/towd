@@ -42,7 +42,6 @@ Friend Class InventoryState
     End Sub
 
     Private Sub CloseWindow()
-        World.Avatar.SetFlag(FlagType.Inventory, False)
         ShowState(GameState.Neutral)
     End Sub
 

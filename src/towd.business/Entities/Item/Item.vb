@@ -16,7 +16,6 @@ Friend Class Item
             If EntityData.ItemType <> value.ItemType Then
                 EntityData.ItemType = value.ItemType
                 EntityData.Statistics.Clear()
-                EntityData.Flags.Clear()
                 value.Initialize(Me)
             End If
         End Set

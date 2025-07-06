@@ -32,18 +32,6 @@ Friend MustInherit Class Entity(Of TEntityType, TEntityData As EntityData)
         EntityData.StatisticMaximums(statisticType) = value
     End Sub
 
-    Public Function HasFlag(flagType As FlagType) As Boolean Implements IEntity(Of TEntityType).HasFlag
-        Return EntityData.Flags.Contains(flagType)
-    End Function
-
-    Public Sub SetFlag(flagType As FlagType, flagValue As Boolean) Implements IEntity(Of TEntityType).SetFlag
-        If flagValue Then
-            EntityData.Flags.Add(flagType)
-        Else
-            EntityData.Flags.Remove(flagType)
-        End If
-    End Sub
-
     Public Function GetStatisticMinimum(statisticType As StatisticType) As Integer Implements IEntity(Of TEntityType).GetStatisticMinimum
         Dim value As Integer
         If EntityData.StatisticMinimums.TryGetValue(statisticType, value) Then

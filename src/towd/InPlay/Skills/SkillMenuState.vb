@@ -33,7 +33,7 @@ Friend Class SkillMenuState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill - 3
+                .Height = [Dim].Fill - 1
             }
         Dim advanceableTab As New TabView.Tab With
             {
@@ -45,13 +45,13 @@ Friend Class SkillMenuState
                 .Text = ALL_TEXT,
                 .View = allListView
             }
-        tabView.AddTab(allTab, False)
         tabView.AddTab(advanceableTab, False)
+        tabView.AddTab(allTab, False)
         Add(tabView)
         Dim closeButton As New Button("Close") With
             {
                 .X = Pos.Center,
-                .Y = Pos.Bottom(tabView) + 1
+                .Y = Pos.Bottom(tabView)
             }
         AddHandler closeButton.Clicked, AddressOf CloseWindow
         Add(closeButton)
@@ -62,7 +62,7 @@ Friend Class SkillMenuState
         Dim skillType = CType(args.Value, SkillMenuListViewItem).SkillType
         Dim character = World.Avatar
         If skillType.Advance(character) Then
-            CloseWindow()
+            UpdateView()
         End If
     End Sub
 
@@ -70,7 +70,7 @@ Friend Class SkillMenuState
         Dim skillType = CType(args.Value, SkillMenuListViewItem).SkillType
         Dim character = World.Avatar
         If skillType.Advance(character) Then
-            CloseWindow()
+            UpdateView()
         End If
     End Sub
 
@@ -91,7 +91,6 @@ Friend Class SkillMenuState
     End Sub
 
     Private Sub CloseWindow()
-        World.Avatar.SetFlag(towd.data.FlagType.SkillMenu, False)
         ShowState(GameState.Neutral)
     End Sub
 
@@ -107,5 +106,6 @@ Friend Class SkillMenuState
         Next
         advanceableListView.SetSource(advanceable)
         allListView.SetSource(allSkills)
+        MyBase.UpdateView()
     End Sub
 End Class

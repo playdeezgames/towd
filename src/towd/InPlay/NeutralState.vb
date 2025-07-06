@@ -12,16 +12,6 @@ Friend Class NeutralState
         Dim character = World.Avatar
         If character.IsDead Then
             ShowState(GameState.Dead)
-        ElseIf character.HasFlag(FlagType.Inventory) Then
-            If character.CurrentItemType IsNot Nothing Then
-                ShowState(GameState.ItemStack)
-            Else
-                ShowState(GameState.Inventory)
-            End If
-        ElseIf character.HasFlag(FlagType.SkillMenu) Then
-            ShowState(GameState.SkillMenu)
-        ElseIf character.HasFlag(FlagType.VerbMenu) Then
-            ShowState(GameState.VerbMenu)
         Else
             ShowState(GameState.Navigation)
         End If

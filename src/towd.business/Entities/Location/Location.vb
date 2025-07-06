@@ -16,7 +16,6 @@ Friend Class Location
             If EntityData.LocationType <> value.LocationType Then
                 EntityData.LocationType = value.LocationType
                 EntityData.Statistics.Clear()
-                EntityData.Flags.Clear()
                 value.Initialize(Me)
             End If
         End Set

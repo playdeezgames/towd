@@ -1,6 +1,5 @@
 ﻿Imports Terminal.Gui.Trees
 Imports towd.business
-Imports towd.data
 
 Friend Class VerbMenuState
     Inherits ChildView
@@ -51,7 +50,7 @@ Friend Class VerbMenuState
             {
                 .Y = Pos.Bottom(titleLabel),
                 .Width = [Dim].Fill,
-                .Height = [Dim].Fill - 3
+                .Height = [Dim].Fill - 1
             }
         tabView.AddTab(availableVerbTreeTab, True)
         tabView.AddTab(allVerbListTab, False)
@@ -60,7 +59,7 @@ Friend Class VerbMenuState
         Dim closeButton As New Button("Close") With
             {
                 .X = Pos.Center,
-                .Y = Pos.Bottom(tabView) + 1
+                .Y = Pos.Bottom(tabView)
             }
         AddHandler closeButton.Clicked, AddressOf CloseWindow
         Add(closeButton)
@@ -73,7 +72,7 @@ Friend Class VerbMenuState
             Dim descriptor = verbTreeNode.Descriptor
             If descriptor.CanPerform(World.Avatar) Then
                 descriptor.Perform(World.Avatar)
-                ShowState(GameState.Neutral)
+                UpdateView()
             Else
                 MessageBox.ErrorQuery("Sorry Not Sorry!", "You cannot do that.", "OK")
             End If
@@ -101,11 +100,7 @@ Friend Class VerbMenuState
 
     Friend Overrides Sub UpdateView()
         UpdateAvailableVerbTree()
-        Dim character = World.Avatar
-        While Character.HasMessages
-            MessageBox.Query("", String.Join(vbCrLf, Character.CurrentMessage), "Ok")
-            Character.DismissMessage()
-        End While
+        MyBase.UpdateView()
     End Sub
 
     Private Sub UpdateAvailableVerbTree()
@@ -163,7 +158,6 @@ Friend Class VerbMenuState
     End Sub
 
     Private Sub CloseWindow()
-        World.Avatar.SetFlag(towd.data.FlagType.VerbMenu, False)
         ShowState(GameState.Neutral)
     End Sub
 End Class
