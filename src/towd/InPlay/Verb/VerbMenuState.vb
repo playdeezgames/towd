@@ -89,15 +89,6 @@ Friend Class VerbMenuState
         End If
     End Sub
 
-    Private Sub OnAvailableVerbListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Dim descriptor = CType(args.Value, IVerbType)
-        descriptor.Perform(World.Avatar)
-        If Not descriptor.CanPerform(World.Avatar) Then
-            World.Avatar.AppendMessage($"You no longer meet the requirements for performing {descriptor.Name}.")
-        End If
-        ShowState(GameState.Neutral)
-    End Sub
-
     Friend Overrides Sub UpdateView()
         UpdateAvailableVerbTree()
         MyBase.UpdateView()
