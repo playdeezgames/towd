@@ -2,7 +2,7 @@
 Imports towd.business
 
 Public Class StatisticsListViewItem
-    Private ReadOnly statisticType As IStatisticType
+    Public ReadOnly Property StatisticType As IStatisticType
     Private ReadOnly character As ICharacter
     Sub New(character As ICharacter, statisticType As IStatisticType)
         Me.statisticType = statisticType

@@ -38,10 +38,13 @@ Friend Class StatisticsState
     End Sub
 
     Private Sub OnStatisticsListViewOpenSelectedItem(args As ListViewItemEventArgs)
+        Dim statisticType = CType(args.Value, StatisticsListViewItem).StatisticType
+        MessageBox.Query(statisticType.Name, statisticType.Description, "Ok")
     End Sub
 
     Friend Overrides Sub UpdateView()
-        statisticsListView.SetSource(StatisticTypes.Descriptors.Select(Function(x) New StatisticsListViewItem(World.Avatar, x.Value)).ToList)
+        Dim character = World.Avatar
+        statisticsListView.SetSource(StatisticTypes.Descriptors.Where(Function(x) character.GetStatistic(x.Key) > 0).Select(Function(x) New StatisticsListViewItem(World.Avatar, x.Value)).ToList)
         MyBase.UpdateView()
     End Sub
 End Class
