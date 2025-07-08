@@ -52,7 +52,13 @@ Friend Class N00bCharacterTypeDescriptor
     End Sub
 
     Public Overrides Sub Spawn(map As IMap)
-        map.World.Avatar = map.World.CreateCharacter(CharacterType.N00b.ToDescriptor, map.GetLocation(map.Columns \ 2, map.Rows \ 2))
+        Dim candidate As ILocation = Nothing
+        Do
+            Dim column = RNG.GenerateInclusiveRange(0, map.Columns - 1)
+            Dim row = RNG.GenerateInclusiveRange(0, map.Rows - 1)
+            candidate = map.GetLocation(column, row)
+        Loop Until Not candidate.Characters.Any
+        map.World.Avatar = map.World.CreateCharacter(CharacterType.N00b.ToDescriptor, candidate)
     End Sub
 
     Public Overrides Function GetSpawnCount(map As IMap) As Integer

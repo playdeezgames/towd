@@ -53,6 +53,16 @@ Friend Class Location
         End Get
     End Property
 
+    Public ReadOnly Property Characters As IEnumerable(Of ICharacter) Implements ILocation.Characters
+        Get
+            Dim result As New List(Of ICharacter)
+            If EntityData.CharacterId.HasValue Then
+                result.Add(New Character(WorldData, EntityData.CharacterId.Value))
+            End If
+            Return result
+        End Get
+    End Property
+
     Protected Overrides ReadOnly Property EntityData As LocationData
         Get
             Return WorldData.Locations(Id)

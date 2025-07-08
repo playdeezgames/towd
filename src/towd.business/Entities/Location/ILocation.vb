@@ -6,4 +6,5 @@ Public Interface ILocation
     ReadOnly Property Row As Integer
     ReadOnly Property Map As IMap
     ReadOnly Property Neighbors As IReadOnlyDictionary(Of Direction, ILocation)
+    ReadOnly Property Characters As IEnumerable(Of ICharacter)
 End Interface
