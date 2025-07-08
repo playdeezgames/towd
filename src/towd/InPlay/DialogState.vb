@@ -11,7 +11,6 @@ Friend Class DialogState
         promptLabel = New Label With
             {
                 .Width = [Dim].Fill,
-                .Y = 1,
                 .Text = "(dialog prompt)",
                 .TextAlignment = TextAlignment.Centered
             }
@@ -45,6 +44,10 @@ Friend Class DialogState
         If CurrentDialog IsNot Nothing Then
             promptLabel.Text = CurrentDialog.Prompt
             linesTextView.Text = String.Join(vbCrLf, CurrentDialog.Lines)
+            linesTextView.ColorScheme = New ColorScheme With
+                {
+                    .Disabled = ColorScheme.Normal
+                }
             choicesListView.SetSource(CurrentDialog.Choices.ToList)
             MyBase.UpdateView()
         Else

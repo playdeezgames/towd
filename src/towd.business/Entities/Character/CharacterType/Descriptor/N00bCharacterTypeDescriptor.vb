@@ -69,7 +69,11 @@ Friend Class N00bCharacterTypeDescriptor
         Return character.Location.HasOtherCharacters(character)
     End Function
 
-    Public Overrides Function StartDialog(character As ICharacter) As IDialog
-        Return New ChoosePartnerDialog(character)
+    Public Overrides Function StartDialog(character As ICharacter, otherCharacter As ICharacter) As IDialog
+        If otherCharacter Is Nothing Then
+            Return New ChoosePartnerDialog(character)
+        Else
+            Return otherCharacter.StartDialog(character)
+        End If
     End Function
 End Class

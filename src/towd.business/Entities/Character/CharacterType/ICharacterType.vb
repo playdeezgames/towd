@@ -8,5 +8,5 @@ Public Interface ICharacterType
     Function GetSpawnCount(map As IMap) As Integer
     Sub Spawn(map As IMap)
     Function CanDialog(character As ICharacter) As Boolean
-    Function StartDialog(character As ICharacter) As IDialog
+    Function StartDialog(character As ICharacter, otherCharacter As ICharacter) As IDialog
 End Interface

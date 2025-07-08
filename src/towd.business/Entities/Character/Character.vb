@@ -230,7 +230,7 @@ Friend Class Character
         Return EntityData.KnownLocations.Contains(location.Id)
     End Function
 
-    Public Function StartDialog() As IDialog Implements ICharacter.StartDialog
-        Return EntityType.StartDialog(Me)
+    Public Function StartDialog(otherCharacter As ICharacter) As IDialog Implements ICharacter.StartDialog
+        Return EntityType.StartDialog(Me, otherCharacter)
     End Function
 End Class

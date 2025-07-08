@@ -92,7 +92,7 @@ Friend Class NavigationState
             Case MAP_TEXT
                 ShowState(GameState.Map)
             Case DIALOG_TEXT
-                DialogState.CurrentDialog = World.Avatar.StartDialog()
+                DialogState.CurrentDialog = World.Avatar.StartDialog(Nothing)
                 ShowState(GameState.Dialog)
             Case STATISTICS_TEXT
                 ShowState(GameState.Statistics)

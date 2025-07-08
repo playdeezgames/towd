@@ -9,7 +9,7 @@
         Return False
     End Function
 
-    Public Overrides Function StartDialog(character As ICharacter) As IDialog
+    Public Overrides Function StartDialog(character As ICharacter, otherCharacter As ICharacter) As IDialog
         Return Nothing
     End Function
 End Class

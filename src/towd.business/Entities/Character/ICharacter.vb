@@ -31,6 +31,6 @@ Public Interface ICharacter
     Function KnowsLocation(location As ILocation) As Boolean
     ReadOnly Property CanDoAnyVerb As Boolean
     ReadOnly Property Name As String
-    Function StartDialog() As IDialog
+    Function StartDialog(otherCharacter As ICharacter) As IDialog
     ReadOnly Property CanDialog As Boolean
 End Interface
