@@ -50,4 +50,12 @@ Friend Class N00bCharacterTypeDescriptor
         character.SetStatistic(StatisticType.Fishing, 0)
         character.SetStatistic(StatisticType.CraftCounter, 0)
     End Sub
+
+    Public Overrides Sub Spawn(map As IMap)
+        map.World.Avatar = map.World.CreateCharacter(CharacterType.N00b.ToDescriptor, map.GetLocation(map.Columns \ 2, map.Rows \ 2))
+    End Sub
+
+    Public Overrides Function GetSpawnCount(map As IMap) As Integer
+        Return 1
+    End Function
 End Class

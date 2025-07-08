@@ -7,7 +7,7 @@ Public Module CharacterTypes
         {
             New N00bCharacterTypeDescriptor(),
             New THINDLACharacterTypeDescriptor(),
-            New THINDLAssCharacterTypeDescriptor()
+            New THINDLAsAssCharacterTypeDescriptor()
         }.
         ToDictionary(Function(x) x.CharacterType, Function(x) x)
     <Extension>

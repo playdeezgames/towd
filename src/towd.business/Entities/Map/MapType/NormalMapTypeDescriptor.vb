@@ -21,7 +21,11 @@ Friend Class NormalMapTypeDescriptor
                 map.GetLocation(column, row).EntityType = terrainTable.Generate().ToDescriptor
             Next
         Next
-        map.World.Avatar = map.World.CreateCharacter(CharacterType.N00b.ToDescriptor, map.GetLocation(Columns \ 2, Rows \ 2))
+        For Each characterType In CharacterTypes.Descriptors.Values
+            For Each index In Enumerable.Range(0, characterType.GetSpawnCount(map))
+                characterType.Spawn(map)
+            Next
+        Next
     End Sub
 
     Protected Overrides Sub OnAdvanceTime(amount As Integer)
