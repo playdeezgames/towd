@@ -5,7 +5,7 @@ Public Interface IWorld
     Sub Abandon()
     Function CreateCharacter(characterType As ICharacterType, location As ILocation) As ICharacter
     Function CreateLocation(locationType As ILocationType, map As IMap, column As Integer, row As Integer) As ILocation
-    Function CreateMap(mapType As IMapType, columns As Integer, rows As Integer) As IMap
+    Function CreateMap(mapType As IMapType) As IMap
     Function CreateItem(itemType As IItemType) As IItem
     Property Avatar As ICharacter
     Sub AdvanceTime(amount As Integer)

@@ -3,7 +3,7 @@ Friend Class NormalMapTypeDescriptor
     Inherits MapTypeDescriptor
 
     Public Sub New()
-        MyBase.New(MapType.Normal, "Normal", data.LocationType.Grass)
+        MyBase.New(MapType.Normal, "Normal", 1, 9, 9, data.LocationType.Grass)
     End Sub
 
     Private ReadOnly terrainTable As IReadOnlyDictionary(Of LocationType, Integer) =
@@ -21,6 +21,7 @@ Friend Class NormalMapTypeDescriptor
                 map.GetLocation(column, row).EntityType = terrainTable.Generate().ToDescriptor
             Next
         Next
+        map.World.Avatar = map.World.CreateCharacter(CharacterType.N00b.ToDescriptor, map.GetLocation(Columns \ 2, Rows \ 2))
     End Sub
 
     Protected Overrides Sub OnAdvanceTime(amount As Integer)

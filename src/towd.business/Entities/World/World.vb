@@ -47,10 +47,11 @@ Public Class World
     End Property
 
     Public Sub Initialize() Implements IWorld.Initialize
-        Const MapColumns = 9
-        Const MapRows = 9
-        Dim map = CreateMap(MapType.Normal.ToDescriptor, MapColumns, MapRows)
-        Avatar = CreateCharacter(CharacterType.N00b.ToDescriptor, map.GetLocation(MapColumns \ 2, MapRows \ 2))
+        For Each mapType In MapTypes.Descriptors
+            For Each index In Enumerable.Range(0, mapType.Value.SpawnCount)
+                Dim map = CreateMap(mapType.Value)
+            Next
+        Next
     End Sub
 
     Public Sub Abandon() Implements IWorld.Abandon
@@ -104,22 +105,22 @@ Public Class World
         Return location
     End Function
 
-    Public Function CreateMap(mapType As IMapType, columns As Integer, rows As Integer) As IMap Implements IWorld.CreateMap
+    Public Function CreateMap(mapType As IMapType) As IMap Implements IWorld.CreateMap
         Dim mapId = WorldData.Maps.Count
         WorldData.Maps.Add(
             New MapData With
             {
                 .MapType = mapType.MapType,
-                .Columns = columns,
-                .Rows = rows
+                .Columns = mapType.Columns,
+                .Rows = mapType.Rows
             })
         Dim map = New Map(WorldData, mapId)
-        WorldData.Maps(mapId).Locations = Enumerable.Range(0, columns * rows).
+        WorldData.Maps(mapId).Locations = Enumerable.Range(0, mapType.Columns * mapType.Rows).
                     Select(Function(x) CreateLocation(
                         mapType.LocationType,
                         map,
-                        x Mod columns,
-                        x \ columns).Id).ToList
+                        x Mod mapType.Columns,
+                        x \ mapType.Columns).Id).ToList
         mapType.Initialize(map)
         Return map
     End Function
