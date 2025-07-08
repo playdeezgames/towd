@@ -30,4 +30,5 @@ Public Interface ICharacter
     Sub AddKnownLocation(location As ILocation)
     Function KnowsLocation(location As ILocation) As Boolean
     ReadOnly Property CanDoAnyVerb As Boolean
+    ReadOnly Property Name As String
 End Interface

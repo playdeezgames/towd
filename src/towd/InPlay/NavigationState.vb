@@ -164,6 +164,11 @@ Friend Class NavigationState
                 builder.AppendLine($"To the {neighbor.Key.ToDescriptor.Name} is unexplored.")
             End If
         Next
+        If location.HasOtherCharacters(character) Then
+            For Each otherCharacter In location.GetOtherCharacters(character)
+                builder.AppendLine($"{otherCharacter.Name} a here.")
+            Next
+        End If
         locationTextView.Text = builder.ToString
         locationTextView.ColorScheme = New ColorScheme With
                 {

@@ -52,7 +52,7 @@ Friend Class N00bCharacterTypeDescriptor
     End Sub
 
     Public Overrides Sub Spawn(map As IMap)
-        Dim candidate As ILocation = Nothing
+        Dim candidate As ILocation
         Do
             Dim column = RNG.GenerateInclusiveRange(0, map.Columns - 1)
             Dim row = RNG.GenerateInclusiveRange(0, map.Rows - 1)

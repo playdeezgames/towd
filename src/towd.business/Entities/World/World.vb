@@ -85,6 +85,7 @@ Public Class World
                 .LocationId = location.Id
             })
         Dim character As ICharacter = New Character(WorldData, characterId)
+        location.AddCharacter(character)
         character.AddKnownLocation(location)
         characterType.Initialize(character)
         Return character

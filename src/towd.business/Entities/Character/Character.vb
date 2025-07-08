@@ -12,7 +12,9 @@ Friend Class Character
             Return New Location(WorldData, EntityData.LocationId)
         End Get
         Set(value As ILocation)
+            Location.RemoveCharacter(Me)
             EntityData.LocationId = value.Id
+            Location.AddCharacter(Me)
         End Set
     End Property
     Public ReadOnly Property IsAvatar As Boolean Implements ICharacter.IsAvatar
@@ -71,6 +73,12 @@ Friend Class Character
     Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb
         Get
             Return VerbTypes.Descriptors.Any(Function(x) x.Value.CanPerform(Me))
+        End Get
+    End Property
+
+    Public ReadOnly Property Name As String Implements ICharacter.Name
+        Get
+            Return EntityData.CharacterType.ToDescriptor.Name
         End Get
     End Property
 

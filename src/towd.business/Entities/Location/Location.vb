@@ -55,11 +55,7 @@ Friend Class Location
 
     Public ReadOnly Property Characters As IEnumerable(Of ICharacter) Implements ILocation.Characters
         Get
-            Dim result As New List(Of ICharacter)
-            If EntityData.CharacterId.HasValue Then
-                result.Add(New Character(WorldData, EntityData.CharacterId.Value))
-            End If
-            Return result
+            Return EntityData.CharacterIds.Select(Function(x) New Character(WorldData, x))
         End Get
     End Property
 
@@ -73,7 +69,23 @@ Friend Class Location
         EntityType.AdvanceTime(Me, amount)
     End Sub
 
+    Public Sub AddCharacter(character As ICharacter) Implements ILocation.AddCharacter
+        EntityData.CharacterIds.Add(character.Id)
+    End Sub
+
+    Public Sub RemoveCharacter(character As ICharacter) Implements ILocation.RemoveCharacter
+        EntityData.CharacterIds.Remove(character.Id)
+    End Sub
+
     Public Overrides Function ToString() As String
         Return EntityType.Describe(Me)
+    End Function
+
+    Public Function HasOtherCharacters(character As ICharacter) As Boolean Implements ILocation.HasOtherCharacters
+        Return EntityData.CharacterIds.Any(Function(x) x <> character.Id)
+    End Function
+
+    Public Function GetOtherCharacters(character As ICharacter) As IEnumerable(Of ICharacter) Implements ILocation.GetOtherCharacters
+        Return EntityData.CharacterIds.Where(Function(x) x <> character.Id).Select(Function(x) New Character(WorldData, x))
     End Function
 End Class
