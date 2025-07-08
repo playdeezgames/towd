@@ -97,7 +97,8 @@ Boost your foraging, digging, or chopping—every point could mean life or lunch
             New TopicDescriptor(Topic.NavigationVerb, "Verbs", "Actions speak louder than groans. 
 Forage, dig, chop—choose your labor and test your skills against the wild’s whims."),
             New TopicDescriptor(Topic.NavigationMap, "Map", "You thought you could just wander this godforsaken wasteland and not get lost? Ha! The Map command is your pathetic attempt to make sense of the desolate hellscape you're barely surviving in. Pull it up from the navigation screen to see where you are—or more likely, to confirm you're nowhere near anything that won't kill you. It shows your sorry position, nearby landmarks (if you can call a pile of bones a ""landmark""), and maybe a hint of what fresh misery lies ahead. Use it to plot your next move, but don’t expect it to hold your hand—freedom means figuring this crap out yourself."),
-            New TopicDescriptor(Topic.NavigationStatistics, "Statistics", "This is the place to see yer stats! You can then contemplate yer life choices. Or don't. You do you.")
+            New TopicDescriptor(Topic.NavigationStatistics, "Statistics", "This is the place to see yer stats! You can then contemplate yer life choices. Or don't. You do you."),
+            New TopicDescriptor(Topic.NavigationDialog, "Dialog", "This is where you can dialog with another character in the game. Yes, I'm using the world ""Dialog"" as a verb here. I know its a noun. I blame HR.")
         }.ToDictionary(Function(x) x.Topic, Function(x) x)
         For Each entry In ItemTypeTopicTable
             topicTable.Add(entry.Value, New ItemTypeTopicDescriptor(entry.Value, entry.Key))

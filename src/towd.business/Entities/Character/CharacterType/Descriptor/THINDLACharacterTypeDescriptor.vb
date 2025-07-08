@@ -1,5 +1,5 @@
 ﻿Friend Class THINDLACharacterTypeDescriptor
-    Inherits CharacterTypeDescriptor
+    Inherits NPCCharacterTypeDescriptor
 
     Public Sub New()
         MyBase.New(data.CharacterType.THINDLA, "THINDLA the Viking")

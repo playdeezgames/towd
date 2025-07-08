@@ -14,4 +14,6 @@ Friend MustInherit Class CharacterTypeDescriptor
     Public MustOverride Sub Initialize(character As ICharacter) Implements ICharacterType.Initialize
     Public MustOverride Function GetSpawnCount(map As IMap) As Integer Implements ICharacterType.GetSpawnCount
     Public MustOverride Sub Spawn(map As IMap) Implements ICharacterType.Spawn
+    Public MustOverride Function CanDialog(character As ICharacter) As Boolean Implements ICharacterType.CanDialog
+    Public MustOverride Function StartDialog(character As ICharacter) As IDialog Implements ICharacterType.StartDialog
 End Class

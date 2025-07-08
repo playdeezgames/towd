@@ -82,6 +82,12 @@ Friend Class Character
         End Get
     End Property
 
+    Public ReadOnly Property CanDialog As Boolean Implements ICharacter.CanDialog
+        Get
+            Return EntityType.CanDialog(Me)
+        End Get
+    End Property
+
     Public Sub Move(direction As Direction) Implements ICharacter.Move
         Dim descriptor = direction.ToDescriptor
         Dim nextLocation As ILocation = GetNextLocation(descriptor)
@@ -222,5 +228,9 @@ Friend Class Character
 
     Public Function KnowsLocation(location As ILocation) As Boolean Implements ICharacter.KnowsLocation
         Return EntityData.KnownLocations.Contains(location.Id)
+    End Function
+
+    Public Function StartDialog() As IDialog Implements ICharacter.StartDialog
+        Return EntityType.StartDialog(Me)
     End Function
 End Class

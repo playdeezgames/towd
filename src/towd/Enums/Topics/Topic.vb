@@ -73,4 +73,5 @@
     NavigationMap
     VerbTypeCharcoalFromFurnace
     NavigationStatistics
+    NavigationDialog
 End Enum

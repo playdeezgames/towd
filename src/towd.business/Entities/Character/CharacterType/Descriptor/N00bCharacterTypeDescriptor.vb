@@ -64,4 +64,12 @@ Friend Class N00bCharacterTypeDescriptor
     Public Overrides Function GetSpawnCount(map As IMap) As Integer
         Return 1
     End Function
+
+    Public Overrides Function CanDialog(character As ICharacter) As Boolean
+        Return character.Location.HasOtherCharacters(character)
+    End Function
+
+    Public Overrides Function StartDialog(character As ICharacter) As IDialog
+        Return New ChoosePartnerDialog(character)
+    End Function
 End Class

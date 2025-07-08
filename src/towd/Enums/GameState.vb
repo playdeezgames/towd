@@ -15,4 +15,5 @@
     Topic
     Map
     Statistics
+    Dialog
 End Enum

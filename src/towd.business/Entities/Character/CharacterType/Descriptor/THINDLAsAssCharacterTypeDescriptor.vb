@@ -1,5 +1,5 @@
 ﻿Friend Class THINDLAsAssCharacterTypeDescriptor
-    Inherits CharacterTypeDescriptor
+    Inherits NPCCharacterTypeDescriptor
 
     Public Sub New()
         MyBase.New(data.CharacterType.THINDLAsAss, "THINDLA's Hairy Ass")

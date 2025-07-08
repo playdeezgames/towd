@@ -13,6 +13,7 @@ Friend Class NavigationState
     Const SKILLS_TEXT = "Skills..."
     Const MAP_TEXT = "Map..."
     Const STATISTICS_TEXT = "Statistics..."
+    Const DIALOG_TEXT = "Dialog..."
     Private ReadOnly topicTable As IReadOnlyDictionary(Of String, Topic) =
         New Dictionary(Of String, Topic) From
         {
@@ -23,7 +24,8 @@ Friend Class NavigationState
             {SKILLS_TEXT, Topic.NavigationSkills},
             {VERB_TEXT, Topic.NavigationVerb},
             {MAP_TEXT, Topic.NavigationMap},
-            {STATISTICS_TEXT, Topic.NavigationStatistics}
+            {STATISTICS_TEXT, Topic.NavigationStatistics},
+            {DIALOG_TEXT, Topic.NavigationDialog}
         }
     Private ReadOnly locationTextView As TextView
     Private ReadOnly characterTextView As TextView
@@ -89,6 +91,9 @@ Friend Class NavigationState
                 ShowState(GameState.SkillMenu)
             Case MAP_TEXT
                 ShowState(GameState.Map)
+            Case DIALOG_TEXT
+                DialogState.CurrentDialog = World.Avatar.StartDialog()
+                ShowState(GameState.Dialog)
             Case STATISTICS_TEXT
                 ShowState(GameState.Statistics)
         End Select
@@ -123,6 +128,9 @@ Friend Class NavigationState
                 MAP_TEXT,
                 STATISTICS_TEXT
             }
+        If character.CanDialog Then
+            commandList.Add(DIALOG_TEXT)
+        End If
         If character.HasItems Then
             commandList.Add(INVENTORY_TEXT)
         End If
