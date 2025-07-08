@@ -166,7 +166,7 @@ Friend Class NavigationState
         Next
         If location.HasOtherCharacters(character) Then
             For Each otherCharacter In location.GetOtherCharacters(character)
-                builder.AppendLine($"{otherCharacter.Name} a here.")
+                builder.AppendLine($"{otherCharacter.Name} is here.")
             Next
         End If
         locationTextView.Text = builder.ToString

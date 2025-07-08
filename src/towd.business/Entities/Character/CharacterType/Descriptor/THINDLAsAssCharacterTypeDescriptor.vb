@@ -6,18 +6,22 @@
     End Sub
 
     Public Overrides Sub AdvanceTime(character As ICharacter, amount As Integer)
-        Throw New NotImplementedException()
     End Sub
 
     Public Overrides Sub Initialize(character As ICharacter)
-        Throw New NotImplementedException()
     End Sub
 
     Public Overrides Sub Spawn(map As IMap)
-        Throw New NotImplementedException()
+        Dim candidate As ILocation
+        Do
+            Dim column = RNG.GenerateInclusiveRange(0, map.Columns - 1)
+            Dim row = RNG.GenerateInclusiveRange(0, map.Rows - 1)
+            candidate = map.GetLocation(column, row)
+        Loop Until Not candidate.Characters.Any
+        map.World.CreateCharacter(Me, candidate)
     End Sub
 
     Public Overrides Function GetSpawnCount(map As IMap) As Integer
-        Return 0
+        Return 1
     End Function
 End Class

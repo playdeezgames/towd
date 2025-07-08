@@ -58,7 +58,7 @@ Friend Class N00bCharacterTypeDescriptor
             Dim row = RNG.GenerateInclusiveRange(0, map.Rows - 1)
             candidate = map.GetLocation(column, row)
         Loop Until Not candidate.Characters.Any
-        map.World.Avatar = map.World.CreateCharacter(CharacterType.N00b.ToDescriptor, candidate)
+        map.World.Avatar = map.World.CreateCharacter(Me, candidate)
     End Sub
 
     Public Overrides Function GetSpawnCount(map As IMap) As Integer
