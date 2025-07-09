@@ -11,7 +11,7 @@ Public Module CharacterTypes
         }.
         ToDictionary(Function(x) x.CharacterType, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(characterType As CharacterType) As ICharacterType
+    Public Function ToCharacterTypeDescriptor(characterType As CharacterType) As ICharacterType
         Return Descriptors(characterType)
     End Function
 End Module

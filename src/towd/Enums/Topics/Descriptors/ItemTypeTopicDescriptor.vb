@@ -13,13 +13,13 @@ Friend Class ItemTypeTopicDescriptor
 
     Public ReadOnly Property Title As String Implements ITopic.Title
         Get
-            Return ItemType.ToDescriptor.Name
+            Return ItemType.ToItemTypeDescriptor.Name
         End Get
     End Property
 
     Public ReadOnly Property Content As String Implements ITopic.Content
         Get
-            Return ItemType.ToDescriptor.Description
+            Return ItemType.ToItemTypeDescriptor.Description
         End Get
     End Property
 End Class

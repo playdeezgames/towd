@@ -33,7 +33,7 @@ Public Module ItemTypes
         }.
         ToDictionary(Function(x) x.ItemType, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(itemType As ItemType) As IItemType
+    Public Function ToItemTypeDescriptor(itemType As ItemType) As IItemType
         Return Descriptors(itemType)
     End Function
 End Module

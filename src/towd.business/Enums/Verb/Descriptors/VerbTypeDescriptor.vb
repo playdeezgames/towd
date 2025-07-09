@@ -61,11 +61,11 @@ Public MustInherit Class VerbTypeDescriptor
                 Return displayName
             End If
             Dim builder As New StringBuilder
-            builder.Append(String.Join("+"c, itemTypeInputs.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}")))
+            builder.Append(String.Join("+"c, itemTypeInputs.Select(Function(x) $"{x.Value} {x.Key.ToItemTypeDescriptor.Name}")))
             builder.Append("->")
-            Dim outputs = itemTypeOutputGenerators.Select(Function(x) $"{x.Value} {x.Key.ToDescriptor.Name}").ToList
+            Dim outputs = itemTypeOutputGenerators.Select(Function(x) $"{x.Value} {x.Key.ToItemTypeDescriptor.Name}").ToList
             If buildsLocationType.HasValue Then
-                outputs.Add($"Builds {buildsLocationType.Value.ToDescriptor.Name}")
+                outputs.Add($"Builds {buildsLocationType.Value.ToLocationTypeDescriptor.Name}")
             End If
             builder.Append(String.Join("+"c, outputs))
             Return builder.ToString()
@@ -78,19 +78,19 @@ Public MustInherit Class VerbTypeDescriptor
             If itemTypeInputs.Any Then
                 builder.AppendLine("Item Type Inputs:")
                 For Each entry In itemTypeInputs
-                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToItemTypeDescriptor.Name}")
                 Next
             End If
             If itemTypeInputDurabilities.Any Then
                 builder.AppendLine("Item Type Input Durabilities:")
                 For Each entry In itemTypeInputDurabilities
-                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToItemTypeDescriptor.Name}")
                 Next
             End If
             If itemTypeOutputGenerators.Any Then
                 builder.AppendLine("Item Type Outputs:")
                 For Each entry In itemTypeOutputGenerators
-                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToItemTypeDescriptor.Name}")
                 Next
             End If
             If characterStatisticMinimums.Any Then
@@ -108,7 +108,7 @@ Public MustInherit Class VerbTypeDescriptor
             If requiredLocationTypes.Any Then
                 builder.AppendLine("Required Location Type:")
                 For Each entry In requiredLocationTypes
-                    builder.AppendLine($"  {entry.ToDescriptor.Name}")
+                    builder.AppendLine($"  {entry.ToLocationTypeDescriptor.Name}")
                 Next
             End If
             If locationStatisticMinimums.Any Then
@@ -130,7 +130,7 @@ Public MustInherit Class VerbTypeDescriptor
                 Next
             End If
             If buildsLocationType.HasValue Then
-                builder.AppendLine($"Builds: {buildsLocationType.Value.ToDescriptor.Name}")
+                builder.AppendLine($"Builds: {buildsLocationType.Value.ToLocationTypeDescriptor.Name}")
             End If
             Return builder.ToString()
         End Get
@@ -166,25 +166,25 @@ Public MustInherit Class VerbTypeDescriptor
         For Each entry In quantities
             If entry.Value < 0 Then
                 For Each dummy In Enumerable.Range(0, -entry.Value)
-                    character.RemoveItemOfType(entry.Key.ToDescriptor)
+                    character.RemoveItemOfType(entry.Key.ToItemTypeDescriptor)
                 Next
-                character.AppendMessage($"{entry.Value} {entry.Key.ToDescriptor.Name}(x{character.GetCountOfItemType(entry.Key.ToDescriptor)})")
+                character.AppendMessage($"{entry.Value} {entry.Key.ToItemTypeDescriptor.Name}(x{character.GetCountOfItemType(entry.Key.ToItemTypeDescriptor)})")
             ElseIf entry.Value > 0 Then
                 For Each dummy In Enumerable.Range(0, entry.Value)
-                    character.AddItem(character.World.CreateItem(entry.Key.ToDescriptor))
+                    character.AddItem(character.World.CreateItem(entry.Key.ToItemTypeDescriptor))
                 Next
-                character.AppendMessage($"+{entry.Value} {entry.Key.ToDescriptor.Name}(x{character.GetCountOfItemType(entry.Key.ToDescriptor)})")
+                character.AppendMessage($"+{entry.Value} {entry.Key.ToItemTypeDescriptor.Name}(x{character.GetCountOfItemType(entry.Key.ToItemTypeDescriptor)})")
             End If
         Next
         For Each entry In itemTypeInputDurabilities
             For Each dummy In Enumerable.Range(0, entry.Value)
-                Dim item = character.GetItemsOfType(entry.Key.ToDescriptor).First
+                Dim item = character.GetItemsOfType(entry.Key.ToItemTypeDescriptor).First
                 character.ChangeItemDurability(item, -1)
             Next
         Next
         If buildsLocationType.HasValue Then
-            character.Location.EntityType = buildsLocationType.Value.ToDescriptor
-            character.AppendMessage($"Changed location to {buildsLocationType.Value.ToDescriptor.Name}.")
+            character.Location.EntityType = buildsLocationType.Value.ToLocationTypeDescriptor
+            character.AppendMessage($"Changed location to {buildsLocationType.Value.ToLocationTypeDescriptor.Name}.")
         End If
         character.World.AdvanceTime(timeTaken)
     End Sub
@@ -206,12 +206,12 @@ Public MustInherit Class VerbTypeDescriptor
             End If
         Next
         For Each entry In itemTypeInputs
-            If character.GetCountOfItemType(entry.Key.ToDescriptor) < entry.Value Then
+            If character.GetCountOfItemType(entry.Key.ToItemTypeDescriptor) < entry.Value Then
                 Return False
             End If
         Next
         For Each entry In itemTypeInputDurabilities
-            If character.GetStatisticSumOfItemType(entry.Key.ToDescriptor, StatisticType.Durability) < entry.Value Then
+            If character.GetStatisticSumOfItemType(entry.Key.ToItemTypeDescriptor, StatisticType.Durability) < entry.Value Then
                 Return False
             End If
         Next

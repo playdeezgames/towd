@@ -10,7 +10,7 @@ Friend Class Item
 
     Public Overrides Property EntityType As IItemType
         Get
-            Return EntityData.ItemType.ToDescriptor
+            Return EntityData.ItemType.ToItemTypeDescriptor
         End Get
         Set(value As IItemType)
             If EntityData.ItemType <> value.ItemType Then

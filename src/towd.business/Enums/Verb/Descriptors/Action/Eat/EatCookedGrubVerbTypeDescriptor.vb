@@ -7,6 +7,6 @@ Friend Class EatCookedGrubVerbTypeDescriptor
         MyBase.New(VerbType.EatCookedGrub, VerbCategoryType.Eat, 0)
         SetDisplayName("Eat Cooked Grub")
         SetItemTypeInput(ItemType.CookedGrub, 1)
-        SetCharacterStatisticDelta(StatisticType.Satiety, ItemType.CookedGrub.ToDescriptor.Statistics(StatisticType.Satiety))
+        SetCharacterStatisticDelta(StatisticType.Satiety, ItemType.CookedGrub.ToItemTypeDescriptor.Statistics(StatisticType.Satiety))
     End Sub
 End Class

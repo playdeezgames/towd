@@ -39,7 +39,7 @@ Friend Class Character
 
     Public Overrides Property EntityType As ICharacterType
         Get
-            Return EntityData.CharacterType.ToDescriptor()
+            Return EntityData.CharacterType.ToCharacterTypeDescriptor()
         End Get
         Set(value As ICharacterType)
             EntityData.CharacterType = value.CharacterType
@@ -67,7 +67,7 @@ Friend Class Character
 
     Public ReadOnly Property ItemStacks As IEnumerable(Of IItemStack) Implements ICharacter.ItemStacks
         Get
-            Return EntityData.Items.Where(Function(x) x.Value.Count <> 0).Select(Function(x) New ItemStack(Me, x.Key.ToDescriptor))
+            Return EntityData.Items.Where(Function(x) x.Value.Count <> 0).Select(Function(x) New ItemStack(Me, x.Key.ToItemTypeDescriptor))
         End Get
     End Property
     Public ReadOnly Property CanDoAnyVerb As Boolean Implements ICharacter.CanDoAnyVerb
@@ -78,7 +78,7 @@ Friend Class Character
 
     Public ReadOnly Property Name As String Implements ICharacter.Name
         Get
-            Return EntityData.CharacterType.ToDescriptor.Name
+            Return EntityData.CharacterType.ToCharacterTypeDescriptor.Name
         End Get
     End Property
 

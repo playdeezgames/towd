@@ -15,7 +15,7 @@ Public Module LocationTypes
         }.
         ToDictionary(Function(x) x.LocationType, Function(x) x)
     <Extension>
-    Friend Function ToDescriptor(locationType As LocationType) As ILocationType
+    Friend Function ToLocationTypeDescriptor(locationType As LocationType) As ILocationType
         Return Descriptors(locationType)
     End Function
 End Module

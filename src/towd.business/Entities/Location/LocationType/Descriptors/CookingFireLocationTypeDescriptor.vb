@@ -15,7 +15,7 @@ Friend Class CookingFireLocationTypeDescriptor
     Public Overrides Sub AdvanceTime(location As ILocation, amount As Integer)
         location.ChangeStatistic(StatisticType.Fuel, -1)
         If location.GetStatistic(StatisticType.Fuel) <= 0 Then
-            location.EntityType = data.LocationType.Dirt.ToDescriptor
+            location.EntityType = data.LocationType.Dirt.ToLocationTypeDescriptor
         End If
     End Sub
 

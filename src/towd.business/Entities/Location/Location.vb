@@ -10,7 +10,7 @@ Friend Class Location
 
     Public Overrides Property EntityType As ILocationType Implements ILocation.EntityType
         Get
-            Return EntityData.LocationType.ToDescriptor
+            Return EntityData.LocationType.ToLocationTypeDescriptor
         End Get
         Set(value As ILocationType)
             If EntityData.LocationType <> value.LocationType Then
