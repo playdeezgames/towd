@@ -9,5 +9,5 @@ Public Interface ICharacterType
     Sub Spawn(map As IMap)
     Function CanDialog(character As ICharacter) As Boolean
     Function StartDialog(character As ICharacter, otherCharacter As ICharacter) As IDialog
-    ReadOnly Property StatisticTypes As IEnumerable(Of StatisticType)
+    ReadOnly Property StatisticTypes As IEnumerable(Of String)
 End Interface

@@ -17,7 +17,7 @@ Public Interface ICharacter
     Function GetCountOfItemType(itemType As IItemType) As Integer
     ReadOnly Property ItemStacks As IEnumerable(Of IItemStack)
     Function GetItemsOfType(ItemType As IItemType) As IEnumerable(Of IItem)
-    Function GetStatisticSumOfItemType(itemType As IItemType, statisticType As StatisticType) As Integer
+    Function GetStatisticSumOfItemType(itemType As IItemType, statisticType As String) As Integer
     Sub RemoveItemOfType(itemType As IItemType)
     Sub ChangeItemDurability(item As IItem, delta As Integer)
     Sub RemoveItem(item As IItem)
@@ -25,7 +25,7 @@ Public Interface ICharacter
     Function HasDone(deed As IDeed) As Boolean
     Function IsAvailable(deed As IDeed) As Boolean
     Sub SetDone(deed As IDeed)
-    Sub ReportChangeStatistic(statisticType As StatisticType, delta As Integer)
+    Sub ReportChangeStatistic(statisticType As String, delta As Integer)
     Function CanAdvance(skillType As ISkillType) As Boolean
     Sub AddKnownLocation(location As ILocation)
     Function KnowsLocation(location As ILocation) As Boolean

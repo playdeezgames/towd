@@ -1,21 +1,21 @@
-﻿Public Enum StatisticType
-    BuildCounter
-    ChopSkill
-    Chopping
-    CookingCounter
-    CraftCounter
-    DigSkill
-    Digging
-    Durability
-    FishSkill
-    Fishing
-    ForagingCounter
-    ForagingSkill
-    Fuel
-    Health
-    KnappingSkill
-    Satiety
-    SmeltingCounter
-    Steps
-    XP
-End Enum
+﻿Public Module StatisticType
+    Public Const BuildCounter = "BuildCounter"
+    Public Const ChopSkill = "ChopSkill"
+    Public Const Chopping = "Chopping"
+    Public Const CookingCounter = "CookingCounter"
+    Public Const CraftCounter = "CraftCounter"
+    Public Const DigSkill = "DigSkill"
+    Public Const Digging = "Digging"
+    Public Const Durability = "Durability"
+    Public Const FishSkill = "FishSkill"
+    Public Const Fishing = "Fishing"
+    Public Const ForagingCounter = "ForagingCounter"
+    Public Const ForagingSkill = "ForagingSkill"
+    Public Const Fuel = "Fuel"
+    Public Const Health = "Health"
+    Public Const KnappingSkill = "KnappingSkill"
+    Public Const Satiety = "Satiety"
+    Public Const SmeltingCounter = "SmeltingCounter"
+    Public Const Steps = "Steps"
+    Public Const XP = "XP"
+End Module

@@ -5,13 +5,13 @@ Public Interface IEntity(Of TEntityType)
     ReadOnly Property World As IWorld
     Sub AdvanceTime(amount As Integer)
     Property EntityType As TEntityType
-    Sub SetStatistic(statisticType As StatisticType, value As Integer)
-    Function GetStatistic(statisticType As StatisticType) As Integer
-    Sub SetStatisticMinimum(statisticType As StatisticType, value As Integer)
-    Function GetStatisticMinimum(statisticType As StatisticType) As Integer
-    Sub SetStatisticMaximum(statisticType As StatisticType, value As Integer)
-    Function GetStatisticMaximum(statisticType As StatisticType) As Integer
-    Sub ChangeStatistic(statisticType As StatisticType, delta As Integer)
-    Function HasStatistic(statisticType As StatisticType) As Boolean
-    Sub ClearStatistic(statisticType As StatisticType)
+    Sub SetStatistic(statisticType As String, value As Integer)
+    Function GetStatistic(statisticType As String) As Integer
+    Sub SetStatisticMinimum(statisticType As String, value As Integer)
+    Function GetStatisticMinimum(statisticType As String) As Integer
+    Sub SetStatisticMaximum(statisticType As String, value As Integer)
+    Function GetStatisticMaximum(statisticType As String) As Integer
+    Sub ChangeStatistic(statisticType As String, delta As Integer)
+    Function HasStatistic(statisticType As String) As Boolean
+    Sub ClearStatistic(statisticType As String)
 End Interface

@@ -10,7 +10,7 @@ Friend Class CookedFishFiletItemTypeDescriptor
             True,
             "A grilled fish slice. 
 Eat it to restore vigor—tastes of triumph, if you cooked it right.",
-            statistics:=New Dictionary(Of StatisticType, Integer) From
+            statistics:=New Dictionary(Of String, Integer) From
             {
                 {StatisticType.Satiety, 10}
             })

@@ -162,7 +162,7 @@ Friend Class Character
         Return Array.Empty(Of IItem)
     End Function
 
-    Public Function GetStatisticSumOfItemType(itemType As IItemType, statisticType As StatisticType) As Integer Implements ICharacter.GetStatisticSumOfItemType
+    Public Function GetStatisticSumOfItemType(itemType As IItemType, statisticType As String) As Integer Implements ICharacter.GetStatisticSumOfItemType
         Return GetItemsOfType(itemType).Sum(Function(x) x.GetStatistic(statisticType))
     End Function
 
@@ -205,7 +205,7 @@ Friend Class Character
         EntityData.Deeds.Add(descriptor.Deed)
     End Sub
 
-    Public Sub ReportChangeStatistic(statisticType As StatisticType, delta As Integer) Implements ICharacter.ReportChangeStatistic
+    Public Sub ReportChangeStatistic(statisticType As String, delta As Integer) Implements ICharacter.ReportChangeStatistic
         ChangeStatistic(statisticType, delta)
         If delta > 0 Then
             Me.AppendMessage($"+{delta} {statisticType.ToStatisticTypeDescriptor.Name}({GetStatistic(statisticType)})")

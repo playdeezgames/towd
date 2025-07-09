@@ -10,7 +10,7 @@ Friend Class CookedGrubItemTypeDescriptor
             True,
             "A roasted grub delicacy. 
 Savor it to restore strength—better than raw, if you don’t burn it.",
-            statistics:=New Dictionary(Of StatisticType, Integer) From
+            statistics:=New Dictionary(Of String, Integer) From
             {
                 {StatisticType.Satiety, 5}
             })

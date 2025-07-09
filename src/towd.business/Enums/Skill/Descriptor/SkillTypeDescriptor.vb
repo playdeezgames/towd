@@ -3,8 +3,8 @@
 Public MustInherit Class SkillTypeDescriptor
     Implements ISkillType
 
-    Sub New(skillTYpe As SkillType, name As String, statisticType As StatisticType, maximum As Integer, description As String)
-        Me.SkillType = skillTYpe
+    Sub New(skillType As SkillType, name As String, statisticType As String, maximum As Integer, description As String)
+        Me.SkillType = skillType
         Me.Name = name
         Me.StatisticType = statisticType
         Me.Description = description
@@ -12,7 +12,7 @@ Public MustInherit Class SkillTypeDescriptor
     End Sub
     Public ReadOnly Property SkillType As SkillType Implements ISkillType.SkillType
     Public ReadOnly Property Name As String Implements ISkillType.Name
-    Public ReadOnly Property StatisticType As StatisticType Implements ISkillType.StatisticType
+    Public ReadOnly Property StatisticType As String Implements ISkillType.StatisticType
     Public ReadOnly Property Description As String Implements ISkillType.Description
     Private ReadOnly maximum As Integer
     Protected MustOverride Function GetAdvancementCost(character As ICharacter) As Integer

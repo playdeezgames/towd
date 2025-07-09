@@ -34,16 +34,6 @@ Namespace towd.business.tests
                 End Try
             Next
         End Sub
-        <Fact>
-        Sub Statistic_Types()
-            For Each sut In [Enum].GetValues(Of StatisticType)
-                Try
-                    sut.ToStatisticTypeDescriptor.ShouldNotBeNull($"{sut}'s Descriptor Should Not Be Null")
-                Catch ex As Exception
-                    Assert.Fail($"{sut}'s Descriptor Should Exist")
-                End Try
-            Next
-        End Sub
     End Class
 End Namespace
 

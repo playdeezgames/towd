@@ -3,13 +3,13 @@ Imports towd.data
 
 Public MustInherit Class VerbTypeDescriptor
     Implements IVerbType
-    Private ReadOnly locationStatisticMinimums As New Dictionary(Of data.StatisticType, Integer)
-    Private ReadOnly locationStatisticDeltas As New Dictionary(Of data.StatisticType, Integer)
-    Private ReadOnly characterStatisticDeltas As New Dictionary(Of data.StatisticType, Integer)
+    Private ReadOnly locationStatisticMinimums As New Dictionary(Of String, Integer)
+    Private ReadOnly locationStatisticDeltas As New Dictionary(Of String, Integer)
+    Private ReadOnly characterStatisticDeltas As New Dictionary(Of String, Integer)
     Private ReadOnly itemTypeInputs As New Dictionary(Of data.ItemType, Integer)
     Private ReadOnly itemTypeInputDurabilities As New Dictionary(Of data.ItemType, Integer)
-    Private ReadOnly characterStatisticMinimums As New Dictionary(Of data.StatisticType, Integer)
-    Private ReadOnly characterStatisticMaximums As New Dictionary(Of data.StatisticType, Integer)
+    Private ReadOnly characterStatisticMinimums As New Dictionary(Of String, Integer)
+    Private ReadOnly characterStatisticMaximums As New Dictionary(Of String, Integer)
     Private ReadOnly requiredLocationTypes As New HashSet(Of data.LocationType)
     Private ReadOnly itemTypeOutputGenerators As New Dictionary(Of data.ItemType, ICharacterWeightedGenerator)
     Private buildsLocationType As data.LocationType? = Nothing
@@ -18,13 +18,13 @@ Public MustInherit Class VerbTypeDescriptor
     Protected Sub SetDisplayName(displayName As String)
         Me.displayName = displayName
     End Sub
-    Protected Sub SetLocationStatisticMinimum(statisticType As StatisticType, minimum As Integer)
+    Protected Sub SetLocationStatisticMinimum(statisticType As String, minimum As Integer)
         locationStatisticMinimums(statisticType) = minimum
     End Sub
-    Protected Sub SetLocationStatisticDelta(statisticType As StatisticType, delta As Integer)
+    Protected Sub SetLocationStatisticDelta(statisticType As String, delta As Integer)
         locationStatisticDeltas(statisticType) = delta
     End Sub
-    Protected Sub SetCharacterStatisticDelta(statisticType As StatisticType, delta As Integer)
+    Protected Sub SetCharacterStatisticDelta(statisticType As String, delta As Integer)
         characterStatisticDeltas(statisticType) = delta
     End Sub
     Protected Sub SetBuildsLocationType(locationType As data.LocationType?)
@@ -33,10 +33,10 @@ Public MustInherit Class VerbTypeDescriptor
     Protected Sub SetRequiredLocationType(locationType As data.LocationType)
         requiredLocationTypes.Add(locationType)
     End Sub
-    Protected Sub SetCharacterStatisticMinimum(statisticType As StatisticType, minimum As Integer)
+    Protected Sub SetCharacterStatisticMinimum(statisticType As String, minimum As Integer)
         characterStatisticMinimums(statisticType) = minimum
     End Sub
-    Protected Sub SetCharacterStatisticMaximum(statisticType As StatisticType, maximum As Integer)
+    Protected Sub SetCharacterStatisticMaximum(statisticType As String, maximum As Integer)
         characterStatisticMaximums(statisticType) = maximum
     End Sub
     Protected Sub SetItemTypeInput(itemType As data.ItemType, quantity As Integer)

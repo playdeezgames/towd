@@ -3,7 +3,7 @@
 Friend Class StatisticTypeDescriptor
     Implements IStatisticType
     Sub New(
-           statisticType As StatisticType,
+           statisticType As String,
            name As String,
            description As String)
         Me.StatisticType = statisticType
@@ -11,7 +11,7 @@ Friend Class StatisticTypeDescriptor
         Me.Description = description
     End Sub
 
-    Public ReadOnly Property StatisticType As StatisticType Implements IStatisticType.StatisticType
+    Public ReadOnly Property StatisticType As String Implements IStatisticType.StatisticType
 
     Public ReadOnly Property Name As String Implements IStatisticType.Name
 
