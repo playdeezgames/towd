@@ -5,7 +5,7 @@ Public MustInherit Class MapTypeDescriptor
     ReadOnly defaultLocationType As LocationType
 
     Sub New(
-           mapType As MapType,
+           mapType As String,
            name As String,
            spawnCount As Integer,
            columns As Integer,
@@ -19,7 +19,7 @@ Public MustInherit Class MapTypeDescriptor
         Me.SpawnCount = spawnCount
     End Sub
 
-    Public ReadOnly Property MapType As MapType Implements IMapType.MapType
+    Public ReadOnly Property MapType As String Implements IMapType.MapType
     Public ReadOnly Property LocationType As ILocationType Implements IMapType.LocationType
         Get
             Return defaultLocationType.ToLocationTypeDescriptor

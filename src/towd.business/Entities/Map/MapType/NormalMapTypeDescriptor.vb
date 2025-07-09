@@ -3,7 +3,7 @@ Friend Class NormalMapTypeDescriptor
     Inherits MapTypeDescriptor
 
     Public Sub New()
-        MyBase.New(MapType.Normal, "Normal", 1, 9, 9, data.LocationType.Grass)
+        MyBase.New(business.MapType.Normal, "Normal", 1, 9, 9, data.LocationType.Grass)
     End Sub
 
     Private ReadOnly terrainTable As IReadOnlyDictionary(Of LocationType, Integer) =

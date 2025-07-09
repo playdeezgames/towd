@@ -1,7 +1,7 @@
 ﻿Imports towd.data
 
 Public Interface IMapType
-    ReadOnly Property MapType As MapType
+    ReadOnly Property MapType As String
     ReadOnly Property Name As String
     ReadOnly Property LocationType As ILocationType
     ReadOnly Property Columns As Integer
