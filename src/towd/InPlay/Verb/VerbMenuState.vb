@@ -115,7 +115,7 @@ Friend Class VerbMenuState
                 Dim children As New List(Of ITreeNode)
                 Dim found As Boolean
                 For Each verbEntry In categoryEntry
-                    Dim verbNode As TreeNode = New VerbTreeNode(verbEntry.VerbType.ToDescriptor)
+                    Dim verbNode As TreeNode = New VerbTreeNode(verbEntry.VerbType.ToVerbTypeDescriptor)
                     children.Add(verbNode)
                     If verbEntry.VerbType = lastVerb?.VerbType Then
                         found = True

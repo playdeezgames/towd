@@ -22,7 +22,7 @@ Public Module Deeds
             New BuildDeedDescriptor(data.Deed.BuildThousandTimes, "Build a thousand times", 1000, 1, {data.Deed.BuildHundredTimes})
         }.ToDictionary(Function(x) x.Deed, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(deed As data.Deed) As IDeed
+    Public Function ToDeedDescriptor(deed As data.Deed) As IDeed
         Return Descriptors(deed)
     End Function
 End Module

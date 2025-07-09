@@ -14,13 +14,13 @@ Friend Class SkillTypeTopicDescriptor
 
     Public ReadOnly Property Title As String Implements ITopic.Title
         Get
-            Return SkillType.ToDescriptor.Name
+            Return SkillType.ToSkillTypeDescriptor.Name
         End Get
     End Property
 
     Public ReadOnly Property Content As String Implements ITopic.Content
         Get
-            Return SkillType.ToDescriptor.Description
+            Return SkillType.ToSkillTypeDescriptor.Description
         End Get
     End Property
 End Class

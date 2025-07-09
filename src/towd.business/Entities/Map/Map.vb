@@ -28,7 +28,7 @@ Friend Class Map
     End Property
     Public Overrides Property EntityType As IMapType
         Get
-            Return EntityData.MapType.ToDescriptor
+            Return EntityData.MapType.ToMapTypeDescriptor
         End Get
         Set(value As IMapType)
             EntityData.MapType = value.MapType

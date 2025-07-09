@@ -12,7 +12,7 @@ Public Module SkillTypes
             New FishSkillTypeDescriptor()
         }.ToDictionary(Function(x) x.SkillType, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(skillType As SkillType) As ISkillType
+    Public Function ToSkillTypeDescriptor(skillType As SkillType) As ISkillType
         Return Descriptors(skillType)
     End Function
 End Module

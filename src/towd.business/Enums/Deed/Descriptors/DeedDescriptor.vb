@@ -24,7 +24,7 @@ Public MustInherit Class DeedDescriptor
     End Sub
     Protected MustOverride Sub OnDo(character As ICharacter)
     Public Overridable Function IsAvailable(character As ICharacter) As Boolean Implements IDeed.IsAvailable
-        Return needed.All(Function(x) character.HasDone(x.ToDescriptor))
+        Return needed.All(Function(x) character.HasDone(x.ToDeedDescriptor))
     End Function
     Public Overrides Function ToString() As String
         Return $"{Name}(XP: {XP})"

@@ -100,7 +100,7 @@ Friend Class NavigationState
     End Sub
 
     Private Sub HandleMoveCommand()
-        Dim directionTable = World.Avatar.Location.Neighbors.ToDictionary(Function(x) CType(x.Key.ToDescriptor.Name, ustring), Function(x) x.Key)
+        Dim directionTable = World.Avatar.Location.Neighbors.ToDictionary(Function(x) CType(x.Key.ToDirectionDescriptor.Name, ustring), Function(x) x.Key)
         Dim buttons = directionTable.Keys.ToArray
         Dim answer = MessageBox.Query("Which Way?", "Choose a direction.", buttons)
         If answer > -1 Then
@@ -167,9 +167,9 @@ Friend Class NavigationState
         Dim neighbors = location.Neighbors
         For Each neighbor In neighbors
             If character.KnowsLocation(neighbor.Value) Then
-                builder.AppendLine($"To the {neighbor.Key.ToDescriptor.Name} there is {neighbor.Value.EntityType.Name}.")
+                builder.AppendLine($"To the {neighbor.Key.ToDirectionDescriptor.Name} there is {neighbor.Value.EntityType.Name}.")
             Else
-                builder.AppendLine($"To the {neighbor.Key.ToDescriptor.Name} is unexplored.")
+                builder.AppendLine($"To the {neighbor.Key.ToDirectionDescriptor.Name} is unexplored.")
             End If
         Next
         If location.HasOtherCharacters(character) Then

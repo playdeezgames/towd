@@ -11,7 +11,7 @@ Public Module Directions
         }.
         ToDictionary(Function(x) x.Direction, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(direction As Direction) As IDirection
+    Public Function ToDirectionDescriptor(direction As Direction) As IDirection
         Return Descriptors(direction)
     End Function
 End Module

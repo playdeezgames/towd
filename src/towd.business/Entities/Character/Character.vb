@@ -89,7 +89,7 @@ Friend Class Character
     End Property
 
     Public Sub Move(direction As Direction) Implements ICharacter.Move
-        Dim descriptor = direction.ToDescriptor
+        Dim descriptor = direction.ToDirectionDescriptor
         Dim nextLocation As ILocation = GetNextLocation(descriptor)
         If nextLocation IsNot Nothing Then
             AddKnownLocation(nextLocation)
@@ -219,7 +219,7 @@ Friend Class Character
     End Function
 
     Public Function CanMove(direction As Direction) As Boolean Implements ICharacter.CanMove
-        Return GetNextLocation(direction.ToDescriptor) IsNot Nothing
+        Return GetNextLocation(direction.ToDirectionDescriptor) IsNot Nothing
     End Function
 
     Public Sub AddKnownLocation(location As ILocation) Implements ICharacter.AddKnownLocation

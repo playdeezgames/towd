@@ -9,7 +9,7 @@ Module MapTypes
         }.
         ToDictionary(Function(x) x.MapType, Function(x) x)
     <Extension>
-    Friend Function ToDescriptor(mapType As MapType) As IMapType
+    Friend Function ToMapTypeDescriptor(mapType As MapType) As IMapType
         Return Descriptors(mapType)
     End Function
 

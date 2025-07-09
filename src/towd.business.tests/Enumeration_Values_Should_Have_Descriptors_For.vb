@@ -28,7 +28,7 @@ Namespace towd.business.tests
         Sub Verb_Types()
             For Each sut In [Enum].GetValues(Of VerbType)
                 Try
-                    sut.ToDescriptor.ShouldNotBeNull($"{sut}'s Descriptor Should Not Be Null")
+                    sut.ToVerbTypeDescriptor.ShouldNotBeNull($"{sut}'s Descriptor Should Not Be Null")
                 Catch ex As Exception
                     Assert.Fail($"{sut}'s Descriptor Should Exist")
                 End Try

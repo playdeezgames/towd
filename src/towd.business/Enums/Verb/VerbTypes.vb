@@ -41,7 +41,7 @@ Public Module VerbTypes
         }.
         ToDictionary(Function(x) x.VerbType, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(verbType As VerbType) As IVerbType
+    Public Function ToVerbTypeDescriptor(verbType As VerbType) As IVerbType
         Return Descriptors(verbType)
     End Function
 
