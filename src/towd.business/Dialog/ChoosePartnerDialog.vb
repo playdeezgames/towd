@@ -1,4 +1,6 @@
-﻿Friend Class ChoosePartnerDialog
+﻿Imports System.Reflection.Metadata.Ecma335
+
+Friend Class ChoosePartnerDialog
     Implements IDialog
     Const NEVER_MIND_TEXT = "Never Mind"
 
@@ -41,6 +43,6 @@
     End Property
 
     Public Function Choose(choice As String) As IDialog Implements IDialog.Choose
-        Return Nothing
+        Return table(choice)()
     End Function
 End Class

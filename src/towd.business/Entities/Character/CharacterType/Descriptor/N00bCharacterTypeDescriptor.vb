@@ -73,7 +73,14 @@ Friend Class N00bCharacterTypeDescriptor
         If otherCharacter Is Nothing Then
             Return New ChoosePartnerDialog(character)
         Else
-            Return otherCharacter.StartDialog(character)
+            Select Case otherCharacter.EntityType.CharacterType
+                Case CharacterType.THINDLA
+                    Return New THINDLADialog(character, otherCharacter)
+                Case CharacterType.THINDLAsAss
+                    Return New THINDLAsAssDialog(character, otherCharacter)
+                Case Else
+                    Throw New NotImplementedException
+            End Select
         End If
     End Function
 End Class
