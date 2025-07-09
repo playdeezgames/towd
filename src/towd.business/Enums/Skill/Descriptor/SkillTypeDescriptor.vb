@@ -31,15 +31,15 @@ Public MustInherit Class SkillTypeDescriptor
         If Not CanAdvance(character) Then
             If character.GetStatistic(StatisticType) >= maximum Then
                 character.AddMessage(
-                    $"Yer at maximum level {StatisticType.ToDescriptor.Name}!")
+                    $"Yer at maximum level {StatisticType.ToStatisticTypeDescriptor.Name}!")
             Else
                 character.AddMessage(
-                    $"You need {advancementCost} XP to advance yer {StatisticType.ToDescriptor.Name}!",
+                    $"You need {advancementCost} XP to advance yer {StatisticType.ToStatisticTypeDescriptor.Name}!",
                     $"Alas, you have only {xp} XP.")
             End If
             Return False
         End If
-        character.AddMessage($"-{advancementCost} XP", $"+1 {StatisticType.ToDescriptor.Name}")
+        character.AddMessage($"-{advancementCost} XP", $"+1 {StatisticType.ToStatisticTypeDescriptor.Name}")
         character.ChangeStatistic(data.StatisticType.XP, -advancementCost)
         character.ChangeStatistic(StatisticType, 1)
         Return True

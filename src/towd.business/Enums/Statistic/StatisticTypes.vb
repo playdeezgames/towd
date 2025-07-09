@@ -26,7 +26,7 @@ Public Module StatisticTypes
             New StatisticTypeDescriptor(StatisticType.XP, "XP", "Because, like in life, we do random things and collect experience. And the we take that experience and spend it on completely new skills we have never used before, and we are suddenly good at them. Right?")
         }.ToDictionary(Function(x) x.StatisticType, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(statisticType As StatisticType) As IStatisticType
+    Public Function ToStatisticTypeDescriptor(statisticType As StatisticType) As IStatisticType
         Return Descriptors(statisticType)
     End Function
 End Module

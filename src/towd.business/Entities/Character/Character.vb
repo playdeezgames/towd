@@ -208,9 +208,9 @@ Friend Class Character
     Public Sub ReportChangeStatistic(statisticType As StatisticType, delta As Integer) Implements ICharacter.ReportChangeStatistic
         ChangeStatistic(statisticType, delta)
         If delta > 0 Then
-            Me.AppendMessage($"+{delta} {statisticType.ToDescriptor.Name}({GetStatistic(statisticType)})")
+            Me.AppendMessage($"+{delta} {statisticType.ToStatisticTypeDescriptor.Name}({GetStatistic(statisticType)})")
         ElseIf delta < 0 Then
-            Me.AppendMessage($"{delta} {statisticType.ToDescriptor.Name}({GetStatistic(statisticType)})")
+            Me.AppendMessage($"{delta} {statisticType.ToStatisticTypeDescriptor.Name}({GetStatistic(statisticType)})")
         End If
     End Sub
 

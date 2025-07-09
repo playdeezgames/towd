@@ -46,7 +46,7 @@ Friend Class StatisticsState
         Dim character = World.Avatar
         statisticsListView.SetSource(
             character.EntityType.CharacterType.ToDescriptor.StatisticTypes.Select(
-            Function(x) New StatisticsListViewItem(World.Avatar, x.ToDescriptor)).ToList)
+            Function(x) New StatisticsListViewItem(World.Avatar, x.ToStatisticTypeDescriptor)).ToList)
         MyBase.UpdateView()
     End Sub
 End Class

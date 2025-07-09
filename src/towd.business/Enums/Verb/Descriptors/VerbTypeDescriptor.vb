@@ -96,13 +96,13 @@ Public MustInherit Class VerbTypeDescriptor
             If characterStatisticMinimums.Any Then
                 builder.AppendLine("Character Statistic Minimums:")
                 For Each entry In characterStatisticMinimums
-                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToStatisticTypeDescriptor.Name}")
                 Next
             End If
             If characterStatisticMaximums.Any Then
                 builder.AppendLine("Character Statistic Maximums:")
                 For Each entry In characterStatisticMaximums
-                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToStatisticTypeDescriptor.Name}")
                 Next
             End If
             If requiredLocationTypes.Any Then
@@ -114,19 +114,19 @@ Public MustInherit Class VerbTypeDescriptor
             If locationStatisticMinimums.Any Then
                 builder.AppendLine("Location Statistic Minimums:")
                 For Each entry In locationStatisticMinimums
-                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToStatisticTypeDescriptor.Name}")
                 Next
             End If
             If locationStatisticDeltas.Any Then
                 builder.AppendLine("Location Statistic Deltas:")
                 For Each entry In locationStatisticDeltas
-                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToStatisticTypeDescriptor.Name}")
                 Next
             End If
             If characterStatisticDeltas.Any Then
                 builder.AppendLine("Character Statistic Deltas:")
                 For Each entry In characterStatisticDeltas
-                    builder.AppendLine($"  {entry.Value} {entry.Key.ToDescriptor.Name}")
+                    builder.AppendLine($"  {entry.Value} {entry.Key.ToStatisticTypeDescriptor.Name}")
                 Next
             End If
             If buildsLocationType.HasValue Then
@@ -151,7 +151,7 @@ Public MustInherit Class VerbTypeDescriptor
         Next
         For Each entry In characterStatisticDeltas
             character.ChangeStatistic(entry.Key, entry.Value)
-            character.AppendMessage($"{entry.Value} {entry.Key.ToDescriptor.Name}({character.GetStatistic(entry.Key)})")
+            character.AppendMessage($"{entry.Value} {entry.Key.ToStatisticTypeDescriptor.Name}({character.GetStatistic(entry.Key)})")
         Next
         Dim quantities As New Dictionary(Of data.ItemType, Integer)
         For Each entry In itemTypeOutputGenerators
