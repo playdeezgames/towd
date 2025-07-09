@@ -5,9 +5,13 @@ Friend MustInherit Class CharacterTypeDescriptor
     Public ReadOnly Property CharacterType As CharacterType Implements ICharacterType.CharacterType
 
     Public ReadOnly Property Name As String Implements ICharacterType.Name
-    Sub New(characterType As CharacterType, name As String)
+
+    Public ReadOnly Property StatisticTypes As IEnumerable(Of StatisticType) Implements ICharacterType.StatisticTypes
+
+    Sub New(characterType As CharacterType, name As String, statisticTypes As IEnumerable(Of StatisticType))
         Me.CharacterType = characterType
         Me.Name = name
+        Me.StatisticTypes = statisticTypes
     End Sub
 
     Public MustOverride Sub AdvanceTime(character As ICharacter, amount As Integer) Implements ICharacterType.AdvanceTime

@@ -44,7 +44,9 @@ Friend Class StatisticsState
 
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
-        statisticsListView.SetSource(StatisticTypes.Descriptors.Where(Function(x) character.GetStatistic(x.Key) > 0).Select(Function(x) New StatisticsListViewItem(World.Avatar, x.Value)).ToList)
+        statisticsListView.SetSource(
+            character.EntityType.CharacterType.ToDescriptor.StatisticTypes.Select(
+            Function(x) New StatisticsListViewItem(World.Avatar, x.ToDescriptor)).ToList)
         MyBase.UpdateView()
     End Sub
 End Class

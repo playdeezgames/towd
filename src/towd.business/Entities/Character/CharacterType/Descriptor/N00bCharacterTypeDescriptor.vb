@@ -4,7 +4,12 @@ Friend Class N00bCharacterTypeDescriptor
     Inherits CharacterTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.CharacterType.N00b, "N00b")
+        MyBase.New(data.CharacterType.N00b, "N00b",
+                   {
+                    StatisticType.Health,
+                    StatisticType.Satiety,
+                    StatisticType.XP
+                   })
     End Sub
 
     Public Overrides Sub AdvanceTime(character As ICharacter, amount As Integer)
