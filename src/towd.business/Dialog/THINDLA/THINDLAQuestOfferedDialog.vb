@@ -1,4 +1,4 @@
-﻿Friend Class THINDLAQuestGiverDialog
+﻿Friend Class THINDLAQuestOfferedDialog
     Implements IDialog
 
     Private player As ICharacter
@@ -37,6 +37,7 @@
             Case LATER_TEXT
                 Return Nothing
             Case ACCEPT_TEXT
+                player.AddMessage("THINDLA hands you a carrot.")
                 player.SetTag(THINDLADialog.ACCEPTED_TAG, True)
                 Return root
             Case Else

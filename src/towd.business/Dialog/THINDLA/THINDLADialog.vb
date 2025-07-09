@@ -7,10 +7,12 @@
     Private ReadOnly thindla As ICharacter
     Protected Overrides Function CreateSubdialog() As IDialog
         If thindla.HasTag(INTRODUCTION_TAG) Then
-            Return New THINDLAQuestGiverDialog(player, thindla, Me)
-        Else
-            Return New THINDLAIntroductionDialog(player, thindla, Me)
+            If player.HasTag(ACCEPTED_TAG) Then
+                Return New THINDLAQuestAcceptedDialog(player, thindla, Me)
+            End If
+            Return New THINDLAQuestOfferedDialog(player, thindla, Me)
         End If
+        Return New THINDLAIntroductionDialog(player, thindla, Me)
     End Function
     Public Sub New(player As ICharacter, thindla As ICharacter)
         Me.player = player
