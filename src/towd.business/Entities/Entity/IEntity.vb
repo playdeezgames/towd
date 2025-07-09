@@ -14,4 +14,6 @@ Public Interface IEntity(Of TEntityType)
     Sub ChangeStatistic(statisticType As String, delta As Integer)
     Function HasStatistic(statisticType As String) As Boolean
     Sub ClearStatistic(statisticType As String)
+    Sub SetTag(tagType As String, value As Boolean)
+    Function HasTag(tagType As String) As Boolean
 End Interface

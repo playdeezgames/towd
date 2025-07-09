@@ -68,4 +68,16 @@ Friend MustInherit Class Entity(Of TEntityType, TEntityData As EntityData)
     Public Sub ClearStatistic(statisticType As String) Implements IEntity(Of TEntityType).ClearStatistic
         EntityData.Statistics.Remove(statisticType)
     End Sub
+
+    Public Sub SetTag(tagType As String, value As Boolean) Implements IEntity(Of TEntityType).SetTag
+        If value Then
+            EntityData.Tags.Add(tagType)
+        Else
+            EntityData.Tags.Remove(tagType)
+        End If
+    End Sub
+
+    Public Function HasTag(tagType As String) As Boolean Implements IEntity(Of TEntityType).HasTag
+        Return EntityData.Tags.Contains(tagType)
+    End Function
 End Class
