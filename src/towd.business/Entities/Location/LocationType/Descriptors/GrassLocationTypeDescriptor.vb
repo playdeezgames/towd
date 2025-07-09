@@ -8,10 +8,10 @@ Friend Class GrassLocationTypeDescriptor
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)
-        location.SetStatistic(data.StatisticType.ForagingCounter, 30)
-        location.SetStatisticMinimum(data.StatisticType.ForagingCounter, 0)
-        location.SetStatistic(data.StatisticType.Digging, 30)
-        location.SetStatisticMinimum(data.StatisticType.Digging, 0)
+        location.SetStatistic(StatisticType.ForagingCounter, 30)
+        location.SetStatisticMinimum(StatisticType.ForagingCounter, 0)
+        location.SetStatistic(StatisticType.Digging, 30)
+        location.SetStatisticMinimum(StatisticType.Digging, 0)
     End Sub
 
     Public Overrides Sub AdvanceTime(location As ILocation, amount As Integer)
@@ -19,8 +19,8 @@ Friend Class GrassLocationTypeDescriptor
 
     Public Overrides Function Describe(location As ILocation) As String
         Dim builder As New StringBuilder(MyBase.Describe(location))
-        builder.AppendLine($"Foraging Remaining: {location.GetStatistic(data.StatisticType.ForagingCounter)}")
-        builder.AppendLine($"Digging Remaining: {location.GetStatistic(data.StatisticType.Digging)}")
+        builder.AppendLine($"Foraging Remaining: {location.GetStatistic(StatisticType.ForagingCounter)}")
+        builder.AppendLine($"Digging Remaining: {location.GetStatistic(StatisticType.Digging)}")
         Return builder.ToString
     End Function
 End Class

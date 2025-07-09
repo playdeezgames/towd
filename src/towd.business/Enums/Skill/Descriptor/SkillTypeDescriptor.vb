@@ -21,13 +21,13 @@ Public MustInherit Class SkillTypeDescriptor
     End Function
     Public Function CanAdvance(character As ICharacter) As Boolean Implements ISkillType.CanAdvance
         Dim advancementCost = GetAdvancementCost(character)
-        Dim xp = character.GetStatistic(data.StatisticType.XP)
+        Dim xp = character.GetStatistic(business.StatisticType.XP)
         Return character.GetStatistic(StatisticType) < maximum AndAlso xp >= advancementCost
     End Function
 
     Public Function Advance(character As ICharacter) As Boolean Implements ISkillType.Advance
         Dim advancementCost = GetAdvancementCost(character)
-        Dim xp = character.GetStatistic(data.StatisticType.XP)
+        Dim xp = character.GetStatistic(business.StatisticType.XP)
         If Not CanAdvance(character) Then
             If character.GetStatistic(StatisticType) >= maximum Then
                 character.AddMessage(
@@ -40,7 +40,7 @@ Public MustInherit Class SkillTypeDescriptor
             Return False
         End If
         character.AddMessage($"-{advancementCost} XP", $"+1 {StatisticType.ToStatisticTypeDescriptor.Name}")
-        character.ChangeStatistic(data.StatisticType.XP, -advancementCost)
+        character.ChangeStatistic(business.StatisticType.XP, -advancementCost)
         character.ChangeStatistic(StatisticType, 1)
         Return True
     End Function

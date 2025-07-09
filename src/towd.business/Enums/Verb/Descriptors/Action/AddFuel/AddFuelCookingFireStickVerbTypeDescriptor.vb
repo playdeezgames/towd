@@ -7,7 +7,7 @@ Friend Class AddFuelCookingFireStickVerbTypeDescriptor
         MyBase.New(VerbType.AddFuelCookingFireStick, VerbCategoryType.AddFuel, 0)
         SetDisplayName("Add Stick to Cooking Fire")
         SetRequiredLocationType(LocationType.CookingFire)
-        SetLocationStatisticDelta(data.StatisticType.Fuel, 1)
+        SetLocationStatisticDelta(business.StatisticType.Fuel, 1)
         SetItemTypeInput(ItemType.Stick, 1)
     End Sub
 End Class

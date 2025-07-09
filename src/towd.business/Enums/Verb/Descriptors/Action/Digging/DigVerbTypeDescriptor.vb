@@ -8,9 +8,9 @@ Public Class DigVerbTypeDescriptor
         SetDisplayName(name)
         SetRequiredLocationType(requiredLocationType)
         SetItemTypeInputDurability(ItemType.SharpStick, 1)
-        SetLocationStatisticMinimum(data.StatisticType.Digging, 1)
-        SetLocationStatisticDelta(data.StatisticType.Digging, -1)
-        SetCharacterStatisticDelta(data.StatisticType.Digging, 1)
+        SetLocationStatisticMinimum(business.StatisticType.Digging, 1)
+        SetLocationStatisticDelta(business.StatisticType.Digging, -1)
+        SetCharacterStatisticDelta(business.StatisticType.Digging, 1)
         SetItemTypeOutputGenerator(outputItemType, New DigRangeGenerator)
     End Sub
 End Class

@@ -7,7 +7,7 @@ Friend Class AddFuelFurnaceCharcoalVerbTypeDescriptor
         MyBase.New(VerbType.AddFuelFurnaceCharcoal, VerbCategoryType.AddFuel, 0)
         SetDisplayName("Add Charcoal to Furnace")
         SetRequiredLocationType(LocationType.Furnace)
-        SetLocationStatisticDelta(data.StatisticType.Fuel, 4)
+        SetLocationStatisticDelta(business.StatisticType.Fuel, 4)
         SetItemTypeInput(ItemType.Charcoal, 1)
     End Sub
 End Class

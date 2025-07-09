@@ -8,8 +8,8 @@ Friend Class RockLocationTypeDescriptor
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)
-        location.SetStatistic(data.StatisticType.ForagingCounter, 30)
-        location.SetStatisticMinimum(data.StatisticType.ForagingCounter, 0)
+        location.SetStatistic(StatisticType.ForagingCounter, 30)
+        location.SetStatisticMinimum(StatisticType.ForagingCounter, 0)
     End Sub
 
 
@@ -18,7 +18,7 @@ Friend Class RockLocationTypeDescriptor
 
     Public Overrides Function Describe(location As ILocation) As String
         Dim builder As New StringBuilder(MyBase.Describe(location))
-        builder.AppendLine($"Foraging Remaining: {location.GetStatistic(data.StatisticType.ForagingCounter)}")
+        builder.AppendLine($"Foraging Remaining: {location.GetStatistic(StatisticType.ForagingCounter)}")
         Return builder.ToString
     End Function
 End Class

@@ -19,6 +19,6 @@
     End Sub
 
     Public Overrides Function HasDone(character As ICharacter) As Boolean
-        Return character.GetStatistic(data.StatisticType.CraftCounter) >= craftCount
+        Return character.GetStatistic(StatisticType.CraftCounter) >= craftCount
     End Function
 End Class

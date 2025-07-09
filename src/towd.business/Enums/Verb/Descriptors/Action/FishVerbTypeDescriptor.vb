@@ -8,9 +8,9 @@ Friend Class FishVerbTypeDescriptor
         SetDisplayName("Fish")
         SetRequiredLocationType(LocationType.Pond)
         SetItemTypeInputDurability(ItemType.FishingNet, 1)
-        SetLocationStatisticMinimum(data.StatisticType.Fishing, 1)
-        SetLocationStatisticDelta(data.StatisticType.Fishing, -1)
-        SetCharacterStatisticDelta(data.StatisticType.Fishing, 1)
+        SetLocationStatisticMinimum(business.StatisticType.Fishing, 1)
+        SetLocationStatisticDelta(business.StatisticType.Fishing, -1)
+        SetCharacterStatisticDelta(business.StatisticType.Fishing, 1)
         SetItemTypeOutputGenerator(ItemType.RawFish, New FishRangeGenerator)
     End Sub
 End Class

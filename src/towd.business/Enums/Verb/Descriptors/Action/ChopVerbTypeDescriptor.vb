@@ -8,9 +8,9 @@ Friend Class ChopVerbTypeDescriptor
         SetDisplayName("Chop")
         SetRequiredLocationType(LocationType.Pine)
         SetItemTypeInputDurability(ItemType.Hatchet, 1)
-        SetLocationStatisticMinimum(data.StatisticType.Chopping, 1)
-        SetLocationStatisticDelta(data.StatisticType.Chopping, -1)
-        SetCharacterStatisticDelta(data.StatisticType.Chopping, 1)
+        SetLocationStatisticMinimum(business.StatisticType.Chopping, 1)
+        SetLocationStatisticDelta(business.StatisticType.Chopping, -1)
+        SetCharacterStatisticDelta(business.StatisticType.Chopping, 1)
         SetItemTypeOutputGenerator(ItemType.Log, New ChopRangeGenerator)
     End Sub
 End Class

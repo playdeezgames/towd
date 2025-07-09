@@ -2,14 +2,12 @@
     Implements IDialog
 
     Private player As ICharacter
-    Private thindla As ICharacter
     Private root As THINDLADialog
     Const ACCEPT_TEXT = "Sure, I'll find yer hairy ass."
     Const LATER_TEXT = "...Maybe later."
 
-    Public Sub New(player As ICharacter, thindla As ICharacter, root As THINDLADialog)
+    Public Sub New(player As ICharacter, root As THINDLADialog)
         Me.player = player
-        Me.thindla = thindla
         Me.root = root
     End Sub
 
@@ -39,7 +37,7 @@
             Case ACCEPT_TEXT
                 player.AddMessage("THINDLA hands you a carrot.")
                 player.SetTag(THINDLADialog.ACCEPTED_TAG, True)
-                Return root
+                Return Nothing
             Case Else
                 Throw New NotImplementedException
         End Select

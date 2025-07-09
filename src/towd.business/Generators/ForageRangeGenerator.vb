@@ -6,7 +6,7 @@
     End Function
 
     Public Function GetMaximum(character As ICharacter) As Integer Implements ICharacterWeightedGenerator.GetMaximum
-        Return character.GetStatistic(data.StatisticType.ForagingSkill)
+        Return character.GetStatistic(business.StatisticType.ForagingSkill)
     End Function
 
     Public Function Generate(character As ICharacter) As Integer Implements ICharacterWeightedGenerator.Generate

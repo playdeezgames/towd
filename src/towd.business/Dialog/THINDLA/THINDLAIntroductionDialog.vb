@@ -2,14 +2,12 @@
     Implements IDialog
 
     Private ReadOnly player As ICharacter
-    Private ReadOnly thindla As ICharacter
     Private ReadOnly root As IDialog
     Const BYE_TEXT = "..."
     Const ASS_TEXT = "Hairy ass?"
 
-    Public Sub New(player As ICharacter, thindla As ICharacter, root As IDialog)
+    Public Sub New(player As ICharacter, root As IDialog)
         Me.player = player
-        Me.thindla = thindla
         Me.root = root
     End Sub
 
@@ -38,7 +36,7 @@
             Case BYE_TEXT
                 Return Nothing
             Case ASS_TEXT
-                thindla.SetTag(THINDLADialog.INTRODUCTION_TAG, True)
+                player.SetTag(THINDLADialog.INTRODUCTION_TAG, True)
                 Return root
             Case Else
                 Throw New NotImplementedException

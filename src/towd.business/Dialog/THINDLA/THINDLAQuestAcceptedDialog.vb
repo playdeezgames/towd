@@ -2,12 +2,10 @@
     Implements IDialog
 
     Private player As ICharacter
-    Private thindla As ICharacter
     Private root As THINDLADialog
 
-    Public Sub New(player As ICharacter, thindla As ICharacter, root As THINDLADialog)
+    Public Sub New(player As ICharacter, root As THINDLADialog)
         Me.player = player
-        Me.thindla = thindla
         Me.root = root
     End Sub
 

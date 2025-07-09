@@ -19,6 +19,6 @@
     End Sub
 
     Public Overrides Function HasDone(character As ICharacter) As Boolean
-        Return character.GetStatistic(data.StatisticType.BuildCounter) >= buildCount
+        Return character.GetStatistic(StatisticType.BuildCounter) >= buildCount
     End Function
 End Class
