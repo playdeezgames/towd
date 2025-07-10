@@ -6,7 +6,7 @@ Public Class ForageVerbTypeDescriptor
     Public Sub New(
                   verbType As VerbType,
                   name As String,
-                  requiredLocationType As LocationType,
+                  requiredLocationType As String,
                   outputItemType As String)
         MyBase.New(verbType, VerbCategoryType.Forage, 1)
         SetDisplayName(name)

@@ -10,9 +10,9 @@ Public MustInherit Class VerbTypeDescriptor
     Private ReadOnly itemTypeInputDurabilities As New Dictionary(Of String, Integer)
     Private ReadOnly characterStatisticMinimums As New Dictionary(Of String, Integer)
     Private ReadOnly characterStatisticMaximums As New Dictionary(Of String, Integer)
-    Private ReadOnly requiredLocationTypes As New HashSet(Of data.LocationType)
+    Private ReadOnly requiredLocationTypes As New HashSet(Of String)
     Private ReadOnly itemTypeOutputGenerators As New Dictionary(Of String, ICharacterWeightedGenerator)
-    Private buildsLocationType As data.LocationType? = Nothing
+    Private buildsLocationType As String = Nothing
     Private displayName As String = Nothing
     Private ReadOnly timeTaken As Integer
     Protected Sub SetDisplayName(displayName As String)
@@ -27,10 +27,10 @@ Public MustInherit Class VerbTypeDescriptor
     Protected Sub SetCharacterStatisticDelta(statisticType As String, delta As Integer)
         characterStatisticDeltas(statisticType) = delta
     End Sub
-    Protected Sub SetBuildsLocationType(locationType As data.LocationType?)
+    Protected Sub SetBuildsLocationType(locationType As String)
         Me.buildsLocationType = locationType
     End Sub
-    Protected Sub SetRequiredLocationType(locationType As data.LocationType)
+    Protected Sub SetRequiredLocationType(locationType As String)
         requiredLocationTypes.Add(locationType)
     End Sub
     Protected Sub SetCharacterStatisticMinimum(statisticType As String, minimum As Integer)
@@ -64,8 +64,8 @@ Public MustInherit Class VerbTypeDescriptor
             builder.Append(String.Join("+"c, itemTypeInputs.Select(Function(x) $"{x.Value} {x.Key.ToItemTypeDescriptor.Name}")))
             builder.Append("->")
             Dim outputs = itemTypeOutputGenerators.Select(Function(x) $"{x.Value} {x.Key.ToItemTypeDescriptor.Name}").ToList
-            If buildsLocationType.HasValue Then
-                outputs.Add($"Builds {buildsLocationType.Value.ToLocationTypeDescriptor.Name}")
+            If buildsLocationType IsNot Nothing Then
+                outputs.Add($"Builds {buildsLocationType.ToLocationTypeDescriptor.Name}")
             End If
             builder.Append(String.Join("+"c, outputs))
             Return builder.ToString()
@@ -129,8 +129,8 @@ Public MustInherit Class VerbTypeDescriptor
                     builder.AppendLine($"  {entry.Value} {entry.Key.ToStatisticTypeDescriptor.Name}")
                 Next
             End If
-            If buildsLocationType.HasValue Then
-                builder.AppendLine($"Builds: {buildsLocationType.Value.ToLocationTypeDescriptor.Name}")
+            If buildsLocationType IsNot Nothing Then
+                builder.AppendLine($"Builds: {buildsLocationType.ToLocationTypeDescriptor.Name}")
             End If
             Return builder.ToString()
         End Get
@@ -182,9 +182,9 @@ Public MustInherit Class VerbTypeDescriptor
                 character.ChangeItemDurability(item, -1)
             Next
         Next
-        If buildsLocationType.HasValue Then
-            character.Location.EntityType = buildsLocationType.Value.ToLocationTypeDescriptor
-            character.AppendMessage($"Changed location to {buildsLocationType.Value.ToLocationTypeDescriptor.Name}.")
+        If buildsLocationType IsNot Nothing Then
+            character.Location.EntityType = buildsLocationType.ToLocationTypeDescriptor
+            character.AppendMessage($"Changed location to {buildsLocationType.ToLocationTypeDescriptor.Name}.")
         End If
         character.World.AdvanceTime(timeTaken)
     End Sub

@@ -2,7 +2,7 @@
 
 Public MustInherit Class MapTypeDescriptor
     Implements IMapType
-    ReadOnly defaultLocationType As LocationType
+    ReadOnly defaultLocationType As String
 
     Sub New(
            mapType As String,
@@ -10,7 +10,7 @@ Public MustInherit Class MapTypeDescriptor
            spawnCount As Integer,
            columns As Integer,
            rows As Integer,
-           defaultLocationType As LocationType)
+           defaultLocationType As String)
         Me.MapType = mapType
         Me.Name = name
         Me.defaultLocationType = defaultLocationType

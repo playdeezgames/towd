@@ -6,7 +6,7 @@ Public Class DigVerbTypeDescriptor
     Public Sub New(
                   verbType As VerbType,
                   name As String,
-                  requiredLocationType As LocationType,
+                  requiredLocationType As String,
                   outputItemType As String)
         MyBase.New(verbType, VerbCategoryType.Dig, 1)
         SetDisplayName(name)

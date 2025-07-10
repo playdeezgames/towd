@@ -5,7 +5,7 @@
         MyBase.New(
             VerbType.ForageGrass,
             "Forage(Plant Fibers)",
-            data.LocationType.Grass,
+            business.LocationType.Grass,
             business.ItemType.PlantFiber)
     End Sub
 End Class

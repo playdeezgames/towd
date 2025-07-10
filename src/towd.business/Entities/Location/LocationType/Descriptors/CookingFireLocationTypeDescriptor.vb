@@ -4,7 +4,7 @@ Friend Class CookingFireLocationTypeDescriptor
     Inherits LocationTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.LocationType.CookingFire, "Cooking Fire", "f"c)
+        MyBase.New(business.LocationType.CookingFire, "Cooking Fire", "f"c)
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)
@@ -15,7 +15,7 @@ Friend Class CookingFireLocationTypeDescriptor
     Public Overrides Sub AdvanceTime(location As ILocation, amount As Integer)
         location.ChangeStatistic(StatisticType.Fuel, -1)
         If location.GetStatistic(StatisticType.Fuel) <= 0 Then
-            location.EntityType = data.LocationType.Dirt.ToLocationTypeDescriptor
+            location.EntityType = business.LocationType.Dirt.ToLocationTypeDescriptor
         End If
     End Sub
 

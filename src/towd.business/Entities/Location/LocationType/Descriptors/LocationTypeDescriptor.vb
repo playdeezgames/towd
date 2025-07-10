@@ -3,13 +3,13 @@ Imports towd.data
 
 Friend MustInherit Class LocationTypeDescriptor
     Implements ILocationType
-    Public ReadOnly Property LocationType As LocationType Implements ILocationType.LocationType
+    Public ReadOnly Property LocationType As String Implements ILocationType.LocationType
 
     Public ReadOnly Property Name As String Implements ILocationType.Name
 
     Public ReadOnly Property MapLegend As Char Implements ILocationType.MapLegend
 
-    Sub New(locationType As LocationType, name As String, mapLegend As Char)
+    Sub New(locationType As String, name As String, mapLegend As Char)
         Me.LocationType = locationType
         Me.Name = name
         Me.MapLegend = mapLegend

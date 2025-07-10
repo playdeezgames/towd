@@ -5,7 +5,7 @@
         MyBase.New(
             VerbType.ForageRock,
             "Forage(Rocks)",
-            data.LocationType.Rock,
+            business.LocationType.Rock,
             business.ItemType.Rock)
     End Sub
 End Class

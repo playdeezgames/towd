@@ -2,7 +2,7 @@
 Imports towd.data
 
 Public Module LocationTypes
-    Public ReadOnly Descriptors As IReadOnlyDictionary(Of LocationType, ILocationType) =
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of String, ILocationType) =
         New List(Of ILocationType) From
         {
             New GrassLocationTypeDescriptor(),
@@ -15,7 +15,7 @@ Public Module LocationTypes
         }.
         ToDictionary(Function(x) x.LocationType, Function(x) x)
     <Extension>
-    Friend Function ToLocationTypeDescriptor(locationType As LocationType) As ILocationType
+    Friend Function ToLocationTypeDescriptor(locationType As String) As ILocationType
         Return Descriptors(locationType)
     End Function
 End Module

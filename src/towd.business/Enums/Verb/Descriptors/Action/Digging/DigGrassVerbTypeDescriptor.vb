@@ -5,7 +5,7 @@
         MyBase.New(
             VerbType.DigGrass,
             "Dig(Grubs)",
-            data.LocationType.Grass,
+            business.LocationType.Grass,
             business.ItemType.Grub)
     End Sub
 End Class

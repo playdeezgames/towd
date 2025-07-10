@@ -5,7 +5,7 @@
         MyBase.New(
             VerbType.ForagePine,
             "Forage(Sticks)",
-            data.LocationType.Pine,
+            business.LocationType.Pine,
             business.ItemType.Stick)
     End Sub
 End Class

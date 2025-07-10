@@ -4,7 +4,7 @@ Friend Class GrassLocationTypeDescriptor
     Inherits LocationTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.LocationType.Grass, "Grass", "g"c)
+        MyBase.New(business.LocationType.Grass, "Grass", "g"c)
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)

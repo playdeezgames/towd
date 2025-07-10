@@ -5,7 +5,7 @@
         MyBase.New(
             VerbType.DigPond,
             "Dig(Clay)",
-            data.LocationType.Pond,
+            business.LocationType.Pond,
             business.ItemType.Clay)
     End Sub
 End Class
