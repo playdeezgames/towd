@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.SharpStick, "Sharp Stick", False, "A pointed branch. 
+        MyBase.New(business.ItemType.SharpStick, "Sharp Stick", False, "A pointed branch. 
 Jab at danger or fish with it—its edge is your edge, if you wield it right.")
     End Sub
 

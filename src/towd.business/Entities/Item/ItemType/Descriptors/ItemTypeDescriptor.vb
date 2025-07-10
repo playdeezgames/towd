@@ -3,7 +3,7 @@
 Public MustInherit Class ItemTypeDescriptor
     Implements IItemType
     Sub New(
-           itemType As ItemType,
+           itemType As String,
            name As String,
            isAggregate As Boolean,
            description As String,
@@ -14,7 +14,7 @@ Public MustInherit Class ItemTypeDescriptor
         Me.Description = description
         Me.Statistics = If(statistics, New Dictionary(Of String, Integer))
     End Sub
-    Public ReadOnly Property ItemType As ItemType Implements IItemType.ItemType
+    Public ReadOnly Property ItemType As String Implements IItemType.ItemType
     Public ReadOnly Property Name As String Implements IItemType.Name
     Public ReadOnly Property IsAggregate As Boolean Implements IItemType.IsAggregate
     Public ReadOnly Property Description As String Implements IItemType.Description

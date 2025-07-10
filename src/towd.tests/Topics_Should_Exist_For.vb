@@ -14,14 +14,4 @@ Public Class Topics_Should_Exist_For
             End Try
         Next
     End Sub
-    <Fact>
-    Public Sub Item_Types()
-        For Each sut In [Enum].GetValues(Of ItemType)
-            Try
-                Topics.ItemTypeTopicTable.ContainsKey(sut).ShouldBeTrue($"ItemType.{sut} Should Have a Topic")
-            Catch ex As Exception
-                Assert.Fail($"ItemType.{sut} Should Have a Topic")
-            End Try
-        Next
-    End Sub
 End Class

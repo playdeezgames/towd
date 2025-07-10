@@ -49,8 +49,8 @@ Public Module Topics
             {VerbType.AddFuelCookingFireStick, Topic.VerbTypeAddFuelCookingFireStick},
             {VerbType.AddFuelFurnaceCharcoal, Topic.VerbTypeAddFuelFurnaceCharcoal}
         }
-    Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of ItemType, Topic) =
-        New Dictionary(Of ItemType, Topic) From
+    Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of String, Topic) =
+        New Dictionary(Of String, Topic) From
         {
             {ItemType.PlantFiber, Topic.ItemTypePlantFiber},
             {ItemType.Stick, Topic.ItemTypeStick},

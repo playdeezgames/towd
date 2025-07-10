@@ -2,7 +2,7 @@
 Imports towd.data
 
 Public Module ItemTypes
-    Friend ReadOnly Descriptors As IReadOnlyDictionary(Of ItemType, IItemType) =
+    Friend ReadOnly Descriptors As IReadOnlyDictionary(Of String, IItemType) =
         New List(Of IItemType) From
         {
             New PlantFiberItemTypeDescriptor(),
@@ -33,7 +33,7 @@ Public Module ItemTypes
         }.
         ToDictionary(Function(x) x.ItemType, Function(x) x)
     <Extension>
-    Public Function ToItemTypeDescriptor(itemType As ItemType) As IItemType
+    Public Function ToItemTypeDescriptor(itemType As String) As IItemType
         Return Descriptors(itemType)
     End Function
 End Module

@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.RawFishFilet, "Raw Fish Filet", True, "A sliced fish portion. 
+        MyBase.New(business.ItemType.RawFishFilet, "Raw Fish Filet", True, "A sliced fish portion. 
 Cook it for a meal, but don’t let it rot—freshness is fleeting.")
     End Sub
 

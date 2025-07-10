@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Hammer, "Hammer", False, "A crude pounding tool. 
+        MyBase.New(business.ItemType.Hammer, "Hammer", False, "A crude pounding tool. 
 Shape wood or stone, but swing true—missteps cost time and temper.")
     End Sub
 

@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Brick, "Brick", True, "A fired clay stronghold. 
+        MyBase.New(business.ItemType.Brick, "Brick", True, "A fired clay stronghold. 
 Build walls or barter it—its durability is your defense.")
     End Sub
 

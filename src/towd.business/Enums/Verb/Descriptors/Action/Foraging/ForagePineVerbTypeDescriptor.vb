@@ -6,6 +6,6 @@
             VerbType.ForagePine,
             "Forage(Sticks)",
             data.LocationType.Pine,
-            data.ItemType.Stick)
+            business.ItemType.Stick)
     End Sub
 End Class

@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.FishGuts, "Fish Guts", True, "The fish’s slimy innards. 
+        MyBase.New(business.ItemType.FishGuts, "Fish Guts", True, "The fish’s slimy innards. 
 Fertilize with it or bait a trap—waste not, want not.")
     End Sub
 

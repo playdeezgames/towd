@@ -5,16 +5,6 @@ Imports Xunit
 Namespace towd.business.tests
     Public Class Enumeration_Values_Should_Have_Descriptors_For
         <Fact>
-        Sub Item_Types()
-            For Each sut In [Enum].GetValues(Of ItemType)
-                Try
-                    sut.ToItemTypeDescriptor.ShouldNotBeNull($"{sut}'s Descriptor Should Not Be Null")
-                Catch ex As Exception
-                    Assert.Fail($"{sut}'s Descriptor Should Exist")
-                End Try
-            Next
-        End Sub
-        <Fact>
         Sub Verb_Types()
             For Each sut In [Enum].GetValues(Of VerbType)
                 Try

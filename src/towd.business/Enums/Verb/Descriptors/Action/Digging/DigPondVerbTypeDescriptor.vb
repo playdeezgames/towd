@@ -6,6 +6,6 @@
             VerbType.DigPond,
             "Dig(Clay)",
             data.LocationType.Pond,
-            data.ItemType.Clay)
+            business.ItemType.Clay)
     End Sub
 End Class

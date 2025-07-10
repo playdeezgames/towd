@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.Charcoal, "Charcoal", True, "Burned wood residue. 
+        MyBase.New(business.ItemType.Charcoal, "Charcoal", True, "Burned wood residue. 
 Fuel a furnace or sketch plans—its dark heart holds hidden uses.")
     End Sub
 

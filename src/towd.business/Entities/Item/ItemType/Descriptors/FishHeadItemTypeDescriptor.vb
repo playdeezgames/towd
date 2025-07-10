@@ -2,7 +2,7 @@
     Inherits ItemTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.ItemType.FishHead, "Fish Head", True, "The fish’s bony crown. 
+        MyBase.New(business.ItemType.FishHead, "Fish Head", True, "The fish’s bony crown. 
 Use it as bait or discard it—every part has a purpose.")
     End Sub
 

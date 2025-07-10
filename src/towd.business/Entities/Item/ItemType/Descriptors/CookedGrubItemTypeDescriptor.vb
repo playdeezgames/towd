@@ -5,7 +5,7 @@ Friend Class CookedGrubItemTypeDescriptor
 
     Public Sub New()
         MyBase.New(
-            data.ItemType.CookedGrub,
+            business.ItemType.CookedGrub,
             "Cooked Grub",
             True,
             "A roasted grub delicacy. 

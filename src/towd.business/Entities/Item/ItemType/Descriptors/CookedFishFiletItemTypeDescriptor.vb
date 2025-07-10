@@ -5,7 +5,7 @@ Friend Class CookedFishFiletItemTypeDescriptor
 
     Public Sub New()
         MyBase.New(
-            data.ItemType.CookedFishFilet,
+            business.ItemType.CookedFishFilet,
             "Cooked Fish Filet",
             True,
             "A grilled fish slice. 

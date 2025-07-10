@@ -6,12 +6,12 @@ Public MustInherit Class VerbTypeDescriptor
     Private ReadOnly locationStatisticMinimums As New Dictionary(Of String, Integer)
     Private ReadOnly locationStatisticDeltas As New Dictionary(Of String, Integer)
     Private ReadOnly characterStatisticDeltas As New Dictionary(Of String, Integer)
-    Private ReadOnly itemTypeInputs As New Dictionary(Of data.ItemType, Integer)
-    Private ReadOnly itemTypeInputDurabilities As New Dictionary(Of data.ItemType, Integer)
+    Private ReadOnly itemTypeInputs As New Dictionary(Of String, Integer)
+    Private ReadOnly itemTypeInputDurabilities As New Dictionary(Of String, Integer)
     Private ReadOnly characterStatisticMinimums As New Dictionary(Of String, Integer)
     Private ReadOnly characterStatisticMaximums As New Dictionary(Of String, Integer)
     Private ReadOnly requiredLocationTypes As New HashSet(Of data.LocationType)
-    Private ReadOnly itemTypeOutputGenerators As New Dictionary(Of data.ItemType, ICharacterWeightedGenerator)
+    Private ReadOnly itemTypeOutputGenerators As New Dictionary(Of String, ICharacterWeightedGenerator)
     Private buildsLocationType As data.LocationType? = Nothing
     Private displayName As String = Nothing
     Private ReadOnly timeTaken As Integer
@@ -39,13 +39,13 @@ Public MustInherit Class VerbTypeDescriptor
     Protected Sub SetCharacterStatisticMaximum(statisticType As String, maximum As Integer)
         characterStatisticMaximums(statisticType) = maximum
     End Sub
-    Protected Sub SetItemTypeInput(itemType As data.ItemType, quantity As Integer)
+    Protected Sub SetItemTypeInput(itemType As String, quantity As Integer)
         itemTypeInputs(itemType) = quantity
     End Sub
-    Protected Sub SetItemTypeInputDurability(itemType As data.ItemType, quantity As Integer)
+    Protected Sub SetItemTypeInputDurability(itemType As String, quantity As Integer)
         itemTypeInputDurabilities(itemType) = quantity
     End Sub
-    Protected Sub SetItemTypeOutputGenerator(itemType As data.ItemType, generator As ICharacterWeightedGenerator)
+    Protected Sub SetItemTypeOutputGenerator(itemType As String, generator As ICharacterWeightedGenerator)
         itemTypeOutputGenerators(itemType) = generator
     End Sub
     Sub New(verbType As VerbType, verbCategoryType As VerbCategoryType, timeTaken As Integer)
@@ -153,7 +153,7 @@ Public MustInherit Class VerbTypeDescriptor
             character.ChangeStatistic(entry.Key, entry.Value)
             character.AppendMessage($"{entry.Value} {entry.Key.ToStatisticTypeDescriptor.Name}({character.GetStatistic(entry.Key)})")
         Next
-        Dim quantities As New Dictionary(Of data.ItemType, Integer)
+        Dim quantities As New Dictionary(Of String, Integer)
         For Each entry In itemTypeOutputGenerators
             quantities(entry.Key) = entry.Value.Generate(character)
         Next

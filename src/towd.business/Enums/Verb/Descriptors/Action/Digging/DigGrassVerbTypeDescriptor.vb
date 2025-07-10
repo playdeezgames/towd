@@ -6,6 +6,6 @@
             VerbType.DigGrass,
             "Dig(Grubs)",
             data.LocationType.Grass,
-            data.ItemType.Grub)
+            business.ItemType.Grub)
     End Sub
 End Class

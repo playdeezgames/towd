@@ -6,6 +6,6 @@
             VerbType.ForageGrass,
             "Forage(Plant Fibers)",
             data.LocationType.Grass,
-            data.ItemType.PlantFiber)
+            business.ItemType.PlantFiber)
     End Sub
 End Class
