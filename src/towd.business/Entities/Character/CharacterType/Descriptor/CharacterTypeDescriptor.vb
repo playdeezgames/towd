@@ -2,13 +2,13 @@
 
 Friend MustInherit Class CharacterTypeDescriptor
     Implements ICharacterType
-    Public ReadOnly Property CharacterType As CharacterType Implements ICharacterType.CharacterType
+    Public ReadOnly Property CharacterType As String Implements ICharacterType.CharacterType
 
     Public ReadOnly Property Name As String Implements ICharacterType.Name
 
     Public ReadOnly Property StatisticTypes As IEnumerable(Of String) Implements ICharacterType.StatisticTypes
 
-    Sub New(characterType As CharacterType, name As String, statisticTypes As IEnumerable(Of String))
+    Sub New(characterType As String, name As String, statisticTypes As IEnumerable(Of String))
         Me.CharacterType = characterType
         Me.Name = name
         Me.StatisticTypes = statisticTypes

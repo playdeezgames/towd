@@ -79,9 +79,9 @@ Friend Class N00bCharacterTypeDescriptor
             Return New ChoosePartnerDialog(character)
         Else
             Select Case otherCharacter.EntityType.CharacterType
-                Case CharacterType.THINDLA
+                Case data.CharacterType.THINDLA
                     Return New THINDLADialog(character)
-                Case CharacterType.THINDLAsAss
+                Case data.CharacterType.THINDLAsAss
                     Return New THINDLAsAssDialog(character, otherCharacter)
                 Case Else
                     Throw New NotImplementedException

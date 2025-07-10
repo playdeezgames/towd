@@ -3,7 +3,7 @@
 Friend MustInherit Class NPCCharacterTypeDescriptor
     Inherits CharacterTypeDescriptor
 
-    Protected Sub New(characterType As data.CharacterType, name As String)
+    Protected Sub New(characterType As String, name As String)
         MyBase.New(characterType, name, Array.Empty(Of String))
     End Sub
 
