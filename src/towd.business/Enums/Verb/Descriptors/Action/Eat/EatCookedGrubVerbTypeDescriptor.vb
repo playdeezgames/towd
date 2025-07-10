@@ -1,12 +1,9 @@
 ﻿Imports towd.data
 
 Friend Class EatCookedGrubVerbTypeDescriptor
-    Inherits VerbTypeDescriptor
+    Inherits EatVerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.EatCookedGrub, VerbCategoryType.Eat, 0)
-        SetDisplayName("Eat Cooked Grub")
-        SetItemTypeInput(ItemType.CookedGrub, 1)
-        SetCharacterStatisticDelta(StatisticType.Satiety, ItemType.CookedGrub.ToItemTypeDescriptor.Statistics(StatisticType.Satiety))
+        MyBase.New(VerbType.EatCookedGrub, VerbCategoryType.Eat, ItemType.CookedGrub)
     End Sub
 End Class

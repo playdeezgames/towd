@@ -14,6 +14,7 @@
     CookingFire
     DigGrass
     DigPond
+    EatCarrot
     EatCookedFishFilet
     EatCookedGrub
     Fish
