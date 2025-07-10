@@ -4,7 +4,7 @@
 
     Private ReadOnly buildCount As Integer
 
-    Public Sub New(deed As data.Deed, name As String, performCount As Integer, xp As Integer, needed() As data.Deed)
+    Public Sub New(deed As String, name As String, performCount As Integer, xp As Integer, needed() As String)
         MyBase.New(deed, name, xp, needed)
         Me.buildCount = performCount
     End Sub

@@ -2,15 +2,15 @@
 
 Public MustInherit Class DeedDescriptor
     Implements IDeed
-    Private ReadOnly needed As HashSet(Of data.Deed)
-    Sub New(deed As data.Deed, name As String, xp As Integer, needed As data.Deed())
-        Me.needed = New HashSet(Of data.Deed)(needed)
+    Private ReadOnly needed As HashSet(Of String)
+    Sub New(deed As String, name As String, xp As Integer, needed As String())
+        Me.needed = New HashSet(Of String)(needed)
         Me.Deed = deed
         Me.Name = name
         Me.XP = xp
     End Sub
 
-    Public ReadOnly Property Deed As Deed Implements IDeed.Deed
+    Public ReadOnly Property Deed As String Implements IDeed.Deed
 
     Public ReadOnly Property Name As String Implements IDeed.Name
     Public MustOverride ReadOnly Property Description As String Implements IDeed.Description

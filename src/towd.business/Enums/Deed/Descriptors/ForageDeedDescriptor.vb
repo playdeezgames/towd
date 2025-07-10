@@ -4,7 +4,7 @@ Friend Class ForageDeedDescriptor
     Inherits DeedDescriptor
     Private ReadOnly forageCount As Integer
 
-    Public Sub New(deed As Deed, name As String, forageCount As Integer, xp As Integer, needed As data.Deed())
+    Public Sub New(deed As String, name As String, forageCount As Integer, xp As Integer, needed As String())
         MyBase.New(deed, name, xp, needed)
         Me.forageCount = forageCount
     End Sub

@@ -1,0 +1,18 @@
+﻿Public Module Deed
+    Public Const CraftOnce = "CraftOnce"
+    Public Const CraftTenTimes = "CraftTenTimes"
+    Public Const CraftHundredTimes = "CraftHundredTimes"
+    Public Const CraftThousandTimes = "CraftThousandTimes"
+    Public Const ForageOnce = "ForageOnce"
+    Public Const ForageTenTimes = "ForageTenTimes"
+    Public Const ForageHundredTimes = "ForageHundredTimes"
+    Public Const ForageThousandTimes = "ForageThousandTimes"
+    Public Const MoveOnce = "MoveOnce"
+    Public Const MoveTenTimes = "MoveTenTimes"
+    Public Const MoveHundredTimes = "MoveHundredTimes"
+    Public Const MoveThousandTimes = "MoveThousandTimes"
+    Public Const BuildOnce = "BuildOnce"
+    Public Const BuildTenTimes = "BuildTenTimes"
+    Public Const BuildHundredTimes = "BuildHundredTimes"
+    Public Const BuildThousandTimes = "BuildThousandTimes"
+End Module

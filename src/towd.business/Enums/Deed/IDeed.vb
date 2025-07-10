@@ -1,5 +1,5 @@
 ﻿Public Interface IDeed
-    ReadOnly Property Deed As data.Deed
+    ReadOnly Property Deed As String
     ReadOnly Property Name As String
     ReadOnly Property Description As String
     ReadOnly Property XP As Integer
