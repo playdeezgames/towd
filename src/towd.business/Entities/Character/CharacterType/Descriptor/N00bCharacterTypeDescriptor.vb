@@ -4,7 +4,7 @@ Friend Class N00bCharacterTypeDescriptor
     Inherits CharacterTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.CharacterType.N00b, "N00b",
+        MyBase.New(business.CharacterType.N00b, "N00b",
                    {
                     StatisticType.Health,
                     StatisticType.Satiety,
@@ -79,9 +79,9 @@ Friend Class N00bCharacterTypeDescriptor
             Return New ChoosePartnerDialog(character)
         Else
             Select Case otherCharacter.EntityType.CharacterType
-                Case data.CharacterType.THINDLA
+                Case business.CharacterType.THINDLA
                     Return New THINDLADialog(character)
-                Case data.CharacterType.THINDLAsAss
+                Case business.CharacterType.THINDLAsAss
                     Return New THINDLAsAssDialog(character, otherCharacter)
                 Case Else
                     Throw New NotImplementedException

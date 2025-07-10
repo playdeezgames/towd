@@ -2,7 +2,7 @@
     Inherits NPCCharacterTypeDescriptor
 
     Public Sub New()
-        MyBase.New(data.CharacterType.THINDLAsAss, "THINDLA's Hairy Ass")
+        MyBase.New(business.CharacterType.THINDLAsAss, "THINDLA's Hairy Ass")
     End Sub
 
     Public Overrides Sub AdvanceTime(character As ICharacter, amount As Integer)
