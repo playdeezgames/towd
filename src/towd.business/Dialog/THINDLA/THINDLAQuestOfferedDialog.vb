@@ -2,11 +2,11 @@
     Implements IDialog
 
     Private player As ICharacter
-    Private root As THINDLADialog
+    Private root As IDialog
     Const ACCEPT_TEXT = "Sure, I'll find yer hairy ass."
     Const LATER_TEXT = "...Maybe later."
 
-    Public Sub New(player As ICharacter, root As THINDLADialog)
+    Public Sub New(player As ICharacter, root As IDialog)
         Me.player = player
         Me.root = root
     End Sub

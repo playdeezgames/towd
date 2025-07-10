@@ -1,10 +1,13 @@
 ﻿Friend Class THINDLAQuestAcceptedDialog
     Implements IDialog
+    Const NEED_CARROT = "I need another carrot..."
+    Const BYE = "I'm trying...."
 
-    Private player As ICharacter
-    Private root As THINDLADialog
+    Private ReadOnly player As ICharacter
+    Private ReadOnly thindla As ICharacter
+    Private ReadOnly root As IDialog
 
-    Public Sub New(player As ICharacter, root As THINDLADialog)
+    Public Sub New(player As ICharacter, thindla As ICharacter, root As IDialog)
         Me.player = player
         Me.root = root
     End Sub
@@ -17,7 +20,10 @@
 
     Public ReadOnly Property Choices As IEnumerable(Of String) Implements IDialog.Choices
         Get
-            Return {"I'm trying...."}
+            If player.GetCountOfItemType(ItemType.Carrot.ToItemTypeDescriptor) = 0 Then
+                Return {NEED_CARROT}
+            End If
+            Return {BYE}
         End Get
     End Property
 
@@ -28,6 +34,20 @@
     End Property
 
     Public Function Choose(choice As String) As IDialog Implements IDialog.Choose
+        Select Case choice
+            Case NEED_CARROT
+                Return NeedsCarrot()
+            Case BYE
+                Return Nothing
+            Case Else
+                Throw New NotImplementedException
+        End Select
+    End Function
+
+    Private Function NeedsCarrot() As IDialog
+        'TODO: check THINDLA's patience!
+        player.AppendMessage("THINDLA gives you another carrot.")
+        player.AddItem(player.World.CreateItem(ItemType.Carrot.ToItemTypeDescriptor))
         Return Nothing
     End Function
 End Class

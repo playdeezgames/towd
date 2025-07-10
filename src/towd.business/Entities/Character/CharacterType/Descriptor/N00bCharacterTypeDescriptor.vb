@@ -80,7 +80,7 @@ Friend Class N00bCharacterTypeDescriptor
         Else
             Select Case otherCharacter.EntityType.CharacterType
                 Case business.CharacterType.THINDLA
-                    Return New THINDLADialog(character)
+                    Return New THINDLADialog(character, otherCharacter)
                 Case business.CharacterType.THINDLAsAss
                     Return New THINDLAsAssDialog(character, otherCharacter)
                 Case Else
