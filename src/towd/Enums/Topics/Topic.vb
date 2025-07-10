@@ -74,4 +74,5 @@
     VerbTypeCharcoalFromFurnace
     NavigationStatistics
     NavigationDialog
+    ItemTypeCarrot
 End Enum

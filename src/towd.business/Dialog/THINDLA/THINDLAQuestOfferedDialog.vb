@@ -35,7 +35,8 @@
             Case LATER_TEXT
                 Return Nothing
             Case ACCEPT_TEXT
-                player.AddMessage("THINDLA hands you a carrot.")
+                player.AppendMessage("THINDLA hands you a carrot.")
+                player.AddItem(player.World.CreateItem(ItemType.Carrot.ToItemTypeDescriptor))
                 player.SetTag(THINDLADialog.ACCEPTED_TAG, True)
                 Return Nothing
             Case Else
