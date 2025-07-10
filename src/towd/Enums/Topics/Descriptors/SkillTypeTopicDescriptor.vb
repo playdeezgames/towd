@@ -4,13 +4,13 @@ Imports towd.business
 Friend Class SkillTypeTopicDescriptor
     Implements ITopic
 
-    Public Sub New(topic As Topic, skillType As SkillType)
+    Public Sub New(topic As Topic, skillType As String)
         Me.Topic = topic
         Me.SkillType = skillType
     End Sub
 
     Public ReadOnly Property Topic As Topic Implements ITopic.Topic
-    Private ReadOnly SkillType As SkillType
+    Private ReadOnly SkillType As String
 
     Public ReadOnly Property Title As String Implements ITopic.Title
         Get

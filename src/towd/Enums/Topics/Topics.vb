@@ -3,8 +3,8 @@ Imports towd.business
 Imports towd.data
 
 Public Module Topics
-    Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of SkillType, Topic) =
-        New Dictionary(Of SkillType, Topic) From
+    Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of String, Topic) =
+        New Dictionary(Of String, Topic) From
         {
             {SkillType.Foraging, Topic.SkillTypeForaging},
             {SkillType.Dig, Topic.SkillTypeDig},

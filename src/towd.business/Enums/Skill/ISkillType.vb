@@ -1,7 +1,7 @@
 ﻿Imports towd.data
 
 Public Interface ISkillType
-    ReadOnly Property SkillType As SkillType
+    ReadOnly Property SkillType As String
     ReadOnly Property Name As String
     ReadOnly Property Description As String
     ReadOnly Property StatisticType As String

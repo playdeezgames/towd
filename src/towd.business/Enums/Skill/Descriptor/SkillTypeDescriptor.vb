@@ -3,14 +3,14 @@
 Public MustInherit Class SkillTypeDescriptor
     Implements ISkillType
 
-    Sub New(skillType As SkillType, name As String, statisticType As String, maximum As Integer, description As String)
+    Sub New(skillType As String, name As String, statisticType As String, maximum As Integer, description As String)
         Me.SkillType = skillType
         Me.Name = name
         Me.StatisticType = statisticType
         Me.Description = description
         Me.maximum = maximum
     End Sub
-    Public ReadOnly Property SkillType As SkillType Implements ISkillType.SkillType
+    Public ReadOnly Property SkillType As String Implements ISkillType.SkillType
     Public ReadOnly Property Name As String Implements ISkillType.Name
     Public ReadOnly Property StatisticType As String Implements ISkillType.StatisticType
     Public ReadOnly Property Description As String Implements ISkillType.Description

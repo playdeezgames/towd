@@ -2,7 +2,7 @@
 Imports towd.data
 
 Public Module SkillTypes
-    Public ReadOnly Descriptors As IReadOnlyDictionary(Of SkillType, ISkillType) =
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of String, ISkillType) =
         New List(Of ISkillType) From
         {
             New ForagingSkillTypeDescriptor(),
@@ -12,7 +12,7 @@ Public Module SkillTypes
             New FishSkillTypeDescriptor()
         }.ToDictionary(Function(x) x.SkillType, Function(x) x)
     <Extension>
-    Public Function ToSkillTypeDescriptor(skillType As SkillType) As ISkillType
+    Public Function ToSkillTypeDescriptor(skillType As String) As ISkillType
         Return Descriptors(skillType)
     End Function
 End Module
