@@ -8,13 +8,24 @@
     Private ReadOnly thindla As ICharacter
     Protected Overrides Function CreateSubdialog() As IDialog
         If player.HasTag(INTRODUCTION_TAG) Then
+            If player.HasTag(COMPLETED_TAG) Then
+                Return New THINDLAQuestCompletedDialog(player, thindla, Me)
+            End If
             If player.HasTag(ACCEPTED_TAG) Then
+                If IsAssPresent() Then
+                    Return New THINDLAQuestDeliveryDialog(player, thindla, Me)
+                End If
                 Return New THINDLAQuestAcceptedDialog(player, thindla, Me)
             End If
             Return New THINDLAQuestOfferedDialog(player, Me)
         End If
         Return New THINDLAIntroductionDialog(player, Me)
     End Function
+
+    Private Function IsAssPresent() As Boolean
+        Return player.CurrentLocation.GetOtherCharacters(player).Any(Function(x) x.EntityType.CharacterType = CharacterType.THINDLAsAss)
+    End Function
+
     Public Sub New(player As ICharacter, thindla As ICharacter)
         Me.player = player
         Me.thindla = thindla

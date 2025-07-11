@@ -19,7 +19,11 @@
                 "You see an ass. It is very hairy.",
                 "It is the hairiest ass you have every seen."}
             If ass.HasTag(THINDLAsAssDialog.ASS_FED_TAG) Then
-                results.Add("He is following you, hoping for another carrot.")
+                If player.HasTag(THINDLADialog.COMPLETED_TAG) Then
+                    results.Add("The ass seems happy to be back with THINDLA.")
+                Else
+                    results.Add("He is following you, hoping for another carrot.")
+                End If
             End If
             Return results
         End Get
