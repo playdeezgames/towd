@@ -105,6 +105,7 @@ Friend Class NavigationState
         Dim answer = MessageBox.Query("Which Way?", "Choose a direction.", buttons)
         If answer > -1 Then
             World.Avatar.Move(directionTable(buttons(answer)))
+            World.AdvanceTime(1)
             ShowState(GameState.Neutral)
         End If
     End Sub

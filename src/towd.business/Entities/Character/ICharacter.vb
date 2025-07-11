@@ -5,7 +5,7 @@
     ReadOnly Property IsAvatar As Boolean
     ReadOnly Property IsDead As Boolean
 
-    ReadOnly Property CurrentLocation As ILocation
+    Property CurrentLocation As ILocation
     Function CanMove(direction As Direction) As Boolean
     Sub Move(direction As Direction)
 

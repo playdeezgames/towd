@@ -1,15 +1,17 @@
 ﻿Friend Class THINDLAsAssDialog
     Inherits StatefulDialog
 
-    Private character As ICharacter
-    Private otherCharacter As ICharacter
+    Friend Const ASS_FED_TAG = "ass-fed"
+    Private ReadOnly player As ICharacter
+    Private ReadOnly ass As ICharacter
+
 
     Public Sub New(character As ICharacter, otherCharacter As ICharacter)
-        Me.character = character
-        Me.otherCharacter = otherCharacter
+        Me.player = character
+        Me.ass = otherCharacter
     End Sub
 
     Protected Overrides Function CreateSubdialog() As IDialog
-        Throw New NotImplementedException()
+        Return New THINDLAsAssIntroductionDialog(player, ass, Me)
     End Function
 End Class

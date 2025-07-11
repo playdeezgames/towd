@@ -6,6 +6,13 @@
     End Sub
 
     Public Overrides Sub AdvanceTime(character As ICharacter, amount As Integer)
+        If character.HasTag(THINDLAsAssDialog.ASS_FED_TAG) Then
+            Dim avatar = character.World.Avatar
+            If avatar.CurrentLocation.Id <> character.CurrentLocation.Id Then
+                avatar.AppendMessage("The hairy ass follows you.")
+                character.CurrentLocation = avatar.CurrentLocation
+            End If
+        End If
     End Sub
 
     Public Overrides Sub Initialize(character As ICharacter)

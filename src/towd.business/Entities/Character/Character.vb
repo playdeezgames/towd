@@ -11,7 +11,7 @@ Friend Class Character
         Get
             Return New Location(WorldData, EntityData.LocationId)
         End Get
-        Private Set(value As ILocation)
+        Set(value As ILocation)
             CurrentLocation.RemoveCharacter(Me)
             EntityData.LocationId = value.Id
             CurrentLocation.AddCharacter(Me)
@@ -96,7 +96,6 @@ Friend Class Character
             AppendMessage($"You move {descriptor.Name}.")
             CurrentLocation = nextLocation
             ChangeStatistic(StatisticType.Steps, 1)
-            AdvanceTime(1)
         End If
     End Sub
 
