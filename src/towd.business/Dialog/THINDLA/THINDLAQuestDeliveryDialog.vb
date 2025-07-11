@@ -4,13 +4,9 @@
     Const COMPLETE_TEXT = "Yer welcome!"
 
     Private player As ICharacter
-    Private thindla As ICharacter
-    Private root As IDialog
 
-    Public Sub New(player As ICharacter, thindla As ICharacter, root As IDialog)
+    Public Sub New(player As ICharacter)
         Me.player = player
-        Me.thindla = thindla
-        Me.root = root
     End Sub
 
     Public ReadOnly Property Lines As IEnumerable(Of String) Implements IDialog.Lines

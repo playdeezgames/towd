@@ -2,13 +2,11 @@
     Implements IDialog
 
     Private player As ICharacter
-    Private root As IDialog
     Const ACCEPT_TEXT = "Sure, I'll find yer hairy ass."
     Const LATER_TEXT = "...Maybe later."
 
-    Public Sub New(player As ICharacter, root As IDialog)
+    Public Sub New(player As ICharacter)
         Me.player = player
-        Me.root = root
     End Sub
 
     Public ReadOnly Property Lines As IEnumerable(Of String) Implements IDialog.Lines

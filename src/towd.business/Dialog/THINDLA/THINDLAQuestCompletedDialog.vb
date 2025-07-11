@@ -1,14 +1,7 @@
 ﻿Friend Class THINDLAQuestCompletedDialog
     Implements IDialog
 
-    Private player As ICharacter
-    Private thindla As ICharacter
-    Private root As IDialog
-
-    Public Sub New(player As ICharacter, thindla As ICharacter, root As IDialog)
-        Me.player = player
-        Me.thindla = thindla
-        Me.root = root
+    Public Sub New()
     End Sub
 
     Public ReadOnly Property Lines As IEnumerable(Of String) Implements IDialog.Lines

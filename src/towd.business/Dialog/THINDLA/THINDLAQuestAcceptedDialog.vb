@@ -4,12 +4,9 @@
     Const BYE = "I'm trying...."
 
     Private ReadOnly player As ICharacter
-    Private ReadOnly thindla As ICharacter
-    Private ReadOnly root As IDialog
 
-    Public Sub New(player As ICharacter, thindla As ICharacter, root As IDialog)
+    Public Sub New(player As ICharacter)
         Me.player = player
-        Me.root = root
     End Sub
 
     Public ReadOnly Property Lines As IEnumerable(Of String) Implements IDialog.Lines
