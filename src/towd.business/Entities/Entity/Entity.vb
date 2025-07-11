@@ -15,6 +15,7 @@ Friend MustInherit Class Entity(Of TEntityType, TEntityData As EntityData)
         End Get
     End Property
     Public MustOverride Property EntityType As TEntityType Implements IEntity(Of TEntityType).EntityType
+
     Public MustOverride Sub AdvanceTime(amount As Integer) Implements IEntity(Of TEntityType).AdvanceTime
 
     Public Sub SetStatistic(statisticType As String, value As Integer) Implements IEntity(Of TEntityType).SetStatistic

@@ -71,7 +71,7 @@ Friend Class N00bCharacterTypeDescriptor
     End Function
 
     Public Overrides Function CanDialog(character As ICharacter) As Boolean
-        Return character.Location.HasOtherCharacters(character)
+        Return character.CurrentLocation.HasOtherCharacters(character)
     End Function
 
     Public Overrides Function StartDialog(character As ICharacter, otherCharacter As ICharacter) As IDialog

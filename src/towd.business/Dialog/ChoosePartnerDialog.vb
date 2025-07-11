@@ -7,7 +7,7 @@ Friend Class ChoosePartnerDialog
     Private ReadOnly table As IReadOnlyDictionary(Of String, Func(Of IDialog))
 
     Public Sub New(character As ICharacter)
-        Dim groups = character.Location.GetOtherCharacters(character).GroupBy(Function(x) x.Name)
+        Dim groups = character.CurrentLocation.GetOtherCharacters(character).GroupBy(Function(x) x.Name)
         Dim dialogGenerators As New Dictionary(Of String, Func(Of IDialog))
         For Each group In groups
             If group.Count > 1 Then

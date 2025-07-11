@@ -7,14 +7,14 @@ Friend Class Character
     Public Sub New(worldData As data.WorldData, characterId As Integer)
         MyBase.New(worldData, characterId)
     End Sub
-    Public Property Location As ILocation Implements ICharacter.Location
+    Public Property CurrentLocation As ILocation Implements ICharacter.CurrentLocation
         Get
             Return New Location(WorldData, EntityData.LocationId)
         End Get
-        Set(value As ILocation)
-            Location.RemoveCharacter(Me)
+        Private Set(value As ILocation)
+            CurrentLocation.RemoveCharacter(Me)
             EntityData.LocationId = value.Id
-            Location.AddCharacter(Me)
+            CurrentLocation.AddCharacter(Me)
         End Set
     End Property
     Public ReadOnly Property IsAvatar As Boolean Implements ICharacter.IsAvatar
@@ -94,18 +94,18 @@ Friend Class Character
         If nextLocation IsNot Nothing Then
             AddKnownLocation(nextLocation)
             AppendMessage($"You move {descriptor.Name}.")
-            Location = nextLocation
+            CurrentLocation = nextLocation
             ChangeStatistic(StatisticType.Steps, 1)
             AdvanceTime(1)
         End If
     End Sub
 
     Private Function GetNextLocation(descriptor As IDirection) As ILocation
-        Dim column = Location.Column
-        Dim row = Location.Row
+        Dim column = CurrentLocation.Column
+        Dim row = CurrentLocation.Row
         Dim nextColumn = descriptor.NextColumn(column, row)
         Dim nextRow = descriptor.NextRow(column, row)
-        Dim map = Location.Map
+        Dim map = CurrentLocation.Map
         Dim nextLocation = map.GetLocation(nextColumn, nextRow)
         Return nextLocation
     End Function

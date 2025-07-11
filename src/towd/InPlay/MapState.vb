@@ -42,12 +42,12 @@ Friend Class MapState
 
     Friend Overrides Sub UpdateView()
         Dim character = World.Avatar
-        Dim map = character.Location.Map
+        Dim map = character.CurrentLocation.Map
         Dim builder As New StringBuilder
         For Each row In Enumerable.Range(0, map.Rows)
             For Each column In Enumerable.Range(0, map.Columns)
                 Dim location = map.GetLocation(column, row)
-                If location.Column = character.Location.Column AndAlso location.Row = character.Location.Row Then
+                If location.Column = character.CurrentLocation.Column AndAlso location.Row = character.CurrentLocation.Row Then
                     builder.Append("["c)
                 Else
                     builder.Append(" "c)
@@ -57,7 +57,7 @@ Friend Class MapState
                 Else
                     builder.Append("?")
                 End If
-                If location.Column = character.Location.Column AndAlso location.Row = character.Location.Row Then
+                If location.Column = character.CurrentLocation.Column AndAlso location.Row = character.CurrentLocation.Row Then
                     builder.Append("]"c)
                 Else
                     builder.Append(" "c)

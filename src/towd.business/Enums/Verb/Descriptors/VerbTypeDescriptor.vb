@@ -147,7 +147,7 @@ Public MustInherit Class VerbTypeDescriptor
             Return
         End If
         For Each entry In locationStatisticDeltas
-            character.Location.ChangeStatistic(entry.Key, entry.Value)
+            character.CurrentLocation.ChangeStatistic(entry.Key, entry.Value)
         Next
         For Each entry In characterStatisticDeltas
             character.ChangeStatistic(entry.Key, entry.Value)
@@ -183,13 +183,13 @@ Public MustInherit Class VerbTypeDescriptor
             Next
         Next
         If buildsLocationType IsNot Nothing Then
-            character.Location.EntityType = buildsLocationType.ToLocationTypeDescriptor
+            character.CurrentLocation.EntityType = buildsLocationType.ToLocationTypeDescriptor
             character.AppendMessage($"Changed location to {buildsLocationType.ToLocationTypeDescriptor.Name}.")
         End If
         character.World.AdvanceTime(timeTaken)
     End Sub
     Public Function CanPerform(character As ICharacter) As Boolean Implements IVerbType.CanPerform
-        Dim location = character.Location
+        Dim location = character.CurrentLocation
         For Each entry In locationStatisticMinimums
             If location.GetStatistic(entry.Key) < entry.Value Then
                 Return False
@@ -216,7 +216,7 @@ Public MustInherit Class VerbTypeDescriptor
             End If
         Next
         If requiredLocationTypes.Any Then
-            If Not requiredLocationTypes.Contains(character.Location.EntityType.LocationType) Then
+            If Not requiredLocationTypes.Contains(character.CurrentLocation.EntityType.LocationType) Then
                 Return False
             End If
         End If

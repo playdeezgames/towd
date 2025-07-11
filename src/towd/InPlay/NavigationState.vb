@@ -100,7 +100,7 @@ Friend Class NavigationState
     End Sub
 
     Private Sub HandleMoveCommand()
-        Dim directionTable = World.Avatar.Location.Neighbors.ToDictionary(Function(x) CType(x.Key.ToDirectionDescriptor.Name, ustring), Function(x) x.Key)
+        Dim directionTable = World.Avatar.CurrentLocation.Neighbors.ToDictionary(Function(x) CType(x.Key.ToDirectionDescriptor.Name, ustring), Function(x) x.Key)
         Dim buttons = directionTable.Keys.ToArray
         Dim answer = MessageBox.Query("Which Way?", "Choose a direction.", buttons)
         If answer > -1 Then
@@ -161,7 +161,7 @@ Friend Class NavigationState
     End Sub
 
     Private Sub UpdateLocationTextView(character As business.ICharacter)
-        Dim location = character.Location
+        Dim location = character.CurrentLocation
         Dim builder As New StringBuilder
         builder.Append($"{location}")
         Dim neighbors = location.Neighbors
