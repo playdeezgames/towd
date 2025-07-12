@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.CompilerServices
-Imports towd.data
 
 Public Module LocationTypes
     Public ReadOnly Descriptors As IReadOnlyDictionary(Of String, ILocationType) =
@@ -15,7 +14,7 @@ Public Module LocationTypes
         }.
         ToDictionary(Function(x) x.LocationType, Function(x) x)
     <Extension>
-    Friend Function ToLocationTypeDescriptor(locationType As String) As ILocationType
+    Public Function ToLocationTypeDescriptor(locationType As String) As ILocationType
         Return Descriptors(locationType)
     End Function
 End Module

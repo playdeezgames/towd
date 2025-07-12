@@ -1,4 +1,4 @@
-﻿Public Module ItemType
+﻿Public Class ItemType
     Public Const Blade = "Blade"
     Public Const Brick = "Brick"
     Public Const Carrot = "Carrot"
@@ -25,4 +25,4 @@
     Public Const Stick = "Stick"
     Public Const Twine = "Twine"
     Public Const UnfiredBrick = "UnfiredBrick"
-End Module
+End Class

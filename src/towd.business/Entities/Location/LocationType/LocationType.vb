@@ -1,4 +1,4 @@
-﻿Public Module LocationType
+﻿Public Class LocationType
     Public Const Grass = "Grass"
     Public Const Pine = "Pine"
     Public Const Rock = "Rock"
@@ -6,4 +6,4 @@
     Public Const Dirt = "Dirt"
     Public Const Pond = "Pond"
     Public Const Furnace = "Furnace"
-End Module
+End Class

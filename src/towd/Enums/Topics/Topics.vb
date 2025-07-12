@@ -47,7 +47,8 @@ Public Module Topics
             {VerbType.AddFuelCookingFireLog, Topic.VerbTypeAddFuelCookingFireLog},
             {VerbType.AddFuelCookingFirePlank, Topic.VerbTypeAddFuelCookingFirePlank},
             {VerbType.AddFuelCookingFireStick, Topic.VerbTypeAddFuelCookingFireStick},
-            {VerbType.AddFuelFurnaceCharcoal, Topic.VerbTypeAddFuelFurnaceCharcoal}
+            {VerbType.AddFuelFurnaceCharcoal, Topic.VerbTypeAddFuelFurnaceCharcoal},
+            {VerbType.EatCarrot, Topic.VerbTypeEatCarrot}
         }
     Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of String, Topic) =
         New Dictionary(Of String, Topic) From

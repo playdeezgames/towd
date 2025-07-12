@@ -75,4 +75,5 @@
     NavigationStatistics
     NavigationDialog
     ItemTypeCarrot
+    VerbTypeEatCarrot
 End Enum

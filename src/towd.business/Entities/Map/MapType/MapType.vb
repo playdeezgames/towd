@@ -1,3 +1,3 @@
-﻿Public Module MapType
+﻿Public Class MapType
     Public Const Normal = "Normal"
-End Module
+End Class
