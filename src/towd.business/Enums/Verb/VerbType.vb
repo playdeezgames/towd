@@ -1,36 +1,36 @@
-﻿Public Enum VerbType
-    AddFuelCookingFireStick
-    AddFuelCookingFirePlank
-    AddFuelCookingFireLog
-    AddFuelCookingFireCharcoal
-    AddFuelFurnaceCharcoal
-    Blade
-    Brick
-    CharcoalFromCookingFire
-    CharcoalFromFurnace
-    Chop
-    CookedFishFilet
-    CookedGrub
-    CookingFire
-    DigGrass
-    DigPond
-    EatCarrot
-    EatCookedFishFilet
-    EatCookedGrub
-    Fish
-    FishingNet
-    ForageGrass
-    ForagePine
-    ForageRock
-    Furnace
-    Hammer
-    Hatchet
-    Knife
-    Plank
-    RawFishFilet
-    SharpRock
-    SharpStick
-    Twine
-    UnfiredBrick
-    Wait
-End Enum
+﻿Public Class VerbType
+    Public Const AddFuelCookingFireStick = "AddFuelCookingFireStick"
+    Public Const AddFuelCookingFirePlank = "AddFuelCookingFirePlank"
+    Public Const AddFuelCookingFireLog = "AddFuelCookingFireLog"
+    Public Const AddFuelCookingFireCharcoal = "AddFuelCookingFireCharcoal"
+    Public Const AddFuelFurnaceCharcoal = "AddFuelFurnaceCharcoal"
+    Public Const Blade = "Blade"
+    Public Const Brick = "Brick"
+    Public Const CharcoalFromCookingFire = "CharcoalFromCookingFire"
+    Public Const CharcoalFromFurnace = "CharcoalFromFurnace"
+    Public Const Chop = "Chop"
+    Public Const CookedFishFilet = "CookedFishFilet"
+    Public Const CookedGrub = "CookedGrub"
+    Public Const CookingFire = "CookingFire"
+    Public Const DigGrass = "DigGrass"
+    Public Const DigPond = "DigPond"
+    Public Const EatCarrot = "EatCarrot"
+    Public Const EatCookedFishFilet = "EatCookedFishFilet"
+    Public Const EatCookedGrub = "EatCookedGrub"
+    Public Const Fish = "Fish"
+    Public Const FishingNet = "FishingNet"
+    Public Const ForageGrass = "ForageGrass"
+    Public Const ForagePine = "ForagePine"
+    Public Const ForageRock = "ForageRock"
+    Public Const Furnace = "Furnace"
+    Public Const Hammer = "Hammer"
+    Public Const Hatchet = "Hatchet"
+    Public Const Knife = "Knife"
+    Public Const Plank = "Plank"
+    Public Const RawFishFilet = "RawFishFilet"
+    Public Const SharpRock = "SharpRock"
+    Public Const SharpStick = "SharpStick"
+    Public Const Twine = "Twine"
+    Public Const UnfiredBrick = "UnfiredBrick"
+    Public Const Wait = "Wait"
+End Class

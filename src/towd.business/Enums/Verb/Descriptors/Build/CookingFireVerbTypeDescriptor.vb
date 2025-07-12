@@ -4,7 +4,7 @@ Friend Class CookingFireVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.CookingFire, business.VerbCategoryType.Build, 1)
+        MyBase.New(business.VerbType.CookingFire, business.VerbCategoryType.Build, 1)
         SetItemTypeInput(ItemType.Rock, 8)
         SetItemTypeInput(ItemType.Stick, 8)
         SetRequiredLocationType(LocationType.Dirt)

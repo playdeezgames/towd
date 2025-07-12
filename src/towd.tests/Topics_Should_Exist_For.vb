@@ -20,12 +20,6 @@ Public Class Topics_Should_Exist_For
     End Sub
     <Fact>
     Public Sub Verb_Types()
-        For Each sut In [Enum].GetValues(Of VerbType)
-            Try
-                Topics.VerbTypeTopicTable.ContainsKey(sut).ShouldBeTrue($"VerbType.{sut} Should Have a Topic")
-            Catch ex As Exception
-                Assert.Fail($"VerbType.{sut} Should Have a Topic")
-            End Try
-        Next
+        ValidateEnumModule(Of VerbType)(AddressOf Topics.ToVerbTypeTopic)
     End Sub
 End Class

@@ -12,8 +12,8 @@ Public Module Topics
             {SkillType.Chop, Topic.SkillTypeChop},
             {SkillType.Fish, Topic.SkillTypeFish}
         }
-    Public ReadOnly VerbTypeTopicTable As IReadOnlyDictionary(Of VerbType, String) =
-        New Dictionary(Of VerbType, String) From
+    Public ReadOnly VerbTypeTopicTable As IReadOnlyDictionary(Of String, String) =
+        New Dictionary(Of String, String) From
         {
             {VerbType.Twine, Topic.VerbTypeTwine},
             {VerbType.SharpRock, Topic.VerbTypeSharpRock},
@@ -52,6 +52,9 @@ Public Module Topics
         }
     Public Function ToItemTypeTopic(itemType As String) As String
         Return $"ItemType{itemType}"
+    End Function
+    Public Function ToVerbTypeTopic(verbType As String) As String
+        Return $"VerbType{verbType}"
     End Function
     Private Sub AddEnumTopic(Of TEnum)(
                                       topicTable As Dictionary(Of String, ITopic),

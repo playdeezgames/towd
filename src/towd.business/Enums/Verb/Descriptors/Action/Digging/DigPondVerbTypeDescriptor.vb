@@ -3,7 +3,7 @@
 
     Public Sub New()
         MyBase.New(
-            VerbType.DigPond,
+            business.VerbType.DigPond,
             "Dig(Clay)",
             business.LocationType.Pond,
             business.ItemType.Clay)

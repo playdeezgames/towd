@@ -2,7 +2,7 @@
 Imports towd.data
 
 Public Module VerbTypes
-    Public ReadOnly Descriptors As IReadOnlyDictionary(Of VerbType, IVerbType) =
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of String, IVerbType) =
         New List(Of IVerbType) From
         {
             New TwineVerbTypeDescriptor(),
@@ -42,7 +42,7 @@ Public Module VerbTypes
         }.
         ToDictionary(Function(x) x.VerbType, Function(x) x)
     <Extension>
-    Public Function ToVerbTypeDescriptor(verbType As VerbType) As IVerbType
+    Public Function ToVerbTypeDescriptor(verbType As String) As IVerbType
         Return Descriptors(verbType)
     End Function
 

@@ -35,13 +35,7 @@ Namespace towd.business.tests
         End Sub
         <Fact>
         Sub Verb_Types()
-            For Each sut In [Enum].GetValues(Of VerbType)
-                Try
-                    sut.ToVerbTypeDescriptor.ShouldNotBeNull($"{sut}'s Descriptor Should Not Be Null")
-                Catch ex As Exception
-                    Assert.Fail($"{sut}'s Descriptor Should Exist")
-                End Try
-            Next
+            ValidateEnumModule(Of VerbType, IVerbType)(AddressOf ToVerbTypeDescriptor)
         End Sub
     End Class
 End Namespace

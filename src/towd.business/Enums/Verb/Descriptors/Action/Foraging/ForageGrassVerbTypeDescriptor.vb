@@ -3,7 +3,7 @@
 
     Public Sub New()
         MyBase.New(
-            VerbType.ForageGrass,
+            business.VerbType.ForageGrass,
             "Forage(Plant Fibers)",
             business.LocationType.Grass,
             business.ItemType.PlantFiber)

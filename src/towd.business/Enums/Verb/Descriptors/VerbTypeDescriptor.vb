@@ -48,12 +48,12 @@ Public MustInherit Class VerbTypeDescriptor
     Protected Sub SetItemTypeOutputGenerator(itemType As String, generator As ICharacterWeightedGenerator)
         itemTypeOutputGenerators(itemType) = generator
     End Sub
-    Sub New(verbType As VerbType, verbCategoryType As String, timeTaken As Integer)
+    Sub New(verbType As String, verbCategoryType As String, timeTaken As Integer)
         Me.VerbType = verbType
         Me.timeTaken = timeTaken
         Me.VerbCategoryType = verbCategoryType
     End Sub
-    Public ReadOnly Property VerbType As VerbType Implements IVerbType.VerbType
+    Public ReadOnly Property VerbType As String Implements IVerbType.VerbType
 
     Public ReadOnly Property Name As String Implements IVerbType.Name
         Get

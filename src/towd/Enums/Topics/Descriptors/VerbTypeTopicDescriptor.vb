@@ -2,9 +2,9 @@
 
 Friend Class VerbTypeTopicDescriptor
     Implements ITopic
-    Private ReadOnly VerbType As VerbType
+    Private ReadOnly VerbType As String
 
-    Public Sub New(topic As String, verbType As VerbType)
+    Public Sub New(topic As String, verbType As String)
         Me.Topic = topic
         Me.VerbType = verbType
     End Sub

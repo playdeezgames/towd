@@ -3,7 +3,7 @@
 
     Public Sub New()
         MyBase.New(
-            VerbType.DigGrass,
+            business.VerbType.DigGrass,
             "Dig(Grubs)",
             business.LocationType.Grass,
             business.ItemType.Grub)

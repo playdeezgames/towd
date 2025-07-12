@@ -44,7 +44,7 @@ Friend MustInherit Class ChildView
             character.DismissMessage()
         End While
     End Sub
-    Protected Sub ShowState(gameState As GameState)
+    Protected Sub ShowState(gameState As String)
         mainView.ShowState(gameState)
     End Sub
 End Class

@@ -1,19 +1,19 @@
-﻿Public Enum GameState
-    Splash
-    MainMenu
-    Neutral
-    Navigation
-    GameMenu
-    Dead
-    Inventory
-    ItemStack
-    VerbMenu
-    Deeds
-    SkillMenu
-    SaveMenu
-    LoadMenu
-    Topic
-    Map
-    Statistics
-    Dialog
-End Enum
+﻿Public Class GameState
+    Public Const Splash = "Splash"
+    Public Const MainMenu = "MainMenu"
+    Public Const Neutral = "Neutral"
+    Public Const Navigation = "Navigation"
+    Public Const GameMenu = "GameMenu"
+    Public Const Dead = "Dead"
+    Public Const Inventory = "Inventory"
+    Public Const ItemStack = "ItemStack"
+    Public Const VerbMenu = "VerbMenu"
+    Public Const Deeds = "Deeds"
+    Public Const SkillMenu = "SkillMenu"
+    Public Const SaveMenu = "SaveMenu"
+    Public Const LoadMenu = "LoadMenu"
+    Public Const Topic = "Topic"
+    Public Const Map = "Map"
+    Public Const Statistics = "Statistics"
+    Public Const Dialog = "Dialog"
+End Class

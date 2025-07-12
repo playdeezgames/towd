@@ -4,7 +4,7 @@ Public Class DigVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New(
-                  verbType As VerbType,
+                  verbType As String,
                   name As String,
                   requiredLocationType As String,
                   outputItemType As String)

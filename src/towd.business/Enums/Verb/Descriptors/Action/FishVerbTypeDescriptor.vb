@@ -4,7 +4,7 @@ Friend Class FishVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Fish, business.VerbCategoryType.Fish, 1)
+        MyBase.New(business.VerbType.Fish, business.VerbCategoryType.Fish, 1)
         SetDisplayName("Fish")
         SetRequiredLocationType(LocationType.Pond)
         SetItemTypeInputDurability(ItemType.FishingNet, 1)

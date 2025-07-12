@@ -1,6 +1,6 @@
 ﻿Friend Class MainView
     Inherits Window
-    Private ReadOnly childViews As New Dictionary(Of GameState, ChildView)
+    Private ReadOnly childViews As New Dictionary(Of String, ChildView)
     Public Sub New()
         MyBase.New()
         childViews.Add(GameState.Splash, New SplashState(Me))
@@ -24,7 +24,7 @@
         ShowState(GameState.Splash)
     End Sub
 
-    Public Sub ShowState(gameState As GameState)
+    Public Sub ShowState(gameState As String)
         RemoveAll()
         Add(childViews(gameState))
         childViews(gameState).UpdateView()
