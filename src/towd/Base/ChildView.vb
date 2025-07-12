@@ -5,7 +5,7 @@ Friend MustInherit Class ChildView
     Inherits View
     Private ReadOnly mainView As MainView
     Private Shared worldData As New WorldData
-    Protected Shared Function LoadGame(saveSlot As SaveSlot) As Boolean
+    Protected Shared Function LoadGame(saveSlot As String) As Boolean
         Dim loadAttempt = saveSlot.ToSaveSlotDescriptor.LoadGame()
         If loadAttempt IsNot Nothing Then
             worldData = loadAttempt
@@ -16,7 +16,7 @@ Friend MustInherit Class ChildView
             Return False
         End If
     End Function
-    Protected Shared Sub SaveGame(saveSlot As SaveSlot, notify As Boolean)
+    Protected Shared Sub SaveGame(saveSlot As String, notify As Boolean)
         saveSlot.ToSaveSlotDescriptor.SaveGame(ChildView.worldData)
         If notify Then
             MessageBox.Query("Game Saved!", $"{saveSlot.ToSaveSlotDescriptor.DisplayName} is saved!", "Ok")

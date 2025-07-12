@@ -2,7 +2,7 @@
 Imports towd.data
 
 Public Interface ISaveSlot
-    ReadOnly Property SaveSlot As SaveSlot
+    ReadOnly Property SaveSlot As String
     ReadOnly Property DisplayName As String
     ReadOnly Property Filename As String
     ReadOnly Property SaveExists As Boolean

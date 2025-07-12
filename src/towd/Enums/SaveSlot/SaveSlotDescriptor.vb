@@ -6,7 +6,7 @@ Imports towd.data
 Public Class SaveSlotDescriptor
     Implements ISaveSlot
     Sub New(
-           saveSlot As SaveSlot,
+           saveSlot As String,
            displayName As String,
            filename As String)
         Me.SaveSlot = saveSlot
@@ -14,7 +14,7 @@ Public Class SaveSlotDescriptor
         Me.Filename = filename
     End Sub
 
-    Public ReadOnly Property SaveSlot As SaveSlot Implements ISaveSlot.SaveSlot
+    Public ReadOnly Property SaveSlot As String Implements ISaveSlot.SaveSlot
 
     Public ReadOnly Property DisplayName As String Implements ISaveSlot.DisplayName
 
