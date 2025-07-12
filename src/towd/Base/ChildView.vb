@@ -6,20 +6,20 @@ Friend MustInherit Class ChildView
     Private ReadOnly mainView As MainView
     Private Shared worldData As New WorldData
     Protected Shared Function LoadGame(saveSlot As SaveSlot) As Boolean
-        Dim loadAttempt = saveSlot.ToDescriptor.LoadGame()
+        Dim loadAttempt = saveSlot.ToSaveSlotDescriptor.LoadGame()
         If loadAttempt IsNot Nothing Then
             worldData = loadAttempt
-            MessageBox.Query("Game Loaded!", $"{saveSlot.ToDescriptor.DisplayName} is loaded!", "Ok")
+            MessageBox.Query("Game Loaded!", $"{saveSlot.ToSaveSlotDescriptor.DisplayName} is loaded!", "Ok")
             Return True
         Else
-            MessageBox.ErrorQuery("Load Failed!", $"Could not load {saveSlot.ToDescriptor.DisplayName}!", "Ok")
+            MessageBox.ErrorQuery("Load Failed!", $"Could not load {saveSlot.ToSaveSlotDescriptor.DisplayName}!", "Ok")
             Return False
         End If
     End Function
     Protected Shared Sub SaveGame(saveSlot As SaveSlot, notify As Boolean)
-        saveSlot.ToDescriptor.SaveGame(ChildView.worldData)
+        saveSlot.ToSaveSlotDescriptor.SaveGame(ChildView.worldData)
         If notify Then
-            MessageBox.Query("Game Saved!", $"{saveSlot.ToDescriptor.DisplayName} is saved!", "Ok")
+            MessageBox.Query("Game Saved!", $"{saveSlot.ToSaveSlotDescriptor.DisplayName} is saved!", "Ok")
         End If
     End Sub
     Protected Shared ReadOnly Property World As IWorld

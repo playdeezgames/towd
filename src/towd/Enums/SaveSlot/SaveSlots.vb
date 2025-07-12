@@ -14,7 +14,7 @@ Public Module SaveSlots
             New SaveSlotDescriptor(SaveSlot.Slot5, "Slot 5", "slot5.json")
         }.ToDictionary(Function(x) x.SaveSlot, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(saveSlot As SaveSlot) As ISaveSlot
+    Public Function ToSaveSlotDescriptor(saveSlot As SaveSlot) As ISaveSlot
         Return Descriptors(saveSlot)
     End Function
 End Module
