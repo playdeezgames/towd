@@ -110,7 +110,7 @@ Friend Class VerbMenuState
                 End If
                 availableVerbTreeView.AddObject(verbNode)
             Else
-                Dim categoryNode As TreeNode = New VerbCategoryTreeNode(categoryEntry.Key.ToDescriptor)
+                Dim categoryNode As TreeNode = New VerbCategoryTreeNode(categoryEntry.Key.ToVerbCategoryDescriptor)
                 availableVerbTreeView.AddObject(categoryNode)
                 Dim children As New List(Of ITreeNode)
                 Dim found As Boolean

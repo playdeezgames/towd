@@ -17,7 +17,7 @@ Public Module VerbCategoryTypes
         }.
         ToDictionary(Function(x) x.VerbCategoryType, Function(x) x)
     <Extension>
-    Public Function ToDescriptor(verbCategoryType As VerbCategoryType) As IVerbCategoryType
+    Public Function ToVerbCategoryDescriptor(verbCategoryType As VerbCategoryType) As IVerbCategoryType
         Return Descriptors(verbCategoryType)
     End Function
 End Module
