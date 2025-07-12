@@ -2,6 +2,6 @@
     Inherits VerbCategoryTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbCategoryType.Cook, "Cook")
+        MyBase.New(business.VerbCategoryType.Cook, "Cook")
     End Sub
 End Class

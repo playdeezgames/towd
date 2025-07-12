@@ -4,7 +4,7 @@ Friend Class RawFishFiletVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.RawFishFilet, VerbCategoryType.Craft, 1)
+        MyBase.New(VerbType.RawFishFilet, business.VerbCategoryType.Craft, 1)
         SetItemTypeInput(ItemType.Knife, 1)
         SetItemTypeInput(ItemType.RawFish, 1)
         SetItemTypeInputDurability(ItemType.Knife, 1)

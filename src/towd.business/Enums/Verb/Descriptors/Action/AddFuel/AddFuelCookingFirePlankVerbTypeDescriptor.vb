@@ -4,7 +4,7 @@ Friend Class AddFuelCookingFirePlankVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.AddFuelCookingFirePlank, VerbCategoryType.AddFuel, 0)
+        MyBase.New(VerbType.AddFuelCookingFirePlank, business.VerbCategoryType.AddFuel, 0)
         SetDisplayName("Add Plank to Cooking Fire")
         SetRequiredLocationType(LocationType.CookingFire)
         SetLocationStatisticDelta(business.StatisticType.Fuel, 2)

@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 
 Public Module VerbCategoryTypes
-    Public ReadOnly Descriptors As IReadOnlyDictionary(Of VerbCategoryType, IVerbCategoryType) =
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of String, IVerbCategoryType) =
         New List(Of IVerbCategoryType) From
         {
             New AddFuelVerbCategoryTypeDescriptor(),
@@ -17,7 +17,7 @@ Public Module VerbCategoryTypes
         }.
         ToDictionary(Function(x) x.VerbCategoryType, Function(x) x)
     <Extension>
-    Public Function ToVerbCategoryDescriptor(verbCategoryType As VerbCategoryType) As IVerbCategoryType
+    Public Function ToVerbCategoryDescriptor(verbCategoryType As String) As IVerbCategoryType
         Return Descriptors(verbCategoryType)
     End Function
 End Module

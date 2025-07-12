@@ -1,6 +1,6 @@
 ﻿Public Interface IVerbType
     ReadOnly Property VerbType As VerbType
-    ReadOnly Property VerbCategoryType As VerbCategoryType
+    ReadOnly Property VerbCategoryType As String
     Function CanPerform(character As ICharacter) As Boolean
     Sub Perform(character As ICharacter)
     ReadOnly Property Name As String

@@ -14,6 +14,10 @@ Namespace towd.business.tests
             Next
         End Sub
         <Fact>
+        Sub Verb_Category_Types()
+            ValidateEnumModule(Of VerbCategoryType, IVerbCategoryType)(AddressOf ToVerbCategoryDescriptor)
+        End Sub
+        <Fact>
         Sub Character_Types()
             ValidateEnumModule(Of CharacterType, ICharacterType)(AddressOf ToCharacterTypeDescriptor)
         End Sub

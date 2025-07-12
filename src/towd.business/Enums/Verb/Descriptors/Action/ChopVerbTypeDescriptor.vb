@@ -4,7 +4,7 @@ Friend Class ChopVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Chop, VerbCategoryType.Chop, 1)
+        MyBase.New(VerbType.Chop, business.VerbCategoryType.Chop, 1)
         SetDisplayName("Chop")
         SetRequiredLocationType(LocationType.Pine)
         SetItemTypeInputDurability(ItemType.Hatchet, 1)

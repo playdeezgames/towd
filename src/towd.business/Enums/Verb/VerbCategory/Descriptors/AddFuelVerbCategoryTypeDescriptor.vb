@@ -2,6 +2,6 @@
     Inherits VerbCategoryTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbCategoryType.AddFuel, "Add Fuel")
+        MyBase.New(business.VerbCategoryType.AddFuel, "Add Fuel")
     End Sub
 End Class

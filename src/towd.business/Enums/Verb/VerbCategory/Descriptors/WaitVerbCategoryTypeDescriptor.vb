@@ -2,6 +2,6 @@
     Inherits VerbCategoryTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbCategoryType.Wait, "Wait")
+        MyBase.New(business.VerbCategoryType.Wait, "Wait")
     End Sub
 End Class

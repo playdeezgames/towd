@@ -4,7 +4,7 @@ Friend Class HatchetVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbType.Hatchet, VerbCategoryType.Craft, 1)
+        MyBase.New(VerbType.Hatchet, business.VerbCategoryType.Craft, 1)
         SetItemTypeInput(ItemType.SharpRock, 1)
         SetItemTypeInput(ItemType.Twine, 1)
         SetItemTypeInput(ItemType.Stick, 1)

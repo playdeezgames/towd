@@ -8,7 +8,7 @@ Public Class ForageVerbTypeDescriptor
                   name As String,
                   requiredLocationType As String,
                   outputItemType As String)
-        MyBase.New(verbType, VerbCategoryType.Forage, 1)
+        MyBase.New(verbType, business.VerbCategoryType.Forage, 1)
         SetDisplayName(name)
         SetRequiredLocationType(requiredLocationType)
         SetLocationStatisticMinimum(business.StatisticType.ForagingCounter, 1)

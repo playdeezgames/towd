@@ -8,7 +8,7 @@ Public Class DigVerbTypeDescriptor
                   name As String,
                   requiredLocationType As String,
                   outputItemType As String)
-        MyBase.New(verbType, VerbCategoryType.Dig, 1)
+        MyBase.New(verbType, business.VerbCategoryType.Dig, 1)
         SetDisplayName(name)
         SetRequiredLocationType(requiredLocationType)
         SetItemTypeInputDurability(ItemType.SharpStick, 1)

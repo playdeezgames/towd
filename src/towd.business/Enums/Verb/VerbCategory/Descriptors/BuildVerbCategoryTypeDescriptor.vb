@@ -2,6 +2,6 @@
     Inherits VerbCategoryTypeDescriptor
 
     Public Sub New()
-        MyBase.New(VerbCategoryType.Build, "Build")
+        MyBase.New(business.VerbCategoryType.Build, "Build")
     End Sub
 End Class
