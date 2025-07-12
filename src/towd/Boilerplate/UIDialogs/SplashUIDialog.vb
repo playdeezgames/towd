@@ -34,6 +34,6 @@
     End Property
 
     Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
-        Return (GameState.MainMenu, Nothing)
+        Return (Nothing, New MainMenuUIDialog(context))
     End Function
 End Class

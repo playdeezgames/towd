@@ -53,6 +53,6 @@
     End Sub
 
     Private Sub CloseWindow()
-        ShowState(GameState.MainMenu)
+        ShowState(Nothing, New MainMenuUIDialog(Context))
     End Sub
 End Class

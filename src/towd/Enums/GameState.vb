@@ -1,6 +1,4 @@
 ﻿Public Class GameState
-    Public Const Splash = "Splash"
-    Public Const MainMenu = "MainMenu"
     Public Const Neutral = "Neutral"
     Public Const Navigation = "Navigation"
     Public Const GameMenu = "GameMenu"

@@ -18,7 +18,7 @@
 
     Private Sub OnOkButtonClicked()
         Context.World.Abandon()
-        ShowState(GameState.MainMenu)
+        ShowState(Nothing, New MainMenuUIDialog(Context))
     End Sub
 
     Friend Overrides Sub UpdateView()

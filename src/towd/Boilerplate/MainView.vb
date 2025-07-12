@@ -6,8 +6,6 @@
     Public Sub New()
         MyBase.New()
         dialogView = New DialogView(Me)
-        childViews.Add(GameState.Splash, New SplashState(Me))
-        childViews.Add(GameState.MainMenu, New MainMenuState(Me))
         childViews.Add(GameState.Neutral, New NeutralState(Me))
         childViews.Add(GameState.Navigation, New NavigationState(Me))
         childViews.Add(GameState.GameMenu, New GameMenuState(Me))
@@ -24,7 +22,7 @@
         childViews.Add(GameState.Statistics, New StatisticsState(Me))
         childViews.Add(GameState.Dialog, New DialogState(Me))
 
-        ShowState(GameState.Splash, New SplashUIDialog(Context))
+        ShowState(Nothing, New SplashUIDialog(Context))
     End Sub
 
     Public Sub ShowState(gameState As String, Optional dialog As IUIDialog = Nothing)
@@ -34,9 +32,11 @@
         If Context.Dialog IsNot Nothing Then
             Add(dialogView)
             dialogView.UpdateView()
-        Else
+        ElseIf Context.GameState IsNot Nothing Then
             Add(childViews(Context.GameState))
             childViews(Context.GameState).UpdateView()
+        Else
+            Application.RequestStop()
         End If
     End Sub
 End Class

@@ -37,7 +37,7 @@ Friend MustInherit Class ChildView
             character.DismissMessage()
         End While
     End Sub
-    Protected Sub ShowState(gameState As String)
-        mainView.ShowState(gameState)
+    Protected Sub ShowState(gameState As String, Optional dialog As IUIDialog = Nothing)
+        mainView.ShowState(gameState, dialog)
     End Sub
 End Class

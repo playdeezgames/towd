@@ -64,7 +64,7 @@
     Private Sub OnAbandonButtonClicked()
         If MessageBox.Query("Confirm Abandon?", "Are you sure you want to abandon the game?", "No", "Yes") = 1 Then
             Context.World.Abandon()
-            ShowState(GameState.MainMenu)
+            ShowState(Nothing, New MainMenuUIDialog(Context))
         End If
     End Sub
 
