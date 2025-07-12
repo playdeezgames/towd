@@ -6,8 +6,8 @@ Friend Class ItemStackState
     Private ReadOnly itemStackListView As ListView
     Public Shared Property CurrentItemType As IItemType
 
-    Public Sub New(mainView As MainView)
-        MyBase.New(mainView)
+    Public Sub New(mainView As MainView, context As IContext)
+        MyBase.New(mainView, context)
 
         Dim titleLabel As New Label With
             {

@@ -3,8 +3,8 @@
 Friend Class NeutralState
     Inherits ChildView
 
-    Public Sub New(mainView As MainView)
-        MyBase.New(mainView)
+    Public Sub New(mainView As MainView, context As IContext)
+        MyBase.New(mainView, context)
     End Sub
 
     Friend Overrides Sub UpdateView()

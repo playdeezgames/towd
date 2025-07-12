@@ -31,8 +31,8 @@ Friend Class NavigationState
     Private ReadOnly characterTextView As TextView
     Private ReadOnly commandListView As ListView
 
-    Public Sub New(mainView As MainView)
-        MyBase.New(mainView)
+    Public Sub New(mainView As MainView, context As IContext)
+        MyBase.New(mainView, context)
         Dim titleLabel As New Label With
             {
                 .Width = [Dim].Fill,

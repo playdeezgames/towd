@@ -7,8 +7,8 @@ Friend Class MainMenuState
     Private scumLoadButton As Button
     Private loadButton As Button
 
-    Public Sub New(mainView As MainView)
-        MyBase.New(mainView)
+    Public Sub New(mainView As MainView, context As IContext)
+        MyBase.New(mainView, context)
         Dim titleLabel As New Label With
             {
                 .Text = "Main Menu",
