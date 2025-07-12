@@ -40,7 +40,7 @@ Friend Class ItemStackState
     End Sub
 
     Friend Overrides Sub UpdateView()
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
         Dim items = character.GetItemsOfType(CurrentItemType).ToList
         itemStackListView.SetSource(items)
         MyBase.UpdateView()

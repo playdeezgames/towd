@@ -64,7 +64,7 @@ Friend Class MainMenuState
     End Sub
 
     Private Sub OnEmbarkButtonClicked()
-        World.Initialize()
+        Context.World.Initialize()
         ShowState(GameState.Neutral)
     End Sub
 

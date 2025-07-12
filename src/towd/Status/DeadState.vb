@@ -17,7 +17,7 @@
     End Sub
 
     Private Sub OnOkButtonClicked()
-        World.Abandon()
+        Context.World.Abandon()
         ShowState(GameState.MainMenu)
     End Sub
 

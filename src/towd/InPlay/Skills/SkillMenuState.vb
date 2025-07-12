@@ -60,7 +60,7 @@ Friend Class SkillMenuState
 
     Private Sub OnAllListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim skillType = CType(args.Value, SkillMenuListViewItem).SkillType
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
         If skillType.Advance(character) Then
             UpdateView()
         End If
@@ -68,7 +68,7 @@ Friend Class SkillMenuState
 
     Private Sub OnAdvanceableListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim skillType = CType(args.Value, SkillMenuListViewItem).SkillType
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
         If skillType.Advance(character) Then
             UpdateView()
         End If
@@ -97,7 +97,7 @@ Friend Class SkillMenuState
     Friend Overrides Sub UpdateView()
         Dim advanceable As New List(Of SkillMenuListViewItem)
         Dim allSkills As New List(Of SkillMenuListViewItem)
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
         For Each descriptor In SkillTypes.Descriptors.Values.OrderBy(Function(x) x.Name)
             allSkills.Add(New SkillMenuListViewItem(descriptor, character))
             If character.CanAdvance(descriptor) Then

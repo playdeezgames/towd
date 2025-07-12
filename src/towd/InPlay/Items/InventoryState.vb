@@ -59,7 +59,7 @@ Friend Class InventoryState
     End Sub
 
     Friend Overrides Sub UpdateView()
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
         Dim itemStacks = character.ItemStacks.ToList
         itemTypeListView.SetSource(itemStacks)
         MyBase.UpdateView()

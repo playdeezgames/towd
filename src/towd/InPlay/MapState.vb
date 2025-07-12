@@ -41,7 +41,7 @@ Friend Class MapState
     End Sub
 
     Friend Overrides Sub UpdateView()
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
         Dim map = character.CurrentLocation.Map
         Dim builder As New StringBuilder
         For Each row In Enumerable.Range(0, map.Rows)

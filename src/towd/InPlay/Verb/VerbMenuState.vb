@@ -71,9 +71,9 @@ Friend Class VerbMenuState
         Dim verbTreeNode As VerbTreeNode = TryCast(args.ActivatedObject, VerbTreeNode)
         If verbTreeNode IsNot Nothing Then
             Dim descriptor = verbTreeNode.Descriptor
-            If descriptor.CanPerform(World.Avatar) Then
-                descriptor.Perform(World.Avatar)
-                LastVerb = descriptor
+            If descriptor.CanPerform(Context.World.Avatar) Then
+                descriptor.Perform(Context.World.Avatar)
+                lastVerb = descriptor
                 UpdateView()
             Else
                 MessageBox.ErrorQuery("Sorry Not Sorry!", "You cannot do that.", "OK")
@@ -83,9 +83,9 @@ Friend Class VerbMenuState
 
     Private Sub OnAllVerbListViewOpenSelectedItem(args As ListViewItemEventArgs)
         Dim descriptor = CType(args.Value, IVerbType)
-        If descriptor.CanPerform(World.Avatar) Then
-            descriptor.Perform(World.Avatar)
-            LastVerb = descriptor
+        If descriptor.CanPerform(Context.World.Avatar) Then
+            descriptor.Perform(Context.World.Avatar)
+            lastVerb = descriptor
             UpdateView()
         Else
             MessageBox.ErrorQuery("Sorry Not Sorry!", "You cannot do that.", "OK")
@@ -98,7 +98,7 @@ Friend Class VerbMenuState
     End Sub
 
     Private Sub UpdateAvailableVerbTree()
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
         Dim verbCategories = character.GetDoableVerbs().GroupBy(Function(x) x.VerbCategoryType)
         Dim selectedNode As ITreeNode = Nothing
         availableVerbTreeView.ClearObjects()

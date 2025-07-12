@@ -9,7 +9,7 @@ Friend Class NeutralState
 
     Friend Overrides Sub UpdateView()
         SaveGame(SaveSlot.Auto, False)
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
         If character.IsDead Then
             ShowState(GameState.Dead)
         Else

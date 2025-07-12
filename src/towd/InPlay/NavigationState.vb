@@ -92,7 +92,7 @@ Friend Class NavigationState
             Case MAP_TEXT
                 ShowState(GameState.Map)
             Case DIALOG_TEXT
-                DialogState.CurrentDialog = World.Avatar.StartDialog(Nothing)
+                DialogState.CurrentDialog = Context.World.Avatar.StartDialog(Nothing)
                 ShowState(GameState.Dialog)
             Case STATISTICS_TEXT
                 ShowState(GameState.Statistics)
@@ -100,18 +100,18 @@ Friend Class NavigationState
     End Sub
 
     Private Sub HandleMoveCommand()
-        Dim directionTable = World.Avatar.CurrentLocation.Neighbors.ToDictionary(Function(x) CType(x.Key.ToDirectionDescriptor.Name, ustring), Function(x) x.Key)
+        Dim directionTable = Context.World.Avatar.CurrentLocation.Neighbors.ToDictionary(Function(x) CType(x.Key.ToDirectionDescriptor.Name, ustring), Function(x) x.Key)
         Dim buttons = directionTable.Keys.ToArray
         Dim answer = MessageBox.Query("Which Way?", "Choose a direction.", buttons)
         If answer > -1 Then
-            World.Avatar.Move(directionTable(buttons(answer)))
-            World.AdvanceTime(1)
+            Context.World.Avatar.Move(directionTable(buttons(answer)))
+            Context.World.AdvanceTime(1)
             ShowState(GameState.Neutral)
         End If
     End Sub
 
     Friend Overrides Sub UpdateView()
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
 
         UpdateLocationTextView(character)
 

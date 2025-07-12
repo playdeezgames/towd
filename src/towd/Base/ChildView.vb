@@ -4,30 +4,18 @@ Imports towd.data
 Friend MustInherit Class ChildView
     Inherits View
     Private ReadOnly mainView As MainView
-    Protected Shared Context As IContext = New Context
-    Private Shared worldData As New WorldData
+    Protected Shared ReadOnly Context As IContext = New Context
     Protected Shared Function LoadGame(saveSlot As String) As Boolean
-        Dim loadAttempt = saveSlot.ToSaveSlotDescriptor.LoadGame()
-        If loadAttempt IsNot Nothing Then
-            worldData = loadAttempt
+        If Context.LoadGame(saveSlot) Then
             MessageBox.Query("Game Loaded!", $"{saveSlot.ToSaveSlotDescriptor.DisplayName} is loaded!", "Ok")
             Return True
-        Else
-            MessageBox.ErrorQuery("Load Failed!", $"Could not load {saveSlot.ToSaveSlotDescriptor.DisplayName}!", "Ok")
-            Return False
         End If
+        MessageBox.ErrorQuery("Load Failed!", $"Could not load {saveSlot.ToSaveSlotDescriptor.DisplayName}!", "Ok")
+        Return False
     End Function
     Protected Shared Sub SaveGame(saveSlot As String, notify As Boolean)
-        saveSlot.ToSaveSlotDescriptor.SaveGame(ChildView.worldData)
-        If notify Then
-            MessageBox.Query("Game Saved!", $"{saveSlot.ToSaveSlotDescriptor.DisplayName} is saved!", "Ok")
-        End If
+        Context.SaveGame(saveSlot, Sub() If notify Then MessageBox.Query("Game Saved!", $"{saveSlot.ToSaveSlotDescriptor.DisplayName} is saved!", "Ok"))
     End Sub
-    Protected Shared ReadOnly Property World As IWorld
-        Get
-            Return New World(worldData)
-        End Get
-    End Property
     Sub New(mainView As MainView)
         Me.mainView = mainView
         Width = [Dim].Fill()
@@ -39,7 +27,7 @@ Friend MustInherit Class ChildView
         'nada
     End Sub
     Friend Overridable Sub UpdateView()
-        Dim character = World?.Avatar
+        Dim character = Context.World?.Avatar
         While character?.HasMessages
             MessageBox.Query("", String.Join(vbCrLf, character.CurrentMessage), "Ok")
             character.DismissMessage()

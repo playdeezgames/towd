@@ -98,7 +98,7 @@ Friend Class DeedsState
         Dim available As New List(Of IDeed)
         Dim done As New List(Of IDeed)
         Dim all As New List(Of IDeed)
-        Dim character = World.Avatar
+        Dim character = Context.World.Avatar
         For Each descriptor In Deeds.Descriptors.Values.OrderBy(Function(x) x.Name)
             all.Add(descriptor)
             If character.HasDone(descriptor) Then

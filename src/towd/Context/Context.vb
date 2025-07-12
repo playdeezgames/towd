@@ -9,10 +9,10 @@ Public Class Context
             Return New World(worldData)
         End Get
     End Property
-    Public Sub SaveGame(saveSlot As String, notify As Action(Of String)) Implements IContext.SaveGame
+    Public Sub SaveGame(saveSlot As String, notify As Action) Implements IContext.SaveGame
         saveSlot.ToSaveSlotDescriptor.SaveGame(worldData)
         If notify IsNot Nothing Then
-            notify(saveSlot.ToSaveSlotDescriptor.DisplayName)
+            notify()
         End If
     End Sub
     Public Function LoadGame(saveSlot As String) As Boolean Implements IContext.LoadGame
