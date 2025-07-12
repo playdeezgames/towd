@@ -1,79 +1,76 @@
-﻿Public Enum Topic
-    ItemTypeBlade
-    ItemTypeBrick
-    ItemTypeCharcoal
-    ItemTypeClay
-    ItemTypeCookedFishFilet
-    ItemTypeCookedGrub
-    ItemTypeFishGuts
-    ItemTypeFishHead
-    ItemTypeFishingNet
-    ItemTypeGrub
-    ItemTypeKnife
-    ItemTypeHammer
-    ItemTypeHatchet
-    ItemTypeLog
-    ItemTypePlank
-    ItemTypePlantFiber
-    ItemTypeRawFish
-    ItemTypeRawFishFilet
-    ItemTypeRock
-    ItemTypeSharpRock
-    ItemTypeSharpStick
-    ItemTypeStick
-    ItemTypeTwine
-    ItemTypeUnfiredBrick
-
-    NavigationDeeds
-    NavigationGameMenu
-    NavigationInventory
-    NavigationMove
-    NavigationSkills
-    NavigationVerb
-
-    VerbTypeBlade
-    VerbTypeBrick
-    VerbTypeCharcoalFromCookingFire
-    VerbTypeChop
-    VerbTypeCookedFishFilet
-    VerbTypeCookedGrub
-    VerbTypeCookingFire
-    VerbTypeDigGrass
-    VerbTypeDigPond
-    VerbTypeFishingNet
-    VerbTypeForageGrass
-    VerbTypeForagePine
-    VerbTypeForageRock
-    VerbTypeFurnace
-    VerbTypeHammer
-    VerbTypeHatchet
-    VerbTypeKnife
-    VerbTypePlank
-    VerbTypeRawFishFilet
-    VerbTypeSharpRock
-    VerbTypeSharpStick
-    VerbTypeTwine
-    VerbTypeUnfiredBrick
-    VerbTypeWait
-    VerbTypeFish
-
-    SkillTypeForaging
-    SkillTypeDig
-    SkillTypeKnapping
-    SkillTypeChop
-    SkillTypeFish
-    VerbTypeEatCookedFishFilet
-    VerbTypeEatCookedGrub
-    VerbTypeAddFuelCookingFireCharcoal
-    VerbTypeAddFuelCookingFireLog
-    VerbTypeAddFuelCookingFirePlank
-    VerbTypeAddFuelCookingFireStick
-    VerbTypeAddFuelFurnaceCharcoal
-    ItemTypeRockFlake
-    NavigationMap
-    VerbTypeCharcoalFromFurnace
-    NavigationStatistics
-    NavigationDialog
-    ItemTypeCarrot
-    VerbTypeEatCarrot
-End Enum
+﻿Public Class Topic
+    Public Const ItemTypeBlade = "ItemTypeBlade"
+    Public Const ItemTypeBrick = "ItemTypeBrick"
+    Public Const ItemTypeCharcoal = "ItemTypeCharcoal"
+    Public Const ItemTypeClay = "ItemTypeClay"
+    Public Const ItemTypeCookedFishFilet = "ItemTypeCookedFishFilet"
+    Public Const ItemTypeCookedGrub = "ItemTypeCookedGrub"
+    Public Const ItemTypeFishGuts = "ItemTypeFishGuts"
+    Public Const ItemTypeFishHead = "ItemTypeFishHead"
+    Public Const ItemTypeFishingNet = "ItemTypeFishingNet"
+    Public Const ItemTypeGrub = "ItemTypeGrub"
+    Public Const ItemTypeKnife = "ItemTypeKnife"
+    Public Const ItemTypeHammer = "ItemTypeHammer"
+    Public Const ItemTypeHatchet = "ItemTypeHatchet"
+    Public Const ItemTypeLog = "ItemTypeLog"
+    Public Const ItemTypePlank = "ItemTypePlank"
+    Public Const ItemTypePlantFiber = "ItemTypePlantFiber"
+    Public Const ItemTypeRawFish = "ItemTypeRawFish"
+    Public Const ItemTypeRawFishFilet = "ItemTypeRawFishFilet"
+    Public Const ItemTypeRock = "ItemTypeRock"
+    Public Const ItemTypeSharpRock = "ItemTypeSharpRock"
+    Public Const ItemTypeSharpStick = "ItemTypeSharpStick"
+    Public Const ItemTypeStick = "ItemTypeStick"
+    Public Const ItemTypeTwine = "ItemTypeTwine"
+    Public Const ItemTypeUnfiredBrick = "ItemTypeUnfiredBrick"
+    Public Const NavigationDeeds = "NavigationDeeds"
+    Public Const NavigationGameMenu = "NavigationGameMenu"
+    Public Const NavigationInventory = "NavigationInventory"
+    Public Const NavigationMove = "NavigationMove"
+    Public Const NavigationSkills = "NavigationSkills"
+    Public Const NavigationVerb = "NavigationVerb"
+    Public Const VerbTypeBlade = "VerbTypeBlade"
+    Public Const VerbTypeBrick = "VerbTypeBrick"
+    Public Const VerbTypeCharcoalFromCookingFire = "VerbTypeCharcoalFromCookingFire"
+    Public Const VerbTypeChop = "VerbTypeChop"
+    Public Const VerbTypeCookedFishFilet = "VerbTypeCookedFishFilet"
+    Public Const VerbTypeCookedGrub = "VerbTypeCookedGrub"
+    Public Const VerbTypeCookingFire = "VerbTypeCookingFire"
+    Public Const VerbTypeDigGrass = "VerbTypeDigGrass"
+    Public Const VerbTypeDigPond = "VerbTypeDigPond"
+    Public Const VerbTypeFishingNet = "VerbTypeFishingNet"
+    Public Const VerbTypeForageGrass = "VerbTypeForageGrass"
+    Public Const VerbTypeForagePine = "VerbTypeForagePine"
+    Public Const VerbTypeForageRock = "VerbTypeForageRock"
+    Public Const VerbTypeFurnace = "VerbTypeFurnace"
+    Public Const VerbTypeHammer = "VerbTypeHammer"
+    Public Const VerbTypeHatchet = "VerbTypeHatchet"
+    Public Const VerbTypeKnife = "VerbTypeKnife"
+    Public Const VerbTypePlank = "VerbTypePlank"
+    Public Const VerbTypeRawFishFilet = "VerbTypeRawFishFilet"
+    Public Const VerbTypeSharpRock = "VerbTypeSharpRock"
+    Public Const VerbTypeSharpStick = "VerbTypeSharpStick"
+    Public Const VerbTypeTwine = "VerbTypeTwine"
+    Public Const VerbTypeUnfiredBrick = "VerbTypeUnfiredBrick"
+    Public Const VerbTypeWait = "VerbTypeWait"
+    Public Const VerbTypeFish = "VerbTypeFish"
+    Public Const SkillTypeForaging = "SkillTypeForaging"
+    Public Const SkillTypeDig = "SkillTypeDig"
+    Public Const SkillTypeKnapping = "SkillTypeKnapping"
+    Public Const SkillTypeChop = "SkillTypeChop"
+    Public Const SkillTypeFish = "SkillTypeFish"
+    Public Const VerbTypeEatCookedFishFilet = "VerbTypeEatCookedFishFilet"
+    Public Const VerbTypeEatCookedGrub = "VerbTypeEatCookedGrub"
+    Public Const VerbTypeAddFuelCookingFireCharcoal = "VerbTypeAddFuelCookingFireCharcoal"
+    Public Const VerbTypeAddFuelCookingFireLog = "VerbTypeAddFuelCookingFireLog"
+    Public Const VerbTypeAddFuelCookingFirePlank = "VerbTypeAddFuelCookingFirePlank"
+    Public Const VerbTypeAddFuelCookingFireStick = "VerbTypeAddFuelCookingFireStick"
+    Public Const VerbTypeAddFuelFurnaceCharcoal = "VerbTypeAddFuelFurnaceCharcoal"
+    Public Const ItemTypeRockFlake = "ItemTypeRockFlake"
+    Public Const NavigationMap = "NavigationMap"
+    Public Const VerbTypeCharcoalFromFurnace = "VerbTypeCharcoalFromFurnace"
+    Public Const NavigationStatistics = "NavigationStatistics"
+    Public Const NavigationDialog = "NavigationDialog"
+    Public Const ItemTypeCarrot = "ItemTypeCarrot"
+    Public Const VerbTypeEatCarrot = "VerbTypeEatCarrot"
+End Class

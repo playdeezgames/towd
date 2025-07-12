@@ -3,13 +3,13 @@ Imports towd.data
 
 Friend Class ItemTypeTopicDescriptor
     Implements ITopic
-    Sub New(topic As Topic, itemType As String)
+    Sub New(topic As String, itemType As String)
         Me.Topic = topic
         Me.ItemType = itemType
     End Sub
     Private ReadOnly Property ItemType As String
 
-    Public ReadOnly Property Topic As Topic Implements ITopic.Topic
+    Public ReadOnly Property Topic As String Implements ITopic.Topic
 
     Public ReadOnly Property Title As String Implements ITopic.Title
         Get

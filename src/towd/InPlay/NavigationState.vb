@@ -14,8 +14,8 @@ Friend Class NavigationState
     Const MAP_TEXT = "Map..."
     Const STATISTICS_TEXT = "Statistics..."
     Const DIALOG_TEXT = "Dialog..."
-    Private ReadOnly topicTable As IReadOnlyDictionary(Of String, Topic) =
-        New Dictionary(Of String, Topic) From
+    Private ReadOnly topicTable As IReadOnlyDictionary(Of String, String) =
+        New Dictionary(Of String, String) From
         {
             {DEEDS_TEXT, Topic.NavigationDeeds},
             {MENU_TEXT, Topic.NavigationGameMenu},

@@ -1,7 +1,7 @@
 ﻿Friend Class TopicState
     Inherits ChildView
 
-    Public Shared Property Topic As Topic
+    Public Shared Property Topic As String
     Private ReadOnly titleLabel As Label
     Private ReadOnly contentTextView As TextView
 
@@ -41,8 +41,8 @@
     End Sub
 
     Friend Overrides Sub UpdateView()
-        titleLabel.Text = $"{Topic.ToDescriptor.Title} (Esc to continue game)"
-        contentTextView.Text = Topic.ToDescriptor.Content
+        titleLabel.Text = $"{Topic.ToTopicDescriptor.Title} (Esc to continue game)"
+        contentTextView.Text = Topic.ToTopicDescriptor.Content
         contentTextView.ColorScheme = New ColorScheme With
             {
                 .Normal = ColorScheme.Normal,

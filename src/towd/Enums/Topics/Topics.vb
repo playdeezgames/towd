@@ -1,10 +1,9 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports towd.business
-Imports towd.data
 
 Public Module Topics
-    Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of String, Topic) =
-        New Dictionary(Of String, Topic) From
+    Public ReadOnly SkillTypeTopicTable As IReadOnlyDictionary(Of String, String) =
+        New Dictionary(Of String, String) From
         {
             {SkillType.Foraging, Topic.SkillTypeForaging},
             {SkillType.Dig, Topic.SkillTypeDig},
@@ -12,8 +11,8 @@ Public Module Topics
             {SkillType.Chop, Topic.SkillTypeChop},
             {SkillType.Fish, Topic.SkillTypeFish}
         }
-    Public ReadOnly VerbTypeTopicTable As IReadOnlyDictionary(Of VerbType, Topic) =
-        New Dictionary(Of VerbType, Topic) From
+    Public ReadOnly VerbTypeTopicTable As IReadOnlyDictionary(Of VerbType, String) =
+        New Dictionary(Of VerbType, String) From
         {
             {VerbType.Twine, Topic.VerbTypeTwine},
             {VerbType.SharpRock, Topic.VerbTypeSharpRock},
@@ -50,8 +49,8 @@ Public Module Topics
             {VerbType.AddFuelFurnaceCharcoal, Topic.VerbTypeAddFuelFurnaceCharcoal},
             {VerbType.EatCarrot, Topic.VerbTypeEatCarrot}
         }
-    Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of String, Topic) =
-        New Dictionary(Of String, Topic) From
+    Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of String, String) =
+        New Dictionary(Of String, String) From
         {
             {ItemType.PlantFiber, Topic.ItemTypePlantFiber},
             {ItemType.Stick, Topic.ItemTypeStick},
@@ -80,7 +79,7 @@ Public Module Topics
             {ItemType.RockFlake, Topic.ItemTypeRockFlake},
             {ItemType.Carrot, Topic.ItemTypeCarrot}
         }
-    Private Function CreateDescriptors() As IReadOnlyDictionary(Of Topic, ITopic)
+    Private Function CreateDescriptors() As IReadOnlyDictionary(Of String, ITopic)
         Dim topicTable = New List(Of ITopic) From
         {
             New TopicDescriptor(Topic.NavigationDeeds, "Deeds", "Your tale grows with every scrape and scavenge. 
@@ -113,9 +112,9 @@ Forage, dig, chop—choose your labor and test your skills against the wild’s 
         Next
         Return topicTable
     End Function
-    Public ReadOnly Descriptors As IReadOnlyDictionary(Of Topic, ITopic) = CreateDescriptors()
+    Public ReadOnly Descriptors As IReadOnlyDictionary(Of String, ITopic) = CreateDescriptors()
     <Extension>
-    Public Function ToDescriptor(topic As Topic) As ITopic
+    Public Function ToTopicDescriptor(topic As String) As ITopic
         Return Descriptors(topic)
     End Function
 End Module
