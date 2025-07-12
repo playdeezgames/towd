@@ -88,7 +88,7 @@ Friend Class Character
         End Get
     End Property
 
-    Public Sub Move(direction As Direction) Implements ICharacter.Move
+    Public Sub Move(direction As String) Implements ICharacter.Move
         Dim descriptor = direction.ToDirectionDescriptor
         Dim nextLocation As ILocation = GetNextLocation(descriptor)
         If nextLocation IsNot Nothing Then
@@ -217,7 +217,7 @@ Friend Class Character
         Return skillType.CanAdvance(Me)
     End Function
 
-    Public Function CanMove(direction As Direction) As Boolean Implements ICharacter.CanMove
+    Public Function CanMove(direction As String) As Boolean Implements ICharacter.CanMove
         Return GetNextLocation(direction.ToDirectionDescriptor) IsNot Nothing
     End Function
 

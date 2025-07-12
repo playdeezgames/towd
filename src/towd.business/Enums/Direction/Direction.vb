@@ -1,6 +1,6 @@
-﻿Public Enum Direction
-    North
-    East
-    South
-    West
-End Enum
+﻿Public Class Direction
+    Public Const North = "North"
+    Public Const East = "East"
+    Public Const South = "South"
+    Public Const West = "West"
+End Class

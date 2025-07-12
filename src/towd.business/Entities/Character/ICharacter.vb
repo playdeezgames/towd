@@ -6,8 +6,8 @@
     ReadOnly Property IsDead As Boolean
 
     Property CurrentLocation As ILocation
-    Function CanMove(direction As Direction) As Boolean
-    Sub Move(direction As Direction)
+    Function CanMove(direction As String) As Boolean
+    Sub Move(direction As String)
 
     Sub AddKnownLocation(location As ILocation)
     Function KnowsLocation(location As ILocation) As Boolean

@@ -1,7 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 
 Public Module Directions
-    Friend Descriptors As IReadOnlyDictionary(Of Direction, IDirection) =
+    Friend Descriptors As IReadOnlyDictionary(Of String, IDirection) =
         New List(Of IDirection) From
         {
             New DirectionDescriptor(Direction.North, "North", 0, -1),
@@ -11,7 +11,7 @@ Public Module Directions
         }.
         ToDictionary(Function(x) x.Direction, Function(x) x)
     <Extension>
-    Public Function ToDirectionDescriptor(direction As Direction) As IDirection
+    Public Function ToDirectionDescriptor(direction As String) As IDirection
         Return Descriptors(direction)
     End Function
 End Module

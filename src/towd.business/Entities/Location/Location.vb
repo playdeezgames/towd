@@ -39,9 +39,9 @@ Friend Class Location
         End Get
     End Property
 
-    Public ReadOnly Property Neighbors As IReadOnlyDictionary(Of Direction, ILocation) Implements ILocation.Neighbors
+    Public ReadOnly Property Neighbors As IReadOnlyDictionary(Of String, ILocation) Implements ILocation.Neighbors
         Get
-            Dim result As New Dictionary(Of Direction, ILocation)
+            Dim result As New Dictionary(Of String, ILocation)
             For Each descriptor In Directions.Descriptors
                 Dim neighborColumn = descriptor.Value.NextColumn(Column, Row)
                 Dim neighborRow = descriptor.Value.NextRow(Column, Row)
