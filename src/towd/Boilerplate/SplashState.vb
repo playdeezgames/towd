@@ -1,8 +1,8 @@
 ﻿Friend Class SplashState
     Inherits ChildView
 
-    Public Sub New(mainView As MainView, context As IContext)
-        MyBase.New(mainView, context)
+    Public Sub New(mainView As MainView)
+        MyBase.New(mainView)
         Dim titleLabel As New Label With
             {
                 .X = Pos.Center,

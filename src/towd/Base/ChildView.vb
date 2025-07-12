@@ -4,7 +4,7 @@ Imports towd.data
 Friend MustInherit Class ChildView
     Inherits View
     Private ReadOnly mainView As MainView
-    Private ReadOnly context As IContext
+    Protected Shared Context As IContext = New Context
     Private Shared worldData As New WorldData
     Protected Shared Function LoadGame(saveSlot As String) As Boolean
         Dim loadAttempt = saveSlot.ToSaveSlotDescriptor.LoadGame()
@@ -28,7 +28,7 @@ Friend MustInherit Class ChildView
             Return New World(worldData)
         End Get
     End Property
-    Sub New(mainView As MainView, context As IContext)
+    Sub New(mainView As MainView)
         Me.mainView = mainView
         Width = [Dim].Fill()
         Height = [Dim].Fill()

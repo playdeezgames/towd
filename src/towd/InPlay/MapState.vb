@@ -4,8 +4,8 @@ Imports towd.business
 Friend Class MapState
     Inherits ChildView
     ReadOnly mapLabel As Label
-    Public Sub New(mainView As MainView, context As IContext)
-        MyBase.New(mainView, context)
+    Public Sub New(mainView As MainView)
+        MyBase.New(mainView)
         mapLabel = New Label With
             {
                 .X = 0,

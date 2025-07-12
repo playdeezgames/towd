@@ -4,8 +4,8 @@ Imports towd.data
 Friend Class InventoryState
     Inherits ChildView
     Private ReadOnly itemTypeListView As ListView
-    Public Sub New(mainView As MainView, context As IContext)
-        MyBase.New(mainView, context)
+    Public Sub New(mainView As MainView)
+        MyBase.New(mainView)
         Dim titleLabel As New Label With
             {
                 .Width = [Dim].Fill,

@@ -6,8 +6,8 @@ Friend Class DialogState
     Private ReadOnly linesTextView As TextView
     Private ReadOnly choicesListView As ListView
 
-    Public Sub New(mainView As MainView, context As IContext)
-        MyBase.New(mainView, context)
+    Public Sub New(mainView As MainView)
+        MyBase.New(mainView)
         promptLabel = New Label With
             {
                 .Width = [Dim].Fill,
