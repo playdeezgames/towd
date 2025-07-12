@@ -53,7 +53,7 @@ Friend Class InventoryState
             args.Handled = True
             Dim currentIndex = itemTypeListView.SelectedItem
             Dim currentItem = itemTypeListView.Source.ToList(currentIndex)
-            TopicState.Topic = ItemTypeTopicTable(CType(currentItem, IItemStack).ItemType.ItemType)
+            TopicState.Topic = Topics.ToItemTypeTopic(CType(currentItem, IItemStack).ItemType.ItemType)
             ShowState(GameState.Topic)
         End If
     End Sub

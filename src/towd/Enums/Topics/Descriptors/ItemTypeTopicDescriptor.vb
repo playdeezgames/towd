@@ -3,10 +3,15 @@ Imports towd.data
 
 Friend Class ItemTypeTopicDescriptor
     Implements ITopic
-    Sub New(topic As String, itemType As String)
+    Private Sub New(topic As String, itemType As String)
         Me.Topic = topic
         Me.ItemType = itemType
     End Sub
+
+    Friend Shared Function Create(topic As String, enumTypeValue As String) As ITopic
+        Return New ItemTypeTopicDescriptor(topic, enumTypeValue)
+    End Function
+
     Private ReadOnly Property ItemType As String
 
     Public ReadOnly Property Topic As String Implements ITopic.Topic

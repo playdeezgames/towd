@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.CompilerServices
+﻿Imports System.Reflection
+Imports System.Runtime.CompilerServices
 Imports towd.business
 
 Public Module Topics
@@ -49,36 +50,22 @@ Public Module Topics
             {VerbType.AddFuelFurnaceCharcoal, Topic.VerbTypeAddFuelFurnaceCharcoal},
             {VerbType.EatCarrot, Topic.VerbTypeEatCarrot}
         }
-    Public ReadOnly ItemTypeTopicTable As IReadOnlyDictionary(Of String, String) =
-        New Dictionary(Of String, String) From
-        {
-            {ItemType.PlantFiber, Topic.ItemTypePlantFiber},
-            {ItemType.Stick, Topic.ItemTypeStick},
-            {ItemType.Rock, Topic.ItemTypeRock},
-            {ItemType.Twine, Topic.ItemTypeTwine},
-            {ItemType.SharpRock, Topic.ItemTypeSharpRock},
-            {ItemType.Hatchet, Topic.ItemTypeHatchet},
-            {ItemType.Log, Topic.ItemTypeLog},
-            {ItemType.Hammer, Topic.ItemTypeHammer},
-            {ItemType.Plank, Topic.ItemTypePlank},
-            {ItemType.SharpStick, Topic.ItemTypeSharpStick},
-            {ItemType.Grub, Topic.ItemTypeGrub},
-            {ItemType.CookedGrub, Topic.ItemTypeCookedGrub},
-            {ItemType.Clay, Topic.ItemTypeClay},
-            {ItemType.Charcoal, Topic.ItemTypeCharcoal},
-            {ItemType.UnfiredBrick, Topic.ItemTypeUnfiredBrick},
-            {ItemType.Brick, Topic.ItemTypeBrick},
-            {ItemType.FishingNet, Topic.ItemTypeFishingNet},
-            {ItemType.RawFish, Topic.ItemTypeRawFish},
-            {ItemType.RawFishFilet, Topic.ItemTypeRawFishFilet},
-            {ItemType.FishHead, Topic.ItemTypeFishHead},
-            {ItemType.FishGuts, Topic.ItemTypeFishGuts},
-            {ItemType.Knife, Topic.ItemTypeKnife},
-            {ItemType.Blade, Topic.ItemTypeBlade},
-            {ItemType.CookedFishFilet, Topic.ItemTypeCookedFishFilet},
-            {ItemType.RockFlake, Topic.ItemTypeRockFlake},
-            {ItemType.Carrot, Topic.ItemTypeCarrot}
-        }
+    Public Function ToItemTypeTopic(itemType As String) As String
+        Return $"ItemType{itemType}"
+    End Function
+    Private Sub AddEnumTopic(Of TEnum)(
+                                      topicTable As Dictionary(Of String, ITopic),
+                                      toTopic As Func(Of String, String),
+                                      toDescriptor As Func(Of String, String, ITopic))
+        Dim enumTypeModule = GetType(TEnum)
+        Dim enumTypes = enumTypeModule.GetFields(BindingFlags.Public Or BindingFlags.Static)
+        For Each enumType In enumTypes
+            Dim enumTypeValue = CStr(enumType.GetRawConstantValue())
+            Dim topic = toTopic(enumTypeValue)
+            topicTable.Add(topic, toDescriptor(topic, enumTypeValue))
+        Next
+    End Sub
+
     Private Function CreateDescriptors() As IReadOnlyDictionary(Of String, ITopic)
         Dim topicTable = New List(Of ITopic) From
         {
@@ -101,9 +88,7 @@ Forage, dig, chop—choose your labor and test your skills against the wild’s 
             New TopicDescriptor(Topic.NavigationStatistics, "Statistics", "This is the place to see yer stats! You can then contemplate yer life choices. Or don't. You do you."),
             New TopicDescriptor(Topic.NavigationDialog, "Dialog", "This is where you can dialog with another character in the game. Yes, I'm using the world ""Dialog"" as a verb here. I know its a noun. I blame HR.")
         }.ToDictionary(Function(x) x.Topic, Function(x) x)
-        For Each entry In ItemTypeTopicTable
-            topicTable.Add(entry.Value, New ItemTypeTopicDescriptor(entry.Value, entry.Key))
-        Next
+        AddEnumTopic(Of ItemType)(topicTable, AddressOf ToItemTypeTopic, AddressOf ItemTypeTopicDescriptor.Create)
         For Each entry In VerbTypeTopicTable
             topicTable.Add(entry.Value, New VerbTypeTopicDescriptor(entry.Value, entry.Key))
         Next
