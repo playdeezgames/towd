@@ -87,7 +87,7 @@ Friend Class NavigationUIDialog
             Case DEEDS_TEXT
                 Return (Nothing, New DeedsUIDialog(context, Function() Me))
             Case SKILLS_TEXT
-                Return (GameState.SkillMenu, Nothing)
+                Return (Nothing, New SkillsUIDialog(context, Function() Me))
             Case MAP_TEXT
                 Return (GameState.Map, Nothing)
             Case DIALOG_TEXT
