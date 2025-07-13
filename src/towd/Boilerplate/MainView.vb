@@ -6,7 +6,6 @@
     Public Sub New()
         MyBase.New()
         dialogView = New DialogView(Me)
-        childViews.Add(GameState.Navigation, New NavigationState(Me))
         childViews.Add(GameState.GameMenu, New GameMenuState(Me))
         childViews.Add(GameState.Inventory, New InventoryState(Me))
         childViews.Add(GameState.ItemStack, New ItemStackState(Me))
