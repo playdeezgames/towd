@@ -16,7 +16,6 @@
         childViews.Add(GameState.Deeds, New DeedsState(Me))
         childViews.Add(GameState.SkillMenu, New SkillMenuState(Me))
         childViews.Add(GameState.SaveMenu, New SaveMenuState(Me))
-        childViews.Add(GameState.LoadMenu, New LoadMenuState(Me))
         childViews.Add(GameState.Topic, New TopicState(Me))
         childViews.Add(GameState.Map, New MapState(Me))
         childViews.Add(GameState.Statistics, New StatisticsState(Me))

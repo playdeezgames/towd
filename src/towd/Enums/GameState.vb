@@ -9,7 +9,6 @@
     Public Const Deeds = "Deeds"
     Public Const SkillMenu = "SkillMenu"
     Public Const SaveMenu = "SaveMenu"
-    Public Const LoadMenu = "LoadMenu"
     Public Const Topic = "Topic"
     Public Const Map = "Map"
     Public Const Statistics = "Statistics"
