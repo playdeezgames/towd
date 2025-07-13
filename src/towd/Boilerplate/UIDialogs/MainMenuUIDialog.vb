@@ -45,7 +45,7 @@
                 End If
                 Return (Nothing, Me)
             Case LOAD_TEXT
-                Return (GameState.LoadMenu, Nothing)
+                Return (Nothing, New LoadMenuUIDialog(context, Me))
             Case QUIT_TEXT
                 Return (Nothing, New ConfirmUIDialog("Are you sure you want to quit?", Nothing, Me))
             Case Else
