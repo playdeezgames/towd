@@ -47,7 +47,7 @@
             Case LOAD_TEXT
                 Return (GameState.LoadMenu, Nothing)
             Case QUIT_TEXT
-                Return (Nothing, Nothing)
+                Return (Nothing, New ConfirmUIDialog("Are you sure you want to quit?", Nothing, Me))
             Case Else
                 Throw New NotImplementedException
         End Select
