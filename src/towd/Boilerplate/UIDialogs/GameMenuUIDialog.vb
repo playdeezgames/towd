@@ -1,11 +1,12 @@
-﻿Friend Class MainMenuUIDialog
+﻿Friend Class GameMenuUIDialog
     Implements IUIDialog
 
     Private ReadOnly context As IUIContext
-    Const EMBARK_TEXT = "Embark!"
-    Const SCUM_LOAD_TEXT = "Scum Load"
-    Const LOAD_TEXT = "Load..."
-    Const QUIT_TEXT = "Quit"
+    Const CONTINUE_TEXT = "Continue"
+    Const SCUM_SAVE_GAME_TEXT = "Scum Save Game"
+    Const SCUM_LOAD_GAME_TEXT = "Scum Load Game"
+    Const SAVE_GAME_TEXT = "Save Game"
+    Const ABANDON_GAME_TEXT = "Abandon Game"
 
     Public Sub New(context As IUIContext)
         Me.context = context
@@ -20,34 +21,37 @@
     Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
         Get
             Return {
-                EMBARK_TEXT,
-                SCUM_LOAD_TEXT,
-                LOAD_TEXT,
-                QUIT_TEXT
+                CONTINUE_TEXT,
+                SCUM_SAVE_GAME_TEXT,
+                SCUM_LOAD_GAME_TEXT,
+                SAVE_GAME_TEXT,
+                ABANDON_GAME_TEXT
                 }
         End Get
     End Property
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get
-            Return "Main Menu:"
+            Return "Game Menu"
         End Get
     End Property
 
     Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
         Select Case choice
-            Case EMBARK_TEXT
-                context.World.Initialize()
+            Case CONTINUE_TEXT
                 Return NeutralUIDialog.DetermineInPlayDialog(context)
-            Case SCUM_LOAD_TEXT
+            Case SCUM_LOAD_GAME_TEXT
                 If context.LoadGame(SaveSlot.ScumSlot) Then
                     Return NeutralUIDialog.DetermineInPlayDialog(context)
                 End If
                 Return (Nothing, Me)
-            Case LOAD_TEXT
-                Return (Nothing, New LoadMenuUIDialog(context, Function() Me))
-            Case QUIT_TEXT
-                Return (Nothing, New ConfirmUIDialog("Are you sure you want to quit?", Nothing, Function() Me))
+            Case SCUM_SAVE_GAME_TEXT
+                context.SaveGame(SaveSlot.ScumSlot, Sub() Return)
+                Return (Nothing, Me)
+            Case SAVE_GAME_TEXT
+                Return (GameState.SaveMenu, Nothing)
+            Case ABANDON_GAME_TEXT
+                Return (Nothing, New ConfirmUIDialog("Are you sure you want to abandon the game?", Function() Me, Function() Me))
             Case Else
                 Throw New NotImplementedException
         End Select

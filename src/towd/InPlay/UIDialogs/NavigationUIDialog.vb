@@ -77,9 +77,9 @@ Friend Class NavigationUIDialog
     Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case MOVE_TEXT
-                Return (Nothing, New MoveMenuUIDialog(context, Me))
+                Return (Nothing, New MoveMenuUIDialog(context, Function() Me))
             Case MENU_TEXT
-                Return (GameState.GameMenu, Nothing)
+                Return (Nothing, New GameMenuUIDialog(context))
             Case VERB_TEXT
                 Return (GameState.VerbMenu, Nothing)
             Case INVENTORY_TEXT

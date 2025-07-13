@@ -34,7 +34,7 @@ Friend Class SaveMenuState
     End Sub
 
     Private Sub OnCloseButtonClicked()
-        ShowState(GameState.GameMenu)
+        ShowState(Nothing, New GameMenuUIDialog(Context))
     End Sub
 
     Private Sub OnSaveSlotListViewOpenSelectedItem(args As ListViewItemEventArgs)
@@ -55,7 +55,7 @@ Friend Class SaveMenuState
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
-            ShowState(GameState.GameMenu)
+            ShowState(Nothing, New GameMenuUIDialog(Context))
         End If
     End Sub
 End Class

@@ -1,5 +1,4 @@
 ﻿Public Class GameState
-    Public Const GameMenu = "GameMenu"
     Public Const Inventory = "Inventory"
     Public Const ItemStack = "ItemStack"
     Public Const VerbMenu = "VerbMenu"

@@ -2,13 +2,13 @@
     Implements IUIDialog
 
     Private ReadOnly caption As String
-    Private ReadOnly confirmDialog As IUIDialog
-    Private ReadOnly cancelDialog As IUIDialog
+    Private ReadOnly confirmDialog As Func(Of IUIDialog)
+    Private ReadOnly cancelDialog As Func(Of IUIDialog)
 
     Const YES_TEXT = "Yes"
     Const NO_TEXT = "No"
 
-    Public Sub New(caption As String, confirmDialog As IUIDialog, cancelDialog As IUIDialog)
+    Public Sub New(caption As String, confirmDialog As Func(Of IUIDialog), cancelDialog As Func(Of IUIDialog))
         Me.caption = caption
         Me.confirmDialog = confirmDialog
         Me.cancelDialog = cancelDialog
@@ -35,9 +35,9 @@
     Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case YES_TEXT
-                Return (Nothing, confirmDialog)
+                Return (Nothing, confirmDialog())
             Case NO_TEXT
-                Return (Nothing, cancelDialog)
+                Return (Nothing, cancelDialog())
             Case Else
                 Throw New NotImplementedException
         End Select

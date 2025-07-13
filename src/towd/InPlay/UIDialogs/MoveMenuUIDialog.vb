@@ -5,11 +5,11 @@ Friend Class MoveMenuUIDialog
     Implements IUIDialog
 
     Private ReadOnly context As IUIContext
-    Private ReadOnly cancelDialog As IUIDialog
+    Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Private table As New Dictionary(Of String, IDirection)
     Const NEVER_MIND_TEXT = "Never Mind"
 
-    Public Sub New(context As IUIContext, cancelDialog As IUIDialog)
+    Public Sub New(context As IUIContext, cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.cancelDialog = cancelDialog
         table.Add(NEVER_MIND_TEXT, Nothing)
@@ -39,7 +39,7 @@ Friend Class MoveMenuUIDialog
     Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
         Dim descriptor = table(choice)
         If descriptor Is Nothing Then
-            Return (Nothing, cancelDialog)
+            Return (Nothing, cancelDialog())
         End If
         context.World.Avatar.Move(descriptor.Direction)
         context.World.AdvanceTime(1)
