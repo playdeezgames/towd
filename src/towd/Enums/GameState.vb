@@ -1,5 +1,4 @@
 ﻿Public Class GameState
-    Public Const Neutral = "Neutral"
     Public Const Navigation = "Navigation"
     Public Const GameMenu = "GameMenu"
     Public Const Dead = "Dead"

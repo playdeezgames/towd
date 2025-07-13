@@ -151,6 +151,6 @@ Friend Class VerbMenuState
     End Sub
 
     Private Sub CloseWindow()
-        ShowState(GameState.Neutral)
+        ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
     End Sub
 End Class

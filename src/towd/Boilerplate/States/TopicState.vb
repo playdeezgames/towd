@@ -37,7 +37,7 @@
     End Sub
 
     Private Sub OnCloseButtonClicked()
-        ShowState(GameState.Neutral)
+        ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
     End Sub
 
     Friend Overrides Sub UpdateView()
@@ -57,7 +57,7 @@
     Protected Overrides Sub OnKeyPress(args As KeyEventEventArgs)
         If args.KeyEvent.Key = Key.Esc Then
             args.Handled = True
-            ShowState(GameState.Neutral)
+            ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
         End If
     End Sub
 End Class

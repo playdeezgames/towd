@@ -37,7 +37,7 @@ Friend Class MapState
     End Sub
 
     Private Sub OnCloseButtonClicked()
-        ShowState(GameState.Neutral)
+        ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
     End Sub
 
     Friend Overrides Sub UpdateView()

@@ -34,7 +34,7 @@ Friend Class StatisticsState
     End Sub
 
     Private Sub CloseWindow()
-        ShowState(GameState.Neutral)
+        ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
     End Sub
 
     Private Sub OnStatisticsListViewOpenSelectedItem(args As ListViewItemEventArgs)

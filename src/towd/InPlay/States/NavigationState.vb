@@ -106,7 +106,7 @@ Friend Class NavigationState
         If answer > -1 Then
             Context.World.Avatar.Move(directionTable(buttons(answer)))
             Context.World.AdvanceTime(1)
-            ShowState(GameState.Neutral)
+            ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
         End If
     End Sub
 

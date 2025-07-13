@@ -49,7 +49,7 @@
 
     Private Sub OnScumLoadButtonClicked()
         If LoadGame(SaveSlot.ScumSlot) Then
-            ShowState(GameState.Neutral)
+            ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
         End If
     End Sub
 
@@ -69,7 +69,7 @@
     End Sub
 
     Private Sub OnContinueButtonClicked()
-        ShowState(GameState.Neutral)
+        ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
     End Sub
 
     Friend Overrides Sub UpdateView()

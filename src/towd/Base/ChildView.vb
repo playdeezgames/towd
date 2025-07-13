@@ -40,4 +40,7 @@ Friend MustInherit Class ChildView
     Protected Sub ShowState(gameState As String, Optional dialog As IUIDialog = Nothing)
         mainView.ShowState(gameState, dialog)
     End Sub
+    Protected Sub ShowState(nextState As (String, IUIDialog))
+        ShowState(nextState.Item1, nextState.Item2)
+    End Sub
 End Class

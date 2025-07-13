@@ -91,7 +91,7 @@ Friend Class DeedsState
     End Sub
 
     Private Sub CloseWindow()
-        ShowState(GameState.Neutral)
+        ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
     End Sub
 
     Friend Overrides Sub UpdateView()

@@ -38,10 +38,10 @@
         Select Case choice
             Case EMBARK_TEXT
                 context.World.Initialize()
-                Return (GameState.Neutral, Nothing)
+                Return NeutralUIDialog.DetermineInPlayDialog(context)
             Case SCUM_LOAD_TEXT
                 If context.LoadGame(SaveSlot.ScumSlot) Then
-                    Return (GameState.Neutral, Nothing)
+                    Return NeutralUIDialog.DetermineInPlayDialog(context)
                 End If
                 Return (Nothing, Me)
             Case LOAD_TEXT

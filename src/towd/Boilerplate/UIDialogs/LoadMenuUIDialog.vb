@@ -39,7 +39,7 @@
             Return (Nothing, cancelDialog)
         End If
         If context.LoadGame(saveSlot.SaveSlot) Then
-            Return (GameState.Neutral, Nothing)
+            Return NeutralUIDialog.DetermineInPlayDialog(context)
         End If
         Throw New NotImplementedException
     End Function

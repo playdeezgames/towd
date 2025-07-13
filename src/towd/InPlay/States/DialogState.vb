@@ -51,7 +51,7 @@ Friend Class DialogState
             choicesListView.SetSource(CurrentDialog.Choices.ToList)
             MyBase.UpdateView()
         Else
-            ShowState(GameState.Neutral)
+            ShowState(NeutralUIDialog.DetermineInPlayDialog(Context))
         End If
     End Sub
 
