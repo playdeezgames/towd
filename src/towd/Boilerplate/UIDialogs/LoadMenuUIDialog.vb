@@ -39,7 +39,9 @@
             Return (Nothing, cancelDialog())
         End If
         If context.LoadGame(saveSlot.SaveSlot) Then
-            Return NeutralUIDialog.DetermineInPlayDialog(context)
+            Return (Nothing, New MessageBoxUIDialog("Load Success!", {$"You loaded {saveSlot.DisplayName}!"}, Function() NeutralUIDialog.DetermineInPlayDialog(context).Item2))
+        Else
+            Return (Nothing, New MessageBoxUIDialog("Load Failed!", {$"Failed to load {saveSlot.DisplayName}!"}, cancelDialog))
         End If
         Throw New NotImplementedException
     End Function

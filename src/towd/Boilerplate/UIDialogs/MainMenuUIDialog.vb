@@ -41,9 +41,9 @@
                 Return NeutralUIDialog.DetermineInPlayDialog(context)
             Case SCUM_LOAD_TEXT
                 If context.LoadGame(SaveSlot.ScumSlot) Then
-                    Return NeutralUIDialog.DetermineInPlayDialog(context)
+                    Return (Nothing, New MessageBoxUIDialog("Load Success!", {$"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!"}, Function() NeutralUIDialog.DetermineInPlayDialog(context).Item2))
                 End If
-                Return (Nothing, Me)
+                Return (Nothing, New MessageBoxUIDialog("Load Failed!", {$"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!"}, Function() Me))
             Case LOAD_TEXT
                 Return (Nothing, New LoadMenuUIDialog(context, Function() Me))
             Case QUIT_TEXT
