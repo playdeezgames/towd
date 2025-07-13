@@ -2,7 +2,6 @@
     Public Const Inventory = "Inventory"
     Public Const ItemStack = "ItemStack"
     Public Const VerbMenu = "VerbMenu"
-    Public Const Deeds = "Deeds"
     Public Const SkillMenu = "SkillMenu"
     Public Const SaveMenu = "SaveMenu"
     Public Const Topic = "Topic"

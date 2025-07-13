@@ -1,0 +1,43 @@
+﻿Imports towd.business
+
+Friend Class FilteredDeedsUIDialog
+    Implements IUIDialog
+
+    Private ReadOnly context As IUIContext
+    Private ReadOnly cancelDialog As Func(Of IUIDialog)
+    Private ReadOnly table As IReadOnlyDictionary(Of String, IDeed)
+    Const NEVER_MIND_TEXT = "Never Mind"
+
+    Public Sub New(context As IUIContext, prompt As String, deedFilter As Func(Of IDeed, Boolean), cancelDialog As Func(Of IUIDialog))
+        Me.context = context
+        Me.cancelDialog = cancelDialog
+        Me.Prompt = prompt
+        table = Deeds.Descriptors.Where(Function(x) deedFilter(x.Value)).ToDictionary(Function(x) x.Value.Name, Function(x) x.Value)
+    End Sub
+
+    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+        Get
+            Return Array.Empty(Of String)
+        End Get
+    End Property
+
+    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
+        Get
+            Dim result As New List(Of String) From {
+                    NEVER_MIND_TEXT
+                }
+            result.AddRange(table.Keys.OrderBy(Function(x) x))
+            Return result
+        End Get
+    End Property
+
+    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
+
+    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+        Dim deed As IDeed = Nothing
+        If table.TryGetValue(choice, deed) Then
+            Return (Nothing, New DeedDetailUIDialog(deed, Function() Me))
+        End If
+        Return (Nothing, cancelDialog())
+    End Function
+End Class

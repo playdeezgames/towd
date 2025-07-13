@@ -85,7 +85,7 @@ Friend Class NavigationUIDialog
             Case INVENTORY_TEXT
                 Return (GameState.Inventory, Nothing)
             Case DEEDS_TEXT
-                Return (GameState.Deeds, Nothing)
+                Return (Nothing, New DeedsUIDialog(context, Function() Me))
             Case SKILLS_TEXT
                 Return (GameState.SkillMenu, Nothing)
             Case MAP_TEXT

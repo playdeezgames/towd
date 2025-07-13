@@ -9,7 +9,6 @@
         childViews.Add(GameState.Inventory, New InventoryState(Me))
         childViews.Add(GameState.ItemStack, New ItemStackState(Me))
         childViews.Add(GameState.VerbMenu, New VerbMenuState(Me))
-        childViews.Add(GameState.Deeds, New DeedsState(Me))
         childViews.Add(GameState.SkillMenu, New SkillMenuState(Me))
         childViews.Add(GameState.SaveMenu, New SaveMenuState(Me))
         childViews.Add(GameState.Topic, New TopicState(Me))
