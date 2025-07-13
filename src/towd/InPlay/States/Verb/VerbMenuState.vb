@@ -93,6 +93,9 @@ Friend Class VerbMenuState
     End Sub
 
     Friend Overrides Sub UpdateView()
+        If Context.World.Avatar.IsDead Then
+            ShowState(Nothing, New DeadUIDialog(Context))
+        End If
         UpdateAvailableVerbTree()
         MyBase.UpdateView()
     End Sub
