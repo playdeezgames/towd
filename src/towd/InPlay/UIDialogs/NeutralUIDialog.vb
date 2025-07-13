@@ -3,7 +3,7 @@
         context.SaveGame(SaveSlot.Auto, Sub() Return)
         Dim character = context.World.Avatar
         If character.IsDead Then
-            Return (GameState.Dead, Nothing)
+            Return (Nothing, New DeadUIDialog(context))
         Else
             Return (GameState.Navigation, Nothing)
         End If
