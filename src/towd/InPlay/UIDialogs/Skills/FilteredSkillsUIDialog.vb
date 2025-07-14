@@ -39,7 +39,7 @@ Friend Class FilteredSkillsUIDialog
     Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
         Dim skillType As ISkillType = Nothing
         If table.TryGetValue(choice, skillType) Then
-            Return (Nothing, New SkillDetailUIDialog(context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, Prompt, skillFilter, cancelDialog)))
+            Return (Nothing, New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, Prompt, skillFilter, cancelDialog)))
         End If
         Return (Nothing, cancelDialog())
     End Function

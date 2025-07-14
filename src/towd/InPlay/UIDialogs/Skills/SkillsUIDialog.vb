@@ -40,7 +40,7 @@
             Case NEVER_MIND_TEXT
                 Return (Nothing, cancelDialog())
             Case ADVANCEABLE_TEXT
-                Return (Nothing, New FilteredSkillsUIDialog(context, "All Skills", Function(skill) character.CanAdvance(skill), Function() Me))
+                Return (Nothing, New FilteredSkillsUIDialog(context, "Advanceable Skills", Function(skill) character.CanAdvance(skill), Function() Me))
             Case ALL_TEXT
                 Return (Nothing, New FilteredSkillsUIDialog(context, "All Skills", Function(skill) True, Function() Me))
             Case Else

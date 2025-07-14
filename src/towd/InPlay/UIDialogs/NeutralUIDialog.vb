@@ -3,7 +3,7 @@
         context.SaveGame(SaveSlot.Auto, Sub() Return)
         Dim character = context.World.Avatar
         If character.HasMessages Then
-            Return (Nothing, New MessageUIDialog(context))
+            Return (Nothing, New MessageUIDialog(context, Function() DetermineInPlayDialog(context).Item2))
         ElseIf character.IsDead Then
             Return (Nothing, New DeadUIDialog(context))
         Else

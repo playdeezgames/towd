@@ -3,13 +3,15 @@
 Friend Class SkillDetailUIDialog
     Implements IUIDialog
 
+    Private ReadOnly context As IUIContext
     Private ReadOnly character As ICharacter
     Private ReadOnly skillType As business.ISkillType
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Const NEVER_MIND_TEXT = "Never Mind"
     Const ADVANCE_TEXT = "Advance"
 
-    Public Sub New(character As ICharacter, skillType As business.ISkillType, cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext, character As ICharacter, skillType As business.ISkillType, cancelDialog As Func(Of IUIDialog))
+        Me.context = context
         Me.character = character
         Me.skillType = skillType
         Me.cancelDialog = cancelDialog
@@ -44,7 +46,7 @@ Friend Class SkillDetailUIDialog
         Select Case choice
             Case ADVANCE_TEXT
                 skillType.Advance(character)
-                Return (Nothing, cancelDialog())
+                Return (Nothing, MessageUIDialog.DetermineMessageDialog(context, cancelDialog))
             Case NEVER_MIND_TEXT
                 Return (Nothing, cancelDialog())
             Case Else

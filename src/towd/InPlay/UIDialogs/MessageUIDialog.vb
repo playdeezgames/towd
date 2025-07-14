@@ -1,10 +1,19 @@
 ﻿Friend Class MessageUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Friend Shared Function DetermineMessageDialog(context As IUIContext, nextDialog As Func(Of IUIDialog)) As IUIDialog
+        If context.World.Avatar?.HasMessages Then
+            Return New MessageUIDialog(context, nextDialog)
+        End If
+        Return nextDialog()
+    End Function
 
-    Public Sub New(context As IUIContext)
+    Private ReadOnly context As IUIContext
+    Private ReadOnly nextDialog As Func(Of IUIDialog)
+
+    Public Sub New(context As IUIContext, nextDialog As Func(Of IUIDialog))
         Me.context = context
+        Me.nextDialog = nextDialog
     End Sub
 
     Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
@@ -27,6 +36,9 @@
 
     Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
         context.World.Avatar.DismissMessage()
-        Return NeutralUIDialog.DetermineInPlayDialog(context)
+        If context.World.Avatar.HasMessages Then
+            Return (Nothing, Me)
+        End If
+        Return (Nothing, nextDialog())
     End Function
 End Class
