@@ -11,7 +11,6 @@
         childViews.Add(GameState.VerbMenu, New VerbMenuState(Me))
         childViews.Add(GameState.SaveMenu, New SaveMenuState(Me))
         childViews.Add(GameState.Topic, New TopicState(Me))
-        childViews.Add(GameState.Statistics, New StatisticsState(Me))
         childViews.Add(GameState.Dialog, New DialogState(Me))
 
         ShowState(Nothing, New SplashUIDialog(Context))

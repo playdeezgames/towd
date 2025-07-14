@@ -94,7 +94,7 @@ Friend Class NavigationUIDialog
                 DialogState.CurrentDialog = context.World.Avatar.StartDialog(Nothing)
                 Return (GameState.Dialog, Nothing)
             Case STATISTICS_TEXT
-                Return (GameState.Statistics, Nothing)
+                Return (Nothing, New StatisticsUIDialog(context, Function() Me))
             Case Else
                 Throw New NotImplementedException
         End Select
