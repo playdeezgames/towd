@@ -89,7 +89,7 @@ Friend Class NavigationUIDialog
             Case SKILLS_TEXT
                 Return (Nothing, New SkillsUIDialog(context, Function() Me))
             Case MAP_TEXT
-                Return (GameState.Map, Nothing)
+                Return (Nothing, New MapUIDialog(context, Function() Me))
             Case DIALOG_TEXT
                 DialogState.CurrentDialog = context.World.Avatar.StartDialog(Nothing)
                 Return (GameState.Dialog, Nothing)
