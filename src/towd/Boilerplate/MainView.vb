@@ -10,7 +10,6 @@
         childViews.Add(GameState.ItemStack, New ItemStackState(Me))
         childViews.Add(GameState.VerbMenu, New VerbMenuState(Me))
         childViews.Add(GameState.Topic, New TopicState(Me))
-        childViews.Add(GameState.Dialog, New DialogState(Me))
 
         ShowState(Nothing, New SplashUIDialog(Context))
     End Sub
