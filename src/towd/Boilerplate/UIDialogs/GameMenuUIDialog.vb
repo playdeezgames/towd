@@ -49,7 +49,7 @@
                 context.SaveGame(SaveSlot.ScumSlot, Sub() Return)
                 Return (Nothing, Me)
             Case SAVE_GAME_TEXT
-                Return (GameState.SaveMenu, Nothing)
+                Return (Nothing, New SaveGameUIDialog(context, Function() Me))
             Case ABANDON_GAME_TEXT
                 Return (Nothing, New ConfirmUIDialog("Are you sure you want to abandon the game?", Function() Me, Function() Me))
             Case Else
