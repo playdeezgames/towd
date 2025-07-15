@@ -3,15 +3,15 @@
 Friend Class FilteredSkillsUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Private ReadOnly skillFilter As Func(Of ISkillType, Boolean)
     Private ReadOnly table As IReadOnlyDictionary(Of String, ISkillType)
     Const NEVER_MIND_TEXT = "Never Mind"
 
-    Public Sub New(context As IUIContext, prompt As String, skillFilter As Func(Of ISkillType, Boolean), cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), prompt As String, skillFilter As Func(Of ISkillType, Boolean), cancelDialog As Func(Of IUIDialog))
         Me.context = context
-        Me.prompt = prompt
+        Me.Prompt = prompt
         Me.cancelDialog = cancelDialog
         Me.skillFilter = skillFilter
         table = SkillTypes.Descriptors.Where(Function(x) skillFilter(x.Value)).ToDictionary(Function(x) $"{x.Value}({x.Value.GetDescription(context.World.Avatar)})", Function(x) x.Value)

@@ -1,9 +1,10 @@
 Imports Spectre.Console
+Imports towd.business
 Imports towd.ui
 
 Module Program
     Sub Main(args As String())
-        Dim context As IUIContext = New UIContext
+        Dim context As IUIContext(Of IWorld) = New UIContext
         context.Dialog = New SplashUIDialog(context)
         While context.Dialog IsNot Nothing
             AnsiConsole.Clear()

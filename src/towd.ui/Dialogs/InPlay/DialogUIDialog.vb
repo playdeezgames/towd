@@ -3,10 +3,10 @@
 Friend Class DialogUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly dialog As IDialog
 
-    Public Sub New(context As IUIContext, dialog As IDialog)
+    Public Sub New(context As IUIContext(Of IWorld), dialog As IDialog)
         Me.context = context
         Me.dialog = dialog
     End Sub

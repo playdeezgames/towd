@@ -3,7 +3,7 @@
 Public Class FilteredVerbCategoryUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly verbCategoryType As String
     Private ReadOnly verbTypeFilter As Func(Of IVerbType, ICharacter, Boolean)
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
@@ -11,7 +11,7 @@ Public Class FilteredVerbCategoryUIDialog
     Private ReadOnly table As IReadOnlyDictionary(Of String, Func(Of IUIDialog))
 
     Sub New(
-           context As IUIContext,
+           context As IUIContext(Of IWorld),
            prompt As String,
            verbCategoryType As String,
            verbTypeFilter As Func(Of IVerbType, ICharacter, Boolean),

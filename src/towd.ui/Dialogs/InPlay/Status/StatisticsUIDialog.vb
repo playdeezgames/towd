@@ -4,10 +4,10 @@ Imports towd.business
 Friend Class StatisticsUIDialog
     Implements IUIDialog
 
-    Private context As IUIContext
+    Private context As IUIContext(Of IWorld)
     Private nextDialog As Func(Of IUIDialog)
 
-    Public Sub New(context As IUIContext, nextDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), nextDialog As Func(Of IUIDialog))
         Me.context = context
         Me.nextDialog = nextDialog
     End Sub

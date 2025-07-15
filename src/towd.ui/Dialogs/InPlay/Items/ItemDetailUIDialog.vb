@@ -1,12 +1,14 @@
-﻿Friend Class ItemDetailUIDialog
+﻿Imports towd.business
+
+Friend Class ItemDetailUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly item As business.IItem
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Const NEVER_MIND_TEXT = "Never Mind"
 
-    Public Sub New(context As IUIContext, item As business.IItem, cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), item As business.IItem, cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.item = item
         Me.cancelDialog = cancelDialog

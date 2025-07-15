@@ -3,13 +3,13 @@
 Friend Class FilteredVerbUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly verbTypeFilter As Func(Of IVerbType, ICharacter, Boolean)
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Const NEVER_MIND_TEXT = "Never Mind"
     Private ReadOnly table As IReadOnlyDictionary(Of String, Func(Of IUIDialog))
 
-    Public Sub New(context As IUIContext, prompt As String, verbTypeFilter As Func(Of IVerbType, ICharacter, Boolean), cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), prompt As String, verbTypeFilter As Func(Of IVerbType, ICharacter, Boolean), cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.Prompt = prompt
         Me.verbTypeFilter = verbTypeFilter

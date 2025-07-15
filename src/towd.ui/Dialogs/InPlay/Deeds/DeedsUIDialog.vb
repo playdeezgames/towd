@@ -1,7 +1,9 @@
-﻿Friend Class DeedsUIDialog
+﻿Imports towd.business
+
+Friend Class DeedsUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Const NEVER_MIND_TEXT = "Never Mind"
     Const AVAILABLE_TEXT = "Available..."
@@ -30,7 +32,7 @@
         End Get
     End Property
 
-    Public Sub New(context As IUIContext, cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.cancelDialog = cancelDialog
     End Sub

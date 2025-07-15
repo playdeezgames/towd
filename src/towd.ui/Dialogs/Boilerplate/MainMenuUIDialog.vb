@@ -1,13 +1,15 @@
-﻿Friend Class MainMenuUIDialog
+﻿Imports towd.business
+
+Friend Class MainMenuUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Const EMBARK_TEXT = "Embark!"
     Const SCUM_LOAD_TEXT = "Scum Load"
     Const LOAD_TEXT = "Load..."
     Const QUIT_TEXT = "Quit"
 
-    Public Sub New(context As IUIContext)
+    Public Sub New(context As IUIContext(Of IWorld))
         Me.context = context
     End Sub
 

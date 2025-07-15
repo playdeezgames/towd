@@ -1,9 +1,11 @@
-﻿Public Class SplashUIDialog
+﻿Imports towd.business
+
+Public Class SplashUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
 
-    Public Sub New(context As IUIContext)
+    Public Sub New(context As IUIContext(Of IWorld))
         Me.context = context
         Debug.Assert(Me.context IsNot Nothing)
     End Sub

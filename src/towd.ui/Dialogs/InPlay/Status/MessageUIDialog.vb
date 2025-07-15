@@ -1,17 +1,19 @@
-﻿Friend Class MessageUIDialog
+﻿Imports towd.business
+
+Friend Class MessageUIDialog
     Implements IUIDialog
 
-    Friend Shared Function DetermineMessageDialog(context As IUIContext, nextDialog As Func(Of IUIDialog)) As IUIDialog
+    Friend Shared Function DetermineMessageDialog(context As IUIContext(Of IWorld), nextDialog As Func(Of IUIDialog)) As IUIDialog
         If context.World.Avatar?.HasMessages Then
             Return New MessageUIDialog(context, nextDialog)
         End If
         Return nextDialog()
     End Function
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly nextDialog As Func(Of IUIDialog)
 
-    Public Sub New(context As IUIContext, nextDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), nextDialog As Func(Of IUIDialog))
         Me.context = context
         Me.nextDialog = nextDialog
     End Sub

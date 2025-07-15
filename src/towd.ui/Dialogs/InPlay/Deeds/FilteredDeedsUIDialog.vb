@@ -3,12 +3,12 @@
 Friend Class FilteredDeedsUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Private ReadOnly table As IReadOnlyDictionary(Of String, IDeed)
     Const NEVER_MIND_TEXT = "Never Mind"
 
-    Public Sub New(context As IUIContext, prompt As String, deedFilter As Func(Of IDeed, Boolean), cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), prompt As String, deedFilter As Func(Of IDeed, Boolean), cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.cancelDialog = cancelDialog
         Me.Prompt = prompt

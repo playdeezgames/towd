@@ -3,13 +3,13 @@
 Friend Class ItemStackUIDialog
     Implements IUIDialog
 
-    Private context As IUIContext
+    Private context As IUIContext(Of IWorld)
     Private ReadOnly itemStack As business.IItemStack
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Const NEVER_MIND_TEXT = "Never Mind"
     Private ReadOnly table As IReadOnlyDictionary(Of String, IItem)
 
-    Public Sub New(context As IUIContext, itemStack As business.IItemStack, cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), itemStack As business.IItemStack, cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.itemStack = itemStack
         Me.cancelDialog = cancelDialog

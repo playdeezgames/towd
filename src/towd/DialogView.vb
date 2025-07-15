@@ -1,4 +1,5 @@
 ﻿Imports System.Text
+Imports towd.business
 Imports towd.ui
 
 Friend Class DialogView
@@ -7,7 +8,7 @@ Friend Class DialogView
     Private ReadOnly promptLabel As Label
     Private ReadOnly linesTextView As TextView
     Private ReadOnly choicesListView As ListView
-    Protected ReadOnly Property Context As IUIContext
+    Protected ReadOnly Property Context As IUIContext(Of IWorld)
         Get
             Return mainView.Context
         End Get

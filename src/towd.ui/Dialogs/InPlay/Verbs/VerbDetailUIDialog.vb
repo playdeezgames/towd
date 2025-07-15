@@ -3,13 +3,13 @@
 Public Class VerbDetailUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly verbType As IVerbType
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Const NEVER_MIND_TEXT = "Never Mind"
     Const PERFORM_TEXT = "Perform"
 
-    Sub New(context As IUIContext, verbType As IVerbType, cancelDialog As Func(Of IUIDialog))
+    Sub New(context As IUIContext(Of IWorld), verbType As IVerbType, cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.verbType = verbType
         Me.cancelDialog = cancelDialog

@@ -1,9 +1,11 @@
-﻿Friend Class DeadUIDialog
+﻿Imports towd.business
+
+Friend Class DeadUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
 
-    Public Sub New(context As IUIContext)
+    Public Sub New(context As IUIContext(Of IWorld))
         Me.context = context
     End Sub
 

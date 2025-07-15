@@ -4,10 +4,10 @@ Imports towd.business
 Friend Class MapUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
 
-    Public Sub New(context As IUIContext, cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.cancelDialog = cancelDialog
     End Sub

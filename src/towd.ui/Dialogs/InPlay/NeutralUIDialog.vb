@@ -1,5 +1,7 @@
-﻿Friend Module NeutralUIDialog
-    Function DetermineInPlayDialog(context As IUIContext) As IUIDialog
+﻿Imports towd.business
+
+Friend Module NeutralUIDialog
+    Function DetermineInPlayDialog(context As IUIContext(Of IWorld)) As IUIDialog
         context.SaveGame(SaveSlot.Auto)
         Dim character = context.World.Avatar
         If character.HasMessages Then

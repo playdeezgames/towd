@@ -3,7 +3,7 @@
 Friend Class NavigationUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Const MOVE_TEXT = "Move..."
     Const INVENTORY_TEXT = "Inventory..."
     Const VERB_TEXT = "Verb..."
@@ -14,7 +14,7 @@ Friend Class NavigationUIDialog
     Const STATISTICS_TEXT = "Statistics..."
     Const DIALOG_TEXT = "Dialog..."
 
-    Public Sub New(context As IUIContext)
+    Public Sub New(context As IUIContext(Of IWorld))
         Me.context = context
     End Sub
 

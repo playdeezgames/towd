@@ -3,14 +3,14 @@
 Friend Class SkillDetailUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly character As ICharacter
     Private ReadOnly skillType As business.ISkillType
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Const NEVER_MIND_TEXT = "Never Mind"
     Const ADVANCE_TEXT = "Advance"
 
-    Public Sub New(context As IUIContext, character As ICharacter, skillType As business.ISkillType, cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), character As ICharacter, skillType As business.ISkillType, cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.character = character
         Me.skillType = skillType

@@ -1,13 +1,15 @@
-﻿Friend Class SkillsUIDialog
+﻿Imports towd.business
+
+Friend Class SkillsUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Const NEVER_MIND_TEXT = "Never Mind"
     Const ADVANCEABLE_TEXT = "Advanceable"
     Const ALL_TEXT = "All"
 
-    Public Sub New(context As IUIContext, cancelDialog As Func(Of IUIDialog))
+    Public Sub New(context As IUIContext(Of IWorld), cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.cancelDialog = cancelDialog
     End Sub

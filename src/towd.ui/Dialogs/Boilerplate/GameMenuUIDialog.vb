@@ -1,14 +1,16 @@
-﻿Friend Class GameMenuUIDialog
+﻿Imports towd.business
+
+Friend Class GameMenuUIDialog
     Implements IUIDialog
 
-    Private ReadOnly context As IUIContext
+    Private ReadOnly context As IUIContext(Of IWorld)
     Const CONTINUE_TEXT = "Continue"
     Const SCUM_SAVE_GAME_TEXT = "Scum Save Game"
     Const SCUM_LOAD_GAME_TEXT = "Scum Load Game"
     Const SAVE_GAME_TEXT = "Save Game"
     Const ABANDON_GAME_TEXT = "Abandon Game"
 
-    Public Sub New(context As IUIContext)
+    Public Sub New(context As IUIContext(Of IWorld))
         Me.context = context
     End Sub
 
