@@ -11,11 +11,8 @@ Public Class UIContext
     End Property
 
     Public Property Dialog As IUIDialog Implements IUIContext.Dialog
-    Public Sub SaveGame(saveSlot As String, notify As Action) Implements IUIContext.SaveGame
+    Public Sub SaveGame(saveSlot As String) Implements IUIContext.SaveGame
         saveSlot.ToSaveSlotDescriptor.SaveGame(worldData)
-        If notify IsNot Nothing Then
-            notify()
-        End If
     End Sub
     Public Function LoadGame(saveSlot As String) As Boolean Implements IUIContext.LoadGame
         Dim loadAttempt = saveSlot.ToSaveSlotDescriptor.LoadGame()

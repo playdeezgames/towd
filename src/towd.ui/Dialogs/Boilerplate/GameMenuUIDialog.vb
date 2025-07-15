@@ -46,7 +46,7 @@
                 End If
                 Return Me
             Case SCUM_SAVE_GAME_TEXT
-                context.SaveGame(SaveSlot.ScumSlot, Sub() Return)
+                context.SaveGame(SaveSlot.ScumSlot)
                 Return Me
             Case SAVE_GAME_TEXT
                 Return New SaveGameUIDialog(context, Function() Me)

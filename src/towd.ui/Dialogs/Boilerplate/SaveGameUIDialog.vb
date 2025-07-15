@@ -50,7 +50,7 @@
     End Function
 
     Private Function SaveGame(saveSlot As ISaveSlot) As IUIDialog
-        context.SaveGame(saveSlot.SaveSlot, Sub() Return)
+        context.SaveGame(saveSlot.SaveSlot)
         Return New MessageBoxUIDialog("Game Saved!", {(Mood.Normal, $"Saved game in {saveSlot.DisplayName}", True)}, cancelDialog)
     End Function
 End Class

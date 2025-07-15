@@ -2,7 +2,7 @@
 
 Public Interface IUIContext
     ReadOnly Property World As IWorld
-    Sub SaveGame(saveSlot As String, notify As Action)
+    Sub SaveGame(saveSlot As String)
     Function LoadGame(saveSlot As String) As Boolean
     Property Dialog As IUIDialog
 End Interface
