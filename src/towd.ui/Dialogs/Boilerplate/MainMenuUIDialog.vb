@@ -47,7 +47,7 @@
             Case LOAD_TEXT
                 Return New LoadMenuUIDialog(context, Function() Me)
             Case QUIT_TEXT
-                Return New ConfirmUIDialog("Are you sure you want to quit?", Nothing, Function() Me)
+                Return New ConfirmUIDialog("Are you sure you want to quit?", Function() Nothing, Function() Me)
             Case Else
                 Throw New NotImplementedException
         End Select

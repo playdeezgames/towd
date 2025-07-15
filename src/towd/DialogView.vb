@@ -48,6 +48,10 @@ Friend Class DialogView
     End Sub
 
     Friend Sub UpdateView()
+        If Context.Dialog Is Nothing Then
+            Application.RequestStop()
+            Return
+        End If
         promptLabel.Text = Context.Dialog.Prompt
         linesTextView.Text = String.Join(vbCrLf, Context.Dialog.Lines)
         linesTextView.ColorScheme = New ColorScheme With
