@@ -83,7 +83,7 @@ Friend Class NavigationUIDialog
             Case VERB_TEXT
                 Return (Nothing, New VerbMenuUIDialog(context, Function() Me))
             Case INVENTORY_TEXT
-                Return (GameState.Inventory, Nothing)
+                Return (Nothing, New InventoryUIDialog(context, Function() Me))
             Case DEEDS_TEXT
                 Return (Nothing, New DeedsUIDialog(context, Function() Me))
             Case SKILLS_TEXT

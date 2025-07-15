@@ -25,10 +25,10 @@ Friend Class FilteredVerbUIDialog
     Private Function getTableValue(grouping As IGrouping(Of String, IVerbType)) As Func(Of IUIDialog)
         If grouping.Count = 1 Then
             Return Function() As IUIDialog
-                       Return New VerbDetailUIDialog(context, grouping.Single, Function() Me)
+                       Return New VerbDetailUIDialog(context, grouping.Single, Function() New FilteredVerbUIDialog(context, Prompt, verbTypeFilter, cancelDialog))
                    End Function
         End If
-        Return Function() New FilteredVerbCategoryUIDialog(context, "", grouping.Key, verbTypeFilter, Function() Me)
+        Return Function() New FilteredVerbCategoryUIDialog(context, grouping.Key.ToVerbCategoryDescriptor.Name, grouping.Key, verbTypeFilter, Function() New FilteredVerbUIDialog(context, Prompt, verbTypeFilter, cancelDialog))
     End Function
 
     Private Function getTableKey(grouping As IGrouping(Of String, IVerbType)) As String
