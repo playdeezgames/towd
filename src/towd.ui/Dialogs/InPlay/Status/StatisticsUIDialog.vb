@@ -12,7 +12,7 @@ Friend Class StatisticsUIDialog
         Me.nextDialog = nextDialog
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
             Return context.World.Avatar.
                 EntityType.CharacterType.ToCharacterTypeDescriptor.
@@ -25,7 +25,7 @@ Friend Class StatisticsUIDialog
                                               builder.Append($"/{maximum}")
                                           End If
                                           Return builder.ToString
-                                      End Function).ToList
+                                      End Function).Select(Function(x) (Mood.Normal, x, True)).ToList
         End Get
     End Property
 

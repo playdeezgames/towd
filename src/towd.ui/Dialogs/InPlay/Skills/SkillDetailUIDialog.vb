@@ -17,9 +17,9 @@ Friend Class SkillDetailUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
-            Return {skillType.Description}
+            Return {(Mood.Normal, skillType.Description, True)}
         End Get
     End Property
 

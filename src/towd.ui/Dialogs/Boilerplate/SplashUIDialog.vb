@@ -8,15 +8,15 @@
         Debug.Assert(Me.context IsNot Nothing)
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
             Return {
-                ".___________.  ______   ____    __    ____  _______  ",
-                "|           | /  __  \  \   \  /  \  /   / |       \ ",
-                "`---|  |----`|  |  |  |  \   \/    \/   /  |  .--.  |",
-                "    |  |     |  |  |  |   \            /   |  |  |  |",
-                "    |  |     |  `--'  |    \    /\    /    |  '--'  |",
-                "    |__|      \______/      \__/  \__/     |_______/ "
+                (Mood.Normal, ".___________.  ______   ____    __    ____  _______  ", True),
+                (Mood.Normal, "|           | /  __  \  \   \  /  \  /   / |       \ ", True),
+                (Mood.Normal, "`---|  |----`|  |  |  |  \   \/    \/   /  |  .--.  |", True),
+                (Mood.Normal, "    |  |     |  |  |  |   \            /   |  |  |  |", True),
+                (Mood.Normal, "    |  |     |  `--'  |    \    /\    /    |  '--'  |", True),
+                (Mood.Normal, "    |__|      \______/      \__/  \__/     |_______/ ", True)
             }
         End Get
     End Property

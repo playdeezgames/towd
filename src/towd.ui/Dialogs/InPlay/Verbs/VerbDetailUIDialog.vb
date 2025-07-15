@@ -15,9 +15,9 @@ Public Class VerbDetailUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
-            Return {verbType.Description}
+            Return {(Mood.Normal, verbType.Description, True)}
         End Get
     End Property
 

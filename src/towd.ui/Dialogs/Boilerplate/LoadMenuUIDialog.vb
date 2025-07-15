@@ -15,9 +15,9 @@
         Next
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
-            Return Array.Empty(Of String)
+            Return Array.Empty(Of (String, String, Boolean))
         End Get
     End Property
 
@@ -39,9 +39,9 @@
             Return cancelDialog()
         End If
         If context.LoadGame(saveSlot.SaveSlot) Then
-            Return New MessageBoxUIDialog("Load Success!", {$"You loaded {saveSlot.DisplayName}!"}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
+            Return New MessageBoxUIDialog("Load Success!", {(Mood.Normal, $"You loaded {saveSlot.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
         Else
-            Return New MessageBoxUIDialog("Load Failed!", {$"Failed to load {saveSlot.DisplayName}!"}, cancelDialog)
+            Return New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {saveSlot.DisplayName}!", True)}, cancelDialog)
         End If
         Throw New NotImplementedException
     End Function

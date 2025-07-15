@@ -12,9 +12,9 @@
         table = SaveSlots.Descriptors.ToDictionary(Function(x) x.Value.ToString, Function(x) x.Value)
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
-            Return Array.Empty(Of String)
+            Return Array.Empty(Of (String, String, Boolean))
         End Get
     End Property
 
@@ -51,6 +51,6 @@
 
     Private Function SaveGame(saveSlot As ISaveSlot) As IUIDialog
         context.SaveGame(saveSlot.SaveSlot, Sub() Return)
-        Return New MessageBoxUIDialog("Game Saved!", {$"Saved game in {SaveSlot.DisplayName}"}, cancelDialog)
+        Return New MessageBoxUIDialog("Game Saved!", {(Mood.Normal, $"Saved game in {saveSlot.DisplayName}", True)}, cancelDialog)
     End Function
 End Class

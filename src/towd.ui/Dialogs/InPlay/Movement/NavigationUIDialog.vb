@@ -18,7 +18,7 @@ Friend Class NavigationUIDialog
         Me.context = context
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
             Dim result As New List(Of String)
             Dim character = context.World.Avatar
@@ -40,7 +40,7 @@ Friend Class NavigationUIDialog
                     result.Add($"{otherCharacter.Name} is here.")
                 Next
             End If
-            Return result
+            Return result.Select(Function(x) (Mood.Normal, x, True))
         End Get
     End Property
 

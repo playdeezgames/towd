@@ -37,9 +37,9 @@ Friend Class FilteredVerbUIDialog
         End If
         Return $"{grouping.Key.ToVerbCategoryDescriptor.Name}..."
     End Function
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
-            Return Array.Empty(Of String)
+            Return Array.Empty(Of (String, String, Boolean))
         End Get
     End Property
 

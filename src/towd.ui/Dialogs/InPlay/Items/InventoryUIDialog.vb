@@ -14,9 +14,9 @@ Friend Class InventoryUIDialog
         table = context.World.Avatar.ItemStacks.ToDictionary(Function(x) x.ToString(), Function(x) x)
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
-            Return Array.Empty(Of String)
+            Return Array.Empty(Of (String, String, Boolean))
         End Get
     End Property
 

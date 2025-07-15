@@ -12,7 +12,7 @@ Friend Class MapUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
             Dim character = context.World.Avatar
             Dim map = character.CurrentLocation.Map
@@ -44,7 +44,7 @@ Friend Class MapUIDialog
             For Each descriptor In LocationTypes.Descriptors.Values
                 builder.Append($"|{descriptor.MapLegend}-{descriptor.Name}")
             Next
-            Return {builder.ToString}
+            Return {(Mood.Normal, builder.ToString, True)}
         End Get
     End Property
 

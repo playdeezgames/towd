@@ -16,9 +16,9 @@
         Me.nextDialog = nextDialog
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
-            Return context.World.Avatar.CurrentMessage
+            Return context.World.Avatar.CurrentMessage.Select(Function(x) (Mood.Normal, x, True))
         End Get
     End Property
 

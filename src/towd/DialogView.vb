@@ -1,4 +1,5 @@
-﻿Imports towd.ui
+﻿Imports System.Text
+Imports towd.ui
 
 Friend Class DialogView
     Inherits View
@@ -53,7 +54,15 @@ Friend Class DialogView
             Return
         End If
         promptLabel.Text = Context.Dialog.Prompt
-        linesTextView.Text = String.Join(vbCrLf, Context.Dialog.Lines)
+        Dim builder As New StringBuilder
+        For Each line In Context.Dialog.Lines
+            If line.Item3 Then
+                builder.AppendLine(line.Item2)
+            Else
+                builder.Append(line.Item2)
+            End If
+        Next
+        linesTextView.Text = builder.ToString()
         linesTextView.ColorScheme = New ColorScheme With
                 {
                     .Disabled = ColorScheme.Normal

@@ -11,9 +11,9 @@
         Me.context = context
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
-            Return Array.Empty(Of String)
+            Return Array.Empty(Of (String, String, Boolean))
         End Get
     End Property
 
@@ -41,9 +41,9 @@
                 Return NeutralUIDialog.DetermineInPlayDialog(context)
             Case SCUM_LOAD_TEXT
                 If context.LoadGame(SaveSlot.ScumSlot) Then
-                    Return New MessageBoxUIDialog("Load Success!", {$"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!"}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
+                    Return New MessageBoxUIDialog("Load Success!", {(Mood.Normal, $"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
                 End If
-                Return New MessageBoxUIDialog("Load Failed!", {$"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!"}, Function() Me)
+                Return New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() Me)
             Case LOAD_TEXT
                 Return New LoadMenuUIDialog(context, Function() Me)
             Case QUIT_TEXT

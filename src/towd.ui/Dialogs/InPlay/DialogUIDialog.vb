@@ -11,9 +11,9 @@ Friend Class DialogUIDialog
         Me.dialog = dialog
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of String) Implements IUIDialog.Lines
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
-            Return dialog.Lines
+            Return dialog.Lines.Select(Function(x) (Mood.Normal, x, True))
         End Get
     End Property
 
