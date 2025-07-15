@@ -6,8 +6,6 @@
     Public Sub New()
         MyBase.New()
         dialogView = New DialogView(Me)
-        childViews.Add(GameState.ItemStack, New ItemStackState(Me))
-        childViews.Add(GameState.Topic, New TopicState(Me))
 
         ShowState(Nothing, New SplashUIDialog(Context))
     End Sub
