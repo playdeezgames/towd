@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\towd.business\towd.business.vbproj" />
+    <ProjectReference Include="..\towd.ui\towd.ui.vbproj" />
   </ItemGroup>
 
 </Project>

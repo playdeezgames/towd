@@ -51,7 +51,10 @@
             Case SAVE_GAME_TEXT
                 Return New SaveGameUIDialog(context, Function() Me)
             Case ABANDON_GAME_TEXT
-                Return New ConfirmUIDialog("Are you sure you want to abandon the game?", Function() Me, Function() Me)
+                Return New ConfirmUIDialog("Are you sure you want to abandon the game?", Function()
+                                                                                             context.World.Abandon()
+                                                                                             Return New MainMenuUIDialog(context)
+                                                                                         End Function, Function() Me)
             Case Else
                 Throw New NotImplementedException
         End Select

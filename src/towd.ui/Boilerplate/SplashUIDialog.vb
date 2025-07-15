@@ -1,4 +1,4 @@
-﻿Friend Class SplashUIDialog
+﻿Public Class SplashUIDialog
     Implements IUIDialog
 
     Private ReadOnly context As IUIContext

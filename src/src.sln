@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7A38084E
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "towd.tests", "towd.tests\towd.tests.vbproj", "{F3821BE7-5631-42BA-B477-E63E53171209}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "towd.ui", "towd.ui\towd.ui.vbproj", "{FF433088-61F0-4255-8055-FBFDAFE515CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{F3821BE7-5631-42BA-B477-E63E53171209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3821BE7-5631-42BA-B477-E63E53171209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3821BE7-5631-42BA-B477-E63E53171209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF433088-61F0-4255-8055-FBFDAFE515CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF433088-61F0-4255-8055-FBFDAFE515CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF433088-61F0-4255-8055-FBFDAFE515CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF433088-61F0-4255-8055-FBFDAFE515CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

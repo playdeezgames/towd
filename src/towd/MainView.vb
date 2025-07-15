@@ -1,4 +1,6 @@
-﻿Friend Class MainView
+﻿Imports towd.ui
+
+Friend Class MainView
     Inherits Window
     Private ReadOnly dialogView As DialogView
     Public ReadOnly Context As IUIContext = New UIContext

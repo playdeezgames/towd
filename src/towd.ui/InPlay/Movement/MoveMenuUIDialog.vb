@@ -1,5 +1,4 @@
-﻿Imports NStack
-Imports towd.business
+﻿Imports towd.business
 
 Friend Class MoveMenuUIDialog
     Implements IUIDialog

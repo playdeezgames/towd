@@ -1,4 +1,6 @@
-﻿Friend Class DialogView
+﻿Imports towd.ui
+
+Friend Class DialogView
     Inherits View
     Private ReadOnly mainView As MainView
     Private ReadOnly promptLabel As Label
