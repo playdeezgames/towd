@@ -11,6 +11,25 @@ Public Class UIContext
     End Property
 
     Public Property Dialog As IUIDialog Implements IUIContext(Of IWorld).Dialog
+
+    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
+        Get
+            Return Dialog.Lines
+        End Get
+    End Property
+
+    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
+        Get
+            Return Dialog.Choices
+        End Get
+    End Property
+
+    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
+        Get
+            Return Dialog.Prompt
+        End Get
+    End Property
+
     Public Sub SaveGame(saveSlot As String) Implements IUIContext(Of IWorld).SaveGame
         saveSlot.ToSaveSlotDescriptor.SaveGame(worldData)
     End Sub
@@ -22,5 +41,10 @@ Public Class UIContext
         Else
             Return False
         End If
+    End Function
+
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+        Dialog = Dialog.Choose(choice)
+        Return Me
     End Function
 End Class
