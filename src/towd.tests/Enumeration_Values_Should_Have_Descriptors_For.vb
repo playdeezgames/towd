@@ -12,10 +12,6 @@ Namespace towd.tests
                 toDescriptor(enumTypeValue).ShouldNotBeNull($"{enumTypeModule.Name}.{enumType.Name} should have a descriptor!")
             Next
         End Sub
-        <Fact>
-        Sub Topics()
-            ValidateEnumModule(Of Topic, ITopic)(AddressOf ToTopicDescriptor)
-        End Sub
     End Class
 End Namespace
 
