@@ -37,13 +37,13 @@ Public Class VerbDetailUIDialog
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Select Case choice
             Case PERFORM_TEXT
                 verbType.Perform(context.World.Avatar)
-                Return (Nothing, MessageUIDialog.DetermineMessageDialog(context, Function() New VerbDetailUIDialog(context, verbType, cancelDialog)))
+                Return MessageUIDialog.DetermineMessageDialog(context, Function() New VerbDetailUIDialog(context, verbType, cancelDialog))
             Case NEVER_MIND_TEXT
-                Return (Nothing, cancelDialog())
+                Return cancelDialog()
             Case Else
                 Throw New NotImplementedException
         End Select

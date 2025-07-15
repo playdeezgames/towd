@@ -41,7 +41,7 @@
     End Sub
 
     Private Sub OnChoicesListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Context.Dialog = Context.Dialog.Choose(args.Value.ToString).Item2
+        Context.Dialog = Context.Dialog.Choose(args.Value.ToString)
         UpdateView()
     End Sub
 

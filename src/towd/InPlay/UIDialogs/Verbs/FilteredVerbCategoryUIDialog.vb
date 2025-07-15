@@ -60,11 +60,11 @@ Public Class FilteredVerbCategoryUIDialog
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim nextDialog As Func(Of IUIDialog) = Nothing
         If table.TryGetValue(choice, nextDialog) Then
-            Return (Nothing, nextDialog())
+            Return nextDialog()
         End If
-        Return (Nothing, cancelDialog())
+        Return cancelDialog()
     End Function
 End Class

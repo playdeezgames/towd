@@ -32,12 +32,12 @@
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Select Case choice
             Case YES_TEXT
-                Return (Nothing, confirmDialog())
+                Return confirmDialog()
             Case NO_TEXT
-                Return (Nothing, cancelDialog())
+                Return cancelDialog()
             Case Else
                 Throw New NotImplementedException
         End Select

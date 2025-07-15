@@ -33,15 +33,15 @@
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim saveSlot As ISaveSlot = table(choice)
         If saveSlot Is Nothing Then
-            Return (Nothing, cancelDialog())
+            Return cancelDialog()
         End If
         If context.LoadGame(saveSlot.SaveSlot) Then
-            Return (Nothing, New MessageBoxUIDialog("Load Success!", {$"You loaded {saveSlot.DisplayName}!"}, Function() NeutralUIDialog.DetermineInPlayDialog(context).Item2))
+            Return New MessageBoxUIDialog("Load Success!", {$"You loaded {saveSlot.DisplayName}!"}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
         Else
-            Return (Nothing, New MessageBoxUIDialog("Load Failed!", {$"Failed to load {saveSlot.DisplayName}!"}, cancelDialog))
+            Return New MessageBoxUIDialog("Load Failed!", {$"Failed to load {saveSlot.DisplayName}!"}, cancelDialog)
         End If
         Throw New NotImplementedException
     End Function

@@ -35,17 +35,17 @@
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim character = context.World.Avatar
         Select Case choice
             Case AVAILABLE_TEXT
-                Return (Nothing, New FilteredDeedsUIDialog(context, "Available Deeds", Function(deed) character.IsAvailable(deed), Function() Me))
+                Return New FilteredDeedsUIDialog(context, "Available Deeds", Function(deed) character.IsAvailable(deed), Function() Me)
             Case DONE_TEXT
-                Return (Nothing, New FilteredDeedsUIDialog(context, "Done Deeds", Function(deed) character.HasDone(deed), Function() Me))
+                Return New FilteredDeedsUIDialog(context, "Done Deeds", Function(deed) character.HasDone(deed), Function() Me)
             Case ALL_TEXT
-                Return (Nothing, New FilteredDeedsUIDialog(context, "All Deeds", Function(deed) True, Function() Me))
+                Return New FilteredDeedsUIDialog(context, "All Deeds", Function(deed) True, Function() Me)
             Case NEVER_MIND_TEXT
-                Return (Nothing, cancelDialog())
+                Return cancelDialog()
             Case Else
                 Throw New NotImplementedException
         End Select

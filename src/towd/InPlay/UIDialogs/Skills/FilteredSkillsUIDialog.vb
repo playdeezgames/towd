@@ -36,11 +36,11 @@ Friend Class FilteredSkillsUIDialog
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim skillType As ISkillType = Nothing
         If table.TryGetValue(choice, skillType) Then
-            Return (Nothing, New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, Prompt, skillFilter, cancelDialog)))
+            Return New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, Prompt, skillFilter, cancelDialog))
         End If
-        Return (Nothing, cancelDialog())
+        Return cancelDialog()
     End Function
 End Class

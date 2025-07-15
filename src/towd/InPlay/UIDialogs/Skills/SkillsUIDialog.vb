@@ -34,15 +34,15 @@
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim character = context.World.Avatar
         Select Case choice
             Case NEVER_MIND_TEXT
-                Return (Nothing, cancelDialog())
+                Return cancelDialog()
             Case ADVANCEABLE_TEXT
-                Return (Nothing, New FilteredSkillsUIDialog(context, "Advanceable Skills", Function(skill) character.CanAdvance(skill), Function() Me))
+                Return New FilteredSkillsUIDialog(context, "Advanceable Skills", Function(skill) character.CanAdvance(skill), Function() Me)
             Case ALL_TEXT
-                Return (Nothing, New FilteredSkillsUIDialog(context, "All Skills", Function(skill) True, Function() Me))
+                Return New FilteredSkillsUIDialog(context, "All Skills", Function(skill) True, Function() Me)
             Case Else
                 Throw New NotImplementedException
         End Select

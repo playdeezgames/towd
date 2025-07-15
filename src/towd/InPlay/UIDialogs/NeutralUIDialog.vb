@@ -1,13 +1,13 @@
 ﻿Friend Module NeutralUIDialog
-    Function DetermineInPlayDialog(context As IUIContext) As (String, IUIDialog)
+    Function DetermineInPlayDialog(context As IUIContext) As IUIDialog
         context.SaveGame(SaveSlot.Auto, Sub() Return)
         Dim character = context.World.Avatar
         If character.HasMessages Then
-            Return (Nothing, New MessageUIDialog(context, Function() DetermineInPlayDialog(context).Item2))
+            Return New MessageUIDialog(context, Function() DetermineInPlayDialog(context))
         ElseIf character.IsDead Then
-            Return (Nothing, New DeadUIDialog(context))
+            Return New DeadUIDialog(context)
         Else
-            Return (Nothing, New NavigationUIDialog(context))
+            Return New NavigationUIDialog(context)
         End If
     End Function
 End Module

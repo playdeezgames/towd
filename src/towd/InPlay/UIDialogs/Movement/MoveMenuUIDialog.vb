@@ -36,10 +36,10 @@ Friend Class MoveMenuUIDialog
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim descriptor = table(choice)
         If descriptor Is Nothing Then
-            Return (Nothing, cancelDialog())
+            Return cancelDialog()
         End If
         context.World.Avatar.Move(descriptor.Direction)
         context.World.AdvanceTime(1)

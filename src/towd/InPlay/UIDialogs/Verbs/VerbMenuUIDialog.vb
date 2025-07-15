@@ -38,14 +38,14 @@ Friend Class VerbMenuUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Select Case choice
             Case ALL_TEXT
-                Return (Nothing, New FilteredVerbUIDialog(context, "All Verbs", Function(verbType As IVerbType, character As ICharacter) True, Function() Me))
+                Return New FilteredVerbUIDialog(context, "All Verbs", Function(verbType As IVerbType, character As ICharacter) True, Function() Me)
             Case AVAILABLE_TEXT
-                Return (Nothing, New FilteredVerbUIDialog(context, "Available Verbs", Function(verbType As IVerbType, character As ICharacter) verbType.CanPerform(character), Function() Me))
+                Return New FilteredVerbUIDialog(context, "Available Verbs", Function(verbType As IVerbType, character As ICharacter) verbType.CanPerform(character), Function() Me)
             Case NEVER_MIND_TEXT
-                Return (Nothing, cancelDialog())
+                Return cancelDialog()
             Case Else
                 Throw New NotImplementedException
         End Select

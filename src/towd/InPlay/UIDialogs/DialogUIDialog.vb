@@ -29,10 +29,10 @@ Friend Class DialogUIDialog
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim nextDialog = dialog.Choose(choice)
         If nextDialog IsNot Nothing Then
-            Return (Nothing, MessageUIDialog.DetermineMessageDialog(context, Function() New DialogUIDialog(context, nextDialog)))
+            Return MessageUIDialog.DetermineMessageDialog(context, Function() New DialogUIDialog(context, nextDialog))
         End If
         Return NeutralUIDialog.DetermineInPlayDialog(context)
     End Function

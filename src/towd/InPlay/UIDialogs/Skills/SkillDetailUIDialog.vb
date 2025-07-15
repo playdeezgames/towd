@@ -42,13 +42,13 @@ Friend Class SkillDetailUIDialog
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Select Case choice
             Case ADVANCE_TEXT
                 skillType.Advance(character)
-                Return (Nothing, MessageUIDialog.DetermineMessageDialog(context, cancelDialog))
+                Return MessageUIDialog.DetermineMessageDialog(context, cancelDialog)
             Case NEVER_MIND_TEXT
-                Return (Nothing, cancelDialog())
+                Return cancelDialog()
             Case Else
                 Throw New NotImplementedException
         End Select

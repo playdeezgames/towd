@@ -34,20 +34,20 @@
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Select Case choice
             Case EMBARK_TEXT
                 context.World.Initialize()
                 Return NeutralUIDialog.DetermineInPlayDialog(context)
             Case SCUM_LOAD_TEXT
                 If context.LoadGame(SaveSlot.ScumSlot) Then
-                    Return (Nothing, New MessageBoxUIDialog("Load Success!", {$"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!"}, Function() NeutralUIDialog.DetermineInPlayDialog(context).Item2))
+                    Return New MessageBoxUIDialog("Load Success!", {$"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!"}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
                 End If
-                Return (Nothing, New MessageBoxUIDialog("Load Failed!", {$"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!"}, Function() Me))
+                Return New MessageBoxUIDialog("Load Failed!", {$"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!"}, Function() Me)
             Case LOAD_TEXT
-                Return (Nothing, New LoadMenuUIDialog(context, Function() Me))
+                Return New LoadMenuUIDialog(context, Function() Me)
             Case QUIT_TEXT
-                Return (Nothing, New ConfirmUIDialog("Are you sure you want to quit?", Nothing, Function() Me))
+                Return New ConfirmUIDialog("Are you sure you want to quit?", Nothing, Function() Me)
             Case Else
                 Throw New NotImplementedException
         End Select

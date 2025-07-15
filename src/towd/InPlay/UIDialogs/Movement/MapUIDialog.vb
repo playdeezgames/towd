@@ -60,7 +60,7 @@ Friend Class MapUIDialog
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
-        Return (Nothing, cancelDialog())
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+        Return cancelDialog()
     End Function
 End Class

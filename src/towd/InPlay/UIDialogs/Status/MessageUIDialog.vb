@@ -34,11 +34,11 @@
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         context.World.Avatar.DismissMessage()
         If context.World.Avatar.HasMessages Then
-            Return (Nothing, Me)
+            Return Me
         End If
-        Return (Nothing, nextDialog())
+        Return nextDialog()
     End Function
 End Class

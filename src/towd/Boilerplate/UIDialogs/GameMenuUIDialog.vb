@@ -36,7 +36,7 @@
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Select Case choice
             Case CONTINUE_TEXT
                 Return NeutralUIDialog.DetermineInPlayDialog(context)
@@ -44,14 +44,14 @@
                 If context.LoadGame(SaveSlot.ScumSlot) Then
                     Return NeutralUIDialog.DetermineInPlayDialog(context)
                 End If
-                Return (Nothing, Me)
+                Return Me
             Case SCUM_SAVE_GAME_TEXT
                 context.SaveGame(SaveSlot.ScumSlot, Sub() Return)
-                Return (Nothing, Me)
+                Return Me
             Case SAVE_GAME_TEXT
-                Return (Nothing, New SaveGameUIDialog(context, Function() Me))
+                Return New SaveGameUIDialog(context, Function() Me)
             Case ABANDON_GAME_TEXT
-                Return (Nothing, New ConfirmUIDialog("Are you sure you want to abandon the game?", Function() Me, Function() Me))
+                Return New ConfirmUIDialog("Are you sure you want to abandon the game?", Function() Me, Function() Me)
             Case Else
                 Throw New NotImplementedException
         End Select

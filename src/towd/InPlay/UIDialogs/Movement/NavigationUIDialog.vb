@@ -74,26 +74,26 @@ Friend Class NavigationUIDialog
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Select Case choice
             Case MOVE_TEXT
-                Return (Nothing, New MoveMenuUIDialog(context, Function() Me))
+                Return New MoveMenuUIDialog(context, Function() Me)
             Case MENU_TEXT
-                Return (Nothing, New GameMenuUIDialog(context))
+                Return New GameMenuUIDialog(context)
             Case VERB_TEXT
-                Return (Nothing, New VerbMenuUIDialog(context, Function() Me))
+                Return New VerbMenuUIDialog(context, Function() Me)
             Case INVENTORY_TEXT
-                Return (Nothing, New InventoryUIDialog(context, Function() Me))
+                Return New InventoryUIDialog(context, Function() Me)
             Case DEEDS_TEXT
-                Return (Nothing, New DeedsUIDialog(context, Function() Me))
+                Return New DeedsUIDialog(context, Function() Me)
             Case SKILLS_TEXT
-                Return (Nothing, New SkillsUIDialog(context, Function() Me))
+                Return New SkillsUIDialog(context, Function() Me)
             Case MAP_TEXT
-                Return (Nothing, New MapUIDialog(context, Function() Me))
+                Return New MapUIDialog(context, Function() Me)
             Case DIALOG_TEXT
-                Return (Nothing, New DialogUIDialog(context, context.World.Avatar.StartDialog(Nothing)))
+                Return New DialogUIDialog(context, context.World.Avatar.StartDialog(Nothing))
             Case STATISTICS_TEXT
-                Return (Nothing, New StatisticsUIDialog(context, Function() Me))
+                Return New StatisticsUIDialog(context, Function() Me)
             Case Else
                 Throw New NotImplementedException
         End Select

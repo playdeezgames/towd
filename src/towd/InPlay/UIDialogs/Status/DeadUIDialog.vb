@@ -25,8 +25,8 @@
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         context.World.Abandon()
-        Return (Nothing, New MainMenuUIDialog(context))
+        Return New MainMenuUIDialog(context)
     End Function
 End Class

@@ -35,18 +35,18 @@
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim saveSlot As ISaveSlot = Nothing
         If table.TryGetValue(choice, saveSlot) Then
             If saveSlot.SaveExists Then
-                Return (Nothing, New ConfirmUIDialog(
+                Return New ConfirmUIDialog(
                     $"Are you sure you want to overwrite {saveSlot.DisplayName}",
                     Function() SaveGame(saveSlot),
-                    Function() Me))
+                    Function() Me)
             End If
-            Return (Nothing, SaveGame(saveSlot))
+            Return SaveGame(saveSlot)
         End If
-        Return (Nothing, cancelDialog())
+        Return cancelDialog()
     End Function
 
     Private Function SaveGame(saveSlot As ISaveSlot) As IUIDialog

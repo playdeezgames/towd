@@ -37,11 +37,11 @@ Friend Class InventoryUIDialog
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim itemStack As IItemStack = Nothing
         If table.TryGetValue(choice, itemStack) Then
-            Return (Nothing, New ItemStackUIDialog(context, itemStack, Function() New InventoryUIDialog(context, cancelDialog)))
+            Return New ItemStackUIDialog(context, itemStack, Function() New InventoryUIDialog(context, cancelDialog))
         End If
-        Return (Nothing, cancelDialog())
+        Return cancelDialog()
     End Function
 End Class

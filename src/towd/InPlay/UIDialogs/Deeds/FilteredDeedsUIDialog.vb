@@ -12,6 +12,7 @@ Friend Class FilteredDeedsUIDialog
         Me.context = context
         Me.cancelDialog = cancelDialog
         Me.Prompt = prompt
+        Me.deedFilter = deedFilter
         table = Deeds.Descriptors.Where(Function(x) deedFilter(x.Value)).ToDictionary(Function(x) x.Value.Name, Function(x) x.Value)
     End Sub
 
@@ -32,12 +33,13 @@ Friend Class FilteredDeedsUIDialog
     End Property
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
+    Private ReadOnly deedFilter As Func(Of IDeed, Boolean)
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim deed As IDeed = Nothing
         If table.TryGetValue(choice, deed) Then
-            Return (Nothing, New DeedDetailUIDialog(deed, Function() Me))
+            Return New DeedDetailUIDialog(deed, Function() New FilteredDeedsUIDialog(context, Prompt, deedFilter, cancelDialog))
         End If
-        Return (Nothing, cancelDialog())
+        Return cancelDialog()
     End Function
 End Class

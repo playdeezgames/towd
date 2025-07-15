@@ -33,7 +33,7 @@
         End Get
     End Property
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
-        Return (Nothing, New MainMenuUIDialog(context))
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+        Return New MainMenuUIDialog(context)
     End Function
 End Class

@@ -17,7 +17,7 @@
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
 
-    Public Function Choose(choice As String) As (String, IUIDialog) Implements IUIDialog.Choose
-        Return (Nothing, nextDialog())
+    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+        Return nextDialog()
     End Function
 End Class
