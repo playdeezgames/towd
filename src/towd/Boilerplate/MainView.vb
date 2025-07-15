@@ -6,10 +6,10 @@
         MyBase.New()
         dialogView = New DialogView(Me)
 
-        ShowState(Nothing, New SplashUIDialog(Context))
+        ShowState(New SplashUIDialog(Context))
     End Sub
 
-    Public Sub ShowState(gameState As String, Optional dialog As IUIDialog = Nothing)
+    Public Sub ShowState(dialog As IUIDialog)
         Context.Dialog = dialog
         RemoveAll()
         If Context.Dialog IsNot Nothing Then

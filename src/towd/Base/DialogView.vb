@@ -41,13 +41,8 @@
     End Sub
 
     Private Sub OnChoicesListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Dim result = Context.Dialog.Choose(args.Value.ToString)
-        If result.Item2 IsNot Nothing Then
-            Context.Dialog = result.Item2
-            UpdateView()
-        Else
-            mainView.ShowState(result.Item1)
-        End If
+        Context.Dialog = Context.Dialog.Choose(args.Value.ToString).Item2
+        UpdateView()
     End Sub
 
     Friend Sub UpdateView()
