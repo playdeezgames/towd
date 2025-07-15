@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>towd.ui</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>towd.spectre</RootNamespace>
     <TargetFramework>net9.0</TargetFramework>
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
@@ -15,7 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\towd.business\towd.business.vbproj" />
+    <PackageReference Include="Spectre.Console" Version="0.50.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\towd.ui\towd.ui.vbproj" />
   </ItemGroup>
 
 </Project>

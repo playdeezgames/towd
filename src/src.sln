@@ -28,6 +28,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "towd.tests", "towd.tests\to
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "towd.ui", "towd.ui\towd.ui.vbproj", "{FF433088-61F0-4255-8055-FBFDAFE515CE}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "towd.spectre", "towd.spectre\towd.spectre.vbproj", "{05B07EE9-1E2A-4998-A504-74987ED49A2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{FF433088-61F0-4255-8055-FBFDAFE515CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF433088-61F0-4255-8055-FBFDAFE515CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF433088-61F0-4255-8055-FBFDAFE515CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05B07EE9-1E2A-4998-A504-74987ED49A2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B07EE9-1E2A-4998-A504-74987ED49A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B07EE9-1E2A-4998-A504-74987ED49A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B07EE9-1E2A-4998-A504-74987ED49A2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
