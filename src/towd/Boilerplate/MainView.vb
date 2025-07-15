@@ -8,7 +8,6 @@
         dialogView = New DialogView(Me)
         childViews.Add(GameState.Inventory, New InventoryState(Me))
         childViews.Add(GameState.ItemStack, New ItemStackState(Me))
-        childViews.Add(GameState.VerbMenu, New VerbMenuState(Me))
         childViews.Add(GameState.Topic, New TopicState(Me))
 
         ShowState(Nothing, New SplashUIDialog(Context))
