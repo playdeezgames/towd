@@ -10,7 +10,11 @@ Public Class UIContext
         End Get
     End Property
 
-    Public Property Dialog As IUIDialog Implements IUIContext(Of IWorld).Dialog
+    Private Property Dialog As IUIDialog
+
+    Sub New()
+        Dialog = New SplashUIDialog(Me)
+    End Sub
 
     Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
         Get
@@ -27,6 +31,12 @@ Public Class UIContext
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get
             Return Dialog.Prompt
+        End Get
+    End Property
+
+    Public ReadOnly Property IsClosed As Boolean Implements IUIContext(Of IWorld).IsClosed
+        Get
+            Return Dialog Is Nothing
         End Get
     End Property
 

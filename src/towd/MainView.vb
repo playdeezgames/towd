@@ -9,7 +9,6 @@ Friend Class MainView
         MyBase.New()
         dialogView = New DialogView(Me)
         Add(dialogView)
-        Context.Dialog = New SplashUIDialog(Context)
         dialogView.UpdateView()
     End Sub
 End Class

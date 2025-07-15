@@ -45,18 +45,18 @@ Friend Class DialogView
     End Sub
 
     Private Sub OnChoicesListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Context.Dialog = Context.Dialog.Choose(args.Value.ToString)
+        Context.Choose(args.Value.ToString)
         UpdateView()
     End Sub
 
     Friend Sub UpdateView()
-        If Context.Dialog Is Nothing Then
+        If Context.IsClosed Then
             Application.RequestStop()
             Return
         End If
-        promptLabel.Text = Context.Dialog.Prompt
+        promptLabel.Text = Context.Prompt
         Dim builder As New StringBuilder
-        For Each line In Context.Dialog.Lines
+        For Each line In Context.Lines
             If line.Item3 Then
                 builder.AppendLine(line.Item2)
             Else
@@ -68,6 +68,6 @@ Friend Class DialogView
                 {
                     .Disabled = ColorScheme.Normal
                 }
-        choicesListView.SetSource(Context.Dialog.Choices.ToList)
+        choicesListView.SetSource(Context.Choices.ToList)
     End Sub
 End Class
