@@ -33,6 +33,7 @@ Public Class FilteredVerbCategoryUIDialog
                    Return New VerbDetailUIDialog(
                         context,
                         verbType,
+                        False,
                         Function() New FilteredVerbCategoryUIDialog(context, Prompt, verbCategoryType, verbTypeFilter, cancelDialog))
                End Function
     End Function
