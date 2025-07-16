@@ -12,11 +12,15 @@ Public MustInherit Class VerbTypeDescriptor
     Private ReadOnly characterStatisticMaximums As New Dictionary(Of String, Integer)
     Private ReadOnly requiredLocationTypes As New HashSet(Of String)
     Private ReadOnly itemTypeOutputGenerators As New Dictionary(Of String, ICharacterWeightedGenerator)
+    Private flavorText As String = Nothing
     Private buildsLocationType As String = Nothing
     Private displayName As String = Nothing
     Private ReadOnly timeTaken As Integer
     Protected Sub SetDisplayName(displayName As String)
         Me.displayName = displayName
+    End Sub
+    Protected Sub SetFlavorText(flavorText As String)
+        Me.flavorText = flavorText
     End Sub
     Protected Sub SetLocationStatisticMinimum(statisticType As String, minimum As Integer)
         locationStatisticMinimums(statisticType) = minimum
@@ -75,6 +79,9 @@ Public MustInherit Class VerbTypeDescriptor
     Public ReadOnly Property Description As String Implements IVerbType.Description
         Get
             Dim builder As New StringBuilder
+            If Not String.IsNullOrEmpty(flavorText) Then
+                builder.AppendLine(flavorText)
+            End If
             If itemTypeInputs.Any Then
                 builder.AppendLine("Item Type Inputs:")
                 For Each entry In itemTypeInputs

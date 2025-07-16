@@ -7,7 +7,8 @@ Public Class ForageVerbTypeDescriptor
                   verbType As String,
                   name As String,
                   requiredLocationType As String,
-                  outputItemType As String)
+                  outputItemType As String,
+                  flavorText As String)
         MyBase.New(verbType, business.VerbCategoryType.Forage, 1)
         SetDisplayName(name)
         SetRequiredLocationType(requiredLocationType)
@@ -15,5 +16,6 @@ Public Class ForageVerbTypeDescriptor
         SetLocationStatisticDelta(business.StatisticType.ForagingCounter, -1)
         SetCharacterStatisticDelta(business.StatisticType.ForagingCounter, 1)
         SetItemTypeOutputGenerator(outputItemType, New ForageRangeGenerator)
+        SetFlavorText(flavorText)
     End Sub
 End Class

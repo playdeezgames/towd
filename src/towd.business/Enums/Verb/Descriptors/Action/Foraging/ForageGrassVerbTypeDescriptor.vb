@@ -6,6 +6,7 @@
             business.VerbType.ForageGrass,
             "Forage(Plant Fibers)",
             business.LocationType.Grass,
-            business.ItemType.PlantFiber)
+            business.ItemType.PlantFiber,
+            "Have you tried increasing yer fiber intake?")
     End Sub
 End Class
