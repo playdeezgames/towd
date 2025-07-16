@@ -12,5 +12,6 @@ Friend Class CookedGrubVerbTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.CookedGrub, New FixedGenerator(1))
         SetRequiredLocationType(LocationType.CookingFire)
         SetCharacterStatisticDelta(StatisticType.CookingCounter, 1)
+        SetFlavorText("This doesn't make the grub taste any better. It just makes it hot.")
     End Sub
 End Class

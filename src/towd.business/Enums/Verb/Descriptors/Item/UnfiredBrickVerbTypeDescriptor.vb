@@ -8,5 +8,6 @@ Friend Class UnfiredBrickVerbTypeDescriptor
         SetItemTypeInput(ItemType.Clay, 1)
         SetItemTypeOutputGenerator(ItemType.UnfiredBrick, New FixedGenerator(1))
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetFlavorText("You can make clay into bricks, not just little snakes or poos.")
     End Sub
 End Class

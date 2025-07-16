@@ -7,7 +7,8 @@ Public Class DigVerbTypeDescriptor
                   verbType As String,
                   name As String,
                   requiredLocationType As String,
-                  outputItemType As String)
+                  outputItemType As String,
+                  flavorText As String)
         MyBase.New(verbType, business.VerbCategoryType.Dig, 1)
         SetDisplayName(name)
         SetRequiredLocationType(requiredLocationType)
@@ -16,5 +17,6 @@ Public Class DigVerbTypeDescriptor
         SetLocationStatisticDelta(business.StatisticType.Digging, -1)
         SetCharacterStatisticDelta(business.StatisticType.Digging, 1)
         SetItemTypeOutputGenerator(outputItemType, New DigRangeGenerator)
+        SetFlavorText(flavorText)
     End Sub
 End Class

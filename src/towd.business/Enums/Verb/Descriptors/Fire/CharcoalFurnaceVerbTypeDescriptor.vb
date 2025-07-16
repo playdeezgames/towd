@@ -9,5 +9,6 @@ Friend Class CharcoalFurnaceVerbTypeDescriptor
         SetItemTypeOutputGenerator(business.ItemType.Charcoal, New FixedGenerator(1))
         SetRequiredLocationType(business.LocationType.Furnace)
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetFlavorText("Using charcoal to make charcoal. That's like charcoalception.")
     End Sub
 End Class

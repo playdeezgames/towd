@@ -7,5 +7,6 @@ Friend Class FishingNetVerbTypeDescriptor
         SetItemTypeInput(ItemType.Twine, 4)
         SetItemTypeOutputGenerator(ItemType.FishingNet, New FixedGenerator(1))
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetFlavorText("Not to be worn as stockings, you perv.")
     End Sub
 End Class

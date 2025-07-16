@@ -13,5 +13,6 @@ Friend Class RawFishFiletVerbTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.FishHead, New FixedGenerator(1))
         SetItemTypeOutputGenerator(ItemType.RawFishFilet, New FixedGenerator(1))
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetFlavorText("What am I supposed to do with the fish head? Take it to a movie? I'll prolly have to pay to get it in.")
     End Sub
 End Class

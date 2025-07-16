@@ -9,5 +9,6 @@ Friend Class CharcoalCookingFireVerbTypeDescriptor
         SetItemTypeOutputGenerator(business.ItemType.Charcoal, New FixedGenerator(1))
         SetRequiredLocationType(business.LocationType.CookingFire)
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetFlavorText("The act of burning wood until it is something better at burn than wood. Its like woodception.")
     End Sub
 End Class

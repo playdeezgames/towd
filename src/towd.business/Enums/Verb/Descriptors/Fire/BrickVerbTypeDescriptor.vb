@@ -10,5 +10,6 @@ Friend Class BrickVerbTypeDescriptor
         SetRequiredLocationType(LocationType.CookingFire)
         SetRequiredLocationType(LocationType.Furnace)
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetFlavorText("Cooking bricks. Almost as much fun as watch paint dry.")
     End Sub
 End Class

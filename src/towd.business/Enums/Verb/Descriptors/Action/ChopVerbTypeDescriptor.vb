@@ -12,5 +12,6 @@ Friend Class ChopVerbTypeDescriptor
         SetLocationStatisticDelta(business.StatisticType.Chopping, -1)
         SetCharacterStatisticDelta(business.StatisticType.Chopping, 1)
         SetItemTypeOutputGenerator(ItemType.Log, New ChopRangeGenerator)
+        SetFlavorText("As this is not a cherry tree, you can go ahead and tell lies.")
     End Sub
 End Class

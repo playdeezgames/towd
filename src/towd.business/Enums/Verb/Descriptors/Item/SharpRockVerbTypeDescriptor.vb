@@ -11,5 +11,6 @@ Friend Class SharpRockVerbTypeDescriptor
         SetItemTypeOutputGenerator(business.ItemType.SharpRock, New FixedGenerator(1))
         SetItemTypeInputDurability(business.ItemType.Hammer, 1)
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetFlavorText("Perhaps I played too much OHOL.")
     End Sub
 End Class

@@ -14,5 +14,6 @@ Friend Class PlankVerbTypeDescriptor
         SetItemTypeInput(ItemType.Log, 1)
         SetItemTypeOutputGenerator(ItemType.Plank, New FixedGenerator(4))
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetFlavorText("Why are there planks in this game? Because Minecraft.")
     End Sub
 End Class

@@ -10,5 +10,6 @@ Friend Class FurnaceVerbTypeDescriptor
         SetRequiredLocationType(LocationType.Grass)
         SetBuildsLocationType(LocationType.Furnace)
         SetCharacterStatisticDelta(StatisticType.BuildCounter, 1)
+        SetFlavorText("Obviously no mortar is required.")
     End Sub
 End Class

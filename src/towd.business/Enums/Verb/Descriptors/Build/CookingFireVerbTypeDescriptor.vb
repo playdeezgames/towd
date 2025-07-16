@@ -11,5 +11,6 @@ Friend Class CookingFireVerbTypeDescriptor
         SetRequiredLocationType(LocationType.Grass)
         SetBuildsLocationType(LocationType.CookingFire)
         SetCharacterStatisticDelta(StatisticType.BuildCounter, 1)
+        SetFlavorText("The real question is... once the fire has burned out, where did the rocks go?")
     End Sub
 End Class

@@ -1,6 +1,4 @@
-﻿Imports towd.data
-
-Friend Class CookedFishFiletVerbTypeDescriptor
+﻿Friend Class CookedFishFiletVerbTypeDescriptor
     Inherits VerbTypeDescriptor
 
     Public Sub New()
@@ -12,5 +10,6 @@ Friend Class CookedFishFiletVerbTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.CookedFishFilet, New FixedGenerator(1))
         SetRequiredLocationType(LocationType.CookingFire)
         SetCharacterStatisticDelta(StatisticType.CookingCounter, 1)
+        SetFlavorText("Now, if only there were some salt and lemon zest...")
     End Sub
 End Class

@@ -8,5 +8,6 @@ Friend Class TwineVerbTypeDescriptor
         SetItemTypeInput(business.ItemType.PlantFiber, 2)
         SetItemTypeOutputGenerator(business.ItemType.Twine, New FixedGenerator(1))
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
+        SetFlavorText("""Fun"" fact: I've actually made twine using milkweed.")
     End Sub
 End Class
