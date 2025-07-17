@@ -1,0 +1,33 @@
+﻿@page "/"
+
+<PageTitle>TOWD</PageTitle>
+
+@if (!context.IsClosed)
+{
+	<pre>
+			@foreach (var line in context.Lines)
+			{
+					@line.Item2
+					@if (line.Item3)
+					{
+			<br />
+					}
+			}
+		</pre>
+	<p>
+		@context.Prompt
+		@foreach (var choice in context.Choices)
+		{
+			<button @onclick="() => MakeChoice(choice)">@choice</button>
+		}
+	</p>
+}
+
+@code {
+	private towd.ui.IUIContext<towd.business.IWorld> context = new towd.ui.UIContext();
+
+	private void MakeChoice(string choice)
+	{
+		context.Choose(choice);
+	}
+}

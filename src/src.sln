@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "towd.blazor", "towd.blazor\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "towd.blazor.Client", "towd.blazor\towd.blazor.Client\towd.blazor.Client.csproj", "{14A60B84-5672-4BD7-9549-9DCED2CF2F85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "towd.blazor.standalone", "towd.blazor.standalone\towd.blazor.standalone.csproj", "{BCBE9F67-FDCE-4F6C-A862-624BFB310B85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{14A60B84-5672-4BD7-9549-9DCED2CF2F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14A60B84-5672-4BD7-9549-9DCED2CF2F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14A60B84-5672-4BD7-9549-9DCED2CF2F85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBE9F67-FDCE-4F6C-A862-624BFB310B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBE9F67-FDCE-4F6C-A862-624BFB310B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBE9F67-FDCE-4F6C-A862-624BFB310B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBE9F67-FDCE-4F6C-A862-624BFB310B85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
