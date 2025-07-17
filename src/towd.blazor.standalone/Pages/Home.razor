@@ -14,13 +14,14 @@
 					}
 			}
 		</pre>
-	<p>
-		@context.Prompt
+	<pre>
+		@context.Prompt <br/>
+		
 		@foreach (var choice in context.Choices)
 		{
-			<button @onclick="() => MakeChoice(choice)">@choice</button>
+		<button @onclick="() => MakeChoice(choice)">@choice</button><br/>
 		}
-	</p>
+	</pre>
 }
 
 @code {
