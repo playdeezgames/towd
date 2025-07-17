@@ -16,4 +16,4 @@ rm -f ./pub-html/*.pdb
 butler push pub-windows thegrumpygamedev/towd:windows
 butler push pub-linux thegrumpygamedev/towd:linux
 butler push pub-mac thegrumpygamedev/towd:mac
-butler push pub-html/wwwroot thegrumpygamedev/towd:html
+#butler push pub-html/wwwroot thegrumpygamedev/towd:html
