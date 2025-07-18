@@ -5,7 +5,7 @@ Imports towd.ui
 Module Program
     Sub Main(args As String())
         Console.Title = "TOWD"
-        Dim context As IUIContext(Of IWorld) = New UIContext
+        Dim context As IUIContext(Of IWorld) = New UIContext(Nothing)
         While Not context.IsClosed
             AnsiConsole.Clear()
             For Each line In context.Lines

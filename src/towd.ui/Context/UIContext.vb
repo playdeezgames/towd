@@ -12,7 +12,7 @@ Public Class UIContext
 
     Private Property Dialog As IUIDialog
 
-    Sub New()
+    Sub New(persister As IPersister(Of WorldData))
         Dialog = New SplashUIDialog(Me)
     End Sub
 

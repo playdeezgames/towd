@@ -4,7 +4,7 @@ Imports towd.ui
 Friend Class MainView
     Inherits Window
     Private ReadOnly dialogView As DialogView
-    Public ReadOnly Context As IUIContext(Of IWorld) = New UIContext
+    Public ReadOnly Context As IUIContext(Of IWorld) = New UIContext(Nothing)
     Public Sub New()
         MyBase.New()
         dialogView = New DialogView(Me)
