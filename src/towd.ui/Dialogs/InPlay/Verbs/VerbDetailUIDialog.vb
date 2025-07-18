@@ -26,19 +26,17 @@ Public Class VerbDetailUIDialog
         Return {(Mood.Normal, verbType.Description, True)}
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Dim result As New List(Of String)
-            If performAgain AndAlso verbType.CanPerform(context.World.Avatar) Then
-                result.Add(PERFORM_AGAIN_TEXT)
-            End If
-            result.Add(NEVER_MIND_TEXT)
-            If Not performAgain AndAlso verbType.CanPerform(context.World.Avatar) Then
-                result.Add(PERFORM_TEXT)
-            End If
-            Return result
-        End Get
-    End Property
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Dim result As New List(Of String)
+        If performAgain AndAlso verbType.CanPerform(context.World.Avatar) Then
+            result.Add(PERFORM_AGAIN_TEXT)
+        End If
+        result.Add(NEVER_MIND_TEXT)
+        If Not performAgain AndAlso verbType.CanPerform(context.World.Avatar) Then
+            result.Add(PERFORM_TEXT)
+        End If
+        Return result
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get

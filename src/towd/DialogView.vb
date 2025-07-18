@@ -68,6 +68,6 @@ Friend Class DialogView
                 {
                     .Disabled = ColorScheme.Normal
                 }
-        choicesListView.SetSource(Context.Choices.ToList)
+        choicesListView.SetSource(Context.GetChoices().ToList)
     End Sub
 End Class

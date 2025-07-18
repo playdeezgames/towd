@@ -21,11 +21,9 @@ Friend Class MoveMenuUIDialog
         Return {(Mood.Normal, "Choose a direction.", True)}
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Return table.Keys
-        End Get
-    End Property
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Return table.Keys
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get

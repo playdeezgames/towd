@@ -20,16 +20,14 @@ Friend Class ItemStackUIDialog
         Return Array.Empty(Of (String, String, Boolean))
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Dim result As New List(Of String) From
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Dim result As New List(Of String) From
                 {
                     NEVER_MIND_TEXT
                 }
-            result.AddRange(table.Keys)
-            Return result
-        End Get
-    End Property
+        result.AddRange(table.Keys)
+        Return result
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get

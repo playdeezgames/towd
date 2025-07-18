@@ -20,15 +20,13 @@ Friend Class FilteredDeedsUIDialog
         Return Array.Empty(Of (String, String, Boolean))
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Dim result As New List(Of String) From {
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Dim result As New List(Of String) From {
                     NEVER_MIND_TEXT
                 }
-            result.AddRange(table.Keys.OrderBy(Function(x) x))
-            Return result
-        End Get
-    End Property
+        result.AddRange(table.Keys.OrderBy(Function(x) x))
+        Return result
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
     Private ReadOnly deedFilter As Func(Of IDeed, Boolean)

@@ -17,7 +17,7 @@
 	<pre>
 		@GetContext().Prompt <br/>
 		
-			@foreach (var choice in GetContext().Choices)
+			@foreach (var choice in GetContext().GetChoices())
 		{
 		<button @onclick="() => MakeChoice(choice)">@choice</button><br/>
 		}

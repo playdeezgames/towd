@@ -15,11 +15,9 @@ Friend Class DialogUIDialog
         Return dialog.Lines.Select(Function(x) (Mood.Normal, x, True))
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Return dialog.Choices
-        End Get
-    End Property
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Return dialog.Choices
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get

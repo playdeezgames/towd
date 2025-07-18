@@ -13,11 +13,9 @@ Friend Class DeadUIDialog
         Return Array.Empty(Of (String, String, Boolean))
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Return {"Ok"}
-        End Get
-    End Property
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Return {"Ok"}
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get

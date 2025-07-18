@@ -21,11 +21,9 @@ Public Class SplashUIDialog
             }
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Return {"OK"}
-        End Get
-    End Property
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Return {"OK"}
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get

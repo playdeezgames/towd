@@ -18,11 +18,9 @@
         Return Array.Empty(Of (String, String, Boolean))
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Return {NO_TEXT, YES_TEXT}
-        End Get
-    End Property
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Return {NO_TEXT, YES_TEXT}
+    End Function
 
     Private ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get

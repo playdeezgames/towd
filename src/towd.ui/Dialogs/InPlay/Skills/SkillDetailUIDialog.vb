@@ -21,18 +21,16 @@ Friend Class SkillDetailUIDialog
         Return {(Mood.Normal, skillType.Description, True)}
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Dim result As New List(Of String) From
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Dim result As New List(Of String) From
                 {
                     NEVER_MIND_TEXT
                 }
-            If skillType.CanAdvance(character) Then
-                result.Add(ADVANCE_TEXT)
-            End If
-            Return result
-        End Get
-    End Property
+        If skillType.CanAdvance(character) Then
+            result.Add(ADVANCE_TEXT)
+        End If
+        Return result
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get

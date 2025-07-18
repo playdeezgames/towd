@@ -18,17 +18,15 @@ Friend Class GameMenuUIDialog
         Return Array.Empty(Of (String, String, Boolean))
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Return {
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Return {
                 CONTINUE_TEXT,
                 SCUM_SAVE_GAME_TEXT,
                 SCUM_LOAD_GAME_TEXT,
                 SAVE_GAME_TEXT,
                 ABANDON_GAME_TEXT
                 }
-        End Get
-    End Property
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get

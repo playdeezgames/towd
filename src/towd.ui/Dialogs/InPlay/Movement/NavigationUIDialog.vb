@@ -42,29 +42,27 @@ Friend Class NavigationUIDialog
         Return result.Select(Function(x) (Mood.Normal, x, True))
     End Function
 
-    Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
-        Get
-            Dim character = context.World.Avatar
-            Dim result As New List(Of String) From {
-                MOVE_TEXT,
-                MAP_TEXT,
-                STATISTICS_TEXT
-            }
-            If Character.CanDialog Then
-                result.Add(DIALOG_TEXT)
-            End If
-            If Character.HasItems Then
-                result.Add(INVENTORY_TEXT)
-            End If
-            If Character.CanDoAnyVerb Then
-                result.Add(VERB_TEXT)
-            End If
-            result.Add(DEEDS_TEXT)
-            result.Add(SKILLS_TEXT)
-            result.Add(MENU_TEXT)
-            Return result
-        End Get
-    End Property
+    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+        Dim character = context.World.Avatar
+        Dim result As New List(Of String) From {
+            MOVE_TEXT,
+            MAP_TEXT,
+            STATISTICS_TEXT
+        }
+        If character.CanDialog Then
+            result.Add(DIALOG_TEXT)
+        End If
+        If character.HasItems Then
+            result.Add(INVENTORY_TEXT)
+        End If
+        If character.CanDoAnyVerb Then
+            result.Add(VERB_TEXT)
+        End If
+        result.Add(DEEDS_TEXT)
+        result.Add(SKILLS_TEXT)
+        result.Add(MENU_TEXT)
+        Return result
+    End Function
 
     Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
         Get
