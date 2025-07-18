@@ -29,11 +29,9 @@ Friend Class ItemStackUIDialog
         Return result
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
-        Get
-            Return itemStack.ToString()
-        End Get
-    End Property
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return itemStack.ToString()
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim item As IItem = Nothing

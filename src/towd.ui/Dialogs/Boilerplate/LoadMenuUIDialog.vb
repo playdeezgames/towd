@@ -28,11 +28,9 @@ Friend Class LoadMenuUIDialog
         Return table.Keys
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
-        Get
-            Return "Load Menu"
-        End Get
-    End Property
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return "Load Menu"
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim saveSlot As ISaveSlot = table(choice)

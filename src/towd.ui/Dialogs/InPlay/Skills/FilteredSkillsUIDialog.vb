@@ -11,7 +11,7 @@ Friend Class FilteredSkillsUIDialog
 
     Public Sub New(context As IUIContext(Of IWorld), prompt As String, skillFilter As Func(Of ISkillType, Boolean), cancelDialog As Func(Of IUIDialog))
         Me.context = context
-        Me.Prompt = prompt
+        Me._Prompt = prompt
         Me.cancelDialog = cancelDialog
         Me.skillFilter = skillFilter
         table = SkillTypes.Descriptors.Where(Function(x) skillFilter(x.Value)).ToDictionary(Function(x) $"{x.Value}({x.Value.GetDescription(context.World.Avatar)})", Function(x) x.Value)
@@ -30,12 +30,16 @@ Friend Class FilteredSkillsUIDialog
         Return result
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
+    Private _Prompt As String
+
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return _Prompt
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim skillType As ISkillType = Nothing
         If table.TryGetValue(choice, skillType) Then
-            Return New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, Prompt, skillFilter, cancelDialog))
+            Return New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, GetPrompt(), skillFilter, cancelDialog))
         End If
         Return cancelDialog()
     End Function

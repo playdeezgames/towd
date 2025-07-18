@@ -26,11 +26,9 @@ Friend Class SkillsUIDialog
                 }
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
-        Get
-            Return "Skills"
-        End Get
-    End Property
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return "Skills"
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim character = context.World.Avatar

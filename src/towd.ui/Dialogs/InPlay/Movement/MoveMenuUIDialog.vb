@@ -25,11 +25,9 @@ Friend Class MoveMenuUIDialog
         Return table.Keys
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
-        Get
-            Return "Which Way?"
-        End Get
-    End Property
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return "Which Way?"
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim descriptor = table(choice)

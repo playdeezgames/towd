@@ -17,11 +17,9 @@ Friend Class DeadUIDialog
         Return {"Ok"}
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
-        Get
-            Return "Yer dead."
-        End Get
-    End Property
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return "Yer dead."
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         context.World.Abandon()

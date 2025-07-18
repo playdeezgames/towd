@@ -17,7 +17,7 @@ Public Class FilteredVerbCategoryUIDialog
            verbTypeFilter As Func(Of IVerbType, ICharacter, Boolean),
            cancelDialog As Func(Of IUIDialog))
         Me.context = context
-        Me.Prompt = prompt
+        Me._Prompt = prompt
         Me.verbCategoryType = verbCategoryType
         Me.verbTypeFilter = verbTypeFilter
         Me.cancelDialog = cancelDialog
@@ -34,7 +34,7 @@ Public Class FilteredVerbCategoryUIDialog
                         context,
                         verbType,
                         False,
-                        Function() New FilteredVerbCategoryUIDialog(context, Prompt, verbCategoryType, verbTypeFilter, cancelDialog))
+                        Function() New FilteredVerbCategoryUIDialog(context, GetPrompt(), verbCategoryType, verbTypeFilter, cancelDialog))
                End Function
     End Function
 
@@ -55,7 +55,11 @@ Public Class FilteredVerbCategoryUIDialog
         Return result
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
+    Private _Prompt As String
+
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return _Prompt
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim nextDialog As Func(Of IUIDialog) = Nothing

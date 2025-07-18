@@ -25,11 +25,9 @@ Public Class UIContext
         Return Dialog.GetChoices()
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
-        Get
-            Return Dialog.Prompt
-        End Get
-    End Property
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return Dialog.GetPrompt()
+    End Function
 
     Public ReadOnly Property IsClosed As Boolean Implements IUIContext(Of IWorld).IsClosed
         Get

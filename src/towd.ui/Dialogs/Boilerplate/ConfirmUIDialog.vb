@@ -22,11 +22,9 @@
         Return {NO_TEXT, YES_TEXT}
     End Function
 
-    Private ReadOnly Property Prompt As String Implements IUIDialog.Prompt
-        Get
-            Return caption
-        End Get
-    End Property
+    Private Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return caption
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Select Case choice

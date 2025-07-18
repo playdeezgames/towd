@@ -11,7 +11,7 @@ Friend Class FilteredVerbUIDialog
 
     Public Sub New(context As IUIContext(Of IWorld), prompt As String, verbTypeFilter As Func(Of IVerbType, ICharacter, Boolean), cancelDialog As Func(Of IUIDialog))
         Me.context = context
-        Me.Prompt = prompt
+        Me._Prompt = prompt
         Me.verbTypeFilter = verbTypeFilter
         Me.cancelDialog = cancelDialog
         table = VerbTypes.Descriptors.Values.
@@ -25,10 +25,10 @@ Friend Class FilteredVerbUIDialog
     Private Function getTableValue(grouping As IGrouping(Of String, IVerbType)) As Func(Of IUIDialog)
         If grouping.Count = 1 Then
             Return Function() As IUIDialog
-                       Return New VerbDetailUIDialog(context, grouping.Single, False, Function() New FilteredVerbUIDialog(context, Prompt, verbTypeFilter, cancelDialog))
+                       Return New VerbDetailUIDialog(context, grouping.Single, False, Function() New FilteredVerbUIDialog(context, GetPrompt(), verbTypeFilter, cancelDialog))
                    End Function
         End If
-        Return Function() New FilteredVerbCategoryUIDialog(context, grouping.Key.ToVerbCategoryDescriptor.Name, grouping.Key, verbTypeFilter, Function() New FilteredVerbUIDialog(context, Prompt, verbTypeFilter, cancelDialog))
+        Return Function() New FilteredVerbCategoryUIDialog(context, grouping.Key.ToVerbCategoryDescriptor.Name, grouping.Key, verbTypeFilter, Function() New FilteredVerbUIDialog(context, GetPrompt(), verbTypeFilter, cancelDialog))
     End Function
 
     Private Function getTableKey(grouping As IGrouping(Of String, IVerbType)) As String
@@ -50,7 +50,11 @@ Friend Class FilteredVerbUIDialog
         Return result
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
+    Private _Prompt As String
+
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return _Prompt
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim nextDialog As Func(Of IUIDialog) = Nothing

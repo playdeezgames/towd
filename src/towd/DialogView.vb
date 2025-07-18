@@ -54,7 +54,7 @@ Friend Class DialogView
             Application.RequestStop()
             Return
         End If
-        promptLabel.Text = Context.Prompt
+        promptLabel.Text = Context.GetPrompt()
         Dim builder As New StringBuilder
         For Each line In Context.GetLines()
             If line.Item3 Then

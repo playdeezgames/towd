@@ -23,11 +23,9 @@ Friend Class VerbMenuUIDialog
         Return result
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
-        Get
-            Return "Verbs"
-        End Get
-    End Property
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return "Verbs"
+    End Function
 
     Public Sub New(context As IUIContext(Of IWorld), cancelDialog As Func(Of IUIDialog))
         Me.context = context

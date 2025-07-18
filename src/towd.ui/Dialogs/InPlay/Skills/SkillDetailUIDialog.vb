@@ -32,11 +32,9 @@ Friend Class SkillDetailUIDialog
         Return result
     End Function
 
-    Public ReadOnly Property Prompt As String Implements IUIDialog.Prompt
-        Get
-            Return $"{skillType}({skillType.GetDescription(character)})"
-        End Get
-    End Property
+    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
+        Return $"{skillType}({skillType.GetDescription(character)})"
+    End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Select Case choice
