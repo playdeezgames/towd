@@ -19,12 +19,6 @@ Public Class SaveSlotDescriptor
 
     Public ReadOnly Property Filename As String Implements ISaveSlot.Filename
 
-    Public ReadOnly Property SaveExists As Boolean Implements ISaveSlot.SaveExists
-        Get
-            Return File.Exists(Filename)
-        End Get
-    End Property
-
     Public Sub SaveGame(worldData As WorldData) Implements ISaveSlot.SaveGame
         File.WriteAllText(Filename, JsonSerializer.Serialize(worldData))
     End Sub
@@ -35,13 +29,5 @@ Public Class SaveSlotDescriptor
             result &= $"(Last Saved {File.GetLastWriteTime(Filename)})"
         End If
         Return result
-    End Function
-
-    Public Function LoadGame() As WorldData Implements ISaveSlot.LoadGame
-        Try
-            Return JsonSerializer.Deserialize(Of WorldData)(File.ReadAllText(Filename))
-        Catch
-            Return Nothing
-        End Try
     End Function
 End Class

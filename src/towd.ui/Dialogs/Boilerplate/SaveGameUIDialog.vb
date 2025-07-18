@@ -40,7 +40,7 @@ Friend Class SaveGameUIDialog
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim saveSlot As ISaveSlot = Nothing
         If table.TryGetValue(choice, saveSlot) Then
-            If saveSlot.SaveExists Then
+            If context.Persister.SaveExists(saveSlot) Then
                 Return New ConfirmUIDialog(
                     $"Are you sure you want to overwrite {saveSlot.DisplayName}",
                     Function() SaveGame(saveSlot),

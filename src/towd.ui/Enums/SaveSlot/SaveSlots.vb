@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.CompilerServices
-Imports towd.data
 
 Public Module SaveSlots
     Public ReadOnly Descriptors As IReadOnlyDictionary(Of String, ISaveSlot) =
