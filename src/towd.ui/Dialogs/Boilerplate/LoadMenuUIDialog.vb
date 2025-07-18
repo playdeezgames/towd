@@ -12,7 +12,7 @@ Friend Class LoadMenuUIDialog
         Me.context = context
         Me.cancelDialog = cancelDialog
         table.Add(NEVER_MIND_TEXT, Nothing)
-        For Each saveSlot In SaveSlots.Descriptors.Values.Where(Function(x) x.SaveExists)
+        For Each saveSlot In SaveSlots.Descriptors.Values.Where(Function(x) context.Persister.SaveExists(x))
             table.Add(saveSlot.ToString(), saveSlot)
         Next
     End Sub

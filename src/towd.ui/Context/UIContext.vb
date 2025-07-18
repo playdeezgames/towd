@@ -12,8 +12,9 @@ Public Class UIContext
 
     Private Property Dialog As IUIDialog
 
-    Sub New(persister As IPersister(Of WorldData))
+    Sub New(persister As IPersister)
         Dialog = New SplashUIDialog(Me)
+        Me.Persister = persister
     End Sub
 
     Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
@@ -39,6 +40,8 @@ Public Class UIContext
             Return Dialog Is Nothing
         End Get
     End Property
+
+    Public ReadOnly Property Persister As IPersister Implements IUIContext(Of IWorld).Persister
 
     Public Sub SaveGame(saveSlot As String) Implements IUIContext(Of IWorld).SaveGame
         saveSlot.ToSaveSlotDescriptor.SaveGame(worldData)
