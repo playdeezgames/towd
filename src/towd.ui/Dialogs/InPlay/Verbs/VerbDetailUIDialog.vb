@@ -22,11 +22,9 @@ Public Class VerbDetailUIDialog
         Me.performAgain = performAgain
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
-        Get
-            Return {(Mood.Normal, verbType.Description, True)}
-        End Get
-    End Property
+    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+        Return {(Mood.Normal, verbType.Description, True)}
+    End Function
 
     Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
         Get

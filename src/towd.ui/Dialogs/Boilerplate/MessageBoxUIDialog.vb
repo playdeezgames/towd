@@ -2,11 +2,16 @@
     Implements IUIDialog
     Sub New(prompt As String, lines As (String, String, Boolean)(), nextDialog As Func(Of IUIDialog))
         Me.Prompt = prompt
-        Me.Lines = lines
+        Me._Lines = lines
         Me.nextDialog = nextDialog
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
+    Private _Lines As IEnumerable(Of (String, String, Boolean))
+
+    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+        Return _Lines
+    End Function
+
     Private ReadOnly nextDialog As Func(Of IUIDialog)
 
     Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices

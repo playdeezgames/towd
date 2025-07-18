@@ -5,7 +5,7 @@
 @if (!GetContext().IsClosed)
 {
 	<pre>
-			@foreach (var line in GetContext().Lines)
+			@foreach (var line in GetContext().GetLines())
 			{
 					@line.Item2
 					@if (line.Item3)

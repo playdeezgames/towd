@@ -17,11 +17,9 @@ Public Class UIContext
         Me.Persister = persister
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
-        Get
-            Return Dialog.Lines
-        End Get
-    End Property
+    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+        Return Dialog.GetLines()
+    End Function
 
     Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
         Get

@@ -12,41 +12,39 @@ Friend Class MapUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
-        Get
-            Dim character = context.World.Avatar
-            Dim map = character.CurrentLocation.Map
-            Dim builder As New StringBuilder
-            For Each row In Enumerable.Range(0, map.Rows)
-                For Each column In Enumerable.Range(0, map.Columns)
-                    Dim location = map.GetLocation(column, row)
-                    If location.Column = character.CurrentLocation.Column AndAlso location.Row = character.CurrentLocation.Row Then
-                        builder.Append("["c)
-                    Else
-                        builder.Append(" "c)
-                    End If
-                    If character.KnowsLocation(location) Then
-                        builder.Append(location.EntityType.MapLegend)
-                    Else
-                        builder.Append("?")
-                    End If
-                    If location.Column = character.CurrentLocation.Column AndAlso location.Row = character.CurrentLocation.Row Then
-                        builder.Append("]"c)
-                    Else
-                        builder.Append(" "c)
-                    End If
-                Next
-                builder.AppendLine()
+    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+        Dim character = context.World.Avatar
+        Dim map = character.CurrentLocation.Map
+        Dim builder As New StringBuilder
+        For Each row In Enumerable.Range(0, map.Rows)
+            For Each column In Enumerable.Range(0, map.Columns)
+                Dim location = map.GetLocation(column, row)
+                If location.Column = character.CurrentLocation.Column AndAlso location.Row = character.CurrentLocation.Row Then
+                    builder.Append("["c)
+                Else
+                    builder.Append(" "c)
+                End If
+                If character.KnowsLocation(location) Then
+                    builder.Append(location.EntityType.MapLegend)
+                Else
+                    builder.Append("?")
+                End If
+                If location.Column = character.CurrentLocation.Column AndAlso location.Row = character.CurrentLocation.Row Then
+                    builder.Append("]"c)
+                Else
+                    builder.Append(" "c)
+                End If
             Next
-            builder.AppendLine("Legend:")
-            builder.AppendLine("[x]-you are here!")
-            builder.Append("?-unexplored")
-            For Each descriptor In LocationTypes.Descriptors.Values
-                builder.Append($"|{descriptor.MapLegend}-{descriptor.Name}")
-            Next
-            Return {(Mood.Normal, builder.ToString, True)}
-        End Get
-    End Property
+            builder.AppendLine()
+        Next
+        builder.AppendLine("Legend:")
+        builder.AppendLine("[x]-you are here!")
+        builder.Append("?-unexplored")
+        For Each descriptor In LocationTypes.Descriptors.Values
+            builder.Append($"|{descriptor.MapLegend}-{descriptor.Name}")
+        Next
+        Return {(Mood.Normal, builder.ToString, True)}
+    End Function
 
     Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
         Get

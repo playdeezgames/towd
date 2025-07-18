@@ -8,7 +8,7 @@ Module Program
         Dim context As IUIContext(Of IWorld) = New UIContext(New Persister)
         While Not context.IsClosed
             AnsiConsole.Clear()
-            For Each line In context.Lines
+            For Each line In context.GetLines()
                 If line.Item3 Then
                     AnsiConsole.WriteLine(line.Item2)
                 Else

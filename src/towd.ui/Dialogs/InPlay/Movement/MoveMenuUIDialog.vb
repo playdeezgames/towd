@@ -17,11 +17,9 @@ Friend Class MoveMenuUIDialog
         Next
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
-        Get
-            Return {(Mood.Normal, "Choose a direction.", True)}
-        End Get
-    End Property
+    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+        Return {(Mood.Normal, "Choose a direction.", True)}
+    End Function
 
     Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
         Get

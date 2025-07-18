@@ -18,31 +18,29 @@ Friend Class NavigationUIDialog
         Me.context = context
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
-        Get
-            Dim result As New List(Of String)
-            Dim character = context.World.Avatar
-            Dim location = character.CurrentLocation
-            result.Add($"Sat: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)} | HP: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)} | XP: {character.GetStatistic(StatisticType.XP)}")
+    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+        Dim result As New List(Of String)
+        Dim character = context.World.Avatar
+        Dim location = character.CurrentLocation
+        result.Add($"Sat: {character.GetStatistic(StatisticType.Satiety)}/{character.GetStatisticMaximum(StatisticType.Satiety)} | HP: {character.GetStatistic(StatisticType.Health)}/{character.GetStatisticMaximum(StatisticType.Health)} | XP: {character.GetStatistic(StatisticType.XP)}")
 
-            result.Add($"{location}")
-            Dim neighbors = location.Neighbors
-            For Each neighbor In neighbors
+        result.Add($"{location}")
+        Dim neighbors = location.Neighbors
+        For Each neighbor In neighbors
 
-                If character.KnowsLocation(neighbor.Value) Then
-                    result.Add($"To the {neighbor.Key.ToDirectionDescriptor.Name} there is {neighbor.Value.EntityType.Name}.")
-                Else
-                    result.Add($"To the {neighbor.Key.ToDirectionDescriptor.Name} is unexplored.")
-                End If
-            Next
-            If location.HasOtherCharacters(character) Then
-                For Each otherCharacter In location.GetOtherCharacters(character)
-                    result.Add($"{otherCharacter.Name} is here.")
-                Next
+            If character.KnowsLocation(neighbor.Value) Then
+                result.Add($"To the {neighbor.Key.ToDirectionDescriptor.Name} there is {neighbor.Value.EntityType.Name}.")
+            Else
+                result.Add($"To the {neighbor.Key.ToDirectionDescriptor.Name} is unexplored.")
             End If
-            Return result.Select(Function(x) (Mood.Normal, x, True))
-        End Get
-    End Property
+        Next
+        If location.HasOtherCharacters(character) Then
+            For Each otherCharacter In location.GetOtherCharacters(character)
+                result.Add($"{otherCharacter.Name} is here.")
+            Next
+        End If
+        Return result.Select(Function(x) (Mood.Normal, x, True))
+    End Function
 
     Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
         Get

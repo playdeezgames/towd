@@ -16,11 +16,9 @@ Friend Class ItemStackUIDialog
         table = context.World.Avatar.GetItemsOfType(itemStack.ItemType).ToDictionary(Function(x) $"{x.EntityType.Describe(x)}(#{x.Id})", Function(x) x)
     End Sub
 
-    Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
-        Get
-            Return Array.Empty(Of (String, String, Boolean))
-        End Get
-    End Property
+    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+        Return Array.Empty(Of (String, String, Boolean))
+    End Function
 
     Public ReadOnly Property Choices As IEnumerable(Of String) Implements IUIDialog.Choices
         Get
