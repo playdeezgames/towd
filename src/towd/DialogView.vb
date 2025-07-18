@@ -57,10 +57,10 @@ Friend Class DialogView
         promptLabel.Text = Context.GetPrompt()
         Dim builder As New StringBuilder
         For Each line In Context.GetLines()
-            If line.Item3 Then
-                builder.AppendLine(line.Item2)
+            If line.EndsLine Then
+                builder.AppendLine(line.Text)
             Else
-                builder.Append(line.Item2)
+                builder.Append(line.Text)
             End If
         Next
         linesTextView.Text = builder.ToString()

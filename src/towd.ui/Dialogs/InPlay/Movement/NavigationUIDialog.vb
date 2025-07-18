@@ -18,7 +18,7 @@ Friend Class NavigationUIDialog
         Me.context = context
     End Sub
 
-    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+    Public Function GetLines() As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)) Implements IUIDialog.GetLines
         Dim result As New List(Of String)
         Dim character = context.World.Avatar
         Dim location = character.CurrentLocation

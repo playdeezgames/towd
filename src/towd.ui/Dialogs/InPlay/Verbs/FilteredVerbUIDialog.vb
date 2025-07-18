@@ -37,7 +37,7 @@ Friend Class FilteredVerbUIDialog
         End If
         Return $"{grouping.Key.ToVerbCategoryDescriptor.Name}..."
     End Function
-    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+    Public Function GetLines() As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)) Implements IUIDialog.GetLines
         Return Array.Empty(Of (String, String, Boolean))
     End Function
 

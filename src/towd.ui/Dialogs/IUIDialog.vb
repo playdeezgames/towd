@@ -1,5 +1,5 @@
 ﻿Public Interface IUIDialog
-    Function GetLines() As IEnumerable(Of (String, String, Boolean))
+    Function GetLines() As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))
     Function GetChoices() As IEnumerable(Of String)
     Function GetPrompt() As String
     Function Choose(choice As String) As IUIDialog

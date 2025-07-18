@@ -10,7 +10,7 @@ Public Class SplashUIDialog
         Debug.Assert(Me.context IsNot Nothing)
     End Sub
 
-    Public Function GetLines() As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.GetLines
+    Public Function GetLines() As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)) Implements IUIDialog.GetLines
         Return {
                 (Mood.Normal, ".___________.  ______   ____    __    ____  _______  ", True),
                 (Mood.Normal, "|           | /  __  \  \   \  /  \  /   / |       \ ", True),

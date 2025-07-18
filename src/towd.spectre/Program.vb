@@ -9,10 +9,10 @@ Module Program
         While Not context.IsClosed
             AnsiConsole.Clear()
             For Each line In context.GetLines()
-                If line.Item3 Then
-                    AnsiConsole.WriteLine(line.Item2)
+                If line.EndsLine Then
+                    AnsiConsole.WriteLine(line.Text)
                 Else
-                    AnsiConsole.Write(line.Item2)
+                    AnsiConsole.Write(line.Text)
                 End If
             Next
             Dim prompt As New SelectionPrompt(Of String) With {.Title = $"[olive]{context.GetPrompt()}[/]"}
