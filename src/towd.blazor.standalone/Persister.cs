@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using Microsoft.JSInterop;
+using System.Text.Json;
+using System.Threading.Tasks;
 using towd.data;
 using towd.ui;
 
@@ -6,6 +8,12 @@ namespace towd.blazor.standalone
 {
     public class Persister : IPersister
     {
+        private readonly IJSRuntime js;
+
+        public Persister(IJSRuntime js) 
+        {
+            this.js = js;
+        }
         public WorldData LoadGame(ISaveSlot saveSlot)
         {
             try
@@ -27,8 +35,9 @@ namespace towd.blazor.standalone
             return File.Exists(saveSlot.Filename) ? File.GetLastWriteTime(saveSlot.Filename) : null;
         }
 
-        public void SaveGame(ISaveSlot saveSlot, WorldData worldData)
+        public async Task SaveGameAsync(ISaveSlot saveSlot, WorldData worldData)
         {
+            await js.InvokeVoidAsync("isWorx");
             File.WriteAllText(saveSlot.Filename, JsonSerializer.Serialize(worldData));
         }
     }

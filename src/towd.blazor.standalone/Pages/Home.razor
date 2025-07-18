@@ -1,11 +1,12 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime
 
 <PageTitle>TOWD</PageTitle>
 
-@if (!context.IsClosed)
+@if (!GetContext().IsClosed)
 {
 	<pre>
-			@foreach (var line in context.Lines)
+			@foreach (var line in GetContext().Lines)
 			{
 					@line.Item2
 					@if (line.Item3)
@@ -15,9 +16,9 @@
 			}
 		</pre>
 	<pre>
-		@context.Prompt <br/>
+		@GetContext().Prompt <br/>
 		
-		@foreach (var choice in context.Choices)
+			@foreach (var choice in GetContext().Choices)
 		{
 		<button @onclick="() => MakeChoice(choice)">@choice</button><br/>
 		}
@@ -25,10 +26,21 @@
 }
 
 @code {
-	private towd.ui.IUIContext<towd.business.IWorld> context = new towd.ui.UIContext(new Persister());
+
+	private towd.ui.IUIContext<towd.business.IWorld>? _context = null;
+
+	private towd.ui.IUIContext<towd.business.IWorld> GetContext()
+	{
+		if(_context==null)
+		{
+			_context = new towd.ui.UIContext(new Persister(JSRuntime));
+		}
+
+		return _context;
+	}
 
 	private void MakeChoice(string choice)
 	{
-		context.Choose(choice);
+		GetContext().Choose(choice);
 	}
 }

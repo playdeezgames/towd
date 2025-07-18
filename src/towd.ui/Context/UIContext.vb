@@ -44,7 +44,7 @@ Public Class UIContext
     Public ReadOnly Property Persister As IPersister Implements IUIContext(Of IWorld).Persister
 
     Public Sub SaveGame(saveSlot As String) Implements IUIContext(Of IWorld).SaveGame
-        Persister.SaveGame(saveSlot.ToSaveSlotDescriptor, worldData)
+        Persister.SaveGameAsync(saveSlot.ToSaveSlotDescriptor, worldData)
     End Sub
     Public Function LoadGame(saveSlot As String) As Boolean Implements IUIContext(Of IWorld).LoadGame
         Dim loadAttempt As WorldData = Persister.LoadGame(saveSlot.ToSaveSlotDescriptor)
