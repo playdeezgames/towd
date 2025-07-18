@@ -1,8 +1,4 @@
-﻿Imports System.IO
-Imports System.Text.Json
-Imports towd.data
-
-Public Class SaveSlotDescriptor
+﻿Public Class SaveSlotDescriptor
     Implements ISaveSlot
     Sub New(
            saveSlot As String,
@@ -18,16 +14,4 @@ Public Class SaveSlotDescriptor
     Public ReadOnly Property DisplayName As String Implements ISaveSlot.DisplayName
 
     Public ReadOnly Property Filename As String Implements ISaveSlot.Filename
-
-    Public Sub SaveGame(worldData As WorldData) Implements ISaveSlot.SaveGame
-        File.WriteAllText(Filename, JsonSerializer.Serialize(worldData))
-    End Sub
-
-    Public Overrides Function ToString() As String
-        Dim result As String = DisplayName
-        If File.Exists(Filename) Then
-            result &= $"(Last Saved {File.GetLastWriteTime(Filename)})"
-        End If
-        Return result
-    End Function
 End Class

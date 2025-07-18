@@ -12,8 +12,11 @@ Friend Class LoadMenuUIDialog
         Me.context = context
         Me.cancelDialog = cancelDialog
         table.Add(NEVER_MIND_TEXT, Nothing)
-        For Each saveSlot In SaveSlots.Descriptors.Values.Where(Function(x) context.Persister.SaveExists(x))
-            table.Add(saveSlot.ToString(), saveSlot)
+        For Each saveSlot In SaveSlots.Descriptors.Values
+            Dim saveExists = context.Persister.SaveExists(saveSlot)
+            If saveExists.HasValue Then
+                table.Add($"{saveSlot.DisplayName}(Last saved: {saveExists.Value})", saveSlot)
+            End If
         Next
     End Sub
 

@@ -7,11 +7,15 @@ Friend Class Persister
     Implements IPersister
 
     Public Sub SaveGame(saveSlot As ISaveSlot, worldData As WorldData) Implements IPersister.SaveGame
-        saveSlot.SaveGame(worldData)
+        File.WriteAllText(saveSlot.Filename, JsonSerializer.Serialize(worldData))
     End Sub
 
-    Public Function SaveExists(saveSlot As ISaveSlot) As Boolean Implements IPersister.SaveExists
-        Return File.Exists(saveSlot.Filename)
+    Public Function SaveExists(saveSlot As ISaveSlot) As DateTime? Implements IPersister.SaveExists
+        If File.Exists(saveSlot.Filename) Then
+            Return File.GetLastWriteTime(saveSlot.Filename)
+        Else
+            Return Nothing
+        End If
     End Function
 
     Public Function LoadGame(saveSlot As ISaveSlot) As WorldData Implements IPersister.LoadGame

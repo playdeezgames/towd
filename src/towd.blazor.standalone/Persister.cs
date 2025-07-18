@@ -22,14 +22,14 @@ namespace towd.blazor.standalone
             }
         }
 
-        public bool SaveExists(ISaveSlot saveSlot)
+        public DateTime? SaveExists(ISaveSlot saveSlot)
         {
-            return File.Exists(saveSlot.Filename);
+            return File.Exists(saveSlot.Filename) ? File.GetLastWriteTime(saveSlot.Filename) : null;
         }
 
         public void SaveGame(ISaveSlot saveSlot, WorldData worldData)
         {
-            saveSlot.SaveGame(worldData);
+            File.WriteAllText(saveSlot.Filename, JsonSerializer.Serialize(worldData));
         }
     }
 }

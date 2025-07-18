@@ -11,7 +11,13 @@ Friend Class SaveGameUIDialog
     Public Sub New(context As IUIContext(Of IWorld), cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.cancelDialog = cancelDialog
-        table = SaveSlots.Descriptors.ToDictionary(Function(x) x.Value.ToString, Function(x) x.Value)
+        table = SaveSlots.Descriptors.ToDictionary(Function(x)
+                                                       Dim saveExists = context.Persister.SaveExists(x.Value)
+                                                       If saveExists.HasValue Then
+                                                           Return $"{x.Value.DisplayName}(Last saved: {saveExists.Value})"
+                                                       End If
+                                                       Return x.Value.DisplayName
+                                                   End Function, Function(x) x.Value)
     End Sub
 
     Public ReadOnly Property Lines As IEnumerable(Of (String, String, Boolean)) Implements IUIDialog.Lines
@@ -40,7 +46,7 @@ Friend Class SaveGameUIDialog
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim saveSlot As ISaveSlot = Nothing
         If table.TryGetValue(choice, saveSlot) Then
-            If context.Persister.SaveExists(saveSlot) Then
+            If context.Persister.SaveExists(saveSlot).HasValue Then
                 Return New ConfirmUIDialog(
                     $"Are you sure you want to overwrite {saveSlot.DisplayName}",
                     Function() SaveGame(saveSlot),

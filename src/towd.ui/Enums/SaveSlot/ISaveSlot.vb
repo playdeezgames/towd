@@ -5,5 +5,4 @@ Public Interface ISaveSlot
     ReadOnly Property SaveSlot As String
     ReadOnly Property DisplayName As String
     ReadOnly Property Filename As String
-    Sub SaveGame(worldData As WorldData)
 End Interface
