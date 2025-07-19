@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime
 
 <PageTitle>TOWD</PageTitle>
 
@@ -36,7 +37,7 @@
 	{
 		if(_context==null)
 		{
-			_context = new towd.ui.UIContext(new Persister());
+			_context = new towd.ui.UIContext(new Persister(JSRuntime));
 		}
 
 		return _context;

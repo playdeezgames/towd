@@ -1,10 +1,11 @@
-﻿using System.Text.Json;
+﻿using Microsoft.JSInterop;
+using System.Text.Json;
 using towd.data;
 using towd.ui;
 
 namespace towd.blazor.standalone
 {
-    public class Persister : IPersister
+    public class Persister(IJSRuntime JSRuntime) : IPersister
     {
         public WorldData LoadGame(ISaveSlot saveSlot)
         {

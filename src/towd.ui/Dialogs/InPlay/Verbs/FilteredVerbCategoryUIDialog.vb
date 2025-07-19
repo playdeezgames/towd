@@ -25,16 +25,16 @@ Public Class FilteredVerbCategoryUIDialog
             Where(Function(x) x.VerbCategoryType = verbCategoryType AndAlso verbTypeFilter(x, context.World.Avatar)).
             ToDictionary(
                 AddressOf getTableKey,
-                AddressOf getTableValue)
+                Function(x) getTableValue(_Prompt, x))
     End Sub
 
-    Private Function getTableValue(verbType As IVerbType) As Func(Of IUIDialog)
+    Private Function getTableValue(prompt As String, verbType As IVerbType) As Func(Of IUIDialog)
         Return Function()
                    Return New VerbDetailUIDialog(
                         context,
                         verbType,
                         False,
-                        Function() New FilteredVerbCategoryUIDialog(context, GetPromptAsync().Result, verbCategoryType, verbTypeFilter, cancelDialog))
+                        Function() New FilteredVerbCategoryUIDialog(context, prompt, verbCategoryType, verbTypeFilter, cancelDialog))
                End Function
     End Function
 
