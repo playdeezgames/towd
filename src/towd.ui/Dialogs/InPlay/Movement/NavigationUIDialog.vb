@@ -42,7 +42,7 @@ Friend Class NavigationUIDialog
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(result.Select(Function(x) (Mood.Normal, x, True)))
     End Function
 
-    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+    Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
         Dim character = context.World.Avatar
         Dim result As New List(Of String) From {
             MOVE_TEXT,
@@ -64,8 +64,8 @@ Friend Class NavigationUIDialog
         Return Task.FromResult(Of IEnumerable(Of String))(result)
     End Function
 
-    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
-        Return "Navigation"
+    Public Function GetPromptAsync() As Task(Of String) Implements IUIDialog.GetPromptAsync
+        Return Task.FromResult("Navigation")
     End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose

@@ -58,13 +58,17 @@
 	{
 		await LoadLinesAsync();
 		await LoadChoicesAsync();
-		
-		prompt = GetContext().GetPrompt();
+		await LoadPromptAsync();
+	}
+
+	private async Task LoadPromptAsync()
+	{
+		prompt = await GetContext().GetPromptAsync();
 	}
 
 	private async Task LoadChoicesAsync()
 	{
-		choices = await GetContext().GetChoices();
+		choices = await GetContext().GetChoicesAsync();
 	}
 
 	private async Task LoadLinesAsync()

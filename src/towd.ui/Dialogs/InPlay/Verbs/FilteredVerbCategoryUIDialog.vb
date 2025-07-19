@@ -34,7 +34,7 @@ Public Class FilteredVerbCategoryUIDialog
                         context,
                         verbType,
                         False,
-                        Function() New FilteredVerbCategoryUIDialog(context, GetPrompt(), verbCategoryType, verbTypeFilter, cancelDialog))
+                        Function() New FilteredVerbCategoryUIDialog(context, GetPromptAsync().Result, verbCategoryType, verbTypeFilter, cancelDialog))
                End Function
     End Function
 
@@ -46,7 +46,7 @@ Public Class FilteredVerbCategoryUIDialog
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
     End Function
 
-    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+    Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
         Dim result As New List(Of String) From
                 {
                     NEVER_MIND_TEXT
@@ -57,8 +57,8 @@ Public Class FilteredVerbCategoryUIDialog
 
     Private _Prompt As String
 
-    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
-        Return _Prompt
+    Public Function GetPromptAsync() As Task(Of String) Implements IUIDialog.GetPromptAsync
+        Return Task.FromResult(_Prompt)
     End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose

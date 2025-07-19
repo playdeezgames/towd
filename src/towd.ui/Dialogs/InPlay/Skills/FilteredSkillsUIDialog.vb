@@ -21,7 +21,7 @@ Friend Class FilteredSkillsUIDialog
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
     End Function
 
-    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+    Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
         Dim result As New List(Of String) From
                 {
                     NEVER_MIND_TEXT
@@ -32,14 +32,14 @@ Friend Class FilteredSkillsUIDialog
 
     Private _Prompt As String
 
-    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
-        Return _Prompt
+    Public Function GetPromptAsync() As Task(Of String) Implements IUIDialog.GetPromptAsync
+        Return Task.FromResult(_Prompt)
     End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
         Dim skillType As ISkillType = Nothing
         If table.TryGetValue(choice, skillType) Then
-            Return New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, GetPrompt(), skillFilter, cancelDialog))
+            Return New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, GetPromptAsync().Result, skillFilter, cancelDialog))
         End If
         Return cancelDialog()
     End Function

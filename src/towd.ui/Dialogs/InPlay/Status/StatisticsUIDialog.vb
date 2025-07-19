@@ -27,12 +27,12 @@ Friend Class StatisticsUIDialog
                                       End Function).Select(Function(x) (Mood.Normal, x, True)).ToList)
     End Function
 
-    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+    Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
         Return Task.FromResult(Of IEnumerable(Of String))({"Ok"})
     End Function
 
-    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
-        Return "Statistics"
+    Public Function GetPromptAsync() As Task(Of String) Implements IUIDialog.GetPromptAsync
+        Return Task.FromResult("Statistics")
     End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose

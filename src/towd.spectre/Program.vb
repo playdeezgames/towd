@@ -15,8 +15,8 @@ Module Program
                     AnsiConsole.Write(line.Text)
                 End If
             Next
-            Dim prompt As New SelectionPrompt(Of String) With {.Title = $"[olive]{context.GetPrompt()}[/]"}
-            prompt.AddChoices(context.GetChoices().Result.ToArray())
+            Dim prompt As New SelectionPrompt(Of String) With {.Title = $"[olive]{context.GetPromptAsync()}[/]"}
+            prompt.AddChoices(context.GetChoicesAsync().Result.ToArray())
             Dim choice = AnsiConsole.Prompt(prompt)
             context.Choose(choice)
         End While

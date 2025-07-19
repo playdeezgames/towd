@@ -54,7 +54,7 @@ Friend Class DialogView
             Application.RequestStop()
             Return
         End If
-        promptLabel.Text = Context.GetPrompt()
+        promptLabel.Text = Context.GetPromptAsync().Result
         Dim builder As New StringBuilder
         For Each line In Context.GetLinesAsync().Result
             If line.EndsLine Then
@@ -68,6 +68,6 @@ Friend Class DialogView
                 {
                     .Disabled = ColorScheme.Normal
                 }
-        choicesListView.SetSource(Context.GetChoices().Result.ToList)
+        choicesListView.SetSource(Context.GetChoicesAsync().Result.ToList)
     End Sub
 End Class

@@ -25,10 +25,10 @@ Friend Class FilteredVerbUIDialog
     Private Function getTableValue(grouping As IGrouping(Of String, IVerbType)) As Func(Of IUIDialog)
         If grouping.Count = 1 Then
             Return Function() As IUIDialog
-                       Return New VerbDetailUIDialog(context, grouping.Single, False, Function() New FilteredVerbUIDialog(context, GetPrompt(), verbTypeFilter, cancelDialog))
+                       Return New VerbDetailUIDialog(context, grouping.Single, False, Function() New FilteredVerbUIDialog(context, GetPromptAsync().Result, verbTypeFilter, cancelDialog))
                    End Function
         End If
-        Return Function() New FilteredVerbCategoryUIDialog(context, grouping.Key.ToVerbCategoryDescriptor.Name, grouping.Key, verbTypeFilter, Function() New FilteredVerbUIDialog(context, GetPrompt(), verbTypeFilter, cancelDialog))
+        Return Function() New FilteredVerbCategoryUIDialog(context, grouping.Key.ToVerbCategoryDescriptor.Name, grouping.Key, verbTypeFilter, Function() New FilteredVerbUIDialog(context, GetPromptAsync().Result, verbTypeFilter, cancelDialog))
     End Function
 
     Private Function getTableKey(grouping As IGrouping(Of String, IVerbType)) As String
@@ -41,7 +41,7 @@ Friend Class FilteredVerbUIDialog
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
     End Function
 
-    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+    Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
         Dim result As New List(Of String) From
                 {
                 NEVER_MIND_TEXT
@@ -52,8 +52,8 @@ Friend Class FilteredVerbUIDialog
 
     Private _Prompt As String
 
-    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
-        Return _Prompt
+    Public Function GetPromptAsync() As Task(Of String) Implements IUIDialog.GetPromptAsync
+        Return Task.FromResult(_Prompt)
     End Function
 
     Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose

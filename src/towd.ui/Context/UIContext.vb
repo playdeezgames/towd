@@ -21,12 +21,12 @@ Public Class UIContext
         Return Await Dialog.GetLinesAsync()
     End Function
 
-    Public Async Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
-        Return Await Dialog.GetChoices()
+    Public Async Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
+        Return Await Dialog.GetChoicesAsync()
     End Function
 
-    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
-        Return Dialog.GetPrompt()
+    Public Async Function GetPromptAsync() As Task(Of String) Implements IUIDialog.GetPromptAsync
+        Return Await Dialog.GetPromptAsync()
     End Function
 
     Public ReadOnly Property IsClosed As Boolean Implements IUIContext(Of IWorld).IsClosed

@@ -14,7 +14,7 @@ Friend Class DeedsUIDialog
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
     End Function
 
-    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+    Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
         Return Task.FromResult(Of IEnumerable(Of String))({
                 NEVER_MIND_TEXT,
                 AVAILABLE_TEXT,
@@ -22,8 +22,8 @@ Friend Class DeedsUIDialog
                 ALL_TEXT})
     End Function
 
-    Public Function GetPrompt() As String Implements IUIDialog.GetPrompt
-        Return "Deeds"
+    Public Function GetPromptAsync() As Task(Of String) Implements IUIDialog.GetPromptAsync
+        Return Task.FromResult("Deeds")
     End Function
 
     Public Sub New(context As IUIContext(Of IWorld), cancelDialog As Func(Of IUIDialog))
