@@ -32,25 +32,25 @@ Friend Class GameMenuUIDialog
         Return Task.FromResult("Game Menu")
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Async Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case CONTINUE_TEXT
-                Return Task.FromResult(NeutralUIDialog.DetermineInPlayDialog(context))
+                Return NeutralUIDialog.DetermineInPlayDialog(context)
             Case SCUM_LOAD_GAME_TEXT
-                If context.LoadGame(SaveSlot.ScumSlot) Then
-                    Return Task.FromResult(NeutralUIDialog.DetermineInPlayDialog(context))
+                If Await context.LoadGame(SaveSlot.ScumSlot) Then
+                    Return NeutralUIDialog.DetermineInPlayDialog(context)
                 End If
-                Return Task.FromResult(Of IUIDialog)(Me)
+                Return Me
             Case SCUM_SAVE_GAME_TEXT
-                context.SaveGame(SaveSlot.ScumSlot)
-                Return Task.FromResult(Of IUIDialog)(Me)
+                Await context.SaveGame(SaveSlot.ScumSlot)
+                Return Me
             Case SAVE_GAME_TEXT
-                Return Task.FromResult(Of IUIDialog)(New SaveGameUIDialog(context, Function() Me))
+                Return New SaveGameUIDialog(context, Function() Me)
             Case ABANDON_GAME_TEXT
-                Return Task.FromResult(Of IUIDialog)(New ConfirmUIDialog("Are you sure you want to abandon the game?", Function()
-                                                                                                                           context.World.Abandon()
-                                                                                                                           Return New MainMenuUIDialog(context)
-                                                                                                                       End Function, Function() Me))
+                Return New ConfirmUIDialog("Are you sure you want to abandon the game?", Function()
+                                                                                             context.World.Abandon()
+                                                                                             Return New MainMenuUIDialog(context)
+                                                                                         End Function, Function() Me)
             Case Else
                 Throw New NotImplementedException
         End Select

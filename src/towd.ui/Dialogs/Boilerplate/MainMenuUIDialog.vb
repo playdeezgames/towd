@@ -30,20 +30,20 @@ Friend Class MainMenuUIDialog
         Return Task.FromResult("Main Menu:")
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Async Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case EMBARK_TEXT
                 context.World.Initialize()
-                Return Task.FromResult(NeutralUIDialog.DetermineInPlayDialog(context))
+                Return NeutralUIDialog.DetermineInPlayDialog(context)
             Case SCUM_LOAD_TEXT
-                If context.LoadGame(SaveSlot.ScumSlot) Then
-                    Return Task.FromResult(Of IUIDialog)(New MessageBoxUIDialog("Load Success!", {(Mood.Normal, $"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context)))
+                If Await context.LoadGame(SaveSlot.ScumSlot) Then
+                    Return New MessageBoxUIDialog("Load Success!", {(Mood.Normal, $"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
                 End If
-                Return Task.FromResult(Of IUIDialog)(New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() Me))
+                Return New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() Me)
             Case LOAD_TEXT
-                Return Task.FromResult(Of IUIDialog)(New LoadMenuUIDialog(context, Function() Me))
+                Return New LoadMenuUIDialog(context, Function() New MainMenuUIDialog(context))
             Case QUIT_TEXT
-                Return Task.FromResult(Of IUIDialog)(New ConfirmUIDialog("Are you sure you want to quit?", Function() Nothing, Function() Me))
+                Return New ConfirmUIDialog("Are you sure you want to quit?", Function() Nothing, Function() Me)
             Case Else
                 Throw New NotImplementedException
         End Select
