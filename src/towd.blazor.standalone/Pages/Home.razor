@@ -5,7 +5,7 @@
 @if (!GetContext().IsClosed)
 {
 	<pre>
-			@foreach (var line in GetContext().GetLines())
+			@foreach (var line in lines)
 			{
 					@line.Item2
 					@if (line.Item3)
@@ -26,6 +26,13 @@
 
 @code {
 
+	private IEnumerable<(string Mood, string Text, bool EndsLine)> lines = Enumerable.Empty<(string Mood, string Text, bool EndsLine)>();
+
+	private async Task<IEnumerable<(string Mood, string Text, bool EndsLine)>> GetLinesAsync()
+	{
+		return await GetContext().GetLinesAsync();
+	}
+
 	private towd.ui.IUIContext<towd.business.IWorld>? _context = null;
 
 	private towd.ui.IUIContext<towd.business.IWorld> GetContext()
@@ -41,5 +48,18 @@
 	private void MakeChoice(string choice)
 	{
 		GetContext().Choose(choice);
+
+		_ = LoadLinesAsync();
 	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadLinesAsync();
+	}
+
+	private async Task LoadLinesAsync()
+	{
+		lines = await GetLinesAsync();
+	}
+
 }

@@ -56,7 +56,7 @@ Friend Class DialogView
         End If
         promptLabel.Text = Context.GetPrompt()
         Dim builder As New StringBuilder
-        For Each line In Context.GetLines()
+        For Each line In Context.GetLinesAsync().Result
             If line.EndsLine Then
                 builder.AppendLine(line.Text)
             Else

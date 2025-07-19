@@ -18,8 +18,8 @@ Friend Class MessageUIDialog
         Me.nextDialog = nextDialog
     End Sub
 
-    Public Function GetLines() As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)) Implements IUIDialog.GetLines
-        Return context.World.Avatar.CurrentMessage.Select(Function(x) (Mood.Normal, x, True))
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
+        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(context.World.Avatar.CurrentMessage.Select(Function(x) (Mood.Normal, x, True)))
     End Function
 
     Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices

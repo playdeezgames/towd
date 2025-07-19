@@ -8,8 +8,8 @@
 
     Private _Lines As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))
 
-    Public Function GetLines() As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)) Implements IUIDialog.GetLines
-        Return _Lines
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
+        Return Task.FromResult(_Lines)
     End Function
 
     Private ReadOnly nextDialog As Func(Of IUIDialog)

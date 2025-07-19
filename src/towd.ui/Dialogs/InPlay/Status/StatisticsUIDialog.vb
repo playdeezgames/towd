@@ -12,8 +12,8 @@ Friend Class StatisticsUIDialog
         Me.nextDialog = nextDialog
     End Sub
 
-    Public Function GetLines() As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)) Implements IUIDialog.GetLines
-        Return context.World.Avatar.
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
+        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(context.World.Avatar.
                 EntityType.CharacterType.ToCharacterTypeDescriptor.
                 StatisticTypes.Select(Function(x)
                                           Dim statisticType = x.ToStatisticTypeDescriptor
@@ -24,7 +24,7 @@ Friend Class StatisticsUIDialog
                                               builder.Append($"/{maximum}")
                                           End If
                                           Return builder.ToString
-                                      End Function).Select(Function(x) (Mood.Normal, x, True)).ToList
+                                      End Function).Select(Function(x) (Mood.Normal, x, True)).ToList)
     End Function
 
     Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices

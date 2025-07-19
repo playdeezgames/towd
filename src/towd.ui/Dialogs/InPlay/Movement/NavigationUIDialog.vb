@@ -18,7 +18,7 @@ Friend Class NavigationUIDialog
         Me.context = context
     End Sub
 
-    Public Function GetLines() As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)) Implements IUIDialog.GetLines
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
         Dim result As New List(Of String)
         Dim character = context.World.Avatar
         Dim location = character.CurrentLocation
@@ -39,7 +39,7 @@ Friend Class NavigationUIDialog
                 result.Add($"{otherCharacter.Name} is here.")
             Next
         End If
-        Return result.Select(Function(x) (Mood.Normal, x, True))
+        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(result.Select(Function(x) (Mood.Normal, x, True)))
     End Function
 
     Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
