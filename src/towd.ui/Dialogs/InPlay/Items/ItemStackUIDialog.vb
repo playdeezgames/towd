@@ -33,11 +33,11 @@ Friend Class ItemStackUIDialog
         Return Task.FromResult(itemStack.ToString())
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim item As IItem = Nothing
         If table.TryGetValue(choice, item) Then
-            Return New ItemDetailUIDialog(context, item, Function() New ItemStackUIDialog(context, itemStack, cancelDialog))
+            Return Task.FromResult(Of IUIDialog)(New ItemDetailUIDialog(context, item, Function() New ItemStackUIDialog(context, itemStack, cancelDialog)))
         End If
-        Return cancelDialog()
+        Return Task.FromResult(cancelDialog())
     End Function
 End Class

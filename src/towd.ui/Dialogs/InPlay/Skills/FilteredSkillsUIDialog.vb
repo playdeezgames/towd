@@ -36,11 +36,11 @@ Friend Class FilteredSkillsUIDialog
         Return Task.FromResult(_Prompt)
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim skillType As ISkillType = Nothing
         If table.TryGetValue(choice, skillType) Then
-            Return New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, GetPromptAsync().Result, skillFilter, cancelDialog))
+            Return Task.FromResult(Of IUIDialog)(New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, GetPromptAsync().Result, skillFilter, cancelDialog)))
         End If
-        Return cancelDialog()
+        Return Task.FromResult(cancelDialog())
     End Function
 End Class

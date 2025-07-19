@@ -26,12 +26,12 @@
         Return Task.FromResult(caption)
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case YES_TEXT
-                Return confirmDialog()
+                Return Task.FromResult(confirmDialog())
             Case NO_TEXT
-                Return cancelDialog()
+                Return Task.FromResult(cancelDialog())
             Case Else
                 Throw New NotImplementedException
         End Select

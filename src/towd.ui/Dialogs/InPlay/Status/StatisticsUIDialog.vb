@@ -35,7 +35,7 @@ Friend Class StatisticsUIDialog
         Return Task.FromResult("Statistics")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
-        Return nextDialog()
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+        Return Task.FromResult(nextDialog())
     End Function
 End Class

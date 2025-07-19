@@ -30,11 +30,11 @@ Friend Class MessageUIDialog
         Return Task.FromResult(String.Empty)
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         context.World.Avatar.DismissMessage()
         If context.World.Avatar.HasMessages Then
-            Return Me
+            Return Task.FromResult(Of IUIDialog)(Me)
         End If
-        Return nextDialog()
+        Return Task.FromResult(nextDialog())
     End Function
 End Class

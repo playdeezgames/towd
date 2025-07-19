@@ -68,26 +68,26 @@ Friend Class NavigationUIDialog
         Return Task.FromResult("Navigation")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case MOVE_TEXT
-                Return New MoveMenuUIDialog(context, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New MoveMenuUIDialog(context, Function() Me))
             Case MENU_TEXT
-                Return New GameMenuUIDialog(context)
+                Return Task.FromResult(Of IUIDialog)(New GameMenuUIDialog(context))
             Case VERB_TEXT
-                Return New VerbMenuUIDialog(context, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New VerbMenuUIDialog(context, Function() Me))
             Case INVENTORY_TEXT
-                Return New InventoryUIDialog(context, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New InventoryUIDialog(context, Function() Me))
             Case DEEDS_TEXT
-                Return New DeedsUIDialog(context, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New DeedsUIDialog(context, Function() Me))
             Case SKILLS_TEXT
-                Return New SkillsUIDialog(context, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New SkillsUIDialog(context, Function() Me))
             Case MAP_TEXT
-                Return New MapUIDialog(context, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New MapUIDialog(context, Function() Me))
             Case DIALOG_TEXT
-                Return New DialogUIDialog(context, context.World.Avatar.StartDialog(Nothing))
+                Return Task.FromResult(Of IUIDialog)(New DialogUIDialog(context, context.World.Avatar.StartDialog(Nothing)))
             Case STATISTICS_TEXT
-                Return New StatisticsUIDialog(context, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New StatisticsUIDialog(context, Function() Me))
             Case Else
                 Throw New NotImplementedException
         End Select

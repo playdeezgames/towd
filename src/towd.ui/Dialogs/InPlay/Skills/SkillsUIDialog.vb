@@ -30,15 +30,15 @@ Friend Class SkillsUIDialog
         Return Task.FromResult("Skills")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim character = context.World.Avatar
         Select Case choice
             Case NEVER_MIND_TEXT
-                Return cancelDialog()
+                Return Task.FromResult(cancelDialog())
             Case ADVANCEABLE_TEXT
-                Return New FilteredSkillsUIDialog(context, "Advanceable Skills", Function(skill) character.CanAdvance(skill), Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New FilteredSkillsUIDialog(context, "Advanceable Skills", Function(skill) character.CanAdvance(skill), Function() Me))
             Case ALL_TEXT
-                Return New FilteredSkillsUIDialog(context, "All Skills", Function(skill) True, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New FilteredSkillsUIDialog(context, "All Skills", Function(skill) True, Function() Me))
             Case Else
                 Throw New NotImplementedException
         End Select

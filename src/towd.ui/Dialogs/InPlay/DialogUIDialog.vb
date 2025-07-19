@@ -23,11 +23,11 @@ Friend Class DialogUIDialog
         Return Task.FromResult(dialog.Prompt)
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim nextDialog = dialog.Choose(choice)
         If nextDialog IsNot Nothing Then
-            Return MessageUIDialog.DetermineMessageDialog(context, Function() New DialogUIDialog(context, nextDialog))
+            Return Task.FromResult(MessageUIDialog.DetermineMessageDialog(context, Function() New DialogUIDialog(context, nextDialog)))
         End If
-        Return NeutralUIDialog.DetermineInPlayDialog(context)
+        Return Task.FromResult(NeutralUIDialog.DetermineInPlayDialog(context))
     End Function
 End Class

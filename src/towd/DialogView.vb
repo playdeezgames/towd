@@ -45,7 +45,7 @@ Friend Class DialogView
     End Sub
 
     Private Sub OnChoicesListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Context.Choose(args.Value.ToString)
+        Context.Choose(args.Value.ToString).Wait()
         UpdateView()
     End Sub
 

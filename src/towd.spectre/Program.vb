@@ -18,7 +18,7 @@ Module Program
             Dim prompt As New SelectionPrompt(Of String) With {.Title = $"[olive]{context.GetPromptAsync()}[/]"}
             prompt.AddChoices(context.GetChoicesAsync().Result.ToArray())
             Dim choice = AnsiConsole.Prompt(prompt)
-            context.Choose(choice)
+            context.Choose(choice).Wait()
         End While
     End Sub
 End Module

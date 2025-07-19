@@ -37,18 +37,18 @@ Friend Class SaveGameUIDialog
         Return Task.FromResult("Save Menu")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim saveSlot As ISaveSlot = Nothing
         If table.TryGetValue(choice, saveSlot) Then
             If context.Persister.SaveExists(saveSlot).HasValue Then
-                Return New ConfirmUIDialog(
+                Return Task.FromResult(Of IUIDialog)(New ConfirmUIDialog(
                     $"Are you sure you want to overwrite {saveSlot.DisplayName}",
                     Function() SaveGame(saveSlot),
-                    Function() Me)
+                    Function() Me))
             End If
-            Return SaveGame(saveSlot)
+            Return Task.FromResult(SaveGame(saveSlot))
         End If
-        Return cancelDialog()
+        Return Task.FromResult(cancelDialog())
     End Function
 
     Private Function SaveGame(saveSlot As ISaveSlot) As IUIDialog

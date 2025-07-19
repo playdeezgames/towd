@@ -42,13 +42,13 @@ Public Class VerbDetailUIDialog
         Return Task.FromResult(verbType.Name)
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case PERFORM_TEXT, PERFORM_AGAIN_TEXT
                 verbType.Perform(context.World.Avatar)
-                Return MessageUIDialog.DetermineMessageDialog(context, Function() New VerbDetailUIDialog(context, verbType, True, cancelDialog))
+                Return Task.FromResult(MessageUIDialog.DetermineMessageDialog(context, Function() New VerbDetailUIDialog(context, verbType, True, cancelDialog)))
             Case NEVER_MIND_TEXT
-                Return cancelDialog()
+                Return Task.FromResult(cancelDialog())
             Case Else
                 Throw New NotImplementedException
         End Select

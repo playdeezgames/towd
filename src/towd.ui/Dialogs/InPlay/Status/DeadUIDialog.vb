@@ -21,8 +21,8 @@ Friend Class DeadUIDialog
         Return Task.FromResult("Yer dead.")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         context.World.Abandon()
-        Return New MainMenuUIDialog(context)
+        Return Task.FromResult(Of IUIDialog)(New MainMenuUIDialog(context))
     End Function
 End Class

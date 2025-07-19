@@ -31,11 +31,11 @@ Friend Class InventoryUIDialog
         Return Task.FromResult("Inventory")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim itemStack As IItemStack = Nothing
         If table.TryGetValue(choice, itemStack) Then
-            Return New ItemStackUIDialog(context, itemStack, Function() New InventoryUIDialog(context, cancelDialog))
+            Return Task.FromResult(Of IUIDialog)(New ItemStackUIDialog(context, itemStack, Function() New InventoryUIDialog(context, cancelDialog)))
         End If
-        Return cancelDialog()
+        Return Task.FromResult(cancelDialog())
     End Function
 End Class

@@ -32,15 +32,15 @@ Friend Class LoadMenuUIDialog
         Return Task.FromResult("Load Menu")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim saveSlot As ISaveSlot = table(choice)
         If saveSlot Is Nothing Then
-            Return cancelDialog()
+            Return Task.FromResult(cancelDialog())
         End If
         If context.LoadGame(saveSlot.SaveSlot) Then
-            Return New MessageBoxUIDialog("Load Success!", {(Mood.Normal, $"You loaded {saveSlot.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
+            Return Task.FromResult(Of IUIDialog)(New MessageBoxUIDialog("Load Success!", {(Mood.Normal, $"You loaded {saveSlot.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context)))
         Else
-            Return New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {saveSlot.DisplayName}!", True)}, cancelDialog)
+            Return Task.FromResult(Of IUIDialog)(New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {saveSlot.DisplayName}!", True)}, cancelDialog))
         End If
         Throw New NotImplementedException
     End Function

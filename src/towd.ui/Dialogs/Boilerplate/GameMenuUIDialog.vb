@@ -32,25 +32,25 @@ Friend Class GameMenuUIDialog
         Return Task.FromResult("Game Menu")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case CONTINUE_TEXT
-                Return NeutralUIDialog.DetermineInPlayDialog(context)
+                Return Task.FromResult(NeutralUIDialog.DetermineInPlayDialog(context))
             Case SCUM_LOAD_GAME_TEXT
                 If context.LoadGame(SaveSlot.ScumSlot) Then
-                    Return NeutralUIDialog.DetermineInPlayDialog(context)
+                    Return Task.FromResult(NeutralUIDialog.DetermineInPlayDialog(context))
                 End If
-                Return Me
+                Return Task.FromResult(Of IUIDialog)(Me)
             Case SCUM_SAVE_GAME_TEXT
                 context.SaveGame(SaveSlot.ScumSlot)
-                Return Me
+                Return Task.FromResult(Of IUIDialog)(Me)
             Case SAVE_GAME_TEXT
-                Return New SaveGameUIDialog(context, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New SaveGameUIDialog(context, Function() Me))
             Case ABANDON_GAME_TEXT
-                Return New ConfirmUIDialog("Are you sure you want to abandon the game?", Function()
-                                                                                             context.World.Abandon()
-                                                                                             Return New MainMenuUIDialog(context)
-                                                                                         End Function, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New ConfirmUIDialog("Are you sure you want to abandon the game?", Function()
+                                                                                                                           context.World.Abandon()
+                                                                                                                           Return New MainMenuUIDialog(context)
+                                                                                                                       End Function, Function() Me))
             Case Else
                 Throw New NotImplementedException
         End Select

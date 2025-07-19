@@ -31,17 +31,17 @@ Friend Class DeedsUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim character = context.World.Avatar
         Select Case choice
             Case AVAILABLE_TEXT
-                Return New FilteredDeedsUIDialog(context, "Available Deeds", Function(deed) character.IsAvailable(deed), Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New FilteredDeedsUIDialog(context, "Available Deeds", Function(deed) character.IsAvailable(deed), Function() Me))
             Case DONE_TEXT
-                Return New FilteredDeedsUIDialog(context, "Done Deeds", Function(deed) character.HasDone(deed), Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New FilteredDeedsUIDialog(context, "Done Deeds", Function(deed) character.HasDone(deed), Function() Me))
             Case ALL_TEXT
-                Return New FilteredDeedsUIDialog(context, "All Deeds", Function(deed) True, Function() Me)
+                Return Task.FromResult(Of IUIDialog)(New FilteredDeedsUIDialog(context, "All Deeds", Function(deed) True, Function() Me))
             Case NEVER_MIND_TEXT
-                Return cancelDialog()
+                Return Task.FromResult(cancelDialog())
             Case Else
                 Throw New NotImplementedException
         End Select

@@ -30,7 +30,7 @@ Friend Class ItemDetailUIDialog
         Return Task.FromResult($"{item.EntityType.Name}(#{item.Id})")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
-        Return cancelDialog()
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+        Return Task.FromResult(cancelDialog())
     End Function
 End Class

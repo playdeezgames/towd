@@ -54,7 +54,7 @@ Friend Class MapUIDialog
         Return Task.FromResult("Map")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
-        Return cancelDialog()
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+        Return Task.FromResult(cancelDialog())
     End Function
 End Class

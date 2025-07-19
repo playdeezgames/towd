@@ -50,8 +50,8 @@ Public Class UIContext
         End If
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
-        Dialog = Dialog.Choose(choice)
+    Public Async Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+        Dialog = Await Dialog.Choose(choice)
         Return Me
     End Function
 End Class

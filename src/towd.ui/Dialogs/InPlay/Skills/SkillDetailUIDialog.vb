@@ -36,13 +36,13 @@ Friend Class SkillDetailUIDialog
         Return Task.FromResult($"{skillType}({skillType.GetDescription(character)})")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case ADVANCE_TEXT
                 skillType.Advance(character)
-                Return MessageUIDialog.DetermineMessageDialog(context, cancelDialog)
+                Return Task.FromResult(MessageUIDialog.DetermineMessageDialog(context, cancelDialog))
             Case NEVER_MIND_TEXT
-                Return cancelDialog()
+                Return Task.FromResult(cancelDialog())
             Case Else
                 Throw New NotImplementedException
         End Select

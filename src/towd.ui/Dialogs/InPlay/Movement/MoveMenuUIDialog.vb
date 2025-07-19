@@ -29,13 +29,13 @@ Friend Class MoveMenuUIDialog
         Return Task.FromResult("Which Way?")
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim descriptor = table(choice)
         If descriptor Is Nothing Then
-            Return cancelDialog()
+            Return Task.FromResult(cancelDialog())
         End If
         context.World.Avatar.Move(descriptor.Direction)
         context.World.AdvanceTime(1)
-        Return NeutralUIDialog.DetermineInPlayDialog(context)
+        Return Task.FromResult(NeutralUIDialog.DetermineInPlayDialog(context))
     End Function
 End Class

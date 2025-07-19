@@ -44,9 +44,14 @@
 
 	private void MakeChoice(string choice)
 	{
-		GetContext().Choose(choice);
+		_ = MakeChoiceAsync(choice);
+	}
 
-		_ = Reload();
+	private async Task MakeChoiceAsync(string choice)
+	{
+		await GetContext().Choose(choice);
+
+		await Reload();
 	}
 
 	protected override async Task OnInitializedAsync()

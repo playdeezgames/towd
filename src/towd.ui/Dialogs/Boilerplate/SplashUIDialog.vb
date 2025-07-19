@@ -29,7 +29,7 @@ Public Class SplashUIDialog
         Return Task.FromResult(String.Empty)
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
-        Return New MainMenuUIDialog(context)
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+        Return Task.FromResult(Of IUIDialog)(New MainMenuUIDialog(context))
     End Function
 End Class

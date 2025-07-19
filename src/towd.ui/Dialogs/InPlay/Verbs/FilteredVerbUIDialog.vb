@@ -56,11 +56,11 @@ Friend Class FilteredVerbUIDialog
         Return Task.FromResult(_Prompt)
     End Function
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim nextDialog As Func(Of IUIDialog) = Nothing
         If table.TryGetValue(choice, nextDialog) Then
-            Return nextDialog()
+            Return Task.FromResult(nextDialog())
         End If
-        Return cancelDialog()
+        Return Task.FromResult(cancelDialog())
     End Function
 End Class

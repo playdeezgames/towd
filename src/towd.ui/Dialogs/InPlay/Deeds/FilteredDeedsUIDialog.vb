@@ -36,11 +36,11 @@ Friend Class FilteredDeedsUIDialog
 
     Private ReadOnly deedFilter As Func(Of IDeed, Boolean)
 
-    Public Function Choose(choice As String) As IUIDialog Implements IUIDialog.Choose
+    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim deed As IDeed = Nothing
         If table.TryGetValue(choice, deed) Then
-            Return New DeedDetailUIDialog(deed, Function() New FilteredDeedsUIDialog(context, GetPromptAsync().Result, deedFilter, cancelDialog))
+            Return Task.FromResult(Of IUIDialog)(New DeedDetailUIDialog(deed, Function() New FilteredDeedsUIDialog(context, GetPromptAsync().Result, deedFilter, cancelDialog)))
         End If
-        Return cancelDialog()
+        Return Task.FromResult(cancelDialog())
     End Function
 End Class
