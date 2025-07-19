@@ -20,7 +20,7 @@
 		
 			@foreach (var choice in choices)
 		{
-		<button @onclick="() => MakeChoice(choice)">@choice</button><br/>
+		<button @onclick="async () => await MakeChoiceAsync(choice)">@choice</button><br/>
 		}
 	</pre>
 }
@@ -41,11 +41,6 @@
 		}
 
 		return _context;
-	}
-
-	private void MakeChoice(string choice)
-	{
-		_ = MakeChoiceAsync(choice);
 	}
 
 	private async Task MakeChoiceAsync(string choice)
