@@ -24,13 +24,13 @@ Friend Class SaveGameUIDialog
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
     End Function
 
-    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
+    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
         Dim result As New List(Of String) From
                 {
                     NEVER_MIND_TEXT
                 }
         result.AddRange(table.Keys)
-        Return result
+        Return Task.FromResult(Of IEnumerable(Of String))(result)
     End Function
 
     Public Function GetPrompt() As String Implements IUIDialog.GetPrompt

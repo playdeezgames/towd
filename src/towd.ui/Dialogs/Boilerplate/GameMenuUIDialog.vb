@@ -18,14 +18,14 @@ Friend Class GameMenuUIDialog
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
     End Function
 
-    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
-        Return {
+    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+        Return Task.FromResult(Of IEnumerable(Of String))({
                 CONTINUE_TEXT,
                 SCUM_SAVE_GAME_TEXT,
                 SCUM_LOAD_GAME_TEXT,
                 SAVE_GAME_TEXT,
                 ABANDON_GAME_TEXT
-                }
+                })
     End Function
 
     Public Function GetPrompt() As String Implements IUIDialog.GetPrompt

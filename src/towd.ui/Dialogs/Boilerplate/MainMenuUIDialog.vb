@@ -17,13 +17,13 @@ Friend Class MainMenuUIDialog
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
     End Function
 
-    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
-        Return {
+    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+        Return Task.FromResult(Of IEnumerable(Of String))({
                 EMBARK_TEXT,
                 SCUM_LOAD_TEXT,
                 LOAD_TEXT,
                 QUIT_TEXT
-                }
+                })
     End Function
 
     Public Function GetPrompt() As String Implements IUIDialog.GetPrompt

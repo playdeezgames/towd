@@ -13,8 +13,8 @@
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))({(Mood.Normal, deed.Description, True)})
     End Function
 
-    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
-        Return {"Ok"}
+    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+        Return Task.FromResult(Of IEnumerable(Of String))({"Ok"})
     End Function
 
     Public Function GetPrompt() As String Implements IUIDialog.GetPrompt

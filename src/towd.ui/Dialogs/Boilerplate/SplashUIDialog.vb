@@ -21,8 +21,8 @@ Public Class SplashUIDialog
             })
     End Function
 
-    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
-        Return {"OK"}
+    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+        Return Task.FromResult(Of IEnumerable(Of String))({"OK"})
     End Function
 
     Public Function GetPrompt() As String Implements IUIDialog.GetPrompt

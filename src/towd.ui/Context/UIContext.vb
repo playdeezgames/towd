@@ -21,8 +21,8 @@ Public Class UIContext
         Return Await Dialog.GetLinesAsync()
     End Function
 
-    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
-        Return Dialog.GetChoices()
+    Public Async Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+        Return Await Dialog.GetChoices()
     End Function
 
     Public Function GetPrompt() As String Implements IUIDialog.GetPrompt

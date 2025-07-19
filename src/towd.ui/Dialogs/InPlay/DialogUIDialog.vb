@@ -15,8 +15,8 @@ Friend Class DialogUIDialog
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(dialog.Lines.Select(Function(x) (Mood.Normal, x, True)))
     End Function
 
-    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
-        Return dialog.Choices
+    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+        Return Task.FromResult(dialog.Choices)
     End Function
 
     Public Function GetPrompt() As String Implements IUIDialog.GetPrompt

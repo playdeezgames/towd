@@ -18,8 +18,8 @@
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
     End Function
 
-    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
-        Return {NO_TEXT, YES_TEXT}
+    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+        Return Task.FromResult(Of IEnumerable(Of String))({NO_TEXT, YES_TEXT})
     End Function
 
     Private Function GetPrompt() As String Implements IUIDialog.GetPrompt

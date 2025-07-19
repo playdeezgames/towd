@@ -14,8 +14,8 @@
 
     Private ReadOnly nextDialog As Func(Of IUIDialog)
 
-    Public Function GetChoices() As IEnumerable(Of String) Implements IUIDialog.GetChoices
-        Return {"Ok"}
+    Public Function GetChoices() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoices
+        Return Task.FromResult(Of IEnumerable(Of String))({"Ok"})
     End Function
 
     Private _Prompt As String

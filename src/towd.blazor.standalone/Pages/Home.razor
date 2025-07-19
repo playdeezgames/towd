@@ -30,12 +30,6 @@
 	private IEnumerable<string> choices = Enumerable.Empty<string>();
 	private string prompt = string.Empty;
 
-
-	private async Task<IEnumerable<(string Mood, string Text, bool EndsLine)>> GetLinesAsync()
-	{
-		return await GetContext().GetLinesAsync();
-	}
-
 	private towd.ui.IUIContext<towd.business.IWorld>? _context = null;
 
 	private towd.ui.IUIContext<towd.business.IWorld> GetContext()
@@ -63,12 +57,18 @@
 	private async Task Reload()
 	{
 		await LoadLinesAsync();
-		choices = GetContext().GetChoices();
+		await LoadChoicesAsync();
+		
 		prompt = GetContext().GetPrompt();
+	}
+
+	private async Task LoadChoicesAsync()
+	{
+		choices = await GetContext().GetChoices();
 	}
 
 	private async Task LoadLinesAsync()
 	{
-		lines = await GetLinesAsync();
+		lines = await GetContext().GetLinesAsync();
 	}
 }
