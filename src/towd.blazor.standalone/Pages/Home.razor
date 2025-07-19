@@ -15,9 +15,9 @@
 			}
 		</pre>
 	<pre>
-		@GetContext().GetPrompt() <br/>
+		@prompt <br/>
 		
-			@foreach (var choice in GetContext().GetChoices())
+			@foreach (var choice in choices)
 		{
 		<button @onclick="() => MakeChoice(choice)">@choice</button><br/>
 		}
@@ -27,6 +27,9 @@
 @code {
 
 	private IEnumerable<(string Mood, string Text, bool EndsLine)> lines = Enumerable.Empty<(string Mood, string Text, bool EndsLine)>();
+	private IEnumerable<string> choices = Enumerable.Empty<string>();
+	private string prompt = string.Empty;
+
 
 	private async Task<IEnumerable<(string Mood, string Text, bool EndsLine)>> GetLinesAsync()
 	{
@@ -49,17 +52,23 @@
 	{
 		GetContext().Choose(choice);
 
-		_ = LoadLinesAsync();
+		_ = Reload();
 	}
 
 	protected override async Task OnInitializedAsync()
 	{
+		await Reload();
+	}
+
+	private async Task Reload()
+	{
 		await LoadLinesAsync();
+		choices = GetContext().GetChoices();
+		prompt = GetContext().GetPrompt();
 	}
 
 	private async Task LoadLinesAsync()
 	{
 		lines = await GetLinesAsync();
 	}
-
 }
