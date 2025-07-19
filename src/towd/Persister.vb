@@ -6,23 +6,24 @@ Imports towd.ui
 Friend Class Persister
     Implements IPersister
 
-    Public Sub SaveGame(saveSlot As ISaveSlot, worldData As WorldData) Implements IPersister.SaveGame
-        File.WriteAllText(saveSlot.Filename, JsonSerializer.Serialize(worldData))
-    End Sub
+    Public Function SaveGame(SaveSlot As ISaveSlot, worldData As WorldData) As Task Implements IPersister.SaveGame
+        File.WriteAllText(SaveSlot.Filename, JsonSerializer.Serialize(worldData))
+        Return Task.CompletedTask
+    End Function
 
-    Public Function SaveExists(saveSlot As ISaveSlot) As DateTime? Implements IPersister.SaveExists
+    Public Function SaveExists(saveSlot As ISaveSlot) As Task(Of DateTime?) Implements IPersister.SaveExists
         If File.Exists(saveSlot.Filename) Then
-            Return File.GetLastWriteTime(saveSlot.Filename)
+            Return Task.FromResult(Of Date?)(File.GetLastWriteTime(saveSlot.Filename))
         Else
-            Return Nothing
+            Return Task.FromResult(Of Date?)(Nothing)
         End If
     End Function
 
-    Public Function LoadGame(saveSlot As ISaveSlot) As WorldData Implements IPersister.LoadGame
+    Public Function LoadGame(saveSlot As ISaveSlot) As Task(Of WorldData) Implements IPersister.LoadGame
         Try
-            Return JsonSerializer.Deserialize(Of WorldData)(File.ReadAllText(saveSlot.Filename))
+            Return Task.FromResult(JsonSerializer.Deserialize(Of WorldData)(File.ReadAllText(saveSlot.Filename)))
         Catch
-            Return Nothing
+            Return Task.FromResult(Of WorldData)(Nothing)
         End Try
     End Function
 End Class
