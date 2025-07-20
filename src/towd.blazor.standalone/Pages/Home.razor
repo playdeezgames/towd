@@ -17,16 +17,40 @@
 		</pre>
 	<pre>
 		@prompt <br/>
-		
-			@foreach (var choice in choices)
-		{
-		<button @onclick="async () => await MakeChoiceAsync(choice)">@choice</button><br/>
+
+		@{
+			ResetChoiceIndex();
+			foreach (var choice in choices)
+			{
+				if (GetChoiceIndex() < 10)
+				{
+					<button accesskey="@GetChoiceIndex()" @onclick="async () => await MakeChoiceAsync(choice)">[@GetChoiceIndex()] @choice</button><br/>
+				}
+				else
+				{
+					<button @onclick="async () => await MakeChoiceAsync(choice)">@choice</button><br/>
+				}
+				NextChoiceIndex();
+			}
 		}
+
 	</pre>
 }
 
 @code {
-
+	private int choiceIndex = 0;
+	private void ResetChoiceIndex()
+	{
+		choiceIndex = 0;
+	}
+	private void NextChoiceIndex()
+	{
+		choiceIndex++;
+	}
+	private int GetChoiceIndex()
+	{
+		return choiceIndex;
+	}
 	private IEnumerable<(string Mood, string Text, bool EndsLine)> lines = Enumerable.Empty<(string Mood, string Text, bool EndsLine)>();
 	private IEnumerable<string> choices = Enumerable.Empty<string>();
 	private string prompt = string.Empty;
