@@ -12,6 +12,6 @@ Friend Class FishVerbTypeDescriptor
         SetLocationStatisticDelta(business.StatisticType.Fishing, -1)
         SetCharacterStatisticDelta(business.StatisticType.Fishing, 1)
         SetItemTypeOutputGenerator(ItemType.RawFish, New FishRangeGenerator)
-        SetFlavorText("Using a net to catch a fish. Could be worse, in a different game I made you had to use a spear.")
+        SetFlavorText("Using a net to catch a fish. Could be worse, in a different game I made you have to use a spear.")
     End Sub
 End Class

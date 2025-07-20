@@ -43,7 +43,7 @@ Friend Class GameMenuUIDialog
                 Return Me
             Case SCUM_SAVE_GAME_TEXT
                 Await context.SaveGame(SaveSlot.ScumSlot)
-                Return Me
+                Return New MessageBoxUIDialog("Saved!", {(Mood.Normal, $"You saved to {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}", True)}, Function() Me)
             Case SAVE_GAME_TEXT
                 Return New SaveGameUIDialog(context, Function() Me)
             Case ABANDON_GAME_TEXT
