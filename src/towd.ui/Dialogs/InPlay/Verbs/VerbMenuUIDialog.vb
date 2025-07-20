@@ -73,6 +73,10 @@ Friend Class VerbMenuUIDialog
             Case NEVER_MIND_TEXT
                 Return Task.FromResult(cancelDialog())
             Case Else
+                Dim nextDialog As Func(Of IUIDialog) = Nothing
+                If table.TryGetValue(choice, nextDialog) Then
+                    Return Task.FromResult(nextDialog())
+                End If
                 Throw New NotImplementedException
         End Select
     End Function
