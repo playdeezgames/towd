@@ -1,4 +1,5 @@
-﻿Imports towd.business
+﻿Imports System.Reflection
+Imports towd.business
 
 Friend Class SkillsUIDialog
     Implements IUIDialog
@@ -6,8 +7,8 @@ Friend Class SkillsUIDialog
     Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly cancelDialog As Func(Of IUIDialog)
     Const NEVER_MIND_TEXT = "Never Mind"
-    Const ADVANCEABLE_TEXT = "Advanceable"
     Const ALL_TEXT = "All"
+    Private table As Dictionary(Of String, Func(Of IUIDialog)) = Nothing
 
     Public Sub New(context As IUIContext(Of IWorld), cancelDialog As Func(Of IUIDialog))
         Me.context = context
@@ -19,11 +20,39 @@ Friend Class SkillsUIDialog
     End Function
 
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
-        Return Task.FromResult(Of IEnumerable(Of String))({
+        Dim result As New List(Of String) From
+            {
                 NEVER_MIND_TEXT,
-                ADVANCEABLE_TEXT,
                 ALL_TEXT
-                })
+            }
+        If table Is Nothing Then
+            table = SkillTypes.Descriptors.Values.
+                Where(AddressOf FilterSkillType).ToDictionary(Of String, Func(Of IUIDialog))(AddressOf GetTableKey, AddressOf GetTableValue)
+        End If
+        result.AddRange(table.Keys)
+        Return Task.FromResult(Of IEnumerable(Of String))(result)
+    End Function
+
+    Private Function GetTableValue(type As ISkillType) As Func(Of IUIDialog)
+        Return Function()
+                   Return New SkillDetailUIDialog(
+                       context,
+                       context.World.Avatar,
+                       type,
+                       Function() New SkillsUIDialog(context, cancelDialog))
+               End Function
+    End Function
+
+    Private Function GetTableKey(type As ISkillType) As String
+        Return $"{type}({type.GetDescription(context.World.Avatar)})"
+    End Function
+
+    Private Function FilterSkillType(type As ISkillType) As Boolean
+        Return ActualSkillTypeFilter(type, context.World.Avatar)
+    End Function
+
+    Private Shared Function ActualSkillTypeFilter(type As ISkillType, character As ICharacter) As Boolean
+        Return type.CanAdvance(character)
     End Function
 
     Public Function GetPromptAsync() As Task(Of String) Implements IUIDialog.GetPromptAsync
@@ -35,11 +64,13 @@ Friend Class SkillsUIDialog
         Select Case choice
             Case NEVER_MIND_TEXT
                 Return Task.FromResult(cancelDialog())
-            Case ADVANCEABLE_TEXT
-                Return Task.FromResult(Of IUIDialog)(New FilteredSkillsUIDialog(context, "Advanceable Skills", Function(skill) character.CanAdvance(skill), Function() Me))
             Case ALL_TEXT
                 Return Task.FromResult(Of IUIDialog)(New FilteredSkillsUIDialog(context, "All Skills", Function(skill) True, Function() Me))
             Case Else
+                Dim nextDialog As Func(Of IUIDialog) = Nothing
+                If table.TryGetValue(choice, nextDialog) Then
+                    Return Task.FromResult(nextDialog())
+                End If
                 Throw New NotImplementedException
         End Select
     End Function
