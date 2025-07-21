@@ -20,15 +20,27 @@
 
 		@{
 			ResetChoiceIndex();
+			int skipChoices = choicePage * 8 + (choicePage>0?1:0);
+			if (choicePage > 0)
+			{
+				<button accesskey="@GetChoiceIndex()" @onclick="PreviousPage">[@GetChoiceIndex()] Previous Page</button><br/>
+				NextChoiceIndex();
+			}
 			foreach (var choice in choices)
 			{
-				if (GetChoiceIndex() < 10)
+				if (skipChoices > 0)
+				{
+					skipChoices--;
+					continue;
+				}
+				if (GetChoiceIndex() < 9)
 				{
 					<button accesskey="@GetChoiceIndex()" @onclick="async () => await MakeChoiceAsync(choice)">[@GetChoiceIndex()] @choice</button><br/>
 				}
 				else
 				{
-					<button @onclick="async () => await MakeChoiceAsync(choice)">@choice</button><br/>
+					<button accesskey="@GetChoiceIndex()" @onclick="NextPage">[@GetChoiceIndex()] Next Page</button><br/>
+					break;
 				}
 				NextChoiceIndex();
 			}
@@ -39,6 +51,7 @@
 
 @code {
 	private int choiceIndex = 0;
+	private int choicePage = 0;
 	private void ResetChoiceIndex()
 	{
 		choiceIndex = 0;
@@ -84,6 +97,7 @@
 		await LoadLinesAsync();
 		await LoadChoicesAsync();
 		await LoadPromptAsync();
+		choicePage = 0;
 		System.Console.WriteLine("reloaded");
 	}
 
@@ -100,5 +114,13 @@
 	private async Task LoadLinesAsync()
 	{
 		lines = await GetContext().GetLinesAsync();
+	}
+	private void PreviousPage()
+	{
+		choicePage--;
+	}
+	private void NextPage()
+	{
+		choicePage++;
 	}
 }
