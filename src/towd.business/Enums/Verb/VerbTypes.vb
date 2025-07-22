@@ -38,7 +38,8 @@ Public Module VerbTypes
             New AddFuelCookingFireLogVerbTypeDescriptor(),
             New AddFuelCookingFireCharcoalVerbTypeDescriptor(),
             New AddFuelFurnaceCharcoalVerbTypeDescriptor(),
-            New EatCarrotVerbTypeDescriptor()
+            New EatCarrotVerbTypeDescriptor(),
+            New EatRawGrubVerbTypeDescriptor()
         }.
         ToDictionary(Function(x) x.VerbType, Function(x) x)
     <Extension>

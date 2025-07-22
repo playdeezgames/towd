@@ -12,7 +12,7 @@ Friend Class CookedFishFiletItemTypeDescriptor
 Eat it to restore vigor—tastes of triumph, if you cooked it right.",
             statistics:=New Dictionary(Of String, Integer) From
             {
-                {StatisticType.Satiety, 10}
+                {StatisticType.Satiety, 20}
             })
     End Sub
 

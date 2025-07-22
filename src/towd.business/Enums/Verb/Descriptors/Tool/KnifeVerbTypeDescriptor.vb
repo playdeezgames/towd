@@ -12,4 +12,7 @@ Friend Class KnifeVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("You call that a noif? That's a noif!")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

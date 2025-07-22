@@ -14,4 +14,7 @@ Friend Class CookedGrubVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CookingCounter, 1)
         SetFlavorText("This doesn't make the grub taste any better. It just makes it hot.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

@@ -16,4 +16,7 @@ Friend Class PlankVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("Why are there planks in this game? Because Minecraft.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

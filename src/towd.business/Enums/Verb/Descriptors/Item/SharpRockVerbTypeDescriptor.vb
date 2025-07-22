@@ -13,4 +13,7 @@ Friend Class SharpRockVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("Perhaps I played too much OHOL.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

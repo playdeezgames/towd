@@ -18,4 +18,7 @@ Public Class ForageVerbTypeDescriptor
         SetItemTypeOutputGenerator(outputItemType, New ForageRangeGenerator)
         SetFlavorText(flavorText)
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

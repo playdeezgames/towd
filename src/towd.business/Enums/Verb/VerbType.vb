@@ -17,6 +17,7 @@
     Public Const EatCarrot = "EatCarrot"
     Public Const EatCookedFishFilet = "EatCookedFishFilet"
     Public Const EatCookedGrub = "EatCookedGrub"
+    Public Const EatRawGrub = "EatRawGrub"
     Public Const Fish = "Fish"
     Public Const FishingNet = "FishingNet"
     Public Const ForageGrass = "ForageGrass"

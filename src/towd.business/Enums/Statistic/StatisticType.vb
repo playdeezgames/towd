@@ -9,6 +9,7 @@
     Public Const Durability = "Durability"
     Public Const FishSkill = "FishSkill"
     Public Const Fishing = "Fishing"
+    Public Const FoodPoisoning = "FoodPoisoning"
     Public Const ForagingCounter = "ForagingCounter"
     Public Const ForagingSkill = "ForagingSkill"
     Public Const Fuel = "Fuel"

@@ -14,4 +14,7 @@ Friend Class ChopVerbTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.Log, New ChopRangeGenerator)
         SetFlavorText("As this is not a cherry tree, you can go ahead and tell lies.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

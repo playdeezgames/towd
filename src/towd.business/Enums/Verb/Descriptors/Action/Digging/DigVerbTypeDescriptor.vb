@@ -19,4 +19,7 @@ Public Class DigVerbTypeDescriptor
         SetItemTypeOutputGenerator(outputItemType, New DigRangeGenerator)
         SetFlavorText(flavorText)
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

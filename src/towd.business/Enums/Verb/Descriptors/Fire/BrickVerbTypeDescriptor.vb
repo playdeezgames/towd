@@ -12,4 +12,7 @@ Friend Class BrickVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("Cooking bricks. Almost as much fun as watch paint dry.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

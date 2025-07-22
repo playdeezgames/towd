@@ -14,4 +14,7 @@ Friend Class FishVerbTypeDescriptor
         SetItemTypeOutputGenerator(ItemType.RawFish, New FishRangeGenerator)
         SetFlavorText("Using a net to catch a fish. Could be worse, in a different game I made you have to use a spear.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

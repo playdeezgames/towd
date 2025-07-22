@@ -13,4 +13,7 @@ Friend Class AddFuelCookingFireCharcoalVerbTypeDescriptor
         SetLocationStatisticDelta(business.StatisticType.Fuel, 8)
         SetItemTypeInput(ItemType.Charcoal, 1)
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

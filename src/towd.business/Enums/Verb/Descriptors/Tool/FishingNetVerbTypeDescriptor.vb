@@ -9,4 +9,7 @@ Friend Class FishingNetVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("Not to be worn as stockings, you perv.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

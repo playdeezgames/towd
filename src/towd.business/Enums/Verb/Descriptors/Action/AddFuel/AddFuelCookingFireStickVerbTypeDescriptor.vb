@@ -11,4 +11,7 @@
         SetLocationStatisticDelta(business.StatisticType.Fuel, 1)
         SetItemTypeInput(ItemType.Stick, 1)
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

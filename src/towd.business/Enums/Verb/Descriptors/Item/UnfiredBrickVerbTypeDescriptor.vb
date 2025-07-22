@@ -10,4 +10,7 @@ Friend Class UnfiredBrickVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("You can make clay into bricks, not just little snakes or poos.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

@@ -12,7 +12,7 @@ Friend Class CookedGrubItemTypeDescriptor
 Savor it to restore strength—better than raw, if you don’t burn it.",
             statistics:=New Dictionary(Of String, Integer) From
             {
-                {StatisticType.Satiety, 5}
+                {StatisticType.Satiety, 10}
             })
     End Sub
 

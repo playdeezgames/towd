@@ -12,4 +12,7 @@ Friend Class FurnaceVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.BuildCounter, 1)
         SetFlavorText("Obviously no mortar is required.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

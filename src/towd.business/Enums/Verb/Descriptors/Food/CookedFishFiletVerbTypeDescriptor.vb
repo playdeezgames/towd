@@ -12,4 +12,7 @@
         SetCharacterStatisticDelta(StatisticType.CookingCounter, 1)
         SetFlavorText("Now, if only there were some salt and lemon zest...")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

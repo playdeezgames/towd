@@ -15,4 +15,7 @@ Friend Class BladeVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("You know that a crafting system is too complex when you have to master knapping.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

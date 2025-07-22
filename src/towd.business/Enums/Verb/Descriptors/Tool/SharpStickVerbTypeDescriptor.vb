@@ -11,4 +11,7 @@
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("Do not stick in yer eye.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

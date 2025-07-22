@@ -193,8 +193,12 @@ Public MustInherit Class VerbTypeDescriptor
             character.CurrentLocation.EntityType = buildsLocationType.ToLocationTypeDescriptor
             character.AppendMessage($"Changed location to {buildsLocationType.ToLocationTypeDescriptor.Name}.")
         End If
+        OnPerform(character)
         character.World.AdvanceTime(timeTaken)
     End Sub
+
+    Protected MustOverride Sub OnPerform(character As ICharacter)
+
     Public Function CanPerform(character As ICharacter) As Boolean Implements IVerbType.CanPerform
         Dim location = character.CurrentLocation
         For Each entry In locationStatisticMinimums

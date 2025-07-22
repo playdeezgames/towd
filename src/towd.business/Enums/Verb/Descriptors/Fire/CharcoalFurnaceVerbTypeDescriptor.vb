@@ -11,4 +11,7 @@ Friend Class CharcoalFurnaceVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("Using charcoal to make charcoal. That's like charcoalception.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

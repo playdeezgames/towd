@@ -8,6 +8,7 @@ Friend Class EatCookedFishFiletVerbTypeDescriptor
             business.VerbType.EatCookedFishFilet,
             business.VerbCategoryType.Eat,
             ItemType.CookedFishFilet,
-            "Its got plenty of Omega-3s! Whatever those are!")
+            "Its got plenty of Omega-3s! Whatever those are!",
+            New Dictionary(Of Integer, Integer) From {{0, 1}})
     End Sub
 End Class

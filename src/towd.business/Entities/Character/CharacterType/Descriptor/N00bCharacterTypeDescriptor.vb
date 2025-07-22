@@ -8,6 +8,7 @@ Friend Class N00bCharacterTypeDescriptor
                    {
                     StatisticType.Health,
                     StatisticType.Satiety,
+                    StatisticType.FoodPoisoning,
                     StatisticType.XP
                    })
     End Sub
@@ -54,6 +55,8 @@ Friend Class N00bCharacterTypeDescriptor
         character.SetStatistic(StatisticType.Chopping, 0)
         character.SetStatistic(StatisticType.Fishing, 0)
         character.SetStatistic(StatisticType.CraftCounter, 0)
+
+        character.SetStatistic(StatisticType.FoodPoisoning, 0)
     End Sub
 
     Public Overrides Sub Spawn(map As IMap)

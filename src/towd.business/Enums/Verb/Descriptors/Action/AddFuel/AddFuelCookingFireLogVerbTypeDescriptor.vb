@@ -13,4 +13,7 @@ Friend Class AddFuelCookingFireLogVerbTypeDescriptor
         SetLocationStatisticDelta(business.StatisticType.Fuel, 4)
         SetItemTypeInput(ItemType.Log, 1)
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

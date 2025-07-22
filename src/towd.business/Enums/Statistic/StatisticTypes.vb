@@ -15,6 +15,7 @@ Public Module StatisticTypes
             New StatisticTypeDescriptor(StatisticType.Durability, "Durability", "This represents the number of times something can be used before it is worn out."),
             New StatisticTypeDescriptor(StatisticType.Fishing, "Fishing", "This counts the number of times you have fished."),
             New StatisticTypeDescriptor(StatisticType.FishSkill, "Fish Skill", "Level of skill at fishing. Why is there always fishing in these games?"),
+            New StatisticTypeDescriptor(StatisticType.FoodPoisoning, "Food Poisoning", "Eventually, you will learn to cook yer food."),
             New StatisticTypeDescriptor(StatisticType.ForagingCounter, "Foraging", "This counts the number of times you have foraged."),
             New StatisticTypeDescriptor(StatisticType.ForagingSkill, "Foraging Skill", "Level of skill at foraging. Because nothing says ""fun"" like grabbing plant fiber!"),
             New StatisticTypeDescriptor(StatisticType.Fuel, "Fuel", "Amount of burnable material that produces heat. Has nothing to do with a snabel."),

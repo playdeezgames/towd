@@ -11,4 +11,7 @@ Friend Class CharcoalCookingFireVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("The act of burning wood until it is something better at burn than wood. Its like woodception.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

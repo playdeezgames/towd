@@ -15,4 +15,7 @@ Friend Class RawFishFiletVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("What am I supposed to do with the fish head? Take it to a movie? I'll prolly have to pay to get it in.")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class

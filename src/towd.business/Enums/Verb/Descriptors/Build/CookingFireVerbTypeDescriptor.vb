@@ -13,4 +13,7 @@ Friend Class CookingFireVerbTypeDescriptor
         SetCharacterStatisticDelta(StatisticType.BuildCounter, 1)
         SetFlavorText("The real question is... once the fire has burned out, where did the rocks go?")
     End Sub
+
+    Protected Overrides Sub OnPerform(character As ICharacter)
+    End Sub
 End Class
