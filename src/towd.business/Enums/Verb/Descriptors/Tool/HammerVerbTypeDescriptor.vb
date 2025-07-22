@@ -8,7 +8,7 @@ Friend Class HammerVerbTypeDescriptor
         SetItemTypeInput(ItemType.Rock, 1)
         SetItemTypeInput(ItemType.Twine, 1)
         SetItemTypeInput(ItemType.Stick, 1)
-        SetItemTypeOutputGenerator(ItemType.Hammer, New FixedGenerator(1))
+        SetItemTypeOutputGenerator(ItemType.Hammer, New FixedCharacterWeightedGenerator(1))
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("Please hammer, don't hurt em.")
     End Sub

@@ -1,12 +1,12 @@
-﻿Friend Class EatRawGrubVerbTypeDescriptor
+﻿Friend Class EatRawFishVerbTypeDescriptor
     Inherits EatVerbTypeDescriptor
 
     Public Sub New()
         MyBase.New(
-            business.VerbType.EatRawGrub,
+            business.VerbType.EatRawFish,
             business.VerbCategoryType.Eat,
-            ItemType.Grub,
-            "Is this 'Fear Factor'? Is Joe Rogan somewhere around here?")
+            ItemType.RawFish,
+            "We likes it RAW and WRIGGLING, doesn't we, precious?")
         SetCharacterStatisticDeltaGenerator(
             StatisticType.FoodPoisoning,
             New RangeCharacterWeightedGenerator(0, 1))

@@ -1,11 +1,10 @@
 ﻿Imports System.Text
-Imports towd.data
 
 Public MustInherit Class VerbTypeDescriptor
     Implements IVerbType
     Private ReadOnly locationStatisticMinimums As New Dictionary(Of String, Integer)
     Private ReadOnly locationStatisticDeltas As New Dictionary(Of String, Integer)
-    Private ReadOnly characterStatisticDeltas As New Dictionary(Of String, Integer)
+    Private ReadOnly characterStatisticDeltas As New Dictionary(Of String, ICharacterWeightedGenerator)
     Private ReadOnly itemTypeInputs As New Dictionary(Of String, Integer)
     Private ReadOnly itemTypeInputDurabilities As New Dictionary(Of String, Integer)
     Private ReadOnly characterStatisticMinimums As New Dictionary(Of String, Integer)
@@ -29,7 +28,12 @@ Public MustInherit Class VerbTypeDescriptor
         locationStatisticDeltas(statisticType) = delta
     End Sub
     Protected Sub SetCharacterStatisticDelta(statisticType As String, delta As Integer)
-        characterStatisticDeltas(statisticType) = delta
+        characterStatisticDeltas(statisticType) = New FixedCharacterWeightedGenerator(delta)
+    End Sub
+    Protected Sub SetCharacterStatisticDeltaGenerator(
+                                                     statisticType As String,
+                                                     generator As ICharacterWeightedGenerator)
+        characterStatisticDeltas(statisticType) = generator
     End Sub
     Protected Sub SetBuildsLocationType(locationType As String)
         Me.buildsLocationType = locationType
@@ -157,8 +161,9 @@ Public MustInherit Class VerbTypeDescriptor
             character.CurrentLocation.ChangeStatistic(entry.Key, entry.Value)
         Next
         For Each entry In characterStatisticDeltas
-            character.ChangeStatistic(entry.Key, entry.Value)
-            character.AppendMessage($"{entry.Value} {entry.Key.ToStatisticTypeDescriptor.Name}({character.GetStatistic(entry.Key)})")
+            Dim delta = entry.Value.Generate(character)
+            character.ChangeStatistic(entry.Key, delta)
+            character.AppendMessage($"{delta} {entry.Key.ToStatisticTypeDescriptor.Name}({character.GetStatistic(entry.Key)})")
         Next
         Dim quantities As New Dictionary(Of String, Integer)
         For Each entry In itemTypeOutputGenerators

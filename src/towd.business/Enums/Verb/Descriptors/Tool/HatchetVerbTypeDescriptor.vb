@@ -8,7 +8,7 @@ Friend Class HatchetVerbTypeDescriptor
         SetItemTypeInput(ItemType.SharpRock, 1)
         SetItemTypeInput(ItemType.Twine, 1)
         SetItemTypeInput(ItemType.Stick, 1)
-        SetItemTypeOutputGenerator(ItemType.Hatchet, New FixedGenerator(1))
+        SetItemTypeOutputGenerator(ItemType.Hatchet, New FixedCharacterWeightedGenerator(1))
         SetCharacterStatisticDelta(StatisticType.CraftCounter, 1)
         SetFlavorText("Please do not bury.")
     End Sub

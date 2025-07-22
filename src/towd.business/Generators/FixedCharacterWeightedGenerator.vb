@@ -1,4 +1,4 @@
-﻿Friend Class FixedGenerator
+﻿Friend Class FixedCharacterWeightedGenerator
     Implements ICharacterWeightedGenerator
     Private ReadOnly fixedAmount As Integer
     Sub New(fixedAmount As Integer)

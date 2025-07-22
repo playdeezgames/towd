@@ -6,7 +6,6 @@
             business.VerbType.EatCookedGrub,
             business.VerbCategoryType.Eat,
             ItemType.CookedGrub,
-            "It has come to this. Eating bugs. I hope yer proud of yerself.",
-            New Dictionary(Of Integer, Integer) From {{0, 1}})
+            "It has come to this. Eating bugs. I hope yer proud of yerself.")
     End Sub
 End Class
