@@ -14,13 +14,19 @@ Friend Class N00bCharacterTypeDescriptor
     End Sub
 
     Public Overrides Sub AdvanceTime(character As ICharacter, amount As Integer)
+        If character.GetStatistic(StatisticType.FoodPoisoning) > 0 Then
+            character.ChangeStatistic(StatisticType.Health, -1)
+            character.ChangeStatistic(StatisticType.FoodPoisoning, -1)
+            character.AppendMessage($"-1 {StatisticType.FoodPoisoning.ToStatisticTypeDescriptor.Name}({character.GetStatistic(StatisticType.FoodPoisoning)} remaining)")
+            character.AppendMessage($"-1 {StatisticType.Health.ToStatisticTypeDescriptor.Name}({character.GetStatistic(StatisticType.Health)} remaining)")
+        End If
         If character.GetStatistic(StatisticType.Satiety) > character.GetStatisticMinimum(StatisticType.Satiety) Then
             character.ChangeStatistic(StatisticType.Satiety, -1)
-            character.AppendMessage($"-1 Satiety({character.GetStatistic(StatisticType.Satiety)} remaining)")
+            character.AppendMessage($"-1 {StatisticType.Satiety.ToStatisticTypeDescriptor.Name}({character.GetStatistic(StatisticType.Satiety)} remaining)")
         Else
             character.ChangeStatistic(StatisticType.Health, -1)
             character.AppendMessage($"Yer starving.")
-            character.AppendMessage($"-1 Health({character.GetStatistic(StatisticType.Health)} remaining)")
+            character.AppendMessage($"-1 {StatisticType.Health.ToStatisticTypeDescriptor.Name}({character.GetStatistic(StatisticType.Health)} remaining)")
             If character.IsDead Then
                 character.AppendMessage($"Yer dead.")
             End If
