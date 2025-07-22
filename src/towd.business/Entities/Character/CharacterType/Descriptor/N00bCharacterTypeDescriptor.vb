@@ -27,9 +27,9 @@ Friend Class N00bCharacterTypeDescriptor
             character.ChangeStatistic(StatisticType.Health, -1)
             character.AppendMessage($"Yer starving.")
             character.AppendMessage($"-1 {StatisticType.Health.ToStatisticTypeDescriptor.Name}({character.GetStatistic(StatisticType.Health)} remaining)")
-            If character.IsDead Then
-                character.AppendMessage($"Yer dead.")
-            End If
+        End If
+        If character.IsDead Then
+            character.AppendMessage($"Yer dead.")
         End If
         For Each descriptor In Deeds.Descriptors.Values
             If Not character.HasDone(descriptor) AndAlso descriptor.HasDone(character) Then
