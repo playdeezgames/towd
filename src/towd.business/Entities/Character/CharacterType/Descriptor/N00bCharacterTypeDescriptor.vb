@@ -92,6 +92,8 @@ Friend Class N00bCharacterTypeDescriptor
                     Return New THINDLADialog(character)
                 Case business.CharacterType.THINDLAsAss
                     Return New THINDLAsAssDialog(character, otherCharacter)
+                Case business.CharacterType.MasterKnapper
+                    Return New MasterKnapperDialog(character, otherCharacter)
                 Case Else
                     Throw New NotImplementedException
             End Select

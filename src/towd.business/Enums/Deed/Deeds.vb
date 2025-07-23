@@ -19,7 +19,8 @@ Public Module Deeds
             New BuildDeedDescriptor(business.Deed.BuildOnce, "Build once", 1, 1, Array.Empty(Of String)()),
             New BuildDeedDescriptor(business.Deed.BuildTenTimes, "Build ten times", 10, 1, {business.Deed.BuildOnce}),
             New BuildDeedDescriptor(business.Deed.BuildHundredTimes, "Build a hundred times", 100, 1, {business.Deed.BuildTenTimes}),
-            New BuildDeedDescriptor(business.Deed.BuildThousandTimes, "Build a thousand times", 1000, 1, {business.Deed.BuildHundredTimes})
+            New BuildDeedDescriptor(business.Deed.BuildThousandTimes, "Build a thousand times", 1000, 1, {business.Deed.BuildHundredTimes}),
+            New QuestDeedDescriptor(business.Deed.CompleteKnapperQuest, "Knapping training", "Learn how to knap.")
         }.ToDictionary(Function(x) x.Deed, Function(x) x)
     <Extension>
     Public Function ToDeedDescriptor(deed As String) As IDeed

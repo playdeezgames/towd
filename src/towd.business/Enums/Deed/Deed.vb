@@ -15,4 +15,5 @@
     Public Const BuildTenTimes = "BuildTenTimes"
     Public Const BuildHundredTimes = "BuildHundredTimes"
     Public Const BuildThousandTimes = "BuildThousandTimes"
+    Public Const CompleteKnapperQuest = "CompleteKnapperQuest"
 End Module
