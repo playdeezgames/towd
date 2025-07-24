@@ -12,12 +12,12 @@ Public Class SplashUIDialog
 
     Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
         Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))({
-                (Mood.Normal, ".___________.  ______   ____    __    ____  _______  ", True),
-                (Mood.Normal, "|           | /  __  \  \   \  /  \  /   / |       \ ", True),
-                (Mood.Normal, "`---|  |----`|  |  |  |  \   \/    \/   /  |  .--.  |", True),
-                (Mood.Normal, "    |  |     |  |  |  |   \            /   |  |  |  |", True),
-                (Mood.Normal, "    |  |     |  `--'  |    \    /\    /    |  '--'  |", True),
-                (Mood.Normal, "    |__|      \______/      \__/  \__/     |_______/ ", True)
+                (Mood.ASCIIArt, ".___________.  ______   ____    __    ____  _______  
+|           | /  __  \  \   \  /  \  /   / |       \ 
+`---|  |----`|  |  |  |  \   \/    \/   /  |  .--.  |
+    |  |     |  |  |  |   \            /   |  |  |  |
+    |  |     |  `--'  |    \    /\    /    |  '--'  |
+    |__|      \______/      \__/  \__/     |_______/ ", False)
             })
     End Function
 

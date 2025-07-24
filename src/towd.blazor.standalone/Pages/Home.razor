@@ -5,17 +5,25 @@
 
 @if (!GetContext().IsClosed)
 {
-	<pre>
-			@foreach (var line in lines)
+	@foreach (var line in lines)
+	{
+		<p>
+			@switch(line.Mood)
 			{
-					@line.Item2
-					@if (line.Item3)
-					{
-			<br />
-					}
+				case towd.ui.Mood.Normal:
+					<span>@line.Text</span>
+					break;
+				case towd.ui.Mood.ASCIIArt:
+					<pre>@line.Text</pre>
+					break;
 			}
-		</pre>
-	<pre>
+			@if (line.EndsLine)
+			{
+				<br />
+			}
+		</p>
+	}
+	<p>
 		@prompt <br/>
 
 		@{
@@ -46,7 +54,7 @@
 			}
 		}
 
-	</pre>
+	</p>
 }
 
 @code {
