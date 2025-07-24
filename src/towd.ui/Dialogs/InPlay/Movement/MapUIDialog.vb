@@ -16,7 +16,18 @@ Friend Class MapUIDialog
         Dim character = context.World.Avatar
         Dim map = character.CurrentLocation.Map
         Dim builder As New StringBuilder
+        builder.Append("   ")
+        For Each column In Enumerable.Range(0, map.Columns)
+            builder.Append($" {column + 1} ")
+        Next
+        builder.AppendLine()
+        builder.Append("  +")
+        For Each column In Enumerable.Range(0, map.Columns)
+            builder.Append($"---")
+        Next
+        builder.AppendLine()
         For Each row In Enumerable.Range(0, map.Rows)
+            builder.Append($"{row + 1} |")
             For Each column In Enumerable.Range(0, map.Columns)
                 Dim location = map.GetLocation(column, row)
                 If location.Column = character.CurrentLocation.Column AndAlso location.Row = character.CurrentLocation.Row Then
@@ -43,7 +54,7 @@ Friend Class MapUIDialog
         For Each descriptor In LocationTypes.Descriptors.Values
             builder.Append($"|{descriptor.MapLegend}-{descriptor.Name}")
         Next
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))({(Mood.Normal, builder.ToString, True)})
+        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))({(Mood.ASCIIArt, builder.ToString, True)})
     End Function
 
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync

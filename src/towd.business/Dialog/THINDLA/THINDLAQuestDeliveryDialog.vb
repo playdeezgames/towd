@@ -28,6 +28,7 @@
     End Property
 
     Public Function Choose(choice As String) As IDialog Implements IDialog.Choose
+        player.SetDone(Deed.CompleteHairyAssQuest.ToDeedDescriptor)
         player.SetTag(THINDLADialog.COMPLETED_TAG, True)
         Return Nothing
     End Function
