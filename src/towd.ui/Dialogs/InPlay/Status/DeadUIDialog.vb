@@ -25,4 +25,8 @@ Friend Class DeadUIDialog
         context.World.Abandon()
         Return Task.FromResult(Of IUIDialog)(New MainMenuUIDialog(context))
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New DeadUIDialog(context))
+    End Function
 End Class

@@ -27,4 +27,8 @@
     Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Return Task.FromResult(nextDialog())
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New MessageBoxUIDialog(_Prompt, _Lines.ToArray, nextDialog))
+    End Function
 End Class

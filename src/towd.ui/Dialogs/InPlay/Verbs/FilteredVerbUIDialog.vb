@@ -25,10 +25,10 @@ Friend Class FilteredVerbUIDialog
     Private Function getTableValue(prompt As String, grouping As IGrouping(Of String, IVerbType)) As Func(Of IUIDialog)
         If grouping.Count = 1 Then
             Return Function() As IUIDialog
-                       Return New VerbDetailUIDialog(context, grouping.Single, False, Function() New FilteredVerbUIDialog(context, prompt, verbTypeFilter, cancelDialog))
+                       Return New VerbDetailUIDialog(context, grouping.Single, False, MakeCopy)
                    End Function
         End If
-        Return Function() New FilteredVerbCategoryUIDialog(context, grouping.Key.ToVerbCategoryDescriptor.Name, grouping.Key, verbTypeFilter, Function() New FilteredVerbUIDialog(context, prompt, verbTypeFilter, cancelDialog))
+        Return Function() New FilteredVerbCategoryUIDialog(context, grouping.Key.ToVerbCategoryDescriptor.Name, grouping.Key, verbTypeFilter, MakeCopy)
     End Function
 
     Private Function getTableKey(grouping As IGrouping(Of String, IVerbType)) As String
@@ -62,5 +62,9 @@ Friend Class FilteredVerbUIDialog
             Return Task.FromResult(nextDialog())
         End If
         Return Task.FromResult(cancelDialog())
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New FilteredVerbUIDialog(context, _Prompt, verbTypeFilter, cancelDialog))
     End Function
 End Class

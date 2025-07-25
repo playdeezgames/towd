@@ -33,4 +33,8 @@ Friend Class ItemDetailUIDialog
     Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Return Task.FromResult(cancelDialog())
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New ItemDetailUIDialog(context, item, cancelDialog))
+    End Function
 End Class

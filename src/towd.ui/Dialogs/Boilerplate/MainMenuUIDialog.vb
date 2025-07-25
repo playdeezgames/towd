@@ -39,13 +39,17 @@ Friend Class MainMenuUIDialog
                 If Await context.LoadGame(SaveSlot.ScumSlot) Then
                     Return New MessageBoxUIDialog("Load Success!", {(Mood.Normal, $"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
                 End If
-                Return New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() Me)
+                Return New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, MakeCopy)
             Case LOAD_TEXT
-                Return New LoadMenuUIDialog(context, Function() New MainMenuUIDialog(context))
+                Return New LoadMenuUIDialog(context, MakeCopy)
             Case QUIT_TEXT
-                Return New ConfirmUIDialog("Are you sure you want to quit?", Function() Nothing, Function() Me)
+                Return New ConfirmUIDialog("Are you sure you want to quit?", Function() Nothing, MakeCopy)
             Case Else
                 Throw New NotImplementedException
         End Select
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New MainMenuUIDialog(context))
     End Function
 End Class

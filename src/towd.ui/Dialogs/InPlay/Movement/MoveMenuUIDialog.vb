@@ -38,4 +38,8 @@ Friend Class MoveMenuUIDialog
         context.World.AdvanceTime(1)
         Return Task.FromResult(NeutralUIDialog.DetermineInPlayDialog(context))
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New MoveMenuUIDialog(context, cancelDialog))
+    End Function
 End Class

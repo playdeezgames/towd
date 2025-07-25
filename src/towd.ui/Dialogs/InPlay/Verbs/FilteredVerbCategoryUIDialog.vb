@@ -34,7 +34,7 @@ Public Class FilteredVerbCategoryUIDialog
                         context,
                         verbType,
                         False,
-                        Function() New FilteredVerbCategoryUIDialog(context, prompt, verbCategoryType, verbTypeFilter, cancelDialog))
+                        MakeCopy)
                End Function
     End Function
 
@@ -67,5 +67,9 @@ Public Class FilteredVerbCategoryUIDialog
             Return Task.FromResult(nextDialog())
         End If
         Return Task.FromResult(cancelDialog())
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New FilteredVerbCategoryUIDialog(context, _Prompt, verbCategoryType, verbTypeFilter, cancelDialog))
     End Function
 End Class

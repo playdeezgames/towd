@@ -68,4 +68,8 @@ Friend Class MapUIDialog
     Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Return Task.FromResult(cancelDialog())
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New MapUIDialog(context, cancelDialog))
+    End Function
 End Class

@@ -71,25 +71,29 @@ Friend Class NavigationUIDialog
     Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case MOVE_TEXT
-                Return Task.FromResult(Of IUIDialog)(New MoveMenuUIDialog(context, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New MoveMenuUIDialog(context, MakeCopy))
             Case MENU_TEXT
                 Return Task.FromResult(Of IUIDialog)(New GameMenuUIDialog(context))
             Case VERB_TEXT
-                Return Task.FromResult(Of IUIDialog)(New VerbMenuUIDialog(context, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New VerbMenuUIDialog(context, MakeCopy))
             Case INVENTORY_TEXT
-                Return Task.FromResult(Of IUIDialog)(New InventoryUIDialog(context, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New InventoryUIDialog(context, MakeCopy))
             Case DEEDS_TEXT
-                Return Task.FromResult(Of IUIDialog)(New DeedsUIDialog(context, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New DeedsUIDialog(context, MakeCopy))
             Case SKILLS_TEXT
-                Return Task.FromResult(Of IUIDialog)(New SkillsUIDialog(context, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New SkillsUIDialog(context, MakeCopy))
             Case MAP_TEXT
-                Return Task.FromResult(Of IUIDialog)(New MapUIDialog(context, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New MapUIDialog(context, MakeCopy))
             Case DIALOG_TEXT
                 Return Task.FromResult(Of IUIDialog)(New DialogUIDialog(context, context.World.Avatar.StartDialog(Nothing)))
             Case STATISTICS_TEXT
-                Return Task.FromResult(Of IUIDialog)(New StatisticsUIDialog(context, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New StatisticsUIDialog(context, MakeCopy))
             Case Else
                 Throw New NotImplementedException
         End Select
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New NavigationUIDialog(context))
     End Function
 End Class

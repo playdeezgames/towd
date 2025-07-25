@@ -4,8 +4,8 @@ Imports towd.business
 Friend Class StatisticsUIDialog
     Implements IUIDialog
 
-    Private context As IUIContext(Of IWorld)
-    Private nextDialog As Func(Of IUIDialog)
+    Private ReadOnly context As IUIContext(Of IWorld)
+    Private ReadOnly nextDialog As Func(Of IUIDialog)
 
     Public Sub New(context As IUIContext(Of IWorld), nextDialog As Func(Of IUIDialog))
         Me.context = context
@@ -37,5 +37,9 @@ Friend Class StatisticsUIDialog
 
     Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Return Task.FromResult(nextDialog())
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New StatisticsUIDialog(context, nextDialog))
     End Function
 End Class

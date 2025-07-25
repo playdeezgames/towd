@@ -40,8 +40,12 @@ Friend Class FilteredDeedsUIDialog
         Dim deed As IDeed = Nothing
         If table.TryGetValue(choice, deed) Then
             Dim prompt = Await GetPromptAsync()
-            Return New DeedDetailUIDialog(deed, Function() New FilteredDeedsUIDialog(context, prompt, deedFilter, cancelDialog))
+            Return New DeedDetailUIDialog(deed, MakeCopy)
         End If
         Return cancelDialog()
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New FilteredDeedsUIDialog(context, _Prompt, deedFilter, cancelDialog))
     End Function
 End Class

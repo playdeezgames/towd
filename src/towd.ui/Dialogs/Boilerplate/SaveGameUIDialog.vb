@@ -46,7 +46,7 @@ Friend Class SaveGameUIDialog
                 Return New ConfirmUIDialog(
                     $"Are you sure you want to overwrite {saveSlot.DisplayName}",
                     Function() SaveGame(saveSlot),
-                    Function() Me)
+                    MakeCopy)
             End If
             Return SaveGame(saveSlot)
         End If
@@ -56,5 +56,9 @@ Friend Class SaveGameUIDialog
     Private Function SaveGame(saveSlot As ISaveSlot) As IUIDialog
         context.SaveGame(saveSlot.SaveSlot)
         Return New MessageBoxUIDialog("Game Saved!", {(Mood.Normal, $"Saved game in {saveSlot.DisplayName}", True)}, cancelDialog)
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New SaveGameUIDialog(context, cancelDialog))
     End Function
 End Class

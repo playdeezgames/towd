@@ -40,8 +40,12 @@ Friend Class FilteredSkillsUIDialog
         Dim skillType As ISkillType = Nothing
         If table.TryGetValue(choice, skillType) Then
             Dim prompt = Await GetPromptAsync()
-            Return New SkillDetailUIDialog(context, context.World.Avatar, skillType, Function() New FilteredSkillsUIDialog(context, prompt, skillFilter, cancelDialog))
+            Return New SkillDetailUIDialog(context, context.World.Avatar, skillType, MakeCopy)
         End If
         Return cancelDialog()
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New FilteredSkillsUIDialog(context, _Prompt, skillFilter, cancelDialog))
     End Function
 End Class

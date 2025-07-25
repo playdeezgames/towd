@@ -32,4 +32,8 @@ Public Class SplashUIDialog
     Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Return Task.FromResult(Of IUIDialog)(New MainMenuUIDialog(context))
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New SplashUIDialog(context))
+    End Function
 End Class

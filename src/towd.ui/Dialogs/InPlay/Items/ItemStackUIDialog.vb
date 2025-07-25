@@ -36,8 +36,12 @@ Friend Class ItemStackUIDialog
     Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim item As IItem = Nothing
         If table.TryGetValue(choice, item) Then
-            Return Task.FromResult(Of IUIDialog)(New ItemDetailUIDialog(context, item, Function() New ItemStackUIDialog(context, itemStack, cancelDialog)))
+            Return Task.FromResult(Of IUIDialog)(New ItemDetailUIDialog(context, item, MakeCopy))
         End If
         Return Task.FromResult(cancelDialog())
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New ItemStackUIDialog(context, itemStack, cancelDialog))
     End Function
 End Class

@@ -43,16 +43,20 @@ Friend Class GameMenuUIDialog
                 Return Me
             Case SCUM_SAVE_GAME_TEXT
                 Await context.SaveGame(SaveSlot.ScumSlot)
-                Return New MessageBoxUIDialog("Saved!", {(Mood.Normal, $"You saved to {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}", True)}, Function() Me)
+                Return New MessageBoxUIDialog("Saved!", {(Mood.Normal, $"You saved to {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}", True)}, MakeCopy)
             Case SAVE_GAME_TEXT
-                Return New SaveGameUIDialog(context, Function() Me)
+                Return New SaveGameUIDialog(context, MakeCopy)
             Case ABANDON_GAME_TEXT
                 Return New ConfirmUIDialog("Are you sure you want to abandon the game?", Function()
                                                                                              context.World.Abandon()
                                                                                              Return New MainMenuUIDialog(context)
-                                                                                         End Function, Function() Me)
+                                                                                         End Function, MakeCopy)
             Case Else
                 Throw New NotImplementedException
         End Select
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New GameMenuUIDialog(context))
     End Function
 End Class

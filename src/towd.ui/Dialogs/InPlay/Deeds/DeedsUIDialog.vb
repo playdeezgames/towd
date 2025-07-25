@@ -35,15 +35,19 @@ Friend Class DeedsUIDialog
         Dim character = context.World.Avatar
         Select Case choice
             Case AVAILABLE_TEXT
-                Return Task.FromResult(Of IUIDialog)(New FilteredDeedsUIDialog(context, "Available Deeds", Function(deed) character.IsAvailable(deed), Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New FilteredDeedsUIDialog(context, "Available Deeds", Function(deed) character.IsAvailable(deed), MakeCopy))
             Case DONE_TEXT
-                Return Task.FromResult(Of IUIDialog)(New FilteredDeedsUIDialog(context, "Done Deeds", Function(deed) character.HasDone(deed), Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New FilteredDeedsUIDialog(context, "Done Deeds", Function(deed) character.HasDone(deed), MakeCopy))
             Case ALL_TEXT
-                Return Task.FromResult(Of IUIDialog)(New FilteredDeedsUIDialog(context, "All Deeds", Function(deed) True, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New FilteredDeedsUIDialog(context, "All Deeds", Function(deed) True, MakeCopy))
             Case NEVER_MIND_TEXT
                 Return Task.FromResult(cancelDialog())
             Case Else
                 Throw New NotImplementedException
         End Select
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New DeedsUIDialog(context, cancelDialog))
     End Function
 End Class

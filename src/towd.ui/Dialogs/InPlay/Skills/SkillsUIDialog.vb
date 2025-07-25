@@ -1,5 +1,4 @@
-﻿Imports System.Reflection
-Imports towd.business
+﻿Imports towd.business
 
 Friend Class SkillsUIDialog
     Implements IUIDialog
@@ -48,7 +47,7 @@ Friend Class SkillsUIDialog
                        context,
                        context.World.Avatar,
                        type,
-                       Function() New SkillsUIDialog(context, cancelDialog))
+                       MakeCopy)
                End Function
     End Function
 
@@ -74,7 +73,7 @@ Friend Class SkillsUIDialog
             Case NEVER_MIND_TEXT
                 Return Task.FromResult(cancelDialog())
             Case ALL_TEXT
-                Return Task.FromResult(Of IUIDialog)(New FilteredSkillsUIDialog(context, "All Skills", Function(skill) True, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New FilteredSkillsUIDialog(context, "All Skills", Function(skill) True, MakeCopy))
             Case Else
                 Dim nextDialog As Func(Of IUIDialog) = Nothing
                 If table.TryGetValue(choice, nextDialog) Then
@@ -82,5 +81,9 @@ Friend Class SkillsUIDialog
                 End If
                 Throw New NotImplementedException
         End Select
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New SkillsUIDialog(context, cancelDialog))
     End Function
 End Class

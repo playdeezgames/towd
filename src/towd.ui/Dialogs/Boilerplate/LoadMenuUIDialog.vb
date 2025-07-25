@@ -46,4 +46,8 @@ Friend Class LoadMenuUIDialog
         End If
         Throw New NotImplementedException
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New LoadMenuUIDialog(context, cancelDialog))
+    End Function
 End Class

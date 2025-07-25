@@ -46,11 +46,15 @@ Public Class VerbDetailUIDialog
         Select Case choice
             Case PERFORM_TEXT, PERFORM_AGAIN_TEXT
                 verbType.Perform(context.World.Avatar)
-                Return Task.FromResult(MessageUIDialog.DetermineMessageDialog(context, Function() New VerbDetailUIDialog(context, verbType, True, cancelDialog)))
+                Return Task.FromResult(MessageUIDialog.DetermineMessageDialog(context, MakeCopy))
             Case NEVER_MIND_TEXT
                 Return Task.FromResult(cancelDialog())
             Case Else
                 Throw New NotImplementedException
         End Select
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New VerbDetailUIDialog(context, verbType, performAgain, cancelDialog))
     End Function
 End Class

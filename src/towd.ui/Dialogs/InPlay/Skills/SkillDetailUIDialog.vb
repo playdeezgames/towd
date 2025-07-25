@@ -47,4 +47,8 @@ Friend Class SkillDetailUIDialog
                 Throw New NotImplementedException
         End Select
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New SkillDetailUIDialog(context, character, skillType, cancelDialog))
+    End Function
 End Class

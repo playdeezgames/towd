@@ -34,11 +34,11 @@ Friend Class VerbMenuUIDialog
     Private Function getTableValue(grouping As IGrouping(Of String, IVerbType)) As Func(Of IUIDialog)
         If grouping.Count = 1 Then
             Return Function() As IUIDialog
-                       Return New VerbDetailUIDialog(context, grouping.Single, False, Function() New VerbMenuUIDialog(context, cancelDialog))
+                       Return New VerbDetailUIDialog(context, grouping.Single, False, MakeCopy)
                    End Function
         End If
         Return Function() As IUIDialog
-                   Return New FilteredVerbCategoryUIDialog(context, grouping.Key.ToVerbCategoryDescriptor.Name, grouping.Key, AddressOf ActualVerbTypeFilter, Function() New VerbMenuUIDialog(context, cancelDialog))
+                   Return New FilteredVerbCategoryUIDialog(context, grouping.Key.ToVerbCategoryDescriptor.Name, grouping.Key, AddressOf ActualVerbTypeFilter, MakeCopy)
                End Function
     End Function
 
@@ -69,7 +69,7 @@ Friend Class VerbMenuUIDialog
     Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case ALL_VERBS_TEXT
-                Return Task.FromResult(Of IUIDialog)(New FilteredVerbUIDialog(context, "All Verbs", Function(verbType As IVerbType, character As ICharacter) True, Function() Me))
+                Return Task.FromResult(Of IUIDialog)(New FilteredVerbUIDialog(context, "All Verbs", Function(verbType As IVerbType, character As ICharacter) True, MakeCopy))
             Case NEVER_MIND_TEXT
                 Return Task.FromResult(cancelDialog())
             Case Else
@@ -79,5 +79,9 @@ Friend Class VerbMenuUIDialog
                 End If
                 Throw New NotImplementedException
         End Select
+    End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New VerbMenuUIDialog(context, cancelDialog))
     End Function
 End Class

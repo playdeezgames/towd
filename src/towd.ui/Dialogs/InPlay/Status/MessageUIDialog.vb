@@ -37,4 +37,8 @@ Friend Class MessageUIDialog
         End If
         Return Task.FromResult(nextDialog())
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New MessageUIDialog(context, nextDialog))
+    End Function
 End Class

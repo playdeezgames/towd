@@ -36,4 +36,8 @@
                 Throw New NotImplementedException
         End Select
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() New ConfirmUIDialog(caption, confirmDialog, cancelDialog))
+    End Function
 End Class

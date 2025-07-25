@@ -54,4 +54,8 @@ Public Class UIContext
         Dialog = Await Dialog.Choose(choice)
         Return Me
     End Function
+
+    Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
+        Return (Function() Me)
+    End Function
 End Class
