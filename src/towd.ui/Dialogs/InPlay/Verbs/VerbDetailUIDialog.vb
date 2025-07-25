@@ -23,7 +23,7 @@ Public Class VerbDetailUIDialog
     End Sub
 
     Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))({(Mood.Normal, verbType.Description, True)})
+        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))({(Mood.ASCIIArt, verbType.Description, True)})
     End Function
 
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
@@ -55,6 +55,6 @@ Public Class VerbDetailUIDialog
     End Function
 
     Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
-        Return (Function() New VerbDetailUIDialog(context, verbType, performAgain, cancelDialog))
+        Return (Function() New VerbDetailUIDialog(context, verbType, True, cancelDialog))
     End Function
 End Class
