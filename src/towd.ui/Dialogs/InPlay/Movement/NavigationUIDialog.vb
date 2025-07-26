@@ -13,6 +13,8 @@ Friend Class NavigationUIDialog
     Const MAP_TEXT = "Map..."
     Const STATISTICS_TEXT = "Statistics..."
     Const DIALOG_TEXT = "Dialog..."
+    Const LOCATION_TEXT = "Location..."
+    Const CHARACTER_TEXT = "Character..."
 
     Public Sub New(context As IUIContext(Of IWorld))
         Me.context = context
@@ -47,7 +49,8 @@ Friend Class NavigationUIDialog
         Dim result As New List(Of String) From {
             MOVE_TEXT,
             MAP_TEXT,
-            STATISTICS_TEXT
+            STATISTICS_TEXT,
+            LOCATION_TEXT
         }
         If character.CanDialog Then
             result.Add(DIALOG_TEXT)
@@ -88,6 +91,8 @@ Friend Class NavigationUIDialog
                 Return Task.FromResult(Of IUIDialog)(New DialogUIDialog(context, context.World.Avatar.StartDialog(Nothing)))
             Case STATISTICS_TEXT
                 Return Task.FromResult(Of IUIDialog)(New StatisticsUIDialog(context, MakeCopy))
+            Case LOCATION_TEXT
+                Return Task.FromResult(Of IUIDialog)(New LocationUIDialog(context, MakeCopy))
             Case Else
                 Throw New NotImplementedException
         End Select
