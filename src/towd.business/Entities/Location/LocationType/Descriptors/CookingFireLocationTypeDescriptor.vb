@@ -19,9 +19,9 @@ Friend Class CookingFireLocationTypeDescriptor
         End If
     End Sub
 
-    Public Overrides Function Describe(location As ILocation) As String
-        Dim builder As New StringBuilder(MyBase.Describe(location))
-        builder.AppendLine($"Fuel Remaining: {location.GetStatistic(StatisticType.Fuel)}")
-        Return builder.ToString
+    Public Overrides Function Describe(location As ILocation) As IEnumerable(Of String)
+        Return New List(Of String)(MyBase.Describe(location)) From {
+            $"Fuel Remaining: {location.GetStatistic(StatisticType.Fuel)}"
+        }
     End Function
 End Class

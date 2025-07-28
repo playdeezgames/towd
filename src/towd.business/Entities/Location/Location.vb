@@ -78,7 +78,7 @@ Friend Class Location
     End Sub
 
     Public Overrides Function ToString() As String
-        Return EntityType.Describe(Me)
+        Return String.Join(vbCrLf, EntityType.Describe(Me))
     End Function
 
     Public Function HasOtherCharacters(character As ICharacter) As Boolean Implements ILocation.HasOtherCharacters

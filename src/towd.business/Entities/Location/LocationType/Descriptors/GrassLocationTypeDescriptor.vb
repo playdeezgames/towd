@@ -17,10 +17,10 @@ Friend Class GrassLocationTypeDescriptor
     Public Overrides Sub AdvanceTime(location As ILocation, amount As Integer)
     End Sub
 
-    Public Overrides Function Describe(location As ILocation) As String
-        Dim builder As New StringBuilder(MyBase.Describe(location))
-        builder.AppendLine($"Foraging Remaining: {location.GetStatistic(StatisticType.ForagingCounter)}")
-        builder.AppendLine($"Digging Remaining: {location.GetStatistic(StatisticType.Digging)}")
-        Return builder.ToString
+    Public Overrides Function Describe(location As ILocation) As IEnumerable(Of String)
+        Return New List(Of String)(MyBase.Describe(location)) From {
+            $"Foraging Remaining: {location.GetStatistic(StatisticType.ForagingCounter)}",
+            $"Digging Remaining: {location.GetStatistic(StatisticType.Digging)}"
+        }
     End Function
 End Class
