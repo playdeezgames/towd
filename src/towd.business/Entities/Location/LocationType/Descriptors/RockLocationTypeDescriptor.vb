@@ -4,7 +4,7 @@ Friend Class RockLocationTypeDescriptor
     Inherits LocationTypeDescriptor
 
     Public Sub New()
-        MyBase.New(business.LocationType.Rock, "Rock", "r"c)
+        MyBase.New(business.LocationType.Rock, "Rock", "r"c, {StatisticType.ForagingCounter})
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)

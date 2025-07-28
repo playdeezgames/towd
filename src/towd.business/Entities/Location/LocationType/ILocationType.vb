@@ -7,4 +7,5 @@ Public Interface ILocationType
     Sub AdvanceTime(location As ILocation, amount As Integer)
     Function Describe(location As ILocation) As String
     ReadOnly Property MapLegend As Char
+    ReadOnly Property StatisticTypes As IEnumerable(Of String)
 End Interface

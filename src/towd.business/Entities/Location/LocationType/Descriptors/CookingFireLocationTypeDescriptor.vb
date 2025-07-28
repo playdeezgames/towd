@@ -4,7 +4,7 @@ Friend Class CookingFireLocationTypeDescriptor
     Inherits LocationTypeDescriptor
 
     Public Sub New()
-        MyBase.New(business.LocationType.CookingFire, "Cooking Fire", "f"c)
+        MyBase.New(business.LocationType.CookingFire, "Cooking Fire", "f"c, {StatisticType.Fuel})
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)

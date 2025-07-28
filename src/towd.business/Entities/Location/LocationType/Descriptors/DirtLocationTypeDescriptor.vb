@@ -2,7 +2,7 @@
     Inherits LocationTypeDescriptor
 
     Public Sub New()
-        MyBase.New(business.LocationType.Dirt, "Dirt", "d"c)
+        MyBase.New(business.LocationType.Dirt, "Dirt", "d"c, Array.Empty(Of String))
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)

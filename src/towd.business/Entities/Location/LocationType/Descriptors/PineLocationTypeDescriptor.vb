@@ -4,7 +4,7 @@ Friend Class PineLocationTypeDescriptor
     Inherits LocationTypeDescriptor
 
     Public Sub New()
-        MyBase.New(business.LocationType.Pine, "Pine", "P"c)
+        MyBase.New(business.LocationType.Pine, "Pine", "P"c, {StatisticType.ForagingCounter, StatisticType.Chopping})
     End Sub
 
     Public Overrides Sub Initialize(location As ILocation)
