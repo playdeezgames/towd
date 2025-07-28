@@ -10,9 +10,9 @@ Public Class SplashUIDialog
         Debug.Assert(Me.context IsNot Nothing)
     End Sub
 
-    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))({
-                (Mood.ASCIIArt, ".___________.  ______   ____    __    ____  _______  
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
+        Return Task.FromResult(Of IEnumerable(Of UIDialogLine))({
+                New UIDialogLine(Mood.ASCIIArt, ".___________.  ______   ____    __    ____  _______  
 |           | /  __  \  \   \  /  \  /   / |       \ 
 `---|  |----`|  |  |  |  \   \/    \/   /  |  .--.  |
     |  |     |  |  |  |   \            /   |  |  |  |

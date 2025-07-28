@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using towd.ui
 @inject IJSRuntime JSRuntime
 
 <PageTitle>TOWD</PageTitle>
@@ -72,7 +73,7 @@
 	{
 		return choiceIndex;
 	}
-	private IEnumerable<(string Mood, string Text, bool EndsLine)> lines = Enumerable.Empty<(string Mood, string Text, bool EndsLine)>();
+	private IEnumerable<UIDialogLine> lines = Enumerable.Empty<UIDialogLine>();
 	private IEnumerable<string> choices = Enumerable.Empty<string>();
 	private string prompt = string.Empty;
 

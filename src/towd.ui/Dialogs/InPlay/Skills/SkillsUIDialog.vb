@@ -14,17 +14,17 @@ Friend Class SkillsUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
-        Dim result As New List(Of (Mood As String, Text As String, EndsLine As Boolean))
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
+        Dim result As New List(Of UIDialogLine)
         Dim character = context.World.Avatar
         For Each skillType In SkillTypes.Descriptors
             Dim statisticType = skillType.Value.StatisticType
             If character.HasStatistic(statisticType) Then
                 Dim statisticName = statisticType.ToStatisticTypeDescriptor.Name
-                result.Add((Mood.Normal, $"Current {statisticName}: {character.GetStatistic(statisticType)}", True))
+                result.Add(New UIDialogLine(Mood.Normal, $"Current {statisticName}: {character.GetStatistic(statisticType)}", True))
             End If
         Next
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(result)
+        Return Task.FromResult(Of IEnumerable(Of UIDialogLine))(result)
     End Function
 
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync

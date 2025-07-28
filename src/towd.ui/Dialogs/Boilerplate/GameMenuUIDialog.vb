@@ -14,8 +14,8 @@ Friend Class GameMenuUIDialog
         Me.context = context
     End Sub
 
-    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
+        Return Task.FromResult(Of IEnumerable(Of UIDialogLine))(Array.Empty(Of UIDialogLine))
     End Function
 
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
@@ -43,7 +43,7 @@ Friend Class GameMenuUIDialog
                 Return Me
             Case SCUM_SAVE_GAME_TEXT
                 Await context.SaveGame(SaveSlot.ScumSlot)
-                Return New MessageBoxUIDialog("Saved!", {(Mood.Normal, $"You saved to {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}", True)}, MakeCopy)
+                Return New MessageBoxUIDialog("Saved!", {New UIDialogLine(Mood.Normal, $"You saved to {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}", True)}, MakeCopy)
             Case SAVE_GAME_TEXT
                 Return New SaveGameUIDialog(context, MakeCopy)
             Case ABANDON_GAME_TEXT

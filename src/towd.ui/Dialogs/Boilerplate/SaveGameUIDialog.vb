@@ -13,8 +13,8 @@ Friend Class SaveGameUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
+        Return Task.FromResult(Of IEnumerable(Of UIDialogLine))(Array.Empty(Of UIDialogLine))
     End Function
 
     Public Async Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
@@ -55,7 +55,7 @@ Friend Class SaveGameUIDialog
 
     Private Function SaveGame(saveSlot As ISaveSlot) As IUIDialog
         context.SaveGame(saveSlot.SaveSlot)
-        Return New MessageBoxUIDialog("Game Saved!", {(Mood.Normal, $"Saved game in {saveSlot.DisplayName}", True)}, cancelDialog)
+        Return New MessageBoxUIDialog("Game Saved!", {New UIDialogLine(Mood.Normal, $"Saved game in {saveSlot.DisplayName}", True)}, cancelDialog)
     End Function
 
     Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy

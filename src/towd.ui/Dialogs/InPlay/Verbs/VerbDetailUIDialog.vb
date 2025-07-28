@@ -22,8 +22,8 @@ Public Class VerbDetailUIDialog
         Me.performAgain = performAgain
     End Sub
 
-    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))({(Mood.ASCIIArt, verbType.Description, True)})
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
+        Return Task.FromResult(Of IEnumerable(Of UIDialogLine))({New UIDialogLine(Mood.ASCIIArt, verbType.Description, True)})
     End Function
 
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync

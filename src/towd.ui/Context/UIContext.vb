@@ -17,7 +17,7 @@ Public Class UIContext
         Me.Persister = persister
     End Sub
 
-    Public Async Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
+    Public Async Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
         Return Await Dialog.GetLinesAsync()
     End Function
 

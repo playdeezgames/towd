@@ -12,7 +12,7 @@ Friend Class MapUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
         Dim character = context.World.Avatar
         Dim map = character.CurrentLocation.Map
         Dim builder As New StringBuilder
@@ -54,7 +54,7 @@ Friend Class MapUIDialog
         For Each descriptor In LocationTypes.Descriptors.Values
             builder.Append($"|{descriptor.MapLegend}-{descriptor.Name}")
         Next
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))({(Mood.ASCIIArt, builder.ToString, True)})
+        Return Task.FromResult(Of IEnumerable(Of UIDialogLine))({New UIDialogLine(Mood.ASCIIArt, builder.ToString, True)})
     End Function
 
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync

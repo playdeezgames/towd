@@ -1,14 +1,14 @@
 ﻿Public Class MessageBoxUIDialog
     Implements IUIDialog
-    Sub New(prompt As String, lines As (String, String, Boolean)(), nextDialog As Func(Of IUIDialog))
+    Sub New(prompt As String, lines As UIDialogLine(), nextDialog As Func(Of IUIDialog))
         Me._Prompt = prompt
         Me._Lines = lines
         Me.nextDialog = nextDialog
     End Sub
 
-    Private _Lines As IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))
+    Private _Lines As IEnumerable(Of UIDialogLine)
 
-    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
         Return Task.FromResult(_Lines)
     End Function
 

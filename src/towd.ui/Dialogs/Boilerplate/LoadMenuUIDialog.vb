@@ -13,8 +13,8 @@ Friend Class LoadMenuUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
+        Return Task.FromResult(Of IEnumerable(Of UIDialogLine))(Array.Empty(Of UIDialogLine))
     End Function
 
     Public Async Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
@@ -40,9 +40,9 @@ Friend Class LoadMenuUIDialog
             Return cancelDialog()
         End If
         If Await context.LoadGame(saveSlot.SaveSlot) Then
-            Return New MessageBoxUIDialog("Load Success!", {(Mood.Normal, $"You loaded {saveSlot.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
+            Return New MessageBoxUIDialog("Load Success!", {New UIDialogLine(Mood.Normal, $"You loaded {saveSlot.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
         Else
-            Return New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {saveSlot.DisplayName}!", True)}, cancelDialog)
+            Return New MessageBoxUIDialog("Load Failed!", {New UIDialogLine(Mood.Normal, $"Failed to load {saveSlot.DisplayName}!", True)}, cancelDialog)
         End If
         Throw New NotImplementedException
     End Function

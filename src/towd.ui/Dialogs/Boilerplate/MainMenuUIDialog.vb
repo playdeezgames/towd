@@ -13,8 +13,8 @@ Friend Class MainMenuUIDialog
         Me.context = context
     End Sub
 
-    Public Function GetLinesAsync() As Task(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean))) Implements IUIDialog.GetLinesAsync
-        Return Task.FromResult(Of IEnumerable(Of (Mood As String, Text As String, EndsLine As Boolean)))(Array.Empty(Of (String, String, Boolean)))
+    Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
+        Return Task.FromResult(Of IEnumerable(Of UIDialogLine))(Array.Empty(Of UIDialogLine))
     End Function
 
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
@@ -37,9 +37,9 @@ Friend Class MainMenuUIDialog
                 Return NeutralUIDialog.DetermineInPlayDialog(context)
             Case SCUM_LOAD_TEXT
                 If Await context.LoadGame(SaveSlot.ScumSlot) Then
-                    Return New MessageBoxUIDialog("Load Success!", {(Mood.Normal, $"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
+                    Return New MessageBoxUIDialog("Load Success!", {New UIDialogLine(Mood.Normal, $"You loaded {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, Function() NeutralUIDialog.DetermineInPlayDialog(context))
                 End If
-                Return New MessageBoxUIDialog("Load Failed!", {(Mood.Normal, $"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, MakeCopy)
+                Return New MessageBoxUIDialog("Load Failed!", {New UIDialogLine(Mood.Normal, $"Failed to load {SaveSlot.ScumSlot.ToSaveSlotDescriptor.DisplayName}!", True)}, MakeCopy)
             Case LOAD_TEXT
                 Return New LoadMenuUIDialog(context, MakeCopy)
             Case QUIT_TEXT
