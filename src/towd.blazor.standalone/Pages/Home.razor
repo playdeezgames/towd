@@ -6,6 +6,7 @@
 
 @if (!GetContext().IsClosed)
 {
+	<h2>@prompt</h2>
 	@foreach (var line in lines)
 	{
 		<p>
@@ -25,8 +26,6 @@
 		</p>
 	}
 	<p>
-		@prompt <br/>
-
 		@{
 			ResetChoiceIndex();
 			int skipChoices = choicePage * 8 + (choicePage>0?1:0);

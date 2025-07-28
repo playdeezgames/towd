@@ -9,4 +9,5 @@
     Function GetOtherCharacters(character As ICharacter) As IEnumerable(Of ICharacter)
     Sub AddCharacter(character As ICharacter)
     Sub RemoveCharacter(character As ICharacter)
+    ReadOnly Property Description As IEnumerable(Of String)
 End Interface

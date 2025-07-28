@@ -59,6 +59,12 @@ Friend Class Location
         End Get
     End Property
 
+    Public ReadOnly Property Description As IEnumerable(Of String) Implements ILocation.Description
+        Get
+            Return EntityType.Describe(Me)
+        End Get
+    End Property
+
     Protected Overrides ReadOnly Property EntityData As LocationData
         Get
             Return WorldData.Locations(Id)

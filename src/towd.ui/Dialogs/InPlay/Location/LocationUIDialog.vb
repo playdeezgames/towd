@@ -13,11 +13,11 @@ Friend Class LocationUIDialog
     End Sub
 
     Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
+        Dim result As New List(Of UIDialogLine)
+        result.AddRange(context.World.Avatar.CurrentLocation.Description.Select(Function(x) New UIDialogLine(Mood.Normal, x, True)))
         Return Task.FromResult(Of
             IEnumerable(Of
-                UIDialogLine))(
-                Array.Empty(Of
-                    UIDialogLine))
+                UIDialogLine))(result)
     End Function
 
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
