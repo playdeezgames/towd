@@ -102,7 +102,7 @@
 
 	private async Task MakeChoiceAsync(string choice)
 	{
-		await GetContext().Choose(choice);
+		await GetContext().Choose(choice, parameters);
 
 		await Reload();
 	}

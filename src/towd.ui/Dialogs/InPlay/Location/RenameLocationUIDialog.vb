@@ -32,10 +32,10 @@ Friend Class RenameLocationUIDialog
         Return Task.FromResult("(Re)Name Location")
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case CONFIRM_TEXT
-                'TODO: rename the location
+                context.World.Avatar.CurrentLocation.Name = parameters(NEW_NAME_PARAMETER)
                 Return Task.FromResult(nextDialog())
             Case CANCEL_TEXT
                 Return Task.FromResult(nextDialog())

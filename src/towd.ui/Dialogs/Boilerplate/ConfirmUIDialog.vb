@@ -30,7 +30,7 @@
         Return Task.FromResult(caption)
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case YES_TEXT
                 Return Task.FromResult(confirmDialog())

@@ -40,7 +40,7 @@ Friend Class FilteredSkillsUIDialog
         Return Task.FromResult(_Prompt)
     End Function
 
-    Public Async Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Async Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim skillType As ISkillType = Nothing
         If table.TryGetValue(choice, skillType) Then
             Dim prompt = Await GetPromptAsync()

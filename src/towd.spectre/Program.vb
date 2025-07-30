@@ -15,10 +15,14 @@ Module Program
                     AnsiConsole.Write(line.Text)
                 End If
             Next
+            Dim parameters As New Dictionary(Of String, String)
+            For Each parameter In context.GetParametersAsync().Result
+                parameters(parameter.Key) = AnsiConsole.Ask(Of String)(parameter.Key, parameter.Value)
+            Next
             Dim prompt As New SelectionPrompt(Of String) With {.Title = $"[olive]{context.GetPromptAsync().Result}[/]"}
             prompt.AddChoices(context.GetChoicesAsync().Result.ToArray())
             Dim choice = AnsiConsole.Prompt(prompt)
-            context.Choose(choice).Wait()
+            context.Choose(choice, parameters).Wait()
         End While
     End Sub
 End Module

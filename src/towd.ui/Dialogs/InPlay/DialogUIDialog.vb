@@ -27,7 +27,7 @@ Friend Class DialogUIDialog
         Return Task.FromResult(dialog.Prompt)
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim nextDialog = dialog.Choose(choice)
         If nextDialog IsNot Nothing Then
             Return Task.FromResult(MessageUIDialog.DetermineMessageDialog(context, MakeCopy))

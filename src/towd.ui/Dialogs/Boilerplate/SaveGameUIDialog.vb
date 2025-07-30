@@ -43,7 +43,7 @@ Friend Class SaveGameUIDialog
         Return Task.FromResult("Save Menu")
     End Function
 
-    Public Async Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Async Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim saveSlot As ISaveSlot = Nothing
         If table.TryGetValue(choice, saveSlot) Then
             If (Await context.Persister.SaveExists(saveSlot)).HasValue Then

@@ -37,7 +37,7 @@ Friend Class ItemStackUIDialog
         Return Task.FromResult(itemStack.ToString())
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim item As IItem = Nothing
         If table.TryGetValue(choice, item) Then
             Return Task.FromResult(Of IUIDialog)(New ItemDetailUIDialog(context, item, MakeCopy))

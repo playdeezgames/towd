@@ -38,7 +38,7 @@ Friend Class LoadMenuUIDialog
         Return Task.FromResult("Load Menu")
     End Function
 
-    Public Async Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Async Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim saveSlot As ISaveSlot = table(choice)
         If saveSlot Is Nothing Then
             Return cancelDialog()

@@ -46,7 +46,7 @@ Public Class VerbDetailUIDialog
         Return Task.FromResult(verbType.Name)
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case PERFORM_TEXT, PERFORM_AGAIN_TEXT
                 verbType.Perform(context.World.Avatar)

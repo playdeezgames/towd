@@ -28,7 +28,7 @@
         Return Task.FromResult(_Prompt)
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Return Task.FromResult(nextDialog())
     End Function
 

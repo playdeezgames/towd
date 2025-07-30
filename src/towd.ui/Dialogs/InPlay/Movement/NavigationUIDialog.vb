@@ -75,7 +75,7 @@ Friend Class NavigationUIDialog
         Return Task.FromResult("Navigation")
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case MOVE_TEXT
                 Return Task.FromResult(Of IUIDialog)(New MoveMenuUIDialog(context, MakeCopy))

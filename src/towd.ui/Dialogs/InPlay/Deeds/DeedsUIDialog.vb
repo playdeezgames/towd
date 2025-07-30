@@ -35,7 +35,7 @@ Friend Class DeedsUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim character = context.World.Avatar
         Select Case choice
             Case AVAILABLE_TEXT

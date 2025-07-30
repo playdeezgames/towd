@@ -36,7 +36,7 @@ Friend Class GameMenuUIDialog
         Return Task.FromResult("Game Menu")
     End Function
 
-    Public Async Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Async Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case CONTINUE_TEXT
                 Return NeutralUIDialog.DetermineInPlayDialog(context)

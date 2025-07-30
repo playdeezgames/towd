@@ -8,6 +8,7 @@ Friend Class DialogView
     Private ReadOnly promptLabel As Label
     Private ReadOnly linesTextView As TextView
     Private ReadOnly choicesListView As ListView
+    Private parameters As Dictionary(Of String, String)
     Protected ReadOnly Property Context As IUIContext(Of IWorld)
         Get
             Return mainView.Context
@@ -45,7 +46,7 @@ Friend Class DialogView
     End Sub
 
     Private Sub OnChoicesListViewOpenSelectedItem(args As ListViewItemEventArgs)
-        Context.Choose(args.Value.ToString).Wait()
+        Context.Choose(args.Value.ToString, parameters).Wait()
         UpdateView()
     End Sub
 
@@ -63,6 +64,8 @@ Friend Class DialogView
                 builder.Append(line.Text)
             End If
         Next
+        Dim data = Context.GetParametersAsync().Result
+        parameters = If(data IsNot Nothing, New Dictionary(Of String, String)(data), Nothing)
         linesTextView.Text = builder.ToString()
         linesTextView.ColorScheme = New ColorScheme With
                 {

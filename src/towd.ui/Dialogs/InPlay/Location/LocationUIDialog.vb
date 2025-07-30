@@ -44,7 +44,7 @@ Friend Class LocationUIDialog
         Return Task.FromResult("Location Details")
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case NEVERMIND_TEXT
                 Return Task.FromResult(Of IUIDialog)(cancelDialog())

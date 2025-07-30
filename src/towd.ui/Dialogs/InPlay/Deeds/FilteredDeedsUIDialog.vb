@@ -40,7 +40,7 @@ Friend Class FilteredDeedsUIDialog
 
     Private ReadOnly deedFilter As Func(Of IDeed, Boolean)
 
-    Public Async Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Async Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim deed As IDeed = Nothing
         If table.TryGetValue(choice, deed) Then
             Dim prompt = Await GetPromptAsync()

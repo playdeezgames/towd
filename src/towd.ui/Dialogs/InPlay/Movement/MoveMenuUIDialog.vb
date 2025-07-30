@@ -33,7 +33,7 @@ Friend Class MoveMenuUIDialog
         Return Task.FromResult("Which Way?")
     End Function
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Dim descriptor = table(choice)
         If descriptor Is Nothing Then
             Return Task.FromResult(cancelDialog())

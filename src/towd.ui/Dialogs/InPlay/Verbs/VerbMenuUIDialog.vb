@@ -70,7 +70,7 @@ Friend Class VerbMenuUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
-    Public Function Choose(choice As String) As Task(Of IUIDialog) Implements IUIDialog.Choose
+    Public Function Choose(choice As String, parameters As IReadOnlyDictionary(Of String, String)) As Task(Of IUIDialog) Implements IUIDialog.Choose
         Select Case choice
             Case ALL_VERBS_TEXT
                 Return Task.FromResult(Of IUIDialog)(New FilteredVerbUIDialog(context, "All Verbs", Function(verbType As IVerbType, character As ICharacter) True, MakeCopy))
