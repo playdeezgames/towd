@@ -14,6 +14,10 @@
 
     Private ReadOnly nextDialog As Func(Of IUIDialog)
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Public Function GetChoicesAsync() As Task(Of IEnumerable(Of String)) Implements IUIDialog.GetChoicesAsync
         Return Task.FromResult(Of IEnumerable(Of String))({"Ok"})
     End Function

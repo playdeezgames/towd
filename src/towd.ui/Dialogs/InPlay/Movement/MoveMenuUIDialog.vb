@@ -8,6 +8,10 @@ Friend Class MoveMenuUIDialog
     Private table As New Dictionary(Of String, IDirection)
     Const NEVER_MIND_TEXT = "Never Mind"
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Public Sub New(context As IUIContext(Of IWorld), cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.cancelDialog = cancelDialog

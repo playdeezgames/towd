@@ -10,6 +10,10 @@ Friend Class SkillDetailUIDialog
     Const NEVER_MIND_TEXT = "Never Mind"
     Const ADVANCE_TEXT = "Advance"
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Public Sub New(context As IUIContext(Of IWorld), character As ICharacter, skillType As business.ISkillType, cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.character = character

@@ -12,6 +12,10 @@ Friend Class MapUIDialog
         Me.cancelDialog = cancelDialog
     End Sub
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
         Dim character = context.World.Avatar
         Dim map = character.CurrentLocation.Map

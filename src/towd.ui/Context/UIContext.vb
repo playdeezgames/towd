@@ -58,4 +58,8 @@ Public Class UIContext
     Public Function MakeCopy() As Func(Of IUIDialog) Implements IUIDialog.MakeCopy
         Return (Function() Me)
     End Function
+
+    Public Async Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Await Dialog.GetParametersAsync()
+    End Function
 End Class

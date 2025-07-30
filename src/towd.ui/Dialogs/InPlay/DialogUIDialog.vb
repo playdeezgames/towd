@@ -11,6 +11,10 @@ Friend Class DialogUIDialog
         Me.dialog = dialog
     End Sub
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Public Function GetLinesAsync() As Task(Of IEnumerable(Of UIDialogLine)) Implements IUIDialog.GetLinesAsync
         Return Task.FromResult(Of IEnumerable(Of UIDialogLine))(dialog.Lines.Select(Function(x) New UIDialogLine(Mood.Normal, x, True)))
     End Function

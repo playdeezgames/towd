@@ -9,6 +9,10 @@ Friend Class SkillsUIDialog
     Const ALL_TEXT = "All"
     Private table As Dictionary(Of String, Func(Of IUIDialog)) = Nothing
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Public Sub New(context As IUIContext(Of IWorld), cancelDialog As Func(Of IUIDialog))
         Me.context = context
         Me.cancelDialog = cancelDialog

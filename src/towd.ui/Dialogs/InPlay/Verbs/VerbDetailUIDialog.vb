@@ -11,6 +11,10 @@ Public Class VerbDetailUIDialog
     Const PERFORM_TEXT = "Perform"
     Const PERFORM_AGAIN_TEXT = "Perform Again"
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Sub New(
            context As IUIContext(Of IWorld),
            verbType As IVerbType,

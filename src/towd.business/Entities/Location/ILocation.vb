@@ -5,6 +5,8 @@
     ReadOnly Property Map As IMap
     ReadOnly Property Neighbors As IReadOnlyDictionary(Of String, ILocation)
     ReadOnly Property Characters As IEnumerable(Of ICharacter)
+    ReadOnly Property HasName As Boolean
+    Property Name As String
     Function HasOtherCharacters(character As ICharacter) As Boolean
     Function GetOtherCharacters(character As ICharacter) As IEnumerable(Of ICharacter)
     Sub AddCharacter(character As ICharacter)

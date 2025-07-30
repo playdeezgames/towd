@@ -16,6 +16,10 @@ Friend Class NavigationUIDialog
     Const LOCATION_TEXT = "Location..."
     Const CHARACTER_TEXT = "Character..."
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Public Sub New(context As IUIContext(Of IWorld))
         Me.context = context
     End Sub

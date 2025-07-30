@@ -65,6 +65,21 @@ Friend Class Location
         End Get
     End Property
 
+    Public ReadOnly Property HasName As Boolean Implements ILocation.HasName
+        Get
+            Return Not String.IsNullOrWhiteSpace(EntityData.Name)
+        End Get
+    End Property
+
+    Public Property Name As String Implements ILocation.Name
+        Get
+            Return EntityData.Name
+        End Get
+        Set(value As String)
+            EntityData.Name = value
+        End Set
+    End Property
+
     Protected Overrides ReadOnly Property EntityData As LocationData
         Get
             Return WorldData.Locations(Id)

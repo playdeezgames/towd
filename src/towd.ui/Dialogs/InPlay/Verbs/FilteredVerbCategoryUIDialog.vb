@@ -10,6 +10,10 @@ Public Class FilteredVerbCategoryUIDialog
     Const NEVER_MIND_TEXT = "Never Mind"
     Private ReadOnly table As IReadOnlyDictionary(Of String, Func(Of IUIDialog))
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Sub New(
            context As IUIContext(Of IWorld),
            prompt As String,

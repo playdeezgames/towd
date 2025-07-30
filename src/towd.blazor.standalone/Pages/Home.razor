@@ -25,6 +25,17 @@
 			}
 		</p>
 	}
+	@if(parameters!=null && parameters.Any())
+	{
+		<fieldset>
+			@foreach(var parameter in parameters)
+			{
+				<p>
+					<label>@parameter.Key</label>
+					<input type="text" @bind=parameters[parameter.Key]/></p>
+			}
+		</fieldset>
+	}
 	<p>
 		@{
 			ResetChoiceIndex();
@@ -73,6 +84,7 @@
 		return choiceIndex;
 	}
 	private IEnumerable<UIDialogLine> lines = Enumerable.Empty<UIDialogLine>();
+	private Dictionary<string, string> parameters = new Dictionary<string, string>();
 	private IEnumerable<string> choices = Enumerable.Empty<string>();
 	private string prompt = string.Empty;
 
@@ -105,8 +117,15 @@
 		await LoadLinesAsync();
 		await LoadChoicesAsync();
 		await LoadPromptAsync();
+		await LoadParametersAsync();
 		choicePage = 0;
 		System.Console.WriteLine("reloaded");
+	}
+
+	private async Task LoadParametersAsync()
+	{
+		var data = await GetContext().GetParametersAsync();
+		parameters = (data == null) ? (new Dictionary<string, string>()) : new Dictionary<string, string>(data);
 	}
 
 	private async Task LoadPromptAsync()

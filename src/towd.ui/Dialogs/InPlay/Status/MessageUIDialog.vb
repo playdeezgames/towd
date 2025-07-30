@@ -13,6 +13,10 @@ Friend Class MessageUIDialog
     Private ReadOnly context As IUIContext(Of IWorld)
     Private ReadOnly nextDialog As Func(Of IUIDialog)
 
+    Public Function GetParametersAsync() As Task(Of IReadOnlyDictionary(Of String, String)) Implements IUIDialog.GetParametersAsync
+        Return Task.FromResult(Of IReadOnlyDictionary(Of String, String))(Nothing)
+    End Function
+
     Public Sub New(context As IUIContext(Of IWorld), nextDialog As Func(Of IUIDialog))
         Me.context = context
         Me.nextDialog = nextDialog
