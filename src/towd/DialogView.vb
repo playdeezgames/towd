@@ -65,7 +65,13 @@ Friend Class DialogView
             End If
         Next
         Dim data = Context.GetParametersAsync().Result
-        parameters = If(data IsNot Nothing, New Dictionary(Of String, String)(data), Nothing)
+        parameters = New Dictionary(Of String, String)
+        If data IsNot Nothing Then
+            For Each entry In data
+                parameters(entry.Key) = InputParameter(entry)
+                builder.AppendLine($"{entry.Key}: {parameters(entry.Key)}")
+            Next
+        End If
         linesTextView.Text = builder.ToString()
         linesTextView.ColorScheme = New ColorScheme With
                 {
@@ -73,4 +79,37 @@ Friend Class DialogView
                 }
         choicesListView.SetSource(Context.GetChoicesAsync().Result.ToList)
     End Sub
+
+    Private Function InputParameter(entry As KeyValuePair(Of String, String)) As String
+        Dim dialog = New Dialog With
+            {
+                .Title = entry.Key,
+                .Width = [Dim].Percent(50),
+                .Height = [Dim].Percent(30)
+            }
+        Dim textField = New TextField With
+            {
+                .Text = If(entry.Value, String.Empty),
+                .X = 1,
+                .Y = 1,
+                .Width = [Dim].Fill(2),
+                .Height = 1
+            }
+        dialog.Add(textField)
+        Dim doneButton = New Button With
+            {
+                .Text = "Done",
+                .X = Pos.Center,
+                .Y = Pos.Bottom(textField) + 1,
+                .IsDefault = True
+            }
+        Dim result As String = entry.Value
+        AddHandler doneButton.Clicked, Sub()
+        result = textField.Text.ToString
+                                           Application.RequestStop()
+                                       End Sub
+        dialog.Add(doneButton)
+        Application.Run(dialog)
+        Return result
+    End Function
 End Class
